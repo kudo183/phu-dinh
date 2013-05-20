@@ -121,6 +121,19 @@
       <DependentUpon>PhuDinh.edmx</DependentUpon>
       <LastGenOutput>PhuDinh.cs</LastGenOutput>
     </None>
+    <None Include="Properties\DataSources\PhuDinhEntities.datasource" />
+    <None Include="Properties\DataSources\rBaiXe.datasource" />
+    <None Include="Properties\DataSources\rChanh.datasource" />
+    <None Include="Properties\DataSources\rLoaiChiPhi.datasource" />
+    <None Include="Properties\DataSources\rLoaiHang.datasource" />
+    <None Include="Properties\DataSources\rNhanVienGiaoHang.datasource" />
+    <None Include="Properties\DataSources\rPhuongTien.datasource" />
+    <None Include="Properties\DataSources\sysdiagram.datasource" />
+    <None Include="Properties\DataSources\tChiPhiNhanVienGiaoHang.datasource" />
+    <None Include="Properties\DataSources\tChiTietDonHang.datasource" />
+    <None Include="Properties\DataSources\tChuyenHang.datasource" />
+    <None Include="Properties\DataSources\tDonHang.datasource" />
+    <None Include="Properties\DataSources\tMatHang.datasource" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
