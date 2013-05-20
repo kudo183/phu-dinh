@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5db0bd620cb248dba08bf7aa226fc9ec" Name="Diagram1">
+        <EntityTypeShape EntityType="PhuDinhModel.rBaiXe" Width="1.5" PointX="5.25" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PhuDinhModel.rChanh" Width="1.5" PointX="5.25" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PhuDinhModel.rLoaiChiPhi" Width="1.5" PointX="3" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PhuDinhModel.rLoaiHang" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PhuDinhModel.rNhanVienGiaoHang" Width="1.5" PointX="3" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PhuDinhModel.rPhuongTien" Width="1.5" PointX="0.75" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PhuDinhModel.sysdiagram" Width="1.5" PointX="0.75" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="PhuDinhModel.tChiPhiNhanVienGiaoHang" Width="1.5" PointX="5.25" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PhuDinhModel.tChiTietDonHang" Width="1.5" PointX="9.75" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PhuDinhModel.tChuyenHang" Width="1.5" PointX="5.25" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PhuDinhModel.tDonHang" Width="1.5" PointX="7.5" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PhuDinhModel.tMatHang" Width="1.5" PointX="7.5" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="PhuDinhModel.FK_tDonHang_rBaiXe" ManuallyRouted="false" />
+        <AssociationConnector Association="PhuDinhModel.FK_tDonHang_rChanh" ManuallyRouted="false" />
+        <AssociationConnector Association="PhuDinhModel.FK_tChiPhiNhanVienGiaoHang_rLoaiChiPhi" ManuallyRouted="false" />
+        <AssociationConnector Association="PhuDinhModel.FK_tMatHang_rLoaiHang" ManuallyRouted="false" />
+        <AssociationConnector Association="PhuDinhModel.FK_rNhanVienGiaoHang_rPhuongTien" ManuallyRouted="false" />
+        <AssociationConnector Association="PhuDinhModel.FK_tChiPhiNhanVienGiaoHang_rNhanVienGiaoHang" ManuallyRouted="false" />
+        <AssociationConnector Association="PhuDinhModel.FK_tChuyenHang_rNhanVienGiaoHang" ManuallyRouted="false" />
+        <AssociationConnector Association="PhuDinhModel.FK_tChiTietDonHang_tDonHang" ManuallyRouted="false" />
+        <AssociationConnector Association="PhuDinhModel.FK_tChiTietDonHang_tMatHang" ManuallyRouted="false" />
+        <AssociationConnector Association="PhuDinhModel.FK_tDonHang_tChuyenHang" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
