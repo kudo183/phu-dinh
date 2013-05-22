@@ -31,11 +31,10 @@ namespace PhuDinhData
         public DbSet<rLoaiHang> rLoaiHangs { get; set; }
         public DbSet<rNhanVienGiaoHang> rNhanVienGiaoHangs { get; set; }
         public DbSet<rPhuongTien> rPhuongTiens { get; set; }
-        public DbSet<sysdiagram> sysdiagrams { get; set; }
-        public DbSet<tChiPhiNhanVienGiaoHang> tChiPhiNhanVienGiaoHangs { get; set; }
         public DbSet<tChiTietDonHang> tChiTietDonHangs { get; set; }
         public DbSet<tChuyenHang> tChuyenHangs { get; set; }
         public DbSet<tDonHang> tDonHangs { get; set; }
         public DbSet<tMatHang> tMatHangs { get; set; }
+        public DbSet<tChiPhiNhanVienGiaoHang> tChiPhiNhanVienGiaoHangs { get; set; }
     }
 }

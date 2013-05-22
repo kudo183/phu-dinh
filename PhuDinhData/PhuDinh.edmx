@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="PhuDinhModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="PhuDinhModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="PhuDinhModelStoreContainer">
           <EntitySet Name="rBaiXe" EntityType="PhuDinhModel.Store.rBaiXe" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="rChanh" EntityType="PhuDinhModel.Store.rChanh" store:Type="Tables" Schema="dbo" />
@@ -12,7 +12,6 @@
           <EntitySet Name="rLoaiHang" EntityType="PhuDinhModel.Store.rLoaiHang" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="rNhanVienGiaoHang" EntityType="PhuDinhModel.Store.rNhanVienGiaoHang" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="rPhuongTien" EntityType="PhuDinhModel.Store.rPhuongTien" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="sysdiagrams" EntityType="PhuDinhModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="tChiPhiNhanVienGiaoHang" EntityType="PhuDinhModel.Store.tChiPhiNhanVienGiaoHang" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="tChiTietDonHang" EntityType="PhuDinhModel.Store.tChiTietDonHang" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="tChuyenHang" EntityType="PhuDinhModel.Store.tChuyenHang" store:Type="Tables" Schema="dbo" />
@@ -92,8 +91,8 @@
             <PropertyRef Name="Ma" />
           </Key>
           <Property Name="Ma" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="TenNhanVien" Type="nvarchar" Nullable="false" MaxLength="200" />
           <Property Name="MaPhuongTien" Type="int" Nullable="false" />
+          <Property Name="TenNhanVien" Type="nvarchar" Nullable="false" MaxLength="200" />
         </EntityType>
         <EntityType Name="rPhuongTien">
           <Key>
@@ -101,16 +100,6 @@
           </Key>
           <Property Name="Ma" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="TenPhuongTien" Type="nvarchar" Nullable="false" MaxLength="200" />
-        </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="tChiPhiNhanVienGiaoHang">
           <Key>
@@ -121,7 +110,7 @@
           <Property Name="MaLoaiChiPhi" Type="int" Nullable="false" />
           <Property Name="SoTien" Type="int" Nullable="false" />
           <Property Name="Ngay" Type="date" Nullable="false" />
-          <Property Name="GhiChu" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="GhiChu" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="tChiTietDonHang">
           <Key>
@@ -279,8 +268,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="PhuDinhModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -291,8 +279,6 @@
           <EntitySet Name="rLoaiHangs" EntityType="PhuDinhModel.rLoaiHang" />
           <EntitySet Name="rNhanVienGiaoHangs" EntityType="PhuDinhModel.rNhanVienGiaoHang" />
           <EntitySet Name="rPhuongTiens" EntityType="PhuDinhModel.rPhuongTien" />
-          <EntitySet Name="sysdiagrams" EntityType="PhuDinhModel.sysdiagram" />
-          <EntitySet Name="tChiPhiNhanVienGiaoHangs" EntityType="PhuDinhModel.tChiPhiNhanVienGiaoHang" />
           <EntitySet Name="tChiTietDonHangs" EntityType="PhuDinhModel.tChiTietDonHang" />
           <EntitySet Name="tChuyenHangs" EntityType="PhuDinhModel.tChuyenHang" />
           <EntitySet Name="tDonHangs" EntityType="PhuDinhModel.tDonHang" />
@@ -305,10 +291,6 @@
             <End Role="rChanh" EntitySet="rChanhs" />
             <End Role="tDonHang" EntitySet="tDonHangs" />
           </AssociationSet>
-          <AssociationSet Name="FK_tChiPhiNhanVienGiaoHang_rLoaiChiPhi" Association="PhuDinhModel.FK_tChiPhiNhanVienGiaoHang_rLoaiChiPhi">
-            <End Role="rLoaiChiPhi" EntitySet="rLoaiChiPhis" />
-            <End Role="tChiPhiNhanVienGiaoHang" EntitySet="tChiPhiNhanVienGiaoHangs" />
-          </AssociationSet>
           <AssociationSet Name="FK_tMatHang_rLoaiHang" Association="PhuDinhModel.FK_tMatHang_rLoaiHang">
             <End Role="rLoaiHang" EntitySet="rLoaiHangs" />
             <End Role="tMatHang" EntitySet="tMatHangs" />
@@ -316,10 +298,6 @@
           <AssociationSet Name="FK_rNhanVienGiaoHang_rPhuongTien" Association="PhuDinhModel.FK_rNhanVienGiaoHang_rPhuongTien">
             <End Role="rPhuongTien" EntitySet="rPhuongTiens" />
             <End Role="rNhanVienGiaoHang" EntitySet="rNhanVienGiaoHangs" />
-          </AssociationSet>
-          <AssociationSet Name="FK_tChiPhiNhanVienGiaoHang_rNhanVienGiaoHang" Association="PhuDinhModel.FK_tChiPhiNhanVienGiaoHang_rNhanVienGiaoHang">
-            <End Role="rNhanVienGiaoHang" EntitySet="rNhanVienGiaoHangs" />
-            <End Role="tChiPhiNhanVienGiaoHang" EntitySet="tChiPhiNhanVienGiaoHangs" />
           </AssociationSet>
           <AssociationSet Name="FK_tChuyenHang_rNhanVienGiaoHang" Association="PhuDinhModel.FK_tChuyenHang_rNhanVienGiaoHang">
             <End Role="rNhanVienGiaoHang" EntitySet="rNhanVienGiaoHangs" />
@@ -336,6 +314,15 @@
           <AssociationSet Name="FK_tDonHang_tChuyenHang" Association="PhuDinhModel.FK_tDonHang_tChuyenHang">
             <End Role="tChuyenHang" EntitySet="tChuyenHangs" />
             <End Role="tDonHang" EntitySet="tDonHangs" />
+          </AssociationSet>
+          <EntitySet Name="tChiPhiNhanVienGiaoHangs" EntityType="PhuDinhModel.tChiPhiNhanVienGiaoHang" />
+          <AssociationSet Name="FK_tChiPhiNhanVienGiaoHang_rLoaiChiPhi" Association="PhuDinhModel.FK_tChiPhiNhanVienGiaoHang_rLoaiChiPhi">
+            <End Role="rLoaiChiPhi" EntitySet="rLoaiChiPhis" />
+            <End Role="tChiPhiNhanVienGiaoHang" EntitySet="tChiPhiNhanVienGiaoHangs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tChiPhiNhanVienGiaoHang_rNhanVienGiaoHang" Association="PhuDinhModel.FK_tChiPhiNhanVienGiaoHang_rNhanVienGiaoHang">
+            <End Role="rNhanVienGiaoHang" EntitySet="rNhanVienGiaoHangs" />
+            <End Role="tChiPhiNhanVienGiaoHang" EntitySet="tChiPhiNhanVienGiaoHangs" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="rBaiXe">
@@ -378,8 +365,8 @@
           <Property Name="TenNhanVien" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
           <Property Name="MaPhuongTien" Type="Int32" Nullable="false" />
           <NavigationProperty Name="rPhuongTien" Relationship="PhuDinhModel.FK_rNhanVienGiaoHang_rPhuongTien" FromRole="rNhanVienGiaoHang" ToRole="rPhuongTien" />
-          <NavigationProperty Name="tChiPhiNhanVienGiaoHangs" Relationship="PhuDinhModel.FK_tChiPhiNhanVienGiaoHang_rNhanVienGiaoHang" FromRole="rNhanVienGiaoHang" ToRole="tChiPhiNhanVienGiaoHang" />
           <NavigationProperty Name="tChuyenHangs" Relationship="PhuDinhModel.FK_tChuyenHang_rNhanVienGiaoHang" FromRole="rNhanVienGiaoHang" ToRole="tChuyenHang" />
+          <NavigationProperty Name="tChiPhiNhanVienGiaoHangs" Relationship="PhuDinhModel.FK_tChiPhiNhanVienGiaoHang_rNhanVienGiaoHang" FromRole="rNhanVienGiaoHang" ToRole="tChiPhiNhanVienGiaoHang" />
         </EntityType>
         <EntityType Name="rPhuongTien">
           <Key>
@@ -388,29 +375,6 @@
           <Property Name="Ma" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
           <Property Name="TenPhuongTien" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="rNhanVienGiaoHangs" Relationship="PhuDinhModel.FK_rNhanVienGiaoHang_rPhuongTien" FromRole="rPhuongTien" ToRole="rNhanVienGiaoHang" />
-        </EntityType>
-        <EntityType Name="sysdiagram">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
-        <EntityType Name="tChiPhiNhanVienGiaoHang">
-          <Key>
-            <PropertyRef Name="Ma" />
-          </Key>
-          <Property Name="Ma" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-          <Property Name="MaNhanVienGiaoHang" Type="Int32" Nullable="false" />
-          <Property Name="MaLoaiChiPhi" Type="Int32" Nullable="false" />
-          <Property Name="SoTien" Type="Int32" Nullable="false" />
-          <Property Name="Ngay" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="GhiChu" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <NavigationProperty Name="rLoaiChiPhi" Relationship="PhuDinhModel.FK_tChiPhiNhanVienGiaoHang_rLoaiChiPhi" FromRole="tChiPhiNhanVienGiaoHang" ToRole="rLoaiChiPhi" />
-          <NavigationProperty Name="rNhanVienGiaoHang" Relationship="PhuDinhModel.FK_tChiPhiNhanVienGiaoHang_rNhanVienGiaoHang" FromRole="tChiPhiNhanVienGiaoHang" ToRole="rNhanVienGiaoHang" />
         </EntityType>
         <EntityType Name="tChiTietDonHang">
           <Key>
@@ -482,18 +446,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_tChiPhiNhanVienGiaoHang_rLoaiChiPhi">
-          <End Role="rLoaiChiPhi" Type="PhuDinhModel.rLoaiChiPhi" Multiplicity="1" />
-          <End Role="tChiPhiNhanVienGiaoHang" Type="PhuDinhModel.tChiPhiNhanVienGiaoHang" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="rLoaiChiPhi">
-              <PropertyRef Name="Ma" />
-            </Principal>
-            <Dependent Role="tChiPhiNhanVienGiaoHang">
-              <PropertyRef Name="MaLoaiChiPhi" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_tMatHang_rLoaiHang">
           <End Role="rLoaiHang" Type="PhuDinhModel.rLoaiHang" Multiplicity="1" />
           <End Role="tMatHang" Type="PhuDinhModel.tMatHang" Multiplicity="*" />
@@ -515,18 +467,6 @@
             </Principal>
             <Dependent Role="rNhanVienGiaoHang">
               <PropertyRef Name="MaPhuongTien" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tChiPhiNhanVienGiaoHang_rNhanVienGiaoHang">
-          <End Role="rNhanVienGiaoHang" Type="PhuDinhModel.rNhanVienGiaoHang" Multiplicity="1" />
-          <End Role="tChiPhiNhanVienGiaoHang" Type="PhuDinhModel.tChiPhiNhanVienGiaoHang" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="rNhanVienGiaoHang">
-              <PropertyRef Name="Ma" />
-            </Principal>
-            <Dependent Role="tChiPhiNhanVienGiaoHang">
-              <PropertyRef Name="MaNhanVienGiaoHang" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -575,6 +515,43 @@
             </Principal>
             <Dependent Role="tDonHang">
               <PropertyRef Name="MaChuyenHang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="tChiPhiNhanVienGiaoHang">
+          <Key>
+            <PropertyRef Name="Ma" />
+          </Key>
+          <Property Type="Int32" Name="Ma" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="MaNhanVienGiaoHang" Nullable="false" />
+          <Property Type="Int32" Name="MaLoaiChiPhi" Nullable="false" />
+          <Property Type="Int32" Name="SoTien" Nullable="false" />
+          <Property Type="DateTime" Name="Ngay" Nullable="false" Precision="0" />
+          <Property Type="String" Name="GhiChu" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="rLoaiChiPhi" Relationship="PhuDinhModel.FK_tChiPhiNhanVienGiaoHang_rLoaiChiPhi" FromRole="tChiPhiNhanVienGiaoHang" ToRole="rLoaiChiPhi" />
+          <NavigationProperty Name="rNhanVienGiaoHang" Relationship="PhuDinhModel.FK_tChiPhiNhanVienGiaoHang_rNhanVienGiaoHang" FromRole="tChiPhiNhanVienGiaoHang" ToRole="rNhanVienGiaoHang" />
+        </EntityType>
+        <Association Name="FK_tChiPhiNhanVienGiaoHang_rLoaiChiPhi">
+          <End Type="PhuDinhModel.rLoaiChiPhi" Role="rLoaiChiPhi" Multiplicity="1" />
+          <End Type="PhuDinhModel.tChiPhiNhanVienGiaoHang" Role="tChiPhiNhanVienGiaoHang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="rLoaiChiPhi">
+              <PropertyRef Name="Ma" />
+            </Principal>
+            <Dependent Role="tChiPhiNhanVienGiaoHang">
+              <PropertyRef Name="MaLoaiChiPhi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tChiPhiNhanVienGiaoHang_rNhanVienGiaoHang">
+          <End Type="PhuDinhModel.rNhanVienGiaoHang" Role="rNhanVienGiaoHang" Multiplicity="1" />
+          <End Type="PhuDinhModel.tChiPhiNhanVienGiaoHang" Role="tChiPhiNhanVienGiaoHang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="rNhanVienGiaoHang">
+              <PropertyRef Name="Ma" />
+            </Principal>
+            <Dependent Role="tChiPhiNhanVienGiaoHang">
+              <PropertyRef Name="MaNhanVienGiaoHang" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -633,29 +610,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="PhuDinhModel.sysdiagram">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tChiPhiNhanVienGiaoHangs">
-            <EntityTypeMapping TypeName="PhuDinhModel.tChiPhiNhanVienGiaoHang">
-              <MappingFragment StoreEntitySet="tChiPhiNhanVienGiaoHang">
-                <ScalarProperty Name="Ma" ColumnName="Ma" />
-                <ScalarProperty Name="MaNhanVienGiaoHang" ColumnName="MaNhanVienGiaoHang" />
-                <ScalarProperty Name="MaLoaiChiPhi" ColumnName="MaLoaiChiPhi" />
-                <ScalarProperty Name="SoTien" ColumnName="SoTien" />
-                <ScalarProperty Name="Ngay" ColumnName="Ngay" />
-                <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="tChiTietDonHangs">
             <EntityTypeMapping TypeName="PhuDinhModel.tChiTietDonHang">
               <MappingFragment StoreEntitySet="tChiTietDonHang">
@@ -693,6 +647,18 @@
                 <ScalarProperty Name="Ma" ColumnName="Ma" />
                 <ScalarProperty Name="MaLoai" ColumnName="MaLoai" />
                 <ScalarProperty Name="TenMatHang" ColumnName="TenMatHang" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tChiPhiNhanVienGiaoHangs">
+            <EntityTypeMapping TypeName="PhuDinhModel.tChiPhiNhanVienGiaoHang">
+              <MappingFragment StoreEntitySet="tChiPhiNhanVienGiaoHang">
+                <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+                <ScalarProperty Name="Ngay" ColumnName="Ngay" />
+                <ScalarProperty Name="SoTien" ColumnName="SoTien" />
+                <ScalarProperty Name="MaLoaiChiPhi" ColumnName="MaLoaiChiPhi" />
+                <ScalarProperty Name="MaNhanVienGiaoHang" ColumnName="MaNhanVienGiaoHang" />
+                <ScalarProperty Name="Ma" ColumnName="Ma" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
