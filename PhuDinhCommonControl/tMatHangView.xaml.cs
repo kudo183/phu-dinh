@@ -38,6 +38,7 @@ namespace PhuDinhCommonControl
                 //update exist item
                 else
                 {
+                    item.MaLoai = entity.MaLoai;
                     item.TenMatHang = entity.TenMatHang;
                 }
             }
