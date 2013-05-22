@@ -38,6 +38,7 @@ namespace PhuDinhCommonControl
                 //update exist item
                 else
                 {
+                    item.MaPhuongTien = entity.MaPhuongTien;
                     item.TenNhanVien = entity.TenNhanVien;
                 }
             }
