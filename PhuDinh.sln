@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhuDinhCommon", "PhuDinhCom
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestPhuDinhCommon", "UnitTestPhuDinhCommon\UnitTestPhuDinhCommon.csproj", "{8060ABF8-AD19-4A06-B66E-419AFCABC77A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestWpfApplication", "TestWpfApplication\TestWpfApplication.csproj", "{C765769D-AC3E-458E-A256-1B77AC656B4C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +39,10 @@ Global
 		{8060ABF8-AD19-4A06-B66E-419AFCABC77A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8060ABF8-AD19-4A06-B66E-419AFCABC77A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8060ABF8-AD19-4A06-B66E-419AFCABC77A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C765769D-AC3E-458E-A256-1B77AC656B4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C765769D-AC3E-458E-A256-1B77AC656B4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C765769D-AC3E-458E-A256-1B77AC656B4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C765769D-AC3E-458E-A256-1B77AC656B4C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

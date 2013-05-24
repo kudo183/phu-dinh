@@ -83,6 +83,7 @@
     <Compile Include="tChiPhiNhanVienGiaoHang.cs">
       <DependentUpon>PhuDinh.tt</DependentUpon>
     </Compile>
+    <Compile Include="tChiPhiNhanVienGiaoHangExt.cs" />
     <Compile Include="tChiTietDonHang.cs">
       <DependentUpon>PhuDinh.tt</DependentUpon>
     </Compile>

@@ -62,6 +62,9 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="tChiPhiNhanVienGiaoHangView.xaml.cs">
+      <DependentUpon>tChiPhiNhanVienGiaoHangView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="rNhanVienGiaoHangView.xaml.cs">
       <DependentUpon>rNhanVienGiaoHangView.xaml</DependentUpon>
     </Compile>
@@ -132,6 +135,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="tChiPhiNhanVienGiaoHangView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="rNhanVienGiaoHangView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
