@@ -1,24 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace PhuDinhCommonControl
 {
     /// <summary>
     /// Interaction logic for View.xaml
     /// </summary>
-    public partial class tMatHangView : UserControl
+    public partial class tMatHangView : BaseView
     {
         public tMatHangView()
         {
@@ -55,14 +45,18 @@ namespace PhuDinhCommonControl
             }
         }
 
-        public void RefreshGrid()
+        private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            var context = new PhuDinhData.PhuDinhEntities();
-
-            this.tMatHangDataGrid.DataContext = context.tMatHangs.ToList();
+            Save();
         }
 
-        private void SaveButton_Click(object sender, RoutedEventArgs e)
+        private void CancelButton_Click(object sender, RoutedEventArgs e)
+        {
+            Cancel();
+        }
+
+        #region Override base view method
+        public override void Save()
         {
             try
             {
@@ -74,16 +68,24 @@ namespace PhuDinhCommonControl
                 AddNewItem(context, gridDataSource);
 
                 context.SaveChanges();
-                RefreshGrid();
+                RefreshView();
             }
             catch (Exception ex)
             {
             }
         }
 
-        private void CancelButton_Click(object sender, RoutedEventArgs e)
+        public override void Cancel()
         {
-            RefreshGrid();
+            RefreshView();
         }
+
+        public override void RefreshView()
+        {
+            var context = new PhuDinhData.PhuDinhEntities();
+
+            this.tMatHangDataGrid.DataContext = context.tMatHangs.ToList();
+        }
+        #endregion
     }
 }

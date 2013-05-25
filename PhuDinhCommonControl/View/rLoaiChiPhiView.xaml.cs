@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
-using System.Windows.Controls;
 
 namespace PhuDinhCommonControl
 {
     /// <summary>
     /// Interaction logic for rLoaiChiPhiView.xaml
     /// </summary>
-    public partial class rLoaiChiPhiView : UserControl
+    public partial class rLoaiChiPhiView : BaseView
     {
         public rLoaiChiPhiView()
         {
@@ -44,14 +43,18 @@ namespace PhuDinhCommonControl
             }
         }
 
-        public void RefreshGrid()
+        private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            var context = new PhuDinhData.PhuDinhEntities();
-
-            this.rLoaiChiPhiDataGrid.DataContext = context.rLoaiChiPhis.ToList();
+            Save();
         }
 
-        private void SaveButton_Click(object sender, RoutedEventArgs e)
+        private void CancelButton_Click(object sender, RoutedEventArgs e)
+        {
+            Cancel();
+        }
+
+        #region Override base view method
+        public override void Save()
         {
             try
             {
@@ -63,16 +66,24 @@ namespace PhuDinhCommonControl
                 AddNewItem(context, gridDataSource);
 
                 context.SaveChanges();
-                RefreshGrid();
+                RefreshView();
             }
             catch (Exception ex)
             {
             }
         }
 
-        private void CancelButton_Click(object sender, RoutedEventArgs e)
+        public override void Cancel()
         {
-            RefreshGrid();
+            RefreshView();
         }
+
+        public override void RefreshView()
+        {
+            var context = new PhuDinhData.PhuDinhEntities();
+
+            this.rLoaiChiPhiDataGrid.DataContext = context.rLoaiChiPhis.ToList();
+        }
+        #endregion
     }
 }

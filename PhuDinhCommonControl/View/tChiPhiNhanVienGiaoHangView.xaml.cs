@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
-using System.Windows.Controls;
 
 namespace PhuDinhCommonControl
 {
     /// <summary>
     /// Interaction logic for tChiPhiNhanVienGiaoHangView.xaml
     /// </summary>
-    public partial class tChiPhiNhanVienGiaoHangView : UserControl
+    public partial class tChiPhiNhanVienGiaoHangView : BaseView
     {
         public tChiPhiNhanVienGiaoHangView()
         {
@@ -48,7 +47,42 @@ namespace PhuDinhCommonControl
             }
         }
 
-        public void RefreshGrid()
+        private void SaveButton_Click(object sender, RoutedEventArgs e)
+        {
+            Save();
+        }
+
+        private void CancelButton_Click(object sender, RoutedEventArgs e)
+        {
+            Cancel();
+        }
+
+        #region Override base view method
+        public override void Save()
+        {
+            try
+            {
+                var context = new PhuDinhData.PhuDinhEntities();
+                var gridDataSource = this.tChiPhiNhanVienGiaoHangDataGrid.DataContext as IEnumerable<PhuDinhData.tChiPhiNhanVienGiaoHang>;
+
+                RemoveOrUpdateItem(context, gridDataSource);
+
+                AddNewItem(context, gridDataSource);
+
+                context.SaveChanges();
+                RefreshView();
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+        public override void Cancel()
+        {
+            RefreshView();
+        }
+
+        public override void RefreshView()
         {
             var context = new PhuDinhData.PhuDinhEntities();
             PhuDinhData.tChiPhiNhanVienGiaoHang.rLoaiChiPhis = context.rLoaiChiPhis.ToList();
@@ -68,29 +102,6 @@ namespace PhuDinhCommonControl
 
             this.tChiPhiNhanVienGiaoHangDataGrid.UpdateLayout();
         }
-
-        private void SaveButton_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                var context = new PhuDinhData.PhuDinhEntities();
-                var gridDataSource = this.tChiPhiNhanVienGiaoHangDataGrid.DataContext as IEnumerable<PhuDinhData.tChiPhiNhanVienGiaoHang>;
-
-                RemoveOrUpdateItem(context, gridDataSource);
-
-                AddNewItem(context, gridDataSource);
-
-                context.SaveChanges();
-                RefreshGrid();
-            }
-            catch (Exception ex)
-            {
-            }
-        }
-
-        private void CancelButton_Click(object sender, RoutedEventArgs e)
-        {
-            RefreshGrid();
-        }
+        #endregion
     }
 }
