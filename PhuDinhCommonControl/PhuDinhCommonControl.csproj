@@ -62,19 +62,19 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="tChiPhiNhanVienGiaoHangView.xaml.cs">
+    <Compile Include="View\tChiPhiNhanVienGiaoHangView.xaml.cs">
       <DependentUpon>tChiPhiNhanVienGiaoHangView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="rNhanVienGiaoHangView.xaml.cs">
+    <Compile Include="View\rNhanVienGiaoHangView.xaml.cs">
       <DependentUpon>rNhanVienGiaoHangView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="rLoaiChiPhiView.xaml.cs">
+    <Compile Include="View\rLoaiChiPhiView.xaml.cs">
       <DependentUpon>rLoaiChiPhiView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="rChanhView.xaml.cs">
+    <Compile Include="View\rChanhView.xaml.cs">
       <DependentUpon>rChanhView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="rBaiXeView.xaml.cs">
+    <Compile Include="View\rBaiXeView.xaml.cs">
       <DependentUpon>rBaiXeView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -90,13 +90,13 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="rLoaiHangView.xaml.cs">
+    <Compile Include="View\rLoaiHangView.xaml.cs">
       <DependentUpon>rLoaiHangView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="rPhuongTienView.xaml.cs">
+    <Compile Include="View\rPhuongTienView.xaml.cs">
       <DependentUpon>rPhuongTienView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="tMatHangView.xaml.cs">
+    <Compile Include="View\tMatHangView.xaml.cs">
       <DependentUpon>tMatHangView.xaml</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -135,35 +135,35 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="tChiPhiNhanVienGiaoHangView.xaml">
+    <Page Include="View\tChiPhiNhanVienGiaoHangView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="rNhanVienGiaoHangView.xaml">
+    <Page Include="View\rNhanVienGiaoHangView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="rLoaiChiPhiView.xaml">
+    <Page Include="View\rLoaiChiPhiView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="rChanhView.xaml">
+    <Page Include="View\rChanhView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="rBaiXeView.xaml">
+    <Page Include="View\rBaiXeView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="rLoaiHangView.xaml">
+    <Page Include="View\rLoaiHangView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="rPhuongTienView.xaml">
+    <Page Include="View\rPhuongTienView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="tMatHangView.xaml">
+    <Page Include="View\tMatHangView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
