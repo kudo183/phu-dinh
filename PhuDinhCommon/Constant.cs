@@ -7,7 +7,7 @@
         {
             rBaiXe,
             rChanh,
-            rKhackHang,
+            rKhachHang,
             rLoaiChiPhi,
             rLoaiHang,
             rNhanVienGiaoHang,

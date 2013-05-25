@@ -60,8 +60,8 @@ namespace PhuDinhCommonControl.Menu
                 case "rChanh":
                     SelectedItem = Constant.MainMenuItems.rChanh;
                     break;
-                case "rKhackHang":
-                    SelectedItem = Constant.MainMenuItems.rKhackHang;
+                case "rKhachHang":
+                    SelectedItem = Constant.MainMenuItems.rKhachHang;
                     break;
                 case "rLoaiChiPhi":
                     SelectedItem = Constant.MainMenuItems.rLoaiChiPhi;
