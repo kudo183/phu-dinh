@@ -12,14 +12,16 @@ namespace PhuDinhData
     using System;
     using System.Collections.Generic;
     
-    public partial class tChiTietDonHang
+    public partial class rKhachHang
     {
-        public int Ma { get; set; }
-        public int MaDonHang { get; set; }
-        public int MaMatHang { get; set; }
-        public int SoLuong { get; set; }
+        public rKhachHang()
+        {
+            this.tDonHangs = new HashSet<tDonHang>();
+        }
     
-        public virtual tMatHang tMatHang { get; set; }
-        public virtual tDonHang tDonHang { get; set; }
+        public int Ma { get; set; }
+        public string TenKhachHang { get; set; }
+    
+        public virtual ICollection<tDonHang> tDonHangs { get; set; }
     }
 }

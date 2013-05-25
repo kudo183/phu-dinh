@@ -13,19 +13,21 @@
         <EntityTypeShape EntityType="PhuDinhModel.rPhuongTien" Width="1.5" PointX="0.75" PointY="4.625" IsExpanded="true" />
         <EntityTypeShape EntityType="PhuDinhModel.tChiTietDonHang" Width="1.5" PointX="9.75" PointY="7.625" IsExpanded="true" />
         <EntityTypeShape EntityType="PhuDinhModel.tChuyenHang" Width="1.5" PointX="5.25" PointY="7.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="PhuDinhModel.tDonHang" Width="1.5" PointX="7.5" PointY="7.375" IsExpanded="true" />
         <EntityTypeShape EntityType="PhuDinhModel.tMatHang" Width="1.5" PointX="7.5" PointY="0.75" IsExpanded="true" />
-        <AssociationConnector Association="PhuDinhModel.FK_tDonHang_rBaiXe" ManuallyRouted="false" />
-        <AssociationConnector Association="PhuDinhModel.FK_tDonHang_rChanh" ManuallyRouted="false" />
         <AssociationConnector Association="PhuDinhModel.FK_tMatHang_rLoaiHang" ManuallyRouted="false" />
         <AssociationConnector Association="PhuDinhModel.FK_rNhanVienGiaoHang_rPhuongTien" ManuallyRouted="false" />
         <AssociationConnector Association="PhuDinhModel.FK_tChuyenHang_rNhanVienGiaoHang" ManuallyRouted="false" />
-        <AssociationConnector Association="PhuDinhModel.FK_tChiTietDonHang_tDonHang" ManuallyRouted="false" />
         <AssociationConnector Association="PhuDinhModel.FK_tChiTietDonHang_tMatHang" ManuallyRouted="false" />
-        <AssociationConnector Association="PhuDinhModel.FK_tDonHang_tChuyenHang" ManuallyRouted="false" />
         <EntityTypeShape EntityType="PhuDinhModel.tChiPhiNhanVienGiaoHang" Width="1.5" PointX="0.3701240012283083" PointY="31.746579259516011" />
         <AssociationConnector Association="PhuDinhModel.FK_tChiPhiNhanVienGiaoHang_rLoaiChiPhi" />
         <AssociationConnector Association="PhuDinhModel.FK_tChiPhiNhanVienGiaoHang_rNhanVienGiaoHang" />
+        <EntityTypeShape EntityType="PhuDinhModel.rKhachHang" Width="1.5" PointX="7.4802485348099133" PointY="19.32214907711472" />
+        <EntityTypeShape EntityType="PhuDinhModel.tDonHang" Width="1.5" PointX="9.105094016112897" PointY="16.083042465189028" />
+        <AssociationConnector Association="PhuDinhModel.FK_tDonHang_rBaiXe" />
+        <AssociationConnector Association="PhuDinhModel.FK_tDonHang_rChanh" />
+        <AssociationConnector Association="PhuDinhModel.FK_tDonHang_rKhachHang" />
+        <AssociationConnector Association="PhuDinhModel.FK_tChiTietDonHang_tDonHang" />
+        <AssociationConnector Association="PhuDinhModel.FK_tDonHang_tChuyenHang" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
