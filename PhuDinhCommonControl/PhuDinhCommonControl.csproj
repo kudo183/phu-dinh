@@ -66,6 +66,9 @@
       <DependentUpon>MainMenu.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\BaseView.cs" />
+    <Compile Include="View\tChuyenHangView.xaml.cs">
+      <DependentUpon>tChuyenHangView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\tChiPhiNhanVienGiaoHangView.xaml.cs">
       <DependentUpon>tChiPhiNhanVienGiaoHangView.xaml</DependentUpon>
     </Compile>
@@ -142,6 +145,10 @@
     <Page Include="Menu\MainMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\tChuyenHangView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="View\tChiPhiNhanVienGiaoHangView.xaml">
       <Generator>MSBuild:Compile</Generator>

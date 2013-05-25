@@ -58,7 +58,7 @@ namespace PhuDinh
                     //result = new tChiTietDonHangView();
                     break;
                 case Constant.MainMenuItems.tChuyenHang:
-                    //result = new tChuyenHangView();
+                    result = new tChuyenHangView();
                     break;
                 case Constant.MainMenuItems.tDonHang:
                     //result = new tDonHangView();
