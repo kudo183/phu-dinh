@@ -1,21 +1,16 @@
 ﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:local="clr-namespace:PhuDinh" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:PhuDinhCommonControl="clr-namespace:PhuDinhCommonControl;assembly=PhuDinhCommonControl" 
-    mc:Ignorable="d" x:Class="PhuDinh.MainWindow"
+        xmlns:Menu="clr-namespace:PhuDinhCommonControl.Menu;assembly=PhuDinhCommonControl" mc:Ignorable="d" x:Class="PhuDinh.MainWindow"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <StackPanel Grid.Column="0" Background="Gray" Margin="0,0,5,0" x:Name="_spMenu">
-            <ToggleButton Content="Phương tiện" Margin="5" x:Name="btnPhuongTien" Click="btnPhuongTien_Click"/>
-            <ToggleButton Content="Mặt hàng" Margin="5" x:Name="btnMatHang" Click="btnMatHang_Click"/>
-            <ToggleButton Content="Loại chi phí" Margin="5" x:Name="btnLoaiChiPhi" Click="btnLoaiChiPhi_Click"/>
-        </StackPanel>
+        <Menu:MainMenu Grid.Column="0" Background="Gray" Margin="0,0,5,0" x:Name="_spMenu"/>
         <GridSplitter VerticalAlignment="Stretch" Grid.Column="0" Width="5"/>
         <Border Grid.Column="1" x:Name="_brdMain" BorderThickness="1" BorderBrush="Black" Margin="3" Padding="2">
         </Border>

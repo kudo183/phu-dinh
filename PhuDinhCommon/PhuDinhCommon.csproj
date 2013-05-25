@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Constant.cs" />
     <Compile Include="LogManager.cs" />
     <Compile Include="PagingCollection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -1,20 +1,6 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿using System.Windows;
+using PhuDinhCommon;
+using PhuDinhCommonControl;
 
 namespace PhuDinh
 {
@@ -26,35 +12,62 @@ namespace PhuDinh
         public MainWindow()
         {
             InitializeComponent();
+            _spMenu.MenuItemClick += _spMenu_MenuItemClick;
         }
 
-        private void btnPhuongTien_Click(object sender, RoutedEventArgs e)
+        void _spMenu_MenuItemClick(object sender, RoutedEventArgs e)
         {
-            var view = new PhuDinhCommonControl.rPhuongTienView();
-            this._brdMain.Child = view;
-            view.RefreshGrid();
+            var menu = sender as PhuDinhCommonControl.Menu.MainMenu;
+            BaseView view = CreateView(menu.SelectedItem);
 
-            this.UpdateToggleButton(sender as ToggleButton);
-        }
+            _brdMain.Child = view;
 
-        private void btnMatHang_Click(object sender, RoutedEventArgs e)
-        {
-            this._brdMain.Child = null;
-            this.UpdateToggleButton(sender as ToggleButton);
-        }
-
-        private void btnLoaiChiPhi_Click(object sender, RoutedEventArgs e)
-        {
-            this._brdMain.Child = null;
-            this.UpdateToggleButton(sender as ToggleButton);
-        }
-
-        private void UpdateToggleButton(ToggleButton currentButton)
-        {
-            foreach (ToggleButton btn in this._spMenu.Children)
+            if (view != null)
             {
-                btn.IsChecked = btn == currentButton;
+                view.RefreshView();
             }
+        }
+
+        private BaseView CreateView(Constant.MainMenuItems selectedView)
+        {
+            BaseView result = null;
+            switch (selectedView)
+            {
+                case Constant.MainMenuItems.rBaiXe:
+                    result = new rBaiXeView();
+                    break;
+                case Constant.MainMenuItems.rChanh:
+                    result = new rChanhView();
+                    break;
+                case Constant.MainMenuItems.rLoaiChiPhi:
+                    result = new rLoaiChiPhiView();
+                    break;
+                case Constant.MainMenuItems.rLoaiHang:
+                    result = new rLoaiHangView();
+                    break;
+                case Constant.MainMenuItems.rNhanVienGiaoHang:
+                    result = new rNhanVienGiaoHangView();
+                    break;
+                case Constant.MainMenuItems.rPhuongTien:
+                    result = new rPhuongTienView();
+                    break;
+                case Constant.MainMenuItems.tChiPhiNhanVienGiaoHang:
+                    result = new tChiPhiNhanVienGiaoHangView();
+                    break;
+                case Constant.MainMenuItems.tChiTietDonHang:
+                    //result = new tChiTietDonHangView();
+                    break;
+                case Constant.MainMenuItems.tChuyenHang:
+                    //result = new tChuyenHangView();
+                    break;
+                case Constant.MainMenuItems.tDonHang:
+                    //result = new tDonHangView();
+                    break;
+                case Constant.MainMenuItems.tMatHang:
+                    result = new tMatHangView();
+                    break;
+            }
+            return result;
         }
     }
 }

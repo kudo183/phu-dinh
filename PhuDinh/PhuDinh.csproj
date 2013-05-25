@@ -38,6 +38,9 @@
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\packages\log4net.2.0.0\lib\net40-full\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationUI, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="ReachFramework" />
     <Reference Include="System" />
@@ -128,6 +131,10 @@
     <ProjectReference Include="..\PhuDinhCommonControl\PhuDinhCommonControl.csproj">
       <Project>{55a6491e-8cdc-4fdc-ab34-c6a7c932185c}</Project>
       <Name>PhuDinhCommonControl</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PhuDinhCommon\PhuDinhCommon.csproj">
+      <Project>{e7cdbbdc-0d94-48b8-9934-ebfbb75e533d}</Project>
+      <Name>PhuDinhCommon</Name>
     </ProjectReference>
     <ProjectReference Include="..\PhuDinhData\PhuDinhData.csproj">
       <Project>{9e6f47f9-162f-458f-a4c3-42b455f09d43}</Project>
