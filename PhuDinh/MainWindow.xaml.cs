@@ -64,7 +64,7 @@ namespace PhuDinh
                     result = new tChuyenHangView();
                     break;
                 case Constant.MainMenuItems.tDonHang:
-                    //result = new tDonHangView();
+                    result = new tDonHangView();
                     break;
                 case Constant.MainMenuItems.tMatHang:
                     result = new tMatHangView();

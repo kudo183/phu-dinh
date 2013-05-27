@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="tDonHangExt.cs" />
     <Compile Include="rKhachHang.cs">
       <DependentUpon>PhuDinh.tt</DependentUpon>
     </Compile>
