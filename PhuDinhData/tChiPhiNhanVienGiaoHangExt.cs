@@ -14,11 +14,11 @@ namespace PhuDinhData
         public rNhanVienGiaoHang NhanVienGiaoHang { get; set; }
         public rLoaiChiPhi LoaiChiPhi { get; set; }
 
-        private static List<rNhanVienGiaoHang> _rNhanVienGiaoHang = new List<rNhanVienGiaoHang>();
+        private static List<rNhanVienGiaoHang> _rNhanVienGiaoHangs = new List<rNhanVienGiaoHang>();
         public static List<rNhanVienGiaoHang> rNhanVienGiaoHangs
         {
-            get { return _rNhanVienGiaoHang; }
-            set { _rNhanVienGiaoHang = value; }
+            get { return _rNhanVienGiaoHangs; }
+            set { _rNhanVienGiaoHangs = value; }
         }
 
         private static List<rLoaiChiPhi> _rLoaiChiPhis = new List<rLoaiChiPhi>();

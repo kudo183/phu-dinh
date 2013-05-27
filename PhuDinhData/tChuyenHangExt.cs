@@ -4,11 +4,11 @@ namespace PhuDinhData
 {
     public partial class tChuyenHang
     {
-        private static List<rNhanVienGiaoHang> _rNhanVienGiaoHang = new List<rNhanVienGiaoHang>();
+        private static List<rNhanVienGiaoHang> _rNhanVienGiaoHangs = new List<rNhanVienGiaoHang>();
         public static List<rNhanVienGiaoHang> rNhanVienGiaoHangs
         {
-            get { return _rNhanVienGiaoHang; }
-            set { _rNhanVienGiaoHang = value; }
+            get { return _rNhanVienGiaoHangs; }
+            set { _rNhanVienGiaoHangs = value; }
         }
     }
 }
