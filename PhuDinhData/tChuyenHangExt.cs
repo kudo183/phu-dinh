@@ -14,6 +14,8 @@ namespace PhuDinhData
             }
         }
 
+        public rNhanVienGiaoHang NhanVienGiaoHang { get; set; }
+
         private static List<rNhanVienGiaoHang> _rNhanVienGiaoHangs = new List<rNhanVienGiaoHang>();
         public static List<rNhanVienGiaoHang> rNhanVienGiaoHangs
         {

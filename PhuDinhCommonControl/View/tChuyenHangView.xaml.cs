@@ -87,6 +87,12 @@ namespace PhuDinhCommonControl
 
             var data = context.tChuyenHangs.ToList();
 
+            foreach (var tDonHang in data)
+            {
+                tDonHang.NhanVienGiaoHang = PhuDinhData.tChuyenHang.rNhanVienGiaoHangs.FirstOrDefault(
+                    p => p.Ma == tDonHang.MaNhanVienGiaoHang);
+            }
+
             this.tChuyenHangDataGrid.DataContext = data;
 
             this.tChuyenHangDataGrid.UpdateLayout();

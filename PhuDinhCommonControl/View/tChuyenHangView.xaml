@@ -41,7 +41,7 @@
                 <DataGridTemplateColumn x:Name="nhanVienGiaoHangColumn" Header="Nhan Vien" Width="80">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding rNhanVienGiaoHang.TenNhanVien}" VerticalAlignment="Center"/>
+                            <TextBlock Text="{Binding NhanVienGiaoHang.TenNhanVien}" VerticalAlignment="Center"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                     <DataGridTemplateColumn.CellEditingTemplate>
@@ -51,7 +51,7 @@
                                       DisplayMemberPath="TenNhanVien"
                                       SelectedValuePath="Ma"
                                       SelectedValue="{Binding MaNhanVienGiaoHang, UpdateSourceTrigger=PropertyChanged}"
-                                      SelectedItem="{Binding rNhanVienGiaoHang, UpdateSourceTrigger=PropertyChanged}"
+                                      SelectedItem="{Binding NhanVienGiaoHang, UpdateSourceTrigger=PropertyChanged}"
                                       />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellEditingTemplate>
