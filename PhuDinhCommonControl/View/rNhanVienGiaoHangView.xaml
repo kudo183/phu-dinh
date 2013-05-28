@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:PhuDinhCommonControl="clr-namespace:PhuDinhCommonControl"
+             xmlns:PhuDinhData="clr-namespace:PhuDinhData;assembly=PhuDinhData"
              x:Class="PhuDinhCommonControl.rNhanVienGiaoHangView" 
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
@@ -14,6 +15,7 @@
         </Grid.RowDefinitions>
         <DataGrid Grid.Row="0" x:Name="rNhanVienGiaoHangDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected">
             <DataGrid.Columns>
+                <!--Ma-->
                 <DataGridTextColumn x:Name="maColumn" Binding="{Binding Ma}" Header="Ma" Width="SizeToHeader" IsReadOnly="True">
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="{x:Type TextBlock}">
@@ -21,7 +23,25 @@
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn x:Name="maPhuongTienColumn" Width="SizeToHeader" Header="Ma Phuong Tien" Binding="{Binding MaPhuongTien}"/>
+                <!--Phuong Tien-->
+                <DataGridTemplateColumn x:Name="phuongTienColumn" Header="Phuong tien">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding PhuongTien.TenPhuongTien}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <ComboBox IsEditable="True" StaysOpenOnEdit="True" IsTextSearchEnabled="True"
+                                ItemsSource="{x:Static PhuDinhData:rNhanVienGiaoHang.rPhuongTiens}"
+                                      DisplayMemberPath="TenPhuongTien"
+                                      SelectedValuePath="Ma"
+                                      SelectedValue="{Binding MaPhuongTien, UpdateSourceTrigger=PropertyChanged}"
+                                      SelectedItem="{Binding PhuongTien, UpdateSourceTrigger=PropertyChanged}"
+                                      />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
                 <DataGridTextColumn x:Name="tenNhanVienColumn" Width="SizeToHeader" Header="Ten Nhan Vien" Binding="{Binding TenNhanVien}"/>
             </DataGrid.Columns>
         </DataGrid>

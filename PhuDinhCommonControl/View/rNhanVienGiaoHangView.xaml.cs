@@ -83,6 +83,15 @@ namespace PhuDinhCommonControl
         public override void RefreshView()
         {
             var context = new PhuDinhData.PhuDinhEntities();
+            PhuDinhData.rNhanVienGiaoHang.rPhuongTiens = context.rPhuongTiens.ToList();
+
+            var data = context.rNhanVienGiaoHangs.ToList();
+
+            foreach (var rNhanVienGiaoHang in data)
+            {
+                rNhanVienGiaoHang.PhuongTien = PhuDinhData.rNhanVienGiaoHang.rPhuongTiens.FirstOrDefault(
+                    p => p.Ma == rNhanVienGiaoHang.MaPhuongTien);
+            }
 
             this.rNhanVienGiaoHangDataGrid.DataContext = context.rNhanVienGiaoHangs.ToList();
         }

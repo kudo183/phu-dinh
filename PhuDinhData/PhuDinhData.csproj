@@ -46,6 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="tMatHangExt.cs" />
+    <Compile Include="rNhanVienGiaoHangExt.cs" />
     <Compile Include="tChiTietDonHangExt.cs" />
     <Compile Include="tDonHangExt.cs" />
     <Compile Include="rKhachHang.cs">

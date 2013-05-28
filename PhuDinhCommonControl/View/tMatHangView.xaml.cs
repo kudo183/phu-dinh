@@ -83,7 +83,15 @@ namespace PhuDinhCommonControl
         public override void RefreshView()
         {
             var context = new PhuDinhData.PhuDinhEntities();
+            PhuDinhData.tMatHang.rLoaiHangs = context.rLoaiHangs.ToList();
 
+            var data = context.tMatHangs.ToList();
+
+            foreach (var tMatHang in data)
+            {
+                tMatHang.LoaiHang = PhuDinhData.tMatHang.rLoaiHangs.FirstOrDefault(
+                    p => p.Ma == tMatHang.MaLoai);
+            }
             this.tMatHangDataGrid.DataContext = context.tMatHangs.ToList();
         }
         #endregion

@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:PhuDinhCommonControl="clr-namespace:PhuDinhCommonControl"
+             xmlns:PhuDinhData="clr-namespace:PhuDinhData;assembly=PhuDinhData"
              x:Class="PhuDinhCommonControl.tMatHangView" 
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
@@ -21,7 +22,25 @@
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn x:Name="maLoaiColumn" Width="SizeToHeader" Header="Ma Loai" Binding="{Binding MaLoai}"/>
+                <!--Loai Hang-->
+                <DataGridTemplateColumn x:Name="loaiHangColumn" Header="Loai hang">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding LoaiHang.TenLoai}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <ComboBox IsEditable="True" StaysOpenOnEdit="True" IsTextSearchEnabled="True"
+                                ItemsSource="{x:Static PhuDinhData:tMatHang.rLoaiHangs}"
+                                      DisplayMemberPath="TenLoai"
+                                      SelectedValuePath="Ma"
+                                      SelectedValue="{Binding MaLoai, UpdateSourceTrigger=PropertyChanged}"
+                                      SelectedItem="{Binding LoaiHang, UpdateSourceTrigger=PropertyChanged}"
+                                      />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
                 <DataGridTextColumn x:Name="tenMatHangColumn" Width="SizeToHeader" Header="Ten Mat Hang" Binding="{Binding TenMatHang}"/>
             </DataGrid.Columns>
         </DataGrid>
