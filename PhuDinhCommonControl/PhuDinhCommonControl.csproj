@@ -69,6 +69,9 @@
       <DependentUpon>tDonHangView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\BaseView.cs" />
+    <Compile Include="View\tChiTietDonHangView.xaml.cs">
+      <DependentUpon>tChiTietDonHangView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\rKhachHangView.xaml.cs">
       <DependentUpon>rKhachHangView.xaml</DependentUpon>
     </Compile>
@@ -153,6 +156,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="tDonHangView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\tChiTietDonHangView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

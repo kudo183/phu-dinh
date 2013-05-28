@@ -1,9 +1,19 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace PhuDinhData
 {
     public partial class tDonHang
     {
+        public string TenDonHang
+        {
+            get
+            {
+                return string.Format("{0}_{1:hh\\:mm}_{2}", 
+                    tChuyenHang.Ngay.ToShortDateString(), tChuyenHang.Gio ?? new TimeSpan(0, 0, 0, 0), rKhachHang.TenKhachHang);
+            }
+        }
+
         public tChuyenHang ChuyenHang { get; set; }
         public rKhachHang KhachHang { get; set; }
         public rBaiXe BaiXe { get; set; }
