@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Windows;
 
@@ -93,10 +95,23 @@ namespace PhuDinhCommonControl
                     p => p.Ma == tDonHang.MaNhanVienGiaoHang);
             }
 
-            this.tChuyenHangDataGrid.DataContext = data;
+            var collection = new ObservableCollection<PhuDinhData.tChuyenHang>(context.tChuyenHangs.ToList());
+            collection.CollectionChanged += collection_CollectionChanged;
+            this.tChuyenHangDataGrid.DataContext = collection;
 
             this.tChuyenHangDataGrid.UpdateLayout();
         }
+
+        void collection_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            if (e.Action == NotifyCollectionChangedAction.Add)
+            {
+                var chuyenHang = e.NewItems[0] as PhuDinhData.tChuyenHang;
+                chuyenHang.Ngay = DateTime.Now;
+                chuyenHang.Gio = DateTime.Now.TimeOfDay;
+            }
+        }
+
         #endregion
     }
 }

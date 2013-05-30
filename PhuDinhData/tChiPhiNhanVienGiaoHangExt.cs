@@ -1,16 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 
 namespace PhuDinhData
 {
     public partial class tChiPhiNhanVienGiaoHang
     {
-        public tChiPhiNhanVienGiaoHang()
-        {
-            Ngay = DateTime.Now;
-        }
-
         public rNhanVienGiaoHang NhanVienGiaoHang { get; set; }
         public rLoaiChiPhi LoaiChiPhi { get; set; }
 
