@@ -1,0 +1,12 @@
+﻿<UserControl x:Class="PhuDinhCommonControl.CustomControl.TimeInput"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d">
+    <StackPanel Orientation="Horizontal">
+        <TextBox x:Name="txtHour" Width="20" PreviewTextInput="txtHour_PreviewTextInput" TextChanged="txtHour_TextChanged"/>
+        <TextBlock Text=" : "/>
+        <TextBox x:Name="txtMinute" Width="20" PreviewTextInput="txtMinute_PreviewTextInput" TextChanged="txtMinute_TextChanged"/>
+    </StackPanel>
+</UserControl>
