@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:PhuDinhData="clr-namespace:PhuDinhData;assembly=PhuDinhData"
              xmlns:PhuDinhCommonControl="clr-namespace:PhuDinhCommonControl"
+             xmlns:CustomControl="clr-namespace:PhuDinhCommonControl.CustomControl"
              x:Class="PhuDinhCommonControl.tChuyenHangView" 
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="500">
@@ -34,6 +35,19 @@
                     <DataGridTemplateColumn.CellEditingTemplate>
                         <DataTemplate>
                             <DatePicker SelectedDate="{Binding Ngay, UpdateSourceTrigger=PropertyChanged}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+                <!--Gio-->
+                <DataGridTemplateColumn x:Name="gioColumn" Header="Gio" Width="100">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Gio, StringFormat=\{0:hh\\:mm\}}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <CustomControl:TimeInput Value="{Binding Gio}"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellEditingTemplate>
                 </DataGridTemplateColumn>

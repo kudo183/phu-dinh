@@ -23,14 +23,14 @@ namespace PhuDinhCommonControl.CustomControl
 
         public static readonly DependencyProperty ValueProperty =
             DependencyProperty.Register("Value", typeof(TimeSpan), typeof(TimeInput),
-            new UIPropertyMetadata(new TimeSpan(0, 0, 0), OnValueChanged));
+            new FrameworkPropertyMetadata(new TimeSpan(0, 0, 0), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnValueChanged));
 
         private static void OnValueChanged(DependencyObject obj, DependencyPropertyChangedEventArgs e)
         {
             var timeInput = obj as TimeInput;
             var time = (TimeSpan)e.NewValue;
             timeInput.txtHour.Text = time.Hours.ToString();
-            timeInput.txtMinute.Text = time.Minutes.ToString();
+            timeInput.txtMinute.Text = time.Minutes.ToString();            
         }
 
         private void txtHour_PreviewTextInput(object sender, TextCompositionEventArgs e)
