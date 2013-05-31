@@ -81,9 +81,21 @@ namespace PhuDinhCommonControl
         public override void RefreshView()
         {
             var context = new PhuDinhData.PhuDinhEntities();
+            PhuDinhData.rKhachHang.rDiaDiems = context.rDiaDiems.ToList();
 
-            this.rKhachHangDataGrid.DataContext = context.rKhachHangs.ToList();
+            var data = context.rKhachHangs.ToList();
+
+            foreach (var rKhachHang in data)
+            {
+                rKhachHang.DiaDiem = PhuDinhData.rKhachHang.rDiaDiems.FirstOrDefault(
+                    p => p.Ma == rKhachHang.MaDiaDiem);
+            }
+
+            this.rKhachHangDataGrid.DataContext = data;
+
+            this.rKhachHangDataGrid.UpdateLayout();
         }
+
         #endregion
     }
 }

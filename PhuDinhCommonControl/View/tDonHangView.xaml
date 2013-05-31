@@ -47,14 +47,14 @@
                 <DataGridTemplateColumn x:Name="khachHangColumn" Header="Khach hang" Width="80">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding KhachHang.TenKhachHang}" VerticalAlignment="Center"/>
+                            <TextBlock Text="{Binding KhachHang.TenKhachHangDiaDiem}" VerticalAlignment="Center"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                     <DataGridTemplateColumn.CellEditingTemplate>
                         <DataTemplate>
                             <ComboBox IsEditable="True" StaysOpenOnEdit="True" IsTextSearchEnabled="True"
                                 ItemsSource="{x:Static PhuDinhData:tDonHang.rKhachHangs}"
-                                      DisplayMemberPath="TenKhachHang"
+                                      DisplayMemberPath="TenKhachHangDiaDiem"
                                       SelectedValuePath="Ma"
                                       SelectedValue="{Binding MaKhachHang, UpdateSourceTrigger=PropertyChanged}"
                                       SelectedItem="{Binding KhachHang, UpdateSourceTrigger=PropertyChanged}"

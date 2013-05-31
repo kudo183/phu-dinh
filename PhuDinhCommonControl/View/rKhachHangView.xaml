@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:PhuDinhCommonControl="clr-namespace:PhuDinhCommonControl" 
+             xmlns:PhuDinhCommonControl="clr-namespace:PhuDinhCommonControl"
+             xmlns:PhuDinhData="clr-namespace:PhuDinhData;assembly=PhuDinhData"
              x:Class="PhuDinhCommonControl.rKhachHangView" 
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
@@ -14,6 +15,7 @@
         </Grid.RowDefinitions>
         <DataGrid Grid.Row="0" x:Name="rKhachHangDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected">
             <DataGrid.Columns>
+                <!--Ma-->
                 <DataGridTextColumn x:Name="maColumn" Binding="{Binding Ma}" Header="Ma" Width="SizeToHeader" IsReadOnly="True">
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="{x:Type TextBlock}">
@@ -21,7 +23,27 @@
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
+                <!--Ten khach hang-->
                 <DataGridTextColumn x:Name="tenKhachHangColumn" Width="SizeToHeader" Header="Ten Khach Hang" Binding="{Binding TenKhachHang}"/>
+                <!--Dia diem-->
+                <DataGridTemplateColumn x:Name="diaDiemColumn" Header="Dia diem" Width="80">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding DiaDiem.TenDiaDiem}" VerticalAlignment="Center"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <ComboBox IsEditable="True" StaysOpenOnEdit="True" IsTextSearchEnabled="True"
+                                ItemsSource="{x:Static PhuDinhData:rKhachHang.rDiaDiems}"
+                                      DisplayMemberPath="TenDiaDiem"
+                                      SelectedValuePath="Ma"
+                                      SelectedValue="{Binding MaDiaDiem, UpdateSourceTrigger=PropertyChanged}"
+                                      SelectedItem="{Binding DiaDiem, UpdateSourceTrigger=PropertyChanged}"
+                                      />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
         <StackPanel Grid.Row="1" Orientation="Horizontal">

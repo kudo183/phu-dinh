@@ -46,6 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="rKhachHangExt.cs" />
+    <Compile Include="rDiaDiemExt.cs" />
     <Compile Include="rChanhExt.cs" />
     <Compile Include="rDiaDiem.cs">
       <DependentUpon>PhuDinh.tt</DependentUpon>
