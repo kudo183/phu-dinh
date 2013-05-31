@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace PhuDinhData
+﻿namespace PhuDinhData
 {
     public partial class rDiaDiem
     {
