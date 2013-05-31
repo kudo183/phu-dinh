@@ -68,7 +68,7 @@
     <Compile Include="Menu\MainMenu.xaml.cs">
       <DependentUpon>MainMenu.xaml</DependentUpon>
     </Compile>
-    <Compile Include="tDonHangView.xaml.cs">
+    <Compile Include="View\tDonHangView.xaml.cs">
       <DependentUpon>tDonHangView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\BaseView.cs" />
@@ -162,7 +162,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="tDonHangView.xaml">
+    <Page Include="View\tDonHangView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
