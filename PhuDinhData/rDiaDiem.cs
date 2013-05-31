@@ -12,18 +12,18 @@ namespace PhuDinhData
     using System;
     using System.Collections.Generic;
     
-    public partial class rChanh
+    public partial class rDiaDiem
     {
-        public rChanh()
+        public rDiaDiem()
         {
-            this.tDonHangs = new HashSet<tDonHang>();
+            this.rKhachHangs = new HashSet<rKhachHang>();
         }
     
         public int Ma { get; set; }
-        public int MaBaiXe { get; set; }
-        public string TenChanh { get; set; }
+        public int MaNuoc { get; set; }
+        public string Tinh { get; set; }
     
-        public virtual rBaiXe rBaiXe { get; set; }
-        public virtual ICollection<tDonHang> tDonHangs { get; set; }
+        public virtual rNuoc rNuoc { get; set; }
+        public virtual ICollection<rKhachHang> rKhachHangs { get; set; }
     }
 }

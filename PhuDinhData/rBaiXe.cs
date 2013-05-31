@@ -16,12 +16,12 @@ namespace PhuDinhData
     {
         public rBaiXe()
         {
-            this.tDonHangs = new HashSet<tDonHang>();
+            this.rChanhs = new HashSet<rChanh>();
         }
     
         public int Ma { get; set; }
         public string DiaDiemBaiXe { get; set; }
     
-        public virtual ICollection<tDonHang> tDonHangs { get; set; }
+        public virtual ICollection<rChanh> rChanhs { get; set; }
     }
 }

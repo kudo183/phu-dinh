@@ -20,8 +20,10 @@ namespace PhuDinhData
         }
     
         public int Ma { get; set; }
+        public int MaDiaDiem { get; set; }
         public string TenKhachHang { get; set; }
     
+        public virtual rDiaDiem rDiaDiem { get; set; }
         public virtual ICollection<tDonHang> tDonHangs { get; set; }
     }
 }

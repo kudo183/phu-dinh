@@ -16,16 +16,16 @@ namespace PhuDinhData
     {
         public rNhanVienGiaoHang()
         {
-            this.tChuyenHangs = new HashSet<tChuyenHang>();
             this.tChiPhiNhanVienGiaoHangs = new HashSet<tChiPhiNhanVienGiaoHang>();
+            this.tChuyenHangs = new HashSet<tChuyenHang>();
         }
     
         public int Ma { get; set; }
-        public string TenNhanVien { get; set; }
         public int MaPhuongTien { get; set; }
+        public string TenNhanVien { get; set; }
     
         public virtual rPhuongTien rPhuongTien { get; set; }
-        public virtual ICollection<tChuyenHang> tChuyenHangs { get; set; }
         public virtual ICollection<tChiPhiNhanVienGiaoHang> tChiPhiNhanVienGiaoHangs { get; set; }
+        public virtual ICollection<tChuyenHang> tChuyenHangs { get; set; }
     }
 }

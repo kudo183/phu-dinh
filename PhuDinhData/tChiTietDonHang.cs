@@ -19,7 +19,7 @@ namespace PhuDinhData
         public int MaMatHang { get; set; }
         public int SoLuong { get; set; }
     
-        public virtual tMatHang tMatHang { get; set; }
         public virtual tDonHang tDonHang { get; set; }
+        public virtual tMatHang tMatHang { get; set; }
     }
 }

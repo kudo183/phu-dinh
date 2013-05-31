@@ -22,10 +22,8 @@ namespace PhuDinhData
         public int Ma { get; set; }
         public int MaChuyenHang { get; set; }
         public int MaKhachHang { get; set; }
-        public Nullable<int> MaBaiXe { get; set; }
         public Nullable<int> MaChanh { get; set; }
     
-        public virtual rBaiXe rBaiXe { get; set; }
         public virtual rChanh rChanh { get; set; }
         public virtual rKhachHang rKhachHang { get; set; }
         public virtual ICollection<tChiTietDonHang> tChiTietDonHangs { get; set; }

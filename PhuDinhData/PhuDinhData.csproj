@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="rDiaDiem.cs">
+      <DependentUpon>PhuDinh.tt</DependentUpon>
+    </Compile>
+    <Compile Include="rNuoc.cs">
+      <DependentUpon>PhuDinh.tt</DependentUpon>
+    </Compile>
     <Compile Include="tMatHangExt.cs" />
     <Compile Include="rNhanVienGiaoHangExt.cs" />
     <Compile Include="tChiTietDonHangExt.cs" />
