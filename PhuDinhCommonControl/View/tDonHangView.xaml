@@ -61,38 +61,19 @@
                                       />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellEditingTemplate>
-                </DataGridTemplateColumn>
-                <!--Bai xe-->
-                <DataGridTemplateColumn x:Name="baiXeColumn" Header="Bai xe" Width="80">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <TextBlock Text="{Binding BaiXe.DiaDiemBaiXe}" VerticalAlignment="Center"/>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                    <DataGridTemplateColumn.CellEditingTemplate>
-                        <DataTemplate>
-                            <ComboBox IsEditable="True" StaysOpenOnEdit="True" IsTextSearchEnabled="True"
-                                ItemsSource="{x:Static PhuDinhData:tDonHang.rBaiXes}"
-                                      DisplayMemberPath="DiaDiemBaiXe"
-                                      SelectedValuePath="Ma"
-                                      SelectedValue="{Binding MaBaiXe, UpdateSourceTrigger=PropertyChanged}"
-                                      SelectedItem="{Binding BaiXe, UpdateSourceTrigger=PropertyChanged}"
-                                      />
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellEditingTemplate>
-                </DataGridTemplateColumn>
+                </DataGridTemplateColumn>                
                 <!--Chanh-->
                 <DataGridTemplateColumn x:Name="chanhColumn" Header="Chanh" Width="80">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding Chanh.TenChanh}" VerticalAlignment="Center"/>
+                            <TextBlock Text="{Binding Chanh.TenBaiXeChanh}" VerticalAlignment="Center"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                     <DataGridTemplateColumn.CellEditingTemplate>
                         <DataTemplate>
                             <ComboBox IsEditable="True" StaysOpenOnEdit="True" IsTextSearchEnabled="True"
                                 ItemsSource="{x:Static PhuDinhData:tDonHang.rChanhs}"
-                                      DisplayMemberPath="TenChanh"
+                                      DisplayMemberPath="TenBaiXeChanh"
                                       SelectedValuePath="Ma"
                                       SelectedValue="{Binding MaChanh, UpdateSourceTrigger=PropertyChanged}"
                                       SelectedItem="{Binding Chanh, UpdateSourceTrigger=PropertyChanged}"

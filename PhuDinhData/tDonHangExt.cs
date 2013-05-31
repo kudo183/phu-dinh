@@ -16,7 +16,6 @@ namespace PhuDinhData
 
         public tChuyenHang ChuyenHang { get; set; }
         public rKhachHang KhachHang { get; set; }
-        public rBaiXe BaiXe { get; set; }
         public rChanh Chanh { get; set; }
 
         private static List<tChuyenHang> _tChuyenHang = new List<tChuyenHang>();
@@ -31,13 +30,6 @@ namespace PhuDinhData
         {
             get { return _rKhachHangs; }
             set { _rKhachHangs = value; }
-        }
-
-        private static List<rBaiXe> _rBaiXes = new List<rBaiXe>();
-        public static List<rBaiXe> rBaiXes
-        {
-            get { return _rBaiXes; }
-            set { _rBaiXes = value; }
         }
 
         private static List<rChanh> _rChanhs = new List<rChanh>();

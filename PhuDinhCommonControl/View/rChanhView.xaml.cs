@@ -81,8 +81,19 @@ namespace PhuDinhCommonControl
         public override void RefreshView()
         {
             var context = new PhuDinhData.PhuDinhEntities();
+            PhuDinhData.rChanh.rBaiXes = context.rBaiXes.ToList();
 
-            this.rChanhDataGrid.DataContext = context.rChanhs.ToList();
+            var data = context.rChanhs.ToList();
+
+            foreach (var rChanh in data)
+            {
+                rChanh.BaiXe = PhuDinhData.rChanh.rBaiXes.FirstOrDefault(
+                    p => p.Ma == rChanh.MaBaiXe);
+            }
+
+            this.rChanhDataGrid.DataContext = data;
+
+            this.rChanhDataGrid.UpdateLayout();
         }
         #endregion
     }

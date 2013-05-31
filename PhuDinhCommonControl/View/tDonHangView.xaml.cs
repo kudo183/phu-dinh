@@ -29,7 +29,6 @@ namespace PhuDinhCommonControl
                 {
                     item.MaChuyenHang = entity.MaChuyenHang;
                     item.MaKhachHang = entity.MaKhachHang;
-                    item.MaBaiXe = entity.MaBaiXe;
                     item.MaChanh = entity.MaChanh;
                 }
             }
@@ -86,7 +85,6 @@ namespace PhuDinhCommonControl
             var context = new PhuDinhData.PhuDinhEntities();
             PhuDinhData.tDonHang.tChuyenHangs = context.tChuyenHangs.ToList();
             PhuDinhData.tDonHang.rKhachHangs = context.rKhachHangs.ToList();
-            PhuDinhData.tDonHang.rBaiXes = context.rBaiXes.ToList();
             PhuDinhData.tDonHang.rChanhs = context.rChanhs.ToList();
 
             var data = context.tDonHangs.ToList();
@@ -97,8 +95,6 @@ namespace PhuDinhCommonControl
                     p => p.Ma == tDonHang.MaChuyenHang);
                 tDonHang.KhachHang = PhuDinhData.tDonHang.rKhachHangs.FirstOrDefault(
                     p => p.Ma == tDonHang.MaKhachHang);
-                tDonHang.BaiXe = PhuDinhData.tDonHang.rBaiXes.FirstOrDefault(
-                    p => p.Ma == tDonHang.MaBaiXe);
                 tDonHang.Chanh = PhuDinhData.tDonHang.rChanhs.FirstOrDefault(
                     p => p.Ma == tDonHang.MaChanh);
             }
