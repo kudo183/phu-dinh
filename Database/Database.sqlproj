@@ -75,4 +75,7 @@
     <Build Include="dbo\Tables\tMatHang.sql" />
     <Build Include="dbo\Stored Procedures\clean_database.sql" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="SqlSchemaCompare.scmp" />
+  </ItemGroup>
 </Project>
