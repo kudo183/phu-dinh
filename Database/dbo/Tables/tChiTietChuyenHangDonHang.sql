@@ -1,4 +1,4 @@
-﻿CREATE TABLE [dbo].[tChiTietChuyenHangMatHang] (
+﻿CREATE TABLE [dbo].[tChiTietChuyenHangDonHang] (
     [Ma]                  INT IDENTITY (1, 1) NOT NULL,
     [MaChuyenHangDonHang] INT NOT NULL,
     [MaMatHang]           INT NOT NULL,
