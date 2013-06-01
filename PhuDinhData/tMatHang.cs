@@ -16,7 +16,7 @@ namespace PhuDinhData
     {
         public tMatHang()
         {
-            this.tChiTietChuyenHangMatHangs = new HashSet<tChiTietChuyenHangMatHang>();
+            this.tChiTietChuyenHangDonHangs = new HashSet<tChiTietChuyenHangDonHang>();
             this.tChiTietDonHangs = new HashSet<tChiTietDonHang>();
         }
     
@@ -25,7 +25,7 @@ namespace PhuDinhData
         public string TenMatHang { get; set; }
     
         public virtual rLoaiHang rLoaiHang { get; set; }
-        public virtual ICollection<tChiTietChuyenHangMatHang> tChiTietChuyenHangMatHangs { get; set; }
+        public virtual ICollection<tChiTietChuyenHangDonHang> tChiTietChuyenHangDonHangs { get; set; }
         public virtual ICollection<tChiTietDonHang> tChiTietDonHangs { get; set; }
     }
 }

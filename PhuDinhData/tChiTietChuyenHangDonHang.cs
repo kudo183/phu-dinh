@@ -12,7 +12,7 @@ namespace PhuDinhData
     using System;
     using System.Collections.Generic;
     
-    public partial class tChiTietChuyenHangMatHang
+    public partial class tChiTietChuyenHangDonHang
     {
         public int Ma { get; set; }
         public int MaChuyenHangDonHang { get; set; }

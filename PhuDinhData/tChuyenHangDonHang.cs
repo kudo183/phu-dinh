@@ -16,14 +16,14 @@ namespace PhuDinhData
     {
         public tChuyenHangDonHang()
         {
-            this.tChiTietChuyenHangMatHangs = new HashSet<tChiTietChuyenHangMatHang>();
+            this.tChiTietChuyenHangDonHangs = new HashSet<tChiTietChuyenHangDonHang>();
         }
     
         public int Ma { get; set; }
         public int MaChuyenHang { get; set; }
         public int MaDonHang { get; set; }
     
-        public virtual ICollection<tChiTietChuyenHangMatHang> tChiTietChuyenHangMatHangs { get; set; }
+        public virtual ICollection<tChiTietChuyenHangDonHang> tChiTietChuyenHangDonHangs { get; set; }
         public virtual tChuyenHang tChuyenHang { get; set; }
         public virtual tDonHang tDonHang { get; set; }
     }

@@ -5,22 +5,22 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="5db0bd620cb248dba08bf7aa226fc9ec" Name="Diagram1">
-        <EntityTypeShape EntityType="PhuDinhModel.rBaiXe" Width="1.5" PointX="2.8832272937908896" PointY="28.862301139562533" />
-        <EntityTypeShape EntityType="PhuDinhModel.rChanh" Width="1.5" PointX="10.005953236485809" PointY="20.866438771070186" />
-        <EntityTypeShape EntityType="PhuDinhModel.rDiaDiem" Width="1.5" PointX="4.6244026444034665" PointY="18.932960802192316" />
-        <EntityTypeShape EntityType="PhuDinhModel.rKhachHang" Width="1.5" PointX="3.77387117025157" PointY="13.684933594281288" />
-        <EntityTypeShape EntityType="PhuDinhModel.rLoaiChiPhi" Width="1.5" PointX="4.4896719662890172" PointY="25.157380011471631" />
-        <EntityTypeShape EntityType="PhuDinhModel.rLoaiHang" Width="1.5" PointX="1.8945326348275566" PointY="31.768459707390733" />
-        <EntityTypeShape EntityType="PhuDinhModel.rNhanVienGiaoHang" Width="1.5" PointX="2.5168800272591785" PointY="23.496019374344506" />
-        <EntityTypeShape EntityType="PhuDinhModel.rNuoc" Width="1.5" PointX="1.2949481780151597" PointY="19.529535466586022" />
-        <EntityTypeShape EntityType="PhuDinhModel.rPhuongTien" Width="1.5" PointX="5.418809576620724" PointY="10.022896026271813" />
-        <EntityTypeShape EntityType="PhuDinhModel.tChiPhiNhanVienGiaoHang" Width="1.5" PointX="2.529276465312241" PointY="27.417221082103076" />
-        <EntityTypeShape EntityType="PhuDinhModel.tChiTietChuyenHangMatHang" Width="1.5" PointX="6.0141820432684305" PointY="14.280091456268025" />
-        <EntityTypeShape EntityType="PhuDinhModel.tChiTietDonHang" Width="1.5" PointX="2.3828723329970951" PointY="24.319466989636172" />
-        <EntityTypeShape EntityType="PhuDinhModel.tChuyenHang" Width="1.5" PointX="5.928702031229018" PointY="27.906580461145648" />
-        <EntityTypeShape EntityType="PhuDinhModel.tChuyenHangDonHang" Width="1.5" PointX="5.9777948213637782" PointY="30.311682849336268" />
-        <EntityTypeShape EntityType="PhuDinhModel.tDonHang" Width="1.5" PointX="3.5732151025781476" PointY="1.4901507503772857" />
-        <EntityTypeShape EntityType="PhuDinhModel.tMatHang" Width="1.5" PointX="10.443392531221448" PointY="22.265764649149851" />
+        <EntityTypeShape EntityType="PhuDinhModel.rBaiXe" Width="1.5" PointX="0.018929399558775779" PointY="5.7257104244668549" />
+        <EntityTypeShape EntityType="PhuDinhModel.rChanh" Width="1.5" PointX="9.8790976190376547" PointY="23.462375383573757" />
+        <EntityTypeShape EntityType="PhuDinhModel.rDiaDiem" Width="1.5" PointX="5.7665001627833119" PointY="10.009211440574942" />
+        <EntityTypeShape EntityType="PhuDinhModel.rKhachHang" Width="1.5" PointX="3.6947340628573362" PointY="11.461246287199318" />
+        <EntityTypeShape EntityType="PhuDinhModel.rLoaiChiPhi" Width="1.5" PointX="11.467614406471892" PointY="10.870847543175726" />
+        <EntityTypeShape EntityType="PhuDinhModel.rLoaiHang" Width="1.5" PointX="9.8918535792696538" PointY="29.317599742355569" />
+        <EntityTypeShape EntityType="PhuDinhModel.rNhanVienGiaoHang" Width="1.5" PointX="10.534714383322147" PointY="12.741469702097341" />
+        <EntityTypeShape EntityType="PhuDinhModel.rNuoc" Width="1.5" PointX="7.9058079570093227" PointY="10.337714274571145" />
+        <EntityTypeShape EntityType="PhuDinhModel.rPhuongTien" Width="1.5" PointX="7.0800802330859369" PointY="20.355030203403455" />
+        <EntityTypeShape EntityType="PhuDinhModel.tChiPhiNhanVienGiaoHang" Width="1.5" PointX="2.0513352556393181" PointY="7.751257810625833" />
+        <EntityTypeShape EntityType="PhuDinhModel.tChiTietChuyenHangDonHang" Width="1.5" PointX="8.4183472042988754" PointY="23.545217793223085" />
+        <EntityTypeShape EntityType="PhuDinhModel.tChiTietDonHang" Width="1.5" PointX="8.6510832629404426" PointY="25.408514660507681" />
+        <EntityTypeShape EntityType="PhuDinhModel.tChuyenHang" Width="1.5" PointX="8.4404905943388542" PointY="2.3630749743259862" />
+        <EntityTypeShape EntityType="PhuDinhModel.tChuyenHangDonHang" Width="1.5" PointX="1.8962125079223013" PointY="16.425159923930263" />
+        <EntityTypeShape EntityType="PhuDinhModel.tDonHang" Width="1.5" PointX="1.1220654794583402" PointY="11.751973604667919" />
+        <EntityTypeShape EntityType="PhuDinhModel.tMatHang" Width="1.5" PointX="1.5586349952773355" PointY="10.482307826393427" />
         <AssociationConnector Association="PhuDinhModel.FK_rChanh_rBaiXe" />
         <AssociationConnector Association="PhuDinhModel.FK_tDonHang_rChanh" />
         <AssociationConnector Association="PhuDinhModel.FK_rDiaDiem_rNuoc" />

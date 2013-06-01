@@ -35,7 +35,7 @@ namespace PhuDinhData
         public DbSet<rNuoc> rNuocs { get; set; }
         public DbSet<rPhuongTien> rPhuongTiens { get; set; }
         public DbSet<tChiPhiNhanVienGiaoHang> tChiPhiNhanVienGiaoHangs { get; set; }
-        public DbSet<tChiTietChuyenHangMatHang> tChiTietChuyenHangMatHangs { get; set; }
+        public DbSet<tChiTietChuyenHangDonHang> tChiTietChuyenHangDonHangs { get; set; }
         public DbSet<tChiTietDonHang> tChiTietDonHangs { get; set; }
         public DbSet<tChuyenHang> tChuyenHangs { get; set; }
         public DbSet<tChuyenHangDonHang> tChuyenHangDonHangs { get; set; }

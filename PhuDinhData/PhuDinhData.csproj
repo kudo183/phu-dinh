@@ -55,7 +55,7 @@
     <Compile Include="rNuoc.cs">
       <DependentUpon>PhuDinh.tt</DependentUpon>
     </Compile>
-    <Compile Include="tChiTietChuyenHangMatHang.cs">
+    <Compile Include="tChiTietChuyenHangDonHang.cs">
       <DependentUpon>PhuDinh.tt</DependentUpon>
     </Compile>
     <Compile Include="tChuyenHangDonHang.cs">
