@@ -17,16 +17,17 @@ namespace PhuDinhData
         public tDonHang()
         {
             this.tChiTietDonHangs = new HashSet<tChiTietDonHang>();
+            this.tChuyenHangDonHangs = new HashSet<tChuyenHangDonHang>();
         }
     
         public int Ma { get; set; }
-        public int MaChuyenHang { get; set; }
         public int MaKhachHang { get; set; }
         public Nullable<int> MaChanh { get; set; }
+        public System.DateTime Ngay { get; set; }
     
         public virtual rChanh rChanh { get; set; }
         public virtual rKhachHang rKhachHang { get; set; }
         public virtual ICollection<tChiTietDonHang> tChiTietDonHangs { get; set; }
-        public virtual tChuyenHang tChuyenHang { get; set; }
+        public virtual ICollection<tChuyenHangDonHang> tChuyenHangDonHangs { get; set; }
     }
 }

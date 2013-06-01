@@ -12,19 +12,19 @@ namespace PhuDinhData
     using System;
     using System.Collections.Generic;
     
-    public partial class tChuyenHang
+    public partial class tChuyenHangDonHang
     {
-        public tChuyenHang()
+        public tChuyenHangDonHang()
         {
-            this.tChuyenHangDonHangs = new HashSet<tChuyenHangDonHang>();
+            this.tChiTietChuyenHangMatHangs = new HashSet<tChiTietChuyenHangMatHang>();
         }
     
         public int Ma { get; set; }
-        public int MaNhanVienGiaoHang { get; set; }
-        public System.DateTime Ngay { get; set; }
-        public Nullable<System.TimeSpan> Gio { get; set; }
+        public int MaChuyenHang { get; set; }
+        public int MaDonHang { get; set; }
     
-        public virtual rNhanVienGiaoHang rNhanVienGiaoHang { get; set; }
-        public virtual ICollection<tChuyenHangDonHang> tChuyenHangDonHangs { get; set; }
+        public virtual ICollection<tChiTietChuyenHangMatHang> tChiTietChuyenHangMatHangs { get; set; }
+        public virtual tChuyenHang tChuyenHang { get; set; }
+        public virtual tDonHang tDonHang { get; set; }
     }
 }

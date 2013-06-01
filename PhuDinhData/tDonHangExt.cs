@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace PhuDinhData
 {
@@ -9,8 +8,8 @@ namespace PhuDinhData
         {
             get
             {
-                return string.Format("{0}_{1:hh\\:mm}_{2}", 
-                    tChuyenHang.Ngay.ToShortDateString(), tChuyenHang.Gio ?? new TimeSpan(0, 0, 0, 0), rKhachHang.TenKhachHang);
+                return string.Format("{0}_{1}", 
+                    Ngay.ToShortDateString(), rKhachHang.TenKhachHang);
             }
         }
 
