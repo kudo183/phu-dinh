@@ -46,9 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="rKhachHangExt.cs" />
-    <Compile Include="rDiaDiemExt.cs" />
-    <Compile Include="rChanhExt.cs" />
+    <Compile Include="EntityExt\rKhachHangExt.cs" />
+    <Compile Include="EntityExt\rDiaDiemExt.cs" />
+    <Compile Include="EntityExt\rChanhExt.cs" />
     <Compile Include="rDiaDiem.cs">
       <DependentUpon>PhuDinh.tt</DependentUpon>
     </Compile>
@@ -61,14 +61,14 @@
     <Compile Include="tChuyenHangDonHang.cs">
       <DependentUpon>PhuDinh.tt</DependentUpon>
     </Compile>
-    <Compile Include="tMatHangExt.cs" />
-    <Compile Include="rNhanVienGiaoHangExt.cs" />
-    <Compile Include="tChiTietDonHangExt.cs" />
-    <Compile Include="tDonHangExt.cs" />
+    <Compile Include="EntityExt\tMatHangExt.cs" />
+    <Compile Include="EntityExt\rNhanVienGiaoHangExt.cs" />
+    <Compile Include="EntityExt\tChiTietDonHangExt.cs" />
+    <Compile Include="EntityExt\tDonHangExt.cs" />
     <Compile Include="rKhachHang.cs">
       <DependentUpon>PhuDinh.tt</DependentUpon>
     </Compile>
-    <Compile Include="tChuyenHangExt.cs" />
+    <Compile Include="EntityExt\tChuyenHangExt.cs" />
     <Compile Include="PhuDinh.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -106,7 +106,7 @@
     <Compile Include="tChiPhiNhanVienGiaoHang.cs">
       <DependentUpon>PhuDinh.tt</DependentUpon>
     </Compile>
-    <Compile Include="tChiPhiNhanVienGiaoHangExt.cs" />
+    <Compile Include="EntityExt\tChiPhiNhanVienGiaoHangExt.cs" />
     <Compile Include="tChiTietDonHang.cs">
       <DependentUpon>PhuDinh.tt</DependentUpon>
     </Compile>
