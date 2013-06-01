@@ -57,11 +57,17 @@ namespace PhuDinh
                 case Constant.MainMenuItems.tChiPhiNhanVienGiaoHang:
                     result = new tChiPhiNhanVienGiaoHangView();
                     break;
+                case Constant.MainMenuItems.tChiTietChuyenHangDonHang:
+                    result = new tChiTietChuyenHangDonHangView();
+                    break;
                 case Constant.MainMenuItems.tChiTietDonHang:
                     result = new tChiTietDonHangView();
                     break;
                 case Constant.MainMenuItems.tChuyenHang:
                     result = new tChuyenHangView();
+                    break;
+                case Constant.MainMenuItems.tChuyenHangDonHang:
+                    result = new tChuyenHangDonHangView();
                     break;
                 case Constant.MainMenuItems.tDonHang:
                     result = new tDonHangView();

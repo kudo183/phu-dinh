@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:PhuDinhData="clr-namespace:PhuDinhData;assembly=PhuDinhData"
              xmlns:PhuDinhCommonControl="clr-namespace:PhuDinhCommonControl"
-             x:Class="PhuDinhCommonControl.tDonHangView" 
+             x:Class="PhuDinhCommonControl.tChuyenHangDonHangView" 
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="500">
     <Grid>
@@ -14,7 +14,7 @@
             <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
 
-        <DataGrid Grid.Row="0" x:Name="tDonHangDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected">
+        <DataGrid Grid.Row="0" x:Name="tChuyenHangDonHangDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected">
             <DataGrid.Columns>
                 <!--Ma-->
                 <DataGridTextColumn x:Name="maColumn" Binding="{Binding Ma}" Header="Ma" Width="SizeToHeader" IsReadOnly="True">
@@ -23,54 +23,41 @@
                             <Setter Property="TextBlock.Background" Value="LightGray" />
                         </Style>
                     </DataGridTextColumn.ElementStyle>
-                </DataGridTextColumn>
-                <!--Ngay-->
-                <DataGridTemplateColumn x:Name="ngayColumn" Header="Ngay" Width="100">
+                </DataGridTextColumn>                
+                <!--Chuyen hang-->
+                <DataGridTemplateColumn x:Name="chuyenHangDonHangColumn" Header="Chuyen hang" Width="80">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding Ngay, StringFormat=\{0:dd/MM/yyyy\}}"/>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                    <DataGridTemplateColumn.CellEditingTemplate>
-                        <DataTemplate>
-                            <DatePicker SelectedDate="{Binding Ngay, UpdateSourceTrigger=PropertyChanged}"/>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellEditingTemplate>
-                </DataGridTemplateColumn>
-                <!--Khach hang-->
-                <DataGridTemplateColumn x:Name="khachHangColumn" Header="Khach hang" Width="80">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <TextBlock Text="{Binding KhachHang.TenKhachHangDiaDiem}" VerticalAlignment="Center"/>
+                            <TextBlock Text="{Binding ChuyenHang.TenChuyenHang}" VerticalAlignment="Center"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                     <DataGridTemplateColumn.CellEditingTemplate>
                         <DataTemplate>
                             <ComboBox IsEditable="True" StaysOpenOnEdit="True" IsTextSearchEnabled="True"
-                                ItemsSource="{x:Static PhuDinhData:tDonHang.rKhachHangs}"
-                                      DisplayMemberPath="TenKhachHangDiaDiem"
+                                ItemsSource="{x:Static PhuDinhData:tChuyenHangDonHang.tChuyenHangs}"
+                                      DisplayMemberPath="TenChuyenHang"
                                       SelectedValuePath="Ma"
-                                      SelectedValue="{Binding MaKhachHang, UpdateSourceTrigger=PropertyChanged}"
-                                      SelectedItem="{Binding KhachHang, UpdateSourceTrigger=PropertyChanged}"
+                                      SelectedValue="{Binding MaChuyenHang, UpdateSourceTrigger=PropertyChanged}"
+                                      SelectedItem="{Binding ChuyenHang, UpdateSourceTrigger=PropertyChanged}"
                                       />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellEditingTemplate>
-                </DataGridTemplateColumn>                
-                <!--Chanh-->
-                <DataGridTemplateColumn x:Name="chanhColumn" Header="Chanh" Width="80">
+                </DataGridTemplateColumn>
+                <!--Don hang-->
+                <DataGridTemplateColumn x:Name="donHangColumn" Header="Don Hang" Width="80">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding Chanh.TenBaiXeChanh}" VerticalAlignment="Center"/>
+                            <TextBlock Text="{Binding DonHang.TenDonHang}" VerticalAlignment="Center"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                     <DataGridTemplateColumn.CellEditingTemplate>
                         <DataTemplate>
                             <ComboBox IsEditable="True" StaysOpenOnEdit="True" IsTextSearchEnabled="True"
-                                ItemsSource="{x:Static PhuDinhData:tDonHang.rChanhs}"
-                                      DisplayMemberPath="TenBaiXeChanh"
-                                      SelectedValuePath="Ma"
-                                      SelectedValue="{Binding MaChanh, UpdateSourceTrigger=PropertyChanged}"
-                                      SelectedItem="{Binding Chanh, UpdateSourceTrigger=PropertyChanged}"
+                                ItemsSource="{x:Static PhuDinhData:tChuyenHangDonHang.tDonHangs}"
+                                      DisplayMemberPath="TenDonHang"
+                                      SelectedValuePath="Ma"                                      
+                                      SelectedValue="{Binding MaDonHang, UpdateSourceTrigger=PropertyChanged}"
+                                      SelectedItem="{Binding DonHang, UpdateSourceTrigger=PropertyChanged}"
                                       />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellEditingTemplate>

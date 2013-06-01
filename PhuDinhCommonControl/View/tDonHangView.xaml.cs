@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Windows;
 
@@ -27,9 +29,9 @@ namespace PhuDinhCommonControl
                 //update exist item
                 else
                 {
-                    item.MaChuyenHang = entity.MaChuyenHang;
                     item.MaKhachHang = entity.MaKhachHang;
                     item.MaChanh = entity.MaChanh;
+                    item.Ngay = entity.Ngay;
                 }
             }
         }
@@ -91,18 +93,28 @@ namespace PhuDinhCommonControl
 
             foreach (var tDonHang in data)
             {
-                tDonHang.ChuyenHang = PhuDinhData.tDonHang.tChuyenHangs.FirstOrDefault(
-                    p => p.Ma == tDonHang.MaChuyenHang);
                 tDonHang.KhachHang = PhuDinhData.tDonHang.rKhachHangs.FirstOrDefault(
                     p => p.Ma == tDonHang.MaKhachHang);
                 tDonHang.Chanh = PhuDinhData.tDonHang.rChanhs.FirstOrDefault(
                     p => p.Ma == tDonHang.MaChanh);
             }
 
-            this.tDonHangDataGrid.DataContext = data;
+            var collection = new ObservableCollection<PhuDinhData.tDonHang>(context.tDonHangs.ToList());
+            collection.CollectionChanged += collection_CollectionChanged;
+            this.tDonHangDataGrid.DataContext = collection;
 
             this.tDonHangDataGrid.UpdateLayout();
         }
+
+        void collection_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            if (e.Action == NotifyCollectionChangedAction.Add)
+            {
+                var chuyenHang = e.NewItems[0] as PhuDinhData.tDonHang;
+                chuyenHang.Ngay = DateTime.Now;
+            }
+        }
+
         #endregion
     }
 }

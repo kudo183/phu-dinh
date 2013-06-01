@@ -68,6 +68,12 @@
     <Compile Include="Menu\MainMenu.xaml.cs">
       <DependentUpon>MainMenu.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\tChuyenHangDonHangView.xaml.cs">
+      <DependentUpon>tChuyenHangDonHangView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\tChiTietChuyenHangDonHangView.xaml.cs">
+      <DependentUpon>tChiTietChuyenHangDonHangView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\tDonHangView.xaml.cs">
       <DependentUpon>tDonHangView.xaml</DependentUpon>
     </Compile>
@@ -161,6 +167,14 @@
     <Page Include="Menu\MainMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\tChuyenHangDonHangView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\tChiTietChuyenHangDonHangView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="View\tDonHangView.xaml">
       <Generator>MSBuild:Compile</Generator>

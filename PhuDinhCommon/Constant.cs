@@ -7,14 +7,18 @@
         {
             rBaiXe,
             rChanh,
+            rDiaDiem,
             rKhachHang,
             rLoaiChiPhi,
             rLoaiHang,
             rNhanVienGiaoHang,
+            rNuoc,
             rPhuongTien,
             tChiPhiNhanVienGiaoHang,
+            tChiTietChuyenHangDonHang,
             tChiTietDonHang,
             tChuyenHang,
+            tChuyenHangDonHang,
             tDonHang,
             tMatHang
         }

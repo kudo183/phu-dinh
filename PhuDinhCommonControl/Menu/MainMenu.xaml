@@ -14,8 +14,10 @@
         <ToggleButton Content="Nhân viên giao hàng" Margin="5" x:Name="rNhanVienGiaoHang"/>
         <ToggleButton Content="Phương tiện" Margin="5" x:Name="rPhuongTien"/>
         <ToggleButton Content="Chi phí giao hàng" Margin="5" x:Name="tChiPhiNhanVienGiaoHang"/>
+        <ToggleButton Content="Chi tiết chuyến hàng đơn hàng" Margin="5" x:Name="tChiTietChuyenHangDonHang"/>
         <ToggleButton Content="Chi tiết đơn hàng" Margin="5" x:Name="tChiTietDonHang"/>
         <ToggleButton Content="Chuyến hàng" Margin="5" x:Name="tChuyenHang"/>
+        <ToggleButton Content="Chuyến hàng đơn hàng" Margin="5" x:Name="tChuyenHangDonHang"/>
         <ToggleButton Content="Đơn hàng" Margin="5" x:Name="tDonHang"/>
         <ToggleButton Content="Mặt hàng" Margin="5" x:Name="tMatHang"/>
     </StackPanel>
