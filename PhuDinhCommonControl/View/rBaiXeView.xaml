@@ -13,7 +13,7 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
-        <EntityDataGrid:DGBaiXe Grid.Row="0" x:Name="dgBaiXe"/>
+        <EntityDataGrid:DGBaiXe Grid.Row="0" x:Name="dgBaiXe" x:FieldModifier="public"/>
         <StackPanel Grid.Row="1" Orientation="Horizontal">
             <Button Content="Save" VerticalAlignment="Top" Width="75" Margin="5" Click="SaveButton_Click"/>
             <Button Content="Cancel" VerticalAlignment="Top" Width="75" Margin="5" Click="CancelButton_Click"/>

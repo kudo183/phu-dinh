@@ -3,16 +3,17 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:Menu="clr-namespace:PhuDinhCommonControl.Menu;assembly=PhuDinhCommonControl" mc:Ignorable="d" x:Class="PhuDinh.MainWindow"
+        mc:Ignorable="d" x:Class="PhuDinh.MainWindow"
         Title="MainWindow" Height="350" Width="525" WindowState="Maximized">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <Menu:MainMenu Grid.Column="0" Background="Gray" Margin="0,0,5,0" x:Name="_spMenu"/>
-        <GridSplitter VerticalAlignment="Stretch" Grid.Column="0" Width="5"/>
-        <Border Grid.Column="1" x:Name="_brdMain" BorderThickness="1" BorderBrush="Black" Margin="3" Padding="2">
-        </Border>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" Height="40" Background="AliceBlue">
+            <Button Margin="5" Content="BaiXe" x:Name="btnBaiXe" Click="btnBaiXe_Click"/>
+            <Button Margin="5" Content="Admin" x:Name="btnAdmin" Click="btnAdmin_Click"/>
+        </StackPanel>
+        <Border Grid.Row="1" x:Name="_brdMainContent" BorderThickness="1" BorderBrush="Black" Margin="3" Padding="2"/>
     </Grid>
 </Window>
