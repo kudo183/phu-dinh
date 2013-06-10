@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Linq.Expressions;
 using System.Windows;
 
 namespace PhuDinhCommonControl
@@ -10,39 +10,14 @@ namespace PhuDinhCommonControl
     /// </summary>
     public partial class rLoaiHangView : BaseView
     {
+        public Expression<Func<PhuDinhData.rLoaiHang, bool>> FilterLoaiHang { get; set; }
         public rLoaiHangView()
         {
             InitializeComponent();
-        }
-        private static void RemoveOrUpdateItem(PhuDinhData.PhuDinhEntities context, IEnumerable<PhuDinhData.rLoaiHang> gridDataSource)
-        {
-            foreach (var item in context.rLoaiHangs.ToList())
-            {
-                var entity = gridDataSource.FirstOrDefault(p => p.Ma == item.Ma);
-                //remove deleted item
-                if (entity == null)
-                {
-                    context.rLoaiHangs.Remove(item);
-                }
-                //update exist item
-                else
-                {
-                    item.TenLoai = entity.TenLoai;
-                }
-            }
-        }
 
-        private static void AddNewItem(PhuDinhData.PhuDinhEntities context, IEnumerable<PhuDinhData.rLoaiHang> gridDataSource)
-        {
-            foreach (var item in gridDataSource)
-            {
-                if (item.Ma == 0)
-                {
-                    context.rLoaiHangs.Add(item);
-                }
-            }
+            FilterLoaiHang = (p => true);
         }
-
+        
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
             Save();
@@ -58,14 +33,8 @@ namespace PhuDinhCommonControl
         {
             try
             {
-                var context = new PhuDinhData.PhuDinhEntities();
-                var gridDataSource = this.rLoaiHangDataGrid.DataContext as IEnumerable<PhuDinhData.rLoaiHang>;
-
-                RemoveOrUpdateItem(context, gridDataSource);
-
-                AddNewItem(context, gridDataSource);
-
-                context.SaveChanges();
+                var data = this.dgLoaiHang.DataContext as List<PhuDinhData.rLoaiHang>;
+                PhuDinhData.Repository.rLoaiHangRepository.Save(data, FilterLoaiHang);
                 RefreshView();
             }
             catch (Exception ex)
@@ -80,9 +49,7 @@ namespace PhuDinhCommonControl
 
         public override void RefreshView()
         {
-            var context = new PhuDinhData.PhuDinhEntities();
-
-            this.rLoaiHangDataGrid.DataContext = context.rLoaiHangs.ToList();
+            this.dgLoaiHang.DataContext = PhuDinhData.Repository.rLoaiHangRepository.GetData(FilterLoaiHang);
         }
         #endregion
     }

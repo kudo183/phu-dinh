@@ -22,5 +22,10 @@ namespace PhuDinh
         {
             _brdMainContent.Child = new AdminView();
         }
+
+        private void btnMatHang_Click(object sender, RoutedEventArgs e)
+        {
+            _brdMainContent.Child = new MatHangView();
+        }
     }
 }

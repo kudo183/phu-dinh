@@ -73,6 +73,9 @@
     <Compile Include="View\BaiXeView.xaml.cs">
       <DependentUpon>BaiXeView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\MatHangView.xaml.cs">
+      <DependentUpon>MatHangView.xaml</DependentUpon>
+    </Compile>
     <Page Include="View\AdminView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -95,6 +98,10 @@
     <Page Include="View\BaiXeView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MatHangView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>

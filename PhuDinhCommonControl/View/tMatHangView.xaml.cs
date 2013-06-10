@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Windows;
 
 namespace PhuDinhCommonControl
@@ -10,39 +11,15 @@ namespace PhuDinhCommonControl
     /// </summary>
     public partial class tMatHangView : BaseView
     {
+        public Expression<Func<PhuDinhData.tMatHang, bool>> FilterMatHang { get; set; }
+        public Expression<Func<PhuDinhData.rLoaiHang, bool>> FilterLoaiHang { get; set; }
+
         public tMatHangView()
         {
             InitializeComponent();
-        }
 
-        private static void RemoveOrUpdateItem(PhuDinhData.PhuDinhEntities context, IEnumerable<PhuDinhData.tMatHang> gridDataSource)
-        {
-            foreach (var item in context.tMatHangs.ToList())
-            {
-                var entity = gridDataSource.FirstOrDefault(p => p.Ma == item.Ma);
-                //remove deleted item
-                if (entity == null)
-                {
-                    context.tMatHangs.Remove(item);
-                }
-                //update exist item
-                else
-                {
-                    item.MaLoai = entity.MaLoai;
-                    item.TenMatHang = entity.TenMatHang;
-                }
-            }
-        }
-
-        private static void AddNewItem(PhuDinhData.PhuDinhEntities context, IEnumerable<PhuDinhData.tMatHang> gridDataSource)
-        {
-            foreach (var item in gridDataSource)
-            {
-                if (item.Ma == 0)
-                {
-                    context.tMatHangs.Add(item);
-                }
-            }
+            FilterMatHang = (p => true);
+            FilterLoaiHang = (p => true);
         }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
@@ -60,14 +37,8 @@ namespace PhuDinhCommonControl
         {
             try
             {
-                var context = new PhuDinhData.PhuDinhEntities();
-                var gridDataSource = this.tMatHangDataGrid.DataContext as IEnumerable<PhuDinhData.tMatHang>;
-
-                RemoveOrUpdateItem(context, gridDataSource);
-
-                AddNewItem(context, gridDataSource);
-
-                context.SaveChanges();
+                var data = this.dgMatHang.DataContext as List<PhuDinhData.tMatHang>;
+                PhuDinhData.Repository.tMatHangRepository.Save(data, FilterMatHang);
                 RefreshView();
             }
             catch (Exception ex)
@@ -83,16 +54,15 @@ namespace PhuDinhCommonControl
         public override void RefreshView()
         {
             var context = new PhuDinhData.PhuDinhEntities();
-            PhuDinhData.tMatHang.rLoaiHangs = context.rLoaiHangs.ToList();
-
-            var data = context.tMatHangs.ToList();
+            PhuDinhData.tMatHang.rLoaiHangs = PhuDinhData.Repository.rLoaiHangRepository.GetData(context, FilterLoaiHang);
+            var data = PhuDinhData.Repository.tMatHangRepository.GetData(context, FilterMatHang);
 
             foreach (var tMatHang in data)
             {
                 tMatHang.LoaiHang = PhuDinhData.tMatHang.rLoaiHangs.FirstOrDefault(
                     p => p.Ma == tMatHang.MaLoai);
             }
-            this.tMatHangDataGrid.DataContext = context.tMatHangs.ToList();
+            this.dgMatHang.DataContext = data;
         }
         #endregion
     }
