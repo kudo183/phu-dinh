@@ -51,9 +51,7 @@ namespace PhuDinhCommonControl
 
         public override void RefreshView()
         {
-            var context = new PhuDinhData.PhuDinhEntities();
-
-            this.dgBaiXe.DataContext = context.rBaiXes.ToList();
+            this.dgBaiXe.DataContext = PhuDinhData.Repository.rBaiXeRepository.GetData(FilterBaiXe);
         }
         #endregion
     }
