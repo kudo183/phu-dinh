@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Windows;
 
 namespace PhuDinhCommonControl
@@ -10,38 +11,13 @@ namespace PhuDinhCommonControl
     /// </summary>
     public partial class rBaiXeView : BaseView
     {
+        public Expression<Func<PhuDinhData.rBaiXe, bool>> FilterBaiXe { get; set; }
+
         public rBaiXeView()
         {
             InitializeComponent();
-        }
 
-        private static void RemoveOrUpdateItem(PhuDinhData.PhuDinhEntities context, IEnumerable<PhuDinhData.rBaiXe> gridDataSource)
-        {
-            foreach (var item in context.rBaiXes.ToList())
-            {
-                var entity = gridDataSource.FirstOrDefault(p => p.Ma == item.Ma);
-                //remove deleted item
-                if (entity == null)
-                {
-                    context.rBaiXes.Remove(item);
-                }
-                //update exist item
-                else
-                {
-                    item.DiaDiemBaiXe = entity.DiaDiemBaiXe;
-                }
-            }
-        }
-
-        private static void AddNewItem(PhuDinhData.PhuDinhEntities context, IEnumerable<PhuDinhData.rBaiXe> gridDataSource)
-        {
-            foreach (var item in gridDataSource)
-            {
-                if (item.Ma == 0)
-                {
-                    context.rBaiXes.Add(item);
-                }
-            }
+            FilterBaiXe = (p => true);
         }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
@@ -59,14 +35,8 @@ namespace PhuDinhCommonControl
         {
             try
             {
-                var context = new PhuDinhData.PhuDinhEntities();
-                var gridDataSource = this.rBaiXeDataGrid.DataContext as IEnumerable<PhuDinhData.rBaiXe>;
-
-                RemoveOrUpdateItem(context, gridDataSource);
-
-                AddNewItem(context, gridDataSource);
-
-                context.SaveChanges();
+                var data = this.dgBaiXe.DataContext as List<PhuDinhData.rBaiXe>;
+                PhuDinhData.Repository.rBaiXeRepository.Save(data, FilterBaiXe);
                 RefreshView();
             }
             catch (Exception ex)
@@ -83,7 +53,7 @@ namespace PhuDinhCommonControl
         {
             var context = new PhuDinhData.PhuDinhEntities();
 
-            this.rBaiXeDataGrid.DataContext = context.rBaiXes.ToList();
+            this.dgBaiXe.DataContext = context.rBaiXes.ToList();
         }
         #endregion
     }

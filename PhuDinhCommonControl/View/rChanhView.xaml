@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:PhuDinhCommonControl="clr-namespace:PhuDinhCommonControl"
-             xmlns:PhuDinhData="clr-namespace:PhuDinhData;assembly=PhuDinhData"
+             xmlns:EntityDataGrid="clr-namespace:PhuDinhCommonControl.EntityDataGrid"
              x:Class="PhuDinhCommonControl.rChanhView" 
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
@@ -13,39 +13,7 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
-        <DataGrid Grid.Row="0" x:Name="rChanhDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected">
-            <DataGrid.Columns>
-                <!--Ma-->
-                <DataGridTextColumn x:Name="maColumn" Binding="{Binding Ma}" Header="Ma" Width="SizeToHeader" IsReadOnly="True">
-                    <DataGridTextColumn.ElementStyle>
-                        <Style TargetType="{x:Type TextBlock}">
-                            <Setter Property="TextBlock.Background" Value="LightGray" />
-                        </Style>
-                    </DataGridTextColumn.ElementStyle>
-                </DataGridTextColumn>
-                <!--Bai xe-->
-                <DataGridTemplateColumn x:Name="baiXeColumn" Header="Bai xe" Width="80">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <TextBlock Text="{Binding BaiXe.DiaDiemBaiXe}" VerticalAlignment="Center"/>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                    <DataGridTemplateColumn.CellEditingTemplate>
-                        <DataTemplate>
-                            <ComboBox IsEditable="True" StaysOpenOnEdit="True" IsTextSearchEnabled="True"
-                                ItemsSource="{x:Static PhuDinhData:rChanh.rBaiXes}"
-                                      DisplayMemberPath="DiaDiemBaiXe"
-                                      SelectedValuePath="Ma"
-                                      SelectedValue="{Binding MaBaiXe, UpdateSourceTrigger=PropertyChanged}"
-                                      SelectedItem="{Binding BaiXe, UpdateSourceTrigger=PropertyChanged}"
-                                      />
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellEditingTemplate>
-                </DataGridTemplateColumn>
-                <!--Ten chanh-->
-                <DataGridTextColumn x:Name="tenChanhColumn" Width="SizeToHeader" Header="Ten Chanh" Binding="{Binding TenChanh}"/>
-            </DataGrid.Columns>
-        </DataGrid>
+        <EntityDataGrid:DGChanh Grid.Row="0" x:Name="dgChanh"/>
         <StackPanel Grid.Row="1" Orientation="Horizontal">
             <Button Content="Save" VerticalAlignment="Top" Width="75" Margin="5" Click="SaveButton_Click"/>
             <Button Content="Cancel" VerticalAlignment="Top" Width="75" Margin="5" Click="CancelButton_Click"/>
