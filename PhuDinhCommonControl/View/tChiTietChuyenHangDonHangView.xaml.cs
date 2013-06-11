@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Windows;
 
 namespace PhuDinhCommonControl
@@ -10,39 +11,16 @@ namespace PhuDinhCommonControl
     /// </summary>
     public partial class tChiTietChuyenHangDonHangView : BaseView
     {
+        public Expression<Func<PhuDinhData.tChiTietChuyenHangDonHang, bool>> FilterChiTietChuyenHangDonHang { get; set; }
+        public Expression<Func<PhuDinhData.tChuyenHangDonHang, bool>> FilterChuyenHangDonHang { get; set; }
+        public Expression<Func<PhuDinhData.tMatHang, bool>> FilterMatHang { get; set; }
+
         public tChiTietChuyenHangDonHangView()
         {
             InitializeComponent();
-        }
-        private static void RemoveOrUpdateItem(PhuDinhData.PhuDinhEntities context, IEnumerable<PhuDinhData.tChiTietChuyenHangDonHang> gridDataSource)
-        {
-            foreach (var item in context.tChiTietChuyenHangDonHangs.ToList())
-            {
-                var entity = gridDataSource.FirstOrDefault(p => p.Ma == item.Ma);
-                //remove deleted item
-                if (entity == null)
-                {
-                    context.tChiTietChuyenHangDonHangs.Remove(item);
-                }
-                //update exist item
-                else
-                {
-                    item.MaChuyenHangDonHang = entity.MaChuyenHangDonHang;
-                    item.MaMatHang = entity.MaMatHang;
-                    item.SoLuong = entity.SoLuong;
-                }
-            }
-        }
-
-        private static void AddNewItem(PhuDinhData.PhuDinhEntities context, IEnumerable<PhuDinhData.tChiTietChuyenHangDonHang> gridDataSource)
-        {
-            foreach (var item in gridDataSource)
-            {
-                if (item.Ma == 0)
-                {
-                    context.tChiTietChuyenHangDonHangs.Add(item);
-                }
-            }
+            FilterChiTietChuyenHangDonHang = (p => true);
+            FilterChuyenHangDonHang = (p => true);
+            FilterMatHang = (p => true);
         }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
@@ -60,14 +38,8 @@ namespace PhuDinhCommonControl
         {
             try
             {
-                var context = new PhuDinhData.PhuDinhEntities();
-                var gridDataSource = this.tChiTietChuyenHangDonHangDataGrid.DataContext as IEnumerable<PhuDinhData.tChiTietChuyenHangDonHang>;
-
-                RemoveOrUpdateItem(context, gridDataSource);
-
-                AddNewItem(context, gridDataSource);
-
-                context.SaveChanges();
+                var data = this.dgChiTietChuyenHangDonHang.DataContext as List<PhuDinhData.tChiTietChuyenHangDonHang>;
+                PhuDinhData.Repository.tChiTietChuyenHangDonHangRepository.Save(data, FilterChiTietChuyenHangDonHang);
                 RefreshView();
             }
             catch (Exception ex)
@@ -83,10 +55,12 @@ namespace PhuDinhCommonControl
         public override void RefreshView()
         {
             var context = new PhuDinhData.PhuDinhEntities();
-            PhuDinhData.tChiTietChuyenHangDonHang.tChuyenHangDonHangs = context.tChuyenHangDonHangs.ToList();
-            PhuDinhData.tChiTietChuyenHangDonHang.tMatHangs = context.tMatHangs.ToList();
+            PhuDinhData.tChiTietChuyenHangDonHang.tChuyenHangDonHangs =
+                PhuDinhData.Repository.tChuyenHangDonHangRepository.GetData(context, FilterChuyenHangDonHang);
+            PhuDinhData.tChiTietChuyenHangDonHang.tMatHangs =
+                PhuDinhData.Repository.tMatHangRepository.GetData(context, FilterMatHang);
 
-            var data = context.tChiTietChuyenHangDonHangs.ToList();
+            var data = PhuDinhData.Repository.tChiTietChuyenHangDonHangRepository.GetData(context, FilterChiTietChuyenHangDonHang);
 
             foreach (var tChiTietChuyenHangDonHang in data)
             {
@@ -96,9 +70,9 @@ namespace PhuDinhCommonControl
                         p => p.Ma == tChiTietChuyenHangDonHang.MaMatHang);
             }
 
-            this.tChiTietChuyenHangDonHangDataGrid.DataContext = data;
+            this.dgChiTietChuyenHangDonHang.DataContext = data;
 
-            this.tChiTietChuyenHangDonHangDataGrid.UpdateLayout();
+            this.dgChiTietChuyenHangDonHang.UpdateLayout();
         }
         #endregion
     }

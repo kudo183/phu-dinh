@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Windows;
 
 namespace PhuDinhCommonControl
@@ -10,39 +11,17 @@ namespace PhuDinhCommonControl
     /// </summary>
     public partial class tChiTietDonHangView : BaseView
     {
+        public Expression<Func<PhuDinhData.tChiTietDonHang, bool>> FilterChiTietDonHang { get; set; }
+        public Expression<Func<PhuDinhData.tDonHang, bool>> FilterDonHang { get; set; }
+        public Expression<Func<PhuDinhData.tMatHang, bool>> FilterMatHang { get; set; }
+
         public tChiTietDonHangView()
         {
             InitializeComponent();
-        }
-        private static void RemoveOrUpdateItem(PhuDinhData.PhuDinhEntities context, IEnumerable<PhuDinhData.tChiTietDonHang> gridDataSource)
-        {
-            foreach (var item in context.tChiTietDonHangs.ToList())
-            {
-                var entity = gridDataSource.FirstOrDefault(p => p.Ma == item.Ma);
-                //remove deleted item
-                if (entity == null)
-                {
-                    context.tChiTietDonHangs.Remove(item);
-                }
-                //update exist item
-                else
-                {
-                    item.MaDonHang = entity.MaDonHang;
-                    item.MaMatHang = entity.MaMatHang;
-                    item.SoLuong = entity.SoLuong;
-                }
-            }
-        }
 
-        private static void AddNewItem(PhuDinhData.PhuDinhEntities context, IEnumerable<PhuDinhData.tChiTietDonHang> gridDataSource)
-        {
-            foreach (var item in gridDataSource)
-            {
-                if (item.Ma == 0)
-                {
-                    context.tChiTietDonHangs.Add(item);
-                }
-            }
+            FilterChiTietDonHang = (p => true);
+            FilterDonHang = (p => true);
+            FilterMatHang = (p => true);
         }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
@@ -60,14 +39,8 @@ namespace PhuDinhCommonControl
         {
             try
             {
-                var context = new PhuDinhData.PhuDinhEntities();
-                var gridDataSource = this.tChiTietDonHangDataGrid.DataContext as IEnumerable<PhuDinhData.tChiTietDonHang>;
-
-                RemoveOrUpdateItem(context, gridDataSource);
-
-                AddNewItem(context, gridDataSource);
-
-                context.SaveChanges();
+                var data = this.dgChiTietDonHang.DataContext as List<PhuDinhData.tChiTietDonHang>;
+                PhuDinhData.Repository.tChiTietDonHangRepository.Save(data, FilterChiTietDonHang);
                 RefreshView();
             }
             catch (Exception ex)
@@ -83,10 +56,10 @@ namespace PhuDinhCommonControl
         public override void RefreshView()
         {
             var context = new PhuDinhData.PhuDinhEntities();
-            PhuDinhData.tChiTietDonHang.tDonHangs = context.tDonHangs.ToList();
-            PhuDinhData.tChiTietDonHang.tMatHangs = context.tMatHangs.ToList();
+            PhuDinhData.tChiTietDonHang.tDonHangs = PhuDinhData.Repository.tDonHangRepository.GetData(context, FilterDonHang);
+            PhuDinhData.tChiTietDonHang.tMatHangs = PhuDinhData.Repository.tMatHangRepository.GetData(context, FilterMatHang);
 
-            var data = context.tChiTietDonHangs.ToList();
+            var data = PhuDinhData.Repository.tChiTietDonHangRepository.GetData(context, FilterChiTietDonHang);
 
             foreach (var tChiTietDonHang in data)
             {
@@ -96,9 +69,9 @@ namespace PhuDinhCommonControl
                         p => p.Ma == tChiTietDonHang.MaMatHang);
             }
 
-            this.tChiTietDonHangDataGrid.DataContext = data;
+            this.dgChiTietDonHang.DataContext = data;
 
-            this.tChiTietDonHangDataGrid.UpdateLayout();
+            this.dgChiTietDonHang.UpdateLayout();
         }
         #endregion
     }

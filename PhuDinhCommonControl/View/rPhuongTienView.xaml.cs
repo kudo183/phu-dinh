@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Linq.Expressions;
 using System.Windows;
 
 namespace PhuDinhCommonControl
@@ -10,38 +10,13 @@ namespace PhuDinhCommonControl
     /// </summary>
     public partial class rPhuongTienView : BaseView
     {
+        public Expression<Func<PhuDinhData.rPhuongTien, bool>> FilterPhuongTien { get; set; }
+
         public rPhuongTienView()
         {
             InitializeComponent();
-        }
 
-        private static void RemoveOrUpdateItem(PhuDinhData.PhuDinhEntities context, IEnumerable<PhuDinhData.rPhuongTien> gridDataSource)
-        {
-            foreach (var item in context.rPhuongTiens.ToList())
-            {
-                var entity = gridDataSource.FirstOrDefault(p => p.Ma == item.Ma);
-                //remove deleted item
-                if (entity == null)
-                {
-                    context.rPhuongTiens.Remove(item);
-                }
-                //update exist item
-                else
-                {
-                    item.TenPhuongTien = entity.TenPhuongTien;
-                }
-            }
-        }
-
-        private static void AddNewItem(PhuDinhData.PhuDinhEntities context, IEnumerable<PhuDinhData.rPhuongTien> gridDataSource)
-        {
-            foreach (var item in gridDataSource)
-            {
-                if (item.Ma == 0)
-                {
-                    context.rPhuongTiens.Add(item);
-                }
-            }
+            FilterPhuongTien = (p => true);
         }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
@@ -59,14 +34,8 @@ namespace PhuDinhCommonControl
         {
             try
             {
-                var context = new PhuDinhData.PhuDinhEntities();
-                var gridDataSource = this.rPhuongTienDataGrid.DataContext as IEnumerable<PhuDinhData.rPhuongTien>;
-
-                RemoveOrUpdateItem(context, gridDataSource);
-
-                AddNewItem(context, gridDataSource);
-
-                context.SaveChanges();
+                var data = this.dgPhuongTien.DataContext as List<PhuDinhData.rPhuongTien>;
+                PhuDinhData.Repository.rPhuongTienRepository.Save(data, FilterPhuongTien);
                 RefreshView();
             }
             catch (Exception ex)
@@ -81,9 +50,7 @@ namespace PhuDinhCommonControl
 
         public override void RefreshView()
         {
-            var context = new PhuDinhData.PhuDinhEntities();
-
-            this.rPhuongTienDataGrid.DataContext = context.rPhuongTiens.ToList();
+            this.dgPhuongTien.DataContext = PhuDinhData.Repository.rPhuongTienRepository.GetData(FilterPhuongTien);
         }
         #endregion
     }

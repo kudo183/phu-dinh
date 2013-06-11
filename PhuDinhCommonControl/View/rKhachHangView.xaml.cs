@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Windows;
 
 namespace PhuDinhCommonControl
@@ -10,37 +11,15 @@ namespace PhuDinhCommonControl
     /// </summary>
     public partial class rKhachHangView : BaseView
     {
+        public Expression<Func<PhuDinhData.rKhachHang, bool>> FilterKhachHang { get; set; }
+        public Expression<Func<PhuDinhData.rDiaDiem, bool>> FilterDiaDiem { get; set; }
+
         public rKhachHangView()
         {
             InitializeComponent();
-        }
-        private static void RemoveOrUpdateItem(PhuDinhData.PhuDinhEntities context, IEnumerable<PhuDinhData.rKhachHang> gridDataSource)
-        {
-            foreach (var item in context.rKhachHangs.ToList())
-            {
-                var entity = gridDataSource.FirstOrDefault(p => p.Ma == item.Ma);
-                //remove deleted item
-                if (entity == null)
-                {
-                    context.rKhachHangs.Remove(item);
-                }
-                //update exist item
-                else
-                {
-                    item.TenKhachHang = entity.TenKhachHang;
-                }
-            }
-        }
 
-        private static void AddNewItem(PhuDinhData.PhuDinhEntities context, IEnumerable<PhuDinhData.rKhachHang> gridDataSource)
-        {
-            foreach (var item in gridDataSource)
-            {
-                if (item.Ma == 0)
-                {
-                    context.rKhachHangs.Add(item);
-                }
-            }
+            FilterKhachHang = (p => true);
+            FilterDiaDiem = (p => true);
         }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
@@ -58,14 +37,8 @@ namespace PhuDinhCommonControl
         {
             try
             {
-                var context = new PhuDinhData.PhuDinhEntities();
-                var gridDataSource = this.rKhachHangDataGrid.DataContext as IEnumerable<PhuDinhData.rKhachHang>;
-
-                RemoveOrUpdateItem(context, gridDataSource);
-
-                AddNewItem(context, gridDataSource);
-
-                context.SaveChanges();
+                var data = this.dgKhachHang.DataContext as List<PhuDinhData.rKhachHang>;
+                PhuDinhData.Repository.rKhachHangRepository.Save(data, FilterKhachHang);
                 RefreshView();
             }
             catch (Exception ex)
@@ -81,9 +54,9 @@ namespace PhuDinhCommonControl
         public override void RefreshView()
         {
             var context = new PhuDinhData.PhuDinhEntities();
-            PhuDinhData.rKhachHang.rDiaDiems = context.rDiaDiems.ToList();
+            PhuDinhData.rKhachHang.rDiaDiems = PhuDinhData.Repository.rDiaDiemRepository.GetData(context, FilterDiaDiem);
 
-            var data = context.rKhachHangs.ToList();
+            var data = PhuDinhData.Repository.rKhachHangRepository.GetData(context, FilterKhachHang);
 
             foreach (var rKhachHang in data)
             {
@@ -91,11 +64,10 @@ namespace PhuDinhCommonControl
                     p => p.Ma == rKhachHang.MaDiaDiem);
             }
 
-            this.rKhachHangDataGrid.DataContext = data;
+            this.dgKhachHang.DataContext = data;
 
-            this.rKhachHangDataGrid.UpdateLayout();
+            this.dgKhachHang.UpdateLayout();
         }
-
         #endregion
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Windows;
 
 namespace PhuDinhCommonControl
@@ -12,41 +13,17 @@ namespace PhuDinhCommonControl
     /// </summary>
     public partial class tChiPhiNhanVienGiaoHangView : BaseView
     {
+        public Expression<Func<PhuDinhData.tChiPhiNhanVienGiaoHang, bool>> FilterChiPhiNhanVienGiaoHang { get; set; }
+        public Expression<Func<PhuDinhData.rLoaiChiPhi, bool>> FilterLoaiChiPhi { get; set; }
+        public Expression<Func<PhuDinhData.rNhanVienGiaoHang, bool>> FilterNhanVienGiaoHang { get; set; }
+
         public tChiPhiNhanVienGiaoHangView()
         {
             InitializeComponent();
-        }
-        private static void RemoveOrUpdateItem(PhuDinhData.PhuDinhEntities context, IEnumerable<PhuDinhData.tChiPhiNhanVienGiaoHang> gridDataSource)
-        {
-            foreach (var item in context.tChiPhiNhanVienGiaoHangs.ToList())
-            {
-                var entity = gridDataSource.FirstOrDefault(p => p.Ma == item.Ma);
-                //remove deleted item
-                if (entity == null)
-                {
-                    context.tChiPhiNhanVienGiaoHangs.Remove(item);
-                }
-                //update exist item
-                else
-                {
-                    item.MaLoaiChiPhi = entity.MaLoaiChiPhi;
-                    item.MaNhanVienGiaoHang = entity.MaNhanVienGiaoHang;
-                    item.Ngay = entity.Ngay;
-                    item.SoTien = entity.SoTien;
-                    item.GhiChu = entity.GhiChu;
-                }
-            }
-        }
 
-        private static void AddNewItem(PhuDinhData.PhuDinhEntities context, IEnumerable<PhuDinhData.tChiPhiNhanVienGiaoHang> gridDataSource)
-        {
-            foreach (var item in gridDataSource)
-            {
-                if (item.Ma == 0)
-                {
-                    context.tChiPhiNhanVienGiaoHangs.Add(item);
-                }
-            }
+            FilterChiPhiNhanVienGiaoHang = (p => true);
+            FilterLoaiChiPhi = (p => true);
+            FilterNhanVienGiaoHang = (p => true);
         }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
@@ -64,14 +41,8 @@ namespace PhuDinhCommonControl
         {
             try
             {
-                var context = new PhuDinhData.PhuDinhEntities();
-                var gridDataSource = this.tChiPhiNhanVienGiaoHangDataGrid.DataContext as IEnumerable<PhuDinhData.tChiPhiNhanVienGiaoHang>;
-
-                RemoveOrUpdateItem(context, gridDataSource);
-
-                AddNewItem(context, gridDataSource);
-
-                context.SaveChanges();
+                var data = this.dgChiPhiNhanVienGiaoHang.DataContext as ObservableCollection<PhuDinhData.tChiPhiNhanVienGiaoHang>;
+                PhuDinhData.Repository.tChiPhiNhanVienGiaoHangRepository.Save(data.ToList(), FilterChiPhiNhanVienGiaoHang);
                 RefreshView();
             }
             catch (Exception ex)
@@ -87,10 +58,11 @@ namespace PhuDinhCommonControl
         public override void RefreshView()
         {
             var context = new PhuDinhData.PhuDinhEntities();
-            PhuDinhData.tChiPhiNhanVienGiaoHang.rLoaiChiPhis = context.rLoaiChiPhis.ToList();
-            PhuDinhData.tChiPhiNhanVienGiaoHang.rNhanVienGiaoHangs = context.rNhanVienGiaoHangs.ToList();
+            PhuDinhData.tChiPhiNhanVienGiaoHang.rLoaiChiPhis = PhuDinhData.Repository.rLoaiChiPhiRepository.GetData(context, FilterLoaiChiPhi);
+            PhuDinhData.tChiPhiNhanVienGiaoHang.rNhanVienGiaoHangs =
+                PhuDinhData.Repository.rNhanVienGiaoHangRepository.GetData(context, FilterNhanVienGiaoHang);
 
-            var data = context.tChiPhiNhanVienGiaoHangs.ToList();
+            var data = PhuDinhData.Repository.tChiPhiNhanVienGiaoHangRepository.GetData(context, FilterChiPhiNhanVienGiaoHang);
 
             foreach (var tChiPhiNhanVienGiaoHang in data)
             {
@@ -100,11 +72,11 @@ namespace PhuDinhCommonControl
                         p => p.Ma == tChiPhiNhanVienGiaoHang.MaLoaiChiPhi);
             }
 
-            var collection = new ObservableCollection<PhuDinhData.tChiPhiNhanVienGiaoHang>(context.tChiPhiNhanVienGiaoHangs.ToList());
+            var collection = new ObservableCollection<PhuDinhData.tChiPhiNhanVienGiaoHang>(data);
             collection.CollectionChanged += collection_CollectionChanged;
-            this.tChiPhiNhanVienGiaoHangDataGrid.DataContext = collection;
+            this.dgChiPhiNhanVienGiaoHang.DataContext = collection;
 
-            this.tChiPhiNhanVienGiaoHangDataGrid.UpdateLayout();
+            this.dgChiPhiNhanVienGiaoHang.UpdateLayout();
         }
 
         void collection_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)

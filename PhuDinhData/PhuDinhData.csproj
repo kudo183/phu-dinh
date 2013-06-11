@@ -54,6 +54,17 @@
     <Compile Include="rDiaDiem.cs">
       <DependentUpon>PhuDinh.tt</DependentUpon>
     </Compile>
+    <Compile Include="Repository\tChuyenHangRepository.cs" />
+    <Compile Include="Repository\tChiTietDonHangRepository.cs" />
+    <Compile Include="Repository\tChuyenHangDonHangRepository.cs" />
+    <Compile Include="Repository\tChiTietChuyenHangDonHangRepository.cs" />
+    <Compile Include="Repository\tChiPhiNhanVienGiaoHangRepository.cs" />
+    <Compile Include="Repository\tDonHangRepository.cs" />
+    <Compile Include="Repository\rPhuongTienRepository.cs" />
+    <Compile Include="Repository\rNhanVienGiaoHangRepository.cs" />
+    <Compile Include="Repository\rLoaiChiPhiRepository.cs" />
+    <Compile Include="Repository\rDiaDiemRepository.cs" />
+    <Compile Include="Repository\rKhachHangRepository.cs" />
     <Compile Include="Repository\tMatHangRepository.cs" />
     <Compile Include="Repository\rLoaiHangRepository.cs" />
     <Compile Include="Repository\rBaiXeRepository.cs" />

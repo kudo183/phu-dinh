@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Windows;
 
 namespace PhuDinhCommonControl
@@ -12,39 +13,19 @@ namespace PhuDinhCommonControl
     /// </summary>
     public partial class tDonHangView : BaseView
     {
+        public Expression<Func<PhuDinhData.tDonHang, bool>> FilterDonHang { get; set; }
+        public Expression<Func<PhuDinhData.tChuyenHang, bool>> FilterChuyenHang { get; set; }
+        public Expression<Func<PhuDinhData.rKhachHang, bool>> FilterKhachHang { get; set; }
+        public Expression<Func<PhuDinhData.rChanh, bool>> FilterChanh { get; set; }
+
         public tDonHangView()
         {
             InitializeComponent();
-        }
-        private static void RemoveOrUpdateItem(PhuDinhData.PhuDinhEntities context, IEnumerable<PhuDinhData.tDonHang> gridDataSource)
-        {
-            foreach (var item in context.tDonHangs.ToList())
-            {
-                var entity = gridDataSource.FirstOrDefault(p => p.Ma == item.Ma);
-                //remove deleted item
-                if (entity == null)
-                {
-                    context.tDonHangs.Remove(item);
-                }
-                //update exist item
-                else
-                {
-                    item.MaKhachHang = entity.MaKhachHang;
-                    item.MaChanh = entity.MaChanh;
-                    item.Ngay = entity.Ngay;
-                }
-            }
-        }
 
-        private static void AddNewItem(PhuDinhData.PhuDinhEntities context, IEnumerable<PhuDinhData.tDonHang> gridDataSource)
-        {
-            foreach (var item in gridDataSource)
-            {
-                if (item.Ma == 0)
-                {
-                    context.tDonHangs.Add(item);
-                }
-            }
+            FilterDonHang = (p => true);
+            FilterChuyenHang = (p => true);
+            FilterKhachHang = (p => true);
+            FilterChanh = (p => true);
         }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
@@ -62,14 +43,8 @@ namespace PhuDinhCommonControl
         {
             try
             {
-                var context = new PhuDinhData.PhuDinhEntities();
-                var gridDataSource = this.tDonHangDataGrid.DataContext as IEnumerable<PhuDinhData.tDonHang>;
-
-                RemoveOrUpdateItem(context, gridDataSource);
-
-                AddNewItem(context, gridDataSource);
-
-                context.SaveChanges();
+                var data = this.dgDonHang.DataContext as ObservableCollection<PhuDinhData.tDonHang>;
+                PhuDinhData.Repository.tDonHangRepository.Save(data.ToList(), FilterDonHang);
                 RefreshView();
             }
             catch (Exception ex)
@@ -85,11 +60,14 @@ namespace PhuDinhCommonControl
         public override void RefreshView()
         {
             var context = new PhuDinhData.PhuDinhEntities();
-            PhuDinhData.tDonHang.tChuyenHangs = context.tChuyenHangs.ToList();
-            PhuDinhData.tDonHang.rKhachHangs = context.rKhachHangs.ToList();
-            PhuDinhData.tDonHang.rChanhs = context.rChanhs.ToList();
+            PhuDinhData.tDonHang.tChuyenHangs =
+                PhuDinhData.Repository.tChuyenHangRepository.GetData(context, FilterChuyenHang);
+            PhuDinhData.tDonHang.rKhachHangs =
+                PhuDinhData.Repository.rKhachHangRepository.GetData(context, FilterKhachHang);
+            PhuDinhData.tDonHang.rChanhs =
+                PhuDinhData.Repository.rChanhRepository.GetData(context, FilterChanh);
 
-            var data = context.tDonHangs.ToList();
+            var data = PhuDinhData.Repository.tDonHangRepository.GetData(context, FilterDonHang);
 
             foreach (var tDonHang in data)
             {
@@ -99,11 +77,11 @@ namespace PhuDinhCommonControl
                     p => p.Ma == tDonHang.MaChanh);
             }
 
-            var collection = new ObservableCollection<PhuDinhData.tDonHang>(context.tDonHangs.ToList());
+            var collection = new ObservableCollection<PhuDinhData.tDonHang>(data);
             collection.CollectionChanged += collection_CollectionChanged;
-            this.tDonHangDataGrid.DataContext = collection;
+            this.dgDonHang.DataContext = collection;
 
-            this.tDonHangDataGrid.UpdateLayout();
+            this.dgDonHang.UpdateLayout();
         }
 
         void collection_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)

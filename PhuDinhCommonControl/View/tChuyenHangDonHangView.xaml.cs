@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Windows;
 
 namespace PhuDinhCommonControl
@@ -10,38 +11,17 @@ namespace PhuDinhCommonControl
     /// </summary>
     public partial class tChuyenHangDonHangView : BaseView
     {
+        public Expression<Func<PhuDinhData.tChuyenHangDonHang, bool>> FilterChuyenHangDonHang { get; set; }
+        public Expression<Func<PhuDinhData.tChuyenHang, bool>> FilterChuyenHang { get; set; }
+        public Expression<Func<PhuDinhData.tDonHang, bool>> FilterDonHang { get; set; }
+
         public tChuyenHangDonHangView()
         {
             InitializeComponent();
-        }
-        private static void RemoveOrUpdateItem(PhuDinhData.PhuDinhEntities context, IEnumerable<PhuDinhData.tChuyenHangDonHang> gridDataSource)
-        {
-            foreach (var item in context.tChuyenHangDonHangs.ToList())
-            {
-                var entity = gridDataSource.FirstOrDefault(p => p.Ma == item.Ma);
-                //remove deleted item
-                if (entity == null)
-                {
-                    context.tChuyenHangDonHangs.Remove(item);
-                }
-                //update exist item
-                else
-                {
-                    item.MaChuyenHang = entity.MaChuyenHang;
-                    item.MaDonHang = entity.MaDonHang;
-                }
-            }
-        }
 
-        private static void AddNewItem(PhuDinhData.PhuDinhEntities context, IEnumerable<PhuDinhData.tChuyenHangDonHang> gridDataSource)
-        {
-            foreach (var item in gridDataSource)
-            {
-                if (item.Ma == 0)
-                {
-                    context.tChuyenHangDonHangs.Add(item);
-                }
-            }
+            FilterChuyenHangDonHang = (p => true);
+            FilterChuyenHang = (p => true);
+            FilterDonHang = (p => true);
         }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
@@ -59,14 +39,8 @@ namespace PhuDinhCommonControl
         {
             try
             {
-                var context = new PhuDinhData.PhuDinhEntities();
-                var gridDataSource = this.tChuyenHangDonHangDataGrid.DataContext as IEnumerable<PhuDinhData.tChuyenHangDonHang>;
-
-                RemoveOrUpdateItem(context, gridDataSource);
-
-                AddNewItem(context, gridDataSource);
-
-                context.SaveChanges();
+                var data = this.dgChuyenHangDonHang.DataContext as List<PhuDinhData.tChuyenHangDonHang>;
+                PhuDinhData.Repository.tChuyenHangDonHangRepository.Save(data, FilterChuyenHangDonHang);
                 RefreshView();
             }
             catch (Exception ex)
@@ -82,10 +56,10 @@ namespace PhuDinhCommonControl
         public override void RefreshView()
         {
             var context = new PhuDinhData.PhuDinhEntities();
-            PhuDinhData.tChuyenHangDonHang.tChuyenHangs = context.tChuyenHangs.ToList();
-            PhuDinhData.tChuyenHangDonHang.tDonHangs = context.tDonHangs.ToList();
+            PhuDinhData.tChuyenHangDonHang.tChuyenHangs = PhuDinhData.Repository.tChuyenHangRepository.GetData(context, FilterChuyenHang);
+            PhuDinhData.tChuyenHangDonHang.tDonHangs = PhuDinhData.Repository.tDonHangRepository.GetData(context, FilterDonHang);
 
-            var data = context.tChuyenHangDonHangs.ToList();
+            var data = PhuDinhData.Repository.tChuyenHangDonHangRepository.GetData(context, FilterChuyenHangDonHang);
 
             foreach (var tChuyenHangDonHang in data)
             {
@@ -95,9 +69,9 @@ namespace PhuDinhCommonControl
                         p => p.Ma == tChuyenHangDonHang.MaDonHang);
             }
 
-            this.tChuyenHangDonHangDataGrid.DataContext = data;
+            this.dgChuyenHangDonHang.DataContext = data;
 
-            this.tChuyenHangDonHangDataGrid.UpdateLayout();
+            this.dgChuyenHangDonHang.UpdateLayout();
         }
         #endregion
     }

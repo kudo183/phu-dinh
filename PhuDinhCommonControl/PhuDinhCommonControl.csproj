@@ -65,6 +65,36 @@
     <Compile Include="CustomControl\TimeInput.xaml.cs">
       <DependentUpon>TimeInput.xaml</DependentUpon>
     </Compile>
+    <Compile Include="EntityDataGrid\DGDonHang.xaml.cs">
+      <DependentUpon>DGDonHang.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataGrid\DGChuyenHang.xaml.cs">
+      <DependentUpon>DGChuyenHang.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataGrid\DGChuyenHangDonHang.xaml.cs">
+      <DependentUpon>DGChuyenHangDonHang.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataGrid\DGChiTietDonHang.xaml.cs">
+      <DependentUpon>DGChiTietDonHang.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataGrid\DGChiTietChuyenHangDonHang.xaml.cs">
+      <DependentUpon>DGChiTietChuyenHangDonHang.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataGrid\DGChiPhiNhanVienGiaoHang.xaml.cs">
+      <DependentUpon>DGChiPhiNhanVienGiaoHang.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataGrid\DGPhuongTien.xaml.cs">
+      <DependentUpon>DGPhuongTien.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataGrid\DGNhanVienGiaoHang.xaml.cs">
+      <DependentUpon>DGNhanVienGiaoHang.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataGrid\DGLoaiChiPhi.xaml.cs">
+      <DependentUpon>DGLoaiChiPhi.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataGrid\DGKhachHang.xaml.cs">
+      <DependentUpon>DGKhachHang.xaml</DependentUpon>
+    </Compile>
     <Compile Include="EntityDataGrid\DGLoaiHang.xaml.cs">
       <DependentUpon>DGLoaiHang.xaml</DependentUpon>
     </Compile>
@@ -175,6 +205,46 @@
     <Page Include="CustomControl\TimeInput.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EntityDataGrid\DGDonHang.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="EntityDataGrid\DGChuyenHang.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="EntityDataGrid\DGChuyenHangDonHang.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="EntityDataGrid\DGChiTietDonHang.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="EntityDataGrid\DGChiTietChuyenHangDonHang.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="EntityDataGrid\DGChiPhiNhanVienGiaoHang.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="EntityDataGrid\DGPhuongTien.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="EntityDataGrid\DGNhanVienGiaoHang.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="EntityDataGrid\DGLoaiChiPhi.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="EntityDataGrid\DGKhachHang.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="EntityDataGrid\DGLoaiHang.xaml">
       <Generator>MSBuild:Compile</Generator>

@@ -3,8 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:PhuDinhData="clr-namespace:PhuDinhData;assembly=PhuDinhData"
              xmlns:PhuDinhCommonControl="clr-namespace:PhuDinhCommonControl"
+             xmlns:EntityDataGrid="clr-namespace:PhuDinhCommonControl.EntityDataGrid"
              x:Class="PhuDinhCommonControl.tChuyenHangDonHangView" 
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="500">
@@ -14,56 +14,7 @@
             <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
 
-        <DataGrid Grid.Row="0" x:Name="tChuyenHangDonHangDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected">
-            <DataGrid.Columns>
-                <!--Ma-->
-                <DataGridTextColumn x:Name="maColumn" Binding="{Binding Ma}" Header="Ma" Width="SizeToHeader" IsReadOnly="True">
-                    <DataGridTextColumn.ElementStyle>
-                        <Style TargetType="{x:Type TextBlock}">
-                            <Setter Property="TextBlock.Background" Value="LightGray" />
-                        </Style>
-                    </DataGridTextColumn.ElementStyle>
-                </DataGridTextColumn>                
-                <!--Chuyen hang-->
-                <DataGridTemplateColumn x:Name="chuyenHangDonHangColumn" Header="Chuyen hang" Width="80">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <TextBlock Text="{Binding ChuyenHang.TenChuyenHang}" VerticalAlignment="Center"/>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                    <DataGridTemplateColumn.CellEditingTemplate>
-                        <DataTemplate>
-                            <ComboBox IsEditable="True" StaysOpenOnEdit="True" IsTextSearchEnabled="True"
-                                ItemsSource="{x:Static PhuDinhData:tChuyenHangDonHang.tChuyenHangs}"
-                                      DisplayMemberPath="TenChuyenHang"
-                                      SelectedValuePath="Ma"
-                                      SelectedValue="{Binding MaChuyenHang, UpdateSourceTrigger=PropertyChanged}"
-                                      SelectedItem="{Binding ChuyenHang, UpdateSourceTrigger=PropertyChanged}"
-                                      />
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellEditingTemplate>
-                </DataGridTemplateColumn>
-                <!--Don hang-->
-                <DataGridTemplateColumn x:Name="donHangColumn" Header="Don Hang" Width="80">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <TextBlock Text="{Binding DonHang.TenDonHang}" VerticalAlignment="Center"/>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                    <DataGridTemplateColumn.CellEditingTemplate>
-                        <DataTemplate>
-                            <ComboBox IsEditable="True" StaysOpenOnEdit="True" IsTextSearchEnabled="True"
-                                ItemsSource="{x:Static PhuDinhData:tChuyenHangDonHang.tDonHangs}"
-                                      DisplayMemberPath="TenDonHang"
-                                      SelectedValuePath="Ma"                                      
-                                      SelectedValue="{Binding MaDonHang, UpdateSourceTrigger=PropertyChanged}"
-                                      SelectedItem="{Binding DonHang, UpdateSourceTrigger=PropertyChanged}"
-                                      />
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellEditingTemplate>
-                </DataGridTemplateColumn>
-            </DataGrid.Columns>
-        </DataGrid>
+        <EntityDataGrid:DGChuyenHangDonHang Grid.Row="0" x:Name="dgChuyenHangDonHang"/>
         <StackPanel Grid.Row="1" Orientation="Horizontal">
             <Button Content="Save" VerticalAlignment="Top" Width="75" Margin="5" Click="SaveButton_Click"/>
             <Button Content="Cancel" VerticalAlignment="Top" Width="75" Margin="5" Click="CancelButton_Click"/>
