@@ -22,13 +22,13 @@ namespace PhuDinh.View
                 return;
             }
 
-            var DonHang = e.AddedItems[0] as PhuDinhData.tDonHang;
-            if(DonHang == null)
+            var donHang = e.AddedItems[0] as PhuDinhData.tDonHang;
+            if(donHang == null)
             {
                 return;
             }
 
-            _tChiTietDonHangView.FilterChiTietDonHang = (p => p.MaDonHang == DonHang.Ma);
+            _tChiTietDonHangView.FilterChiTietDonHang = (p => p.MaDonHang == donHang.Ma);
 
             _tChiTietDonHangView.RefreshView();
         }
