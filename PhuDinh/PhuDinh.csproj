@@ -73,6 +73,9 @@
     <Compile Include="View\BaiXeView.xaml.cs">
       <DependentUpon>BaiXeView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\ChuyenHangView.xaml.cs">
+      <DependentUpon>ChuyenHangView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\DonHangView.xaml.cs">
       <DependentUpon>DonHangView.xaml</DependentUpon>
     </Compile>
@@ -101,6 +104,10 @@
     <Page Include="View\BaiXeView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ChuyenHangView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="View\DonHangView.xaml">
       <Generator>MSBuild:Compile</Generator>

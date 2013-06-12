@@ -14,7 +14,7 @@
             <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
 
-        <EntityDataGrid:DGChuyenHang Grid.Row="0" x:Name="dgChuyenHang"/>
+        <EntityDataGrid:DGChuyenHang Grid.Row="0" x:Name="dgChuyenHang" x:FieldModifier="public"/>
         <StackPanel Grid.Row="1" Orientation="Horizontal">
             <Button Content="Save" VerticalAlignment="Top" Width="75" Margin="5" Click="SaveButton_Click"/>
             <Button Content="Cancel" VerticalAlignment="Top" Width="75" Margin="5" Click="CancelButton_Click"/>

@@ -13,6 +13,11 @@ namespace PhuDinh
             InitializeComponent();
         }
 
+        private void btnChuyenHang_Click(object sender, RoutedEventArgs e)
+        {
+            _brdMainContent.Child = new ChuyenHangView();
+        }
+
         private void btnDonHang_Click(object sender, RoutedEventArgs e)
         {
             _brdMainContent.Child = new DonHangView();
