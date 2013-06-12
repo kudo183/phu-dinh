@@ -11,6 +11,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" Height="40" Background="AliceBlue">
+            <Button Margin="5" Content="DonHang" x:Name="btnDonHang" Click="btnDonHang_Click"/>
             <Button Margin="5" Content="BaiXe" x:Name="btnBaiXe" Click="btnBaiXe_Click"/>
             <Button Margin="5" Content="MatHang" x:Name="btnMatHang" Click="btnMatHang_Click"/>
             <Button Margin="5" Content="Admin" x:Name="btnAdmin" Click="btnAdmin_Click"/>

@@ -15,7 +15,7 @@
             <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
 
-        <EntityDataGrid:DGDonHang Grid.Row="0" x:Name="dgDonHang"/>
+        <EntityDataGrid:DGDonHang Grid.Row="0" x:Name="dgDonHang" x:FieldModifier="public"/>
         <StackPanel Grid.Row="1" Orientation="Horizontal">
             <Button Content="Save" VerticalAlignment="Top" Width="75" Margin="5" Click="SaveButton_Click"/>
             <Button Content="Cancel" VerticalAlignment="Top" Width="75" Margin="5" Click="CancelButton_Click"/>
