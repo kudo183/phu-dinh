@@ -1,9 +1,10 @@
-﻿<DataGrid x:Class="PhuDinhCommonControl.EntityDataGrid.DGMatHang"
+﻿<CustomControl:DataGridExt x:Class="PhuDinhCommonControl.EntityDataGrid.DGMatHang"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-          xmlns:PhuDinhData="clr-namespace:PhuDinhData;assembly=PhuDinhData" mc:Ignorable="d" 
+          xmlns:PhuDinhData="clr-namespace:PhuDinhData;assembly=PhuDinhData"
+                 xmlns:CustomControl="clr-namespace:PhuDinhCommonControl.CustomControl" mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300"
           AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected" SelectionMode="Single">
     <DataGrid.Columns>
@@ -35,4 +36,4 @@
         </DataGridTemplateColumn>
         <DataGridTextColumn x:Name="tenMatHangColumn" Width="SizeToHeader" Header="Ten Mat Hang" Binding="{Binding TenMatHang}"/>
     </DataGrid.Columns>
-</DataGrid>
+</CustomControl:DataGridExt>

@@ -1,11 +1,11 @@
-﻿using System.Windows.Controls;
+﻿using PhuDinhCommonControl.CustomControl;
 
 namespace PhuDinhCommonControl.EntityDataGrid
 {
     /// <summary>
     /// Interaction logic for DGChuyenHangDonHang.xaml
     /// </summary>
-    public partial class DGChuyenHangDonHang : DataGrid
+    public partial class DGChuyenHangDonHang : DataGridExt
     {
         public DGChuyenHangDonHang()
         {

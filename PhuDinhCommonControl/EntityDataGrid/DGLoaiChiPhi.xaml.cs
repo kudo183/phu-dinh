@@ -1,11 +1,11 @@
-﻿using System.Windows.Controls;
+﻿using PhuDinhCommonControl.CustomControl;
 
 namespace PhuDinhCommonControl.EntityDataGrid
 {
     /// <summary>
     /// Interaction logic for DGLoaiChiPhi.xaml
     /// </summary>
-    public partial class DGLoaiChiPhi : DataGrid
+    public partial class DGLoaiChiPhi : DataGridExt
     {
         public DGLoaiChiPhi()
         {
