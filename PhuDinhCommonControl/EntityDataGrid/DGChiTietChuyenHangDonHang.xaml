@@ -9,13 +9,7 @@
           AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected" SelectionMode="Single">
     <DataGrid.Columns>
         <!--Ma-->
-        <DataGridTextColumn x:Name="maColumn" Binding="{Binding Ma}" Header="Ma" Width="SizeToHeader" IsReadOnly="True">
-            <DataGridTextColumn.ElementStyle>
-                <Style TargetType="{x:Type TextBlock}">
-                    <Setter Property="TextBlock.Background" Value="LightGray" />
-                </Style>
-            </DataGridTextColumn.ElementStyle>
-        </DataGridTextColumn>
+        <CustomControl:DataGridReadOnlyTextColumn x:Name="maColumn"/>
         <!--Chuyen hang don hang-->
         <DataGridTemplateColumn x:Name="chuyenHangDonHangColumn" Header="Chuyen hang don hang" Width="80">
             <DataGridTemplateColumn.CellTemplate>

@@ -7,13 +7,9 @@
              d:DesignHeight="300" d:DesignWidth="300"
           AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected" SelectionMode="Single">
     <DataGrid.Columns>
-        <DataGridTextColumn x:Name="maColumn" Binding="{Binding Ma}" Header="Ma" Width="SizeToHeader" IsReadOnly="True">
-            <DataGridTextColumn.ElementStyle>
-                <Style TargetType="{x:Type TextBlock}">
-                    <Setter Property="TextBlock.Background" Value="LightGray" />
-                </Style>
-            </DataGridTextColumn.ElementStyle>
-        </DataGridTextColumn>
+        <!--Ma-->
+        <CustomControl:DataGridReadOnlyTextColumn x:Name="maColumn"/>
+        <!--Dia diem bai xe-->
         <DataGridTextColumn x:Name="diaDiemBaiXeColumn" Width="SizeToHeader" Header="Dia Diem Bai Xe" Binding="{Binding DiaDiemBaiXe}"/>
     </DataGrid.Columns>
 </CustomControl:DataGridExt>

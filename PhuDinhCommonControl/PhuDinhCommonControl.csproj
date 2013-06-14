@@ -63,6 +63,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CustomControl\DataGridExt.cs" />
+    <Compile Include="CustomControl\DataGridReadOnlyTextColumn.xaml.cs">
+      <DependentUpon>DataGridReadOnlyTextColumn.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CustomControl\TextBoxExt.cs" />
     <Compile Include="CustomControl\TimeInput.xaml.cs">
       <DependentUpon>TimeInput.xaml</DependentUpon>
@@ -205,6 +208,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="CustomControl\DataGridReadOnlyTextColumn.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="CustomControl\TimeInput.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
