@@ -6,7 +6,7 @@
              xmlns:PhuDinhData="clr-namespace:PhuDinhData;assembly=PhuDinhData"
                  xmlns:CustomControl="clr-namespace:PhuDinhCommonControl.CustomControl" mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300"
-          AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected">
+          AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" SelectionMode="Single">
     <DataGrid.Columns>
         <!--Ma-->
         <CustomControl:DataGridReadOnlyTextColumn x:Name="maColumn"/>
@@ -23,8 +23,8 @@
                                 ItemsSource="{x:Static PhuDinhData:rChanh.rBaiXes}"
                                       DisplayMemberPath="DiaDiemBaiXe"
                                       SelectedValuePath="Ma"
-                                      SelectedValue="{Binding MaBaiXe, UpdateSourceTrigger=PropertyChanged}"
-                                      SelectedItem="{Binding BaiXe, UpdateSourceTrigger=PropertyChanged}"
+                                      SelectedValue="{Binding MaBaiXe}"
+                                      SelectedItem="{Binding BaiXe}"
                                       />
                 </DataTemplate>
             </DataGridTemplateColumn.CellEditingTemplate>

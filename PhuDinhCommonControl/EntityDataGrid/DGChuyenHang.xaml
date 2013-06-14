@@ -19,7 +19,7 @@
             </DataGridTemplateColumn.CellTemplate>
             <DataGridTemplateColumn.CellEditingTemplate>
                 <DataTemplate>
-                    <DatePicker SelectedDate="{Binding Ngay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <DatePicker SelectedDate="{Binding Ngay}"/>
                 </DataTemplate>
             </DataGridTemplateColumn.CellEditingTemplate>
         </DataGridTemplateColumn>
@@ -49,8 +49,8 @@
                                 ItemsSource="{x:Static PhuDinhData:tChuyenHang.rNhanVienGiaoHangs}"
                                       DisplayMemberPath="TenNhanVien"
                                       SelectedValuePath="Ma"
-                                      SelectedValue="{Binding MaNhanVienGiaoHang, UpdateSourceTrigger=PropertyChanged}"
-                                      SelectedItem="{Binding NhanVienGiaoHang, UpdateSourceTrigger=PropertyChanged}"
+                                      SelectedValue="{Binding MaNhanVienGiaoHang}"
+                                      SelectedItem="{Binding NhanVienGiaoHang}"
                                       />
                 </DataTemplate>
             </DataGridTemplateColumn.CellEditingTemplate>

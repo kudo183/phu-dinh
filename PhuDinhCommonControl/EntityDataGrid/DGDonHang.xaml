@@ -6,7 +6,7 @@
           xmlns:PhuDinhData="clr-namespace:PhuDinhData;assembly=PhuDinhData"
                  xmlns:CustomControl="clr-namespace:PhuDinhCommonControl.CustomControl" mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300"
-          AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected" SelectionMode="Single">
+          AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" SelectionMode="Single">
     <DataGrid.Columns>
         <!--Ma-->
         <CustomControl:DataGridReadOnlyTextColumn x:Name="maColumn"/>
@@ -19,7 +19,7 @@
             </DataGridTemplateColumn.CellTemplate>
             <DataGridTemplateColumn.CellEditingTemplate>
                 <DataTemplate>
-                    <DatePicker SelectedDate="{Binding Ngay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <DatePicker SelectedDate="{Binding Ngay}"/>
                 </DataTemplate>
             </DataGridTemplateColumn.CellEditingTemplate>
         </DataGridTemplateColumn>
@@ -36,8 +36,8 @@
                                 ItemsSource="{x:Static PhuDinhData:tDonHang.rKhachHangs}"
                                       DisplayMemberPath="TenKhachHangDiaDiem"
                                       SelectedValuePath="Ma"
-                                      SelectedValue="{Binding MaKhachHang, UpdateSourceTrigger=PropertyChanged}"
-                                      SelectedItem="{Binding KhachHang, UpdateSourceTrigger=PropertyChanged}"
+                                      SelectedValue="{Binding MaKhachHang}"
+                                      SelectedItem="{Binding KhachHang}"
                                       />
                 </DataTemplate>
             </DataGridTemplateColumn.CellEditingTemplate>
@@ -55,8 +55,8 @@
                                 ItemsSource="{x:Static PhuDinhData:tDonHang.rChanhs}"
                                       DisplayMemberPath="TenBaiXeChanh"
                                       SelectedValuePath="Ma"
-                                      SelectedValue="{Binding MaChanh, UpdateSourceTrigger=PropertyChanged}"
-                                      SelectedItem="{Binding Chanh, UpdateSourceTrigger=PropertyChanged}"
+                                      SelectedValue="{Binding MaChanh}"
+                                      SelectedItem="{Binding Chanh}"
                                       />
                 </DataTemplate>
             </DataGridTemplateColumn.CellEditingTemplate>
