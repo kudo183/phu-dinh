@@ -24,42 +24,20 @@
             </DataGridTemplateColumn.CellEditingTemplate>
         </DataGridTemplateColumn>
         <!--Khach hang-->
-        <DataGridTemplateColumn x:Name="khachHangColumn" Header="Khach hang" Width="80">
-            <DataGridTemplateColumn.CellTemplate>
-                <DataTemplate>
-                    <TextBlock Text="{Binding KhachHang.TenKhachHangDiaDiem}" VerticalAlignment="Center"/>
-                </DataTemplate>
-            </DataGridTemplateColumn.CellTemplate>
-            <DataGridTemplateColumn.CellEditingTemplate>
-                <DataTemplate>
-                    <ComboBox IsEditable="True" StaysOpenOnEdit="True" IsTextSearchEnabled="True"
-                                ItemsSource="{x:Static PhuDinhData:tDonHang.rKhachHangs}"
-                                      DisplayMemberPath="TenKhachHangDiaDiem"
-                                      SelectedValuePath="Ma"
-                                      SelectedValue="{Binding MaKhachHang}"
-                                      SelectedItem="{Binding KhachHang}"
-                                      />
-                </DataTemplate>
-            </DataGridTemplateColumn.CellEditingTemplate>
-        </DataGridTemplateColumn>
+        <CustomControl:DataGridComboBoxColumnExt x:Name="khachHangColumn" Width="80" Header="Khach hang"
+                                                 TextBinding="{Binding KhachHang.TenKhachHangDiaDiem, Mode=OneWay}"
+                                                 DisplayMemberPath="TenKhachHangDiaDiem"
+                                                 SelectedValuePath="Ma"
+                                                 SelectedValueBinding="{Binding MaKhachHang}"
+                                                 SelectedItemBinding="{Binding KhachHang}"
+                                                 ItemsSource="{x:Static PhuDinhData:tDonHang.rKhachHangs}"/>
         <!--Chanh-->
-        <DataGridTemplateColumn x:Name="chanhColumn" Header="Chanh" Width="80">
-            <DataGridTemplateColumn.CellTemplate>
-                <DataTemplate>
-                    <TextBlock Text="{Binding Chanh.TenBaiXeChanh}" VerticalAlignment="Center"/>
-                </DataTemplate>
-            </DataGridTemplateColumn.CellTemplate>
-            <DataGridTemplateColumn.CellEditingTemplate>
-                <DataTemplate>
-                    <ComboBox IsEditable="True" StaysOpenOnEdit="True" IsTextSearchEnabled="True"
-                                ItemsSource="{x:Static PhuDinhData:tDonHang.rChanhs}"
-                                      DisplayMemberPath="TenBaiXeChanh"
-                                      SelectedValuePath="Ma"
-                                      SelectedValue="{Binding MaChanh}"
-                                      SelectedItem="{Binding Chanh}"
-                                      />
-                </DataTemplate>
-            </DataGridTemplateColumn.CellEditingTemplate>
-        </DataGridTemplateColumn>
+        <CustomControl:DataGridComboBoxColumnExt x:Name="chanhColumn" Width="80" Header="Chanh"
+                                                 TextBinding="{Binding Chanh.TenBaiXeChanh, Mode=OneWay}"
+                                                 DisplayMemberPath="TenBaiXeChanh"
+                                                 SelectedValuePath="Ma"
+                                                 SelectedValueBinding="{Binding MaChanh}"
+                                                 SelectedItemBinding="{Binding Chanh}"
+                                                 ItemsSource="{x:Static PhuDinhData:tDonHang.rChanhs}"/>
     </DataGrid.Columns>
 </CustomControl:DataGridExt>

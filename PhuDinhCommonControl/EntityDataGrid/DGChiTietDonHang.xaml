@@ -11,43 +11,21 @@
         <!--Ma-->
         <CustomControl:DataGridReadOnlyTextColumn x:Name="maColumn"/>
         <!--Don hang-->
-        <DataGridTemplateColumn x:Name="donHangColumn" Header="Don hang" Width="80">
-            <DataGridTemplateColumn.CellTemplate>
-                <DataTemplate>
-                    <TextBlock Text="{Binding DonHang.TenDonHang}" VerticalAlignment="Center"/>
-                </DataTemplate>
-            </DataGridTemplateColumn.CellTemplate>
-            <DataGridTemplateColumn.CellEditingTemplate>
-                <DataTemplate>
-                    <ComboBox IsEditable="True" StaysOpenOnEdit="True" IsTextSearchEnabled="True"
-                                ItemsSource="{x:Static PhuDinhData:tChiTietDonHang.tDonHangs}"
-                                      DisplayMemberPath="TenDonHang"
-                                      SelectedValuePath="Ma"
-                                      SelectedValue="{Binding MaDonHang}"
-                                      SelectedItem="{Binding DonHang}"
-                                      />
-                </DataTemplate>
-            </DataGridTemplateColumn.CellEditingTemplate>
-        </DataGridTemplateColumn>
+        <CustomControl:DataGridComboBoxColumnExt x:Name="donHangColumn" Width="80" Header="Don hang"
+                                                 TextBinding="{Binding DonHang.TenDonHang, Mode=OneWay}"
+                                                 DisplayMemberPath="TenDonHang"
+                                                 SelectedValuePath="Ma"
+                                                 SelectedValueBinding="{Binding MaDonHang}"
+                                                 SelectedItemBinding="{Binding DonHang}"
+                                                 ItemsSource="{x:Static PhuDinhData:tChiTietDonHang.tDonHangs}"/>
         <!--Mat hang-->
-        <DataGridTemplateColumn x:Name="matHangColumn" Header="Mat Hang" Width="80">
-            <DataGridTemplateColumn.CellTemplate>
-                <DataTemplate>
-                    <TextBlock Text="{Binding MatHang.TenMatHang}" VerticalAlignment="Center"/>
-                </DataTemplate>
-            </DataGridTemplateColumn.CellTemplate>
-            <DataGridTemplateColumn.CellEditingTemplate>
-                <DataTemplate>
-                    <ComboBox IsEditable="True" StaysOpenOnEdit="True" IsTextSearchEnabled="True"
-                                ItemsSource="{x:Static PhuDinhData:tChiTietDonHang.tMatHangs}"
-                                      DisplayMemberPath="TenMatHang"
-                                      SelectedValuePath="Ma"                                      
-                                      SelectedValue="{Binding MaMatHang}"
-                                      SelectedItem="{Binding MatHang}"
-                                      />
-                </DataTemplate>
-            </DataGridTemplateColumn.CellEditingTemplate>
-        </DataGridTemplateColumn>
+        <CustomControl:DataGridComboBoxColumnExt x:Name="matHangColumn" Width="80" Header="Mat Hang"
+                                                 TextBinding="{Binding MatHang.TenMatHang, Mode=OneWay}"
+                                                 DisplayMemberPath="TenMatHang"
+                                                 SelectedValuePath="Ma"
+                                                 SelectedValueBinding="{Binding MaMatHang}"
+                                                 SelectedItemBinding="{Binding MatHang}"
+                                                 ItemsSource="{x:Static PhuDinhData:tChiTietDonHang.tMatHangs}"/>
         <!--So luong-->
         <DataGridTextColumn x:Name="soLuongColumn" Binding="{Binding SoLuong, StringFormat=\{0:N0\}}" Header="So Luong" Width="80">
             <DataGridTextColumn.ElementStyle>

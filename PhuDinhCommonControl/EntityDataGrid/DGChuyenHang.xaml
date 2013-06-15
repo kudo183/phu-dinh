@@ -37,23 +37,12 @@
             </DataGridTemplateColumn.CellEditingTemplate>
         </DataGridTemplateColumn>
         <!--Nhan vien giao hang-->
-        <DataGridTemplateColumn x:Name="nhanVienGiaoHangColumn" Header="Nhan Vien" Width="80">
-            <DataGridTemplateColumn.CellTemplate>
-                <DataTemplate>
-                    <TextBlock Text="{Binding NhanVienGiaoHang.TenNhanVien}" VerticalAlignment="Center"/>
-                </DataTemplate>
-            </DataGridTemplateColumn.CellTemplate>
-            <DataGridTemplateColumn.CellEditingTemplate>
-                <DataTemplate>
-                    <ComboBox IsEditable="True" StaysOpenOnEdit="True" IsTextSearchEnabled="True"
-                                ItemsSource="{x:Static PhuDinhData:tChuyenHang.rNhanVienGiaoHangs}"
-                                      DisplayMemberPath="TenNhanVien"
-                                      SelectedValuePath="Ma"
-                                      SelectedValue="{Binding MaNhanVienGiaoHang}"
-                                      SelectedItem="{Binding NhanVienGiaoHang}"
-                                      />
-                </DataTemplate>
-            </DataGridTemplateColumn.CellEditingTemplate>
-        </DataGridTemplateColumn>
+        <CustomControl:DataGridComboBoxColumnExt x:Name="nhanVienGiaoHangColumn" Width="80" Header="Nhan Vien"
+                                                 TextBinding="{Binding NhanVienGiaoHang.TenNhanVien, Mode=OneWay}"
+                                                 DisplayMemberPath="TenNhanVien"
+                                                 SelectedValuePath="Ma"
+                                                 SelectedValueBinding="{Binding MaNhanVienGiaoHang}"
+                                                 SelectedItemBinding="{Binding NhanVienGiaoHang}"
+                                                 ItemsSource="{x:Static PhuDinhData:tChuyenHang.rNhanVienGiaoHangs}"/>
     </DataGrid.Columns>
 </CustomControl:DataGridExt>

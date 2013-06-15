@@ -11,43 +11,21 @@
         <!--Ma-->
         <CustomControl:DataGridReadOnlyTextColumn x:Name="maColumn"/>
         <!--Chuyen hang don hang-->
-        <DataGridTemplateColumn x:Name="chuyenHangDonHangColumn" Header="Chuyen hang don hang" Width="80">
-            <DataGridTemplateColumn.CellTemplate>
-                <DataTemplate>
-                    <TextBlock Text="{Binding ChuyenHangDonHang.TenChuyenHangDonHang}" VerticalAlignment="Center"/>
-                </DataTemplate>
-            </DataGridTemplateColumn.CellTemplate>
-            <DataGridTemplateColumn.CellEditingTemplate>
-                <DataTemplate>
-                    <ComboBox IsEditable="True" StaysOpenOnEdit="True" IsTextSearchEnabled="True"
-                                ItemsSource="{x:Static PhuDinhData:tChiTietChuyenHangDonHang.tChuyenHangDonHangs}"
-                                      DisplayMemberPath="TenChuyenHangDonHang"
-                                      SelectedValuePath="Ma"
-                                      SelectedValue="{Binding MaChuyenHangDonHang}"
-                                      SelectedItem="{Binding ChuyenHangDonHang}"
-                                      />
-                </DataTemplate>
-            </DataGridTemplateColumn.CellEditingTemplate>
-        </DataGridTemplateColumn>
+        <CustomControl:DataGridComboBoxColumnExt x:Name="chuyenHangDonHangColumn" Width="150" Header="Chuyen hang don hang"
+                                                 TextBinding="{Binding ChuyenHangDonHang.TenChuyenHangDonHang, Mode=OneWay}"
+                                                 DisplayMemberPath="TenChuyenHangDonHang"
+                                                 SelectedValuePath="Ma"
+                                                 SelectedValueBinding="{Binding MaChuyenHangDonHang}"
+                                                 SelectedItemBinding="{Binding ChuyenHangDonHang}"
+                                                 ItemsSource="{x:Static PhuDinhData:tChiTietChuyenHangDonHang.tChuyenHangDonHangs}"/>
         <!--Mat hang-->
-        <DataGridTemplateColumn x:Name="matHangColumn" Header="Mat Hang" Width="80">
-            <DataGridTemplateColumn.CellTemplate>
-                <DataTemplate>
-                    <TextBlock Text="{Binding MatHang.TenMatHang}" VerticalAlignment="Center"/>
-                </DataTemplate>
-            </DataGridTemplateColumn.CellTemplate>
-            <DataGridTemplateColumn.CellEditingTemplate>
-                <DataTemplate>
-                    <ComboBox IsEditable="True" StaysOpenOnEdit="True" IsTextSearchEnabled="True"
-                                ItemsSource="{x:Static PhuDinhData:tChiTietChuyenHangDonHang.tMatHangs}"
-                                      DisplayMemberPath="TenMatHang"
-                                      SelectedValuePath="Ma"                                      
-                                      SelectedValue="{Binding MaMatHang}"
-                                      SelectedItem="{Binding MatHang}"
-                                      />
-                </DataTemplate>
-            </DataGridTemplateColumn.CellEditingTemplate>
-        </DataGridTemplateColumn>
+        <CustomControl:DataGridComboBoxColumnExt x:Name="matHangColumn" Width="80" Header="Mat Hang"
+                                                 TextBinding="{Binding MatHang.TenMatHang, Mode=OneWay}"
+                                                 DisplayMemberPath="TenMatHang"
+                                                 SelectedValuePath="Ma"
+                                                 SelectedValueBinding="{Binding MaMatHang}"
+                                                 SelectedItemBinding="{Binding MatHang}"
+                                                 ItemsSource="{x:Static PhuDinhData:tChiTietChuyenHangDonHang.tMatHangs}"/>
         <!--So luong-->
         <DataGridTextColumn x:Name="soLuongColumn" Binding="{Binding SoLuong, StringFormat=\{0:N0\}}" Header="So Luong" Width="80">
             <DataGridTextColumn.ElementStyle>

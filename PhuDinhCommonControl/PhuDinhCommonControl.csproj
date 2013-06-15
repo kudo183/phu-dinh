@@ -62,6 +62,9 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomControl\DataGridComboBoxColumnExt.xaml.cs">
+      <DependentUpon>DataGridComboBoxColumnExt.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CustomControl\DataGridExt.cs" />
     <Compile Include="CustomControl\DataGridReadOnlyTextColumn.xaml.cs">
       <DependentUpon>DataGridReadOnlyTextColumn.xaml</DependentUpon>
@@ -208,6 +211,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="CustomControl\DataGridComboBoxColumnExt.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="CustomControl\DataGridReadOnlyTextColumn.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

@@ -11,24 +11,13 @@
         <!--Ma-->
         <CustomControl:DataGridReadOnlyTextColumn x:Name="maColumn"/>
         <!--Bai xe-->
-        <DataGridTemplateColumn x:Name="baiXeColumn" Header="Bai xe" Width="80">
-            <DataGridTemplateColumn.CellTemplate>
-                <DataTemplate>
-                    <TextBlock Text="{Binding BaiXe.DiaDiemBaiXe}" VerticalAlignment="Center"/>
-                </DataTemplate>
-            </DataGridTemplateColumn.CellTemplate>
-            <DataGridTemplateColumn.CellEditingTemplate>
-                <DataTemplate>
-                    <ComboBox IsEditable="True" StaysOpenOnEdit="True" IsTextSearchEnabled="True"
-                                ItemsSource="{x:Static PhuDinhData:rChanh.rBaiXes}"
-                                      DisplayMemberPath="DiaDiemBaiXe"
-                                      SelectedValuePath="Ma"
-                                      SelectedValue="{Binding MaBaiXe}"
-                                      SelectedItem="{Binding BaiXe}"
-                                      />
-                </DataTemplate>
-            </DataGridTemplateColumn.CellEditingTemplate>
-        </DataGridTemplateColumn>
+        <CustomControl:DataGridComboBoxColumnExt x:Name="baiXeColumn" Width="80" Header="Bai xe"
+                                                 TextBinding="{Binding BaiXe.DiaDiemBaiXe, Mode=OneWay}"
+                                                 DisplayMemberPath="DiaDiemBaiXe"
+                                                 SelectedValuePath="Ma"
+                                                 SelectedValueBinding="{Binding MaBaiXe}"
+                                                 SelectedItemBinding="{Binding BaiXe}"
+                                                 ItemsSource="{x:Static PhuDinhData:rChanh.rBaiXes}"/>
         <!--Ten chanh-->
         <DataGridTextColumn x:Name="tenChanhColumn" Width="SizeToHeader" Header="Ten Chanh" Binding="{Binding TenChanh}"/>
     </DataGrid.Columns>

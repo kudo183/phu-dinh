@@ -24,43 +24,21 @@
             </DataGridTemplateColumn.CellEditingTemplate>
         </DataGridTemplateColumn>
         <!--Nhan vien giao hang-->
-        <DataGridTemplateColumn x:Name="nhanVienGiaoHangColumn" Header="Nhan Vien" Width="80">
-            <DataGridTemplateColumn.CellTemplate>
-                <DataTemplate>
-                    <TextBlock Text="{Binding NhanVienGiaoHang.TenNhanVien}" VerticalAlignment="Center"/>
-                </DataTemplate>
-            </DataGridTemplateColumn.CellTemplate>
-            <DataGridTemplateColumn.CellEditingTemplate>
-                <DataTemplate>
-                    <ComboBox IsEditable="True" StaysOpenOnEdit="True" IsTextSearchEnabled="True"
-                                ItemsSource="{x:Static PhuDinhData:tChiPhiNhanVienGiaoHang.rNhanVienGiaoHangs}"
-                                      DisplayMemberPath="TenNhanVien"
-                                      SelectedValuePath="Ma"
-                                      SelectedValue="{Binding MaNhanVienGiaoHang}"
-                                      SelectedItem="{Binding NhanVienGiaoHang}"
-                                      />
-                </DataTemplate>
-            </DataGridTemplateColumn.CellEditingTemplate>
-        </DataGridTemplateColumn>
+        <CustomControl:DataGridComboBoxColumnExt x:Name="nhanVienGiaoHangColumn" Width="80" Header="Nhan Vien"
+                                                 TextBinding="{Binding NhanVienGiaoHang.TenNhanVien, Mode=OneWay}"
+                                                 DisplayMemberPath="TenNhanVien"
+                                                 SelectedValuePath="Ma"
+                                                 SelectedValueBinding="{Binding MaNhanVienGiaoHang}"
+                                                 SelectedItemBinding="{Binding NhanVienGiaoHang}"
+                                                 ItemsSource="{x:Static PhuDinhData:tChiPhiNhanVienGiaoHang.rNhanVienGiaoHangs}"/>
         <!--Loai chi phi-->
-        <DataGridTemplateColumn x:Name="loaiChiPhiColumn" Header="Loai Chi Phi" Width="80">
-            <DataGridTemplateColumn.CellTemplate>
-                <DataTemplate>
-                    <TextBlock Text="{Binding LoaiChiPhi.TenLoaiChiPhi}" VerticalAlignment="Center"/>
-                </DataTemplate>
-            </DataGridTemplateColumn.CellTemplate>
-            <DataGridTemplateColumn.CellEditingTemplate>
-                <DataTemplate>
-                    <ComboBox IsEditable="True" StaysOpenOnEdit="True" IsTextSearchEnabled="True"
-                                ItemsSource="{x:Static PhuDinhData:tChiPhiNhanVienGiaoHang.rLoaiChiPhis}"
-                                      DisplayMemberPath="TenLoaiChiPhi"
-                                      SelectedValuePath="Ma"                                      
-                                      SelectedValue="{Binding MaLoaiChiPhi}"
-                                      SelectedItem="{Binding LoaiChiPhi}"
-                                      />
-                </DataTemplate>
-            </DataGridTemplateColumn.CellEditingTemplate>
-        </DataGridTemplateColumn>
+        <CustomControl:DataGridComboBoxColumnExt x:Name="loaiChiPhiColumn" Width="80" Header="Loai Chi Phi"
+                                                 TextBinding="{Binding LoaiChiPhi.TenLoaiChiPhi, Mode=OneWay}"
+                                                 DisplayMemberPath="TenLoaiChiPhi"
+                                                 SelectedValuePath="Ma"
+                                                 SelectedValueBinding="{Binding MaLoaiChiPhi}"
+                                                 SelectedItemBinding="{Binding LoaiChiPhi}"
+                                                 ItemsSource="{x:Static PhuDinhData:tChiPhiNhanVienGiaoHang.rLoaiChiPhis}"/>        
         <!--So tien-->
         <DataGridTextColumn x:Name="soTienColumn" Binding="{Binding SoTien, StringFormat=\{0:N0\}}" Header="So Tien" Width="80">
             <DataGridTextColumn.ElementStyle>

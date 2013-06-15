@@ -13,23 +13,12 @@
         <!--Ten khach hang-->
         <DataGridTextColumn x:Name="tenKhachHangColumn" Width="SizeToHeader" Header="Ten Khach Hang" Binding="{Binding TenKhachHang}"/>
         <!--Dia diem-->
-        <DataGridTemplateColumn x:Name="diaDiemColumn" Header="Dia diem" Width="80">
-            <DataGridTemplateColumn.CellTemplate>
-                <DataTemplate>
-                    <TextBlock Text="{Binding DiaDiem.TenDiaDiem}" VerticalAlignment="Center"/>
-                </DataTemplate>
-            </DataGridTemplateColumn.CellTemplate>
-            <DataGridTemplateColumn.CellEditingTemplate>
-                <DataTemplate>
-                    <ComboBox IsEditable="True" StaysOpenOnEdit="True" IsTextSearchEnabled="True"
-                                ItemsSource="{x:Static PhuDinhData:rKhachHang.rDiaDiems}"
-                                      DisplayMemberPath="TenDiaDiem"
-                                      SelectedValuePath="Ma"
-                                      SelectedValue="{Binding MaDiaDiem}"
-                                      SelectedItem="{Binding DiaDiem}"
-                                      />
-                </DataTemplate>
-            </DataGridTemplateColumn.CellEditingTemplate>
-        </DataGridTemplateColumn>
+        <CustomControl:DataGridComboBoxColumnExt x:Name="diaDiemColumn" Width="80" Header="Dia diem"
+                                                 TextBinding="{Binding DiaDiem.TenDiaDiem, Mode=OneWay}"
+                                                 DisplayMemberPath="TenDiaDiem"
+                                                 SelectedValuePath="Ma"
+                                                 SelectedValueBinding="{Binding MaDiaDiem}"
+                                                 SelectedItemBinding="{Binding DiaDiem}"
+                                                 ItemsSource="{x:Static PhuDinhData:rKhachHang.rDiaDiems}"/>
     </DataGrid.Columns>
 </CustomControl:DataGridExt>

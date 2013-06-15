@@ -1,0 +1,14 @@
+﻿<DataGridComboBoxColumn x:Class="PhuDinhCommonControl.CustomControl.DataGridComboBoxColumnExt"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d">
+    <DataGridComboBoxColumn.EditingElementStyle>
+        <Style TargetType="ComboBox">
+            <Setter Property="IsEditable" Value="True"/>
+            <Setter Property="IsTextSearchEnabled" Value="True"/>
+            <Setter Property="StaysOpenOnEdit" Value="True"/>
+        </Style>
+    </DataGridComboBoxColumn.EditingElementStyle>
+</DataGridComboBoxColumn>

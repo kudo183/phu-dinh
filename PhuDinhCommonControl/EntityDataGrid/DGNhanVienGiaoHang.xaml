@@ -11,24 +11,13 @@
         <!--Ma-->
         <CustomControl:DataGridReadOnlyTextColumn x:Name="maColumn"/>
         <!--Phuong Tien-->
-        <DataGridTemplateColumn x:Name="phuongTienColumn" Header="Phuong tien">
-            <DataGridTemplateColumn.CellTemplate>
-                <DataTemplate>
-                    <TextBlock Text="{Binding PhuongTien.TenPhuongTien}"/>
-                </DataTemplate>
-            </DataGridTemplateColumn.CellTemplate>
-            <DataGridTemplateColumn.CellEditingTemplate>
-                <DataTemplate>
-                    <ComboBox IsEditable="True" StaysOpenOnEdit="True" IsTextSearchEnabled="True"
-                                ItemsSource="{x:Static PhuDinhData:rNhanVienGiaoHang.rPhuongTiens}"
-                                      DisplayMemberPath="TenPhuongTien"
-                                      SelectedValuePath="Ma"
-                                      SelectedValue="{Binding MaPhuongTien}"
-                                      SelectedItem="{Binding PhuongTien}"
-                                      />
-                </DataTemplate>
-            </DataGridTemplateColumn.CellEditingTemplate>
-        </DataGridTemplateColumn>
+        <CustomControl:DataGridComboBoxColumnExt x:Name="phuongTienColumn" Width="80" Header="Phuong tien"
+                                                 TextBinding="{Binding PhuongTien.TenPhuongTien, Mode=OneWay}"
+                                                 DisplayMemberPath="TenPhuongTien"
+                                                 SelectedValuePath="Ma"
+                                                 SelectedValueBinding="{Binding MaPhuongTien}"
+                                                 SelectedItemBinding="{Binding PhuongTien}"
+                                                 ItemsSource="{x:Static PhuDinhData:rNhanVienGiaoHang.rPhuongTiens}"/>
         <DataGridTextColumn x:Name="tenNhanVienColumn" Width="SizeToHeader" Header="Ten Nhan Vien" Binding="{Binding TenNhanVien}"/>
     </DataGrid.Columns>
 </CustomControl:DataGridExt>

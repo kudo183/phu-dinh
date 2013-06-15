@@ -11,24 +11,13 @@
         <!--Ma-->
         <CustomControl:DataGridReadOnlyTextColumn x:Name="maColumn"/>
         <!--Loai Hang-->
-        <DataGridTemplateColumn x:Name="loaiHangColumn" Header="Loai hang">
-            <DataGridTemplateColumn.CellTemplate>
-                <DataTemplate>
-                    <TextBlock Text="{Binding LoaiHang.TenLoai}"/>
-                </DataTemplate>
-            </DataGridTemplateColumn.CellTemplate>
-            <DataGridTemplateColumn.CellEditingTemplate>
-                <DataTemplate>
-                    <ComboBox IsEditable="True" StaysOpenOnEdit="True" IsTextSearchEnabled="True"
-                                ItemsSource="{x:Static PhuDinhData:tMatHang.rLoaiHangs}"
-                                      DisplayMemberPath="TenLoai"
-                                      SelectedValuePath="Ma"
-                                      SelectedValue="{Binding MaLoai}"
-                                      SelectedItem="{Binding LoaiHang}"
-                                      />
-                </DataTemplate>
-            </DataGridTemplateColumn.CellEditingTemplate>
-        </DataGridTemplateColumn>
+        <CustomControl:DataGridComboBoxColumnExt x:Name="loaiHangColumn" Width="80" Header="Loai hang"
+                                                 TextBinding="{Binding LoaiHang.TenLoai, Mode=OneWay}"
+                                                 DisplayMemberPath="TenLoai"
+                                                 SelectedValuePath="Ma"
+                                                 SelectedValueBinding="{Binding MaLoai}"
+                                                 SelectedItemBinding="{Binding LoaiHang}"
+                                                 ItemsSource="{x:Static PhuDinhData:tMatHang.rLoaiHangs}"/>
         <DataGridTextColumn x:Name="tenMatHangColumn" Width="SizeToHeader" Header="Ten Mat Hang" Binding="{Binding TenMatHang}"/>
     </DataGrid.Columns>
 </CustomControl:DataGridExt>
