@@ -28,16 +28,16 @@
                                                  TextBinding="{Binding KhachHang.TenKhachHangDiaDiem, Mode=OneWay}"
                                                  DisplayMemberPath="TenKhachHangDiaDiem"
                                                  SelectedValuePath="Ma"
-                                                 SelectedValueBinding="{Binding MaKhachHang}"
-                                                 SelectedItemBinding="{Binding KhachHang}"
+                                                 SelectedValueBinding="{Binding MaKhachHang, UpdateSourceTrigger=PropertyChanged}"
+                                                 SelectedItemBinding="{Binding KhachHang, UpdateSourceTrigger=PropertyChanged}"
                                                  ItemsSource="{x:Static PhuDinhData:tDonHang.rKhachHangs}"/>
         <!--Chanh-->
         <CustomControl:DataGridComboBoxColumnExt x:Name="chanhColumn" Width="80" Header="Chanh"
                                                  TextBinding="{Binding Chanh.TenBaiXeChanh, Mode=OneWay}"
                                                  DisplayMemberPath="TenBaiXeChanh"
                                                  SelectedValuePath="Ma"
-                                                 SelectedValueBinding="{Binding MaChanh}"
-                                                 SelectedItemBinding="{Binding Chanh}"
+                                                 SelectedValueBinding="{Binding MaChanh, UpdateSourceTrigger=PropertyChanged}"
+                                                 SelectedItemBinding="{Binding Chanh, UpdateSourceTrigger=PropertyChanged}"
                                                  ItemsSource="{x:Static PhuDinhData:tDonHang.rChanhs}"/>
     </DataGrid.Columns>
 </CustomControl:DataGridExt>

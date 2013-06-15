@@ -15,16 +15,16 @@
                                                  TextBinding="{Binding ChuyenHangDonHang.TenChuyenHangDonHang, Mode=OneWay}"
                                                  DisplayMemberPath="TenChuyenHangDonHang"
                                                  SelectedValuePath="Ma"
-                                                 SelectedValueBinding="{Binding MaChuyenHangDonHang}"
-                                                 SelectedItemBinding="{Binding ChuyenHangDonHang}"
+                                                 SelectedValueBinding="{Binding MaChuyenHangDonHang, UpdateSourceTrigger=PropertyChanged}"
+                                                 SelectedItemBinding="{Binding ChuyenHangDonHang, UpdateSourceTrigger=PropertyChanged}"
                                                  ItemsSource="{x:Static PhuDinhData:tChiTietChuyenHangDonHang.tChuyenHangDonHangs}"/>
         <!--Mat hang-->
         <CustomControl:DataGridComboBoxColumnExt x:Name="matHangColumn" Width="80" Header="Mat Hang"
                                                  TextBinding="{Binding MatHang.TenMatHang, Mode=OneWay}"
                                                  DisplayMemberPath="TenMatHang"
                                                  SelectedValuePath="Ma"
-                                                 SelectedValueBinding="{Binding MaMatHang}"
-                                                 SelectedItemBinding="{Binding MatHang}"
+                                                 SelectedValueBinding="{Binding MaMatHang, UpdateSourceTrigger=PropertyChanged}"
+                                                 SelectedItemBinding="{Binding MatHang, UpdateSourceTrigger=PropertyChanged}"
                                                  ItemsSource="{x:Static PhuDinhData:tChiTietChuyenHangDonHang.tMatHangs}"/>
         <!--So luong-->
         <DataGridTextColumn x:Name="soLuongColumn" Binding="{Binding SoLuong, StringFormat=\{0:N0\}}" Header="So Luong" Width="80">

@@ -15,8 +15,8 @@
                                                  TextBinding="{Binding BaiXe.DiaDiemBaiXe, Mode=OneWay}"
                                                  DisplayMemberPath="DiaDiemBaiXe"
                                                  SelectedValuePath="Ma"
-                                                 SelectedValueBinding="{Binding MaBaiXe}"
-                                                 SelectedItemBinding="{Binding BaiXe}"
+                                                 SelectedValueBinding="{Binding MaBaiXe, UpdateSourceTrigger=PropertyChanged}"
+                                                 SelectedItemBinding="{Binding BaiXe, UpdateSourceTrigger=PropertyChanged}"
                                                  ItemsSource="{x:Static PhuDinhData:rChanh.rBaiXes}"/>
         <!--Ten chanh-->
         <DataGridTextColumn x:Name="tenChanhColumn" Width="SizeToHeader" Header="Ten Chanh" Binding="{Binding TenChanh}"/>

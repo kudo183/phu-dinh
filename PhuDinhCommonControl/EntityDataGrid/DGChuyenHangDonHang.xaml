@@ -15,16 +15,16 @@
                                                  TextBinding="{Binding ChuyenHang.TenChuyenHang, Mode=OneWay}"
                                                  DisplayMemberPath="TenChuyenHang"
                                                  SelectedValuePath="Ma"
-                                                 SelectedValueBinding="{Binding MaChuyenHang}"
-                                                 SelectedItemBinding="{Binding ChuyenHang}"
+                                                 SelectedValueBinding="{Binding MaChuyenHang, UpdateSourceTrigger=PropertyChanged}"
+                                                 SelectedItemBinding="{Binding ChuyenHang, UpdateSourceTrigger=PropertyChanged}"
                                                  ItemsSource="{x:Static PhuDinhData:tChuyenHangDonHang.tChuyenHangs}"/>
         <!--Don hang-->
         <CustomControl:DataGridComboBoxColumnExt x:Name="donHangColumn" Width="80" Header="Don Hang"
                                                  TextBinding="{Binding DonHang.TenDonHang, Mode=OneWay}"
                                                  DisplayMemberPath="TenDonHang"
                                                  SelectedValuePath="Ma"
-                                                 SelectedValueBinding="{Binding MaDonHang}"
-                                                 SelectedItemBinding="{Binding DonHang}"
+                                                 SelectedValueBinding="{Binding MaDonHang, UpdateSourceTrigger=PropertyChanged}"
+                                                 SelectedItemBinding="{Binding DonHang, UpdateSourceTrigger=PropertyChanged}"
                                                  ItemsSource="{x:Static PhuDinhData:tChuyenHangDonHang.tDonHangs}"/>
     </DataGrid.Columns>
 </CustomControl:DataGridExt>

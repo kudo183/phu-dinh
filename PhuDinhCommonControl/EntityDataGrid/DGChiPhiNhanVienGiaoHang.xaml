@@ -28,16 +28,16 @@
                                                  TextBinding="{Binding NhanVienGiaoHang.TenNhanVien, Mode=OneWay}"
                                                  DisplayMemberPath="TenNhanVien"
                                                  SelectedValuePath="Ma"
-                                                 SelectedValueBinding="{Binding MaNhanVienGiaoHang}"
-                                                 SelectedItemBinding="{Binding NhanVienGiaoHang}"
+                                                 SelectedValueBinding="{Binding MaNhanVienGiaoHang, UpdateSourceTrigger=PropertyChanged}"
+                                                 SelectedItemBinding="{Binding NhanVienGiaoHang, UpdateSourceTrigger=PropertyChanged}"
                                                  ItemsSource="{x:Static PhuDinhData:tChiPhiNhanVienGiaoHang.rNhanVienGiaoHangs}"/>
         <!--Loai chi phi-->
         <CustomControl:DataGridComboBoxColumnExt x:Name="loaiChiPhiColumn" Width="80" Header="Loai Chi Phi"
                                                  TextBinding="{Binding LoaiChiPhi.TenLoaiChiPhi, Mode=OneWay}"
                                                  DisplayMemberPath="TenLoaiChiPhi"
                                                  SelectedValuePath="Ma"
-                                                 SelectedValueBinding="{Binding MaLoaiChiPhi}"
-                                                 SelectedItemBinding="{Binding LoaiChiPhi}"
+                                                 SelectedValueBinding="{Binding MaLoaiChiPhi, UpdateSourceTrigger=PropertyChanged}"
+                                                 SelectedItemBinding="{Binding LoaiChiPhi, UpdateSourceTrigger=PropertyChanged}"
                                                  ItemsSource="{x:Static PhuDinhData:tChiPhiNhanVienGiaoHang.rLoaiChiPhis}"/>        
         <!--So tien-->
         <DataGridTextColumn x:Name="soTienColumn" Binding="{Binding SoTien, StringFormat=\{0:N0\}}" Header="So Tien" Width="80">

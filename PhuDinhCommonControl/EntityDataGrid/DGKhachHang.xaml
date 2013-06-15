@@ -17,8 +17,8 @@
                                                  TextBinding="{Binding DiaDiem.TenDiaDiem, Mode=OneWay}"
                                                  DisplayMemberPath="TenDiaDiem"
                                                  SelectedValuePath="Ma"
-                                                 SelectedValueBinding="{Binding MaDiaDiem}"
-                                                 SelectedItemBinding="{Binding DiaDiem}"
+                                                 SelectedValueBinding="{Binding MaDiaDiem, UpdateSourceTrigger=PropertyChanged}"
+                                                 SelectedItemBinding="{Binding DiaDiem, UpdateSourceTrigger=PropertyChanged}"
                                                  ItemsSource="{x:Static PhuDinhData:rKhachHang.rDiaDiems}"/>
     </DataGrid.Columns>
 </CustomControl:DataGridExt>

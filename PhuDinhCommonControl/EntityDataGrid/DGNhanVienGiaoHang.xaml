@@ -15,8 +15,8 @@
                                                  TextBinding="{Binding PhuongTien.TenPhuongTien, Mode=OneWay}"
                                                  DisplayMemberPath="TenPhuongTien"
                                                  SelectedValuePath="Ma"
-                                                 SelectedValueBinding="{Binding MaPhuongTien}"
-                                                 SelectedItemBinding="{Binding PhuongTien}"
+                                                 SelectedValueBinding="{Binding MaPhuongTien, UpdateSourceTrigger=PropertyChanged}"
+                                                 SelectedItemBinding="{Binding PhuongTien, UpdateSourceTrigger=PropertyChanged}"
                                                  ItemsSource="{x:Static PhuDinhData:rNhanVienGiaoHang.rPhuongTiens}"/>
         <DataGridTextColumn x:Name="tenNhanVienColumn" Width="SizeToHeader" Header="Ten Nhan Vien" Binding="{Binding TenNhanVien}"/>
     </DataGrid.Columns>

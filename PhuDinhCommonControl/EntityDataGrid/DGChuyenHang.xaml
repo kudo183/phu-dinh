@@ -41,8 +41,8 @@
                                                  TextBinding="{Binding NhanVienGiaoHang.TenNhanVien, Mode=OneWay}"
                                                  DisplayMemberPath="TenNhanVien"
                                                  SelectedValuePath="Ma"
-                                                 SelectedValueBinding="{Binding MaNhanVienGiaoHang}"
-                                                 SelectedItemBinding="{Binding NhanVienGiaoHang}"
+                                                 SelectedValueBinding="{Binding MaNhanVienGiaoHang, UpdateSourceTrigger=PropertyChanged}"
+                                                 SelectedItemBinding="{Binding NhanVienGiaoHang, UpdateSourceTrigger=PropertyChanged}"
                                                  ItemsSource="{x:Static PhuDinhData:tChuyenHang.rNhanVienGiaoHangs}"/>
     </DataGrid.Columns>
 </CustomControl:DataGridExt>

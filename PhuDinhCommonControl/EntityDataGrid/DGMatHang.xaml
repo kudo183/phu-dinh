@@ -15,8 +15,8 @@
                                                  TextBinding="{Binding LoaiHang.TenLoai, Mode=OneWay}"
                                                  DisplayMemberPath="TenLoai"
                                                  SelectedValuePath="Ma"
-                                                 SelectedValueBinding="{Binding MaLoai}"
-                                                 SelectedItemBinding="{Binding LoaiHang}"
+                                                 SelectedValueBinding="{Binding MaLoai, UpdateSourceTrigger=PropertyChanged}"
+                                                 SelectedItemBinding="{Binding LoaiHang, UpdateSourceTrigger=PropertyChanged}"
                                                  ItemsSource="{x:Static PhuDinhData:tMatHang.rLoaiHangs}"/>
         <DataGridTextColumn x:Name="tenMatHangColumn" Width="SizeToHeader" Header="Ten Mat Hang" Binding="{Binding TenMatHang}"/>
     </DataGrid.Columns>
