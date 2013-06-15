@@ -20,7 +20,11 @@ namespace PhuDinhData
         public static List<rNhanVienGiaoHang> rNhanVienGiaoHangs
         {
             get { return _rNhanVienGiaoHangs; }
-            set { _rNhanVienGiaoHangs = value; }
+            set
+            {
+                _rNhanVienGiaoHangs.Clear();
+                _rNhanVienGiaoHangs.AddRange(value);
+            }
         }
     }
 }

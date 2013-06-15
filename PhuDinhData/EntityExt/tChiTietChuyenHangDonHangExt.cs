@@ -11,14 +11,22 @@ namespace PhuDinhData
         public static List<tChuyenHangDonHang> tChuyenHangDonHangs
         {
             get { return _tChuyenHangDonHangs; }
-            set { _tChuyenHangDonHangs = value; }
+            set
+            {
+                _tChuyenHangDonHangs.Clear();
+                _tChuyenHangDonHangs.AddRange(value);
+            }
         }
 
         private static List<tMatHang> _tMatHangs = new List<tMatHang>();
         public static List<tMatHang> tMatHangs
         {
             get { return _tMatHangs; }
-            set { _tMatHangs = value; }
+            set
+            {
+                _tMatHangs.Clear();
+                _tMatHangs.AddRange(value);
+            }
         }
     }
 }

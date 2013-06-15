@@ -15,7 +15,11 @@ namespace PhuDinhData
         public static List<rDiaDiem> rDiaDiems
         {
             get { return _rDiaDiem; }
-            set { _rDiaDiem = value; }
+            set
+            {
+                _rDiaDiem.Clear();
+                _rDiaDiem.AddRange(value);
+            }
         }
     }
 }

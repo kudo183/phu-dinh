@@ -11,14 +11,22 @@ namespace PhuDinhData
         public static List<rNhanVienGiaoHang> rNhanVienGiaoHangs
         {
             get { return _rNhanVienGiaoHangs; }
-            set { _rNhanVienGiaoHangs = value; }
+            set
+            {
+                _rNhanVienGiaoHangs.Clear();
+                _rNhanVienGiaoHangs.AddRange(value);
+            }
         }
 
         private static List<rLoaiChiPhi> _rLoaiChiPhis = new List<rLoaiChiPhi>();
         public static List<rLoaiChiPhi> rLoaiChiPhis
         {
             get { return _rLoaiChiPhis; }
-            set { _rLoaiChiPhis = value; }
+            set
+            {
+                _rLoaiChiPhis.Clear();
+                _rLoaiChiPhis.AddRange(value);
+            }
         }
     }
 }

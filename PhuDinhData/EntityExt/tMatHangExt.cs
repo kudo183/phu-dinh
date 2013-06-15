@@ -10,7 +10,11 @@ namespace PhuDinhData
         public static List<rLoaiHang> rLoaiHangs
         {
             get { return _rLoaiHangs; }
-            set { _rLoaiHangs = value; }
+            set
+            {
+                _rLoaiHangs.Clear();
+                _rLoaiHangs.AddRange(value);
+            }
         }
     }
 }

@@ -10,7 +10,11 @@ namespace PhuDinhData
         public static List<rPhuongTien> rPhuongTiens
         {
             get { return _rPhuongTiens; }
-            set { _rPhuongTiens = value; }
+            set
+            {
+                _rPhuongTiens.Clear();
+                _rPhuongTiens.AddRange(value);
+            }
         }
     }
 }
