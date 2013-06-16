@@ -11,15 +11,6 @@ namespace PhuDinhData
 
         public rBaiXe BaiXe { get; set; }
 
-        private static List<rBaiXe> _rBaiXe = new List<rBaiXe>();
-        public static List<rBaiXe> rBaiXes
-        {
-            get { return _rBaiXe; }
-            set
-            {
-                _rBaiXe.Clear();
-                _rBaiXe.AddRange(value);
-            }
-        }
+        public List<rBaiXe> rBaiXeList { get; set; }
     }
 }

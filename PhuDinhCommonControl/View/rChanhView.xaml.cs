@@ -46,14 +46,16 @@ namespace PhuDinhCommonControl
         {
             var context = new PhuDinhData.PhuDinhEntities();
 
-            PhuDinhData.rChanh.rBaiXes = PhuDinhData.Repository.rBaiXeRepository.GetData(context, FilterBaiXe);
+            var rBaiXes = PhuDinhData.Repository.rBaiXeRepository.GetData(context, FilterBaiXe);
 
             var data = PhuDinhData.Repository.rChanhRepository.GetData(context, FilterChanh);
 
             foreach (var rChanh in data)
             {
-                rChanh.BaiXe = PhuDinhData.rChanh.rBaiXes.FirstOrDefault(
+                rChanh.BaiXe = rBaiXes.FirstOrDefault(
                     p => p.Ma == rChanh.MaBaiXe);
+
+                rChanh.rBaiXeList = rBaiXes;
             }
 
             this.dgChanh.DataContext = data;

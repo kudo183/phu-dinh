@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DesignTimeData\DDrBaiXe.cs" />
+    <Compile Include="DesignTimeData\DDrChanh.cs" />
     <Compile Include="EntityExt\tChuyenHangDonHangExt.cs" />
     <Compile Include="EntityExt\tChiTietChuyenHangDonHangExt.cs" />
     <Compile Include="EntityExt\rKhachHangExt.cs" />
