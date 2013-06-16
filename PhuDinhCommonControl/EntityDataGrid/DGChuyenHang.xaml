@@ -11,18 +11,7 @@
         <!--Ma-->
         <CustomControl:DataGridReadOnlyTextColumn x:Name="maColumn"/>
         <!--Ngay-->
-        <DataGridTemplateColumn x:Name="ngayColumn" Header="Ngay" Width="100">
-            <DataGridTemplateColumn.CellTemplate>
-                <DataTemplate>
-                    <TextBlock Text="{Binding Ngay, StringFormat=\{0:dd/MM/yyyy\}}"/>
-                </DataTemplate>
-            </DataGridTemplateColumn.CellTemplate>
-            <DataGridTemplateColumn.CellEditingTemplate>
-                <DataTemplate>
-                    <DatePicker SelectedDate="{Binding Ngay}"/>
-                </DataTemplate>
-            </DataGridTemplateColumn.CellEditingTemplate>
-        </DataGridTemplateColumn>
+        <CustomControl:DataGridDateColumn x:Name="ngayColumn"/>
         <!--Gio-->
         <DataGridTemplateColumn x:Name="gioColumn" Header="Gio" Width="100">
             <DataGridTemplateColumn.CellTemplate>
