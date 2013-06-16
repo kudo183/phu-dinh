@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace PhuDinhCommonControl
 {
@@ -20,16 +21,6 @@ namespace PhuDinhCommonControl
 
             FilterChanh = (p => true);
             FilterBaiXe = (p => true);
-        }
-
-        private void SaveButton_Click(object sender, RoutedEventArgs e)
-        {
-            Save();
-        }
-
-        private void CancelButton_Click(object sender, RoutedEventArgs e)
-        {
-            Cancel();
         }
 
         #region Override base view method
@@ -69,6 +60,6 @@ namespace PhuDinhCommonControl
 
             this.dgChanh.UpdateLayout();
         }
-        #endregion
+        #endregion        
     }
 }

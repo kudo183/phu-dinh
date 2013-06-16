@@ -6,19 +6,16 @@
              xmlns:PhuDinhData="clr-namespace:PhuDinhData;assembly=PhuDinhData"
              xmlns:PhuDinhCommonControl="clr-namespace:PhuDinhCommonControl"
              xmlns:EntityDataGrid="clr-namespace:PhuDinhCommonControl.EntityDataGrid"
+             xmlns:Menu="clr-namespace:PhuDinhCommonControl.Menu"
              x:Class="PhuDinhCommonControl.tChiTietChuyenHangDonHangView" 
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="500">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="30"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-
         <EntityDataGrid:DGChiTietChuyenHangDonHang Grid.Row="0" x:Name="dgChiTietChuyenHangDonHang"/>
-        <StackPanel Grid.Row="1" Orientation="Horizontal">
-            <Button Content="Save" VerticalAlignment="Top" Width="75" Margin="5" Click="SaveButton_Click"/>
-            <Button Content="Cancel" VerticalAlignment="Top" Width="75" Margin="5" Click="CancelButton_Click"/>
-        </StackPanel>
+        <Menu:BottomMenu Grid.Row="1" x:Name="bmMenu" Button.Click="bmMenu_Click"/>
     </Grid>
 </PhuDinhCommonControl:BaseView>

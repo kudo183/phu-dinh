@@ -5,19 +5,15 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:PhuDinhCommonControl="clr-namespace:PhuDinhCommonControl"
              xmlns:EntityDataGrid="clr-namespace:PhuDinhCommonControl.EntityDataGrid"
-             x:Class="PhuDinhCommonControl.tChuyenHangView" 
+             xmlns:Menu="clr-namespace:PhuDinhCommonControl.Menu" x:Class="PhuDinhCommonControl.tChuyenHangView" 
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="500">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="30"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-
         <EntityDataGrid:DGChuyenHang Grid.Row="0" x:Name="dgChuyenHang" x:FieldModifier="public"/>
-        <StackPanel Grid.Row="1" Orientation="Horizontal">
-            <Button Content="Save" VerticalAlignment="Top" Width="75" Margin="5" Click="SaveButton_Click"/>
-            <Button Content="Cancel" VerticalAlignment="Top" Width="75" Margin="5" Click="CancelButton_Click"/>
-        </StackPanel>
+        <Menu:BottomMenu Grid.Row="1" x:Name="bmMenu" Button.Click="bmMenu_Click"/>
     </Grid>
 </PhuDinhCommonControl:BaseView>
