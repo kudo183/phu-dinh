@@ -62,23 +62,23 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CustomControl\DataGridTimeColumn.xaml.cs">
+    <Compile Include="CustomControl\DataGridColumn\DataGridTimeColumn.xaml.cs">
       <DependentUpon>DataGridTimeColumn.xaml</DependentUpon>
     </Compile>
-    <Compile Include="CustomControl\DataGridDateColumn.xaml.cs">
+    <Compile Include="CustomControl\DataGridColumn\DataGridDateColumn.xaml.cs">
       <DependentUpon>DataGridDateColumn.xaml</DependentUpon>
     </Compile>
-    <Compile Include="CustomControl\DataGridTextColumnExt.xaml.cs">
+    <Compile Include="CustomControl\DataGridColumn\DataGridTextColumnExt.xaml.cs">
       <DependentUpon>DataGridTextColumnExt.xaml</DependentUpon>
     </Compile>
-    <Compile Include="CustomControl\DataGridComboBoxColumnExt.xaml.cs">
+    <Compile Include="CustomControl\DataGridColumn\DataGridComboBoxColumnExt.xaml.cs">
       <DependentUpon>DataGridComboBoxColumnExt.xaml</DependentUpon>
     </Compile>
     <Compile Include="CustomControl\DataGridExt.cs" />
-    <Compile Include="CustomControl\DataGridReadOnlyTextColumn.xaml.cs">
+    <Compile Include="CustomControl\DataGridColumn\DataGridReadOnlyTextColumn.xaml.cs">
       <DependentUpon>DataGridReadOnlyTextColumn.xaml</DependentUpon>
     </Compile>
-    <Compile Include="CustomControl\DataGridTextRightAlignColumn.xaml.cs">
+    <Compile Include="CustomControl\DataGridColumn\DataGridTextRightAlignColumn.xaml.cs">
       <DependentUpon>DataGridTextRightAlignColumn.xaml</DependentUpon>
     </Compile>
     <Compile Include="CustomControl\TextBoxExt.cs" />
@@ -223,27 +223,27 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="CustomControl\DataGridTimeColumn.xaml">
+    <Page Include="CustomControl\DataGridColumn\DataGridTimeColumn.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="CustomControl\DataGridDateColumn.xaml">
+    <Page Include="CustomControl\DataGridColumn\DataGridDateColumn.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="CustomControl\DataGridTextColumnExt.xaml">
+    <Page Include="CustomControl\DataGridColumn\DataGridTextColumnExt.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="CustomControl\DataGridComboBoxColumnExt.xaml">
+    <Page Include="CustomControl\DataGridColumn\DataGridComboBoxColumnExt.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="CustomControl\DataGridReadOnlyTextColumn.xaml">
+    <Page Include="CustomControl\DataGridColumn\DataGridReadOnlyTextColumn.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="CustomControl\DataGridTextRightAlignColumn.xaml">
+    <Page Include="CustomControl\DataGridColumn\DataGridTextRightAlignColumn.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
