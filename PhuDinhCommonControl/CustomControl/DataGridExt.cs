@@ -53,7 +53,18 @@ namespace PhuDinhCommonControl.CustomControl
                 ActiveComboBox(e.EditingElement as ComboBox);
                 return;
             }
+            if (editingElementType == typeof(DatePicker))
+            {
+                ActiveDatePicker(e.EditingElement as DatePicker);
+                return;
+            }
+            if (editingElementType == typeof(TimeInput))
+            {
+                ActiveTimeInput(e.EditingElement as TimeInput);
+                return;
+            }
 
+            //for template column: e.EditingElement is ContentPresenter
             for (int i = 0; i < count; i++)
             {
                 var element = System.Windows.Media.VisualTreeHelper.GetChild(e.EditingElement, i);

@@ -13,18 +13,7 @@
         <!--Ngay-->
         <CustomControl:DataGridDateColumn x:Name="ngayColumn"/>
         <!--Gio-->
-        <DataGridTemplateColumn x:Name="gioColumn" Header="Gio" Width="100">
-            <DataGridTemplateColumn.CellTemplate>
-                <DataTemplate>
-                    <TextBlock Text="{Binding Gio, StringFormat=\{0:hh\\:mm\}}"/>
-                </DataTemplate>
-            </DataGridTemplateColumn.CellTemplate>
-            <DataGridTemplateColumn.CellEditingTemplate>
-                <DataTemplate>
-                    <CustomControl:TimeInput Value="{Binding Gio}"/>
-                </DataTemplate>
-            </DataGridTemplateColumn.CellEditingTemplate>
-        </DataGridTemplateColumn>
+        <CustomControl:DataGridTimeColumn x:Name="gioColumn"/>
         <!--Nhan vien giao hang-->
         <CustomControl:DataGridComboBoxColumnExt x:Name="nhanVienGiaoHangColumn" Width="80" Header="Nhan Vien"
                                                  TextBinding="{Binding NhanVienGiaoHang.TenNhanVien, Mode=OneWay}"
