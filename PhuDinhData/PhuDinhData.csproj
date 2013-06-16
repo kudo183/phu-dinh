@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DesignTimeData\DDrBaiXe.cs" />
     <Compile Include="EntityExt\tChuyenHangDonHangExt.cs" />
     <Compile Include="EntityExt\tChiTietChuyenHangDonHangExt.cs" />
     <Compile Include="EntityExt\rKhachHangExt.cs" />
