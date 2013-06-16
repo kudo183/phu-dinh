@@ -5,8 +5,12 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:CustomControl="clr-namespace:PhuDinhCommonControl.CustomControl" mc:Ignorable="d">
     <StackPanel Orientation="Horizontal">
-        <CustomControl:TextBoxExt x:Name="txtHour" Width="20" PreviewTextInput="txtHour_PreviewTextInput" TextChanged="txtHour_TextChanged"/>
+        <CustomControl:TextBoxExt x:Name="txtHour"
+                                  FontSize="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=FontSize}"
+                                  PreviewTextInput="txtHour_PreviewTextInput" TextChanged="txtHour_TextChanged"/>
         <TextBlock Text=" : "/>
-        <CustomControl:TextBoxExt x:Name="txtMinute" Width="20" PreviewTextInput="txtMinute_PreviewTextInput" TextChanged="txtMinute_TextChanged"/>
+        <CustomControl:TextBoxExt x:Name="txtMinute"
+                                  FontSize="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=FontSize}"
+                                  PreviewTextInput="txtMinute_PreviewTextInput" TextChanged="txtMinute_TextChanged"/>
     </StackPanel>
 </UserControl>
