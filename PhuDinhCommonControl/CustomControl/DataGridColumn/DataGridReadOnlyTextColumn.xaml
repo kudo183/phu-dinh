@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d"
-                     IsReadOnly="True" Binding="{Binding Ma}" Header="Ma" Width="50" FontSize="16">
+                     IsReadOnly="True" Binding="{Binding Ma}" Header="Mã" Width="60" FontSize="16">
     <DataGridTextColumn.ElementStyle>
         <Style TargetType="{x:Type TextBlock}">
             <Setter Property="TextBlock.Background" Value="LightGray" />
