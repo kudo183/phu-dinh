@@ -20,6 +20,21 @@ namespace PhuDinhData.DesignTimeData
             },
             new rChanh() {Ma = 5, MaBaiXe = 5, TenChanh = "Chanh 5", BaiXe = new rBaiXe(){Ma = 5, DiaDiemBaiXe = "Bai xe 5"},
                 rBaiXeList = DDrBaiXe.rBaiXes
+            },
+            new rChanh() {Ma = 6, MaBaiXe = 6, TenChanh = "Chanh 6", BaiXe = new rBaiXe(){Ma = 6, DiaDiemBaiXe = "Bai xe 6"},
+                rBaiXeList = DDrBaiXe.rBaiXes
+            },
+            new rChanh() {Ma = 7, MaBaiXe = 7, TenChanh = "Chanh 7", BaiXe = new rBaiXe(){Ma = 7, DiaDiemBaiXe = "Bai xe 7"},
+                rBaiXeList = DDrBaiXe.rBaiXes
+            },
+            new rChanh() {Ma = 8, MaBaiXe = 8, TenChanh = "Chanh 8", BaiXe = new rBaiXe(){Ma = 8, DiaDiemBaiXe = "Bai xe 8"},
+                rBaiXeList = DDrBaiXe.rBaiXes
+            },
+            new rChanh() {Ma = 9, MaBaiXe = 9, TenChanh = "Chanh 9", BaiXe = new rBaiXe(){Ma = 9, DiaDiemBaiXe = "Bai xe 9"},
+                rBaiXeList = DDrBaiXe.rBaiXes
+            },
+            new rChanh() {Ma = 10, MaBaiXe = 10, TenChanh = "Chanh 10", BaiXe = new rBaiXe(){Ma = 10, DiaDiemBaiXe = "Bai xe 10"},
+                rBaiXeList = DDrBaiXe.rBaiXes
             }
         };
     }
