@@ -10,6 +10,6 @@
         <!--Ma-->
         <CustomControl:DataGridReadOnlyTextColumn x:Name="maColumn"/>
         <!--Dia diem bai xe-->
-        <DataGridTextColumn x:Name="diaDiemBaiXeColumn" Width="SizeToHeader" Header="Dia Diem Bai Xe" Binding="{Binding DiaDiemBaiXe}"/>
+        <CustomControl:DataGridTextColumnExt x:Name="diaDiemBaiXeColumn" Width="SizeToHeader" Header="Dia Diem Bai Xe" Binding="{Binding DiaDiemBaiXe}"/>
     </DataGrid.Columns>
 </CustomControl:DataGridExt>

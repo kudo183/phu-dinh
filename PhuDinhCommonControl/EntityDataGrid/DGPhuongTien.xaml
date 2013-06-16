@@ -10,6 +10,6 @@
         <!--Ma-->
         <CustomControl:DataGridReadOnlyTextColumn x:Name="maColumn"/>
         <!--Ten phuong tien-->
-        <DataGridTextColumn x:Name="tenPhuongTienColumn" Binding="{Binding TenPhuongTien}" Header="Ten Phuong Tien" Width="SizeToHeader"/>
+        <CustomControl:DataGridTextColumnExt x:Name="tenPhuongTienColumn" Binding="{Binding TenPhuongTien}" Header="Ten Phuong Tien" Width="SizeToHeader"/>
     </DataGrid.Columns>
 </CustomControl:DataGridExt>

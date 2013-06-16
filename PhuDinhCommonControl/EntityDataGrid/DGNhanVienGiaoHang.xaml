@@ -18,6 +18,6 @@
                                                  SelectedValueBinding="{Binding MaPhuongTien, UpdateSourceTrigger=PropertyChanged}"
                                                  SelectedItemBinding="{Binding PhuongTien, UpdateSourceTrigger=PropertyChanged}"
                                                  ItemsSource="{x:Static PhuDinhData:rNhanVienGiaoHang.rPhuongTiens}"/>
-        <DataGridTextColumn x:Name="tenNhanVienColumn" Width="SizeToHeader" Header="Ten Nhan Vien" Binding="{Binding TenNhanVien}"/>
+        <CustomControl:DataGridTextColumnExt x:Name="tenNhanVienColumn" Width="SizeToHeader" Header="Ten Nhan Vien" Binding="{Binding TenNhanVien}"/>
     </DataGrid.Columns>
 </CustomControl:DataGridExt>

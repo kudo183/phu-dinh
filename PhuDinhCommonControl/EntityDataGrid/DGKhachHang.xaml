@@ -11,7 +11,7 @@
         <!--Ma-->
         <CustomControl:DataGridReadOnlyTextColumn x:Name="maColumn"/>
         <!--Ten khach hang-->
-        <DataGridTextColumn x:Name="tenKhachHangColumn" Width="SizeToHeader" Header="Ten Khach Hang" Binding="{Binding TenKhachHang}"/>
+        <CustomControl:DataGridTextColumnExt x:Name="tenKhachHangColumn" Width="SizeToHeader" Header="Ten Khach Hang" Binding="{Binding TenKhachHang}"/>
         <!--Dia diem-->
         <CustomControl:DataGridComboBoxColumnExt x:Name="diaDiemColumn" Width="80" Header="Dia diem"
                                                  TextBinding="{Binding DiaDiem.TenDiaDiem, Mode=OneWay}"

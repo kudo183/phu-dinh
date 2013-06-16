@@ -42,6 +42,6 @@
         <!--So tien-->
         <CustomControl:DataGridTextRightAlignColumn x:Name="soTienColumn" Binding="{Binding SoTien, StringFormat=\{0:N0\}}" Header="So Tien"/>            
         <!--Ghi chu-->
-        <DataGridTextColumn x:Name="ghiChuColumn" Binding="{Binding GhiChu}" Header="Ghi Chu" Width="*"/>
+        <CustomControl:DataGridTextColumnExt x:Name="ghiChuColumn" Binding="{Binding GhiChu}" Header="Ghi Chu" Width="*"/>
     </DataGrid.Columns>
 </CustomControl:DataGridExt>

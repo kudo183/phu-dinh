@@ -10,6 +10,6 @@
         <!--Ma-->
         <CustomControl:DataGridReadOnlyTextColumn x:Name="maColumn"/>
         <!--Loai chi phi-->
-        <DataGridTextColumn x:Name="tenLoaiChiPhiColumn" Width="SizeToHeader" Header="Ten Loai Chi Phi" Binding="{Binding TenLoaiChiPhi}"/>
+        <CustomControl:DataGridTextColumnExt x:Name="tenLoaiChiPhiColumn" Width="SizeToHeader" Header="Ten Loai Chi Phi" Binding="{Binding TenLoaiChiPhi}"/>
     </DataGrid.Columns>
 </CustomControl:DataGridExt>

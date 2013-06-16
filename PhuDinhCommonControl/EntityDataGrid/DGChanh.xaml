@@ -19,6 +19,6 @@
                                                  SelectedItemBinding="{Binding BaiXe, UpdateSourceTrigger=PropertyChanged}"
                                                  ItemsSource="{x:Static PhuDinhData:rChanh.rBaiXes}"/>
         <!--Ten chanh-->
-        <DataGridTextColumn x:Name="tenChanhColumn" Width="SizeToHeader" Header="Ten Chanh" Binding="{Binding TenChanh}"/>
+        <CustomControl:DataGridTextColumnExt x:Name="tenChanhColumn" Header="Ten Chanh" Binding="{Binding TenChanh}"/>
     </DataGrid.Columns>
 </CustomControl:DataGridExt>
