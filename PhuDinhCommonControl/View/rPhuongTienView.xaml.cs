@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
-using System.Windows;
 
 namespace PhuDinhCommonControl
 {
@@ -17,16 +16,6 @@ namespace PhuDinhCommonControl
             InitializeComponent();
 
             FilterPhuongTien = (p => true);
-        }
-
-        private void SaveButton_Click(object sender, RoutedEventArgs e)
-        {
-            Save();
-        }
-
-        private void CancelButton_Click(object sender, RoutedEventArgs e)
-        {
-            Cancel();
         }
 
         #region Override base view method
