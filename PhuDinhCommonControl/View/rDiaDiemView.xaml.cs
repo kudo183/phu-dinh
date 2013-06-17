@@ -76,6 +76,6 @@ namespace PhuDinhCommonControl
             }
         }
 
-        #endregion        
+        #endregion
     }
 }
