@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Windows;
@@ -15,6 +17,7 @@ namespace PhuDinhCommonControl
         public Expression<Func<PhuDinhData.rChanh, bool>> FilterChanh { get; set; }
         public Expression<Func<PhuDinhData.rBaiXe, bool>> FilterBaiXe { get; set; }
 
+        private List<PhuDinhData.rBaiXe> _rBaiXes;
         public rChanhView()
         {
             InitializeComponent();
@@ -28,8 +31,8 @@ namespace PhuDinhCommonControl
         {
             try
             {
-                var data = this.dgChanh.DataContext as List<PhuDinhData.rChanh>;
-                PhuDinhData.Repository.rChanhRepository.Save(data, FilterChanh);
+                var data = this.dgChanh.DataContext as ObservableCollection<PhuDinhData.rChanh>;
+                PhuDinhData.Repository.rChanhRepository.Save(data.ToList(), FilterChanh);
                 RefreshView();
             }
             catch (Exception ex)
@@ -46,22 +49,34 @@ namespace PhuDinhCommonControl
         {
             var context = new PhuDinhData.PhuDinhEntities();
 
-            var rBaiXes = PhuDinhData.Repository.rBaiXeRepository.GetData(context, FilterBaiXe);
+            _rBaiXes = PhuDinhData.Repository.rBaiXeRepository.GetData(context, FilterBaiXe);
 
             var data = PhuDinhData.Repository.rChanhRepository.GetData(context, FilterChanh);
 
             foreach (var rChanh in data)
             {
-                rChanh.BaiXe = rBaiXes.FirstOrDefault(
+                rChanh.BaiXe = _rBaiXes.FirstOrDefault(
                     p => p.Ma == rChanh.MaBaiXe);
 
-                rChanh.rBaiXeList = rBaiXes;
+                rChanh.rBaiXeList = _rBaiXes;
             }
 
-            this.dgChanh.DataContext = data;
+            var collection = new ObservableCollection<PhuDinhData.rChanh>(data);
+            collection.CollectionChanged += collection_CollectionChanged;
+            this.dgChanh.DataContext = collection;
 
             this.dgChanh.UpdateLayout();
         }
+
+        void collection_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            if (e.Action == NotifyCollectionChangedAction.Add)
+            {
+                var chanh = e.NewItems[0] as PhuDinhData.rChanh;
+                chanh.rBaiXeList = _rBaiXes;
+            }
+        }
+
         #endregion        
     }
 }
