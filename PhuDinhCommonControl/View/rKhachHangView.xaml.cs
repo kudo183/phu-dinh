@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Windows;
@@ -14,6 +16,8 @@ namespace PhuDinhCommonControl
         public Expression<Func<PhuDinhData.rKhachHang, bool>> FilterKhachHang { get; set; }
         public Expression<Func<PhuDinhData.rDiaDiem, bool>> FilterDiaDiem { get; set; }
 
+        private List<PhuDinhData.rDiaDiem> _rDiaDiems;
+
         public rKhachHangView()
         {
             InitializeComponent();
@@ -22,23 +26,13 @@ namespace PhuDinhCommonControl
             FilterDiaDiem = (p => true);
         }
 
-        private void SaveButton_Click(object sender, RoutedEventArgs e)
-        {
-            Save();
-        }
-
-        private void CancelButton_Click(object sender, RoutedEventArgs e)
-        {
-            Cancel();
-        }
-
         #region Override base view method
         public override void Save()
         {
             try
             {
-                var data = this.dgKhachHang.DataContext as List<PhuDinhData.rKhachHang>;
-                PhuDinhData.Repository.rKhachHangRepository.Save(data, FilterKhachHang);
+                var data = this.dgKhachHang.DataContext as ObservableCollection<PhuDinhData.rKhachHang>;
+                PhuDinhData.Repository.rKhachHangRepository.Save(data.ToList(), FilterKhachHang);
                 RefreshView();
             }
             catch (Exception ex)
@@ -54,20 +48,34 @@ namespace PhuDinhCommonControl
         public override void RefreshView()
         {
             var context = new PhuDinhData.PhuDinhEntities();
-            PhuDinhData.rKhachHang.rDiaDiems = PhuDinhData.Repository.rDiaDiemRepository.GetData(context, FilterDiaDiem);
+            _rDiaDiems = PhuDinhData.Repository.rDiaDiemRepository.GetData(context, FilterDiaDiem);
 
             var data = PhuDinhData.Repository.rKhachHangRepository.GetData(context, FilterKhachHang);
 
             foreach (var rKhachHang in data)
             {
-                rKhachHang.DiaDiem = PhuDinhData.rKhachHang.rDiaDiems.FirstOrDefault(
+                rKhachHang.DiaDiem = _rDiaDiems.FirstOrDefault(
                     p => p.Ma == rKhachHang.MaDiaDiem);
+
+                rKhachHang.rDiaDiemList = _rDiaDiems;
             }
 
-            this.dgKhachHang.DataContext = data;
+            var collection = new ObservableCollection<PhuDinhData.rKhachHang>(data);
+            collection.CollectionChanged += collection_CollectionChanged;
+            this.dgKhachHang.DataContext = collection;
 
             this.dgKhachHang.UpdateLayout();
         }
+
+        void collection_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            if (e.Action == NotifyCollectionChangedAction.Add)
+            {
+                var khachHang = e.NewItems[0] as PhuDinhData.rKhachHang;
+                khachHang.rDiaDiemList = _rDiaDiems;
+            }
+        }
+
         #endregion
     }
 }
