@@ -39,6 +39,9 @@ namespace PhuDinh
                 case Constant.MainMenuItems.rChanh:
                     result = new rChanhView();
                     break;
+                case Constant.MainMenuItems.rDiaDiem:
+                    result = new rDiaDiemView();
+                    break;
                 case Constant.MainMenuItems.rKhachHang:
                     result = new rKhachHangView();
                     break;

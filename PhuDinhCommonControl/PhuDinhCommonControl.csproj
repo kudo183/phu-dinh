@@ -85,6 +85,9 @@
     <Compile Include="CustomControl\TimeInput.xaml.cs">
       <DependentUpon>TimeInput.xaml</DependentUpon>
     </Compile>
+    <Compile Include="EntityDataGrid\DGDiaDiem.xaml.cs">
+      <DependentUpon>DGDiaDiem.xaml</DependentUpon>
+    </Compile>
     <Compile Include="EntityDataGrid\DGNuoc.xaml.cs">
       <DependentUpon>DGNuoc.xaml</DependentUpon>
     </Compile>
@@ -135,6 +138,9 @@
     </Compile>
     <Compile Include="Menu\MainMenu.xaml.cs">
       <DependentUpon>MainMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\rDiaDiemView.xaml.cs">
+      <DependentUpon>rDiaDiemView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\rNuocView.xaml.cs">
       <DependentUpon>rNuocView.xaml</DependentUpon>
@@ -260,6 +266,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="EntityDataGrid\DGDiaDiem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="EntityDataGrid\DGNuoc.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -327,6 +337,10 @@
     <Page Include="Menu\MainMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\rDiaDiemView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="View\rNuocView.xaml">
       <Generator>MSBuild:Compile</Generator>

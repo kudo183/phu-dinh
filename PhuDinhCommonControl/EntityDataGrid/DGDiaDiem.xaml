@@ -1,0 +1,25 @@
+﻿<CustomControl:DataGridExt x:Class="PhuDinhCommonControl.EntityDataGrid.DGDiaDiem"
+                           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                           xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                           xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                           xmlns:CustomControl="clr-namespace:PhuDinhCommonControl.CustomControl"
+                           xmlns:DesignTimeData="clr-namespace:PhuDinhData.DesignTimeData;assembly=PhuDinhData"
+                           mc:Ignorable="d"
+                           d:DataContext="{x:Static DesignTimeData:DDrDiaDiem.rDiaDiems}"
+                           AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" SelectionMode="Single">
+    <DataGrid.Columns>
+        <!--Ma-->
+        <CustomControl:DataGridReadOnlyTextColumn x:Name="maColumn"/>
+        <!--Nuoc-->
+        <CustomControl:DataGridComboBoxColumnExt x:Name="nuocColumn" Header="Nước"
+                                                 TextBinding="{Binding Nuoc.TenNuoc, Mode=OneWay}"
+                                                 DisplayMemberPath="TenNuoc"
+                                                 SelectedValuePath="Ma"
+                                                 SelectedValueBinding="{Binding MaNuoc, UpdateSourceTrigger=PropertyChanged}"
+                                                 SelectedItemBinding="{Binding Nuoc, UpdateSourceTrigger=PropertyChanged}"
+                                                 ItemsSource="{Binding rNuocList}"/>            
+        <!--Tinh-->
+        <CustomControl:DataGridTextColumnExt x:Name="tinhColumn" Header="Tỉnh" Binding="{Binding Tinh}"/>
+    </DataGrid.Columns>
+</CustomControl:DataGridExt>

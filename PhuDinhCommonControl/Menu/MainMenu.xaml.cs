@@ -25,7 +25,7 @@ namespace PhuDinhCommonControl.Menu
         // This method raises the Tap event 
         void RaiseMenuItemClickEvent()
         {
-            RoutedEventArgs newEventArgs = new RoutedEventArgs(MainMenu.MenuItemClickEvent);
+            var newEventArgs = new RoutedEventArgs(MainMenu.MenuItemClickEvent);
             RaiseEvent(newEventArgs);
         }
         // For demonstration purposes we raise the event when the MyButtonSimple is clicked 
@@ -59,6 +59,9 @@ namespace PhuDinhCommonControl.Menu
                     break;
                 case "rChanh":
                     SelectedItem = Constant.MainMenuItems.rChanh;
+                    break;
+                case "rDiaDiem":
+                    SelectedItem = Constant.MainMenuItems.rDiaDiem;
                     break;
                 case "rKhachHang":
                     SelectedItem = Constant.MainMenuItems.rKhachHang;
