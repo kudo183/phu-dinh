@@ -4,8 +4,6 @@ using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Windows;
-using System.Windows.Controls;
 
 namespace PhuDinhCommonControl
 {
