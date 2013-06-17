@@ -6,15 +6,6 @@ namespace PhuDinhData
     {
         public rPhuongTien PhuongTien { get; set; }
 
-        private static List<rPhuongTien> _rPhuongTiens = new List<rPhuongTien>();
-        public static List<rPhuongTien> rPhuongTiens
-        {
-            get { return _rPhuongTiens; }
-            set
-            {
-                _rPhuongTiens.Clear();
-                _rPhuongTiens.AddRange(value);
-            }
-        }
+        public List<rPhuongTien> rPhuongTienList { get; set; }
     }
 }

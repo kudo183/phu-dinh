@@ -1,23 +1,24 @@
 ﻿<CustomControl:DataGridExt x:Class="PhuDinhCommonControl.EntityDataGrid.DGNhanVienGiaoHang"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-          xmlns:PhuDinhData="clr-namespace:PhuDinhData;assembly=PhuDinhData"
-                 xmlns:CustomControl="clr-namespace:PhuDinhCommonControl.CustomControl" mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300"
-          AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" SelectionMode="Single">
+                           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                           xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                           xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                           xmlns:CustomControl="clr-namespace:PhuDinhCommonControl.CustomControl"
+                           xmlns:DesignTimeData="clr-namespace:PhuDinhData.DesignTimeData;assembly=PhuDinhData"
+                           mc:Ignorable="d"
+                           d:DataContext="{x:Static DesignTimeData:DDrNhanVienGiaoHang.rNhanVienGiaoHangs}"
+                           AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" SelectionMode="Single">
     <DataGrid.Columns>
         <!--Ma-->
         <CustomControl:DataGridReadOnlyTextColumn x:Name="maColumn"/>
         <!--Phuong Tien-->
-        <CustomControl:DataGridComboBoxColumnExt x:Name="phuongTienColumn" Width="80" Header="Phuong tien"
+        <CustomControl:DataGridComboBoxColumnExt x:Name="phuongTienColumn" Header="Phương tiện"
                                                  TextBinding="{Binding PhuongTien.TenPhuongTien, Mode=OneWay}"
                                                  DisplayMemberPath="TenPhuongTien"
                                                  SelectedValuePath="Ma"
                                                  SelectedValueBinding="{Binding MaPhuongTien, UpdateSourceTrigger=PropertyChanged}"
                                                  SelectedItemBinding="{Binding PhuongTien, UpdateSourceTrigger=PropertyChanged}"
-                                                 ItemsSource="{x:Static PhuDinhData:rNhanVienGiaoHang.rPhuongTiens}"/>
-        <CustomControl:DataGridTextColumnExt x:Name="tenNhanVienColumn" Width="SizeToHeader" Header="Ten Nhan Vien" Binding="{Binding TenNhanVien}"/>
+                                                 ItemsSource="{Binding rPhuongTienList}"/>
+        <CustomControl:DataGridTextColumnExt x:Name="tenNhanVienColumn" Header="Tên Nhân Viên" Binding="{Binding TenNhanVien}"/>
     </DataGrid.Columns>
 </CustomControl:DataGridExt>
