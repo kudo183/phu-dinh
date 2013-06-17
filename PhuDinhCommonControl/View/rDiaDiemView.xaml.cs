@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Windows;
-using System.Windows.Controls;
 
 namespace PhuDinhCommonControl
 {
@@ -14,6 +14,8 @@ namespace PhuDinhCommonControl
     {
         public Expression<Func<PhuDinhData.rDiaDiem, bool>> FilterDiaDiem { get; set; }
         public Expression<Func<PhuDinhData.rNuoc, bool>> FilterNuoc { get; set; }
+
+        private List<PhuDinhData.rNuoc> _rNuocs;
 
         public rDiaDiemView()
         {
@@ -28,8 +30,8 @@ namespace PhuDinhCommonControl
         {
             try
             {
-                var data = this.dgDiaDiem.DataContext as List<PhuDinhData.rDiaDiem>;
-                PhuDinhData.Repository.rDiaDiemRepository.Save(data, FilterDiaDiem);
+                var data = this.dgDiaDiem.DataContext as ObservableCollection<PhuDinhData.rDiaDiem>;
+                PhuDinhData.Repository.rDiaDiemRepository.Save(data.ToList(), FilterDiaDiem);
                 RefreshView();
             }
             catch (Exception ex)
@@ -46,22 +48,34 @@ namespace PhuDinhCommonControl
         {
             var context = new PhuDinhData.PhuDinhEntities();
 
-            var rNuocs = PhuDinhData.Repository.rNuocRepository.GetData(context, FilterNuoc);
+            _rNuocs = PhuDinhData.Repository.rNuocRepository.GetData(context, FilterNuoc);
 
             var data = PhuDinhData.Repository.rDiaDiemRepository.GetData(context, FilterDiaDiem);
 
             foreach (var rDiaDiem in data)
             {
-                rDiaDiem.Nuoc = rNuocs.FirstOrDefault(
+                rDiaDiem.Nuoc = _rNuocs.FirstOrDefault(
                     p => p.Ma == rDiaDiem.MaNuoc);
 
-                rDiaDiem.rNuocList = rNuocs;
+                rDiaDiem.rNuocList = _rNuocs;
             }
 
-            this.dgDiaDiem.DataContext = data;
+            var collection = new ObservableCollection<PhuDinhData.rDiaDiem>(data);
+            collection.CollectionChanged += collection_CollectionChanged;
+            this.dgDiaDiem.DataContext = collection;
 
             this.dgDiaDiem.UpdateLayout();
         }
+
+        void collection_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            if (e.Action == NotifyCollectionChangedAction.Add)
+            {
+                var diaDiem = e.NewItems[0] as PhuDinhData.rDiaDiem;
+                diaDiem.rNuocList = _rNuocs;
+            }
+        }
+
         #endregion        
     }
 }
