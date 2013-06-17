@@ -13,11 +13,11 @@
         <CustomControl:DataGridReadOnlyTextColumn x:Name="maColumn"/>
         <!--Nuoc-->
         <CustomControl:DataGridComboBoxColumnExt x:Name="nuocColumn" Header="Nước"
-                                                 TextBinding="{Binding Nuoc.TenNuoc, Mode=OneWay}"
+                                                 TextBinding="{Binding rNuoc.TenNuoc, Mode=OneWay}"
                                                  DisplayMemberPath="TenNuoc"
                                                  SelectedValuePath="Ma"
                                                  SelectedValueBinding="{Binding MaNuoc, UpdateSourceTrigger=PropertyChanged}"
-                                                 SelectedItemBinding="{Binding Nuoc, UpdateSourceTrigger=PropertyChanged}"
+                                                 SelectedItemBinding="{Binding rNuoc, UpdateSourceTrigger=PropertyChanged}"
                                                  ItemsSource="{Binding rNuocList}"/>            
         <!--Tinh-->
         <CustomControl:DataGridTextColumnExt x:Name="tinhColumn" Header="Tỉnh" Binding="{Binding Tinh}"/>

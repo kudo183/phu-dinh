@@ -53,8 +53,8 @@ namespace PhuDinhCommonControl
 
             foreach (var rChanh in data)
             {
-                rChanh.BaiXe = _rBaiXes.FirstOrDefault(
-                    p => p.Ma == rChanh.MaBaiXe);
+                //rChanh.BaiXe = _rBaiXes.FirstOrDefault(
+                //    p => p.Ma == rChanh.MaBaiXe);
 
                 rChanh.rBaiXeList = _rBaiXes;
             }

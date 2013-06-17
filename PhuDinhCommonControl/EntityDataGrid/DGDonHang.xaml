@@ -14,19 +14,19 @@
         <CustomControl:DataGridDateColumn x:Name="ngayColumn"/>
         <!--Khach hang-->
         <CustomControl:DataGridComboBoxColumnExt x:Name="khachHangColumn" Width="80" Header="Khach hang"
-                                                 TextBinding="{Binding KhachHang.TenKhachHangDiaDiem, Mode=OneWay}"
+                                                 TextBinding="{Binding rKhachHang.TenKhachHangDiaDiem, Mode=OneWay}"
                                                  DisplayMemberPath="TenKhachHangDiaDiem"
                                                  SelectedValuePath="Ma"
                                                  SelectedValueBinding="{Binding MaKhachHang, UpdateSourceTrigger=PropertyChanged}"
-                                                 SelectedItemBinding="{Binding KhachHang, UpdateSourceTrigger=PropertyChanged}"
+                                                 SelectedItemBinding="{Binding rKhachHang, UpdateSourceTrigger=PropertyChanged}"
                                                  ItemsSource="{x:Static PhuDinhData:tDonHang.rKhachHangs}"/>
         <!--Chanh-->
         <CustomControl:DataGridComboBoxColumnExt x:Name="chanhColumn" Width="80" Header="Chanh"
-                                                 TextBinding="{Binding Chanh.TenBaiXeChanh, Mode=OneWay}"
+                                                 TextBinding="{Binding rChanh.TenBaiXeChanh, Mode=OneWay}"
                                                  DisplayMemberPath="TenBaiXeChanh"
                                                  SelectedValuePath="Ma"
                                                  SelectedValueBinding="{Binding MaChanh, UpdateSourceTrigger=PropertyChanged}"
-                                                 SelectedItemBinding="{Binding Chanh, UpdateSourceTrigger=PropertyChanged}"
+                                                 SelectedItemBinding="{Binding rChanh, UpdateSourceTrigger=PropertyChanged}"
                                                  ItemsSource="{x:Static PhuDinhData:tDonHang.rChanhs}"/>
     </DataGrid.Columns>
 </CustomControl:DataGridExt>

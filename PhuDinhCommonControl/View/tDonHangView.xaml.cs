@@ -71,10 +71,6 @@ namespace PhuDinhCommonControl
 
             foreach (var tDonHang in data)
             {
-                tDonHang.KhachHang = PhuDinhData.tDonHang.rKhachHangs.FirstOrDefault(
-                    p => p.Ma == tDonHang.MaKhachHang);
-                tDonHang.Chanh = PhuDinhData.tDonHang.rChanhs.FirstOrDefault(
-                    p => p.Ma == tDonHang.MaChanh);
             }
 
             var collection = new ObservableCollection<PhuDinhData.tDonHang>(data);

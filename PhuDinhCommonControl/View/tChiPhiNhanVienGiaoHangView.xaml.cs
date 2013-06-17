@@ -66,10 +66,6 @@ namespace PhuDinhCommonControl
 
             foreach (var tChiPhiNhanVienGiaoHang in data)
             {
-                tChiPhiNhanVienGiaoHang.NhanVienGiaoHang = PhuDinhData.tChiPhiNhanVienGiaoHang.rNhanVienGiaoHangs.FirstOrDefault(
-                    p => p.Ma == tChiPhiNhanVienGiaoHang.MaNhanVienGiaoHang);
-                tChiPhiNhanVienGiaoHang.LoaiChiPhi = PhuDinhData.tChiPhiNhanVienGiaoHang.rLoaiChiPhis.FirstOrDefault(
-                        p => p.Ma == tChiPhiNhanVienGiaoHang.MaLoaiChiPhi);
             }
 
             var collection = new ObservableCollection<PhuDinhData.tChiPhiNhanVienGiaoHang>(data);

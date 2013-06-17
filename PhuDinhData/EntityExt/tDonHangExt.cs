@@ -13,10 +13,6 @@ namespace PhuDinhData
             }
         }
 
-        public tChuyenHang ChuyenHang { get; set; }
-        public rKhachHang KhachHang { get; set; }
-        public rChanh Chanh { get; set; }
-
         private static List<tChuyenHang> _tChuyenHang = new List<tChuyenHang>();
         public static List<tChuyenHang> tChuyenHangs
         {

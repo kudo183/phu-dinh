@@ -54,9 +54,6 @@ namespace PhuDinhCommonControl
 
             foreach (var rKhachHang in data)
             {
-                rKhachHang.DiaDiem = _rDiaDiems.FirstOrDefault(
-                    p => p.Ma == rKhachHang.MaDiaDiem);
-
                 rKhachHang.rDiaDiemList = _rDiaDiems;
             }
 

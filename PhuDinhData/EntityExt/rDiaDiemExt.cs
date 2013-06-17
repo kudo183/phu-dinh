@@ -9,8 +9,6 @@ namespace PhuDinhData
             get { return string.Format("{0}_{1}", rNuoc.TenNuoc, Tinh); }
         }
 
-        public rNuoc Nuoc { get; set; }
-
         public List<rNuoc> rNuocList { get; set; }
     }
 }

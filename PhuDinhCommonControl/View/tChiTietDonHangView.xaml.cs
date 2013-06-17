@@ -63,10 +63,6 @@ namespace PhuDinhCommonControl
 
             foreach (var tChiTietDonHang in data)
             {
-                tChiTietDonHang.DonHang = PhuDinhData.tChiTietDonHang.tDonHangs.FirstOrDefault(
-                    p => p.Ma == tChiTietDonHang.MaDonHang);
-                tChiTietDonHang.MatHang = PhuDinhData.tChiTietDonHang.tMatHangs.FirstOrDefault(
-                        p => p.Ma == tChiTietDonHang.MaMatHang);
             }
 
             this.dgChiTietDonHang.DataContext = data;

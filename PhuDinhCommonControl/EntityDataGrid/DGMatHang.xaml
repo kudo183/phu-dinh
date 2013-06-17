@@ -13,11 +13,11 @@
         <CustomControl:DataGridReadOnlyTextColumn x:Name="maColumn"/>
         <!--Loai Hang-->
         <CustomControl:DataGridComboBoxColumnExt x:Name="loaiHangColumn" Header="Loại hàng"
-                                                 TextBinding="{Binding LoaiHang.TenLoai, Mode=OneWay}"
+                                                 TextBinding="{Binding rLoaiHang.TenLoai, Mode=OneWay}"
                                                  DisplayMemberPath="TenLoai"
                                                  SelectedValuePath="Ma"
                                                  SelectedValueBinding="{Binding MaLoai, UpdateSourceTrigger=PropertyChanged}"
-                                                 SelectedItemBinding="{Binding LoaiHang, UpdateSourceTrigger=PropertyChanged}"
+                                                 SelectedItemBinding="{Binding rLoaiHang, UpdateSourceTrigger=PropertyChanged}"
                                                  ItemsSource="{Binding rLoaiHangList}"/>
         <CustomControl:DataGridTextColumnExt x:Name="tenMatHangColumn" Header="Tên Mặt Hàng" Binding="{Binding TenMatHang}"/>
     </DataGrid.Columns>

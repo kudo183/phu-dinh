@@ -9,8 +9,6 @@ namespace PhuDinhData
             get { return string.Format("{0}_{1}", TenKhachHang, rDiaDiem.TenDiaDiem); }
         }
 
-        public rDiaDiem DiaDiem { get; set; }
-
         public List<rDiaDiem> rDiaDiemList { get; set; }
     }
 }

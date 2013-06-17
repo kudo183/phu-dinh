@@ -9,9 +9,6 @@ namespace PhuDinhData
             get { return string.Format("{0}_{1}", tChuyenHang.TenChuyenHang, tDonHang.TenDonHang); }
         }
 
-        public tChuyenHang ChuyenHang { get; set; }
-        public tDonHang DonHang { get; set; }
-
         private static List<tChuyenHang> _tChuyenHangs = new List<tChuyenHang>();
         public static List<tChuyenHang> tChuyenHangs
         {

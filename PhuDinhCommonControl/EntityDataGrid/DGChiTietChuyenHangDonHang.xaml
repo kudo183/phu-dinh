@@ -12,19 +12,19 @@
         <CustomControl:DataGridReadOnlyTextColumn x:Name="maColumn"/>
         <!--Chuyen hang don hang-->
         <CustomControl:DataGridComboBoxColumnExt x:Name="chuyenHangDonHangColumn" Width="150" Header="Chuyen hang don hang"
-                                                 TextBinding="{Binding ChuyenHangDonHang.TenChuyenHangDonHang, Mode=OneWay}"
+                                                 TextBinding="{Binding tChuyenHangDonHang.TenChuyenHangDonHang, Mode=OneWay}"
                                                  DisplayMemberPath="TenChuyenHangDonHang"
                                                  SelectedValuePath="Ma"
                                                  SelectedValueBinding="{Binding MaChuyenHangDonHang, UpdateSourceTrigger=PropertyChanged}"
-                                                 SelectedItemBinding="{Binding ChuyenHangDonHang, UpdateSourceTrigger=PropertyChanged}"
+                                                 SelectedItemBinding="{Binding tChuyenHangDonHang, UpdateSourceTrigger=PropertyChanged}"
                                                  ItemsSource="{x:Static PhuDinhData:tChiTietChuyenHangDonHang.tChuyenHangDonHangs}"/>
         <!--Mat hang-->
         <CustomControl:DataGridComboBoxColumnExt x:Name="matHangColumn" Width="80" Header="Mat Hang"
-                                                 TextBinding="{Binding MatHang.TenMatHang, Mode=OneWay}"
+                                                 TextBinding="{Binding tMatHang.TenMatHang, Mode=OneWay}"
                                                  DisplayMemberPath="TenMatHang"
                                                  SelectedValuePath="Ma"
                                                  SelectedValueBinding="{Binding MaMatHang, UpdateSourceTrigger=PropertyChanged}"
-                                                 SelectedItemBinding="{Binding MatHang, UpdateSourceTrigger=PropertyChanged}"
+                                                 SelectedItemBinding="{Binding tMatHang, UpdateSourceTrigger=PropertyChanged}"
                                                  ItemsSource="{x:Static PhuDinhData:tChiTietChuyenHangDonHang.tMatHangs}"/>
         <!--So luong-->
         <CustomControl:DataGridTextRightAlignColumn x:Name="soLuongColumn"/>

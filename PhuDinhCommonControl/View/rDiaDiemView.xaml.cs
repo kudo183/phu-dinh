@@ -54,9 +54,6 @@ namespace PhuDinhCommonControl
 
             foreach (var rDiaDiem in data)
             {
-                rDiaDiem.Nuoc = _rNuocs.FirstOrDefault(
-                    p => p.Ma == rDiaDiem.MaNuoc);
-
                 rDiaDiem.rNuocList = _rNuocs;
             }
 

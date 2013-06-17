@@ -13,11 +13,11 @@
         <CustomControl:DataGridReadOnlyTextColumn x:Name="maColumn"/>
         <!--Phuong Tien-->
         <CustomControl:DataGridComboBoxColumnExt x:Name="phuongTienColumn" Header="Phương tiện"
-                                                 TextBinding="{Binding PhuongTien.TenPhuongTien, Mode=OneWay}"
+                                                 TextBinding="{Binding rPhuongTien.TenPhuongTien, Mode=OneWay}"
                                                  DisplayMemberPath="TenPhuongTien"
                                                  SelectedValuePath="Ma"
                                                  SelectedValueBinding="{Binding MaPhuongTien, UpdateSourceTrigger=PropertyChanged}"
-                                                 SelectedItemBinding="{Binding PhuongTien, UpdateSourceTrigger=PropertyChanged}"
+                                                 SelectedItemBinding="{Binding rPhuongTien, UpdateSourceTrigger=PropertyChanged}"
                                                  ItemsSource="{Binding rPhuongTienList}"/>
         <CustomControl:DataGridTextColumnExt x:Name="tenNhanVienColumn" Header="Tên Nhân Viên" Binding="{Binding TenNhanVien}"/>
     </DataGrid.Columns>

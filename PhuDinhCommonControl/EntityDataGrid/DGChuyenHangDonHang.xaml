@@ -12,19 +12,19 @@
         <CustomControl:DataGridReadOnlyTextColumn x:Name="maColumn"/>
         <!--Chuyen hang-->
         <CustomControl:DataGridComboBoxColumnExt x:Name="chuyenHangDonHangColumn" Width="80" Header="Chuyen hang"
-                                                 TextBinding="{Binding ChuyenHang.TenChuyenHang, Mode=OneWay}"
+                                                 TextBinding="{Binding tChuyenHang.TenChuyenHang, Mode=OneWay}"
                                                  DisplayMemberPath="TenChuyenHang"
                                                  SelectedValuePath="Ma"
                                                  SelectedValueBinding="{Binding MaChuyenHang, UpdateSourceTrigger=PropertyChanged}"
-                                                 SelectedItemBinding="{Binding ChuyenHang, UpdateSourceTrigger=PropertyChanged}"
+                                                 SelectedItemBinding="{Binding tChuyenHang, UpdateSourceTrigger=PropertyChanged}"
                                                  ItemsSource="{x:Static PhuDinhData:tChuyenHangDonHang.tChuyenHangs}"/>
         <!--Don hang-->
         <CustomControl:DataGridComboBoxColumnExt x:Name="donHangColumn" Width="80" Header="Don Hang"
-                                                 TextBinding="{Binding DonHang.TenDonHang, Mode=OneWay}"
+                                                 TextBinding="{Binding tDonHang.TenDonHang, Mode=OneWay}"
                                                  DisplayMemberPath="TenDonHang"
                                                  SelectedValuePath="Ma"
                                                  SelectedValueBinding="{Binding MaDonHang, UpdateSourceTrigger=PropertyChanged}"
-                                                 SelectedItemBinding="{Binding DonHang, UpdateSourceTrigger=PropertyChanged}"
+                                                 SelectedItemBinding="{Binding tDonHang, UpdateSourceTrigger=PropertyChanged}"
                                                  ItemsSource="{x:Static PhuDinhData:tChuyenHangDonHang.tDonHangs}"/>
     </DataGrid.Columns>
 </CustomControl:DataGridExt>

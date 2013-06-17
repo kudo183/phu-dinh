@@ -52,9 +52,6 @@ namespace PhuDinhCommonControl
 
             foreach (var tMatHang in data)
             {
-                tMatHang.LoaiHang = _rLoaiHangs.FirstOrDefault(
-                    p => p.Ma == tMatHang.MaLoai);
-
                 tMatHang.rLoaiHangList = _rLoaiHangs;
             }
 

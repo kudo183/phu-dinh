@@ -54,9 +54,6 @@ namespace PhuDinhCommonControl
 
             foreach (var rNhanVienGiaoHang in data)
             {
-                rNhanVienGiaoHang.PhuongTien = _rPhuongTiens.FirstOrDefault(
-                    p => p.Ma == rNhanVienGiaoHang.MaPhuongTien);
-
                 rNhanVienGiaoHang.rPhuongTienList = _rPhuongTiens;
             }
 

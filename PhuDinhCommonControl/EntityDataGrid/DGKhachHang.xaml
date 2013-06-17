@@ -15,11 +15,11 @@
         <CustomControl:DataGridTextColumnExt x:Name="tenKhachHangColumn" Width="SizeToHeader" Header="Ten Khach Hang" Binding="{Binding TenKhachHang}"/>
         <!--Dia diem-->
         <CustomControl:DataGridComboBoxColumnExt x:Name="diaDiemColumn" Header="Dia diem"
-                                                 TextBinding="{Binding DiaDiem.TenDiaDiem, Mode=OneWay}"
+                                                 TextBinding="{Binding rDiaDiem.TenDiaDiem, Mode=OneWay}"
                                                  DisplayMemberPath="TenDiaDiem"
                                                  SelectedValuePath="Ma"
                                                  SelectedValueBinding="{Binding MaDiaDiem, UpdateSourceTrigger=PropertyChanged}"
-                                                 SelectedItemBinding="{Binding DiaDiem, UpdateSourceTrigger=PropertyChanged}"
+                                                 SelectedItemBinding="{Binding rDiaDiem, UpdateSourceTrigger=PropertyChanged}"
                                                  ItemsSource="{Binding rDiaDiemList}"/>
     </DataGrid.Columns>
 </CustomControl:DataGridExt>

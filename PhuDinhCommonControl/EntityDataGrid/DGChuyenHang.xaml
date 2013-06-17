@@ -16,11 +16,11 @@
         <CustomControl:DataGridTimeColumn x:Name="gioColumn"/>
         <!--Nhan vien giao hang-->
         <CustomControl:DataGridComboBoxColumnExt x:Name="nhanVienGiaoHangColumn" Width="80" Header="Nhan Vien"
-                                                 TextBinding="{Binding NhanVienGiaoHang.TenNhanVien, Mode=OneWay}"
+                                                 TextBinding="{Binding rNhanVienGiaoHang.TenNhanVien, Mode=OneWay}"
                                                  DisplayMemberPath="TenNhanVien"
                                                  SelectedValuePath="Ma"
                                                  SelectedValueBinding="{Binding MaNhanVienGiaoHang, UpdateSourceTrigger=PropertyChanged}"
-                                                 SelectedItemBinding="{Binding NhanVienGiaoHang, UpdateSourceTrigger=PropertyChanged}"
+                                                 SelectedItemBinding="{Binding rNhanVienGiaoHang, UpdateSourceTrigger=PropertyChanged}"
                                                  ItemsSource="{x:Static PhuDinhData:tChuyenHang.rNhanVienGiaoHangs}"/>
     </DataGrid.Columns>
 </CustomControl:DataGridExt>
