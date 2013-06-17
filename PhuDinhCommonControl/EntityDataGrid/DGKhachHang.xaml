@@ -14,7 +14,7 @@
         <!--Ten khach hang-->
         <CustomControl:DataGridTextColumnExt x:Name="tenKhachHangColumn" Width="SizeToHeader" Header="Ten Khach Hang" Binding="{Binding TenKhachHang}"/>
         <!--Dia diem-->
-        <CustomControl:DataGridComboBoxColumnExt x:Name="diaDiemColumn" Width="80" Header="Dia diem"
+        <CustomControl:DataGridComboBoxColumnExt x:Name="diaDiemColumn" Header="Dia diem"
                                                  TextBinding="{Binding DiaDiem.TenDiaDiem, Mode=OneWay}"
                                                  DisplayMemberPath="TenDiaDiem"
                                                  SelectedValuePath="Ma"
