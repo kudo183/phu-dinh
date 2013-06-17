@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DesignTimeData\DDrNuoc.cs" />
     <Compile Include="DesignTimeData\DDrBaiXe.cs" />
     <Compile Include="DesignTimeData\DDrChanh.cs" />
     <Compile Include="EntityExt\tChuyenHangDonHangExt.cs" />
@@ -56,6 +57,7 @@
     <Compile Include="rDiaDiem.cs">
       <DependentUpon>PhuDinh.tt</DependentUpon>
     </Compile>
+    <Compile Include="Repository\rNuocRepository.cs" />
     <Compile Include="Repository\tChuyenHangRepository.cs" />
     <Compile Include="Repository\tChiTietDonHangRepository.cs" />
     <Compile Include="Repository\tChuyenHangDonHangRepository.cs" />

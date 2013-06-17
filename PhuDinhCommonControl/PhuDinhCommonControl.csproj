@@ -85,6 +85,9 @@
     <Compile Include="CustomControl\TimeInput.xaml.cs">
       <DependentUpon>TimeInput.xaml</DependentUpon>
     </Compile>
+    <Compile Include="EntityDataGrid\DGNuoc.xaml.cs">
+      <DependentUpon>DGNuoc.xaml</DependentUpon>
+    </Compile>
     <Compile Include="EntityDataGrid\DGDonHang.xaml.cs">
       <DependentUpon>DGDonHang.xaml</DependentUpon>
     </Compile>
@@ -132,6 +135,9 @@
     </Compile>
     <Compile Include="Menu\MainMenu.xaml.cs">
       <DependentUpon>MainMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\rNuocView.xaml.cs">
+      <DependentUpon>rNuocView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\tChuyenHangDonHangView.xaml.cs">
       <DependentUpon>tChuyenHangDonHangView.xaml</DependentUpon>
@@ -254,6 +260,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="EntityDataGrid\DGNuoc.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="EntityDataGrid\DGDonHang.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -317,6 +327,10 @@
     <Page Include="Menu\MainMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\rNuocView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="View\tChuyenHangDonHangView.xaml">
       <Generator>MSBuild:Compile</Generator>

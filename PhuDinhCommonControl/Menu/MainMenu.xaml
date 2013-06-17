@@ -12,6 +12,7 @@
         <ToggleButton Content="Loại chi phí" Margin="5" x:Name="rLoaiChiPhi"/>
         <ToggleButton Content="Loại hàng" Margin="5" x:Name="rLoaiHang"/>
         <ToggleButton Content="Nhân viên giao hàng" Margin="5" x:Name="rNhanVienGiaoHang"/>
+        <ToggleButton Content="Nước" Margin="5" x:Name="rNuoc"/>
         <ToggleButton Content="Phương tiện" Margin="5" x:Name="rPhuongTien"/>
         <ToggleButton Content="Chi phí giao hàng" Margin="5" x:Name="tChiPhiNhanVienGiaoHang"/>
         <ToggleButton Content="Chi tiết chuyến hàng đơn hàng" Margin="5" x:Name="tChiTietChuyenHangDonHang"/>

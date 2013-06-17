@@ -51,6 +51,9 @@ namespace PhuDinh
                 case Constant.MainMenuItems.rNhanVienGiaoHang:
                     result = new rNhanVienGiaoHangView();
                     break;
+                case Constant.MainMenuItems.rNuoc:
+                    result = new rNuocView();
+                    break;
                 case Constant.MainMenuItems.rPhuongTien:
                     result = new rPhuongTienView();
                     break;
