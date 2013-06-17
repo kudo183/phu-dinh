@@ -3,7 +3,6 @@
                            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-                           xmlns:PhuDinhData="clr-namespace:PhuDinhData;assembly=PhuDinhData"
                            xmlns:CustomControl="clr-namespace:PhuDinhCommonControl.CustomControl"
                            xmlns:DesignTimeData="clr-namespace:PhuDinhData.DesignTimeData;assembly=PhuDinhData"
                            mc:Ignorable="d"
@@ -20,6 +19,6 @@
                                                  SelectedValueBinding="{Binding MaLoai, UpdateSourceTrigger=PropertyChanged}"
                                                  SelectedItemBinding="{Binding LoaiHang, UpdateSourceTrigger=PropertyChanged}"
                                                  ItemsSource="{Binding rLoaiHangList}"/>
-        <CustomControl:DataGridTextColumnExt x:Name="tenMatHangColumn" Width="SizeToHeader" Header="Tên Mặt Hàng" Binding="{Binding TenMatHang}"/>
+        <CustomControl:DataGridTextColumnExt x:Name="tenMatHangColumn" Header="Tên Mặt Hàng" Binding="{Binding TenMatHang}"/>
     </DataGrid.Columns>
 </CustomControl:DataGridExt>
