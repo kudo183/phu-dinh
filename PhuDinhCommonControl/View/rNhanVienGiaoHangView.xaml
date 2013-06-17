@@ -4,7 +4,6 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:PhuDinhCommonControl="clr-namespace:PhuDinhCommonControl"
-             xmlns:PhuDinhData="clr-namespace:PhuDinhData;assembly=PhuDinhData"
              xmlns:EntityDataGrid="clr-namespace:PhuDinhCommonControl.EntityDataGrid"
              xmlns:Menu="clr-namespace:PhuDinhCommonControl.Menu" x:Class="PhuDinhCommonControl.rNhanVienGiaoHangView" 
              mc:Ignorable="d" 
