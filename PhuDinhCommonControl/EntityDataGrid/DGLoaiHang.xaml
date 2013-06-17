@@ -1,15 +1,17 @@
 ﻿<CustomControl:DataGridExt x:Class="PhuDinhCommonControl.EntityDataGrid.DGLoaiHang"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-                 xmlns:CustomControl="clr-namespace:PhuDinhCommonControl.CustomControl" mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300"
-          AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" SelectionMode="Single">
+                           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                           xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                           xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                           xmlns:CustomControl="clr-namespace:PhuDinhCommonControl.CustomControl"
+                           xmlns:DesignTimeData="clr-namespace:PhuDinhData.DesignTimeData;assembly=PhuDinhData"
+                           mc:Ignorable="d"
+                           d:DataContext="{x:Static DesignTimeData:DDrLoaiHang.rLoaiHangs}"
+                           AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" SelectionMode="Single">
     <DataGrid.Columns>
         <!--Ma-->
         <CustomControl:DataGridReadOnlyTextColumn x:Name="maColumn"/>
         <!--Ten loai-->
-        <CustomControl:DataGridTextColumnExt x:Name="tenLoaiColumn" Width="SizeToHeader" Header="Ten Loai" Binding="{Binding TenLoai}"/>
+        <CustomControl:DataGridTextColumnExt x:Name="tenLoaiColumn" Header="Ten Loai" Binding="{Binding TenLoai}"/>
     </DataGrid.Columns>
 </CustomControl:DataGridExt>

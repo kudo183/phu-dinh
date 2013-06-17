@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DesignTimeData\DDrLoaiHang.cs" />
     <Compile Include="DesignTimeData\DDrLoaiChiPhi.cs" />
     <Compile Include="DesignTimeData\DDrDiaDiem.cs" />
     <Compile Include="DesignTimeData\DDrKhachHang.cs" />
