@@ -20,16 +20,6 @@ namespace PhuDinhCommonControl
             FilterBaiXe = (p => true);
         }
 
-        private void SaveButton_Click(object sender, RoutedEventArgs e)
-        {
-            Save();
-        }
-
-        private void CancelButton_Click(object sender, RoutedEventArgs e)
-        {
-            Cancel();
-        }
-
         #region Override base view method
         public override void Save()
         {
