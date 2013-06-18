@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DesignTimeData\DDtChiPhiNhanVienGiaoHang.cs" />
     <Compile Include="DesignTimeData\DDtMatHang.cs" />
     <Compile Include="DesignTimeData\DDrNhanVienGiaoHang.cs" />
     <Compile Include="DesignTimeData\DDrPhuongTien.cs" />

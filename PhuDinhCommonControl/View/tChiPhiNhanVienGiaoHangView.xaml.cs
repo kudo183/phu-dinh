@@ -5,7 +5,6 @@ using System.Collections.Specialized;
 using System.Data;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Windows;
 
 namespace PhuDinhCommonControl
 {
@@ -18,6 +17,8 @@ namespace PhuDinhCommonControl
         public Expression<Func<PhuDinhData.rLoaiChiPhi, bool>> FilterLoaiChiPhi { get; set; }
         public Expression<Func<PhuDinhData.rNhanVienGiaoHang, bool>> FilterNhanVienGiaoHang { get; set; }
 
+        private List<PhuDinhData.rLoaiChiPhi> _rLoaiChiPhis;
+        private List<PhuDinhData.rNhanVienGiaoHang> _rNhanVienGiaoHangs;
         private readonly PhuDinhData.PhuDinhEntities _context = new PhuDinhData.PhuDinhEntities();
 
         public tChiPhiNhanVienGiaoHangView()
@@ -51,14 +52,15 @@ namespace PhuDinhCommonControl
 
         public override void RefreshView()
         {
-            PhuDinhData.tChiPhiNhanVienGiaoHang.rLoaiChiPhis = PhuDinhData.Repository.rLoaiChiPhiRepository.GetData(_context, FilterLoaiChiPhi);
-            PhuDinhData.tChiPhiNhanVienGiaoHang.rNhanVienGiaoHangs =
-                PhuDinhData.Repository.rNhanVienGiaoHangRepository.GetData(_context, FilterNhanVienGiaoHang);
+            _rLoaiChiPhis = PhuDinhData.Repository.rLoaiChiPhiRepository.GetData(_context, FilterLoaiChiPhi);
+            _rNhanVienGiaoHangs = PhuDinhData.Repository.rNhanVienGiaoHangRepository.GetData(_context, FilterNhanVienGiaoHang);
 
             var data = PhuDinhData.Repository.tChiPhiNhanVienGiaoHangRepository.GetData(_context, FilterChiPhiNhanVienGiaoHang);
 
             foreach (var tChiPhiNhanVienGiaoHang in data)
             {
+                tChiPhiNhanVienGiaoHang.rLoaiChiPhiList = _rLoaiChiPhis;
+                tChiPhiNhanVienGiaoHang.rNhanVienGiaoHangList = _rNhanVienGiaoHangs;
             }
 
             var collection = new ObservableCollection<PhuDinhData.tChiPhiNhanVienGiaoHang>(data);
