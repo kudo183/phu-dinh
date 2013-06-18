@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
+using System.Data;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Windows;
 
 namespace PhuDinhCommonControl
 {
@@ -18,6 +17,8 @@ namespace PhuDinhCommonControl
         public Expression<Func<PhuDinhData.rKhachHang, bool>> FilterKhachHang { get; set; }
         public Expression<Func<PhuDinhData.rChanh, bool>> FilterChanh { get; set; }
 
+        private readonly PhuDinhData.PhuDinhEntities _context = new PhuDinhData.PhuDinhEntities();
+
         public tDonHangView()
         {
             InitializeComponent();
@@ -28,27 +29,18 @@ namespace PhuDinhCommonControl
             FilterChanh = (p => true);
         }
 
-        private void SaveButton_Click(object sender, RoutedEventArgs e)
-        {
-            Save();
-        }
-
-        private void CancelButton_Click(object sender, RoutedEventArgs e)
-        {
-            Cancel();
-        }
-
         #region Override base view method
         public override void Save()
         {
             try
             {
                 var data = this.dgDonHang.DataContext as ObservableCollection<PhuDinhData.tDonHang>;
-                PhuDinhData.Repository.tDonHangRepository.Save(data.ToList(), FilterDonHang);
+                PhuDinhData.Repository.tDonHangRepository.Save(_context, data.ToList(), FilterDonHang);
                 RefreshView();
             }
             catch (Exception ex)
             {
+                PhuDinhCommon.EntityFrameworkUtils.UndoContextChange(_context, EntityState.Modified);
             }
         }
 
@@ -59,15 +51,14 @@ namespace PhuDinhCommonControl
 
         public override void RefreshView()
         {
-            var context = new PhuDinhData.PhuDinhEntities();
             PhuDinhData.tDonHang.tChuyenHangs =
-                PhuDinhData.Repository.tChuyenHangRepository.GetData(context, FilterChuyenHang);
+                PhuDinhData.Repository.tChuyenHangRepository.GetData(_context, FilterChuyenHang);
             PhuDinhData.tDonHang.rKhachHangs =
-                PhuDinhData.Repository.rKhachHangRepository.GetData(context, FilterKhachHang);
+                PhuDinhData.Repository.rKhachHangRepository.GetData(_context, FilterKhachHang);
             PhuDinhData.tDonHang.rChanhs =
-                PhuDinhData.Repository.rChanhRepository.GetData(context, FilterChanh);
+                PhuDinhData.Repository.rChanhRepository.GetData(_context, FilterChanh);
 
-            var data = PhuDinhData.Repository.tDonHangRepository.GetData(context, FilterDonHang);
+            var data = PhuDinhData.Repository.tDonHangRepository.GetData(_context, FilterDonHang);
 
             foreach (var tDonHang in data)
             {
