@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
+using System.Data;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Windows;
 
 namespace PhuDinhCommonControl
 {
@@ -17,6 +17,7 @@ namespace PhuDinhCommonControl
         public Expression<Func<PhuDinhData.rDiaDiem, bool>> FilterDiaDiem { get; set; }
 
         private List<PhuDinhData.rDiaDiem> _rDiaDiems;
+        private readonly PhuDinhData.PhuDinhEntities _context = new PhuDinhData.PhuDinhEntities();
 
         public rKhachHangView()
         {
@@ -32,11 +33,12 @@ namespace PhuDinhCommonControl
             try
             {
                 var data = this.dgKhachHang.DataContext as ObservableCollection<PhuDinhData.rKhachHang>;
-                PhuDinhData.Repository.rKhachHangRepository.Save(data.ToList(), FilterKhachHang);
+                PhuDinhData.Repository.rKhachHangRepository.Save(_context, data.ToList(), FilterKhachHang);
                 RefreshView();
             }
             catch (Exception ex)
             {
+                PhuDinhCommon.EntityFrameworkUtils.UndoContextChange(_context, EntityState.Modified);
             }
         }
 
@@ -47,10 +49,9 @@ namespace PhuDinhCommonControl
 
         public override void RefreshView()
         {
-            var context = new PhuDinhData.PhuDinhEntities();
-            _rDiaDiems = PhuDinhData.Repository.rDiaDiemRepository.GetData(context, FilterDiaDiem);
+            _rDiaDiems = PhuDinhData.Repository.rDiaDiemRepository.GetData(_context, FilterDiaDiem);
 
-            var data = PhuDinhData.Repository.rKhachHangRepository.GetData(context, FilterKhachHang);
+            var data = PhuDinhData.Repository.rKhachHangRepository.GetData(_context, FilterKhachHang);
 
             foreach (var rKhachHang in data)
             {

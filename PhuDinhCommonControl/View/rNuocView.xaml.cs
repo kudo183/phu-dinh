@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Windows;
@@ -12,6 +13,8 @@ namespace PhuDinhCommonControl
     public partial class rNuocView : BaseView
     {
         public Expression<Func<PhuDinhData.rNuoc, bool>> FilterNuoc { get; set; }
+
+        private readonly PhuDinhData.PhuDinhEntities _context = new PhuDinhData.PhuDinhEntities();
 
         public rNuocView()
         {
@@ -26,11 +29,12 @@ namespace PhuDinhCommonControl
             try
             {
                 var data = this.dgNuoc.DataContext as List<PhuDinhData.rNuoc>;
-                PhuDinhData.Repository.rNuocRepository.Save(data, FilterNuoc);
+                PhuDinhData.Repository.rNuocRepository.Save(_context, data, FilterNuoc);
                 RefreshView();
             }
             catch (Exception ex)
             {
+                PhuDinhCommon.EntityFrameworkUtils.UndoContextChange(_context, EntityState.Modified);
             }
         }
 
@@ -41,7 +45,7 @@ namespace PhuDinhCommonControl
 
         public override void RefreshView()
         {
-            this.dgNuoc.DataContext = PhuDinhData.Repository.rNuocRepository.GetData(FilterNuoc);
+            this.dgNuoc.DataContext = PhuDinhData.Repository.rNuocRepository.GetData(_context, FilterNuoc);
         }
         #endregion
     }

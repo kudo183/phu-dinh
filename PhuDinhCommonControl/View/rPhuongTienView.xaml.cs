@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq.Expressions;
 
 namespace PhuDinhCommonControl
@@ -10,6 +11,8 @@ namespace PhuDinhCommonControl
     public partial class rPhuongTienView : BaseView
     {
         public Expression<Func<PhuDinhData.rPhuongTien, bool>> FilterPhuongTien { get; set; }
+        
+        private readonly PhuDinhData.PhuDinhEntities _context = new PhuDinhData.PhuDinhEntities();
 
         public rPhuongTienView()
         {
@@ -24,11 +27,12 @@ namespace PhuDinhCommonControl
             try
             {
                 var data = this.dgPhuongTien.DataContext as List<PhuDinhData.rPhuongTien>;
-                PhuDinhData.Repository.rPhuongTienRepository.Save(data, FilterPhuongTien);
+                PhuDinhData.Repository.rPhuongTienRepository.Save(_context, data, FilterPhuongTien);
                 RefreshView();
             }
             catch (Exception ex)
             {
+                PhuDinhCommon.EntityFrameworkUtils.UndoContextChange(_context, EntityState.Modified);
             }
         }
 
@@ -39,7 +43,7 @@ namespace PhuDinhCommonControl
 
         public override void RefreshView()
         {
-            this.dgPhuongTien.DataContext = PhuDinhData.Repository.rPhuongTienRepository.GetData(FilterPhuongTien);
+            this.dgPhuongTien.DataContext = PhuDinhData.Repository.rPhuongTienRepository.GetData(_context, FilterPhuongTien);
         }
         #endregion
     }

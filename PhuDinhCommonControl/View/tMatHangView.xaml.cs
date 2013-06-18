@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
+using System.Data;
 using System.Linq;
 using System.Linq.Expressions;
 
@@ -16,6 +17,7 @@ namespace PhuDinhCommonControl
         public Expression<Func<PhuDinhData.rLoaiHang, bool>> FilterLoaiHang { get; set; }
 
         private List<PhuDinhData.rLoaiHang> _rLoaiHangs;
+        private readonly PhuDinhData.PhuDinhEntities _context = new PhuDinhData.PhuDinhEntities();
 
         public tMatHangView()
         {
@@ -31,11 +33,12 @@ namespace PhuDinhCommonControl
             try
             {
                 var data = this.dgMatHang.DataContext as ObservableCollection<PhuDinhData.tMatHang>;
-                PhuDinhData.Repository.tMatHangRepository.Save(data.ToList(), FilterMatHang);
+                PhuDinhData.Repository.tMatHangRepository.Save(_context, data.ToList(), FilterMatHang);
                 RefreshView();
             }
             catch (Exception ex)
             {
+                PhuDinhCommon.EntityFrameworkUtils.UndoContextChange(_context, EntityState.Modified);
             }
         }
 
@@ -46,9 +49,8 @@ namespace PhuDinhCommonControl
 
         public override void RefreshView()
         {
-            var context = new PhuDinhData.PhuDinhEntities();
-            _rLoaiHangs = PhuDinhData.Repository.rLoaiHangRepository.GetData(context, FilterLoaiHang);
-            var data = PhuDinhData.Repository.tMatHangRepository.GetData(context, FilterMatHang);
+            _rLoaiHangs = PhuDinhData.Repository.rLoaiHangRepository.GetData(_context, FilterLoaiHang);
+            var data = PhuDinhData.Repository.tMatHangRepository.GetData(_context, FilterMatHang);
 
             foreach (var tMatHang in data)
             {

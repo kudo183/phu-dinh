@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
+using System.Data;
 using System.Linq;
 using System.Linq.Expressions;
 
@@ -16,6 +17,8 @@ namespace PhuDinhCommonControl
         public Expression<Func<PhuDinhData.rBaiXe, bool>> FilterBaiXe { get; set; }
 
         private List<PhuDinhData.rBaiXe> _rBaiXes;
+        private readonly PhuDinhData.PhuDinhEntities _context = new PhuDinhData.PhuDinhEntities();
+
         public rChanhView()
         {
             InitializeComponent();
@@ -30,11 +33,12 @@ namespace PhuDinhCommonControl
             try
             {
                 var data = this.dgChanh.DataContext as ObservableCollection<PhuDinhData.rChanh>;
-                PhuDinhData.Repository.rChanhRepository.Save(data.ToList(), FilterChanh);
+                PhuDinhData.Repository.rChanhRepository.Save(_context, data.ToList(), FilterChanh);
                 RefreshView();
             }
             catch (Exception ex)
             {
+                PhuDinhCommon.EntityFrameworkUtils.UndoContextChange(_context, EntityState.Modified);
             }
         }
 
@@ -45,17 +49,12 @@ namespace PhuDinhCommonControl
 
         public override void RefreshView()
         {
-            var context = new PhuDinhData.PhuDinhEntities();
+            _rBaiXes = PhuDinhData.Repository.rBaiXeRepository.GetData(_context, FilterBaiXe);
 
-            _rBaiXes = PhuDinhData.Repository.rBaiXeRepository.GetData(context, FilterBaiXe);
-
-            var data = PhuDinhData.Repository.rChanhRepository.GetData(context, FilterChanh);
+            var data = PhuDinhData.Repository.rChanhRepository.GetData(_context, FilterChanh);
 
             foreach (var rChanh in data)
             {
-                //rChanh.BaiXe = _rBaiXes.FirstOrDefault(
-                //    p => p.Ma == rChanh.MaBaiXe);
-
                 rChanh.rBaiXeList = _rBaiXes;
             }
 

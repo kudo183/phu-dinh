@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq.Expressions;
 
 namespace PhuDinhCommonControl
@@ -10,6 +11,8 @@ namespace PhuDinhCommonControl
     public partial class rLoaiChiPhiView : BaseView
     {
         public Expression<Func<PhuDinhData.rLoaiChiPhi, bool>> FilterLoaiChiPhi { get; set; }
+
+        private readonly PhuDinhData.PhuDinhEntities _context = new PhuDinhData.PhuDinhEntities();
 
         public rLoaiChiPhiView()
         {
@@ -24,11 +27,12 @@ namespace PhuDinhCommonControl
             try
             {
                 var data = this.dgLoaiChiPhi.DataContext as List<PhuDinhData.rLoaiChiPhi>;
-                PhuDinhData.Repository.rLoaiChiPhiRepository.Save(data, FilterLoaiChiPhi);
+                PhuDinhData.Repository.rLoaiChiPhiRepository.Save(_context, data, FilterLoaiChiPhi);
                 RefreshView();
             }
             catch (Exception ex)
             {
+                PhuDinhCommon.EntityFrameworkUtils.UndoContextChange(_context, EntityState.Modified);
             }
         }
 
@@ -39,7 +43,7 @@ namespace PhuDinhCommonControl
 
         public override void RefreshView()
         {
-            this.dgLoaiChiPhi.DataContext = PhuDinhData.Repository.rLoaiChiPhiRepository.GetData(FilterLoaiChiPhi);
+            this.dgLoaiChiPhi.DataContext = PhuDinhData.Repository.rLoaiChiPhiRepository.GetData(_context, FilterLoaiChiPhi);
         }
         #endregion
     }
