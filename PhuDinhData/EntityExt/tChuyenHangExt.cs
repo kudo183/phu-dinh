@@ -14,15 +14,6 @@ namespace PhuDinhData
             }
         }
 
-        private static List<rNhanVienGiaoHang> _rNhanVienGiaoHangs = new List<rNhanVienGiaoHang>();
-        public static List<rNhanVienGiaoHang> rNhanVienGiaoHangs
-        {
-            get { return _rNhanVienGiaoHangs; }
-            set
-            {
-                _rNhanVienGiaoHangs.Clear();
-                _rNhanVienGiaoHangs.AddRange(value);
-            }
-        }
+        public List<rNhanVienGiaoHang> rNhanVienGiaoHangList { get; set; }
     }
 }

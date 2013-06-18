@@ -5,7 +5,6 @@ using System.Collections.Specialized;
 using System.Data;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Windows;
 
 namespace PhuDinhCommonControl
 {
@@ -17,6 +16,7 @@ namespace PhuDinhCommonControl
         public Expression<Func<PhuDinhData.tChuyenHang, bool>> FilterChuyenHang { get; set; }
         public Expression<Func<PhuDinhData.rNhanVienGiaoHang, bool>> FilterNhanVienGiaoHang { get; set; }
 
+        private List<PhuDinhData.rNhanVienGiaoHang> _rNhanVienGiaoHangs;
         private readonly PhuDinhData.PhuDinhEntities _context = new PhuDinhData.PhuDinhEntities();
 
         public tChuyenHangView()
@@ -49,12 +49,13 @@ namespace PhuDinhCommonControl
 
         public override void RefreshView()
         {
-            PhuDinhData.tChuyenHang.rNhanVienGiaoHangs = PhuDinhData.Repository.rNhanVienGiaoHangRepository.GetData(_context, FilterNhanVienGiaoHang);
+            _rNhanVienGiaoHangs = PhuDinhData.Repository.rNhanVienGiaoHangRepository.GetData(_context, FilterNhanVienGiaoHang);
 
             var data = PhuDinhData.Repository.tChuyenHangRepository.GetData(_context, FilterChuyenHang);
 
-            foreach (var tDonHang in data)
+            foreach (var tChuyenHang in data)
             {
+                tChuyenHang.rNhanVienGiaoHangList = _rNhanVienGiaoHangs;
             }
 
             var collection = new ObservableCollection<PhuDinhData.tChuyenHang>(data);
