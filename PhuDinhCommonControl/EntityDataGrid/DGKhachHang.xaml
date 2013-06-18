@@ -6,13 +6,13 @@
                            xmlns:CustomControl="clr-namespace:PhuDinhCommonControl.CustomControl"
                            xmlns:DesignTimeData="clr-namespace:PhuDinhData.DesignTimeData;assembly=PhuDinhData"
                            mc:Ignorable="d"
-                           d:DataContext="{x:Static DesignTimeData:DDrChanh.rChanhs}"
+                           d:DataContext="{x:Static DesignTimeData:DDrKhachHang.rKhachHangs}"
                            AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" SelectionMode="Single">
     <DataGrid.Columns>
         <!--Ma-->
         <CustomControl:DataGridReadOnlyTextColumn x:Name="maColumn"/>
         <!--Ten khach hang-->
-        <CustomControl:DataGridTextColumnExt x:Name="tenKhachHangColumn" Width="SizeToHeader" Header="Ten Khach Hang" Binding="{Binding TenKhachHang}"/>
+        <CustomControl:DataGridTextColumnExt x:Name="tenKhachHangColumn" Header="Ten Khach Hang" Binding="{Binding TenKhachHang}"/>
         <!--Dia diem-->
         <CustomControl:DataGridComboBoxColumnExt x:Name="diaDiemColumn" Header="Dia diem"
                                                  TextBinding="{Binding rDiaDiem.TenDiaDiem, Mode=OneWay}"
