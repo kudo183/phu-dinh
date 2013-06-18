@@ -14,6 +14,8 @@ namespace PhuDinhCommonControl
         public Expression<Func<PhuDinhData.tDonHang, bool>> FilterDonHang { get; set; }
         public Expression<Func<PhuDinhData.tMatHang, bool>> FilterMatHang { get; set; }
 
+        private List<PhuDinhData.tDonHang> _tDonHangs;
+        private List<PhuDinhData.tMatHang> _tMatHangs;
         private readonly PhuDinhData.PhuDinhEntities _context = new PhuDinhData.PhuDinhEntities();
 
         public tChiTietDonHangView()
@@ -47,13 +49,15 @@ namespace PhuDinhCommonControl
 
         public override void RefreshView()
         {
-            PhuDinhData.tChiTietDonHang.tDonHangs = PhuDinhData.Repository.tDonHangRepository.GetData(_context, FilterDonHang);
-            PhuDinhData.tChiTietDonHang.tMatHangs = PhuDinhData.Repository.tMatHangRepository.GetData(_context, FilterMatHang);
+            _tDonHangs = PhuDinhData.Repository.tDonHangRepository.GetData(_context, FilterDonHang);
+            _tMatHangs = PhuDinhData.Repository.tMatHangRepository.GetData(_context, FilterMatHang);
 
             var data = PhuDinhData.Repository.tChiTietDonHangRepository.GetData(_context, FilterChiTietDonHang);
 
             foreach (var tChiTietDonHang in data)
             {
+                tChiTietDonHang.tDonHangList = _tDonHangs;
+                tChiTietDonHang.tMatHangList = _tMatHangs;
             }
 
             this.dgChiTietDonHang.DataContext = data;

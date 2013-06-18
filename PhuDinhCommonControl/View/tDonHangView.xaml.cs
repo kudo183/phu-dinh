@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Data;
@@ -13,9 +14,11 @@ namespace PhuDinhCommonControl
     public partial class tDonHangView : BaseView
     {
         public Expression<Func<PhuDinhData.tDonHang, bool>> FilterDonHang { get; set; }
-        public Expression<Func<PhuDinhData.tChuyenHang, bool>> FilterChuyenHang { get; set; }
         public Expression<Func<PhuDinhData.rKhachHang, bool>> FilterKhachHang { get; set; }
         public Expression<Func<PhuDinhData.rChanh, bool>> FilterChanh { get; set; }
+
+        private List<PhuDinhData.rKhachHang> _rKhachHangs;
+        private List<PhuDinhData.rChanh> _rChanhs;
 
         private readonly PhuDinhData.PhuDinhEntities _context = new PhuDinhData.PhuDinhEntities();
 
@@ -24,7 +27,6 @@ namespace PhuDinhCommonControl
             InitializeComponent();
 
             FilterDonHang = (p => true);
-            FilterChuyenHang = (p => true);
             FilterKhachHang = (p => true);
             FilterChanh = (p => true);
         }
@@ -51,17 +53,15 @@ namespace PhuDinhCommonControl
 
         public override void RefreshView()
         {
-            PhuDinhData.tDonHang.tChuyenHangs =
-                PhuDinhData.Repository.tChuyenHangRepository.GetData(_context, FilterChuyenHang);
-            PhuDinhData.tDonHang.rKhachHangs =
-                PhuDinhData.Repository.rKhachHangRepository.GetData(_context, FilterKhachHang);
-            PhuDinhData.tDonHang.rChanhs =
-                PhuDinhData.Repository.rChanhRepository.GetData(_context, FilterChanh);
+            _rKhachHangs = PhuDinhData.Repository.rKhachHangRepository.GetData(_context, FilterKhachHang);
+            _rChanhs = PhuDinhData.Repository.rChanhRepository.GetData(_context, FilterChanh);
 
             var data = PhuDinhData.Repository.tDonHangRepository.GetData(_context, FilterDonHang);
 
             foreach (var tDonHang in data)
             {
+                tDonHang.rChanhList = _rChanhs;
+                tDonHang.rKhachHangList = _rKhachHangs;
             }
 
             var collection = new ObservableCollection<PhuDinhData.tDonHang>(data);

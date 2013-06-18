@@ -1,31 +1,32 @@
 ﻿<CustomControl:DataGridExt x:Class="PhuDinhCommonControl.EntityDataGrid.DGChiTietDonHang"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-          xmlns:PhuDinhData="clr-namespace:PhuDinhData;assembly=PhuDinhData"
-                 xmlns:CustomControl="clr-namespace:PhuDinhCommonControl.CustomControl" mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300"
-          AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" SelectionMode="Single">
+                           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                           xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                           xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                           xmlns:CustomControl="clr-namespace:PhuDinhCommonControl.CustomControl"
+                           xmlns:DesignTimeData="clr-namespace:PhuDinhData.DesignTimeData;assembly=PhuDinhData"
+                           mc:Ignorable="d"
+                           d:DataContext="{x:Static DesignTimeData:DDtChiTietDonHang.tChiTietDonHangs}"
+                           AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" SelectionMode="Single">
     <DataGrid.Columns>
         <!--Ma-->
         <CustomControl:DataGridReadOnlyTextColumn x:Name="maColumn"/>
         <!--Don hang-->
-        <CustomControl:DataGridComboBoxColumnExt x:Name="donHangColumn" Width="80" Header="Don hang"
+        <CustomControl:DataGridComboBoxColumnExt x:Name="donHangColumn" Header="Don hang"
                                                  TextBinding="{Binding tDonHang.TenDonHang, Mode=OneWay}"
                                                  DisplayMemberPath="TenDonHang"
                                                  SelectedValuePath="Ma"
                                                  SelectedValueBinding="{Binding MaDonHang, UpdateSourceTrigger=PropertyChanged}"
                                                  SelectedItemBinding="{Binding tDonHang, UpdateSourceTrigger=PropertyChanged}"
-                                                 ItemsSource="{x:Static PhuDinhData:tChiTietDonHang.tDonHangs}"/>
+                                                 ItemsSource="{Binding tDonHangList}"/>
         <!--Mat hang-->
-        <CustomControl:DataGridComboBoxColumnExt x:Name="matHangColumn" Width="80" Header="Mat Hang"
+        <CustomControl:DataGridComboBoxColumnExt x:Name="matHangColumn" Header="Mat Hang"
                                                  TextBinding="{Binding tMatHang.TenMatHang, Mode=OneWay}"
                                                  DisplayMemberPath="TenMatHang"
                                                  SelectedValuePath="Ma"
                                                  SelectedValueBinding="{Binding MaMatHang, UpdateSourceTrigger=PropertyChanged}"
                                                  SelectedItemBinding="{Binding tMatHang, UpdateSourceTrigger=PropertyChanged}"
-                                                 ItemsSource="{x:Static PhuDinhData:tChiTietDonHang.tMatHangs}"/>
+                                                 ItemsSource="{Binding tMatHangList}"/>
         <!--So luong-->
         <CustomControl:DataGridTextRightAlignColumn x:Name="soLuongColumn"/>
     </DataGrid.Columns>
