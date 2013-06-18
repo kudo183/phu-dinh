@@ -46,6 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DesignTimeData\DDtChiTietChuyenHangDonHang.cs" />
+    <Compile Include="DesignTimeData\DDtChuyenHangDonHang.cs" />
     <Compile Include="DesignTimeData\DDtDonHang.cs" />
     <Compile Include="DesignTimeData\DDtChiTietDonHang.cs" />
     <Compile Include="DesignTimeData\DDtChuyenHang.cs" />

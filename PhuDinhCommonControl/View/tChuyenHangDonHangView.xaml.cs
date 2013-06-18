@@ -16,6 +16,8 @@ namespace PhuDinhCommonControl
         public Expression<Func<PhuDinhData.tChuyenHang, bool>> FilterChuyenHang { get; set; }
         public Expression<Func<PhuDinhData.tDonHang, bool>> FilterDonHang { get; set; }
 
+        private List<PhuDinhData.tChuyenHang> _tChuyenHangs;
+        private List<PhuDinhData.tDonHang> _tDonHangs;
         private readonly PhuDinhData.PhuDinhEntities _context = new PhuDinhData.PhuDinhEntities();
 
         public tChuyenHangDonHangView()
@@ -49,13 +51,15 @@ namespace PhuDinhCommonControl
 
         public override void RefreshView()
         {
-            PhuDinhData.tChuyenHangDonHang.tChuyenHangs = PhuDinhData.Repository.tChuyenHangRepository.GetData(_context, FilterChuyenHang);
-            PhuDinhData.tChuyenHangDonHang.tDonHangs = PhuDinhData.Repository.tDonHangRepository.GetData(_context, FilterDonHang);
+            _tChuyenHangs = PhuDinhData.Repository.tChuyenHangRepository.GetData(_context, FilterChuyenHang);
+            _tDonHangs = PhuDinhData.Repository.tDonHangRepository.GetData(_context, FilterDonHang);
 
             var data = PhuDinhData.Repository.tChuyenHangDonHangRepository.GetData(_context, FilterChuyenHangDonHang);
 
             foreach (var tChuyenHangDonHang in data)
             {
+                tChuyenHangDonHang.tChuyenHangList = _tChuyenHangs;
+                tChuyenHangDonHang.tDonHangList = _tDonHangs;
             }
 
             this.dgChuyenHangDonHang.DataContext = data;
