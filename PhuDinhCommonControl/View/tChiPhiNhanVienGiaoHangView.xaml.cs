@@ -74,8 +74,10 @@ namespace PhuDinhCommonControl
         {
             if (e.Action == NotifyCollectionChangedAction.Add)
             {
-                var chiPhiNhanVienGiaoHang = e.NewItems[0] as PhuDinhData.tChiPhiNhanVienGiaoHang;
-                chiPhiNhanVienGiaoHang.Ngay = DateTime.Now;
+                var tChiPhiNhanVienGiaoHang = e.NewItems[0] as PhuDinhData.tChiPhiNhanVienGiaoHang;
+                tChiPhiNhanVienGiaoHang.Ngay = DateTime.Now;
+                tChiPhiNhanVienGiaoHang.rLoaiChiPhiList = _rLoaiChiPhis;
+                tChiPhiNhanVienGiaoHang.rNhanVienGiaoHangList = _rNhanVienGiaoHangs;
             }
         }
 

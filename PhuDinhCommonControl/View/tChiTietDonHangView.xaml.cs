@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.Data;
+using System.Linq;
 using System.Linq.Expressions;
 
 namespace PhuDinhCommonControl
@@ -32,8 +35,8 @@ namespace PhuDinhCommonControl
         {
             try
             {
-                var data = this.dgChiTietDonHang.DataContext as List<PhuDinhData.tChiTietDonHang>;
-                PhuDinhData.Repository.tChiTietDonHangRepository.Save(_context, data, FilterChiTietDonHang);
+                var data = this.dgChiTietDonHang.DataContext as ObservableCollection<PhuDinhData.tChiTietDonHang>;
+                PhuDinhData.Repository.tChiTietDonHangRepository.Save(_context, data.ToList(), FilterChiTietDonHang);
                 RefreshView();
             }
             catch (Exception ex)
@@ -60,9 +63,21 @@ namespace PhuDinhCommonControl
                 tChiTietDonHang.tMatHangList = _tMatHangs;
             }
 
-            this.dgChiTietDonHang.DataContext = data;
+            var collection = new ObservableCollection<PhuDinhData.tChiTietDonHang>(data);
+            collection.CollectionChanged += collection_CollectionChanged;
+            this.dgChiTietDonHang.DataContext = collection;
 
             this.dgChiTietDonHang.UpdateLayout();
+        }
+
+        void collection_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            if (e.Action == NotifyCollectionChangedAction.Add)
+            {
+                var tChiTietDonHang = e.NewItems[0] as PhuDinhData.tChiTietDonHang;
+                tChiTietDonHang.tDonHangList = _tDonHangs;
+                tChiTietDonHang.tMatHangList = _tMatHangs;
+            }
         }
         #endregion
     }

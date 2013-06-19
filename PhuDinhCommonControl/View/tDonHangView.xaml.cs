@@ -75,8 +75,10 @@ namespace PhuDinhCommonControl
         {
             if (e.Action == NotifyCollectionChangedAction.Add)
             {
-                var chuyenHang = e.NewItems[0] as PhuDinhData.tDonHang;
-                chuyenHang.Ngay = DateTime.Now;
+                var tDonHang = e.NewItems[0] as PhuDinhData.tDonHang;
+                tDonHang.Ngay = DateTime.Now;
+                tDonHang.rChanhList = _rChanhs;
+                tDonHang.rKhachHangList = _rKhachHangs;
             }
         }
 

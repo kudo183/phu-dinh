@@ -66,8 +66,8 @@ namespace PhuDinhCommonControl
         {
             if (e.Action == NotifyCollectionChangedAction.Add)
             {
-                var matHang = e.NewItems[0] as PhuDinhData.tMatHang;
-                matHang.rLoaiHangList = _rLoaiHangs;
+                var tMatHang = e.NewItems[0] as PhuDinhData.tMatHang;
+                tMatHang.rLoaiHangList = _rLoaiHangs;
             }
         }
 

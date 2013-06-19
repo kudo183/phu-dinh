@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.Data;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Windows;
 
 namespace PhuDinhCommonControl
 {
@@ -34,8 +35,8 @@ namespace PhuDinhCommonControl
         {
             try
             {
-                var data = this.dgChuyenHangDonHang.DataContext as List<PhuDinhData.tChuyenHangDonHang>;
-                PhuDinhData.Repository.tChuyenHangDonHangRepository.Save(_context, data, FilterChuyenHangDonHang);
+                var data = this.dgChuyenHangDonHang.DataContext as ObservableCollection<PhuDinhData.tChuyenHangDonHang>;
+                PhuDinhData.Repository.tChuyenHangDonHangRepository.Save(_context, data.ToList(), FilterChuyenHangDonHang);
                 RefreshView();
             }
             catch (Exception ex)
@@ -62,9 +63,21 @@ namespace PhuDinhCommonControl
                 tChuyenHangDonHang.tDonHangList = _tDonHangs;
             }
 
-            this.dgChuyenHangDonHang.DataContext = data;
+            var collection = new ObservableCollection<PhuDinhData.tChuyenHangDonHang>(data);
+            collection.CollectionChanged += collection_CollectionChanged;
+            this.dgChuyenHangDonHang.DataContext = collection;
 
             this.dgChuyenHangDonHang.UpdateLayout();
+        }
+
+        void collection_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            if (e.Action == NotifyCollectionChangedAction.Add)
+            {
+                var tChuyenHangDonHang = e.NewItems[0] as PhuDinhData.tChuyenHangDonHang;
+                tChuyenHangDonHang.tChuyenHangList = _tChuyenHangs;
+                tChuyenHangDonHang.tDonHangList = _tDonHangs;
+            }
         }
         #endregion
     }
