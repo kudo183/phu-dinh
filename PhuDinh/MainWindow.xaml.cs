@@ -8,6 +8,12 @@ namespace PhuDinh
     /// </summary>
     public partial class MainWindow : Window
     {
+        private readonly ChuyenHangView _chuyenHangView = new ChuyenHangView();
+        private readonly DonHangView _donHangView = new DonHangView();
+        private readonly BaiXeView _baiXeView = new BaiXeView();
+        private readonly MatHangView _matHangView = new MatHangView();
+        private readonly AdminView _adminView = new AdminView();
+
         public MainWindow()
         {
             InitializeComponent();
@@ -15,27 +21,27 @@ namespace PhuDinh
 
         private void btnChuyenHang_Click(object sender, RoutedEventArgs e)
         {
-            _brdMainContent.Child = new ChuyenHangView();
+            _brdMainContent.Child = _chuyenHangView;
         }
 
         private void btnDonHang_Click(object sender, RoutedEventArgs e)
         {
-            _brdMainContent.Child = new DonHangView();
+            _brdMainContent.Child = _donHangView;
         }
 
         private void btnBaiXe_Click(object sender, RoutedEventArgs e)
         {
-            _brdMainContent.Child = new BaiXeView();
-        }
-
-        private void btnAdmin_Click(object sender, RoutedEventArgs e)
-        {
-            _brdMainContent.Child = new AdminView();
+            _brdMainContent.Child = _baiXeView;
         }
 
         private void btnMatHang_Click(object sender, RoutedEventArgs e)
         {
-            _brdMainContent.Child = new MatHangView();
+            _brdMainContent.Child = _matHangView;
+        }
+
+        private void btnAdmin_Click(object sender, RoutedEventArgs e)
+        {
+            _brdMainContent.Child = _adminView;
         }
     }
 }
