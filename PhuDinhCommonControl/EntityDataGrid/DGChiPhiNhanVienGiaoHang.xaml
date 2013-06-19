@@ -14,7 +14,7 @@
         <!--Ngay-->
         <CustomControl:DataGridDateColumn x:Name="ngayColumn"/>
         <!--Nhan vien giao hang-->
-        <CustomControl:DataGridComboBoxColumnExt x:Name="nhanVienGiaoHangColumn" Header="Nhan Vien"
+        <CustomControl:DataGridComboBoxColumnExt x:Name="nhanVienGiaoHangColumn" Header="Nhân Viên"
                                                  TextBinding="{Binding rNhanVienGiaoHang.TenNhanVien, Mode=OneWay}"
                                                  DisplayMemberPath="TenNhanVien"
                                                  SelectedValuePath="Ma"
@@ -22,7 +22,7 @@
                                                  SelectedItemBinding="{Binding rNhanVienGiaoHang, UpdateSourceTrigger=PropertyChanged}"
                                                  ItemsSource="{Binding rNhanVienGiaoHangList}"/>
         <!--Loai chi phi-->
-        <CustomControl:DataGridComboBoxColumnExt x:Name="loaiChiPhiColumn" Header="Loai Chi Phi"
+        <CustomControl:DataGridComboBoxColumnExt x:Name="loaiChiPhiColumn" Header="Loại Chi Phí"
                                                  TextBinding="{Binding rLoaiChiPhi.TenLoaiChiPhi, Mode=OneWay}"
                                                  DisplayMemberPath="TenLoaiChiPhi"
                                                  SelectedValuePath="Ma"
@@ -30,8 +30,8 @@
                                                  SelectedItemBinding="{Binding rLoaiChiPhi, UpdateSourceTrigger=PropertyChanged}"
                                                  ItemsSource="{Binding rLoaiChiPhiList}"/>        
         <!--So tien-->
-        <CustomControl:DataGridTextRightAlignColumn x:Name="soTienColumn" Binding="{Binding SoTien, StringFormat=\{0:N0\}}" Header="So Tien"/>            
+        <CustomControl:DataGridTextRightAlignColumn x:Name="soTienColumn" Binding="{Binding SoTien, StringFormat=\{0:N0\}}" Header="Số Tiền"/>            
         <!--Ghi chu-->
-        <CustomControl:DataGridTextColumnExt x:Name="ghiChuColumn" Binding="{Binding GhiChu}" Header="Ghi Chu"/>
+        <CustomControl:DataGridTextColumnExt x:Name="ghiChuColumn" Binding="{Binding GhiChu}" Header="Ghi Chú"/>
     </DataGrid.Columns>
 </CustomControl:DataGridExt>

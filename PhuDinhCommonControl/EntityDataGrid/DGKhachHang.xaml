@@ -12,9 +12,9 @@
         <!--Ma-->
         <CustomControl:DataGridReadOnlyTextColumn x:Name="maColumn"/>
         <!--Ten khach hang-->
-        <CustomControl:DataGridTextColumnExt x:Name="tenKhachHangColumn" Header="Ten Khach Hang" Binding="{Binding TenKhachHang}"/>
+        <CustomControl:DataGridTextColumnExt x:Name="tenKhachHangColumn" Header="Tên Khách Hàng" Binding="{Binding TenKhachHang}"/>
         <!--Dia diem-->
-        <CustomControl:DataGridComboBoxColumnExt x:Name="diaDiemColumn" Header="Dia diem"
+        <CustomControl:DataGridComboBoxColumnExt x:Name="diaDiemColumn" Header="Địa điểm"
                                                  TextBinding="{Binding rDiaDiem.TenDiaDiem, Mode=OneWay}"
                                                  DisplayMemberPath="TenDiaDiem"
                                                  SelectedValuePath="Ma"

@@ -12,7 +12,7 @@
         <!--Ma-->
         <CustomControl:DataGridReadOnlyTextColumn x:Name="maColumn"/>
         <!--Bai xe-->
-        <CustomControl:DataGridComboBoxColumnExt x:Name="baiXeColumn" Header="Bai xe"
+        <CustomControl:DataGridComboBoxColumnExt x:Name="baiXeColumn" Header="Bãi xe"
                                                  TextBinding="{Binding rBaiXe.DiaDiemBaiXe, Mode=OneWay}"
                                                  DisplayMemberPath="DiaDiemBaiXe"
                                                  SelectedValuePath="Ma"
@@ -20,6 +20,6 @@
                                                  SelectedItemBinding="{Binding rBaiXe, UpdateSourceTrigger=PropertyChanged}"
                                                  ItemsSource="{Binding rBaiXeList}"/>            
         <!--Ten chanh-->
-        <CustomControl:DataGridTextColumnExt x:Name="tenChanhColumn" Header="Ten Chanh" Binding="{Binding TenChanh}"/>
+        <CustomControl:DataGridTextColumnExt x:Name="tenChanhColumn" Header="Tên Chành" Binding="{Binding TenChanh}"/>
     </DataGrid.Columns>
 </CustomControl:DataGridExt>

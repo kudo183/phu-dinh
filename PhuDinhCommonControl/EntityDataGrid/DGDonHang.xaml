@@ -14,7 +14,7 @@
         <!--Ngay-->
         <CustomControl:DataGridDateColumn x:Name="ngayColumn"/>
         <!--Khach hang-->
-        <CustomControl:DataGridComboBoxColumnExt x:Name="khachHangColumn" Header="Khach hang"
+        <CustomControl:DataGridComboBoxColumnExt x:Name="khachHangColumn" Header="Khách hàng"
                                                  TextBinding="{Binding rKhachHang.TenKhachHangDiaDiem, Mode=OneWay}"
                                                  DisplayMemberPath="TenKhachHangDiaDiem"
                                                  SelectedValuePath="Ma"
@@ -22,7 +22,7 @@
                                                  SelectedItemBinding="{Binding rKhachHang, UpdateSourceTrigger=PropertyChanged}"
                                                  ItemsSource="{Binding rKhachHangList}"/>
         <!--Chanh-->
-        <CustomControl:DataGridComboBoxColumnExt x:Name="chanhColumn" Header="Chanh"
+        <CustomControl:DataGridComboBoxColumnExt x:Name="chanhColumn" Header="Chành"
                                                  TextBinding="{Binding rChanh.TenBaiXeChanh, Mode=OneWay}"
                                                  DisplayMemberPath="TenBaiXeChanh"
                                                  SelectedValuePath="Ma"

@@ -12,7 +12,7 @@
         <!--Ma-->
         <CustomControl:DataGridReadOnlyTextColumn x:Name="maColumn"/>
         <!--Chuyen hang-->
-        <CustomControl:DataGridComboBoxColumnExt x:Name="chuyenHangDonHangColumn" Header="Chuyen hang"
+        <CustomControl:DataGridComboBoxColumnExt x:Name="chuyenHangDonHangColumn" Header="Chuyến hàng"
                                                  TextBinding="{Binding tChuyenHang.TenChuyenHang, Mode=OneWay}"
                                                  DisplayMemberPath="TenChuyenHang"
                                                  SelectedValuePath="Ma"
@@ -20,7 +20,7 @@
                                                  SelectedItemBinding="{Binding tChuyenHang, UpdateSourceTrigger=PropertyChanged}"
                                                  ItemsSource="{Binding tChuyenHangList}"/>
         <!--Don hang-->
-        <CustomControl:DataGridComboBoxColumnExt x:Name="donHangColumn" Header="Don Hang"
+        <CustomControl:DataGridComboBoxColumnExt x:Name="donHangColumn" Header="Đơn Hàng"
                                                  TextBinding="{Binding tDonHang.TenDonHang, Mode=OneWay}"
                                                  DisplayMemberPath="TenDonHang"
                                                  SelectedValuePath="Ma"
