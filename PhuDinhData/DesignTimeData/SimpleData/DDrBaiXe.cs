@@ -2,20 +2,35 @@
 
 namespace PhuDinhData.DesignTimeData
 {
-    public class DDrBaiXe
+    public static class DDrBaiXe
     {
-        public static List<rBaiXe> rBaiXes = new List<rBaiXe>()
+        private static List<rBaiXe> _rBaiXes;
+        public static List<rBaiXe> rBaiXes
         {
-            new rBaiXe(){Ma = 1, DiaDiemBaiXe = "Bai xe 1"},
-            new rBaiXe(){Ma = 2, DiaDiemBaiXe = "Bai xe 2"},
-            new rBaiXe(){Ma = 3, DiaDiemBaiXe = "Bai xe 3"},
-            new rBaiXe(){Ma = 4, DiaDiemBaiXe = "Bai xe 4"},
-            new rBaiXe(){Ma = 5, DiaDiemBaiXe = "Bai xe 5"},
-            new rBaiXe(){Ma = 6, DiaDiemBaiXe = "Bai xe 6"},
-            new rBaiXe(){Ma = 7, DiaDiemBaiXe = "Bai xe 7"},
-            new rBaiXe(){Ma = 8, DiaDiemBaiXe = "Bai xe 8"},
-            new rBaiXe(){Ma = 9, DiaDiemBaiXe = "Bai xe 9"},
-            new rBaiXe(){Ma = 10, DiaDiemBaiXe = "Bai xe 10"},
-        };
+            get
+            {
+                if (_rBaiXes != null)
+                {
+                    return _rBaiXes;
+                }
+
+                const int count = 10;
+                _rBaiXes = new List<rBaiXe>(count);
+                for (var i = 1; i <= count; i++)
+                {
+                    _rBaiXes.Add(Create(i));
+                }
+                return _rBaiXes;
+            }
+        }
+
+        public static rBaiXe Create(int i)
+        {
+            return new rBaiXe()
+            {
+                Ma = i,
+                DiaDiemBaiXe = "Bai xe " + i
+            };
+        }
     }
 }

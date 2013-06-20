@@ -2,20 +2,38 @@
 
 namespace PhuDinhData.DesignTimeData
 {
-    public class DDrNuoc
+    public static class DDrNuoc
     {
-        public static List<rNuoc> rNuocs = new List<rNuoc>()
+        public static bool IsTouched { get; set; }
+
+        private static List<rNuoc> _rNuocs;
+        public static List<rNuoc> rNuocs
         {
-            new rNuoc(){Ma = 1, TenNuoc = "Nuoc 1"},
-            new rNuoc(){Ma = 2, TenNuoc = "Nuoc 2"},
-            new rNuoc(){Ma = 3, TenNuoc = "Nuoc 3"},
-            new rNuoc(){Ma = 4, TenNuoc = "Nuoc 4"},
-            new rNuoc(){Ma = 5, TenNuoc = "Nuoc 5"},
-            new rNuoc(){Ma = 6, TenNuoc = "Nuoc 6"},
-            new rNuoc(){Ma = 7, TenNuoc = "Nuoc 7"},
-            new rNuoc(){Ma = 8, TenNuoc = "Nuoc 8"},
-            new rNuoc(){Ma = 9, TenNuoc = "Nuoc 9"},
-            new rNuoc(){Ma = 10, TenNuoc = "Nuoc 10"},
-        };
+            get
+            {
+                if (_rNuocs != null)
+                {
+                    return _rNuocs;
+                }
+
+                const int count = 5;
+                _rNuocs = new List<rNuoc>(count);
+                for (var i = 1; i <= count; i++)
+                {
+                    _rNuocs.Add(Create(i));
+                }
+
+                return _rNuocs;
+            }
+        }
+
+        public static rNuoc Create(int i)
+        {
+            return new rNuoc()
+            {
+                Ma = i,
+                TenNuoc = "Nước " + i
+            };
+        }
     }
 }

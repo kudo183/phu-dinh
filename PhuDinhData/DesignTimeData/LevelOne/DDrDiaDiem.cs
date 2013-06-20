@@ -2,40 +2,38 @@
 
 namespace PhuDinhData.DesignTimeData
 {
-    public class DDrDiaDiem
+    public static class DDrDiaDiem
     {
-        public static List<rDiaDiem> rDiaDiems = new List<rDiaDiem>()
+        private static List<rDiaDiem> _rDiaDiems;
+        public static List<rDiaDiem> rDiaDiems
         {
-            new rDiaDiem() {Ma = 1, MaNuoc = 1, Tinh = "Tỉnh 1", rNuoc = new rNuoc(){Ma = 1, TenNuoc = "Nuoc 1"},
-                rNuocList = DDrNuoc.rNuocs
-            },
-            new rDiaDiem() {Ma = 2, MaNuoc = 2, Tinh = "Tỉnh 2", rNuoc = new rNuoc(){Ma = 2, TenNuoc = "Nuoc 2"},
-                rNuocList = DDrNuoc.rNuocs
-            },
-            new rDiaDiem() {Ma = 3, MaNuoc = 3, Tinh = "Tỉnh 3", rNuoc = new rNuoc(){Ma = 3, TenNuoc = "Nuoc 3"},
-                rNuocList = DDrNuoc.rNuocs
-            },
-            new rDiaDiem() {Ma = 4, MaNuoc = 4, Tinh = "Tỉnh 4", rNuoc = new rNuoc(){Ma = 4, TenNuoc = "Nuoc 4"},
-                rNuocList = DDrNuoc.rNuocs
-            },
-            new rDiaDiem() {Ma = 5, MaNuoc = 5, Tinh = "Tỉnh 5", rNuoc = new rNuoc(){Ma = 5, TenNuoc = "Nuoc 5"},
-                rNuocList = DDrNuoc.rNuocs
-            },
-            new rDiaDiem() {Ma = 6, MaNuoc = 6, Tinh = "Tỉnh 6", rNuoc = new rNuoc(){Ma = 6, TenNuoc = "Nuoc 6"},
-                rNuocList = DDrNuoc.rNuocs
-            },
-            new rDiaDiem() {Ma = 7, MaNuoc = 7, Tinh = "Tỉnh 7", rNuoc = new rNuoc(){Ma = 7, TenNuoc = "Nuoc 7"},
-                rNuocList = DDrNuoc.rNuocs
-            },
-            new rDiaDiem() {Ma = 8, MaNuoc = 8, Tinh = "Tỉnh 8", rNuoc = new rNuoc(){Ma = 8, TenNuoc = "Nuoc 8"},
-                rNuocList = DDrNuoc.rNuocs
-            },
-            new rDiaDiem() {Ma = 9, MaNuoc = 9, Tinh = "Tỉnh 9", rNuoc = new rNuoc(){Ma = 9, TenNuoc = "Nuoc 9"},
-                rNuocList = DDrNuoc.rNuocs
-            },
-            new rDiaDiem() {Ma = 10, MaNuoc = 10, Tinh = "Tỉnh 10", rNuoc = new rNuoc(){Ma = 10, TenNuoc = "Nuoc 10"},
-                rNuocList = DDrNuoc.rNuocs
+            get
+            {
+                if (_rDiaDiems != null)
+                {
+                    return _rDiaDiems;
+                }
+
+                const int count = 10;
+                _rDiaDiems = new List<rDiaDiem>(count);
+                for (var i = 1; i <= count; i++)
+                {
+                    _rDiaDiems.Add(Create(i));
+                }
+                return _rDiaDiems;
             }
-        };
+        }
+
+        public static rDiaDiem Create(int i)
+        {
+            return new rDiaDiem()
+            {
+                Ma = i,
+                MaNuoc = i,
+                Tinh = "Tỉnh " + i,
+                rNuoc = DDrNuoc.Create(i),
+                rNuocList = DDrNuoc.rNuocs
+            };
+        }
     }
 }

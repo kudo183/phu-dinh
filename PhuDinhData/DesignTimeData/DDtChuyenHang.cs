@@ -2,40 +2,40 @@
 
 namespace PhuDinhData.DesignTimeData
 {
-    public class DDtChuyenHang
+    public static class DDtChuyenHang
     {
-        public static List<tChuyenHang> tChuyenHangs = new List<tChuyenHang>()
+        private static List<tChuyenHang> _tChuyenHangs;
+        public static List<tChuyenHang> tChuyenHangs
         {
-            new tChuyenHang() {Ma = 1, MaNhanVienGiaoHang = 1, Ngay = System.DateTime.Now, Gio = System.DateTime.Now.TimeOfDay,
-                rNhanVienGiaoHangList = DDrNhanVienGiaoHang.rNhanVienGiaoHangs
-            },
-            new tChuyenHang() {Ma = 2, MaNhanVienGiaoHang = 2, Ngay = System.DateTime.Now, Gio = System.DateTime.Now.TimeOfDay,
-                rNhanVienGiaoHangList = DDrNhanVienGiaoHang.rNhanVienGiaoHangs
-            },
-            new tChuyenHang() {Ma = 3, MaNhanVienGiaoHang = 3, Ngay = System.DateTime.Now, Gio = System.DateTime.Now.TimeOfDay,
-                rNhanVienGiaoHangList = DDrNhanVienGiaoHang.rNhanVienGiaoHangs
-            },
-            new tChuyenHang() {Ma = 4, MaNhanVienGiaoHang = 4, Ngay = System.DateTime.Now, Gio = System.DateTime.Now.TimeOfDay,
-                rNhanVienGiaoHangList = DDrNhanVienGiaoHang.rNhanVienGiaoHangs
-            },
-            new tChuyenHang() {Ma = 5, MaNhanVienGiaoHang = 5, Ngay = System.DateTime.Now, Gio = System.DateTime.Now.TimeOfDay,
-                rNhanVienGiaoHangList = DDrNhanVienGiaoHang.rNhanVienGiaoHangs
-            },
-            new tChuyenHang() {Ma = 6, MaNhanVienGiaoHang = 6, Ngay = System.DateTime.Now, Gio = System.DateTime.Now.TimeOfDay,
-                rNhanVienGiaoHangList = DDrNhanVienGiaoHang.rNhanVienGiaoHangs
-            },
-            new tChuyenHang() {Ma = 7, MaNhanVienGiaoHang = 7, Ngay = System.DateTime.Now, Gio = System.DateTime.Now.TimeOfDay,
-                rNhanVienGiaoHangList = DDrNhanVienGiaoHang.rNhanVienGiaoHangs
-            },
-            new tChuyenHang() {Ma = 8, MaNhanVienGiaoHang = 8, Ngay = System.DateTime.Now, Gio = System.DateTime.Now.TimeOfDay,
-                rNhanVienGiaoHangList = DDrNhanVienGiaoHang.rNhanVienGiaoHangs
-            },
-            new tChuyenHang() {Ma = 9, MaNhanVienGiaoHang = 9, Ngay = System.DateTime.Now, Gio = System.DateTime.Now.TimeOfDay,
-                rNhanVienGiaoHangList = DDrNhanVienGiaoHang.rNhanVienGiaoHangs
-            },
-            new tChuyenHang() {Ma = 10, MaNhanVienGiaoHang = 10, Ngay = System.DateTime.Now, Gio = System.DateTime.Now.TimeOfDay,
-                rNhanVienGiaoHangList = DDrNhanVienGiaoHang.rNhanVienGiaoHangs
+            get
+            {
+                if (_tChuyenHangs != null)
+                {
+                    return _tChuyenHangs;
+                }
+
+                const int count = 10;
+                _tChuyenHangs = new List<tChuyenHang>(count);
+                for (var i = 1; i <= count; i++)
+                {
+                    _tChuyenHangs.Add(Create(i));
+                }
+
+                return _tChuyenHangs;
             }
-        };
+        }
+
+        public static tChuyenHang Create(int i)
+        {
+            return new tChuyenHang()
+            {
+                Ma = i,
+                MaNhanVienGiaoHang = i,
+                Ngay = System.DateTime.Now,
+                Gio = System.DateTime.Now.TimeOfDay,
+                rNhanVienGiaoHang = DDrNhanVienGiaoHang.Create(i),
+                rNhanVienGiaoHangList = DDrNhanVienGiaoHang.rNhanVienGiaoHangs
+            };
+        }
     }
 }

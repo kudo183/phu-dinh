@@ -2,20 +2,36 @@
 
 namespace PhuDinhData.DesignTimeData
 {
-    public class DDrPhuongTien
+    public static class DDrPhuongTien
     {
-        public static List<rPhuongTien> rPhuongTiens = new List<rPhuongTien>()
+        private static List<rPhuongTien> _rPhuongTiens;
+        public static List<rPhuongTien> rPhuongTiens
         {
-            new rPhuongTien(){Ma = 1, TenPhuongTien = "Phuong tien 1"},
-            new rPhuongTien(){Ma = 2, TenPhuongTien = "Phuong tien 2"},
-            new rPhuongTien(){Ma = 3, TenPhuongTien = "Phuong tien 3"},
-            new rPhuongTien(){Ma = 4, TenPhuongTien = "Phuong tien 4"},
-            new rPhuongTien(){Ma = 5, TenPhuongTien = "Phuong tien 5"},
-            new rPhuongTien(){Ma = 6, TenPhuongTien = "Phuong tien 6"},
-            new rPhuongTien(){Ma = 7, TenPhuongTien = "Phuong tien 7"},
-            new rPhuongTien(){Ma = 8, TenPhuongTien = "Phuong tien 8"},
-            new rPhuongTien(){Ma = 9, TenPhuongTien = "Phuong tien 9"},
-            new rPhuongTien(){Ma = 10, TenPhuongTien = "Phuong tien 10"},
-        };
+            get
+            {
+                if (_rPhuongTiens != null)
+                {
+                    return _rPhuongTiens;
+                }
+
+                const int count = 10;
+                _rPhuongTiens = new List<rPhuongTien>(count);
+                for (var i = 1; i <= count; i++)
+                {
+                    _rPhuongTiens.Add(Create(i));
+                }
+
+                return _rPhuongTiens;
+            }
+        }
+
+        public static rPhuongTien Create(int i)
+        {
+            return new rPhuongTien()
+            {
+                Ma = i,
+                TenPhuongTien = "Phương tiện " + i
+            };
+        }
     }
 }
