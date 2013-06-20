@@ -88,7 +88,7 @@
     <Compile Include="EntityDataGrid\DGDiaDiem.xaml.cs">
       <DependentUpon>DGDiaDiem.xaml</DependentUpon>
     </Compile>
-    <Compile Include="EntityDataGrid\DGNuoc.xaml.cs">
+    <Compile Include="EntityDataGrid\SimpleView\DGNuoc.xaml.cs">
       <DependentUpon>DGNuoc.xaml</DependentUpon>
     </Compile>
     <Compile Include="EntityDataGrid\DGDonHang.xaml.cs">
@@ -109,25 +109,25 @@
     <Compile Include="EntityDataGrid\DGChiPhiNhanVienGiaoHang.xaml.cs">
       <DependentUpon>DGChiPhiNhanVienGiaoHang.xaml</DependentUpon>
     </Compile>
-    <Compile Include="EntityDataGrid\DGPhuongTien.xaml.cs">
+    <Compile Include="EntityDataGrid\SimpleView\DGPhuongTien.xaml.cs">
       <DependentUpon>DGPhuongTien.xaml</DependentUpon>
     </Compile>
     <Compile Include="EntityDataGrid\DGNhanVienGiaoHang.xaml.cs">
       <DependentUpon>DGNhanVienGiaoHang.xaml</DependentUpon>
     </Compile>
-    <Compile Include="EntityDataGrid\DGLoaiChiPhi.xaml.cs">
+    <Compile Include="EntityDataGrid\SimpleView\DGLoaiChiPhi.xaml.cs">
       <DependentUpon>DGLoaiChiPhi.xaml</DependentUpon>
     </Compile>
     <Compile Include="EntityDataGrid\DGKhachHang.xaml.cs">
       <DependentUpon>DGKhachHang.xaml</DependentUpon>
     </Compile>
-    <Compile Include="EntityDataGrid\DGLoaiHang.xaml.cs">
+    <Compile Include="EntityDataGrid\SimpleView\DGLoaiHang.xaml.cs">
       <DependentUpon>DGLoaiHang.xaml</DependentUpon>
     </Compile>
     <Compile Include="EntityDataGrid\DGMatHang.xaml.cs">
       <DependentUpon>DGMatHang.xaml</DependentUpon>
     </Compile>
-    <Compile Include="EntityDataGrid\DGBaiXe.xaml.cs">
+    <Compile Include="EntityDataGrid\SimpleView\DGBaiXe.xaml.cs">
       <DependentUpon>DGBaiXe.xaml</DependentUpon>
     </Compile>
     <Compile Include="EntityDataGrid\DGChanh.xaml.cs">
@@ -142,7 +142,7 @@
     <Compile Include="View\rDiaDiemView.xaml.cs">
       <DependentUpon>rDiaDiemView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\rNuocView.xaml.cs">
+    <Compile Include="View\SimpleView\rNuocView.xaml.cs">
       <DependentUpon>rNuocView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\tChuyenHangDonHangView.xaml.cs">
@@ -170,13 +170,13 @@
     <Compile Include="View\rNhanVienGiaoHangView.xaml.cs">
       <DependentUpon>rNhanVienGiaoHangView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\rLoaiChiPhiView.xaml.cs">
+    <Compile Include="View\SimpleView\rLoaiChiPhiView.xaml.cs">
       <DependentUpon>rLoaiChiPhiView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\rChanhView.xaml.cs">
       <DependentUpon>rChanhView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\rBaiXeView.xaml.cs">
+    <Compile Include="View\SimpleView\rBaiXeView.xaml.cs">
       <DependentUpon>rBaiXeView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -192,10 +192,10 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="View\rLoaiHangView.xaml.cs">
+    <Compile Include="View\SimpleView\rLoaiHangView.xaml.cs">
       <DependentUpon>rLoaiHangView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\rPhuongTienView.xaml.cs">
+    <Compile Include="View\SimpleView\rPhuongTienView.xaml.cs">
       <DependentUpon>rPhuongTienView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\tMatHangView.xaml.cs">
@@ -270,7 +270,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="EntityDataGrid\DGNuoc.xaml">
+    <Page Include="EntityDataGrid\SimpleView\DGNuoc.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -298,7 +298,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="EntityDataGrid\DGPhuongTien.xaml">
+    <Page Include="EntityDataGrid\SimpleView\DGPhuongTien.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -306,7 +306,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="EntityDataGrid\DGLoaiChiPhi.xaml">
+    <Page Include="EntityDataGrid\SimpleView\DGLoaiChiPhi.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -314,7 +314,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="EntityDataGrid\DGLoaiHang.xaml">
+    <Page Include="EntityDataGrid\SimpleView\DGLoaiHang.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -322,7 +322,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="EntityDataGrid\DGBaiXe.xaml">
+    <Page Include="EntityDataGrid\SimpleView\DGBaiXe.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -342,7 +342,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\rNuocView.xaml">
+    <Page Include="View\SimpleView\rNuocView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -378,7 +378,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\rLoaiChiPhiView.xaml">
+    <Page Include="View\SimpleView\rLoaiChiPhiView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -386,15 +386,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\rBaiXeView.xaml">
+    <Page Include="View\SimpleView\rBaiXeView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\rLoaiHangView.xaml">
+    <Page Include="View\SimpleView\rLoaiHangView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\rPhuongTienView.xaml">
+    <Page Include="View\SimpleView\rPhuongTienView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
