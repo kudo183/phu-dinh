@@ -49,7 +49,6 @@ Global
 		{B1F2EC36-D689-4979-85F5-EB07686E3A98}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B1F2EC36-D689-4979-85F5-EB07686E3A98}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B1F2EC36-D689-4979-85F5-EB07686E3A98}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B1F2EC36-D689-4979-85F5-EB07686E3A98}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
