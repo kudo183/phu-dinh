@@ -79,6 +79,9 @@
     <Compile Include="View\ChiPhiView.xaml.cs">
       <DependentUpon>ChiPhiView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\KhachHangView.xaml.cs">
+      <DependentUpon>KhachHangView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\NhanVienView.xaml.cs">
       <DependentUpon>NhanVienView.xaml</DependentUpon>
     </Compile>
@@ -116,6 +119,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="View\ChiPhiView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\KhachHangView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
