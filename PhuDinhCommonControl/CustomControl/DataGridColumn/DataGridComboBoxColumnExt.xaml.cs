@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 
@@ -9,6 +10,8 @@ namespace PhuDinhCommonControl.CustomControl
     /// </summary>
     public partial class DataGridComboBoxColumnExt : DataGridComboBoxColumn
     {
+        public event EventHandler HeaderAddButtonClick;
+
         public DataGridComboBoxColumnExt()
         {
             InitializeComponent();
@@ -37,6 +40,16 @@ namespace PhuDinhCommonControl.CustomControl
             }
 
             BindingOperations.SetBinding(element, ComboBox.ItemsSourceProperty, binding);
+        }
+
+        void headerAddButton_Click(object sender, EventArgs e)
+        {
+            if (HeaderAddButtonClick == null)
+            {
+                return;
+            }
+
+            HeaderAddButtonClick(sender, e);
         }
     }
 }
