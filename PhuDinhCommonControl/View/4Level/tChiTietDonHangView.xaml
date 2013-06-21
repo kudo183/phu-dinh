@@ -14,7 +14,7 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <EntityDataGrid:DGChiTietDonHang Grid.Row="0" x:Name="dgChiTietDonHang"/>
+        <EntityDataGrid:DGChiTietDonHang Grid.Row="0" x:Name="dgChiTietDonHang" HeaderAddButtonClick="dgChiTietDonHang_HeaderAddButtonClick"/>
         <Menu:BottomMenu Grid.Row="1" x:Name="bmMenu" Button.Click="bmMenu_Click"/>
     </Grid>
 </PhuDinhCommonControl:BaseView>

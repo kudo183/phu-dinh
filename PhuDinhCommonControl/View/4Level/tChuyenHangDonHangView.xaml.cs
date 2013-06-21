@@ -5,6 +5,8 @@ using System.Collections.Specialized;
 using System.Data;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Windows;
+using System.Windows.Controls.Primitives;
 
 namespace PhuDinhCommonControl
 {
@@ -17,6 +19,7 @@ namespace PhuDinhCommonControl
         public Expression<Func<PhuDinhData.tChuyenHang, bool>> FilterChuyenHang { get; set; }
         public Expression<Func<PhuDinhData.tDonHang, bool>> FilterDonHang { get; set; }
 
+        private List<PhuDinhData.tChuyenHangDonHang> _tChuyenHangDonHangs;
         private List<PhuDinhData.tChuyenHang> _tChuyenHangs;
         private List<PhuDinhData.tDonHang> _tDonHangs;
         private readonly PhuDinhData.PhuDinhEntities _context = new PhuDinhData.PhuDinhEntities();
@@ -35,7 +38,7 @@ namespace PhuDinhCommonControl
         {
             try
             {
-                var data = this.dgChuyenHangDonHang.DataContext as ObservableCollection<PhuDinhData.tChuyenHangDonHang>;
+                var data = dgChuyenHangDonHang.DataContext as ObservableCollection<PhuDinhData.tChuyenHangDonHang>;
                 PhuDinhData.Repository.tChuyenHangDonHangRepository.Save(_context, data.ToList(), FilterChuyenHangDonHang);
                 RefreshView();
             }
@@ -52,22 +55,15 @@ namespace PhuDinhCommonControl
 
         public override void RefreshView()
         {
-            _tChuyenHangs = PhuDinhData.Repository.tChuyenHangRepository.GetData(_context, FilterChuyenHang);
-            _tDonHangs = PhuDinhData.Repository.tDonHangRepository.GetData(_context, FilterDonHang);
-
-            var data = PhuDinhData.Repository.tChuyenHangDonHangRepository.GetData(_context, FilterChuyenHangDonHang);
-
-            foreach (var tChuyenHangDonHang in data)
-            {
-                tChuyenHangDonHang.tChuyenHangList = _tChuyenHangs;
-                tChuyenHangDonHang.tDonHangList = _tDonHangs;
-            }
-
-            var collection = new ObservableCollection<PhuDinhData.tChuyenHangDonHang>(data);
+            _tChuyenHangDonHangs = PhuDinhData.Repository.tChuyenHangDonHangRepository.GetData(_context, FilterChuyenHangDonHang);
+            var collection = new ObservableCollection<PhuDinhData.tChuyenHangDonHang>(_tChuyenHangDonHangs);
             collection.CollectionChanged += collection_CollectionChanged;
-            this.dgChuyenHangDonHang.DataContext = collection;
+            dgChuyenHangDonHang.DataContext = collection;
 
-            this.dgChuyenHangDonHang.UpdateLayout();
+            UpdateChuyenHangReferenceData();
+            UpdateDonHangReferenceData();
+
+            dgChuyenHangDonHang.UpdateLayout();
         }
 
         void collection_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
@@ -80,5 +76,51 @@ namespace PhuDinhCommonControl
             }
         }
         #endregion
+
+        private void dgChuyenHangDonHang_HeaderAddButtonClick(object sender, EventArgs e)
+        {
+            var header = sender as DataGridColumnHeader;
+
+            BaseView view = null;
+            Window w = null;
+
+            switch (header.Content.ToString())
+            {
+                case "Chuyến hàng":
+                    view = new tChuyenHangView();
+                    view.RefreshView();
+                    w = new Window { Title = "Chuyến hàng", Content = view };
+                    w.ShowDialog();
+
+                    UpdateChuyenHangReferenceData();
+                    break;
+                case "Đơn Hàng":
+                    view = new tDonHangView();
+                    view.RefreshView();
+                    w = new Window { Title = "Đơn Hàng", Content = view };
+                    w.ShowDialog();
+
+                    UpdateDonHangReferenceData();
+                    break;
+            }
+        }
+
+        private void UpdateChuyenHangReferenceData()
+        {
+            _tChuyenHangs = PhuDinhData.Repository.tChuyenHangRepository.GetData(_context, FilterChuyenHang);
+            foreach (var tChuyenHangDonHang in _tChuyenHangDonHangs)
+            {
+                tChuyenHangDonHang.tChuyenHangList = _tChuyenHangs;
+            }
+        }
+
+        private void UpdateDonHangReferenceData()
+        {
+            _tDonHangs = PhuDinhData.Repository.tDonHangRepository.GetData(_context, FilterDonHang);
+            foreach (var tChuyenHangDonHang in _tChuyenHangDonHangs)
+            {
+                tChuyenHangDonHang.tDonHangList = _tDonHangs;
+            }
+        }
     }
 }
