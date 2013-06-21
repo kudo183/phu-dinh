@@ -7,6 +7,13 @@ namespace PhuDinhCommonControl.CustomControl
 {
     public class DataGridExt : DataGrid
     {
+        public DataGridExt()
+        {
+            CanUserSortColumns = false;
+            CanUserReorderColumns = false;
+            CanUserResizeRows = false;
+        }
+
         protected override void OnPreviewKeyDown(KeyEventArgs e)
         {
             base.OnPreviewKeyDown(e);
