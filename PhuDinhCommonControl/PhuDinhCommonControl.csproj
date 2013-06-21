@@ -85,52 +85,52 @@
     <Compile Include="CustomControl\TimeInput.xaml.cs">
       <DependentUpon>TimeInput.xaml</DependentUpon>
     </Compile>
-    <Compile Include="EntityDataGrid\LevelOne\DGDiaDiem.xaml.cs">
+    <Compile Include="EntityDataGrid\1Level\DGDiaDiem.xaml.cs">
       <DependentUpon>DGDiaDiem.xaml</DependentUpon>
     </Compile>
-    <Compile Include="EntityDataGrid\SimpleView\DGNuoc.xaml.cs">
+    <Compile Include="EntityDataGrid\0Level\DGNuoc.xaml.cs">
       <DependentUpon>DGNuoc.xaml</DependentUpon>
     </Compile>
-    <Compile Include="EntityDataGrid\DGDonHang.xaml.cs">
+    <Compile Include="EntityDataGrid\3Level\DGDonHang.xaml.cs">
       <DependentUpon>DGDonHang.xaml</DependentUpon>
     </Compile>
-    <Compile Include="EntityDataGrid\DGChuyenHang.xaml.cs">
+    <Compile Include="EntityDataGrid\2Level\DGChuyenHang.xaml.cs">
       <DependentUpon>DGChuyenHang.xaml</DependentUpon>
     </Compile>
-    <Compile Include="EntityDataGrid\DGChuyenHangDonHang.xaml.cs">
+    <Compile Include="EntityDataGrid\4Level\DGChuyenHangDonHang.xaml.cs">
       <DependentUpon>DGChuyenHangDonHang.xaml</DependentUpon>
     </Compile>
-    <Compile Include="EntityDataGrid\DGChiTietDonHang.xaml.cs">
+    <Compile Include="EntityDataGrid\4Level\DGChiTietDonHang.xaml.cs">
       <DependentUpon>DGChiTietDonHang.xaml</DependentUpon>
     </Compile>
-    <Compile Include="EntityDataGrid\DGChiTietChuyenHangDonHang.xaml.cs">
+    <Compile Include="EntityDataGrid\5Level\DGChiTietChuyenHangDonHang.xaml.cs">
       <DependentUpon>DGChiTietChuyenHangDonHang.xaml</DependentUpon>
     </Compile>
-    <Compile Include="EntityDataGrid\DGChiPhiNhanVienGiaoHang.xaml.cs">
+    <Compile Include="EntityDataGrid\2Level\DGChiPhiNhanVienGiaoHang.xaml.cs">
       <DependentUpon>DGChiPhiNhanVienGiaoHang.xaml</DependentUpon>
     </Compile>
-    <Compile Include="EntityDataGrid\SimpleView\DGPhuongTien.xaml.cs">
+    <Compile Include="EntityDataGrid\0Level\DGPhuongTien.xaml.cs">
       <DependentUpon>DGPhuongTien.xaml</DependentUpon>
     </Compile>
-    <Compile Include="EntityDataGrid\LevelOne\DGNhanVienGiaoHang.xaml.cs">
+    <Compile Include="EntityDataGrid\1Level\DGNhanVienGiaoHang.xaml.cs">
       <DependentUpon>DGNhanVienGiaoHang.xaml</DependentUpon>
     </Compile>
-    <Compile Include="EntityDataGrid\SimpleView\DGLoaiChiPhi.xaml.cs">
+    <Compile Include="EntityDataGrid\0Level\DGLoaiChiPhi.xaml.cs">
       <DependentUpon>DGLoaiChiPhi.xaml</DependentUpon>
     </Compile>
-    <Compile Include="EntityDataGrid\DGKhachHang.xaml.cs">
+    <Compile Include="EntityDataGrid\2Level\DGKhachHang.xaml.cs">
       <DependentUpon>DGKhachHang.xaml</DependentUpon>
     </Compile>
-    <Compile Include="EntityDataGrid\SimpleView\DGLoaiHang.xaml.cs">
+    <Compile Include="EntityDataGrid\0Level\DGLoaiHang.xaml.cs">
       <DependentUpon>DGLoaiHang.xaml</DependentUpon>
     </Compile>
-    <Compile Include="EntityDataGrid\LevelOne\DGMatHang.xaml.cs">
+    <Compile Include="EntityDataGrid\1Level\DGMatHang.xaml.cs">
       <DependentUpon>DGMatHang.xaml</DependentUpon>
     </Compile>
-    <Compile Include="EntityDataGrid\SimpleView\DGBaiXe.xaml.cs">
+    <Compile Include="EntityDataGrid\0Level\DGBaiXe.xaml.cs">
       <DependentUpon>DGBaiXe.xaml</DependentUpon>
     </Compile>
-    <Compile Include="EntityDataGrid\LevelOne\DGChanh.xaml.cs">
+    <Compile Include="EntityDataGrid\1Level\DGChanh.xaml.cs">
       <DependentUpon>DGChanh.xaml</DependentUpon>
     </Compile>
     <Compile Include="Menu\BottomMenu.xaml.cs">
@@ -139,44 +139,44 @@
     <Compile Include="Menu\MainMenu.xaml.cs">
       <DependentUpon>MainMenu.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\LevelOne\rDiaDiemView.xaml.cs">
+    <Compile Include="View\1Level\rDiaDiemView.xaml.cs">
       <DependentUpon>rDiaDiemView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\SimpleView\rNuocView.xaml.cs">
+    <Compile Include="View\0Level\rNuocView.xaml.cs">
       <DependentUpon>rNuocView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\tChuyenHangDonHangView.xaml.cs">
+    <Compile Include="View\4Level\tChuyenHangDonHangView.xaml.cs">
       <DependentUpon>tChuyenHangDonHangView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\tChiTietChuyenHangDonHangView.xaml.cs">
+    <Compile Include="View\5Level\tChiTietChuyenHangDonHangView.xaml.cs">
       <DependentUpon>tChiTietChuyenHangDonHangView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\tDonHangView.xaml.cs">
+    <Compile Include="View\3Level\tDonHangView.xaml.cs">
       <DependentUpon>tDonHangView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\BaseView.cs" />
-    <Compile Include="View\tChiTietDonHangView.xaml.cs">
+    <Compile Include="View\4Level\tChiTietDonHangView.xaml.cs">
       <DependentUpon>tChiTietDonHangView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\rKhachHangView.xaml.cs">
+    <Compile Include="View\2Level\rKhachHangView.xaml.cs">
       <DependentUpon>rKhachHangView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\tChuyenHangView.xaml.cs">
+    <Compile Include="View\2Level\tChuyenHangView.xaml.cs">
       <DependentUpon>tChuyenHangView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\tChiPhiNhanVienGiaoHangView.xaml.cs">
+    <Compile Include="View\2Level\tChiPhiNhanVienGiaoHangView.xaml.cs">
       <DependentUpon>tChiPhiNhanVienGiaoHangView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\LevelOne\rNhanVienGiaoHangView.xaml.cs">
+    <Compile Include="View\1Level\rNhanVienGiaoHangView.xaml.cs">
       <DependentUpon>rNhanVienGiaoHangView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\SimpleView\rLoaiChiPhiView.xaml.cs">
+    <Compile Include="View\0Level\rLoaiChiPhiView.xaml.cs">
       <DependentUpon>rLoaiChiPhiView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\LevelOne\rChanhView.xaml.cs">
+    <Compile Include="View\1Level\rChanhView.xaml.cs">
       <DependentUpon>rChanhView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\SimpleView\rBaiXeView.xaml.cs">
+    <Compile Include="View\0Level\rBaiXeView.xaml.cs">
       <DependentUpon>rBaiXeView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -192,13 +192,13 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="View\SimpleView\rLoaiHangView.xaml.cs">
+    <Compile Include="View\0Level\rLoaiHangView.xaml.cs">
       <DependentUpon>rLoaiHangView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\SimpleView\rPhuongTienView.xaml.cs">
+    <Compile Include="View\0Level\rPhuongTienView.xaml.cs">
       <DependentUpon>rPhuongTienView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\LevelOne\tMatHangView.xaml.cs">
+    <Compile Include="View\1Level\tMatHangView.xaml.cs">
       <DependentUpon>tMatHangView.xaml</DependentUpon>
     </Compile>
     <Compile Include="VisualTreeUtils.cs" />
@@ -266,67 +266,67 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="EntityDataGrid\LevelOne\DGDiaDiem.xaml">
+    <Page Include="EntityDataGrid\1Level\DGDiaDiem.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="EntityDataGrid\SimpleView\DGNuoc.xaml">
+    <Page Include="EntityDataGrid\0Level\DGNuoc.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="EntityDataGrid\DGDonHang.xaml">
+    <Page Include="EntityDataGrid\3Level\DGDonHang.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="EntityDataGrid\DGChuyenHang.xaml">
+    <Page Include="EntityDataGrid\2Level\DGChuyenHang.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="EntityDataGrid\DGChuyenHangDonHang.xaml">
+    <Page Include="EntityDataGrid\4Level\DGChuyenHangDonHang.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="EntityDataGrid\DGChiTietDonHang.xaml">
+    <Page Include="EntityDataGrid\4Level\DGChiTietDonHang.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="EntityDataGrid\DGChiTietChuyenHangDonHang.xaml">
+    <Page Include="EntityDataGrid\5Level\DGChiTietChuyenHangDonHang.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="EntityDataGrid\DGChiPhiNhanVienGiaoHang.xaml">
+    <Page Include="EntityDataGrid\2Level\DGChiPhiNhanVienGiaoHang.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="EntityDataGrid\SimpleView\DGPhuongTien.xaml">
+    <Page Include="EntityDataGrid\0Level\DGPhuongTien.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="EntityDataGrid\LevelOne\DGNhanVienGiaoHang.xaml">
+    <Page Include="EntityDataGrid\1Level\DGNhanVienGiaoHang.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="EntityDataGrid\SimpleView\DGLoaiChiPhi.xaml">
+    <Page Include="EntityDataGrid\0Level\DGLoaiChiPhi.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="EntityDataGrid\DGKhachHang.xaml">
+    <Page Include="EntityDataGrid\2Level\DGKhachHang.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="EntityDataGrid\SimpleView\DGLoaiHang.xaml">
+    <Page Include="EntityDataGrid\0Level\DGLoaiHang.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="EntityDataGrid\LevelOne\DGMatHang.xaml">
+    <Page Include="EntityDataGrid\1Level\DGMatHang.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="EntityDataGrid\SimpleView\DGBaiXe.xaml">
+    <Page Include="EntityDataGrid\0Level\DGBaiXe.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="EntityDataGrid\LevelOne\DGChanh.xaml">
+    <Page Include="EntityDataGrid\1Level\DGChanh.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -338,67 +338,67 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\LevelOne\rDiaDiemView.xaml">
+    <Page Include="View\1Level\rDiaDiemView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\SimpleView\rNuocView.xaml">
+    <Page Include="View\0Level\rNuocView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\tChuyenHangDonHangView.xaml">
+    <Page Include="View\4Level\tChuyenHangDonHangView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\tChiTietChuyenHangDonHangView.xaml">
+    <Page Include="View\5Level\tChiTietChuyenHangDonHangView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\tDonHangView.xaml">
+    <Page Include="View\3Level\tDonHangView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\tChiTietDonHangView.xaml">
+    <Page Include="View\4Level\tChiTietDonHangView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\rKhachHangView.xaml">
+    <Page Include="View\2Level\rKhachHangView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\tChuyenHangView.xaml">
+    <Page Include="View\2Level\tChuyenHangView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\tChiPhiNhanVienGiaoHangView.xaml">
+    <Page Include="View\2Level\tChiPhiNhanVienGiaoHangView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\LevelOne\rNhanVienGiaoHangView.xaml">
+    <Page Include="View\1Level\rNhanVienGiaoHangView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\SimpleView\rLoaiChiPhiView.xaml">
+    <Page Include="View\0Level\rLoaiChiPhiView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\LevelOne\rChanhView.xaml">
+    <Page Include="View\1Level\rChanhView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\SimpleView\rBaiXeView.xaml">
+    <Page Include="View\0Level\rBaiXeView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\SimpleView\rLoaiHangView.xaml">
+    <Page Include="View\0Level\rLoaiHangView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\SimpleView\rPhuongTienView.xaml">
+    <Page Include="View\0Level\rPhuongTienView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\LevelOne\tMatHangView.xaml">
+    <Page Include="View\1Level\tMatHangView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
