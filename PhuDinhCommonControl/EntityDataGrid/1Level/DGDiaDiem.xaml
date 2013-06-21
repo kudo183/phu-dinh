@@ -12,7 +12,7 @@
         <!--Ma-->
         <CustomControl:DataGridReadOnlyTextColumn x:Name="maColumn"/>
         <!--Nuoc-->
-        <CustomControl:DataGridComboBoxColumnExt x:Name="nuocColumn" Header="Nước"
+        <CustomControl:DataGridComboBoxColumnExt x:Name="nuocColumn" Header="Nước" HeaderAddButtonClick="headerAddButton_Click"
                                                  TextBinding="{Binding rNuoc.TenNuoc, Mode=OneWay}"
                                                  DisplayMemberPath="TenNuoc"
                                                  SelectedValuePath="Ma"

@@ -12,7 +12,7 @@
         <!--Ma-->
         <CustomControl:DataGridReadOnlyTextColumn x:Name="maColumn"/>
         <!--Phuong Tien-->
-        <CustomControl:DataGridComboBoxColumnExt x:Name="phuongTienColumn" Header="Phương tiện"
+        <CustomControl:DataGridComboBoxColumnExt x:Name="phuongTienColumn" Header="Phương tiện" HeaderAddButtonClick="headerAddButton_Click"
                                                  TextBinding="{Binding rPhuongTien.TenPhuongTien, Mode=OneWay}"
                                                  DisplayMemberPath="TenPhuongTien"
                                                  SelectedValuePath="Ma"

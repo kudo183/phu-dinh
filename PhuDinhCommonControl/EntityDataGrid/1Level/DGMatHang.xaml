@@ -12,7 +12,7 @@
         <!--Ma-->
         <CustomControl:DataGridReadOnlyTextColumn x:Name="maColumn"/>
         <!--Loai Hang-->
-        <CustomControl:DataGridComboBoxColumnExt x:Name="loaiHangColumn" Header="Loại hàng"
+        <CustomControl:DataGridComboBoxColumnExt x:Name="loaiHangColumn" Header="Loại hàng" HeaderAddButtonClick="headerAddButton_Click"
                                                  TextBinding="{Binding rLoaiHang.TenLoai, Mode=OneWay}"
                                                  DisplayMemberPath="TenLoai"
                                                  SelectedValuePath="Ma"

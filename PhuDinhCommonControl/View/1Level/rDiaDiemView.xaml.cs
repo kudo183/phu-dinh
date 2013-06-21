@@ -5,6 +5,7 @@ using System.Collections.Specialized;
 using System.Data;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Windows;
 
 namespace PhuDinhCommonControl
 {
@@ -16,6 +17,7 @@ namespace PhuDinhCommonControl
         public Expression<Func<PhuDinhData.rDiaDiem, bool>> FilterDiaDiem { get; set; }
         public Expression<Func<PhuDinhData.rNuoc, bool>> FilterNuoc { get; set; }
 
+        private List<PhuDinhData.rDiaDiem> _rDiaDiems;
         private List<PhuDinhData.rNuoc> _rNuocs;
         private readonly PhuDinhData.PhuDinhEntities _context = new PhuDinhData.PhuDinhEntities();
 
@@ -32,7 +34,7 @@ namespace PhuDinhCommonControl
         {
             try
             {
-                var data = this.dgDiaDiem.DataContext as ObservableCollection<PhuDinhData.rDiaDiem>;
+                var data = dgDiaDiem.DataContext as ObservableCollection<PhuDinhData.rDiaDiem>;
                 PhuDinhData.Repository.rDiaDiemRepository.Save(_context, data.ToList(), FilterDiaDiem);
                 RefreshView();
             }
@@ -49,20 +51,15 @@ namespace PhuDinhCommonControl
 
         public override void RefreshView()
         {
-            _rNuocs = PhuDinhData.Repository.rNuocRepository.GetData(_context, FilterNuoc);
-
-            var data = PhuDinhData.Repository.rDiaDiemRepository.GetData(_context, FilterDiaDiem);
-
-            foreach (var rDiaDiem in data)
-            {
-                rDiaDiem.rNuocList = _rNuocs;
-            }
-
-            var collection = new ObservableCollection<PhuDinhData.rDiaDiem>(data);
+            _rDiaDiems = PhuDinhData.Repository.rDiaDiemRepository.GetData(_context, FilterDiaDiem);
+            
+            var collection = new ObservableCollection<PhuDinhData.rDiaDiem>(_rDiaDiems);
             collection.CollectionChanged += collection_CollectionChanged;
-            this.dgDiaDiem.DataContext = collection;
+            dgDiaDiem.DataContext = collection;
 
-            this.dgDiaDiem.UpdateLayout();
+            UpdateNuocReferenceData();
+
+            dgDiaDiem.UpdateLayout();
         }
 
         void collection_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
@@ -75,5 +72,24 @@ namespace PhuDinhCommonControl
         }
 
         #endregion
+
+        private void dgDiaDiem_HeaderAddButtonClick(object sender, EventArgs e)
+        {
+            var view = new rNuocView();
+            view.RefreshView();
+            var w = new Window { Title = "Nước", Content = view };
+            w.ShowDialog();
+
+            UpdateNuocReferenceData();
+        }
+
+        private void UpdateNuocReferenceData()
+        {
+            _rNuocs = PhuDinhData.Repository.rNuocRepository.GetData(_context, FilterNuoc);
+            foreach (var rDiaDiem in _rDiaDiems)
+            {
+                rDiaDiem.rNuocList = _rNuocs;
+            }
+        }
     }
 }

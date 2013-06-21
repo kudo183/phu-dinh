@@ -5,6 +5,7 @@ using System.Collections.Specialized;
 using System.Data;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Windows;
 
 namespace PhuDinhCommonControl
 {
@@ -16,6 +17,7 @@ namespace PhuDinhCommonControl
         public Expression<Func<PhuDinhData.tMatHang, bool>> FilterMatHang { get; set; }
         public Expression<Func<PhuDinhData.rLoaiHang, bool>> FilterLoaiHang { get; set; }
 
+        private List<PhuDinhData.tMatHang> _tMatHangs;
         private List<PhuDinhData.rLoaiHang> _rLoaiHangs;
         private readonly PhuDinhData.PhuDinhEntities _context = new PhuDinhData.PhuDinhEntities();
 
@@ -32,7 +34,7 @@ namespace PhuDinhCommonControl
         {
             try
             {
-                var data = this.dgMatHang.DataContext as ObservableCollection<PhuDinhData.tMatHang>;
+                var data = dgMatHang.DataContext as ObservableCollection<PhuDinhData.tMatHang>;
                 PhuDinhData.Repository.tMatHangRepository.Save(_context, data.ToList(), FilterMatHang);
                 RefreshView();
             }
@@ -49,17 +51,14 @@ namespace PhuDinhCommonControl
 
         public override void RefreshView()
         {
-            _rLoaiHangs = PhuDinhData.Repository.rLoaiHangRepository.GetData(_context, FilterLoaiHang);
-            var data = PhuDinhData.Repository.tMatHangRepository.GetData(_context, FilterMatHang);
-
-            foreach (var tMatHang in data)
-            {
-                tMatHang.rLoaiHangList = _rLoaiHangs;
-            }
-
-            var collection = new ObservableCollection<PhuDinhData.tMatHang>(data);
+            _tMatHangs = PhuDinhData.Repository.tMatHangRepository.GetData(_context, FilterMatHang);
+            var collection = new ObservableCollection<PhuDinhData.tMatHang>(_tMatHangs);
             collection.CollectionChanged += collection_CollectionChanged;
-            this.dgMatHang.DataContext = collection;
+            dgMatHang.DataContext = collection;
+
+            UpdateLoaiHangReferenceData();
+
+            UpdateLayout();
         }
 
         void collection_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
@@ -72,5 +71,25 @@ namespace PhuDinhCommonControl
         }
 
         #endregion
+
+        private void dgMatHang_HeaderAddButtonClick(object sender, EventArgs e)
+        {
+            var view = new rLoaiHangView();
+            view.RefreshView();
+            var w = new Window { Title = "Loại Hàng", Content = view };
+            w.ShowDialog();
+
+            UpdateLoaiHangReferenceData();
+        }
+
+        private void UpdateLoaiHangReferenceData()
+        {
+            _rLoaiHangs = PhuDinhData.Repository.rLoaiHangRepository.GetData(_context, FilterLoaiHang);
+            foreach (var tMatHang in _tMatHangs)
+            {
+                tMatHang.rLoaiHangList = _rLoaiHangs;
+            }
+
+        }
     }
 }
