@@ -16,7 +16,7 @@
         <!--Gio-->
         <CustomControl:DataGridTimeColumn x:Name="gioColumn"/>
         <!--Nhan vien giao hang-->
-        <CustomControl:DataGridComboBoxColumnExt x:Name="nhanVienGiaoHangColumn" Header="Nhân Viên"
+        <CustomControl:DataGridComboBoxColumnExt x:Name="nhanVienGiaoHangColumn" Header="Nhân Viên" HeaderAddButtonClick="headerAddButton_Click"
                                                  TextBinding="{Binding rNhanVienGiaoHang.TenNhanVien, Mode=OneWay}"
                                                  DisplayMemberPath="TenNhanVien"
                                                  SelectedValuePath="Ma"

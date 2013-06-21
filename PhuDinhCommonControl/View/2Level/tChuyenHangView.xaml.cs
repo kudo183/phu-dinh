@@ -5,6 +5,7 @@ using System.Collections.Specialized;
 using System.Data;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Windows;
 
 namespace PhuDinhCommonControl
 {
@@ -16,6 +17,7 @@ namespace PhuDinhCommonControl
         public Expression<Func<PhuDinhData.tChuyenHang, bool>> FilterChuyenHang { get; set; }
         public Expression<Func<PhuDinhData.rNhanVienGiaoHang, bool>> FilterNhanVienGiaoHang { get; set; }
 
+        private List<PhuDinhData.tChuyenHang> _tChuyenHangs;
         private List<PhuDinhData.rNhanVienGiaoHang> _rNhanVienGiaoHangs;
         private readonly PhuDinhData.PhuDinhEntities _context = new PhuDinhData.PhuDinhEntities();
 
@@ -32,7 +34,7 @@ namespace PhuDinhCommonControl
         {
             try
             {
-                var data = this.dgChuyenHang.DataContext as ObservableCollection<PhuDinhData.tChuyenHang>;
+                var data = dgChuyenHang.DataContext as ObservableCollection<PhuDinhData.tChuyenHang>;
                 PhuDinhData.Repository.tChuyenHangRepository.Save(_context, data.ToList(), FilterChuyenHang);
                 RefreshView();
             }
@@ -49,20 +51,14 @@ namespace PhuDinhCommonControl
 
         public override void RefreshView()
         {
-            _rNhanVienGiaoHangs = PhuDinhData.Repository.rNhanVienGiaoHangRepository.GetData(_context, FilterNhanVienGiaoHang);
-
-            var data = PhuDinhData.Repository.tChuyenHangRepository.GetData(_context, FilterChuyenHang);
-
-            foreach (var tChuyenHang in data)
-            {
-                tChuyenHang.rNhanVienGiaoHangList = _rNhanVienGiaoHangs;
-            }
-
-            var collection = new ObservableCollection<PhuDinhData.tChuyenHang>(data);
+            _tChuyenHangs = PhuDinhData.Repository.tChuyenHangRepository.GetData(_context, FilterChuyenHang);
+            var collection = new ObservableCollection<PhuDinhData.tChuyenHang>(_tChuyenHangs);
             collection.CollectionChanged += collection_CollectionChanged;
-            this.dgChuyenHang.DataContext = collection;
+            dgChuyenHang.DataContext = collection;
 
-            this.dgChuyenHang.UpdateLayout();
+            UpdateNhanVienGiaoHangReferenceData();
+
+            dgChuyenHang.UpdateLayout();
         }
 
         void collection_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
@@ -77,5 +73,24 @@ namespace PhuDinhCommonControl
         }
 
         #endregion
+
+        private void dgChuyenHang_HeaderAddButtonClick(object sender, EventArgs e)
+        {
+            var view = new rNhanVienGiaoHangView();
+            view.RefreshView();
+            var w = new Window { Title = "Nhân Viên", Content = view };
+            w.ShowDialog();
+
+            UpdateNhanVienGiaoHangReferenceData();
+        }
+
+        private void UpdateNhanVienGiaoHangReferenceData()
+        {
+            _rNhanVienGiaoHangs = PhuDinhData.Repository.rNhanVienGiaoHangRepository.GetData(_context, FilterNhanVienGiaoHang);
+            foreach (var tChuyenHang in _tChuyenHangs)
+            {
+                tChuyenHang.rNhanVienGiaoHangList = _rNhanVienGiaoHangs;
+            }
+        }
     }
 }

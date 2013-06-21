@@ -14,7 +14,7 @@
         <!--Ngay-->
         <CustomControl:DataGridDateColumn x:Name="ngayColumn"/>
         <!--Nhan vien giao hang-->
-        <CustomControl:DataGridComboBoxColumnExt x:Name="nhanVienGiaoHangColumn" Header="Nhân Viên"
+        <CustomControl:DataGridComboBoxColumnExt x:Name="nhanVienGiaoHangColumn" Header="Nhân Viên" HeaderAddButtonClick="headerAddButton_Click"
                                                  TextBinding="{Binding rNhanVienGiaoHang.TenNhanVien, Mode=OneWay}"
                                                  DisplayMemberPath="TenNhanVien"
                                                  SelectedValuePath="Ma"
@@ -22,7 +22,7 @@
                                                  SelectedItemBinding="{Binding rNhanVienGiaoHang, UpdateSourceTrigger=PropertyChanged}"
                                                  ItemsSource="{Binding rNhanVienGiaoHangList}"/>
         <!--Loai chi phi-->
-        <CustomControl:DataGridComboBoxColumnExt x:Name="loaiChiPhiColumn" Header="Loại Chi Phí"
+        <CustomControl:DataGridComboBoxColumnExt x:Name="loaiChiPhiColumn" Header="Loại Chi Phí" HeaderAddButtonClick="headerAddButton_Click"
                                                  TextBinding="{Binding rLoaiChiPhi.TenLoaiChiPhi, Mode=OneWay}"
                                                  DisplayMemberPath="TenLoaiChiPhi"
                                                  SelectedValuePath="Ma"

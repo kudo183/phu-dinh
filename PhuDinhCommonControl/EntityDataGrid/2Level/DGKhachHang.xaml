@@ -14,7 +14,7 @@
         <!--Ten khach hang-->
         <CustomControl:DataGridTextColumnExt x:Name="tenKhachHangColumn" Header="Tên Khách Hàng" Binding="{Binding TenKhachHang}"/>
         <!--Dia diem-->
-        <CustomControl:DataGridComboBoxColumnExt x:Name="diaDiemColumn" Header="Địa điểm"
+        <CustomControl:DataGridComboBoxColumnExt x:Name="diaDiemColumn" Header="Địa điểm" HeaderAddButtonClick="headerAddButton_Click"
                                                  TextBinding="{Binding rDiaDiem.TenDiaDiem, Mode=OneWay}"
                                                  DisplayMemberPath="TenDiaDiem"
                                                  SelectedValuePath="Ma"

@@ -13,7 +13,7 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <EntityDataGrid:DGChuyenHang Grid.Row="0" x:Name="dgChuyenHang" x:FieldModifier="public"/>
+        <EntityDataGrid:DGChuyenHang Grid.Row="0" x:Name="dgChuyenHang" x:FieldModifier="public" HeaderAddButtonClick="dgChuyenHang_HeaderAddButtonClick"/>
         <Menu:BottomMenu Grid.Row="1" x:Name="bmMenu" Button.Click="bmMenu_Click"/>
     </Grid>
 </PhuDinhCommonControl:BaseView>
