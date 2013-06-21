@@ -76,6 +76,9 @@
     <Compile Include="View\ChuyenHangView.xaml.cs">
       <DependentUpon>ChuyenHangView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\NhanVienView.xaml.cs">
+      <DependentUpon>NhanVienView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\DonHangView.xaml.cs">
       <DependentUpon>DonHangView.xaml</DependentUpon>
     </Compile>
@@ -106,6 +109,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\ChuyenHangView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\NhanVienView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
