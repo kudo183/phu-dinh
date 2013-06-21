@@ -5,6 +5,8 @@ using System.Collections.Specialized;
 using System.Data;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Windows;
+using System.Windows.Controls.Primitives;
 
 namespace PhuDinhCommonControl
 {
@@ -17,6 +19,7 @@ namespace PhuDinhCommonControl
         public Expression<Func<PhuDinhData.rKhachHang, bool>> FilterKhachHang { get; set; }
         public Expression<Func<PhuDinhData.rChanh, bool>> FilterChanh { get; set; }
 
+        private List<PhuDinhData.tDonHang> _tDonHangs;
         private List<PhuDinhData.rKhachHang> _rKhachHangs;
         private List<PhuDinhData.rChanh> _rChanhs;
 
@@ -36,7 +39,7 @@ namespace PhuDinhCommonControl
         {
             try
             {
-                var data = this.dgDonHang.DataContext as ObservableCollection<PhuDinhData.tDonHang>;
+                var data = dgDonHang.DataContext as ObservableCollection<PhuDinhData.tDonHang>;
                 PhuDinhData.Repository.tDonHangRepository.Save(_context, data.ToList(), FilterDonHang);
                 RefreshView();
             }
@@ -53,22 +56,15 @@ namespace PhuDinhCommonControl
 
         public override void RefreshView()
         {
-            _rKhachHangs = PhuDinhData.Repository.rKhachHangRepository.GetData(_context, FilterKhachHang);
-            _rChanhs = PhuDinhData.Repository.rChanhRepository.GetData(_context, FilterChanh);
-
-            var data = PhuDinhData.Repository.tDonHangRepository.GetData(_context, FilterDonHang);
-
-            foreach (var tDonHang in data)
-            {
-                tDonHang.rChanhList = _rChanhs;
-                tDonHang.rKhachHangList = _rKhachHangs;
-            }
-
-            var collection = new ObservableCollection<PhuDinhData.tDonHang>(data);
+            _tDonHangs = PhuDinhData.Repository.tDonHangRepository.GetData(_context, FilterDonHang);
+            var collection = new ObservableCollection<PhuDinhData.tDonHang>(_tDonHangs);
             collection.CollectionChanged += collection_CollectionChanged;
-            this.dgDonHang.DataContext = collection;
+            dgDonHang.DataContext = collection;
 
-            this.dgDonHang.UpdateLayout();
+            UpdateChanhReferenceData();
+            UpdateKhachHangReferenceData();
+
+            dgDonHang.UpdateLayout();
         }
 
         void collection_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
@@ -83,5 +79,51 @@ namespace PhuDinhCommonControl
         }
 
         #endregion
+
+        private void dgDonHang_HeaderAddButtonClick(object sender, EventArgs e)
+        {
+            var header = sender as DataGridColumnHeader;
+
+            BaseView view = null;
+            Window w = null;
+
+            switch (header.Content.ToString())
+            {
+                case "Khách hàng":
+                    view = new rKhachHangView();
+                    view.RefreshView();
+                    w = new Window { Title = "Khách hàng", Content = view };
+                    w.ShowDialog();
+
+                    UpdateKhachHangReferenceData();
+                    break;
+                case "Chành":
+                    view = new rChanhView();
+                    view.RefreshView();
+                    w = new Window { Title = "Chành", Content = view };
+                    w.ShowDialog();
+
+                    UpdateChanhReferenceData();
+                    break;
+            }
+        }
+
+        private void UpdateChanhReferenceData()
+        {
+            _rChanhs = PhuDinhData.Repository.rChanhRepository.GetData(_context, FilterChanh);
+            foreach (var tDonHang in _tDonHangs)
+            {
+                tDonHang.rChanhList = _rChanhs;
+            }
+        }
+
+        private void UpdateKhachHangReferenceData()
+        {
+            _rKhachHangs = PhuDinhData.Repository.rKhachHangRepository.GetData(_context, FilterKhachHang);
+            foreach (var tDonHang in _tDonHangs)
+            {
+                tDonHang.rKhachHangList = _rKhachHangs;
+            }
+        }
     }
 }
