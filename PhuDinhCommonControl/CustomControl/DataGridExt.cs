@@ -110,5 +110,17 @@ namespace PhuDinhCommonControl.CustomControl
             Keyboard.Focus(txt);
             txt.Select(0, 2);
         }
+
+        public event EventHandler HeaderAddButtonClick;
+
+        protected void headerAddButton_Click(object sender, EventArgs e)
+        {
+            if (HeaderAddButtonClick == null)
+            {
+                return;
+            }
+
+            HeaderAddButtonClick(sender, e);
+        }
     }
 }
