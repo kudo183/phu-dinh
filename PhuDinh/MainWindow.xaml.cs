@@ -13,6 +13,7 @@ namespace PhuDinh
         private readonly BaiXeView _baiXeView = new BaiXeView();
         private readonly MatHangView _matHangView = new MatHangView();
         private readonly NhanVienView _nhanVienView = new NhanVienView();
+        private readonly ChiPhiView _chiPhiView = new ChiPhiView();
         private readonly AdminView _adminView = new AdminView();
 
         public MainWindow()
@@ -43,6 +44,11 @@ namespace PhuDinh
         private void btnNhanVien_Click(object sender, RoutedEventArgs e)
         {
             _brdMainContent.Child = _nhanVienView;
+        }
+
+        private void btnChiPhi_Click(object sender, RoutedEventArgs e)
+        {
+            _brdMainContent.Child = _chiPhiView;
         }
 
         private void btnAdmin_Click(object sender, RoutedEventArgs e)

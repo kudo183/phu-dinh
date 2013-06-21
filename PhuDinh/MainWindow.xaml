@@ -16,6 +16,7 @@
             <Button Margin="5" Content="Bãi Xe" x:Name="btnBaiXe" Click="btnBaiXe_Click"/>
             <Button Margin="5" Content="Mặt Hàng" x:Name="btnMatHang" Click="btnMatHang_Click"/>
             <Button Margin="5" Content="Nhân Viên" x:Name="btnNhanVien" Click="btnNhanVien_Click"/>
+            <Button Margin="5" Content="Chi Phí" x:Name="btnChiPhi" Click="btnChiPhi_Click"/>
             <Button Margin="5" Content="Tất cả" x:Name="btnAdmin" Click="btnAdmin_Click"/>
         </StackPanel>
         <Border Grid.Row="1" x:Name="_brdMainContent" BorderThickness="1" BorderBrush="Black" Margin="3" Padding="2"/>
