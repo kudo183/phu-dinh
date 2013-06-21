@@ -16,7 +16,7 @@ namespace PhuDinhData.DesignTimeData
                     return _rNuocs;
                 }
 
-                const int count = 5;
+                const int count = 10;
                 _rNuocs = new List<rNuoc>(count);
                 for (var i = 1; i <= count; i++)
                 {
