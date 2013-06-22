@@ -5,22 +5,24 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <StackPanel x:Name="_spMenu" Button.Click ="_spMenu_Click">
-        <ToggleButton Content="Bãi xe" Margin="5" x:Name="rBaiXe"/>
-        <ToggleButton Content="Chành" Margin="5" x:Name="rChanh"/>
-        <ToggleButton Content="Địa Điểm" Margin="5" x:Name="rDiaDiem"/>
-        <ToggleButton Content="Khách hàng" Margin="5" x:Name="rKhachHang"/>
-        <ToggleButton Content="Loại chi phí" Margin="5" x:Name="rLoaiChiPhi"/>
-        <ToggleButton Content="Loại hàng" Margin="5" x:Name="rLoaiHang"/>
-        <ToggleButton Content="Nhân viên giao hàng" Margin="5" x:Name="rNhanVienGiaoHang"/>
-        <ToggleButton Content="Nước" Margin="5" x:Name="rNuoc"/>
-        <ToggleButton Content="Phương tiện" Margin="5" x:Name="rPhuongTien"/>
-        <ToggleButton Content="Chi phí giao hàng" Margin="5" x:Name="tChiPhiNhanVienGiaoHang"/>
-        <ToggleButton Content="Chi tiết chuyến hàng đơn hàng" Margin="5" x:Name="tChiTietChuyenHangDonHang"/>
-        <ToggleButton Content="Chi tiết đơn hàng" Margin="5" x:Name="tChiTietDonHang"/>
-        <ToggleButton Content="Chuyến hàng" Margin="5" x:Name="tChuyenHang"/>
-        <ToggleButton Content="Chuyến hàng đơn hàng" Margin="5" x:Name="tChuyenHangDonHang"/>
-        <ToggleButton Content="Đơn hàng" Margin="5" x:Name="tDonHang"/>
-        <ToggleButton Content="Mặt hàng" Margin="5" x:Name="tMatHang"/>
-    </StackPanel>
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+        <StackPanel x:Name="_spMenu" Button.Click ="_spMenu_Click">
+            <ToggleButton Content="Bãi xe" Margin="5" x:Name="rBaiXe"/>
+            <ToggleButton Content="Chành" Margin="5" x:Name="rChanh"/>
+            <ToggleButton Content="Địa Điểm" Margin="5" x:Name="rDiaDiem"/>
+            <ToggleButton Content="Khách hàng" Margin="5" x:Name="rKhachHang"/>
+            <ToggleButton Content="Loại chi phí" Margin="5" x:Name="rLoaiChiPhi"/>
+            <ToggleButton Content="Loại hàng" Margin="5" x:Name="rLoaiHang"/>
+            <ToggleButton Content="Nhân viên giao hàng" Margin="5" x:Name="rNhanVienGiaoHang"/>
+            <ToggleButton Content="Nước" Margin="5" x:Name="rNuoc"/>
+            <ToggleButton Content="Phương tiện" Margin="5" x:Name="rPhuongTien"/>
+            <ToggleButton Content="Chi phí giao hàng" Margin="5" x:Name="tChiPhiNhanVienGiaoHang"/>
+            <ToggleButton Content="Chi tiết chuyến hàng đơn hàng" Margin="5" x:Name="tChiTietChuyenHangDonHang"/>
+            <ToggleButton Content="Chi tiết đơn hàng" Margin="5" x:Name="tChiTietDonHang"/>
+            <ToggleButton Content="Chuyến hàng" Margin="5" x:Name="tChuyenHang"/>
+            <ToggleButton Content="Chuyến hàng đơn hàng" Margin="5" x:Name="tChuyenHangDonHang"/>
+            <ToggleButton Content="Đơn hàng" Margin="5" x:Name="tDonHang"/>
+            <ToggleButton Content="Mặt hàng" Margin="5" x:Name="tMatHang"/>
+        </StackPanel>
+    </ScrollViewer>
 </UserControl>
