@@ -7,8 +7,9 @@
         <Style TargetType="TextBlock">
             <Setter Property="FontSize" Value="16"/>
         </Style>
+        
         <!--ScrollBars-->
-        <Style TargetType="{x:Type ScrollBar}">           
+        <Style TargetType="{x:Type ScrollBar}">
             <Style.Triggers>
                 <Trigger Property="Orientation" Value="Vertical">
                     <Setter Property="Width" Value="12"/>
@@ -20,5 +21,32 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
+
+        <!--TextBlock-->
+        <Style x:Key="textBlockRightAlign" TargetType="TextBlock">
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="0,0,3,0"/>
+        </Style>
+        <Style x:Key="textBlockReadOnly" TargetType="TextBlock">
+            <Setter Property="TextBlock.Background" Value="LightGray"/>
+        </Style>
+        <Style x:Key="textBlockRightAlignReadOnly" TargetType="TextBlock" BasedOn="{StaticResource textBlockRightAlign}">
+            <Setter Property="TextBlock.Background" Value="LightGray"/>
+        </Style>
+        <!--End TextBlock-->
+        
+        <!--TextBox-->
+        <Style x:Key="textBoxRightAlign" TargetType="TextBox">
+            <Setter Property="HorizontalContentAlignment" Value="Right"/>
+        </Style>
+        <!--End TextBox-->
+        
+        <!--DataGridCell-->
+        <Style x:Key="dataGridCellReadOnly" TargetType="DataGridCell">
+            <Setter Property="Background" Value="LightGray"/>
+            <Setter Property="KeyboardNavigation.IsTabStop" Value="False"/>
+        </Style>
+        <!--End DataGridCell-->
     </Application.Resources>
 </Application>
