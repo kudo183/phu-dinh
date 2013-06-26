@@ -12,7 +12,7 @@ namespace PhuDinhData
     using System;
     using System.Collections.Generic;
     
-    public partial class rNhanVienGiaoHang
+    public partial class rNhanVienGiaoHang : BindableObject
     {
         public rNhanVienGiaoHang()
         {
@@ -20,9 +20,15 @@ namespace PhuDinhData
             this.tChuyenHangs = new HashSet<tChuyenHang>();
         }
     
-        public int Ma { get; set; }
-        public int MaPhuongTien { get; set; }
-        public string TenNhanVien { get; set; }
+        private int _ma;
+        public int Ma { get { return _ma; } set { if(_ma == value) return; _ma = value; base.RaisePropertyChanged("Ma");} }
+    
+        private int _maphuongtien;
+        public int MaPhuongTien { get { return _maphuongtien; } set { if(_maphuongtien == value) return; _maphuongtien = value; base.RaisePropertyChanged("MaPhuongTien");} }
+    
+        private string _tennhanvien;
+        public string TenNhanVien { get { return _tennhanvien; } set { if(_tennhanvien == value) return; _tennhanvien = value; base.RaisePropertyChanged("TenNhanVien");} }
+    
     
         public virtual rPhuongTien rPhuongTien { get; set; }
         public virtual ICollection<tChiPhiNhanVienGiaoHang> tChiPhiNhanVienGiaoHangs { get; set; }

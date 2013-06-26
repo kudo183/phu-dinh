@@ -12,7 +12,7 @@ namespace PhuDinhData
     using System;
     using System.Collections.Generic;
     
-    public partial class tDonHang
+    public partial class tDonHang : BindableObject
     {
         public tDonHang()
         {
@@ -20,10 +20,18 @@ namespace PhuDinhData
             this.tChuyenHangDonHangs = new HashSet<tChuyenHangDonHang>();
         }
     
-        public int Ma { get; set; }
-        public int MaKhachHang { get; set; }
-        public Nullable<int> MaChanh { get; set; }
-        public System.DateTime Ngay { get; set; }
+        private int _ma;
+        public int Ma { get { return _ma; } set { if(_ma == value) return; _ma = value; base.RaisePropertyChanged("Ma");} }
+    
+        private int _makhachhang;
+        public int MaKhachHang { get { return _makhachhang; } set { if(_makhachhang == value) return; _makhachhang = value; base.RaisePropertyChanged("MaKhachHang");} }
+    
+        private Nullable<int> _machanh;
+        public Nullable<int> MaChanh { get { return _machanh; } set { if(_machanh == value) return; _machanh = value; base.RaisePropertyChanged("MaChanh");} }
+    
+        private System.DateTime _ngay;
+        public System.DateTime Ngay { get { return _ngay; } set { if(_ngay == value) return; _ngay = value; base.RaisePropertyChanged("Ngay");} }
+    
     
         public virtual rChanh rChanh { get; set; }
         public virtual rKhachHang rKhachHang { get; set; }

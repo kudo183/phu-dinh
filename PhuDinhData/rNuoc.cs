@@ -12,15 +12,19 @@ namespace PhuDinhData
     using System;
     using System.Collections.Generic;
     
-    public partial class rNuoc
+    public partial class rNuoc : BindableObject
     {
         public rNuoc()
         {
             this.rDiaDiems = new HashSet<rDiaDiem>();
         }
     
-        public int Ma { get; set; }
-        public string TenNuoc { get; set; }
+        private int _ma;
+        public int Ma { get { return _ma; } set { if(_ma == value) return; _ma = value; base.RaisePropertyChanged("Ma");} }
+    
+        private string _tennuoc;
+        public string TenNuoc { get { return _tennuoc; } set { if(_tennuoc == value) return; _tennuoc = value; base.RaisePropertyChanged("TenNuoc");} }
+    
     
         public virtual ICollection<rDiaDiem> rDiaDiems { get; set; }
     }

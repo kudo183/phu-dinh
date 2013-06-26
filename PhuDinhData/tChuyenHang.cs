@@ -12,17 +12,25 @@ namespace PhuDinhData
     using System;
     using System.Collections.Generic;
     
-    public partial class tChuyenHang
+    public partial class tChuyenHang : BindableObject
     {
         public tChuyenHang()
         {
             this.tChuyenHangDonHangs = new HashSet<tChuyenHangDonHang>();
         }
     
-        public int Ma { get; set; }
-        public int MaNhanVienGiaoHang { get; set; }
-        public System.DateTime Ngay { get; set; }
-        public Nullable<System.TimeSpan> Gio { get; set; }
+        private int _ma;
+        public int Ma { get { return _ma; } set { if(_ma == value) return; _ma = value; base.RaisePropertyChanged("Ma");} }
+    
+        private int _manhanviengiaohang;
+        public int MaNhanVienGiaoHang { get { return _manhanviengiaohang; } set { if(_manhanviengiaohang == value) return; _manhanviengiaohang = value; base.RaisePropertyChanged("MaNhanVienGiaoHang");} }
+    
+        private System.DateTime _ngay;
+        public System.DateTime Ngay { get { return _ngay; } set { if(_ngay == value) return; _ngay = value; base.RaisePropertyChanged("Ngay");} }
+    
+        private Nullable<System.TimeSpan> _gio;
+        public Nullable<System.TimeSpan> Gio { get { return _gio; } set { if(_gio == value) return; _gio = value; base.RaisePropertyChanged("Gio");} }
+    
     
         public virtual rNhanVienGiaoHang rNhanVienGiaoHang { get; set; }
         public virtual ICollection<tChuyenHangDonHang> tChuyenHangDonHangs { get; set; }

@@ -12,15 +12,19 @@ namespace PhuDinhData
     using System;
     using System.Collections.Generic;
     
-    public partial class rBaiXe
+    public partial class rBaiXe : BindableObject
     {
         public rBaiXe()
         {
             this.rChanhs = new HashSet<rChanh>();
         }
     
-        public int Ma { get; set; }
-        public string DiaDiemBaiXe { get; set; }
+        private int _ma;
+        public int Ma { get { return _ma; } set { if(_ma == value) return; _ma = value; base.RaisePropertyChanged("Ma");} }
+    
+        private string _diadiembaixe;
+        public string DiaDiemBaiXe { get { return _diadiembaixe; } set { if(_diadiembaixe == value) return; _diadiembaixe = value; base.RaisePropertyChanged("DiaDiemBaiXe");} }
+    
     
         public virtual ICollection<rChanh> rChanhs { get; set; }
     }

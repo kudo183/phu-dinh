@@ -12,14 +12,26 @@ namespace PhuDinhData
     using System;
     using System.Collections.Generic;
     
-    public partial class tChiPhiNhanVienGiaoHang
+    public partial class tChiPhiNhanVienGiaoHang : BindableObject
     {
-        public int Ma { get; set; }
-        public int MaNhanVienGiaoHang { get; set; }
-        public int MaLoaiChiPhi { get; set; }
-        public int SoTien { get; set; }
-        public System.DateTime Ngay { get; set; }
-        public string GhiChu { get; set; }
+        private int _ma;
+        public int Ma { get { return _ma; } set { if(_ma == value) return; _ma = value; base.RaisePropertyChanged("Ma");} }
+    
+        private int _manhanviengiaohang;
+        public int MaNhanVienGiaoHang { get { return _manhanviengiaohang; } set { if(_manhanviengiaohang == value) return; _manhanviengiaohang = value; base.RaisePropertyChanged("MaNhanVienGiaoHang");} }
+    
+        private int _maloaichiphi;
+        public int MaLoaiChiPhi { get { return _maloaichiphi; } set { if(_maloaichiphi == value) return; _maloaichiphi = value; base.RaisePropertyChanged("MaLoaiChiPhi");} }
+    
+        private int _sotien;
+        public int SoTien { get { return _sotien; } set { if(_sotien == value) return; _sotien = value; base.RaisePropertyChanged("SoTien");} }
+    
+        private System.DateTime _ngay;
+        public System.DateTime Ngay { get { return _ngay; } set { if(_ngay == value) return; _ngay = value; base.RaisePropertyChanged("Ngay");} }
+    
+        private string _ghichu;
+        public string GhiChu { get { return _ghichu; } set { if(_ghichu == value) return; _ghichu = value; base.RaisePropertyChanged("GhiChu");} }
+    
     
         public virtual rLoaiChiPhi rLoaiChiPhi { get; set; }
         public virtual rNhanVienGiaoHang rNhanVienGiaoHang { get; set; }

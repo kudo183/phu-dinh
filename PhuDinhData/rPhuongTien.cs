@@ -12,15 +12,19 @@ namespace PhuDinhData
     using System;
     using System.Collections.Generic;
     
-    public partial class rPhuongTien
+    public partial class rPhuongTien : BindableObject
     {
         public rPhuongTien()
         {
             this.rNhanVienGiaoHangs = new HashSet<rNhanVienGiaoHang>();
         }
     
-        public int Ma { get; set; }
-        public string TenPhuongTien { get; set; }
+        private int _ma;
+        public int Ma { get { return _ma; } set { if(_ma == value) return; _ma = value; base.RaisePropertyChanged("Ma");} }
+    
+        private string _tenphuongtien;
+        public string TenPhuongTien { get { return _tenphuongtien; } set { if(_tenphuongtien == value) return; _tenphuongtien = value; base.RaisePropertyChanged("TenPhuongTien");} }
+    
     
         public virtual ICollection<rNhanVienGiaoHang> rNhanVienGiaoHangs { get; set; }
     }
