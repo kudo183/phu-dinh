@@ -49,8 +49,10 @@ namespace PhuDinh.View
             }
 
             _tChuyenHangDonHangView.FilterChuyenHangDonHang = (p => p.MaChuyenHang == chuyenHang.Ma);
-
             _tChuyenHangDonHangView.RefreshView();
+
+            _tChiTietChuyenHangDonHangView.FilterChiTietChuyenHangDonHang = (p => false);
+            _tChiTietChuyenHangDonHangView.RefreshView();
         }
     }
 }

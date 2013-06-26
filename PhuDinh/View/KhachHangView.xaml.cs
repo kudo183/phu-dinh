@@ -29,10 +29,11 @@ namespace PhuDinh.View
                 return;
             }
 
-            _rKhachHangView.FilterKhachHang =
-                (p => p.MaDiaDiem == diaDiem.Ma);
-
+            _rKhachHangView.FilterKhachHang = (p => p.MaDiaDiem == diaDiem.Ma);
             _rKhachHangView.RefreshView();
+
+            _tDonHangView.FilterDonHang = (p => false);
+            _tDonHangView.RefreshView();
         }
 
         void dgKhachHang_SelectionChanged(object sender, SelectionChangedEventArgs e)
