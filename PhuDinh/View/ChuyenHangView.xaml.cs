@@ -26,6 +26,8 @@ namespace PhuDinh.View
             var chuyenHangDonHang = e.AddedItems[0] as PhuDinhData.tChuyenHangDonHang;
             if (chuyenHangDonHang == null)
             {
+                _tChiTietChuyenHangDonHangView.FilterChiTietChuyenHangDonHang = null;
+                _tChiTietChuyenHangDonHangView.RefreshView();
                 return;
             }
 
@@ -37,6 +39,9 @@ namespace PhuDinh.View
 
         void dgChuyenHang_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            _tChiTietChuyenHangDonHangView.FilterChiTietChuyenHangDonHang = null;
+            _tChiTietChuyenHangDonHangView.RefreshView();
+
             if (e.AddedItems.Count == 0)
             {
                 return;
@@ -45,14 +50,13 @@ namespace PhuDinh.View
             var chuyenHang = e.AddedItems[0] as PhuDinhData.tChuyenHang;
             if(chuyenHang == null)
             {
+                _tChuyenHangDonHangView.FilterChuyenHangDonHang = null;
+                _tChuyenHangDonHangView.RefreshView();
                 return;
             }
 
             _tChuyenHangDonHangView.FilterChuyenHangDonHang = (p => p.MaChuyenHang == chuyenHang.Ma);
             _tChuyenHangDonHangView.RefreshView();
-
-            _tChiTietChuyenHangDonHangView.FilterChiTietChuyenHangDonHang = (p => false);
-            _tChiTietChuyenHangDonHangView.RefreshView();
         }
     }
 }

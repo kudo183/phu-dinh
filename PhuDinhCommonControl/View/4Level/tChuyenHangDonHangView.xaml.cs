@@ -38,6 +38,11 @@ namespace PhuDinhCommonControl
         {
             try
             {
+                if (FilterChuyenHangDonHang == null)
+                {
+                    return;
+                }
+
                 var data = dgChuyenHangDonHang.DataContext as ObservableCollection<PhuDinhData.tChuyenHangDonHang>;
                 PhuDinhData.Repository.tChuyenHangDonHangRepository.Save(_context, data.ToList(), FilterChuyenHangDonHang);
                 RefreshView();
@@ -55,6 +60,12 @@ namespace PhuDinhCommonControl
 
         public override void RefreshView()
         {
+            if (FilterChuyenHangDonHang == null)
+            {
+                dgChuyenHangDonHang.DataContext = null;
+                return;
+            }
+
             _tChuyenHangDonHangs = PhuDinhData.Repository.tChuyenHangDonHangRepository.GetData(_context, FilterChuyenHangDonHang);
             var collection = new ObservableCollection<PhuDinhData.tChuyenHangDonHang>(_tChuyenHangDonHangs);
             collection.CollectionChanged += collection_CollectionChanged;

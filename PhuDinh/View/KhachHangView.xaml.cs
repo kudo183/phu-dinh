@@ -18,6 +18,9 @@ namespace PhuDinh.View
 
         void dgDiaDiem_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            _tDonHangView.FilterDonHang = null;
+            _tDonHangView.RefreshView();
+
             if (e.AddedItems.Count == 0)
             {
                 return;
@@ -26,14 +29,13 @@ namespace PhuDinh.View
             var diaDiem = e.AddedItems[0] as PhuDinhData.rDiaDiem;
             if (diaDiem == null)
             {
+                _rKhachHangView.FilterKhachHang = null;
+                _rKhachHangView.RefreshView();  
                 return;
             }
 
             _rKhachHangView.FilterKhachHang = (p => p.MaDiaDiem == diaDiem.Ma);
-            _rKhachHangView.RefreshView();
-
-            _tDonHangView.FilterDonHang = (p => false);
-            _tDonHangView.RefreshView();
+            _rKhachHangView.RefreshView();            
         }
 
         void dgKhachHang_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -46,11 +48,12 @@ namespace PhuDinh.View
             var khachHang = e.AddedItems[0] as PhuDinhData.rKhachHang;
             if (khachHang == null)
             {
+                _tDonHangView.FilterDonHang = null;
+                _tDonHangView.RefreshView();
                 return;
             }
 
             _tDonHangView.FilterDonHang = (p => p.MaKhachHang == khachHang.Ma);
-
             _tDonHangView.RefreshView();
         }
     }

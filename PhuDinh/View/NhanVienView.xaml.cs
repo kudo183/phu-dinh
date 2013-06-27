@@ -25,11 +25,12 @@ namespace PhuDinh.View
             var phuongTien = e.AddedItems[0] as PhuDinhData.rPhuongTien;
             if (phuongTien == null)
             {
+                _rNhanVienGiaoHangView.FilterNhanVienGiaoHang = null;
+                _rNhanVienGiaoHangView.RefreshView();
                 return;
             }
 
             _rNhanVienGiaoHangView.FilterNhanVienGiaoHang = (p => p.MaPhuongTien == phuongTien.Ma);
-
             _rNhanVienGiaoHangView.RefreshView();
         }
     }

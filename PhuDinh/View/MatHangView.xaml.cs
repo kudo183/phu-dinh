@@ -25,11 +25,12 @@ namespace PhuDinh.View
             var loaihang = e.AddedItems[0] as PhuDinhData.rLoaiHang;
             if (loaihang == null)
             {
+                _tMatHangView.FilterMatHang = null;
+                _tMatHangView.RefreshView();
                 return;
             }
 
             _tMatHangView.FilterMatHang = (p => p.MaLoai == loaihang.Ma);
-
             _tMatHangView.RefreshView();
         }
     }

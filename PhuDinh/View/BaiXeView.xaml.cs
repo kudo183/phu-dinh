@@ -25,11 +25,12 @@ namespace PhuDinh.View
             var baixe = e.AddedItems[0] as PhuDinhData.rBaiXe;
             if(baixe == null)
             {
+                _rChanhView.FilterChanh = null;
+                _rChanhView.RefreshView();
                 return;
             }
 
             _rChanhView.FilterChanh = (p => p.MaBaiXe == baixe.Ma);
-
             _rChanhView.RefreshView();
         }
     }

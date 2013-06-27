@@ -34,6 +34,11 @@ namespace PhuDinhCommonControl
         {
             try
             {
+                if (FilterDiaDiem == null)
+                {
+                    return;
+                }
+
                 var data = dgDiaDiem.DataContext as ObservableCollection<PhuDinhData.rDiaDiem>;
                 PhuDinhData.Repository.rDiaDiemRepository.Save(_context, data.ToList(), FilterDiaDiem);
                 RefreshView();
@@ -51,6 +56,12 @@ namespace PhuDinhCommonControl
 
         public override void RefreshView()
         {
+            if (FilterDiaDiem == null)
+            {
+                dgDiaDiem.DataContext = null;
+                return;
+            }
+
             _rDiaDiems = PhuDinhData.Repository.rDiaDiemRepository.GetData(_context, FilterDiaDiem);
             
             var collection = new ObservableCollection<PhuDinhData.rDiaDiem>(_rDiaDiems);

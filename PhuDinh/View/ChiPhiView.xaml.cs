@@ -25,11 +25,12 @@ namespace PhuDinh.View
             var loaiChiPhi = e.AddedItems[0] as PhuDinhData.rLoaiChiPhi;
             if (loaiChiPhi == null)
             {
+                _rChiPhiNhanVienGiaoHangView.FilterChiPhiNhanVienGiaoHang = null;
+                _rChiPhiNhanVienGiaoHangView.RefreshView();
                 return;
             }
 
             _rChiPhiNhanVienGiaoHangView.FilterChiPhiNhanVienGiaoHang = (p => p.MaLoaiChiPhi == loaiChiPhi.Ma);
-
             _rChiPhiNhanVienGiaoHangView.RefreshView();
         }
     }

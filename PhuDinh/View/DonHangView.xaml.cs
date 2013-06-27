@@ -25,11 +25,12 @@ namespace PhuDinh.View
             var donHang = e.AddedItems[0] as PhuDinhData.tDonHang;
             if(donHang == null)
             {
+                _tChiTietDonHangView.FilterChiTietDonHang = null;
+                _tChiTietDonHangView.RefreshView();
                 return;
             }
 
             _tChiTietDonHangView.FilterChiTietDonHang = (p => p.MaDonHang == donHang.Ma);
-
             _tChiTietDonHangView.RefreshView();
         }
     }
