@@ -3,9 +3,11 @@
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
-CREATE PROCEDURE clean_database
+CREATE PROCEDURE [dbo].[clean_database]
 as
 BEGIN
+	delete from dbo.tChiTietChuyenHangDonHang
+	delete from dbo.tChuyenHangDonHang
 	delete from dbo.tChiTietDonHang
 	delete from dbo.tDonHang
 	delete from dbo.tChuyenHang

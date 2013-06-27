@@ -46,12 +46,12 @@
             <End Role="rNhanVienGiaoHang" EntitySet="rNhanVienGiaoHang" />
             <End Role="tChiPhiNhanVienGiaoHang" EntitySet="tChiPhiNhanVienGiaoHang" />
           </AssociationSet>
-          <AssociationSet Name="FK_tChiTietChuyenHangMatHang_tChuyenHangDonHang" Association="PhuDinhModel.Store.FK_tChiTietChuyenHangMatHang_tChuyenHangDonHang">
-            <End Role="tChuyenHangDonHang" EntitySet="tChuyenHangDonHang" />
+          <AssociationSet Name="FK_tChiTietChuyenHangDonHang_tChiTietDonHang" Association="PhuDinhModel.Store.FK_tChiTietChuyenHangDonHang_tChiTietDonHang">
+            <End Role="tChiTietDonHang" EntitySet="tChiTietDonHang" />
             <End Role="tChiTietChuyenHangDonHang" EntitySet="tChiTietChuyenHangDonHang" />
           </AssociationSet>
-          <AssociationSet Name="FK_tChiTietChuyenHangMatHang_tMatHang" Association="PhuDinhModel.Store.FK_tChiTietChuyenHangMatHang_tMatHang">
-            <End Role="tMatHang" EntitySet="tMatHang" />
+          <AssociationSet Name="FK_tChiTietChuyenHangDonHang_tChuyenHangDonHang" Association="PhuDinhModel.Store.FK_tChiTietChuyenHangDonHang_tChuyenHangDonHang">
+            <End Role="tChuyenHangDonHang" EntitySet="tChuyenHangDonHang" />
             <End Role="tChiTietChuyenHangDonHang" EntitySet="tChiTietChuyenHangDonHang" />
           </AssociationSet>
           <AssociationSet Name="FK_tChiTietDonHang_tDonHang" Association="PhuDinhModel.Store.FK_tChiTietDonHang_tDonHang">
@@ -171,7 +171,7 @@
           </Key>
           <Property Name="Ma" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="MaChuyenHangDonHang" Type="int" Nullable="false" />
-          <Property Name="MaMatHang" Type="int" Nullable="false" />
+          <Property Name="MaChiTietDonHang" Type="int" Nullable="false" />
           <Property Name="SoLuong" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="tChiTietDonHang">
@@ -289,7 +289,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_tChiTietChuyenHangMatHang_tChuyenHangDonHang">
+        <Association Name="FK_tChiTietChuyenHangDonHang_tChiTietDonHang">
+          <End Role="tChiTietDonHang" Type="PhuDinhModel.Store.tChiTietDonHang" Multiplicity="1" />
+          <End Role="tChiTietChuyenHangDonHang" Type="PhuDinhModel.Store.tChiTietChuyenHangDonHang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tChiTietDonHang">
+              <PropertyRef Name="Ma" />
+            </Principal>
+            <Dependent Role="tChiTietChuyenHangDonHang">
+              <PropertyRef Name="MaChiTietDonHang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tChiTietChuyenHangDonHang_tChuyenHangDonHang">
           <End Role="tChuyenHangDonHang" Type="PhuDinhModel.Store.tChuyenHangDonHang" Multiplicity="1" />
           <End Role="tChiTietChuyenHangDonHang" Type="PhuDinhModel.Store.tChiTietChuyenHangDonHang" Multiplicity="*" />
           <ReferentialConstraint>
@@ -298,18 +310,6 @@
             </Principal>
             <Dependent Role="tChiTietChuyenHangDonHang">
               <PropertyRef Name="MaChuyenHangDonHang" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tChiTietChuyenHangMatHang_tMatHang">
-          <End Role="tMatHang" Type="PhuDinhModel.Store.tMatHang" Multiplicity="1" />
-          <End Role="tChiTietChuyenHangDonHang" Type="PhuDinhModel.Store.tChiTietChuyenHangDonHang" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tMatHang">
-              <PropertyRef Name="Ma" />
-            </Principal>
-            <Dependent Role="tChiTietChuyenHangDonHang">
-              <PropertyRef Name="MaMatHang" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -470,12 +470,12 @@
             <End Role="rNhanVienGiaoHang" EntitySet="rNhanVienGiaoHangs" />
             <End Role="tChuyenHang" EntitySet="tChuyenHangs" />
           </AssociationSet>
-          <AssociationSet Name="FK_tChiTietChuyenHangMatHang_tChuyenHangDonHang" Association="PhuDinhModel.FK_tChiTietChuyenHangMatHang_tChuyenHangDonHang">
-            <End Role="tChuyenHangDonHang" EntitySet="tChuyenHangDonHangs" />
+          <AssociationSet Name="FK_tChiTietChuyenHangDonHang_tChiTietDonHang" Association="PhuDinhModel.FK_tChiTietChuyenHangDonHang_tChiTietDonHang">
+            <End Role="tChiTietDonHang" EntitySet="tChiTietDonHangs" />
             <End Role="tChiTietChuyenHangDonHang" EntitySet="tChiTietChuyenHangDonHangs" />
           </AssociationSet>
-          <AssociationSet Name="FK_tChiTietChuyenHangMatHang_tMatHang" Association="PhuDinhModel.FK_tChiTietChuyenHangMatHang_tMatHang">
-            <End Role="tMatHang" EntitySet="tMatHangs" />
+          <AssociationSet Name="FK_tChiTietChuyenHangDonHang_tChuyenHangDonHang" Association="PhuDinhModel.FK_tChiTietChuyenHangDonHang_tChuyenHangDonHang">
+            <End Role="tChuyenHangDonHang" EntitySet="tChuyenHangDonHangs" />
             <End Role="tChiTietChuyenHangDonHang" EntitySet="tChiTietChuyenHangDonHangs" />
           </AssociationSet>
           <AssociationSet Name="FK_tChiTietDonHang_tDonHang" Association="PhuDinhModel.FK_tChiTietDonHang_tDonHang">
@@ -595,10 +595,10 @@
           </Key>
           <Property Type="Int32" Name="Ma" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="Int32" Name="MaChuyenHangDonHang" Nullable="false" />
-          <Property Type="Int32" Name="MaMatHang" Nullable="false" />
+          <Property Type="Int32" Name="MaChiTietDonHang" Nullable="false" />
           <Property Type="Int32" Name="SoLuong" Nullable="false" />
-          <NavigationProperty Name="tChuyenHangDonHang" Relationship="PhuDinhModel.FK_tChiTietChuyenHangMatHang_tChuyenHangDonHang" FromRole="tChiTietChuyenHangDonHang" ToRole="tChuyenHangDonHang" />
-          <NavigationProperty Name="tMatHang" Relationship="PhuDinhModel.FK_tChiTietChuyenHangMatHang_tMatHang" FromRole="tChiTietChuyenHangDonHang" ToRole="tMatHang" />
+          <NavigationProperty Name="tChiTietDonHang" Relationship="PhuDinhModel.FK_tChiTietChuyenHangDonHang_tChiTietDonHang" FromRole="tChiTietChuyenHangDonHang" ToRole="tChiTietDonHang" />
+          <NavigationProperty Name="tChuyenHangDonHang" Relationship="PhuDinhModel.FK_tChiTietChuyenHangDonHang_tChuyenHangDonHang" FromRole="tChiTietChuyenHangDonHang" ToRole="tChuyenHangDonHang" />
         </EntityType>
         <EntityType Name="tChiTietDonHang">
           <Key>
@@ -608,6 +608,7 @@
           <Property Type="Int32" Name="MaDonHang" Nullable="false" />
           <Property Type="Int32" Name="MaMatHang" Nullable="false" />
           <Property Type="Int32" Name="SoLuong" Nullable="false" />
+          <NavigationProperty Name="tChiTietChuyenHangDonHangs" Relationship="PhuDinhModel.FK_tChiTietChuyenHangDonHang_tChiTietDonHang" FromRole="tChiTietDonHang" ToRole="tChiTietChuyenHangDonHang" />
           <NavigationProperty Name="tDonHang" Relationship="PhuDinhModel.FK_tChiTietDonHang_tDonHang" FromRole="tChiTietDonHang" ToRole="tDonHang" />
           <NavigationProperty Name="tMatHang" Relationship="PhuDinhModel.FK_tChiTietDonHang_tMatHang" FromRole="tChiTietDonHang" ToRole="tMatHang" />
         </EntityType>
@@ -629,7 +630,7 @@
           <Property Type="Int32" Name="Ma" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="Int32" Name="MaChuyenHang" Nullable="false" />
           <Property Type="Int32" Name="MaDonHang" Nullable="false" />
-          <NavigationProperty Name="tChiTietChuyenHangDonHangs" Relationship="PhuDinhModel.FK_tChiTietChuyenHangMatHang_tChuyenHangDonHang" FromRole="tChuyenHangDonHang" ToRole="tChiTietChuyenHangDonHang" />
+          <NavigationProperty Name="tChiTietChuyenHangDonHangs" Relationship="PhuDinhModel.FK_tChiTietChuyenHangDonHang_tChuyenHangDonHang" FromRole="tChuyenHangDonHang" ToRole="tChiTietChuyenHangDonHang" />
           <NavigationProperty Name="tChuyenHang" Relationship="PhuDinhModel.FK_tChuyenHangDonHang_tChuyenHang" FromRole="tChuyenHangDonHang" ToRole="tChuyenHang" />
           <NavigationProperty Name="tDonHang" Relationship="PhuDinhModel.FK_tChuyenHangDonHang_tDonHang" FromRole="tChuyenHangDonHang" ToRole="tDonHang" />
         </EntityType>
@@ -654,7 +655,6 @@
           <Property Type="Int32" Name="MaLoai" Nullable="false" />
           <Property Type="String" Name="TenMatHang" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="rLoaiHang" Relationship="PhuDinhModel.FK_tMatHang_rLoaiHang" FromRole="tMatHang" ToRole="rLoaiHang" />
-          <NavigationProperty Name="tChiTietChuyenHangDonHangs" Relationship="PhuDinhModel.FK_tChiTietChuyenHangMatHang_tMatHang" FromRole="tMatHang" ToRole="tChiTietChuyenHangDonHang" />
           <NavigationProperty Name="tChiTietDonHangs" Relationship="PhuDinhModel.FK_tChiTietDonHang_tMatHang" FromRole="tMatHang" ToRole="tChiTietDonHang" />
         </EntityType>
         <Association Name="FK_rChanh_rBaiXe">
@@ -777,7 +777,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_tChiTietChuyenHangMatHang_tChuyenHangDonHang">
+        <Association Name="FK_tChiTietChuyenHangDonHang_tChiTietDonHang">
+          <End Type="PhuDinhModel.tChiTietDonHang" Role="tChiTietDonHang" Multiplicity="1" />
+          <End Type="PhuDinhModel.tChiTietChuyenHangDonHang" Role="tChiTietChuyenHangDonHang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tChiTietDonHang">
+              <PropertyRef Name="Ma" />
+            </Principal>
+            <Dependent Role="tChiTietChuyenHangDonHang">
+              <PropertyRef Name="MaChiTietDonHang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tChiTietChuyenHangDonHang_tChuyenHangDonHang">
           <End Type="PhuDinhModel.tChuyenHangDonHang" Role="tChuyenHangDonHang" Multiplicity="1" />
           <End Type="PhuDinhModel.tChiTietChuyenHangDonHang" Role="tChiTietChuyenHangDonHang" Multiplicity="*" />
           <ReferentialConstraint>
@@ -786,18 +798,6 @@
             </Principal>
             <Dependent Role="tChiTietChuyenHangDonHang">
               <PropertyRef Name="MaChuyenHangDonHang" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_tChiTietChuyenHangMatHang_tMatHang">
-          <End Type="PhuDinhModel.tMatHang" Role="tMatHang" Multiplicity="1" />
-          <End Type="PhuDinhModel.tChiTietChuyenHangDonHang" Role="tChiTietChuyenHangDonHang" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tMatHang">
-              <PropertyRef Name="Ma" />
-            </Principal>
-            <Dependent Role="tChiTietChuyenHangDonHang">
-              <PropertyRef Name="MaMatHang" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -947,7 +947,7 @@
             <EntityTypeMapping TypeName="PhuDinhModel.tChiTietChuyenHangDonHang">
               <MappingFragment StoreEntitySet="tChiTietChuyenHangDonHang">
                 <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
-                <ScalarProperty Name="MaMatHang" ColumnName="MaMatHang" />
+                <ScalarProperty Name="MaChiTietDonHang" ColumnName="MaChiTietDonHang" />
                 <ScalarProperty Name="MaChuyenHangDonHang" ColumnName="MaChuyenHangDonHang" />
                 <ScalarProperty Name="Ma" ColumnName="Ma" />
               </MappingFragment>

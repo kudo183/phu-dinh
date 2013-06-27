@@ -27,5 +27,9 @@
                                                  SelectedValueBinding="{Binding MaDonHang, UpdateSourceTrigger=PropertyChanged}"
                                                  SelectedItemBinding="{Binding tDonHang, UpdateSourceTrigger=PropertyChanged}"
                                                  ItemsSource="{Binding tDonHangList}"/>
+        <!--Tong so luong theo don hang-->
+        <CustomControl:DataGridReadOnlyTextColumn x:Name="tongSoLuongColumn" Header="Tổngs SL theo đơn hàng" Width="SizeToHeader" Binding="{Binding TongSoLuongTheoDonHang}"/>
+        <!--Tong so luong thực tế-->
+        <CustomControl:DataGridReadOnlyTextColumn x:Name="tongSoLuongThucTeColumn" Header="Tổngs SL thực tế" Width="SizeToHeader" Binding="{Binding TongSoLuongThucTe}"/>
     </DataGrid.Columns>
 </CustomControl:DataGridExt>

@@ -20,14 +20,14 @@ namespace PhuDinhData
         private int _machuyenhangdonhang;
         public int MaChuyenHangDonHang { get { return _machuyenhangdonhang; } set { if(_machuyenhangdonhang == value) return; _machuyenhangdonhang = value; base.RaisePropertyChanged("MaChuyenHangDonHang");} }
     
-        private int _mamathang;
-        public int MaMatHang { get { return _mamathang; } set { if(_mamathang == value) return; _mamathang = value; base.RaisePropertyChanged("MaMatHang");} }
+        private int _machitietdonhang;
+        public int MaChiTietDonHang { get { return _machitietdonhang; } set { if(_machitietdonhang == value) return; _machitietdonhang = value; base.RaisePropertyChanged("MaChiTietDonHang");} }
     
         private int _soluong;
         public int SoLuong { get { return _soluong; } set { if(_soluong == value) return; _soluong = value; base.RaisePropertyChanged("SoLuong");} }
     
     
+        public virtual tChiTietDonHang tChiTietDonHang { get; set; }
         public virtual tChuyenHangDonHang tChuyenHangDonHang { get; set; }
-        public virtual tMatHang tMatHang { get; set; }
     }
 }

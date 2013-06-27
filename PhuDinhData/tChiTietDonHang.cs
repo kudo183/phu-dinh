@@ -14,6 +14,11 @@ namespace PhuDinhData
     
     public partial class tChiTietDonHang : BindableObject
     {
+        public tChiTietDonHang()
+        {
+            this.tChiTietChuyenHangDonHangs = new HashSet<tChiTietChuyenHangDonHang>();
+        }
+    
         private int _ma;
         public int Ma { get { return _ma; } set { if(_ma == value) return; _ma = value; base.RaisePropertyChanged("Ma");} }
     
@@ -27,6 +32,7 @@ namespace PhuDinhData
         public int SoLuong { get { return _soluong; } set { if(_soluong == value) return; _soluong = value; base.RaisePropertyChanged("SoLuong");} }
     
     
+        public virtual ICollection<tChiTietChuyenHangDonHang> tChiTietChuyenHangDonHangs { get; set; }
         public virtual tDonHang tDonHang { get; set; }
         public virtual tMatHang tMatHang { get; set; }
     }

@@ -17,11 +17,11 @@ namespace PhuDinhCommonControl
     {
         public Expression<Func<PhuDinhData.tChiTietChuyenHangDonHang, bool>> FilterChiTietChuyenHangDonHang { get; set; }
         public Expression<Func<PhuDinhData.tChuyenHangDonHang, bool>> FilterChuyenHangDonHang { get; set; }
-        public Expression<Func<PhuDinhData.tMatHang, bool>> FilterMatHang { get; set; }
+        public Expression<Func<PhuDinhData.tChiTietDonHang, bool>> FilterChiTietDonHang { get; set; }
 
         private List<PhuDinhData.tChiTietChuyenHangDonHang> _tChiTietChuyenHangDonHangs;
         private List<PhuDinhData.tChuyenHangDonHang> _tChuyenHangDonHangs;
-        private List<PhuDinhData.tMatHang> _tMatHangs;
+        private List<PhuDinhData.tChiTietDonHang> _tChiTietDonHangs;
         private readonly PhuDinhData.PhuDinhEntities _context = new PhuDinhData.PhuDinhEntities();
 
         public tChiTietChuyenHangDonHangView()
@@ -29,7 +29,7 @@ namespace PhuDinhCommonControl
             InitializeComponent();
             FilterChiTietChuyenHangDonHang = (p => true);
             FilterChuyenHangDonHang = (p => true);
-            FilterMatHang = (p => true);
+            FilterChiTietDonHang = (p => true);
         }
 
         #region Override base view method
@@ -59,7 +59,7 @@ namespace PhuDinhCommonControl
             collection.CollectionChanged += collection_CollectionChanged;
             dgChiTietChuyenHangDonHang.DataContext = collection;
 
-            UpdateMatHangReferenceData();
+            UpdateChiTietDonHangReferenceData();
             UpdateChuyenHangDonHangReferenceData();
 
             dgChiTietChuyenHangDonHang.UpdateLayout();
@@ -71,7 +71,7 @@ namespace PhuDinhCommonControl
             {
                 var tChiTietChuyenHangDonHang = e.NewItems[0] as PhuDinhData.tChiTietChuyenHangDonHang;
                 tChiTietChuyenHangDonHang.tChuyenHangDonHangList = _tChuyenHangDonHangs;
-                tChiTietChuyenHangDonHang.tMatHangList = _tMatHangs;
+                tChiTietChuyenHangDonHang.tChiTietDonHangList = _tChiTietDonHangs;
             }
         }
         #endregion
@@ -93,13 +93,13 @@ namespace PhuDinhCommonControl
 
                     UpdateChuyenHangDonHangReferenceData();
                     break;
-                case "Mặt Hàng":
+                case "Chi tiết đơn hàng":
                     view = new tMatHangView();
                     view.RefreshView();
-                    w = new Window { Title = "Mặt Hàng", Content = view };
+                    w = new Window { Title = "Chi tiết đơn hàng", Content = view };
                     w.ShowDialog();
 
-                    UpdateMatHangReferenceData();
+                    UpdateChiTietDonHangReferenceData();
                     break;
             }
         }
@@ -113,12 +113,12 @@ namespace PhuDinhCommonControl
             }
         }
 
-        private void UpdateMatHangReferenceData()
+        private void UpdateChiTietDonHangReferenceData()
         {
-            _tMatHangs = PhuDinhData.Repository.tMatHangRepository.GetData(_context, FilterMatHang);
+            _tChiTietDonHangs = PhuDinhData.Repository.tChiTietDonHangRepository.GetData(_context, FilterChiTietDonHang);
             foreach (var tChiTietChuyenHangDonHang in _tChiTietChuyenHangDonHangs)
             {
-                tChiTietChuyenHangDonHang.tMatHangList = _tMatHangs;
+                tChiTietChuyenHangDonHang.tChiTietDonHangList = _tChiTietDonHangs;
             }
         }
     }

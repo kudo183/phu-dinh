@@ -20,13 +20,15 @@
                                                  SelectedItemBinding="{Binding tChuyenHangDonHang, UpdateSourceTrigger=PropertyChanged}"
                                                  ItemsSource="{Binding tChuyenHangDonHangList}"/>
         <!--Mat hang-->
-        <CustomControl:DataGridComboBoxColumnExt x:Name="matHangColumn" Header="Mặt Hàng" HeaderAddButtonClick="headerAddButton_Click"
-                                                 TextBinding="{Binding tMatHang.TenMatHang, Mode=OneWay}"
-                                                 DisplayMemberPath="TenMatHang"
+        <CustomControl:DataGridComboBoxColumnExt x:Name="chiTietDonHangColumn" Header="Chi tiết đơn hàng" Width="350" HeaderAddButtonClick="headerAddButton_Click"
+                                                 TextBinding="{Binding tChiTietDonHang.TenChiTietDonHang, Mode=OneWay}"
+                                                 DisplayMemberPath="TenChiTietDonHang"
                                                  SelectedValuePath="Ma"
-                                                 SelectedValueBinding="{Binding MaMatHang, UpdateSourceTrigger=PropertyChanged}"
-                                                 SelectedItemBinding="{Binding tMatHang, UpdateSourceTrigger=PropertyChanged}"
-                                                 ItemsSource="{Binding tMatHangList}"/>
+                                                 SelectedValueBinding="{Binding MaChiTietDonHang, UpdateSourceTrigger=PropertyChanged}"
+                                                 SelectedItemBinding="{Binding tChiTietDonHang, UpdateSourceTrigger=PropertyChanged}"
+                                                 ItemsSource="{Binding tChiTietDonHangList}"/>
+        <!--So luong theo don hang-->
+        <CustomControl:DataGridReadOnlyTextColumn x:Name="soLuongDonHangColumn" Header="SL theo đơn hàng" Width="SizeToHeader" Binding="{Binding SoLuongTheoDonHang}"/>
         <!--So luong-->
         <CustomControl:DataGridTextRightAlignColumn x:Name="soLuongColumn"/>
     </DataGrid.Columns>

@@ -16,7 +16,6 @@ namespace PhuDinhData
     {
         public tMatHang()
         {
-            this.tChiTietChuyenHangDonHangs = new HashSet<tChiTietChuyenHangDonHang>();
             this.tChiTietDonHangs = new HashSet<tChiTietDonHang>();
         }
     
@@ -31,7 +30,6 @@ namespace PhuDinhData
     
     
         public virtual rLoaiHang rLoaiHang { get; set; }
-        public virtual ICollection<tChiTietChuyenHangDonHang> tChiTietChuyenHangDonHangs { get; set; }
         public virtual ICollection<tChiTietDonHang> tChiTietDonHangs { get; set; }
     }
 }

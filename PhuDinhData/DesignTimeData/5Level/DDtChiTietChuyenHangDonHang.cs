@@ -30,12 +30,12 @@ namespace PhuDinhData.DesignTimeData
             return new tChiTietChuyenHangDonHang()
             {
                 Ma = i,
-                MaMatHang = i,
+                MaChiTietDonHang = i,
                 MaChuyenHangDonHang = i,
                 SoLuong = i * 10,
-                tMatHang = DDtMatHang.Create(i),
+                tChiTietDonHang = DDtChiTietDonHang.Create(i),
                 tChuyenHangDonHang = DDtChuyenHangDonHang.Create(i),
-                tMatHangList = DDtMatHang.tMatHangs,
+                tChiTietDonHangList = DDtChiTietDonHang.tChiTietDonHangs,
                 tChuyenHangDonHangList = DDtChuyenHangDonHang.tChuyenHangDonHangs
             };
         }
