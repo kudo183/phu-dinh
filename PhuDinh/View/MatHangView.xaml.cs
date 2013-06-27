@@ -17,12 +17,7 @@ namespace PhuDinh.View
 
         void dgLoaiHang_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (e.AddedItems.Count == 0)
-            {
-                return;
-            }
-
-            var loaihang = e.AddedItems[0] as PhuDinhData.rLoaiHang;
+            var loaihang = ((DataGrid)sender).SelectedItem as PhuDinhData.rLoaiHang;
             if (loaihang == null)
             {
                 _tMatHangView.FilterMatHang = null;

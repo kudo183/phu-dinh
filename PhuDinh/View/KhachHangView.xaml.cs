@@ -21,12 +21,7 @@ namespace PhuDinh.View
             _tDonHangView.FilterDonHang = null;
             _tDonHangView.RefreshView();
 
-            if (e.AddedItems.Count == 0)
-            {
-                return;
-            }
-
-            var diaDiem = e.AddedItems[0] as PhuDinhData.rDiaDiem;
+            var diaDiem = ((DataGrid)sender).SelectedItem as PhuDinhData.rDiaDiem;
             if (diaDiem == null)
             {
                 _rKhachHangView.FilterKhachHang = null;
@@ -40,12 +35,7 @@ namespace PhuDinh.View
 
         void dgKhachHang_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (e.AddedItems.Count == 0)
-            {
-                return;
-            }
-
-            var khachHang = e.AddedItems[0] as PhuDinhData.rKhachHang;
+            var khachHang = ((DataGrid)sender).SelectedItem as PhuDinhData.rKhachHang;
             if (khachHang == null)
             {
                 _tDonHangView.FilterDonHang = null;

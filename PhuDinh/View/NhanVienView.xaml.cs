@@ -17,12 +17,7 @@ namespace PhuDinh.View
 
         void dgPhuongTien_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (e.AddedItems.Count == 0)
-            {
-                return;
-            }
-
-            var phuongTien = e.AddedItems[0] as PhuDinhData.rPhuongTien;
+            var phuongTien = ((DataGrid)sender).SelectedItem as PhuDinhData.rPhuongTien;
             if (phuongTien == null)
             {
                 _rNhanVienGiaoHangView.FilterNhanVienGiaoHang = null;

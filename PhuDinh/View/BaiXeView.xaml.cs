@@ -17,12 +17,7 @@ namespace PhuDinh.View
 
         void dgBaiXe_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (e.AddedItems.Count == 0)
-            {
-                return;
-            }
-
-            var baixe = e.AddedItems[0] as PhuDinhData.rBaiXe;
+            var baixe = ((DataGrid)sender).SelectedItem as PhuDinhData.rBaiXe;
             if(baixe == null)
             {
                 _rChanhView.FilterChanh = null;

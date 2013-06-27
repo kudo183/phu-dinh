@@ -18,12 +18,7 @@ namespace PhuDinh.View
 
         void dgChuyenHangDonHang_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (e.AddedItems.Count == 0)
-            {
-                return;
-            }
-
-            var chuyenHangDonHang = e.AddedItems[0] as PhuDinhData.tChuyenHangDonHang;
+            var chuyenHangDonHang = ((DataGrid)sender).SelectedItem as PhuDinhData.tChuyenHangDonHang;
             if (chuyenHangDonHang == null)
             {
                 _tChiTietChuyenHangDonHangView.FilterChiTietChuyenHangDonHang = null;
@@ -42,12 +37,7 @@ namespace PhuDinh.View
             _tChiTietChuyenHangDonHangView.FilterChiTietChuyenHangDonHang = null;
             _tChiTietChuyenHangDonHangView.RefreshView();
 
-            if (e.AddedItems.Count == 0)
-            {
-                return;
-            }
-
-            var chuyenHang = e.AddedItems[0] as PhuDinhData.tChuyenHang;
+            var chuyenHang = ((DataGrid)sender).SelectedItem as PhuDinhData.tChuyenHang;
             if(chuyenHang == null)
             {
                 _tChuyenHangDonHangView.FilterChuyenHangDonHang = null;

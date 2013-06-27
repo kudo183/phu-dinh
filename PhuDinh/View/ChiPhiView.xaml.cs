@@ -17,12 +17,7 @@ namespace PhuDinh.View
 
         void dgLoaiChiPhi_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (e.AddedItems.Count == 0)
-            {
-                return;
-            }
-
-            var loaiChiPhi = e.AddedItems[0] as PhuDinhData.rLoaiChiPhi;
+            var loaiChiPhi = ((DataGrid)sender).SelectedItem as PhuDinhData.rLoaiChiPhi;
             if (loaiChiPhi == null)
             {
                 _rChiPhiNhanVienGiaoHangView.FilterChiPhiNhanVienGiaoHang = null;

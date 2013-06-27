@@ -16,13 +16,8 @@ namespace PhuDinh.View
         }
 
         void dgDonHang_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (e.AddedItems.Count == 0)
-            {
-                return;
-            }
-
-            var donHang = e.AddedItems[0] as PhuDinhData.tDonHang;
+        {            
+            var donHang = ((DataGrid)sender).SelectedItem as PhuDinhData.tDonHang;
             if(donHang == null)
             {
                 _tChiTietDonHangView.FilterChiTietDonHang = null;
