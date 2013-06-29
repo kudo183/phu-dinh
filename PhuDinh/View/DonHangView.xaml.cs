@@ -26,6 +26,7 @@ namespace PhuDinh.View
             }
 
             _tChiTietDonHangView.FilterChiTietDonHang = (p => p.MaDonHang == donHang.Ma);
+            _tChiTietDonHangView.tDonHangDefault = donHang;
             _tChiTietDonHangView.RefreshView();
         }
     }
