@@ -13,6 +13,14 @@
         <CustomControl:DataGridReadOnlyTextColumn x:Name="maColumn"/>
         <!--Ngay-->
         <CustomControl:DataGridDateColumn x:Name="ngayColumn"/>
+        <!--Loai chi phi-->
+        <CustomControl:DataGridComboBoxColumnExt x:Name="loaiChiPhiColumn" Header="Loại Chi Phí" HeaderAddButtonClick="headerAddButton_Click"
+                                                 TextBinding="{Binding rLoaiChiPhi.TenLoaiChiPhi, Mode=OneWay}"
+                                                 DisplayMemberPath="TenLoaiChiPhi"
+                                                 SelectedValuePath="Ma"
+                                                 SelectedValueBinding="{Binding MaLoaiChiPhi, UpdateSourceTrigger=PropertyChanged}"
+                                                 SelectedItemBinding="{Binding rLoaiChiPhi, UpdateSourceTrigger=PropertyChanged}"
+                                                 ItemsSource="{Binding rLoaiChiPhiList}"/>
         <!--Nhan vien giao hang-->
         <CustomControl:DataGridComboBoxColumnExt x:Name="nhanVienGiaoHangColumn" Header="Nhân Viên" HeaderAddButtonClick="headerAddButton_Click"
                                                  TextBinding="{Binding rNhanVienGiaoHang.TenNhanVien, Mode=OneWay}"
@@ -21,14 +29,6 @@
                                                  SelectedValueBinding="{Binding MaNhanVienGiaoHang, UpdateSourceTrigger=PropertyChanged}"
                                                  SelectedItemBinding="{Binding rNhanVienGiaoHang, UpdateSourceTrigger=PropertyChanged}"
                                                  ItemsSource="{Binding rNhanVienGiaoHangList}"/>
-        <!--Loai chi phi-->
-        <CustomControl:DataGridComboBoxColumnExt x:Name="loaiChiPhiColumn" Header="Loại Chi Phí" HeaderAddButtonClick="headerAddButton_Click"
-                                                 TextBinding="{Binding rLoaiChiPhi.TenLoaiChiPhi, Mode=OneWay}"
-                                                 DisplayMemberPath="TenLoaiChiPhi"
-                                                 SelectedValuePath="Ma"
-                                                 SelectedValueBinding="{Binding MaLoaiChiPhi, UpdateSourceTrigger=PropertyChanged}"
-                                                 SelectedItemBinding="{Binding rLoaiChiPhi, UpdateSourceTrigger=PropertyChanged}"
-                                                 ItemsSource="{Binding rLoaiChiPhiList}"/>        
         <!--So tien-->
         <CustomControl:DataGridTextRightAlignColumn x:Name="soTienColumn" Binding="{Binding SoTien, StringFormat=\{0:N0\}}" Header="Số Tiền"/>            
         <!--Ghi chu-->

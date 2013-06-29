@@ -11,8 +11,6 @@
     <DataGrid.Columns>
         <!--Ma-->
         <CustomControl:DataGridReadOnlyTextColumn x:Name="maColumn"/>
-        <!--Ten khach hang-->
-        <CustomControl:DataGridTextColumnExt x:Name="tenKhachHangColumn" Header="Tên Khách Hàng" Binding="{Binding TenKhachHang}"/>
         <!--Dia diem-->
         <CustomControl:DataGridComboBoxColumnExt x:Name="diaDiemColumn" Header="Địa điểm" HeaderAddButtonClick="headerAddButton_Click"
                                                  TextBinding="{Binding rDiaDiem.TenDiaDiem, Mode=OneWay}"
@@ -21,5 +19,7 @@
                                                  SelectedValueBinding="{Binding MaDiaDiem, UpdateSourceTrigger=PropertyChanged}"
                                                  SelectedItemBinding="{Binding rDiaDiem, UpdateSourceTrigger=PropertyChanged}"
                                                  ItemsSource="{Binding rDiaDiemList}"/>
+        <!--Ten khach hang-->
+        <CustomControl:DataGridTextColumnExt x:Name="tenKhachHangColumn" Header="Tên Khách Hàng" Binding="{Binding TenKhachHang}"/>
     </DataGrid.Columns>
 </CustomControl:DataGridExt>
