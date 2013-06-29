@@ -18,6 +18,7 @@ namespace PhuDinhCommonControl
         public Expression<Func<PhuDinhData.tChiTietChuyenHangDonHang, bool>> FilterChiTietChuyenHangDonHang { get; set; }
         public Expression<Func<PhuDinhData.tChuyenHangDonHang, bool>> FilterChuyenHangDonHang { get; set; }
         public Expression<Func<PhuDinhData.tChiTietDonHang, bool>> FilterChiTietDonHang { get; set; }
+        public PhuDinhData.tChuyenHangDonHang tChuyenHangDonHangDefault { get; set; }
 
         private List<PhuDinhData.tChiTietChuyenHangDonHang> _tChiTietChuyenHangDonHangs;
         private List<PhuDinhData.tChuyenHangDonHang> _tChuyenHangDonHangs;
@@ -83,6 +84,11 @@ namespace PhuDinhCommonControl
                 var tChiTietChuyenHangDonHang = e.NewItems[0] as PhuDinhData.tChiTietChuyenHangDonHang;
                 tChiTietChuyenHangDonHang.tChuyenHangDonHangList = _tChuyenHangDonHangs;
                 tChiTietChuyenHangDonHang.tChiTietDonHangList = _tChiTietDonHangs;
+
+                if (tChuyenHangDonHangDefault != null)
+                {
+                    tChiTietChuyenHangDonHang.MaChuyenHangDonHang = tChuyenHangDonHangDefault.Ma;
+                }
             }
         }
         #endregion
