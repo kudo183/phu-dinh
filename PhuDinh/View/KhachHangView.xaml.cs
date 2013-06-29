@@ -30,6 +30,7 @@ namespace PhuDinh.View
             }
 
             _rKhachHangView.FilterKhachHang = (p => p.MaDiaDiem == diaDiem.Ma);
+            _rKhachHangView.rDiaDiemDefault = diaDiem;
             _rKhachHangView.RefreshView();            
         }
 
@@ -44,6 +45,7 @@ namespace PhuDinh.View
             }
 
             _tDonHangView.FilterDonHang = (p => p.MaKhachHang == khachHang.Ma);
+            _tDonHangView.rKhachHangDefault = khachHang;
             _tDonHangView.RefreshView();
         }
     }

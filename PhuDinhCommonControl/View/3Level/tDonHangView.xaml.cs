@@ -18,6 +18,7 @@ namespace PhuDinhCommonControl
         public Expression<Func<PhuDinhData.tDonHang, bool>> FilterDonHang { get; set; }
         public Expression<Func<PhuDinhData.rKhachHang, bool>> FilterKhachHang { get; set; }
         public Expression<Func<PhuDinhData.rChanh, bool>> FilterChanh { get; set; }
+        public PhuDinhData.rKhachHang rKhachHangDefault { get; set; }
 
         private List<PhuDinhData.tDonHang> _tDonHangs;
         private List<PhuDinhData.rKhachHang> _rKhachHangs;
@@ -86,6 +87,11 @@ namespace PhuDinhCommonControl
                 tDonHang.Ngay = DateTime.Now;
                 tDonHang.rChanhList = _rChanhs;
                 tDonHang.rKhachHangList = _rKhachHangs;
+
+                if (rKhachHangDefault != null)
+                {
+                    tDonHang.MaKhachHang = rKhachHangDefault.Ma;
+                }
             }
         }
 

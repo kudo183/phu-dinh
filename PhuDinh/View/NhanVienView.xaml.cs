@@ -26,6 +26,7 @@ namespace PhuDinh.View
             }
 
             _rNhanVienGiaoHangView.FilterNhanVienGiaoHang = (p => p.MaPhuongTien == phuongTien.Ma);
+            _rNhanVienGiaoHangView.rPhuongTienDefault = phuongTien;
             _rNhanVienGiaoHangView.RefreshView();
         }
     }

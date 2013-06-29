@@ -26,6 +26,7 @@ namespace PhuDinh.View
             }
 
             _rChanhView.FilterChanh = (p => p.MaBaiXe == baixe.Ma);
+            _rChanhView.rBaiXeDefault = baixe;
             _rChanhView.RefreshView();
         }
     }

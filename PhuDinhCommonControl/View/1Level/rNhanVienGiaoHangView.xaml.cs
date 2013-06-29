@@ -14,8 +14,9 @@ namespace PhuDinhCommonControl
     /// </summary>
     public partial class rNhanVienGiaoHangView : BaseView
     {
-        public Expression<Func<PhuDinhData.rPhuongTien, bool>> FilterPhuongTien { get; set; }
         public Expression<Func<PhuDinhData.rNhanVienGiaoHang, bool>> FilterNhanVienGiaoHang { get; set; }
+        public Expression<Func<PhuDinhData.rPhuongTien, bool>> FilterPhuongTien { get; set; }
+        public PhuDinhData.rPhuongTien rPhuongTienDefault { get; set; }
 
         private List<PhuDinhData.rNhanVienGiaoHang> _rNhanVienGiaoHangs;
         private List<PhuDinhData.rPhuongTien> _rPhuongTiens;
@@ -78,6 +79,11 @@ namespace PhuDinhCommonControl
             {
                 var nhanVienGiaoHang = e.NewItems[0] as PhuDinhData.rNhanVienGiaoHang;
                 nhanVienGiaoHang.rPhuongTienList = _rPhuongTiens;
+
+                if (rPhuongTienDefault != null)
+                {
+                    nhanVienGiaoHang.MaPhuongTien = rPhuongTienDefault.Ma;
+                }
             }
         }
         #endregion

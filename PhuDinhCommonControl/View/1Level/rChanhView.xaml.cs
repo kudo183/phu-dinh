@@ -16,6 +16,7 @@ namespace PhuDinhCommonControl
     {
         public Expression<Func<PhuDinhData.rChanh, bool>> FilterChanh { get; set; }
         public Expression<Func<PhuDinhData.rBaiXe, bool>> FilterBaiXe { get; set; }
+        public PhuDinhData.rBaiXe rBaiXeDefault { get; set; }
 
         private List<PhuDinhData.rChanh> _rChanhs;
         private List<PhuDinhData.rBaiXe> _rBaiXes;
@@ -79,6 +80,11 @@ namespace PhuDinhCommonControl
             {
                 var chanh = e.NewItems[0] as PhuDinhData.rChanh;
                 chanh.rBaiXeList = _rBaiXes;
+
+                if (rBaiXeDefault != null)
+                {
+                    chanh.MaBaiXe = rBaiXeDefault.Ma;
+                }
             }
         }
 

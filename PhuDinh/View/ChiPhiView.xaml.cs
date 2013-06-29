@@ -26,6 +26,7 @@ namespace PhuDinh.View
             }
 
             _rChiPhiNhanVienGiaoHangView.FilterChiPhiNhanVienGiaoHang = (p => p.MaLoaiChiPhi == loaiChiPhi.Ma);
+            _rChiPhiNhanVienGiaoHangView.rLoaiChiPhiDefault = loaiChiPhi;
             _rChiPhiNhanVienGiaoHangView.RefreshView();
         }
     }

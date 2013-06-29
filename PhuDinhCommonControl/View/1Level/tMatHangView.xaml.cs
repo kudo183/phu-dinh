@@ -16,6 +16,7 @@ namespace PhuDinhCommonControl
     {
         public Expression<Func<PhuDinhData.tMatHang, bool>> FilterMatHang { get; set; }
         public Expression<Func<PhuDinhData.rLoaiHang, bool>> FilterLoaiHang { get; set; }
+        public PhuDinhData.rLoaiHang rLoaiHangDefault { get; set; }
 
         private List<PhuDinhData.tMatHang> _tMatHangs;
         private List<PhuDinhData.rLoaiHang> _rLoaiHangs;
@@ -78,6 +79,11 @@ namespace PhuDinhCommonControl
             {
                 var tMatHang = e.NewItems[0] as PhuDinhData.tMatHang;
                 tMatHang.rLoaiHangList = _rLoaiHangs;
+
+                if (rLoaiHangDefault != null)
+                {
+                    tMatHang.MaLoai = rLoaiHangDefault.Ma;
+                }
             }
         }
 

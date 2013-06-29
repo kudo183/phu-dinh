@@ -26,6 +26,7 @@ namespace PhuDinh.View
             }
 
             _tMatHangView.FilterMatHang = (p => p.MaLoai == loaihang.Ma);
+            _tMatHangView.rLoaiHangDefault = loaihang;
             _tMatHangView.RefreshView();
         }
     }

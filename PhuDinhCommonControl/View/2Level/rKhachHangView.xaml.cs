@@ -16,6 +16,7 @@ namespace PhuDinhCommonControl
     {
         public Expression<Func<PhuDinhData.rKhachHang, bool>> FilterKhachHang { get; set; }
         public Expression<Func<PhuDinhData.rDiaDiem, bool>> FilterDiaDiem { get; set; }
+        public PhuDinhData.rDiaDiem rDiaDiemDefault { get; set; }
 
         private List<PhuDinhData.rKhachHang> _rKhachHangs;
         private List<PhuDinhData.rDiaDiem> _rDiaDiems;
@@ -78,6 +79,11 @@ namespace PhuDinhCommonControl
             {
                 var khachHang = e.NewItems[0] as PhuDinhData.rKhachHang;
                 khachHang.rDiaDiemList = _rDiaDiems;
+
+                if (rDiaDiemDefault != null)
+                {
+                    khachHang.MaDiaDiem = rDiaDiemDefault.Ma;
+                }
             }
         }
 

@@ -18,6 +18,8 @@ namespace PhuDinhCommonControl
         public Expression<Func<PhuDinhData.tChiPhiNhanVienGiaoHang, bool>> FilterChiPhiNhanVienGiaoHang { get; set; }
         public Expression<Func<PhuDinhData.rLoaiChiPhi, bool>> FilterLoaiChiPhi { get; set; }
         public Expression<Func<PhuDinhData.rNhanVienGiaoHang, bool>> FilterNhanVienGiaoHang { get; set; }
+        public PhuDinhData.rLoaiChiPhi rLoaiChiPhiDefault { get; set; }
+        public PhuDinhData.rNhanVienGiaoHang rNhanVienGiaoHangDefault { get; set; }
 
         private List<PhuDinhData.tChiPhiNhanVienGiaoHang> _tChiPhiNhanVienGiaoHangs;
         private List<PhuDinhData.rLoaiChiPhi> _rLoaiChiPhis;
@@ -85,6 +87,16 @@ namespace PhuDinhCommonControl
                 tChiPhiNhanVienGiaoHang.Ngay = DateTime.Now;
                 tChiPhiNhanVienGiaoHang.rLoaiChiPhiList = _rLoaiChiPhis;
                 tChiPhiNhanVienGiaoHang.rNhanVienGiaoHangList = _rNhanVienGiaoHangs;
+
+                if (rLoaiChiPhiDefault != null)
+                {
+                    tChiPhiNhanVienGiaoHang.MaLoaiChiPhi = rLoaiChiPhiDefault.Ma;
+                }
+
+                if (rNhanVienGiaoHangDefault != null)
+                {
+                    tChiPhiNhanVienGiaoHang.MaNhanVienGiaoHang = rNhanVienGiaoHangDefault.Ma;
+                }
             }
         }
 
