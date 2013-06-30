@@ -69,7 +69,7 @@ namespace PhuDinhCommonControl
             dgNhanVienGiaoHang.DataContext = collection;
 
             UpdatePhuongTienReferenceData();
-            
+
             dgNhanVienGiaoHang.UpdateLayout();
         }
 
@@ -92,8 +92,7 @@ namespace PhuDinhCommonControl
         {
             var view = new rPhuongTienView();
             view.RefreshView();
-            var w = new Window { Title = "Phương Tiện", Content = view };
-            w.ShowDialog();
+            ChildWindowUtils.ShowChildWindow("Phương Tiện", view);
 
             UpdatePhuongTienReferenceData();
         }

@@ -93,8 +93,7 @@ namespace PhuDinhCommonControl
         {
             var view = new rLoaiHangView();
             view.RefreshView();
-            var w = new Window { Title = "Loại Hàng", Content = view };
-            w.ShowDialog();
+            ChildWindowUtils.ShowChildWindow("Loại Hàng", view);
 
             UpdateLoaiHangReferenceData();
         }

@@ -87,9 +87,8 @@ namespace PhuDinhCommonControl
         private void dgDiaDiem_HeaderAddButtonClick(object sender, EventArgs e)
         {
             var view = new rNuocView();
-            view.RefreshView();
-            var w = new Window { Title = "Nước", Content = view };
-            w.ShowDialog();
+            view.RefreshView();            
+            ChildWindowUtils.ShowChildWindow("Nước", view);
 
             UpdateNuocReferenceData();
         }

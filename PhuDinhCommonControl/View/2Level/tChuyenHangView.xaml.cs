@@ -89,8 +89,7 @@ namespace PhuDinhCommonControl
         {
             var view = new rNhanVienGiaoHangView();
             view.RefreshView();
-            var w = new Window { Title = "Nhân Viên", Content = view };
-            w.ShowDialog();
+            ChildWindowUtils.ShowChildWindow("Nhân Viên", view);
 
             UpdateNhanVienGiaoHangReferenceData();
         }

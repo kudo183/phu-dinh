@@ -93,8 +93,7 @@ namespace PhuDinhCommonControl
         {
             var view = new rDiaDiemView();
             view.RefreshView();
-            var w = new Window { Title = "Địa điểm", Content = view };
-            w.ShowDialog();
+            ChildWindowUtils.ShowChildWindow("Địa điểm", view);
 
             UpdateDiaDiemReferenceData();
         }

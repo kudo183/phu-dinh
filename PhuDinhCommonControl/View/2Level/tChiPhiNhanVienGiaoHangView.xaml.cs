@@ -114,16 +114,14 @@ namespace PhuDinhCommonControl
                 case "Nhân Viên":
                     view = new rNhanVienGiaoHangView();
                     view.RefreshView();
-                    w = new Window { Title = "Nhân Viên", Content = view };
-                    w.ShowDialog();
+                    ChildWindowUtils.ShowChildWindow("Nhân Viên", view);
 
                     UpdateNhanVienGiaoHangReferenceData();
                     break;
                 case "Loại Chi Phí":
                     view = new rLoaiChiPhiView();
                     view.RefreshView();
-                    w = new Window { Title = "Loại Chi Phí", Content = view };
-                    w.ShowDialog();
+                    ChildWindowUtils.ShowChildWindow("Loại Chi Phí", view);
 
                     UpdateLoaiChiPhiReferenceData();
                     break;

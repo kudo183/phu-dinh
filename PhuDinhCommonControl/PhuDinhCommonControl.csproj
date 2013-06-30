@@ -62,6 +62,7 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChildWindowUtils.cs" />
     <Compile Include="CustomControl\DataGridColumn\DataGridTimeColumn.xaml.cs">
       <DependentUpon>DataGridTimeColumn.xaml</DependentUpon>
     </Compile>

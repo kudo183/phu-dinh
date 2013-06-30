@@ -94,8 +94,7 @@ namespace PhuDinhCommonControl
         {
             var view = new rBaiXeView();
             view.RefreshView();
-            var w = new Window { Title = "Bãi Xe", Content = view };
-            w.ShowDialog();
+            ChildWindowUtils.ShowChildWindow("Bãi Xe", view);
 
             UpdateBaiXeReferenceData();
         }

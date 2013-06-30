@@ -105,16 +105,14 @@ namespace PhuDinhCommonControl
                 case "Chuyến hàng đơn hàng":
                     view = new tChuyenHangDonHangView();
                     view.RefreshView();
-                    w = new Window { Title = "Chuyến hàng đơn hàng", Content = view };
-                    w.ShowDialog();
+                    ChildWindowUtils.ShowChildWindow("Chuyến hàng đơn hàng", view);
 
                     UpdateChuyenHangDonHangReferenceData();
                     break;
                 case "Chi tiết đơn hàng":
                     view = new tMatHangView();
                     view.RefreshView();
-                    w = new Window { Title = "Chi tiết đơn hàng", Content = view };
-                    w.ShowDialog();
+                    ChildWindowUtils.ShowChildWindow("Chi tiết đơn hàng", view);
 
                     UpdateChiTietDonHangReferenceData();
                     break;

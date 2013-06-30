@@ -109,16 +109,14 @@ namespace PhuDinhCommonControl
                 case "Khách hàng":
                     view = new rKhachHangView();
                     view.RefreshView();
-                    w = new Window { Title = "Khách hàng", Content = view };
-                    w.ShowDialog();
+                    ChildWindowUtils.ShowChildWindow("Khách hàng", view);
 
                     UpdateKhachHangReferenceData();
                     break;
                 case "Chành":
                     view = new rChanhView();
                     view.RefreshView();
-                    w = new Window { Title = "Chành", Content = view };
-                    w.ShowDialog();
+                    ChildWindowUtils.ShowChildWindow("Chành", view);
 
                     UpdateChanhReferenceData();
                     break;
