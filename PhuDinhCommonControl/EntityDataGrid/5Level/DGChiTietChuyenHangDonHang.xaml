@@ -27,9 +27,9 @@
                                                  SelectedValueBinding="{Binding MaChiTietDonHang, UpdateSourceTrigger=PropertyChanged}"
                                                  SelectedItemBinding="{Binding tChiTietDonHang, UpdateSourceTrigger=PropertyChanged}"
                                                  ItemsSource="{Binding tChiTietDonHangList}"/>
-        <!--So luong theo don hang-->
-        <CustomControl:DataGridReadOnlyTextColumn x:Name="soLuongDonHangColumn" Header="SL theo đơn hàng" Width="SizeToHeader" Binding="{Binding SoLuongTheoDonHang}"/>
         <!--So luong-->
         <CustomControl:DataGridTextRightAlignColumn x:Name="soLuongColumn"/>
+        <!--So luong theo don hang-->
+        <CustomControl:DataGridReadOnlyTextColumn x:Name="soLuongDonHangColumn" Header="SL theo đơn hàng" Width="SizeToHeader" Binding="{Binding SoLuongTheoDonHang}"/>
     </DataGrid.Columns>
 </CustomControl:DataGridExt>
