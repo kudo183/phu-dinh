@@ -5,7 +5,6 @@ using System.Collections.Specialized;
 using System.Data;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Windows;
 
 namespace PhuDinhCommonControl
 {
@@ -20,7 +19,7 @@ namespace PhuDinhCommonControl
 
         private List<PhuDinhData.rChanh> _rChanhs;
         private List<PhuDinhData.rBaiXe> _rBaiXes;
-        private readonly PhuDinhData.PhuDinhEntities _context = new PhuDinhData.PhuDinhEntities();
+        private PhuDinhData.PhuDinhEntities _context = new PhuDinhData.PhuDinhEntities();
 
         public rChanhView()
         {
@@ -42,17 +41,20 @@ namespace PhuDinhCommonControl
 
                 var data = dgChanh.DataContext as ObservableCollection<PhuDinhData.rChanh>;
                 PhuDinhData.Repository.rChanhRepository.Save(_context, data.ToList(), FilterChanh);
-                RefreshView();
             }
             catch (Exception ex)
             {
                 PhuDinhCommon.EntityFrameworkUtils.UndoContextChange(_context, EntityState.Modified);
             }
+
+            base.Save();
         }
 
         public override void Cancel()
         {
             RefreshView();
+
+            base.Cancel();
         }
 
         public override void RefreshView()
@@ -63,6 +65,10 @@ namespace PhuDinhCommonControl
                 return;
             }
 
+            var index = dgChanh.SelectedIndex;
+
+            _context = new PhuDinhData.PhuDinhEntities();
+
             _rChanhs = PhuDinhData.Repository.rChanhRepository.GetData(_context, FilterChanh);
 
             var collection = new ObservableCollection<PhuDinhData.rChanh>(_rChanhs);
@@ -72,6 +78,8 @@ namespace PhuDinhCommonControl
             UpdateBaiXeReferenceData();
 
             dgChanh.UpdateLayout();
+
+            dgChanh.SelectedIndex = index;
         }
 
         void collection_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)

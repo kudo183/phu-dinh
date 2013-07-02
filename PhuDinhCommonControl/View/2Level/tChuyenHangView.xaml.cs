@@ -5,7 +5,6 @@ using System.Collections.Specialized;
 using System.Data;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Windows;
 
 namespace PhuDinhCommonControl
 {
@@ -19,7 +18,7 @@ namespace PhuDinhCommonControl
 
         private List<PhuDinhData.tChuyenHang> _tChuyenHangs;
         private List<PhuDinhData.rNhanVienGiaoHang> _rNhanVienGiaoHangs;
-        private readonly PhuDinhData.PhuDinhEntities _context = new PhuDinhData.PhuDinhEntities();
+        private PhuDinhData.PhuDinhEntities _context = new PhuDinhData.PhuDinhEntities();
 
         public tChuyenHangView()
         {
@@ -41,17 +40,20 @@ namespace PhuDinhCommonControl
 
                 var data = dgChuyenHang.DataContext as ObservableCollection<PhuDinhData.tChuyenHang>;
                 PhuDinhData.Repository.tChuyenHangRepository.Save(_context, data.ToList(), FilterChuyenHang);
-                RefreshView();
             }
             catch (Exception ex)
             {
                 PhuDinhCommon.EntityFrameworkUtils.UndoContextChange(_context, EntityState.Modified);
             }
+
+            base.Save();
         }
 
         public override void Cancel()
         {
             RefreshView();
+
+            base.Cancel();
         }
 
         public override void RefreshView()
@@ -62,6 +64,10 @@ namespace PhuDinhCommonControl
                 return;
             }
 
+            var index = dgChuyenHang.SelectedIndex;
+
+            _context = new PhuDinhData.PhuDinhEntities();
+
             _tChuyenHangs = PhuDinhData.Repository.tChuyenHangRepository.GetData(_context, FilterChuyenHang);
             var collection = new ObservableCollection<PhuDinhData.tChuyenHang>(_tChuyenHangs);
             collection.CollectionChanged += collection_CollectionChanged;
@@ -70,6 +76,8 @@ namespace PhuDinhCommonControl
             UpdateNhanVienGiaoHangReferenceData();
 
             dgChuyenHang.UpdateLayout();
+
+            dgChuyenHang.SelectedIndex = index;
         }
 
         void collection_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)

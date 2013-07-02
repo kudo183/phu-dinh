@@ -12,7 +12,7 @@ namespace PhuDinhCommonControl
     {
         public Expression<Func<PhuDinhData.rNuoc, bool>> FilterNuoc { get; set; }
 
-        private readonly PhuDinhData.PhuDinhEntities _context = new PhuDinhData.PhuDinhEntities();
+        private PhuDinhData.PhuDinhEntities _context = new PhuDinhData.PhuDinhEntities();
 
         public rNuocView()
         {
@@ -26,24 +26,32 @@ namespace PhuDinhCommonControl
         {
             try
             {
-                var data = this.dgNuoc.DataContext as List<PhuDinhData.rNuoc>;
+                var data = dgNuoc.DataContext as List<PhuDinhData.rNuoc>;
                 PhuDinhData.Repository.rNuocRepository.Save(_context, data, FilterNuoc);
-                RefreshView();
             }
             catch (Exception ex)
             {
                 PhuDinhCommon.EntityFrameworkUtils.UndoContextChange(_context, EntityState.Modified);
             }
+
+            base.Save();
         }
 
         public override void Cancel()
         {
             RefreshView();
+
+            base.Cancel();
         }
 
         public override void RefreshView()
         {
-            this.dgNuoc.DataContext = PhuDinhData.Repository.rNuocRepository.GetData(_context, FilterNuoc);
+            var index = dgNuoc.SelectedIndex;
+
+            _context = new PhuDinhData.PhuDinhEntities();
+            dgNuoc.DataContext = PhuDinhData.Repository.rNuocRepository.GetData(_context, FilterNuoc);
+
+            dgNuoc.SelectedIndex = index;
         }
         #endregion
     }

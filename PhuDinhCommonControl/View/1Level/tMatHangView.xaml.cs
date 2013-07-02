@@ -5,7 +5,6 @@ using System.Collections.Specialized;
 using System.Data;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Windows;
 
 namespace PhuDinhCommonControl
 {
@@ -20,7 +19,7 @@ namespace PhuDinhCommonControl
 
         private List<PhuDinhData.tMatHang> _tMatHangs;
         private List<PhuDinhData.rLoaiHang> _rLoaiHangs;
-        private readonly PhuDinhData.PhuDinhEntities _context = new PhuDinhData.PhuDinhEntities();
+        private PhuDinhData.PhuDinhEntities _context = new PhuDinhData.PhuDinhEntities();
 
         public tMatHangView()
         {
@@ -42,17 +41,20 @@ namespace PhuDinhCommonControl
 
                 var data = dgMatHang.DataContext as ObservableCollection<PhuDinhData.tMatHang>;
                 PhuDinhData.Repository.tMatHangRepository.Save(_context, data.ToList(), FilterMatHang);
-                RefreshView();
             }
             catch (Exception ex)
             {
                 PhuDinhCommon.EntityFrameworkUtils.UndoContextChange(_context, EntityState.Modified);
             }
+
+            base.Save();
         }
 
         public override void Cancel()
         {
             RefreshView();
+
+            base.Cancel();
         }
 
         public override void RefreshView()
@@ -63,6 +65,10 @@ namespace PhuDinhCommonControl
                 return;
             }
 
+            var index = dgMatHang.SelectedIndex;
+
+            _context = new PhuDinhData.PhuDinhEntities();
+
             _tMatHangs = PhuDinhData.Repository.tMatHangRepository.GetData(_context, FilterMatHang);
             var collection = new ObservableCollection<PhuDinhData.tMatHang>(_tMatHangs);
             collection.CollectionChanged += collection_CollectionChanged;
@@ -71,6 +77,8 @@ namespace PhuDinhCommonControl
             UpdateLoaiHangReferenceData();
 
             UpdateLayout();
+
+            dgMatHang.SelectedIndex = index;
         }
 
         void collection_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)

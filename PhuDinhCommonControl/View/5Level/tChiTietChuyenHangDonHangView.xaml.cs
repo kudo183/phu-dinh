@@ -5,7 +5,6 @@ using System.Collections.Specialized;
 using System.Data;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Windows;
 using System.Windows.Controls.Primitives;
 
 namespace PhuDinhCommonControl
@@ -23,7 +22,7 @@ namespace PhuDinhCommonControl
         private List<PhuDinhData.tChiTietChuyenHangDonHang> _tChiTietChuyenHangDonHangs;
         private List<PhuDinhData.tChuyenHangDonHang> _tChuyenHangDonHangs;
         private List<PhuDinhData.tChiTietDonHang> _tChiTietDonHangs;
-        private readonly PhuDinhData.PhuDinhEntities _context = new PhuDinhData.PhuDinhEntities();
+        private PhuDinhData.PhuDinhEntities _context = new PhuDinhData.PhuDinhEntities();
 
         public tChiTietChuyenHangDonHangView()
         {
@@ -45,17 +44,20 @@ namespace PhuDinhCommonControl
 
                 var data = dgChiTietChuyenHangDonHang.DataContext as ObservableCollection<PhuDinhData.tChiTietChuyenHangDonHang>;
                 PhuDinhData.Repository.tChiTietChuyenHangDonHangRepository.Save(_context, data.ToList(), FilterChiTietChuyenHangDonHang);
-                RefreshView();
             }
             catch (Exception ex)
             {
                 PhuDinhCommon.EntityFrameworkUtils.UndoContextChange(_context, EntityState.Modified);
             }
+
+            base.Save();
         }
 
         public override void Cancel()
         {
             RefreshView();
+
+            base.Cancel();
         }
 
         public override void RefreshView()
@@ -66,6 +68,10 @@ namespace PhuDinhCommonControl
                 return;
             }
 
+            var index = dgChiTietChuyenHangDonHang.SelectedIndex;
+
+            _context = new PhuDinhData.PhuDinhEntities();
+
             _tChiTietChuyenHangDonHangs = PhuDinhData.Repository.tChiTietChuyenHangDonHangRepository.GetData(_context, FilterChiTietChuyenHangDonHang);
             var collection = new ObservableCollection<PhuDinhData.tChiTietChuyenHangDonHang>(_tChiTietChuyenHangDonHangs);
             collection.CollectionChanged += collection_CollectionChanged;
@@ -75,6 +81,8 @@ namespace PhuDinhCommonControl
             UpdateChuyenHangDonHangReferenceData();
 
             dgChiTietChuyenHangDonHang.UpdateLayout();
+
+            dgChiTietChuyenHangDonHang.SelectedIndex = index;
         }
 
         void collection_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
@@ -98,7 +106,6 @@ namespace PhuDinhCommonControl
             var header = sender as DataGridColumnHeader;
 
             BaseView view = null;
-            Window w = null;
 
             switch (header.Content.ToString())
             {

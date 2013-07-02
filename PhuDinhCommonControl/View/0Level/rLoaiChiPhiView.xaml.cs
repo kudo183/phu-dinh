@@ -12,7 +12,7 @@ namespace PhuDinhCommonControl
     {
         public Expression<Func<PhuDinhData.rLoaiChiPhi, bool>> FilterLoaiChiPhi { get; set; }
 
-        private readonly PhuDinhData.PhuDinhEntities _context = new PhuDinhData.PhuDinhEntities();
+        private PhuDinhData.PhuDinhEntities _context = new PhuDinhData.PhuDinhEntities();
 
         public rLoaiChiPhiView()
         {
@@ -26,24 +26,32 @@ namespace PhuDinhCommonControl
         {
             try
             {
-                var data = this.dgLoaiChiPhi.DataContext as List<PhuDinhData.rLoaiChiPhi>;
+                var data = dgLoaiChiPhi.DataContext as List<PhuDinhData.rLoaiChiPhi>;
                 PhuDinhData.Repository.rLoaiChiPhiRepository.Save(_context, data, FilterLoaiChiPhi);
-                RefreshView();
             }
             catch (Exception ex)
             {
                 PhuDinhCommon.EntityFrameworkUtils.UndoContextChange(_context, EntityState.Modified);
             }
+
+            base.Save();
         }
 
         public override void Cancel()
         {
             RefreshView();
+
+            base.Cancel();
         }
 
         public override void RefreshView()
         {
-            this.dgLoaiChiPhi.DataContext = PhuDinhData.Repository.rLoaiChiPhiRepository.GetData(_context, FilterLoaiChiPhi);
+            var index = dgLoaiChiPhi.SelectedIndex;
+
+            _context = new PhuDinhData.PhuDinhEntities();
+            dgLoaiChiPhi.DataContext = PhuDinhData.Repository.rLoaiChiPhiRepository.GetData(_context, FilterLoaiChiPhi);
+
+            dgLoaiChiPhi.SelectedIndex = index;
         }
         #endregion
     }

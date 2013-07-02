@@ -24,7 +24,7 @@ namespace PhuDinhCommonControl
         private List<PhuDinhData.rKhachHang> _rKhachHangs;
         private List<PhuDinhData.rChanh> _rChanhs;
 
-        private readonly PhuDinhData.PhuDinhEntities _context = new PhuDinhData.PhuDinhEntities();
+        private PhuDinhData.PhuDinhEntities _context = new PhuDinhData.PhuDinhEntities();
 
         public tDonHangView()
         {
@@ -47,17 +47,20 @@ namespace PhuDinhCommonControl
 
                 var data = dgDonHang.DataContext as ObservableCollection<PhuDinhData.tDonHang>;
                 PhuDinhData.Repository.tDonHangRepository.Save(_context, data.ToList(), FilterDonHang);
-                RefreshView();
             }
             catch (Exception ex)
             {
                 PhuDinhCommon.EntityFrameworkUtils.UndoContextChange(_context, EntityState.Modified);
             }
+
+            base.Save();
         }
 
         public override void Cancel()
         {
             RefreshView();
+
+            base.Cancel();
         }
 
         public override void RefreshView()
@@ -68,6 +71,9 @@ namespace PhuDinhCommonControl
                 return;
             }
 
+            var index = dgDonHang.SelectedIndex;
+
+            _context = new PhuDinhData.PhuDinhEntities();
             _tDonHangs = PhuDinhData.Repository.tDonHangRepository.GetData(_context, FilterDonHang);
             var collection = new ObservableCollection<PhuDinhData.tDonHang>(_tDonHangs);
             collection.CollectionChanged += collection_CollectionChanged;
@@ -77,6 +83,8 @@ namespace PhuDinhCommonControl
             UpdateKhachHangReferenceData();
 
             dgDonHang.UpdateLayout();
+
+            dgDonHang.SelectedIndex = index;
         }
 
         void collection_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)

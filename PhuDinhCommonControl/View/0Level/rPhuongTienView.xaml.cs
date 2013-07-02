@@ -12,7 +12,7 @@ namespace PhuDinhCommonControl
     {
         public Expression<Func<PhuDinhData.rPhuongTien, bool>> FilterPhuongTien { get; set; }
         
-        private readonly PhuDinhData.PhuDinhEntities _context = new PhuDinhData.PhuDinhEntities();
+        private PhuDinhData.PhuDinhEntities _context = new PhuDinhData.PhuDinhEntities();
 
         public rPhuongTienView()
         {
@@ -26,7 +26,7 @@ namespace PhuDinhCommonControl
         {
             try
             {
-                var data = this.dgPhuongTien.DataContext as List<PhuDinhData.rPhuongTien>;
+                var data = dgPhuongTien.DataContext as List<PhuDinhData.rPhuongTien>;
                 PhuDinhData.Repository.rPhuongTienRepository.Save(_context, data, FilterPhuongTien);
                 RefreshView();
             }
@@ -34,16 +34,25 @@ namespace PhuDinhCommonControl
             {
                 PhuDinhCommon.EntityFrameworkUtils.UndoContextChange(_context, EntityState.Modified);
             }
+
+            base.Save();
         }
 
         public override void Cancel()
         {
             RefreshView();
+
+            base.Cancel();
         }
 
         public override void RefreshView()
         {
-            this.dgPhuongTien.DataContext = PhuDinhData.Repository.rPhuongTienRepository.GetData(_context, FilterPhuongTien);
+            var index = dgPhuongTien.SelectedIndex;
+
+            _context = new PhuDinhData.PhuDinhEntities();
+            dgPhuongTien.DataContext = PhuDinhData.Repository.rPhuongTienRepository.GetData(_context, FilterPhuongTien);
+
+            dgPhuongTien.SelectedIndex = index;
         }
         #endregion
     }

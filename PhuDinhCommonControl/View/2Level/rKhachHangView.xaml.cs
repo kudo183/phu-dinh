@@ -5,7 +5,6 @@ using System.Collections.Specialized;
 using System.Data;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Windows;
 
 namespace PhuDinhCommonControl
 {
@@ -20,7 +19,7 @@ namespace PhuDinhCommonControl
 
         private List<PhuDinhData.rKhachHang> _rKhachHangs;
         private List<PhuDinhData.rDiaDiem> _rDiaDiems;
-        private readonly PhuDinhData.PhuDinhEntities _context = new PhuDinhData.PhuDinhEntities();
+        private PhuDinhData.PhuDinhEntities _context = new PhuDinhData.PhuDinhEntities();
 
         public rKhachHangView()
         {
@@ -42,17 +41,20 @@ namespace PhuDinhCommonControl
 
                 var data = dgKhachHang.DataContext as ObservableCollection<PhuDinhData.rKhachHang>;
                 PhuDinhData.Repository.rKhachHangRepository.Save(_context, data.ToList(), FilterKhachHang);
-                RefreshView();
             }
             catch (Exception ex)
             {
                 PhuDinhCommon.EntityFrameworkUtils.UndoContextChange(_context, EntityState.Modified);
             }
+
+            base.Save();
         }
 
         public override void Cancel()
         {
             RefreshView();
+
+            base.Cancel();
         }
 
         public override void RefreshView()
@@ -63,6 +65,10 @@ namespace PhuDinhCommonControl
                 return;
             }
 
+            var index = dgKhachHang.SelectedIndex;
+
+            _context = new PhuDinhData.PhuDinhEntities();
+
             _rKhachHangs = PhuDinhData.Repository.rKhachHangRepository.GetData(_context, FilterKhachHang);
             var collection = new ObservableCollection<PhuDinhData.rKhachHang>(_rKhachHangs);
             collection.CollectionChanged += collection_CollectionChanged;
@@ -71,6 +77,8 @@ namespace PhuDinhCommonControl
             UpdateDiaDiemReferenceData();
 
             dgKhachHang.UpdateLayout();
+
+            dgKhachHang.SelectedIndex = index;
         }
 
         void collection_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)

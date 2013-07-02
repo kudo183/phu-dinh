@@ -5,7 +5,6 @@ using System.Collections.Specialized;
 using System.Data;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Windows;
 using System.Windows.Controls.Primitives;
 
 namespace PhuDinhCommonControl
@@ -24,7 +23,7 @@ namespace PhuDinhCommonControl
         private List<PhuDinhData.tChiPhiNhanVienGiaoHang> _tChiPhiNhanVienGiaoHangs;
         private List<PhuDinhData.rLoaiChiPhi> _rLoaiChiPhis;
         private List<PhuDinhData.rNhanVienGiaoHang> _rNhanVienGiaoHangs;
-        private readonly PhuDinhData.PhuDinhEntities _context = new PhuDinhData.PhuDinhEntities();
+        private PhuDinhData.PhuDinhEntities _context = new PhuDinhData.PhuDinhEntities();
 
         public tChiPhiNhanVienGiaoHangView()
         {
@@ -47,17 +46,20 @@ namespace PhuDinhCommonControl
 
                 var data = dgChiPhiNhanVienGiaoHang.DataContext as ObservableCollection<PhuDinhData.tChiPhiNhanVienGiaoHang>;
                 PhuDinhData.Repository.tChiPhiNhanVienGiaoHangRepository.Save(_context, data.ToList(), FilterChiPhiNhanVienGiaoHang);
-                RefreshView();
             }
             catch (Exception ex)
             {
                 PhuDinhCommon.EntityFrameworkUtils.UndoContextChange(_context, EntityState.Modified);
             }
+
+            base.Save();
         }
 
         public override void Cancel()
         {
             RefreshView();
+
+            base.Cancel();
         }
 
         public override void RefreshView()
@@ -68,6 +70,10 @@ namespace PhuDinhCommonControl
                 return;
             }
 
+            var index = dgChiPhiNhanVienGiaoHang.SelectedIndex;
+
+            _context = new PhuDinhData.PhuDinhEntities();
+
             _tChiPhiNhanVienGiaoHangs = PhuDinhData.Repository.tChiPhiNhanVienGiaoHangRepository.GetData(_context, FilterChiPhiNhanVienGiaoHang);
             var collection = new ObservableCollection<PhuDinhData.tChiPhiNhanVienGiaoHang>(_tChiPhiNhanVienGiaoHangs);
             collection.CollectionChanged += collection_CollectionChanged;
@@ -77,6 +83,8 @@ namespace PhuDinhCommonControl
             UpdateLoaiChiPhiReferenceData();
 
             dgChiPhiNhanVienGiaoHang.UpdateLayout();
+
+            dgChiPhiNhanVienGiaoHang.SelectedIndex = index;
         }
 
         void collection_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
@@ -107,7 +115,6 @@ namespace PhuDinhCommonControl
             var header = sender as DataGridColumnHeader;
             
             BaseView view = null;
-            Window w = null;
 
             switch (header.Content.ToString())
             {

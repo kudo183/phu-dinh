@@ -12,7 +12,7 @@ namespace PhuDinhCommonControl
     {
         public Expression<Func<PhuDinhData.rBaiXe, bool>> FilterBaiXe { get; set; }
 
-        private readonly PhuDinhData.PhuDinhEntities _context = new PhuDinhData.PhuDinhEntities();
+        private PhuDinhData.PhuDinhEntities _context = new PhuDinhData.PhuDinhEntities();
 
         public rBaiXeView()
         {
@@ -26,24 +26,32 @@ namespace PhuDinhCommonControl
         {
             try
             {
-                var data = this.dgBaiXe.DataContext as List<PhuDinhData.rBaiXe>;
+                var data = dgBaiXe.DataContext as List<PhuDinhData.rBaiXe>;
                 PhuDinhData.Repository.rBaiXeRepository.Save(_context, data, FilterBaiXe);
-                RefreshView();
             }
             catch (Exception ex)
             {
                 PhuDinhCommon.EntityFrameworkUtils.UndoContextChange(_context, EntityState.Modified);
             }
+
+            base.Save();
         }
 
         public override void Cancel()
         {
             RefreshView();
+
+            base.Cancel();
         }
 
         public override void RefreshView()
         {
-            this.dgBaiXe.DataContext = PhuDinhData.Repository.rBaiXeRepository.GetData(_context, FilterBaiXe);
+            var index = dgBaiXe.SelectedIndex;
+
+            _context = new PhuDinhData.PhuDinhEntities();
+            dgBaiXe.DataContext = PhuDinhData.Repository.rBaiXeRepository.GetData(_context, FilterBaiXe);
+
+            dgBaiXe.SelectedIndex = index;
         }
         #endregion
     }

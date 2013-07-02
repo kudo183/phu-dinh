@@ -12,7 +12,7 @@ namespace PhuDinhCommonControl
     {
         public Expression<Func<PhuDinhData.rLoaiHang, bool>> FilterLoaiHang { get; set; }
 
-        private readonly PhuDinhData.PhuDinhEntities _context = new PhuDinhData.PhuDinhEntities();
+        private PhuDinhData.PhuDinhEntities _context = new PhuDinhData.PhuDinhEntities();
 
         public rLoaiHangView()
         {
@@ -26,24 +26,32 @@ namespace PhuDinhCommonControl
         {
             try
             {
-                var data = this.dgLoaiHang.DataContext as List<PhuDinhData.rLoaiHang>;
+                var data = dgLoaiHang.DataContext as List<PhuDinhData.rLoaiHang>;
                 PhuDinhData.Repository.rLoaiHangRepository.Save(_context, data, FilterLoaiHang);
-                RefreshView();
             }
             catch (Exception ex)
             {
                 PhuDinhCommon.EntityFrameworkUtils.UndoContextChange(_context, EntityState.Modified);
             }
+
+            base.Save();
         }
 
         public override void Cancel()
         {
             RefreshView();
+
+            base.Cancel();
         }
 
         public override void RefreshView()
         {
-            this.dgLoaiHang.DataContext = PhuDinhData.Repository.rLoaiHangRepository.GetData(_context, FilterLoaiHang);
+            var index = dgLoaiHang.SelectedIndex;
+
+            _context = new PhuDinhData.PhuDinhEntities();
+            dgLoaiHang.DataContext = PhuDinhData.Repository.rLoaiHangRepository.GetData(_context, FilterLoaiHang);
+
+            dgLoaiHang.SelectedIndex = index;
         }
         #endregion
     }

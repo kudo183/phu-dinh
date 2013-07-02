@@ -5,7 +5,6 @@ using System.Collections.Specialized;
 using System.Data;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Windows;
 
 namespace PhuDinhCommonControl
 {
@@ -19,7 +18,7 @@ namespace PhuDinhCommonControl
 
         private List<PhuDinhData.rDiaDiem> _rDiaDiems;
         private List<PhuDinhData.rNuoc> _rNuocs;
-        private readonly PhuDinhData.PhuDinhEntities _context = new PhuDinhData.PhuDinhEntities();
+        private PhuDinhData.PhuDinhEntities _context = new PhuDinhData.PhuDinhEntities();
 
         public rDiaDiemView()
         {
@@ -41,17 +40,20 @@ namespace PhuDinhCommonControl
 
                 var data = dgDiaDiem.DataContext as ObservableCollection<PhuDinhData.rDiaDiem>;
                 PhuDinhData.Repository.rDiaDiemRepository.Save(_context, data.ToList(), FilterDiaDiem);
-                RefreshView();
             }
             catch (Exception ex)
             {
                 PhuDinhCommon.EntityFrameworkUtils.UndoContextChange(_context, EntityState.Modified);
             }
+
+            base.Save();
         }
 
         public override void Cancel()
         {
             RefreshView();
+
+            base.Cancel();
         }
 
         public override void RefreshView()
@@ -62,6 +64,10 @@ namespace PhuDinhCommonControl
                 return;
             }
 
+            var index = dgDiaDiem.SelectedIndex;
+
+            _context = new PhuDinhData.PhuDinhEntities();
+
             _rDiaDiems = PhuDinhData.Repository.rDiaDiemRepository.GetData(_context, FilterDiaDiem);
             
             var collection = new ObservableCollection<PhuDinhData.rDiaDiem>(_rDiaDiems);
@@ -71,6 +77,8 @@ namespace PhuDinhCommonControl
             UpdateNuocReferenceData();
 
             dgDiaDiem.UpdateLayout();
+
+            dgDiaDiem.SelectedIndex = index;
         }
 
         void collection_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)

@@ -5,7 +5,6 @@ using System.Collections.Specialized;
 using System.Data;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Windows;
 
 namespace PhuDinhCommonControl
 {
@@ -20,7 +19,7 @@ namespace PhuDinhCommonControl
 
         private List<PhuDinhData.rNhanVienGiaoHang> _rNhanVienGiaoHangs;
         private List<PhuDinhData.rPhuongTien> _rPhuongTiens;
-        private readonly PhuDinhData.PhuDinhEntities _context = new PhuDinhData.PhuDinhEntities();
+        private PhuDinhData.PhuDinhEntities _context = new PhuDinhData.PhuDinhEntities();
 
         public rNhanVienGiaoHangView()
         {
@@ -42,17 +41,20 @@ namespace PhuDinhCommonControl
 
                 var data = dgNhanVienGiaoHang.DataContext as ObservableCollection<PhuDinhData.rNhanVienGiaoHang>;
                 PhuDinhData.Repository.rNhanVienGiaoHangRepository.Save(_context, data.ToList(), FilterNhanVienGiaoHang);
-                RefreshView();
             }
             catch (Exception ex)
             {
                 PhuDinhCommon.EntityFrameworkUtils.UndoContextChange(_context, EntityState.Modified);
             }
+
+            base.Save();
         }
 
         public override void Cancel()
         {
             RefreshView();
+
+            base.Cancel();
         }
 
         public override void RefreshView()
@@ -63,6 +65,10 @@ namespace PhuDinhCommonControl
                 return;
             }
 
+            var index = dgNhanVienGiaoHang.SelectedIndex;
+
+            _context = new PhuDinhData.PhuDinhEntities();
+
             _rNhanVienGiaoHangs = PhuDinhData.Repository.rNhanVienGiaoHangRepository.GetData(_context, FilterNhanVienGiaoHang);
             var collection = new ObservableCollection<PhuDinhData.rNhanVienGiaoHang>(_rNhanVienGiaoHangs);
             collection.CollectionChanged += collection_CollectionChanged;
@@ -71,6 +77,8 @@ namespace PhuDinhCommonControl
             UpdatePhuongTienReferenceData();
 
             dgNhanVienGiaoHang.UpdateLayout();
+
+            dgNhanVienGiaoHang.SelectedIndex = index;
         }
 
         void collection_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
