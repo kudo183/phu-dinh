@@ -18,6 +18,11 @@ namespace PhuDinh.View
 
         void dgDiaDiem_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (sender != e.OriginalSource)
+            {
+                return;
+            }
+
             _tDonHangView.FilterDonHang = null;
             _tDonHangView.RefreshView();
 

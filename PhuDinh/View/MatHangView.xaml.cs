@@ -17,6 +17,11 @@ namespace PhuDinh.View
 
         void dgLoaiHang_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (sender != e.OriginalSource)
+            {
+                return;
+            }
+
             var loaihang = ((DataGrid)sender).SelectedItem as PhuDinhData.rLoaiHang;
             if (loaihang == null)
             {

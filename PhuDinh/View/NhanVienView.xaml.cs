@@ -17,6 +17,11 @@ namespace PhuDinh.View
 
         void dgPhuongTien_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (sender != e.OriginalSource)
+            {
+                return;
+            }
+
             var phuongTien = ((DataGrid)sender).SelectedItem as PhuDinhData.rPhuongTien;
             if (phuongTien == null)
             {

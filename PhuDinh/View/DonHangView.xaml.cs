@@ -13,10 +13,21 @@ namespace PhuDinh.View
             _tDonHangView.RefreshView();
             
             _tDonHangView.dgDonHang.SelectionChanged += dgDonHang_SelectionChanged;
+            _tChiTietDonHangView.AfterSave += _tChiTietDonHangView_AfterSave;
+        }
+
+        void _tChiTietDonHangView_AfterSave(object sender, System.EventArgs e)
+        {
+            _tDonHangView.RefreshView();
         }
 
         void dgDonHang_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {            
+        {
+            if (sender != e.OriginalSource)
+            {
+                return;
+            }
+
             var donHang = ((DataGrid)sender).SelectedItem as PhuDinhData.tDonHang;
             if(donHang == null)
             {

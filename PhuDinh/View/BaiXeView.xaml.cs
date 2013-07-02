@@ -17,6 +17,11 @@ namespace PhuDinh.View
 
         void dgBaiXe_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (sender != e.OriginalSource)
+            {
+                return;
+            }
+
             var baixe = ((DataGrid)sender).SelectedItem as PhuDinhData.rBaiXe;
             if(baixe == null)
             {

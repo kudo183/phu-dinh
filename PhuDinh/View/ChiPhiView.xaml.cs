@@ -17,6 +17,11 @@ namespace PhuDinh.View
 
         void dgLoaiChiPhi_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (sender != e.OriginalSource)
+            {
+                return;
+            }
+
             var loaiChiPhi = ((DataGrid)sender).SelectedItem as PhuDinhData.rLoaiChiPhi;
             if (loaiChiPhi == null)
             {
