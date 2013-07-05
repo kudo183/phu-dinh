@@ -17,7 +17,7 @@ namespace PhuDinhCommonControl
         public Expression<Func<PhuDinhData.rBaiXe, bool>> FilterBaiXe { get; set; }
         public PhuDinhData.rBaiXe rBaiXeDefault { get; set; }
 
-        private List<PhuDinhData.rChanh> _rChanhs;
+        private ObservableCollection<PhuDinhData.rChanh> _rChanhs;
         private List<PhuDinhData.rBaiXe> _rBaiXes;
         private PhuDinhData.PhuDinhEntities _context = new PhuDinhData.PhuDinhEntities();
 
@@ -67,13 +67,17 @@ namespace PhuDinhCommonControl
 
             var index = dgChanh.SelectedIndex;
 
+            if (_rChanhs != null)
+            {
+                _rChanhs.CollectionChanged -= collection_CollectionChanged;
+            }
+
             _context = new PhuDinhData.PhuDinhEntities();
+            var rChanhs = PhuDinhData.Repository.rChanhRepository.GetData(_context, FilterChanh);
 
-            _rChanhs = PhuDinhData.Repository.rChanhRepository.GetData(_context, FilterChanh);
-
-            var collection = new ObservableCollection<PhuDinhData.rChanh>(_rChanhs);
-            collection.CollectionChanged += collection_CollectionChanged;
-            dgChanh.DataContext = collection;
+            _rChanhs = new ObservableCollection<PhuDinhData.rChanh>(rChanhs);
+            _rChanhs.CollectionChanged += collection_CollectionChanged;
+            dgChanh.DataContext = _rChanhs;
 
             UpdateBaiXeReferenceData();
 
@@ -100,6 +104,8 @@ namespace PhuDinhCommonControl
 
         private void dgChanh_HeaderAddButtonClick(object sender, EventArgs e)
         {
+            dgChanh.CommitEdit();
+
             var view = new rBaiXeView();
             view.RefreshView();
             ChildWindowUtils.ShowChildWindow("Bãi Xe", view);

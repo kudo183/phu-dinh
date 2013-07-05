@@ -17,7 +17,7 @@ namespace PhuDinhCommonControl
         public Expression<Func<PhuDinhData.rDiaDiem, bool>> FilterDiaDiem { get; set; }
         public PhuDinhData.rDiaDiem rDiaDiemDefault { get; set; }
 
-        private List<PhuDinhData.rKhachHang> _rKhachHangs;
+        private ObservableCollection<PhuDinhData.rKhachHang> _rKhachHangs;
         private List<PhuDinhData.rDiaDiem> _rDiaDiems;
         private PhuDinhData.PhuDinhEntities _context = new PhuDinhData.PhuDinhEntities();
 
@@ -67,12 +67,17 @@ namespace PhuDinhCommonControl
 
             var index = dgKhachHang.SelectedIndex;
 
-            _context = new PhuDinhData.PhuDinhEntities();
+            if (_rKhachHangs != null)
+            {
+                _rKhachHangs.CollectionChanged -= collection_CollectionChanged;
+            }
 
-            _rKhachHangs = PhuDinhData.Repository.rKhachHangRepository.GetData(_context, FilterKhachHang);
-            var collection = new ObservableCollection<PhuDinhData.rKhachHang>(_rKhachHangs);
-            collection.CollectionChanged += collection_CollectionChanged;
-            dgKhachHang.DataContext = collection;
+            _context = new PhuDinhData.PhuDinhEntities();
+            var rKhachHangs = PhuDinhData.Repository.rKhachHangRepository.GetData(_context, FilterKhachHang);
+
+            _rKhachHangs = new ObservableCollection<PhuDinhData.rKhachHang>(rKhachHangs);
+            _rKhachHangs.CollectionChanged += collection_CollectionChanged;
+            dgKhachHang.DataContext = _rKhachHangs;
 
             UpdateDiaDiemReferenceData();
 
@@ -99,6 +104,8 @@ namespace PhuDinhCommonControl
 
         private void dgKhachHang_HeaderAddButtonClick(object sender, EventArgs e)
         {
+            dgKhachHang.CommitEdit();
+
             var view = new rDiaDiemView();
             view.RefreshView();
             ChildWindowUtils.ShowChildWindow("Địa điểm", view);

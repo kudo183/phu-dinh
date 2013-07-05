@@ -20,7 +20,7 @@ namespace PhuDinhCommonControl
         public PhuDinhData.rLoaiChiPhi rLoaiChiPhiDefault { get; set; }
         public PhuDinhData.rNhanVienGiaoHang rNhanVienGiaoHangDefault { get; set; }
 
-        private List<PhuDinhData.tChiPhiNhanVienGiaoHang> _tChiPhiNhanVienGiaoHangs;
+        private ObservableCollection<PhuDinhData.tChiPhiNhanVienGiaoHang> _tChiPhiNhanVienGiaoHangs;
         private List<PhuDinhData.rLoaiChiPhi> _rLoaiChiPhis;
         private List<PhuDinhData.rNhanVienGiaoHang> _rNhanVienGiaoHangs;
         private PhuDinhData.PhuDinhEntities _context = new PhuDinhData.PhuDinhEntities();
@@ -72,12 +72,17 @@ namespace PhuDinhCommonControl
 
             var index = dgChiPhiNhanVienGiaoHang.SelectedIndex;
 
-            _context = new PhuDinhData.PhuDinhEntities();
+            if (_tChiPhiNhanVienGiaoHangs != null)
+            {
+                _tChiPhiNhanVienGiaoHangs.CollectionChanged -= collection_CollectionChanged;
+            }
 
-            _tChiPhiNhanVienGiaoHangs = PhuDinhData.Repository.tChiPhiNhanVienGiaoHangRepository.GetData(_context, FilterChiPhiNhanVienGiaoHang);
-            var collection = new ObservableCollection<PhuDinhData.tChiPhiNhanVienGiaoHang>(_tChiPhiNhanVienGiaoHangs);
-            collection.CollectionChanged += collection_CollectionChanged;
-            dgChiPhiNhanVienGiaoHang.DataContext = collection;
+            _context = new PhuDinhData.PhuDinhEntities();
+            var tChiPhiNhanVienGiaoHangs = PhuDinhData.Repository.tChiPhiNhanVienGiaoHangRepository.GetData(_context, FilterChiPhiNhanVienGiaoHang);
+
+            _tChiPhiNhanVienGiaoHangs = new ObservableCollection<PhuDinhData.tChiPhiNhanVienGiaoHang>(tChiPhiNhanVienGiaoHangs);
+            _tChiPhiNhanVienGiaoHangs.CollectionChanged += collection_CollectionChanged;
+            dgChiPhiNhanVienGiaoHang.DataContext = _tChiPhiNhanVienGiaoHangs;
 
             UpdateNhanVienGiaoHangReferenceData();
             UpdateLoaiChiPhiReferenceData();
@@ -112,6 +117,8 @@ namespace PhuDinhCommonControl
 
         private void dgChiPhiNhanVienGiaoHang_HeaderAddButtonClick(object sender, EventArgs e)
         {
+            dgChiPhiNhanVienGiaoHang.CommitEdit();
+
             var header = sender as DataGridColumnHeader;
             
             BaseView view = null;

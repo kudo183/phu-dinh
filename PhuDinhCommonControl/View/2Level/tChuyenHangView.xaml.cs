@@ -16,7 +16,7 @@ namespace PhuDinhCommonControl
         public Expression<Func<PhuDinhData.tChuyenHang, bool>> FilterChuyenHang { get; set; }
         public Expression<Func<PhuDinhData.rNhanVienGiaoHang, bool>> FilterNhanVienGiaoHang { get; set; }
 
-        private List<PhuDinhData.tChuyenHang> _tChuyenHangs;
+        private ObservableCollection<PhuDinhData.tChuyenHang> _tChuyenHangs;
         private List<PhuDinhData.rNhanVienGiaoHang> _rNhanVienGiaoHangs;
         private PhuDinhData.PhuDinhEntities _context = new PhuDinhData.PhuDinhEntities();
 
@@ -66,12 +66,17 @@ namespace PhuDinhCommonControl
 
             var index = dgChuyenHang.SelectedIndex;
 
-            _context = new PhuDinhData.PhuDinhEntities();
+            if (_tChuyenHangs != null)
+            {
+                _tChuyenHangs.CollectionChanged -= collection_CollectionChanged;
+            }
 
-            _tChuyenHangs = PhuDinhData.Repository.tChuyenHangRepository.GetData(_context, FilterChuyenHang);
-            var collection = new ObservableCollection<PhuDinhData.tChuyenHang>(_tChuyenHangs);
-            collection.CollectionChanged += collection_CollectionChanged;
-            dgChuyenHang.DataContext = collection;
+            _context = new PhuDinhData.PhuDinhEntities();
+            var tChuyenHangs = PhuDinhData.Repository.tChuyenHangRepository.GetData(_context, FilterChuyenHang);
+
+            _tChuyenHangs = new ObservableCollection<PhuDinhData.tChuyenHang>(tChuyenHangs);
+            _tChuyenHangs.CollectionChanged += collection_CollectionChanged;
+            dgChuyenHang.DataContext = _tChuyenHangs;
 
             UpdateNhanVienGiaoHangReferenceData();
 
@@ -95,6 +100,8 @@ namespace PhuDinhCommonControl
 
         private void dgChuyenHang_HeaderAddButtonClick(object sender, EventArgs e)
         {
+            dgChuyenHang.CommitEdit();
+
             var view = new rNhanVienGiaoHangView();
             view.RefreshView();
             ChildWindowUtils.ShowChildWindow("Nhân Viên", view);

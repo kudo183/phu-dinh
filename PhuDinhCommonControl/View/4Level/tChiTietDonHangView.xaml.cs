@@ -5,7 +5,6 @@ using System.Collections.Specialized;
 using System.Data;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Windows;
 using System.Windows.Controls.Primitives;
 
 namespace PhuDinhCommonControl
@@ -20,7 +19,7 @@ namespace PhuDinhCommonControl
         public Expression<Func<PhuDinhData.tMatHang, bool>> FilterMatHang { get; set; }
         public PhuDinhData.tDonHang tDonHangDefault { get; set; }
 
-        private List<PhuDinhData.tChiTietDonHang> _tChiTietDonHangs;
+        private ObservableCollection<PhuDinhData.tChiTietDonHang> _tChiTietDonHangs;
         private List<PhuDinhData.tDonHang> _tDonHangs;
         private List<PhuDinhData.tMatHang> _tMatHangs;
         private PhuDinhData.PhuDinhEntities _context = new PhuDinhData.PhuDinhEntities();
@@ -72,11 +71,17 @@ namespace PhuDinhCommonControl
 
             var index = dgChiTietDonHang.SelectedIndex;
 
+            if (_tChiTietDonHangs != null)
+            {
+                _tChiTietDonHangs.CollectionChanged -= collection_CollectionChanged;
+            }
+
             _context = new PhuDinhData.PhuDinhEntities();
-            _tChiTietDonHangs = PhuDinhData.Repository.tChiTietDonHangRepository.GetData(_context, FilterChiTietDonHang);
-            var collection = new ObservableCollection<PhuDinhData.tChiTietDonHang>(_tChiTietDonHangs);
-            collection.CollectionChanged += collection_CollectionChanged;
-            dgChiTietDonHang.DataContext = collection;
+            var tChiTietDonHangs = PhuDinhData.Repository.tChiTietDonHangRepository.GetData(_context, FilterChiTietDonHang);
+
+            _tChiTietDonHangs = new ObservableCollection<PhuDinhData.tChiTietDonHang>(tChiTietDonHangs);
+            _tChiTietDonHangs.CollectionChanged += collection_CollectionChanged;
+            dgChiTietDonHang.DataContext = _tChiTietDonHangs;
 
             UpdateDonHangReferenceData();
             UpdateMatHangReferenceData();
@@ -104,6 +109,8 @@ namespace PhuDinhCommonControl
 
         private void dgChiTietDonHang_HeaderAddButtonClick(object sender, EventArgs e)
         {
+            dgChiTietDonHang.CommitEdit();
+
             var header = sender as DataGridColumnHeader;
 
             BaseView view = null;

@@ -17,7 +17,7 @@ namespace PhuDinhCommonControl
         public Expression<Func<PhuDinhData.rLoaiHang, bool>> FilterLoaiHang { get; set; }
         public PhuDinhData.rLoaiHang rLoaiHangDefault { get; set; }
 
-        private List<PhuDinhData.tMatHang> _tMatHangs;
+        private ObservableCollection<PhuDinhData.tMatHang> _tMatHangs;
         private List<PhuDinhData.rLoaiHang> _rLoaiHangs;
         private PhuDinhData.PhuDinhEntities _context = new PhuDinhData.PhuDinhEntities();
 
@@ -67,12 +67,17 @@ namespace PhuDinhCommonControl
 
             var index = dgMatHang.SelectedIndex;
 
-            _context = new PhuDinhData.PhuDinhEntities();
+            if (_tMatHangs != null)
+            {
+                _tMatHangs.CollectionChanged -= collection_CollectionChanged;
+            }
 
-            _tMatHangs = PhuDinhData.Repository.tMatHangRepository.GetData(_context, FilterMatHang);
-            var collection = new ObservableCollection<PhuDinhData.tMatHang>(_tMatHangs);
-            collection.CollectionChanged += collection_CollectionChanged;
-            dgMatHang.DataContext = collection;
+            _context = new PhuDinhData.PhuDinhEntities();
+            var tMatHangs = PhuDinhData.Repository.tMatHangRepository.GetData(_context, FilterMatHang);
+
+            _tMatHangs = new ObservableCollection<PhuDinhData.tMatHang>(tMatHangs);
+            _tMatHangs.CollectionChanged += collection_CollectionChanged;
+            dgMatHang.DataContext = _tMatHangs;
 
             UpdateLoaiHangReferenceData();
 
@@ -99,6 +104,8 @@ namespace PhuDinhCommonControl
 
         private void dgMatHang_HeaderAddButtonClick(object sender, EventArgs e)
         {
+            dgMatHang.CommitEdit();
+
             var view = new rLoaiHangView();
             view.RefreshView();
             ChildWindowUtils.ShowChildWindow("Loại Hàng", view);

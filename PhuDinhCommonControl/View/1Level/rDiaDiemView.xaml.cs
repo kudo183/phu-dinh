@@ -16,7 +16,7 @@ namespace PhuDinhCommonControl
         public Expression<Func<PhuDinhData.rDiaDiem, bool>> FilterDiaDiem { get; set; }
         public Expression<Func<PhuDinhData.rNuoc, bool>> FilterNuoc { get; set; }
 
-        private List<PhuDinhData.rDiaDiem> _rDiaDiems;
+        private ObservableCollection<PhuDinhData.rDiaDiem> _rDiaDiems;
         private List<PhuDinhData.rNuoc> _rNuocs;
         private PhuDinhData.PhuDinhEntities _context = new PhuDinhData.PhuDinhEntities();
 
@@ -66,13 +66,17 @@ namespace PhuDinhCommonControl
 
             var index = dgDiaDiem.SelectedIndex;
 
-            _context = new PhuDinhData.PhuDinhEntities();
+            if (_rDiaDiems != null)
+            {
+                _rDiaDiems.CollectionChanged -= collection_CollectionChanged;
+            }
 
-            _rDiaDiems = PhuDinhData.Repository.rDiaDiemRepository.GetData(_context, FilterDiaDiem);
-            
-            var collection = new ObservableCollection<PhuDinhData.rDiaDiem>(_rDiaDiems);
-            collection.CollectionChanged += collection_CollectionChanged;
-            dgDiaDiem.DataContext = collection;
+            _context = new PhuDinhData.PhuDinhEntities();
+            var rDiaDiems = PhuDinhData.Repository.rDiaDiemRepository.GetData(_context, FilterDiaDiem);
+
+            _rDiaDiems = new ObservableCollection<PhuDinhData.rDiaDiem>(rDiaDiems);
+            _rDiaDiems.CollectionChanged += collection_CollectionChanged;
+            dgDiaDiem.DataContext = _rDiaDiems;
 
             UpdateNuocReferenceData();
 
@@ -94,6 +98,8 @@ namespace PhuDinhCommonControl
 
         private void dgDiaDiem_HeaderAddButtonClick(object sender, EventArgs e)
         {
+            dgDiaDiem.CommitEdit();
+
             var view = new rNuocView();
             view.RefreshView();            
             ChildWindowUtils.ShowChildWindow("Nước", view);

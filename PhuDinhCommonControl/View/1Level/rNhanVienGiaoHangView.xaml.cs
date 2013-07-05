@@ -17,7 +17,7 @@ namespace PhuDinhCommonControl
         public Expression<Func<PhuDinhData.rPhuongTien, bool>> FilterPhuongTien { get; set; }
         public PhuDinhData.rPhuongTien rPhuongTienDefault { get; set; }
 
-        private List<PhuDinhData.rNhanVienGiaoHang> _rNhanVienGiaoHangs;
+        private ObservableCollection<PhuDinhData.rNhanVienGiaoHang> _rNhanVienGiaoHangs;
         private List<PhuDinhData.rPhuongTien> _rPhuongTiens;
         private PhuDinhData.PhuDinhEntities _context = new PhuDinhData.PhuDinhEntities();
 
@@ -67,12 +67,17 @@ namespace PhuDinhCommonControl
 
             var index = dgNhanVienGiaoHang.SelectedIndex;
 
-            _context = new PhuDinhData.PhuDinhEntities();
+            if (_rNhanVienGiaoHangs != null)
+            {
+                _rNhanVienGiaoHangs.CollectionChanged -= collection_CollectionChanged;
+            }
 
-            _rNhanVienGiaoHangs = PhuDinhData.Repository.rNhanVienGiaoHangRepository.GetData(_context, FilterNhanVienGiaoHang);
-            var collection = new ObservableCollection<PhuDinhData.rNhanVienGiaoHang>(_rNhanVienGiaoHangs);
-            collection.CollectionChanged += collection_CollectionChanged;
-            dgNhanVienGiaoHang.DataContext = collection;
+            _context = new PhuDinhData.PhuDinhEntities();
+            var rNhanVienGiaoHangs = PhuDinhData.Repository.rNhanVienGiaoHangRepository.GetData(_context, FilterNhanVienGiaoHang);
+
+            _rNhanVienGiaoHangs = new ObservableCollection<PhuDinhData.rNhanVienGiaoHang>(rNhanVienGiaoHangs);
+            _rNhanVienGiaoHangs.CollectionChanged += collection_CollectionChanged;
+            dgNhanVienGiaoHang.DataContext = _rNhanVienGiaoHangs;
 
             UpdatePhuongTienReferenceData();
 
@@ -98,6 +103,8 @@ namespace PhuDinhCommonControl
 
         private void dgNhanVienGiaoHang_HeaderAddButtonClick(object sender, EventArgs e)
         {
+            dgNhanVienGiaoHang.CommitEdit();
+
             var view = new rPhuongTienView();
             view.RefreshView();
             ChildWindowUtils.ShowChildWindow("Phương Tiện", view);

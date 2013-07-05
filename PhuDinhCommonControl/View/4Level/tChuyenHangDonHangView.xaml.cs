@@ -21,7 +21,7 @@ namespace PhuDinhCommonControl
         public PhuDinhData.tChuyenHang tChuyenHangDefault { get; set; }
         public PhuDinhData.tDonHang tDonHangDefault { get; set; }
         
-        private List<PhuDinhData.tChuyenHangDonHang> _tChuyenHangDonHangs;
+        private ObservableCollection<PhuDinhData.tChuyenHangDonHang> _tChuyenHangDonHangs;
         private List<PhuDinhData.tChuyenHang> _tChuyenHangs;
         private List<PhuDinhData.tDonHang> _tDonHangs;
         private PhuDinhData.PhuDinhEntities _context = new PhuDinhData.PhuDinhEntities();
@@ -73,12 +73,17 @@ namespace PhuDinhCommonControl
 
             var index = dgChuyenHangDonHang.SelectedIndex;
 
-            _context = new PhuDinhData.PhuDinhEntities();
+            if (_tChuyenHangDonHangs != null)
+            {
+                _tChuyenHangDonHangs.CollectionChanged -= collection_CollectionChanged;
+            }
 
-            _tChuyenHangDonHangs = PhuDinhData.Repository.tChuyenHangDonHangRepository.GetData(_context, FilterChuyenHangDonHang);
-            var collection = new ObservableCollection<PhuDinhData.tChuyenHangDonHang>(_tChuyenHangDonHangs);
-            collection.CollectionChanged += collection_CollectionChanged;
-            dgChuyenHangDonHang.DataContext = collection;
+            _context = new PhuDinhData.PhuDinhEntities();
+            var tChuyenHangDonHangs = PhuDinhData.Repository.tChuyenHangDonHangRepository.GetData(_context, FilterChuyenHangDonHang);
+
+            _tChuyenHangDonHangs = new ObservableCollection<PhuDinhData.tChuyenHangDonHang>(tChuyenHangDonHangs);
+            _tChuyenHangDonHangs.CollectionChanged += collection_CollectionChanged;
+            dgChuyenHangDonHang.DataContext = _tChuyenHangDonHangs;
 
             UpdateChuyenHangReferenceData();
             UpdateDonHangReferenceData();
@@ -111,6 +116,8 @@ namespace PhuDinhCommonControl
 
         private void dgChuyenHangDonHang_HeaderAddButtonClick(object sender, EventArgs e)
         {
+            dgChuyenHangDonHang.CommitEdit();
+
             var header = sender as DataGridColumnHeader;
 
             BaseView view = null;

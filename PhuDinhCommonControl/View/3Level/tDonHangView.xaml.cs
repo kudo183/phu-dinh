@@ -5,7 +5,6 @@ using System.Collections.Specialized;
 using System.Data;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Windows;
 using System.Windows.Controls.Primitives;
 
 namespace PhuDinhCommonControl
@@ -20,7 +19,7 @@ namespace PhuDinhCommonControl
         public Expression<Func<PhuDinhData.rChanh, bool>> FilterChanh { get; set; }
         public PhuDinhData.rKhachHang rKhachHangDefault { get; set; }
 
-        private List<PhuDinhData.tDonHang> _tDonHangs;
+        private ObservableCollection<PhuDinhData.tDonHang> _tDonHangs;
         private List<PhuDinhData.rKhachHang> _rKhachHangs;
         private List<PhuDinhData.rChanh> _rChanhs;
 
@@ -73,11 +72,17 @@ namespace PhuDinhCommonControl
 
             var index = dgDonHang.SelectedIndex;
 
+            if (_tDonHangs != null)
+            {
+                _tDonHangs.CollectionChanged -= collection_CollectionChanged;
+            }
+
             _context = new PhuDinhData.PhuDinhEntities();
-            _tDonHangs = PhuDinhData.Repository.tDonHangRepository.GetData(_context, FilterDonHang);
-            var collection = new ObservableCollection<PhuDinhData.tDonHang>(_tDonHangs);
-            collection.CollectionChanged += collection_CollectionChanged;
-            dgDonHang.DataContext = collection;
+            var tDonHangs = PhuDinhData.Repository.tDonHangRepository.GetData(_context, FilterDonHang);
+
+            _tDonHangs = new ObservableCollection<PhuDinhData.tDonHang>(tDonHangs);
+            _tDonHangs.CollectionChanged += collection_CollectionChanged;
+            dgDonHang.DataContext = _tDonHangs;
 
             UpdateChanhReferenceData();
             UpdateKhachHangReferenceData();
@@ -107,10 +112,11 @@ namespace PhuDinhCommonControl
 
         private void dgDonHang_HeaderAddButtonClick(object sender, EventArgs e)
         {
+            dgDonHang.CommitEdit();
+
             var header = sender as DataGridColumnHeader;
 
             BaseView view = null;
-            Window w = null;
 
             switch (header.Content.ToString())
             {

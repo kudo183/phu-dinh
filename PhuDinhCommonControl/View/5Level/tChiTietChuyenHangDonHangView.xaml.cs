@@ -19,7 +19,7 @@ namespace PhuDinhCommonControl
         public Expression<Func<PhuDinhData.tChiTietDonHang, bool>> FilterChiTietDonHang { get; set; }
         public PhuDinhData.tChuyenHangDonHang tChuyenHangDonHangDefault { get; set; }
 
-        private List<PhuDinhData.tChiTietChuyenHangDonHang> _tChiTietChuyenHangDonHangs;
+        private ObservableCollection<PhuDinhData.tChiTietChuyenHangDonHang> _tChiTietChuyenHangDonHangs;
         private List<PhuDinhData.tChuyenHangDonHang> _tChuyenHangDonHangs;
         private List<PhuDinhData.tChiTietDonHang> _tChiTietDonHangs;
         private PhuDinhData.PhuDinhEntities _context = new PhuDinhData.PhuDinhEntities();
@@ -70,12 +70,17 @@ namespace PhuDinhCommonControl
 
             var index = dgChiTietChuyenHangDonHang.SelectedIndex;
 
-            _context = new PhuDinhData.PhuDinhEntities();
+            if (_tChiTietChuyenHangDonHangs != null)
+            {
+                _tChiTietChuyenHangDonHangs.CollectionChanged -= collection_CollectionChanged;
+            }
 
-            _tChiTietChuyenHangDonHangs = PhuDinhData.Repository.tChiTietChuyenHangDonHangRepository.GetData(_context, FilterChiTietChuyenHangDonHang);
-            var collection = new ObservableCollection<PhuDinhData.tChiTietChuyenHangDonHang>(_tChiTietChuyenHangDonHangs);
-            collection.CollectionChanged += collection_CollectionChanged;
-            dgChiTietChuyenHangDonHang.DataContext = collection;
+            _context = new PhuDinhData.PhuDinhEntities();
+            var tChiTietChuyenHangDonHangs = PhuDinhData.Repository.tChiTietChuyenHangDonHangRepository.GetData(_context, FilterChiTietChuyenHangDonHang);
+
+            _tChiTietChuyenHangDonHangs = new ObservableCollection<PhuDinhData.tChiTietChuyenHangDonHang>(tChiTietChuyenHangDonHangs);
+            _tChiTietChuyenHangDonHangs.CollectionChanged += collection_CollectionChanged;
+            dgChiTietChuyenHangDonHang.DataContext = _tChiTietChuyenHangDonHangs;
 
             UpdateChiTietDonHangReferenceData();
             UpdateChuyenHangDonHangReferenceData();
@@ -103,6 +108,8 @@ namespace PhuDinhCommonControl
 
         private void dgChiTietChuyenHangDonHang_HeaderAddButtonClick(object sender, EventArgs e)
         {
+            dgChiTietChuyenHangDonHang.CommitEdit();
+
             var header = sender as DataGridColumnHeader;
 
             BaseView view = null;
