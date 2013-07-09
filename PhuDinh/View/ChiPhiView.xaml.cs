@@ -10,9 +10,21 @@ namespace PhuDinh.View
         public ChiPhiView()
         {
             InitializeComponent();
-            _rLoaiChiPhiView.RefreshView();
 
+            Loaded += ChiPhiView_Loaded;
+            Unloaded += ChiPhiView_Unloaded;
+        }
+
+        void ChiPhiView_Unloaded(object sender, System.Windows.RoutedEventArgs e)
+        {
+            _rLoaiChiPhiView.dgLoaiChiPhi.SelectionChanged -= dgLoaiChiPhi_SelectionChanged;
+        }
+
+        void ChiPhiView_Loaded(object sender, System.Windows.RoutedEventArgs e)
+        {
             _rLoaiChiPhiView.dgLoaiChiPhi.SelectionChanged += dgLoaiChiPhi_SelectionChanged;
+
+            _rLoaiChiPhiView.RefreshView();
         }
 
         void dgLoaiChiPhi_SelectionChanged(object sender, SelectionChangedEventArgs e)

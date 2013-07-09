@@ -86,7 +86,7 @@
     <Compile Include="CustomControl\TimeInput.xaml.cs">
       <DependentUpon>TimeInput.xaml</DependentUpon>
     </Compile>
-    <Compile Include="DatagridFilter.cs" />
+    <Compile Include="DataGridColumnHeaderDateFilter.cs" />
     <Compile Include="EntityDataGrid\1Level\DGDiaDiem.xaml.cs">
       <DependentUpon>DGDiaDiem.xaml</DependentUpon>
     </Compile>

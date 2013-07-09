@@ -32,6 +32,33 @@ namespace PhuDinhCommonControl
             FilterChiPhiNhanVienGiaoHang = (p => true);
             FilterLoaiChiPhi = (p => true);
             FilterNhanVienGiaoHang = (p => true);
+
+            Loaded += tChiPhiNhanVienGiaoHangView_Loaded;
+            Unloaded += tChiPhiNhanVienGiaoHangView_Unloaded;
+        }
+
+        void tChiPhiNhanVienGiaoHangView_Loaded(object sender, System.Windows.RoutedEventArgs e)
+        {
+            DataGridColumnHeaderDateFilter.ChiPhi.PropertyChanged += ChiPhi_PropertyChanged;
+        }
+
+        void tChiPhiNhanVienGiaoHangView_Unloaded(object sender, System.Windows.RoutedEventArgs e)
+        {
+            DataGridColumnHeaderDateFilter.ChiPhi.PropertyChanged -= ChiPhi_PropertyChanged;
+        }
+
+        void ChiPhi_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (DataGridColumnHeaderDateFilter.ChiPhi.IsUsed)
+            {
+                FilterChiPhiNhanVienGiaoHang = (p => p.Ngay == DataGridColumnHeaderDateFilter.ChiPhi.Date);
+            }
+            else
+            {
+                FilterChiPhiNhanVienGiaoHang = (p => true);
+            }
+
+            RefreshView();
         }
 
         #region Override base view method
@@ -97,7 +124,7 @@ namespace PhuDinhCommonControl
             if (e.Action == NotifyCollectionChangedAction.Add)
             {
                 var tChiPhiNhanVienGiaoHang = e.NewItems[0] as PhuDinhData.tChiPhiNhanVienGiaoHang;
-                tChiPhiNhanVienGiaoHang.Ngay = DateTime.Now;
+                tChiPhiNhanVienGiaoHang.Ngay = (DataGridColumnHeaderDateFilter.ChiPhi.IsUsed) ? DataGridColumnHeaderDateFilter.ChiPhi.Date : DateTime.Now;
                 tChiPhiNhanVienGiaoHang.rLoaiChiPhiList = _rLoaiChiPhis;
                 tChiPhiNhanVienGiaoHang.rNhanVienGiaoHangList = _rNhanVienGiaoHangs;
 
@@ -120,7 +147,7 @@ namespace PhuDinhCommonControl
             dgChiPhiNhanVienGiaoHang.CommitEdit();
 
             var header = sender as DataGridColumnHeader;
-            
+
             BaseView view = null;
 
             switch (header.Content.ToString())

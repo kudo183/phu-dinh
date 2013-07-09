@@ -32,6 +32,33 @@ namespace PhuDinhCommonControl
             FilterDonHang = (p => true);
             FilterKhachHang = (p => true);
             FilterChanh = (p => true);
+
+            Loaded += tDonHangView_Loaded;
+            Unloaded += tDonHangView_Unloaded;
+        }
+
+        void tDonHangView_Loaded(object sender, System.Windows.RoutedEventArgs e)
+        {
+            DataGridColumnHeaderDateFilter.DonHang.PropertyChanged += DonHang_PropertyChanged;
+        }
+
+        void tDonHangView_Unloaded(object sender, System.Windows.RoutedEventArgs e)
+        {
+            DataGridColumnHeaderDateFilter.DonHang.PropertyChanged -= DonHang_PropertyChanged;
+        }
+
+        void DonHang_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (DataGridColumnHeaderDateFilter.DonHang.IsUsed)
+            {
+                FilterDonHang = (p => p.Ngay == DataGridColumnHeaderDateFilter.DonHang.Date);
+            }
+            else
+            {
+                FilterDonHang = (p => true);
+            }
+
+            RefreshView();
         }
 
         #region Override base view method
@@ -97,7 +124,7 @@ namespace PhuDinhCommonControl
             if (e.Action == NotifyCollectionChangedAction.Add)
             {
                 var tDonHang = e.NewItems[0] as PhuDinhData.tDonHang;
-                tDonHang.Ngay = DateTime.Now;
+                tDonHang.Ngay = (DataGridColumnHeaderDateFilter.DonHang.IsUsed) ? DataGridColumnHeaderDateFilter.DonHang.Date : DateTime.Now;
                 tDonHang.rChanhList = _rChanhs;
                 tDonHang.rKhachHangList = _rKhachHangs;
 

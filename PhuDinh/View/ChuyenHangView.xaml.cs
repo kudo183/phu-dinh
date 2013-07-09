@@ -1,4 +1,5 @@
 ﻿using System.Windows.Controls;
+using PhuDinhCommonControl;
 
 namespace PhuDinh.View
 {
@@ -10,12 +11,27 @@ namespace PhuDinh.View
         public ChuyenHangView()
         {
             InitializeComponent();
-            _tChuyenHangView.RefreshView();
 
+            Loaded += ChuyenHangView_Loaded;
+            Unloaded += ChuyenHangView_Unloaded;
+        }
+
+        void ChuyenHangView_Loaded(object sender, System.Windows.RoutedEventArgs e)
+        {
             _tChuyenHangView.dgChuyenHang.SelectionChanged += dgChuyenHang_SelectionChanged;
             _tChuyenHangDonHangView.dgChuyenHangDonHang.SelectionChanged += dgChuyenHangDonHang_SelectionChanged;
 
             _tChiTietChuyenHangDonHangView.AfterSave += _tChiTietChuyenHangDonHangView_AfterSave;
+
+            _tChuyenHangView.RefreshView();
+        }
+
+        void ChuyenHangView_Unloaded(object sender, System.Windows.RoutedEventArgs e)
+        {
+            _tChuyenHangView.dgChuyenHang.SelectionChanged -= dgChuyenHang_SelectionChanged;
+            _tChuyenHangDonHangView.dgChuyenHangDonHang.SelectionChanged -= dgChuyenHangDonHang_SelectionChanged;
+
+            _tChiTietChuyenHangDonHangView.AfterSave -= _tChiTietChuyenHangDonHangView_AfterSave;
         }
 
         void _tChiTietChuyenHangDonHangView_AfterSave(object sender, System.EventArgs e)

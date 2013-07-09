@@ -2,9 +2,8 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-                     xmlns:PhuDinhCommonControl="clr-namespace:PhuDinhCommonControl" mc:Ignorable="d"
-                       Binding="{Binding Ngay, StringFormat=\{0:dd/MM/yyyy\}}" Header="Ngày" Width="100">
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" mc:Ignorable="d"
+                       Binding="{Binding Ngay, StringFormat=\{0:dd/MM/yyyy\}}" Width="180">
     <DataGridBoundColumn.HeaderStyle>
         <Style TargetType="DataGridColumnHeader">
             <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
@@ -15,10 +14,13 @@
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Column="0" Text="{Binding}"/>
-                            <DatePicker Grid.Column="1" SelectedDate="{Binding DateFilter,
-                                Source={x:Static PhuDinhCommonControl:DatagridFilter.Instance}}" Height="20"/>
+                            <TextBlock Grid.Column="0" Text="{Binding Name}"/>
+                            <CheckBox Grid.Column="1" VerticalAlignment="Center" Margin="5" IsChecked="{Binding Path=IsUsed}"/>
+                            <DatePicker Grid.Column="2" Height="25" Width="100"
+                                        SelectedDate="{Binding Path=Date}"
+                                        IsEnabled="{Binding Path=IsUsed}"/>
                         </Grid>
                     </DataTemplate>
                 </Setter.Value>

@@ -5,14 +5,14 @@
                            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                            xmlns:CustomControl="clr-namespace:PhuDinhCommonControl.CustomControl"
                            xmlns:DesignTimeData="clr-namespace:PhuDinhData.DesignTimeData;assembly=PhuDinhData"
-                           mc:Ignorable="d"
+                           xmlns:PhuDinhCommonControl="clr-namespace:PhuDinhCommonControl" mc:Ignorable="d"
                            d:DataContext="{x:Static DesignTimeData:DDtDonHang.tDonHangs}"
                            AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" SelectionMode="Single">
     <DataGrid.Columns>
         <!--Ma-->
         <CustomControl:DataGridReadOnlyTextColumn x:Name="maColumn"/>
         <!--Ngay-->
-        <CustomControl:DataGridDateColumn x:Name="ngayColumn"/>
+        <CustomControl:DataGridDateColumn x:Name="ngayColumn" Header="{x:Static PhuDinhCommonControl:DataGridColumnHeaderDateFilter.DonHang}"/>
         <!--Khach hang-->
         <CustomControl:DataGridComboBoxColumnExt x:Name="khachHangColumn" Header="Khách hàng" HeaderAddButtonClick="headerAddButton_Click"
                                                  TextBinding="{Binding rKhachHang.TenKhachHangDiaDiem, Mode=OneWay}"

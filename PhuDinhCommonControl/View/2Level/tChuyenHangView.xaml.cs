@@ -26,6 +26,33 @@ namespace PhuDinhCommonControl
 
             FilterChuyenHang = (p => true);
             FilterNhanVienGiaoHang = (p => true);
+
+            Loaded += tChuyenHangView_Loaded;
+            Unloaded += tChuyenHangView_Unloaded;
+        }
+
+        void tChuyenHangView_Loaded(object sender, System.Windows.RoutedEventArgs e)
+        {
+            DataGridColumnHeaderDateFilter.ChuyenHang.PropertyChanged += ChuyenHang_PropertyChanged;
+        }
+
+        void tChuyenHangView_Unloaded(object sender, System.Windows.RoutedEventArgs e)
+        {
+            DataGridColumnHeaderDateFilter.ChuyenHang.PropertyChanged -= ChuyenHang_PropertyChanged;
+        }
+
+        void ChuyenHang_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (DataGridColumnHeaderDateFilter.ChuyenHang.IsUsed)
+            {
+                FilterChuyenHang = (p => p.Ngay == DataGridColumnHeaderDateFilter.ChuyenHang.Date);
+            }
+            else
+            {
+                FilterChuyenHang = (p => true);
+            }
+
+            RefreshView();
         }
 
         #region Override base view method
@@ -90,7 +117,7 @@ namespace PhuDinhCommonControl
             if (e.Action == NotifyCollectionChangedAction.Add)
             {
                 var tChuyenHang = e.NewItems[0] as PhuDinhData.tChuyenHang;
-                tChuyenHang.Ngay = DateTime.Now;
+                tChuyenHang.Ngay = (DataGridColumnHeaderDateFilter.ChuyenHang.IsUsed) ? DataGridColumnHeaderDateFilter.ChuyenHang.Date : DateTime.Now;
                 tChuyenHang.Gio = DateTime.Now.TimeOfDay;
                 tChuyenHang.rNhanVienGiaoHangList = _rNhanVienGiaoHangs;
             }
