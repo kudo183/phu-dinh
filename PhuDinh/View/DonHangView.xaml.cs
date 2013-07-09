@@ -1,4 +1,6 @@
-﻿using System.Windows.Controls;
+﻿using System.Windows;
+using System.Windows.Controls;
+using PhuDinhCommonControl;
 
 namespace PhuDinh.View
 {
@@ -9,11 +11,31 @@ namespace PhuDinh.View
     {
         public DonHangView()
         {
-            InitializeComponent();
-            _tDonHangView.RefreshView();
+            InitializeComponent();            
             
+            Loaded += DonHangView_Loaded;
+            Unloaded += DonHangView_Unloaded;
+        }
+
+        void DonHangView_Loaded(object sender, RoutedEventArgs e)
+        {
             _tDonHangView.dgDonHang.SelectionChanged += dgDonHang_SelectionChanged;
             _tChiTietDonHangView.AfterSave += _tChiTietDonHangView_AfterSave;
+            DatagridFilter.Instance.DateFilterChanged += Instance_DateFilterChanged;
+
+            _tDonHangView.RefreshView();
+        }
+
+        void DonHangView_Unloaded(object sender, RoutedEventArgs e)
+        {
+            _tDonHangView.dgDonHang.SelectionChanged -= dgDonHang_SelectionChanged;
+            _tChiTietDonHangView.AfterSave -= _tChiTietDonHangView_AfterSave;
+            DatagridFilter.Instance.DateFilterChanged -= Instance_DateFilterChanged;
+        }
+
+        void Instance_DateFilterChanged(object sender, System.EventArgs e)
+        {
+            
         }
 
         void _tChiTietDonHangView_AfterSave(object sender, System.EventArgs e)
@@ -29,7 +51,7 @@ namespace PhuDinh.View
             }
 
             var donHang = ((DataGrid)sender).SelectedItem as PhuDinhData.tDonHang;
-            if(donHang == null)
+            if (donHang == null)
             {
                 _tChiTietDonHangView.FilterChiTietDonHang = null;
                 _tChiTietDonHangView.RefreshView();
