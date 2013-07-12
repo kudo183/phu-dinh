@@ -132,7 +132,7 @@ namespace PhuDinhCommonControl
                     UpdateChuyenHangReferenceData();
                     break;
                 case "Đơn Hàng":
-                    view = new tDonHangView();
+                    view = new DonHangView();
                     view.RefreshView();
                     ChildWindowUtils.ShowChildWindow("Đơn Hàng", view);
 
