@@ -14,7 +14,7 @@ namespace PhuDinhCommonControl
             _name = name;
         }
 
-        private DateTime _date = DateTime.Now;
+        private DateTime _date = DateTime.Now.Date;
         public DateTime Date
         {
             get { return _date; }
