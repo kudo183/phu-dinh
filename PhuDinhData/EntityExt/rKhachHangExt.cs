@@ -6,7 +6,7 @@ namespace PhuDinhData
     {
         public string TenKhachHangDiaDiem
         {
-            get { return string.Format("{0}_{1}", TenKhachHang, rDiaDiem.TenDiaDiem); }
+            get { return string.Format("{0}", TenKhachHang); }
         }
 
         public List<rDiaDiem> rDiaDiemList { get; set; }

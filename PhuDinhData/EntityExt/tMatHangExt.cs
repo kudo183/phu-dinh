@@ -8,7 +8,7 @@ namespace PhuDinhData
         {
             get
             {
-                return string.Format("{0}_{1}", rLoaiHang.TenLoai, TenMatHang);
+                return string.Format("{0}", TenMatHang);
             }
         }
 
