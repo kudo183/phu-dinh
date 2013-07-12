@@ -116,6 +116,12 @@ namespace PhuDinhCommonControl
         private void UpdateLoaiHangReferenceData()
         {
             _rLoaiHangs = PhuDinhData.Repository.rLoaiHangRepository.GetData(_context, FilterLoaiHang);
+
+            if (_tMatHangs == null)
+            {
+                return;
+            }
+
             foreach (var tMatHang in _tMatHangs)
             {
                 tMatHang.rLoaiHangList = _rLoaiHangs;

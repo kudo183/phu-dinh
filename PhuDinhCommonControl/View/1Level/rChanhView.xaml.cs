@@ -116,6 +116,12 @@ namespace PhuDinhCommonControl
         private void UpdateBaiXeReferenceData()
         {
             _rBaiXes = PhuDinhData.Repository.rBaiXeRepository.GetData(_context, FilterBaiXe);
+
+            if (_rChanhs == null)
+            {
+                return;
+            }
+
             foreach (var rChanh in _rChanhs)
             {
                 rChanh.rBaiXeList = _rBaiXes;

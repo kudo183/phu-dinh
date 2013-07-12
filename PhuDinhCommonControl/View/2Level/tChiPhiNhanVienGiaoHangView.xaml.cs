@@ -172,6 +172,12 @@ namespace PhuDinhCommonControl
         private void UpdateLoaiChiPhiReferenceData()
         {
             _rLoaiChiPhis = PhuDinhData.Repository.rLoaiChiPhiRepository.GetData(_context, FilterLoaiChiPhi);
+
+            if (_tChiPhiNhanVienGiaoHangs == null)
+            {
+                return;
+            }
+
             foreach (var tChiPhiNhanVienGiaoHang in _tChiPhiNhanVienGiaoHangs)
             {
                 tChiPhiNhanVienGiaoHang.rLoaiChiPhiList = _rLoaiChiPhis;
@@ -181,6 +187,12 @@ namespace PhuDinhCommonControl
         private void UpdateNhanVienGiaoHangReferenceData()
         {
             _rNhanVienGiaoHangs = PhuDinhData.Repository.rNhanVienGiaoHangRepository.GetData(_context, FilterNhanVienGiaoHang);
+
+            if (_tChiPhiNhanVienGiaoHangs == null)
+            {
+                return;
+            }
+
             foreach (var tChiPhiNhanVienGiaoHang in _tChiPhiNhanVienGiaoHangs)
             {
                 tChiPhiNhanVienGiaoHang.rNhanVienGiaoHangList = _rNhanVienGiaoHangs;

@@ -116,11 +116,16 @@ namespace PhuDinhCommonControl
         private void UpdateDiaDiemReferenceData()
         {
             _rDiaDiems = PhuDinhData.Repository.rDiaDiemRepository.GetData(_context, FilterDiaDiem);
+
+            if (_rKhachHangs == null)
+            {
+                return;
+            }
+
             foreach (var rKhachHang in _rKhachHangs)
             {
                 rKhachHang.rDiaDiemList = _rDiaDiems;
             }
-
         }
     }
 }

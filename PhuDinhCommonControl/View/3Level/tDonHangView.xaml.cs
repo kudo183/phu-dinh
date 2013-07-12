@@ -167,6 +167,12 @@ namespace PhuDinhCommonControl
         private void UpdateChanhReferenceData()
         {
             _rChanhs = PhuDinhData.Repository.rChanhRepository.GetData(_context, FilterChanh);
+
+            if (_tDonHangs == null)
+            {
+                return;
+            }
+
             foreach (var tDonHang in _tDonHangs)
             {
                 tDonHang.rChanhList = _rChanhs;
@@ -176,6 +182,12 @@ namespace PhuDinhCommonControl
         private void UpdateKhachHangReferenceData()
         {
             _rKhachHangs = PhuDinhData.Repository.rKhachHangRepository.GetData(_context, FilterKhachHang);
+
+            if (_tDonHangs == null)
+            {
+                return;
+            }
+
             foreach (var tDonHang in _tDonHangs)
             {
                 tDonHang.rKhachHangList = _rKhachHangs;

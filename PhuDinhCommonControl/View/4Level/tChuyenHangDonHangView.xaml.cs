@@ -144,6 +144,12 @@ namespace PhuDinhCommonControl
         private void UpdateChuyenHangReferenceData()
         {
             _tChuyenHangs = PhuDinhData.Repository.tChuyenHangRepository.GetData(_context, FilterChuyenHang);
+
+            if (_tChuyenHangDonHangs == null)
+            {
+                return;
+            }
+
             foreach (var tChuyenHangDonHang in _tChuyenHangDonHangs)
             {
                 tChuyenHangDonHang.tChuyenHangList = _tChuyenHangs;
@@ -153,6 +159,12 @@ namespace PhuDinhCommonControl
         private void UpdateDonHangReferenceData()
         {
             _tDonHangs = PhuDinhData.Repository.tDonHangRepository.GetData(_context, FilterDonHang);
+
+            if (_tChuyenHangDonHangs == null)
+            {
+                return;
+            }
+
             foreach (var tChuyenHangDonHang in _tChuyenHangDonHangs)
             {
                 tChuyenHangDonHang.tDonHangList = _tDonHangs;

@@ -115,6 +115,12 @@ namespace PhuDinhCommonControl
         private void UpdatePhuongTienReferenceData()
         {
             _rPhuongTiens = PhuDinhData.Repository.rPhuongTienRepository.GetData(_context, FilterPhuongTien);
+
+            if (_rNhanVienGiaoHangs == null)
+            {
+                return;
+            }
+
             foreach (var rNhanVienGiaoHang in _rNhanVienGiaoHangs)
             {
                 rNhanVienGiaoHang.rPhuongTienList = _rPhuongTiens;

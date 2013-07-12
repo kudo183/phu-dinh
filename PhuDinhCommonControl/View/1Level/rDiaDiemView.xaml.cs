@@ -110,6 +110,12 @@ namespace PhuDinhCommonControl
         private void UpdateNuocReferenceData()
         {
             _rNuocs = PhuDinhData.Repository.rNuocRepository.GetData(_context, FilterNuoc);
+
+            if (_rDiaDiems == null)
+            {
+                return;
+            }
+
             foreach (var rDiaDiem in _rDiaDiems)
             {
                 rDiaDiem.rNuocList = _rNuocs;
