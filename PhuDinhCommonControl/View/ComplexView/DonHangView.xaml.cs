@@ -1,12 +1,12 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 
-namespace PhuDinh.View
+namespace PhuDinhCommonControl
 {
     /// <summary>
     /// Interaction logic for DonHangView.xaml
     /// </summary>
-    public partial class DonHangView : UserControl
+    public partial class DonHangView : BaseView
     {
         public DonHangView()
         {

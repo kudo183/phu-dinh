@@ -203,6 +203,27 @@
     <Compile Include="View\1Level\tMatHangView.xaml.cs">
       <DependentUpon>tMatHangView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\ComplexView\BaiXeView.xaml.cs">
+      <DependentUpon>BaiXeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ComplexView\ChiPhiView.xaml.cs">
+      <DependentUpon>ChiPhiView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ComplexView\ChuyenHangView.xaml.cs">
+      <DependentUpon>ChuyenHangView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ComplexView\DonHangView.xaml.cs">
+      <DependentUpon>DonHangView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ComplexView\KhachHangView.xaml.cs">
+      <DependentUpon>KhachHangView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ComplexView\MatHangView.xaml.cs">
+      <DependentUpon>MatHangView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ComplexView\NhanVienView.xaml.cs">
+      <DependentUpon>NhanVienView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="VisualTreeUtils.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -403,6 +424,34 @@
     <Page Include="View\1Level\tMatHangView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ComplexView\BaiXeView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\ComplexView\ChiPhiView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\ComplexView\ChuyenHangView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\ComplexView\DonHangView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\ComplexView\KhachHangView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\ComplexView\MatHangView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\ComplexView\NhanVienView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup />

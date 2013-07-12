@@ -1,12 +1,11 @@
 ﻿using System.Windows.Controls;
-using PhuDinhCommonControl;
 
-namespace PhuDinh.View
+namespace PhuDinhCommonControl
 {
     /// <summary>
     /// Interaction logic for ChuyenHangView.xaml
     /// </summary>
-    public partial class ChuyenHangView : UserControl
+    public partial class ChuyenHangView : BaseView
     {
         public ChuyenHangView()
         {

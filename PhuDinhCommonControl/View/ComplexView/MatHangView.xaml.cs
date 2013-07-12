@@ -1,11 +1,11 @@
 ﻿using System.Windows.Controls;
 
-namespace PhuDinh.View
+namespace PhuDinhCommonControl
 {
     /// <summary>
     /// Interaction logic for MatHangView.xaml
     /// </summary>
-    public partial class MatHangView : UserControl
+    public partial class MatHangView : BaseView
     {
         public MatHangView()
         {

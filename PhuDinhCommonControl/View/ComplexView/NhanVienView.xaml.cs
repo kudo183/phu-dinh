@@ -1,11 +1,11 @@
 ﻿using System.Windows.Controls;
 
-namespace PhuDinh.View
+namespace PhuDinhCommonControl
 {
     /// <summary>
     /// Interaction logic for NhanVienView.xaml
     /// </summary>
-    public partial class NhanVienView : UserControl
+    public partial class NhanVienView : BaseView
     {
         public NhanVienView()
         {

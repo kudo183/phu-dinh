@@ -1,11 +1,11 @@
 ﻿using System.Windows.Controls;
 
-namespace PhuDinh.View
+namespace PhuDinhCommonControl
 {
     /// <summary>
     /// Interaction logic for KhachHangView.xaml
     /// </summary>
-    public partial class KhachHangView : UserControl
+    public partial class KhachHangView : BaseView
     {
         public KhachHangView()
         {

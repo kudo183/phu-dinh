@@ -1,11 +1,11 @@
 ﻿using System.Windows.Controls;
 
-namespace PhuDinh.View
+namespace PhuDinhCommonControl
 {
     /// <summary>
     /// Interaction logic for ChiPhiView.xaml
     /// </summary>
-    public partial class ChiPhiView : UserControl
+    public partial class ChiPhiView : BaseView
     {
         public ChiPhiView()
         {

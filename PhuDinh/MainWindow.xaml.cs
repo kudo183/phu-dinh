@@ -1,5 +1,5 @@
 ﻿using System.Windows;
-using PhuDinh.View;
+using PhuDinhCommonControl;
 
 namespace PhuDinh
 {

@@ -70,27 +70,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="View\BaiXeView.xaml.cs">
-      <DependentUpon>BaiXeView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\ChuyenHangView.xaml.cs">
-      <DependentUpon>ChuyenHangView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\ChiPhiView.xaml.cs">
-      <DependentUpon>ChiPhiView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\KhachHangView.xaml.cs">
-      <DependentUpon>KhachHangView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\NhanVienView.xaml.cs">
-      <DependentUpon>NhanVienView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\DonHangView.xaml.cs">
-      <DependentUpon>DonHangView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\MatHangView.xaml.cs">
-      <DependentUpon>MatHangView.xaml</DependentUpon>
-    </Compile>
     <Page Include="View\AdminView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -110,34 +89,6 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="View\BaiXeView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\ChuyenHangView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="View\ChiPhiView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="View\KhachHangView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="View\NhanVienView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="View\DonHangView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="View\MatHangView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
