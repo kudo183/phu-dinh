@@ -30,7 +30,7 @@ namespace PhuDinhCommonControl
             }
         }
 
-        private bool _isUsed = true;
+        private bool _isUsed;
         public bool IsUsed
         {
             get { return _isUsed; }
