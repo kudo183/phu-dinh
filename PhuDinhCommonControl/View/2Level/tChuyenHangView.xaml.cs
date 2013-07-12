@@ -18,13 +18,16 @@ namespace PhuDinhCommonControl
 
         private ObservableCollection<PhuDinhData.tChuyenHang> _tChuyenHangs;
         private List<PhuDinhData.rNhanVienGiaoHang> _rNhanVienGiaoHangs;
+
         private PhuDinhData.PhuDinhEntities _context = new PhuDinhData.PhuDinhEntities();
+
+        private bool _isUsedDateFilter = true;
+        private DateTime _filterDate = DateTime.Now.Date;
 
         public tChuyenHangView()
         {
             InitializeComponent();
 
-            FilterChuyenHang = (p => true);
             FilterNhanVienGiaoHang = (p => true);
 
             Loaded += tChuyenHangView_Loaded;
@@ -33,12 +36,16 @@ namespace PhuDinhCommonControl
 
         void tChuyenHangView_Loaded(object sender, System.Windows.RoutedEventArgs e)
         {
+            DataGridColumnHeaderDateFilter.ChuyenHang.Date = _filterDate;
             DataGridColumnHeaderDateFilter.ChuyenHang.PropertyChanged += ChuyenHang_PropertyChanged;
+            DataGridColumnHeaderDateFilter.ChuyenHang.IsUsed = _isUsedDateFilter;
         }
 
         void tChuyenHangView_Unloaded(object sender, System.Windows.RoutedEventArgs e)
         {
             DataGridColumnHeaderDateFilter.ChuyenHang.PropertyChanged -= ChuyenHang_PropertyChanged;
+            _filterDate = DataGridColumnHeaderDateFilter.ChuyenHang.Date;
+            _isUsedDateFilter = DataGridColumnHeaderDateFilter.ChuyenHang.IsUsed;
         }
 
         void ChuyenHang_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)

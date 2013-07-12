@@ -23,7 +23,11 @@ namespace PhuDinhCommonControl
         private ObservableCollection<PhuDinhData.tChiPhiNhanVienGiaoHang> _tChiPhiNhanVienGiaoHangs;
         private List<PhuDinhData.rLoaiChiPhi> _rLoaiChiPhis;
         private List<PhuDinhData.rNhanVienGiaoHang> _rNhanVienGiaoHangs;
+
         private PhuDinhData.PhuDinhEntities _context = new PhuDinhData.PhuDinhEntities();
+
+        private bool _isUsedDateFilter = true;
+        private DateTime _filterDate = DateTime.Now.Date;
 
         public tChiPhiNhanVienGiaoHangView()
         {
@@ -39,12 +43,16 @@ namespace PhuDinhCommonControl
 
         void tChiPhiNhanVienGiaoHangView_Loaded(object sender, System.Windows.RoutedEventArgs e)
         {
+            DataGridColumnHeaderDateFilter.ChiPhi.Date = _filterDate;
             DataGridColumnHeaderDateFilter.ChiPhi.PropertyChanged += ChiPhi_PropertyChanged;
+            DataGridColumnHeaderDateFilter.ChiPhi.IsUsed = _isUsedDateFilter;
         }
 
         void tChiPhiNhanVienGiaoHangView_Unloaded(object sender, System.Windows.RoutedEventArgs e)
         {
             DataGridColumnHeaderDateFilter.ChiPhi.PropertyChanged -= ChiPhi_PropertyChanged;
+            _filterDate = DataGridColumnHeaderDateFilter.ChiPhi.Date;
+            _isUsedDateFilter = DataGridColumnHeaderDateFilter.ChiPhi.IsUsed;
         }
 
         void ChiPhi_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)

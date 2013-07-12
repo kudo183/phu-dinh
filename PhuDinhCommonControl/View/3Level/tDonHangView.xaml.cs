@@ -25,11 +25,13 @@ namespace PhuDinhCommonControl
 
         private PhuDinhData.PhuDinhEntities _context = new PhuDinhData.PhuDinhEntities();
 
+        private bool _isUsedDateFilter = true;
+        private DateTime _filterDate = DateTime.Now.Date;
+
         public tDonHangView()
         {
             InitializeComponent();
 
-            FilterDonHang = (p => true);
             FilterKhachHang = (p => true);
             FilterChanh = (p => true);
 
@@ -39,12 +41,16 @@ namespace PhuDinhCommonControl
 
         void tDonHangView_Loaded(object sender, System.Windows.RoutedEventArgs e)
         {
+            DataGridColumnHeaderDateFilter.DonHang.Date = _filterDate;
             DataGridColumnHeaderDateFilter.DonHang.PropertyChanged += DonHang_PropertyChanged;
+            DataGridColumnHeaderDateFilter.DonHang.IsUsed = _isUsedDateFilter;
         }
 
         void tDonHangView_Unloaded(object sender, System.Windows.RoutedEventArgs e)
         {
             DataGridColumnHeaderDateFilter.DonHang.PropertyChanged -= DonHang_PropertyChanged;
+            _filterDate = DataGridColumnHeaderDateFilter.DonHang.Date;
+            _isUsedDateFilter = DataGridColumnHeaderDateFilter.DonHang.IsUsed;
         }
 
         void DonHang_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
