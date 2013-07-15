@@ -130,3 +130,22 @@ INSERT [dbo].[tMatHang] ([Ma], [MaLoai], [TenMatHang]) VALUES (75, 8, N'Sấy nh
 INSERT [dbo].[tMatHang] ([Ma], [MaLoai], [TenMatHang]) VALUES (76, 8, N'Sấy lớn 20m')
 INSERT [dbo].[tMatHang] ([Ma], [MaLoai], [TenMatHang]) VALUES (77, 8, N'Sấy lớn 24m')
 SET IDENTITY_INSERT [dbo].[tMatHang] OFF
+
+/****** Object:  Table [dbo].[rPhuongTien]    Script Date: 07/15/2013 18:00:42 ******/
+SET IDENTITY_INSERT [dbo].[rPhuongTien] ON
+INSERT [dbo].[rPhuongTien] ([Ma], [TenPhuongTien]) VALUES (1, N'Xe tải')
+INSERT [dbo].[rPhuongTien] ([Ma], [TenPhuongTien]) VALUES (2, N'Xe Honda')
+SET IDENTITY_INSERT [dbo].[rPhuongTien] OFF
+/****** Object:  Table [dbo].[rNhanVienGiaoHang]    Script Date: 07/15/2013 18:00:42 ******/
+SET IDENTITY_INSERT [dbo].[rNhanVienGiaoHang] ON
+INSERT [dbo].[rNhanVienGiaoHang] ([Ma], [MaPhuongTien], [TenNhanVien]) VALUES (1, 1, N'Sáng')
+INSERT [dbo].[rNhanVienGiaoHang] ([Ma], [MaPhuongTien], [TenNhanVien]) VALUES (2, 1, N'Hưng')
+INSERT [dbo].[rNhanVienGiaoHang] ([Ma], [MaPhuongTien], [TenNhanVien]) VALUES (3, 2, N'Phua')
+INSERT [dbo].[rNhanVienGiaoHang] ([Ma], [MaPhuongTien], [TenNhanVien]) VALUES (4, 2, N'Vạn')
+INSERT [dbo].[rNhanVienGiaoHang] ([Ma], [MaPhuongTien], [TenNhanVien]) VALUES (5, 2, N'Lùn')
+INSERT [dbo].[rNhanVienGiaoHang] ([Ma], [MaPhuongTien], [TenNhanVien]) VALUES (6, 2, N'Quấy')
+INSERT [dbo].[rNhanVienGiaoHang] ([Ma], [MaPhuongTien], [TenNhanVien]) VALUES (7, 2, N'Minh')
+INSERT [dbo].[rNhanVienGiaoHang] ([Ma], [MaPhuongTien], [TenNhanVien]) VALUES (8, 2, N'Tại')
+INSERT [dbo].[rNhanVienGiaoHang] ([Ma], [MaPhuongTien], [TenNhanVien]) VALUES (9, 2, N'Tuấn')
+INSERT [dbo].[rNhanVienGiaoHang] ([Ma], [MaPhuongTien], [TenNhanVien]) VALUES (10, 2, N'Bảo')
+SET IDENTITY_INSERT [dbo].[rNhanVienGiaoHang] OFF
