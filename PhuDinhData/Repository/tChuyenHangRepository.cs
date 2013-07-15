@@ -9,8 +9,7 @@ namespace PhuDinhData.Repository
     {
         public static List<tChuyenHang> GetData(PhuDinhEntities context, Expression<Func<tChuyenHang, bool>> filter)
         {
-            return Repository<tChuyenHang>.GetData(context, filter).
-                OrderByDescending(p => p.Ngay).ThenByDescending(p => p.Gio).ToList();
+            return Repository<tChuyenHang>.GetData(context, filter).OrderByDescending(p => p.Ngay).ToList();
         }
 
         public static void Save(PhuDinhEntities context, List<tChuyenHang> data, Expression<Func<tChuyenHang, bool>> filter)
