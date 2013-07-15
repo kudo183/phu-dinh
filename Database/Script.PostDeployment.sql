@@ -14,15 +14,17 @@ Post-Deployment Script Template
 SET IDENTITY_INSERT [dbo].[rNuoc] ON
 INSERT [dbo].[rNuoc] ([Ma], [TenNuoc]) VALUES (1, N'Việt Nam')
 SET IDENTITY_INSERT [dbo].[rNuoc] OFF
-/****** Object:  Table [dbo].[rDiaDiem]    Script Date: 07/15/2013 14:07:24 ******/
+/****** Object:  Table [dbo].[rDiaDiem]    Script Date: 07/15/2013 18:02:07 ******/
 SET IDENTITY_INSERT [dbo].[rDiaDiem] ON
 INSERT [dbo].[rDiaDiem] ([Ma], [MaNuoc], [Tinh]) VALUES (1, 1, N'Chưa biết')
 INSERT [dbo].[rDiaDiem] ([Ma], [MaNuoc], [Tinh]) VALUES (2, 1, N'Bảo Lộc')
 INSERT [dbo].[rDiaDiem] ([Ma], [MaNuoc], [Tinh]) VALUES (3, 1, N'Đắc Ru')
 INSERT [dbo].[rDiaDiem] ([Ma], [MaNuoc], [Tinh]) VALUES (4, 1, N'Nghệ An')
 INSERT [dbo].[rDiaDiem] ([Ma], [MaNuoc], [Tinh]) VALUES (5, 1, N'Trà Vinh')
+INSERT [dbo].[rDiaDiem] ([Ma], [MaNuoc], [Tinh]) VALUES (6, 1, N'Thủ Đức')
+INSERT [dbo].[rDiaDiem] ([Ma], [MaNuoc], [Tinh]) VALUES (7, 1, N'Long An')
 SET IDENTITY_INSERT [dbo].[rDiaDiem] OFF
-/****** Object:  Table [dbo].[rKhachHang]    Script Date: 07/15/2013 14:07:24 ******/
+/****** Object:  Table [dbo].[rKhachHang]    Script Date: 07/15/2013 18:02:07 ******/
 SET IDENTITY_INSERT [dbo].[rKhachHang] ON
 INSERT [dbo].[rKhachHang] ([Ma], [MaDiaDiem], [TenKhachHang]) VALUES (1, 1, N'Tân Tân')
 INSERT [dbo].[rKhachHang] ([Ma], [MaDiaDiem], [TenKhachHang]) VALUES (2, 1, N'Hà Bù Nho')
@@ -32,11 +34,23 @@ INSERT [dbo].[rKhachHang] ([Ma], [MaDiaDiem], [TenKhachHang]) VALUES (5, 1, N'B�
 INSERT [dbo].[rKhachHang] ([Ma], [MaDiaDiem], [TenKhachHang]) VALUES (6, 1, N'Hà Tuân')
 INSERT [dbo].[rKhachHang] ([Ma], [MaDiaDiem], [TenKhachHang]) VALUES (7, 1, N'Thanh Lam')
 INSERT [dbo].[rKhachHang] ([Ma], [MaDiaDiem], [TenKhachHang]) VALUES (8, 1, N'Đồng Lợi')
-INSERT [dbo].[rKhachHang] ([Ma], [MaDiaDiem], [TenKhachHang]) VALUES (13, 1, N'Gò Công')
-INSERT [dbo].[rKhachHang] ([Ma], [MaDiaDiem], [TenKhachHang]) VALUES (9, 2, N'Khôi Bảo Lộc')
-INSERT [dbo].[rKhachHang] ([Ma], [MaDiaDiem], [TenKhachHang]) VALUES (12, 3, N'Hoàng Thanh Đắc Ru')
-INSERT [dbo].[rKhachHang] ([Ma], [MaDiaDiem], [TenKhachHang]) VALUES (10, 4, N'Cường Nghệ An')
-INSERT [dbo].[rKhachHang] ([Ma], [MaDiaDiem], [TenKhachHang]) VALUES (11, 5, N'Tuấn Trà Vinh')
+INSERT [dbo].[rKhachHang] ([Ma], [MaDiaDiem], [TenKhachHang]) VALUES (9, 1, N'Thắng Lợi')
+INSERT [dbo].[rKhachHang] ([Ma], [MaDiaDiem], [TenKhachHang]) VALUES (10, 1, N'Hạnh Viện')
+INSERT [dbo].[rKhachHang] ([Ma], [MaDiaDiem], [TenKhachHang]) VALUES (11, 1, N'Tín Hạnh')
+INSERT [dbo].[rKhachHang] ([Ma], [MaDiaDiem], [TenKhachHang]) VALUES (12, 1, N'7 Tùng')
+INSERT [dbo].[rKhachHang] ([Ma], [MaDiaDiem], [TenKhachHang]) VALUES (13, 1, N'Quãng Hòa Minh')
+INSERT [dbo].[rKhachHang] ([Ma], [MaDiaDiem], [TenKhachHang]) VALUES (14, 1, N'Thiên Phước')
+INSERT [dbo].[rKhachHang] ([Ma], [MaDiaDiem], [TenKhachHang]) VALUES (15, 1, N'Tân Hiệp')
+INSERT [dbo].[rKhachHang] ([Ma], [MaDiaDiem], [TenKhachHang]) VALUES (16, 1, N'Trúc Lương')
+INSERT [dbo].[rKhachHang] ([Ma], [MaDiaDiem], [TenKhachHang]) VALUES (17, 1, N'Nghĩa Thái')
+INSERT [dbo].[rKhachHang] ([Ma], [MaDiaDiem], [TenKhachHang]) VALUES (18, 1, N'Gò Công')
+INSERT [dbo].[rKhachHang] ([Ma], [MaDiaDiem], [TenKhachHang]) VALUES (19, 1, N'Nguyên Cung')
+INSERT [dbo].[rKhachHang] ([Ma], [MaDiaDiem], [TenKhachHang]) VALUES (20, 2, N'Khôi Bảo Lộc')
+INSERT [dbo].[rKhachHang] ([Ma], [MaDiaDiem], [TenKhachHang]) VALUES (21, 3, N'Hoàng Thanh Đắc Ru')
+INSERT [dbo].[rKhachHang] ([Ma], [MaDiaDiem], [TenKhachHang]) VALUES (22, 4, N'Cường Nghệ An')
+INSERT [dbo].[rKhachHang] ([Ma], [MaDiaDiem], [TenKhachHang]) VALUES (23, 5, N'Tuấn Trà Vinh')
+INSERT [dbo].[rKhachHang] ([Ma], [MaDiaDiem], [TenKhachHang]) VALUES (24, 6, N'Diễm Thủ Đức')
+INSERT [dbo].[rKhachHang] ([Ma], [MaDiaDiem], [TenKhachHang]) VALUES (25, 7, N'Phương Long An')
 SET IDENTITY_INSERT [dbo].[rKhachHang] OFF
 
 /****** Object:  Table [dbo].[rLoaiHang]    Script Date: 07/15/2013 14:16:52 ******/
