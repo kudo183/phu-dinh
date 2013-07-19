@@ -3,8 +3,11 @@
     [MaDonHang] INT NOT NULL,
     [MaMatHang] INT NOT NULL,
     [SoLuong]   INT NOT NULL,
+    [Xong]      BIT CONSTRAINT [DF_tChiTietDonHang_Xong] DEFAULT ((0)) NOT NULL,
     CONSTRAINT [PK_tChiTietDonHang] PRIMARY KEY CLUSTERED ([Ma] ASC),
     CONSTRAINT [FK_tChiTietDonHang_tDonHang] FOREIGN KEY ([MaDonHang]) REFERENCES [dbo].[tDonHang] ([Ma]),
     CONSTRAINT [FK_tChiTietDonHang_tMatHang] FOREIGN KEY ([MaMatHang]) REFERENCES [dbo].[tMatHang] ([Ma])
 );
+
+
 

@@ -12,8 +12,8 @@
           <EntitySet Name="rKhachHang" EntityType="PhuDinhModel.Store.rKhachHang" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="rLoaiChiPhi" EntityType="PhuDinhModel.Store.rLoaiChiPhi" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="rLoaiHang" EntityType="PhuDinhModel.Store.rLoaiHang" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="rNhanVienGiaoHang" EntityType="PhuDinhModel.Store.rNhanVienGiaoHang" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="rNuoc" EntityType="PhuDinhModel.Store.rNuoc" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="rNhanVienGiaoHang" EntityType="PhuDinhModel.Store.rNhanVienGiaoHang" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="rPhuongTien" EntityType="PhuDinhModel.Store.rPhuongTien" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="tChiPhiNhanVienGiaoHang" EntityType="PhuDinhModel.Store.tChiPhiNhanVienGiaoHang" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="tChiTietChuyenHangDonHang" EntityType="PhuDinhModel.Store.tChiTietChuyenHangDonHang" store:Type="Tables" Schema="dbo" />
@@ -132,6 +132,13 @@
           <Property Name="Ma" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="TenLoai" Type="nvarchar" Nullable="false" MaxLength="200" />
         </EntityType>
+        <EntityType Name="rNuoc">
+          <Key>
+            <PropertyRef Name="Ma" />
+          </Key>
+          <Property Name="Ma" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="TenNuoc" Type="nvarchar" Nullable="false" MaxLength="100" />
+        </EntityType>
         <EntityType Name="rNhanVienGiaoHang">
           <Key>
             <PropertyRef Name="Ma" />
@@ -139,13 +146,6 @@
           <Property Name="Ma" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="MaPhuongTien" Type="int" Nullable="false" />
           <Property Name="TenNhanVien" Type="nvarchar" Nullable="false" MaxLength="200" />
-        </EntityType>
-        <EntityType Name="rNuoc">
-          <Key>
-            <PropertyRef Name="Ma" />
-          </Key>
-          <Property Name="Ma" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="TenNuoc" Type="nvarchar" Nullable="false" MaxLength="100" />
         </EntityType>
         <EntityType Name="rPhuongTien">
           <Key>
@@ -182,6 +182,7 @@
           <Property Name="MaDonHang" Type="int" Nullable="false" />
           <Property Name="MaMatHang" Type="int" Nullable="false" />
           <Property Name="SoLuong" Type="int" Nullable="false" />
+          <Property Name="Xong" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="tChuyenHang">
           <Key>
@@ -208,6 +209,7 @@
           <Property Name="MaKhachHang" Type="int" Nullable="false" />
           <Property Name="MaChanh" Type="int" />
           <Property Name="Ngay" Type="date" Nullable="false" />
+          <Property Name="Xong" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="tMatHang">
           <Key>
@@ -611,6 +613,7 @@
           <NavigationProperty Name="tChiTietChuyenHangDonHangs" Relationship="PhuDinhModel.FK_tChiTietChuyenHangDonHang_tChiTietDonHang" FromRole="tChiTietDonHang" ToRole="tChiTietChuyenHangDonHang" />
           <NavigationProperty Name="tDonHang" Relationship="PhuDinhModel.FK_tChiTietDonHang_tDonHang" FromRole="tChiTietDonHang" ToRole="tDonHang" />
           <NavigationProperty Name="tMatHang" Relationship="PhuDinhModel.FK_tChiTietDonHang_tMatHang" FromRole="tChiTietDonHang" ToRole="tMatHang" />
+          <Property Type="Boolean" Name="Xong" Nullable="false" />
         </EntityType>
         <EntityType Name="tChuyenHang">
           <Key>
@@ -646,6 +649,7 @@
           <NavigationProperty Name="rKhachHang" Relationship="PhuDinhModel.FK_tDonHang_rKhachHang" FromRole="tDonHang" ToRole="rKhachHang" />
           <NavigationProperty Name="tChiTietDonHangs" Relationship="PhuDinhModel.FK_tChiTietDonHang_tDonHang" FromRole="tDonHang" ToRole="tChiTietDonHang" />
           <NavigationProperty Name="tChuyenHangDonHangs" Relationship="PhuDinhModel.FK_tChuyenHangDonHang_tDonHang" FromRole="tDonHang" ToRole="tChuyenHangDonHang" />
+          <Property Type="Boolean" Name="Xong" Nullable="false" />
         </EntityType>
         <EntityType Name="tMatHang">
           <Key>
@@ -956,6 +960,7 @@
           <EntitySetMapping Name="tChiTietDonHangs">
             <EntityTypeMapping TypeName="PhuDinhModel.tChiTietDonHang">
               <MappingFragment StoreEntitySet="tChiTietDonHang">
+                <ScalarProperty Name="Xong" ColumnName="Xong" />
                 <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
                 <ScalarProperty Name="MaMatHang" ColumnName="MaMatHang" />
                 <ScalarProperty Name="MaDonHang" ColumnName="MaDonHang" />
@@ -985,6 +990,7 @@
           <EntitySetMapping Name="tDonHangs">
             <EntityTypeMapping TypeName="PhuDinhModel.tDonHang">
               <MappingFragment StoreEntitySet="tDonHang">
+                <ScalarProperty Name="Xong" ColumnName="Xong" />
                 <ScalarProperty Name="Ngay" ColumnName="Ngay" />
                 <ScalarProperty Name="MaChanh" ColumnName="MaChanh" />
                 <ScalarProperty Name="MaKhachHang" ColumnName="MaKhachHang" />

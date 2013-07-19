@@ -31,6 +31,9 @@ namespace PhuDinhData
         private int _soluong;
         public int SoLuong { get { return _soluong; } set { if(_soluong == value) return; _soluong = value; base.RaisePropertyChanged("SoLuong");} }
     
+        private bool _xong;
+        public bool Xong { get { return _xong; } set { if(_xong == value) return; _xong = value; base.RaisePropertyChanged("Xong");} }
+    
     
         public virtual ICollection<tChiTietChuyenHangDonHang> tChiTietChuyenHangDonHangs { get; set; }
         public virtual tDonHang tDonHang { get; set; }

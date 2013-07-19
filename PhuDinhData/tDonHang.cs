@@ -32,6 +32,9 @@ namespace PhuDinhData
         private System.DateTime _ngay;
         public System.DateTime Ngay { get { return _ngay; } set { if(_ngay == value) return; _ngay = value; base.RaisePropertyChanged("Ngay");} }
     
+        private bool _xong;
+        public bool Xong { get { return _xong; } set { if(_xong == value) return; _xong = value; base.RaisePropertyChanged("Xong");} }
+    
     
         public virtual rChanh rChanh { get; set; }
         public virtual rKhachHang rKhachHang { get; set; }
