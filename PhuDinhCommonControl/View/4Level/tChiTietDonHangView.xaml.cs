@@ -44,7 +44,7 @@ namespace PhuDinhCommonControl
                 }
 
                 var data = dgChiTietDonHang.DataContext as ObservableCollection<PhuDinhData.tChiTietDonHang>;
-                PhuDinhData.Repository.tChiTietDonHangRepository.Save(_context, data.ToList(), FilterChiTietDonHang);RefreshView();
+                PhuDinhData.Repository.tChiTietDonHangRepository.Save(_context, data.ToList(), FilterChiTietDonHang);
             }
             catch (Exception ex)
             {
