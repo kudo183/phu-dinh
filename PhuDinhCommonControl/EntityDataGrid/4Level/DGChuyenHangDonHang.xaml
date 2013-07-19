@@ -31,5 +31,7 @@
         <CustomControl:DataGridReadOnlyTextColumn x:Name="tongSoLuongColumn" Header="Tổngs SL theo đơn hàng" Width="SizeToHeader" Binding="{Binding TongSoLuongTheoDonHang}"/>
         <!--Tong so luong thực tế-->
         <CustomControl:DataGridReadOnlyTextColumn x:Name="tongSoLuongThucTeColumn" Header="Tổngs SL thực tế" Width="SizeToHeader" Binding="{Binding TongSoLuongThucTe}"/>
+        <!--Xong-->
+        <CustomControl:DataGridCheckBoxColumnExt x:Name="xongColumn" Binding="{Binding tDonHang.Xong}" Header="Xong" IsReadOnly="True"/>
     </DataGrid.Columns>
 </CustomControl:DataGridExt>

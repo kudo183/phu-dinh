@@ -63,6 +63,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ChildWindowUtils.cs" />
+    <Compile Include="CustomControl\DataGridColumn\DataGridCheckBoxColumnExt.xaml.cs">
+      <DependentUpon>DataGridCheckBoxColumnExt.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CustomControl\DataGridColumn\DataGridTimeColumn.xaml.cs">
       <DependentUpon>DataGridTimeColumn.xaml</DependentUpon>
     </Compile>
@@ -261,6 +264,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="CustomControl\DataGridColumn\DataGridCheckBoxColumnExt.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="CustomControl\DataGridColumn\DataGridTimeColumn.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

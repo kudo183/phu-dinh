@@ -29,5 +29,7 @@
                                                  ItemsSource="{Binding tMatHangList}"/>
         <!--So luong-->
         <CustomControl:DataGridTextRightAlignColumn x:Name="soLuongColumn"/>
+        <!--Xong-->
+        <CustomControl:DataGridCheckBoxColumnExt x:Name="xongColumn" Binding="{Binding Xong}" Header="Xong" IsReadOnly="True"/>
     </DataGrid.Columns>
 </CustomControl:DataGridExt>
