@@ -14,7 +14,16 @@ namespace PhuDinhData.Repository
 
         public static void Save(PhuDinhEntities context, List<tChiTietDonHang> data, Expression<Func<tChiTietDonHang, bool>> filter)
         {
-            Repository<tChiTietDonHang>.Save(context, data, filter, (p => p.Ma == 0), ((p1, p2) => p1.Ma == p2.Ma));
+            var changed = Repository<tChiTietDonHang>.Save(context, data, filter, (p => p.Ma == 0), ((p1, p2) => p1.Ma == p2.Ma));
+
+            if (changed.Count == 0)
+            {
+                return;
+            }
+
+            var maDonHangs = changed.Select(p => p.Entity.MaDonHang).ToList();
+
+            BusinessLogics.BusinessLogics.UpdateXong(context, maDonHangs);
         }
     }
 }

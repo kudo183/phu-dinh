@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Linq.Expressions;
 
@@ -36,11 +36,13 @@ namespace PhuDinhData.Repository
             return context.Set<T>().Where(filter).ToList();
         }
 
-        public static void Save(PhuDinhEntities context, List<T> data, Expression<Func<T, bool>> filter, Func<T, bool> CheckNewItemFunc, Func<T, T, bool> CompareFunc)
+        public static List<DbEntityEntry<T>> Save(PhuDinhEntities context, List<T> data, Expression<Func<T, bool>> filter, Func<T, bool> CheckNewItemFunc, Func<T, T, bool> CompareFunc)
         {
             RemoveItem(context, data, filter, CompareFunc);
             AddNewItem(context, data, CheckNewItemFunc);
+            var changed = context.ChangeTracker.Entries<T>().ToList();
             context.SaveChanges();
+            return changed;
         }
     }
 }
