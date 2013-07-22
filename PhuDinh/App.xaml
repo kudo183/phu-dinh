@@ -47,6 +47,17 @@
             <Setter Property="Background" Value="LightGray"/>
             <Setter Property="KeyboardNavigation.IsTabStop" Value="False"/>
         </Style>
+        <Style TargetType="{x:Type DataGridCell}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type DataGridCell}">
+                        <Grid Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center" />
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
         <!--End DataGridCell-->
     </Application.Resources>
 </Application>
