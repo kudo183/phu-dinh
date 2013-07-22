@@ -16,7 +16,7 @@ namespace PhuDinhData
             {
                 int result = 0;
 
-                if(tDonHang!=null)
+                if (tDonHang != null)
                 {
                     result += tDonHang.tChiTietDonHangs.Sum(tChiTietDonHang => tChiTietDonHang.SoLuong);
                 }
@@ -39,6 +39,26 @@ namespace PhuDinhData
         }
 
         public List<tChuyenHang> tChuyenHangList { get; set; }
-        public List<tDonHang> tDonHangList { get; set; }
+
+        private List<tDonHang> _tDonHangList;
+        public List<tDonHang> tDonHangList
+        {
+            get { return _tDonHangList; }
+            set
+            {
+                var mas = value.Select(p => p.Ma).ToList();
+
+                if (tDonHang != null
+                    && mas.Contains(tDonHang.Ma) == false)
+                {
+                    _tDonHangList = new List<tDonHang>(value);
+                    _tDonHangList.Insert(0, tDonHang);
+                }
+                else
+                {
+                    _tDonHangList = value;
+                }
+            }
+        }
     }
 }
