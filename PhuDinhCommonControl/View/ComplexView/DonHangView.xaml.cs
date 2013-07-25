@@ -20,6 +20,7 @@ namespace PhuDinhCommonControl
         {
             _tDonHangView.dgDonHang.SelectionChanged += dgDonHang_SelectionChanged;
             _tChiTietDonHangView.AfterSave += _tChiTietDonHangView_AfterSave;
+            _tDonHangView.AfterSave += _tDonHangView_AfterSave;
 
             _tDonHangView.RefreshView();
         }
@@ -28,6 +29,13 @@ namespace PhuDinhCommonControl
         {
             _tDonHangView.dgDonHang.SelectionChanged -= dgDonHang_SelectionChanged;
             _tChiTietDonHangView.AfterSave -= _tChiTietDonHangView_AfterSave;
+            _tDonHangView.AfterSave -= _tDonHangView_AfterSave;
+        }
+
+        void _tDonHangView_AfterSave(object sender, System.EventArgs e)
+        {
+            var donHang = _tDonHangView.dgDonHang.SelectedItem as PhuDinhData.tDonHang;
+            RefreshChiTietDonHangView(donHang);
         }
 
         void _tChiTietDonHangView_AfterSave(object sender, System.EventArgs e)
@@ -43,6 +51,11 @@ namespace PhuDinhCommonControl
             }
 
             var donHang = ((DataGrid)sender).SelectedItem as PhuDinhData.tDonHang;
+            RefreshChiTietDonHangView(donHang);
+        }
+
+        private void RefreshChiTietDonHangView(PhuDinhData.tDonHang donHang)
+        {
             if (donHang == null)
             {
                 _tChiTietDonHangView.FilterChiTietDonHang = null;

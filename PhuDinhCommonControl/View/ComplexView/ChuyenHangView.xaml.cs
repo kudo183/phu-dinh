@@ -20,6 +20,8 @@ namespace PhuDinhCommonControl
             _tChuyenHangView.dgChuyenHang.SelectionChanged += dgChuyenHang_SelectionChanged;
             _tChuyenHangDonHangView.dgChuyenHangDonHang.SelectionChanged += dgChuyenHangDonHang_SelectionChanged;
 
+            _tChuyenHangView.AfterSave += _tChuyenHangView_AfterSave;
+            _tChuyenHangDonHangView.AfterSave += _tChuyenHangDonHangView_AfterSave;
             _tChiTietChuyenHangDonHangView.AfterSave += _tChiTietChuyenHangDonHangView_AfterSave;
 
             _tChuyenHangView.RefreshView();
@@ -30,12 +32,27 @@ namespace PhuDinhCommonControl
             _tChuyenHangView.dgChuyenHang.SelectionChanged -= dgChuyenHang_SelectionChanged;
             _tChuyenHangDonHangView.dgChuyenHangDonHang.SelectionChanged -= dgChuyenHangDonHang_SelectionChanged;
 
+            _tChuyenHangView.AfterSave -= _tChuyenHangView_AfterSave;
+            _tChuyenHangDonHangView.AfterSave -= _tChuyenHangDonHangView_AfterSave;
             _tChiTietChuyenHangDonHangView.AfterSave -= _tChiTietChuyenHangDonHangView_AfterSave;
         }
 
         void _tChiTietChuyenHangDonHangView_AfterSave(object sender, System.EventArgs e)
         {
             _tChuyenHangView.RefreshView();
+        }
+
+        void _tChuyenHangDonHangView_AfterSave(object sender, System.EventArgs e)
+        {
+            var chuyenHangDonHang =
+                _tChuyenHangDonHangView.dgChuyenHangDonHang.SelectedItem as PhuDinhData.tChuyenHangDonHang;
+            RefreshChiTietChuyenHangDonHang(chuyenHangDonHang);
+        }
+
+        void _tChuyenHangView_AfterSave(object sender, System.EventArgs e)
+        {
+            var chuyenHang = _tChuyenHangView.dgChuyenHang.SelectedItem as PhuDinhData.tChuyenHang;
+            RefreshChuyenHangDonHangView(chuyenHang);
         }
 
         void dgChuyenHangDonHang_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -46,6 +63,46 @@ namespace PhuDinhCommonControl
             }
 
             var chuyenHangDonHang = ((DataGrid)sender).SelectedItem as PhuDinhData.tChuyenHangDonHang;
+            RefreshChiTietChuyenHangDonHang(chuyenHangDonHang);
+        }
+
+        void dgChuyenHang_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (sender != e.OriginalSource)
+            {
+                return;
+            }
+
+            var grid = ((DataGrid)sender);
+            if (grid.SelectedIndex == -1)
+            {
+                return;
+            }
+
+            var chuyenHang = grid.SelectedItem as PhuDinhData.tChuyenHang;
+            RefreshChuyenHangDonHangView(chuyenHang);
+        }
+
+        private void RefreshChuyenHangDonHangView(PhuDinhData.tChuyenHang chuyenHang)
+        {
+            _tChiTietChuyenHangDonHangView.FilterChiTietChuyenHangDonHang = null;
+            _tChiTietChuyenHangDonHangView.RefreshView();
+
+            if (chuyenHang == null)
+            {
+                _tChuyenHangDonHangView.FilterChuyenHangDonHang = null;
+                _tChuyenHangDonHangView.RefreshView();
+                return;
+            }
+
+            _tChuyenHangDonHangView.FilterDonHang = (p => p.Xong == false);
+            _tChuyenHangDonHangView.FilterChuyenHangDonHang = (p => p.MaChuyenHang == chuyenHang.Ma);
+            _tChuyenHangDonHangView.tChuyenHangDefault = chuyenHang;
+            _tChuyenHangDonHangView.RefreshView();
+        }
+
+        private void RefreshChiTietChuyenHangDonHang(PhuDinhData.tChuyenHangDonHang chuyenHangDonHang)
+        {
             if (chuyenHangDonHang == null)
             {
                 _tChiTietChuyenHangDonHangView.FilterChiTietChuyenHangDonHang = null;
@@ -59,36 +116,6 @@ namespace PhuDinhCommonControl
                 (p => p.MaChuyenHangDonHang == chuyenHangDonHang.Ma);
             _tChiTietChuyenHangDonHangView.tChuyenHangDonHangDefault = chuyenHangDonHang;
             _tChiTietChuyenHangDonHangView.RefreshView();
-        }
-
-        void dgChuyenHang_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (sender != e.OriginalSource)
-            {
-                return;
-            }
-
-            _tChiTietChuyenHangDonHangView.FilterChiTietChuyenHangDonHang = null;
-            _tChiTietChuyenHangDonHangView.RefreshView();
-
-            var grid = ((DataGrid)sender);
-            if (grid.SelectedIndex == -1)
-            {
-                return;
-            }
-
-            var chuyenHang = grid.SelectedItem as PhuDinhData.tChuyenHang;
-            if (chuyenHang == null)
-            {
-                _tChuyenHangDonHangView.FilterChuyenHangDonHang = null;
-                _tChuyenHangDonHangView.RefreshView();
-                return;
-            }
-
-            _tChuyenHangDonHangView.FilterDonHang = (p => p.Xong == false);
-            _tChuyenHangDonHangView.FilterChuyenHangDonHang = (p => p.MaChuyenHang == chuyenHang.Ma);
-            _tChuyenHangDonHangView.tChuyenHangDefault = chuyenHang;
-            _tChuyenHangDonHangView.RefreshView();
         }
     }
 }
