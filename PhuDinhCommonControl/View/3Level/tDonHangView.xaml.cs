@@ -14,7 +14,7 @@ namespace PhuDinhCommonControl
     /// </summary>
     public partial class tDonHangView : BaseView
     {
-        public Expression<Func<PhuDinhData.tDonHang, bool>> FilterDonHang { get; set; }
+        public Filter_tDonHang FilterDonHang { get; private set; }
         public Expression<Func<PhuDinhData.rKhachHang, bool>> FilterKhachHang { get; set; }
         public Expression<Func<PhuDinhData.rChanh, bool>> FilterChanh { get; set; }
         public PhuDinhData.rKhachHang rKhachHangDefault { get; set; }
@@ -32,6 +32,7 @@ namespace PhuDinhCommonControl
         {
             InitializeComponent();
 
+            FilterDonHang = new Filter_tDonHang();
             FilterKhachHang = (p => true);
             FilterChanh = (p => true);
 
@@ -57,11 +58,11 @@ namespace PhuDinhCommonControl
         {
             if (DataGridColumnHeaderDateFilter.DonHang.IsUsed)
             {
-                FilterDonHang = (p => p.Ngay == DataGridColumnHeaderDateFilter.DonHang.Date);
+                FilterDonHang.FilterNgay = (p => p.Ngay == DataGridColumnHeaderDateFilter.DonHang.Date);
             }
             else
             {
-                FilterDonHang = (p => true);
+                FilterDonHang.FilterNgay = (p => true);
             }
 
             RefreshView();
@@ -78,7 +79,7 @@ namespace PhuDinhCommonControl
                 }
 
                 var data = dgDonHang.DataContext as ObservableCollection<PhuDinhData.tDonHang>;
-                PhuDinhData.Repository.tDonHangRepository.Save(_context, data.ToList(), FilterDonHang);
+                PhuDinhData.Repository.tDonHangRepository.Save(_context, data.ToList(), FilterDonHang.FilterDonHang);
             }
             catch (Exception ex)
             {
@@ -97,7 +98,7 @@ namespace PhuDinhCommonControl
 
         public override void RefreshView()
         {
-            if (FilterDonHang == null)
+            if (FilterDonHang.IsClearAllData == true)
             {
                 dgDonHang.DataContext = null;
                 return;
@@ -111,7 +112,7 @@ namespace PhuDinhCommonControl
             }
 
             _context = new PhuDinhData.PhuDinhEntities();
-            var tDonHangs = PhuDinhData.Repository.tDonHangRepository.GetData(_context, FilterDonHang);
+            var tDonHangs = PhuDinhData.Repository.tDonHangRepository.GetData(_context, FilterDonHang.FilterDonHang);
 
             _tDonHangs = new ObservableCollection<PhuDinhData.tDonHang>(tDonHangs);
             _tDonHangs.CollectionChanged += collection_CollectionChanged;

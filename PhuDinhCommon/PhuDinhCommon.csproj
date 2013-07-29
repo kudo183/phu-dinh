@@ -49,8 +49,11 @@
   <ItemGroup>
     <Compile Include="Constant.cs" />
     <Compile Include="EntityFrameworkUtils.cs" />
+    <Compile Include="Expression\ExpressionExtension.cs" />
+    <Compile Include="Expression\ExpressionVisitor.cs" />
     <Compile Include="LogManager.cs" />
     <Compile Include="PagingCollection.cs" />
+    <Compile Include="Expression\ParameterReBinder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings\AdvancedLoggingDetails.cs" />
     <Compile Include="Settings\Settings.cs" />

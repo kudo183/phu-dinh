@@ -23,7 +23,7 @@ namespace PhuDinhCommonControl
                 return;
             }
 
-            _tDonHangView.FilterDonHang = null;
+            _tDonHangView.FilterDonHang.IsClearAllData = true;
             _tDonHangView.RefreshView();
 
             var diaDiem = ((DataGrid)sender).SelectedItem as PhuDinhData.rDiaDiem;
@@ -44,12 +44,12 @@ namespace PhuDinhCommonControl
             var khachHang = ((DataGrid)sender).SelectedItem as PhuDinhData.rKhachHang;
             if (khachHang == null)
             {
-                _tDonHangView.FilterDonHang = null;
+                _tDonHangView.FilterDonHang.IsClearAllData = true;
                 _tDonHangView.RefreshView();
                 return;
             }
 
-            _tDonHangView.FilterDonHang = (p => p.MaKhachHang == khachHang.Ma);
+            _tDonHangView.FilterDonHang.FilterKhachHang = (p => p.MaKhachHang == khachHang.Ma);
             _tDonHangView.rKhachHangDefault = khachHang;
             _tDonHangView.RefreshView();
         }
