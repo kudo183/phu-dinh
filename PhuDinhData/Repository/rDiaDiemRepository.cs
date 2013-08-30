@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 
 namespace PhuDinhData.Repository
@@ -8,7 +9,7 @@ namespace PhuDinhData.Repository
     {
         public static List<rDiaDiem> GetData(PhuDinhEntities context, Expression<Func<rDiaDiem, bool>> filter)
         {
-            return Repository<rDiaDiem>.GetData(context, filter);
+            return Repository<rDiaDiem>.GetData(context, filter).ToList();
         }
 
         public static void Save(PhuDinhEntities context, List<rDiaDiem> data, Expression<Func<rDiaDiem, bool>> filter)

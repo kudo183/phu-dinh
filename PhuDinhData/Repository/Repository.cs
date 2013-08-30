@@ -31,9 +31,9 @@ namespace PhuDinhData.Repository
             }
         }
 
-        public static List<T> GetData(PhuDinhEntities context, Expression<Func<T, bool>> filter)
+        public static IQueryable<T> GetData(PhuDinhEntities context, Expression<Func<T, bool>> filter)
         {
-            return context.Set<T>().Where(filter).ToList();
+            return context.Set<T>().Where(filter);
         }
 
         public static List<DbEntityEntry<T>> Save(PhuDinhEntities context, List<T> data, Expression<Func<T, bool>> filter, Func<T, bool> CheckNewItemFunc, Func<T, T, bool> CompareFunc)
