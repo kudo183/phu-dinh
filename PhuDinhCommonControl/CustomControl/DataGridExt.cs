@@ -12,6 +12,7 @@ namespace PhuDinhCommonControl.CustomControl
             CanUserSortColumns = false;
             CanUserReorderColumns = false;
             CanUserResizeRows = false;
+            HeadersVisibility = DataGridHeadersVisibility.Column;
         }
 
         protected override void OnPreviewKeyDown(KeyEventArgs e)
