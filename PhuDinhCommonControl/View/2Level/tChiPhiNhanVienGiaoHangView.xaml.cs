@@ -44,8 +44,9 @@ namespace PhuDinhCommonControl
         void tChiPhiNhanVienGiaoHangView_Loaded(object sender, System.Windows.RoutedEventArgs e)
         {
             DataGridColumnHeaderDateFilter.ChiPhi.Date = _filterDate;
-            DataGridColumnHeaderDateFilter.ChiPhi.PropertyChanged += ChiPhi_PropertyChanged;
             DataGridColumnHeaderDateFilter.ChiPhi.IsUsed = _isUsedDateFilter;
+            DataGridColumnHeaderDateFilter.ChiPhi.PropertyChanged += ChiPhi_PropertyChanged;
+            ChiPhi_PropertyChanged(null, null);
         }
 
         void tChiPhiNhanVienGiaoHangView_Unloaded(object sender, System.Windows.RoutedEventArgs e)

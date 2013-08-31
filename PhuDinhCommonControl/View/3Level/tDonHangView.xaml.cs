@@ -43,8 +43,9 @@ namespace PhuDinhCommonControl
         void tDonHangView_Loaded(object sender, System.Windows.RoutedEventArgs e)
         {
             DataGridColumnHeaderDateFilter.DonHang.Date = _filterDate;
-            DataGridColumnHeaderDateFilter.DonHang.PropertyChanged += DonHang_PropertyChanged;
             DataGridColumnHeaderDateFilter.DonHang.IsUsed = _isUsedDateFilter;
+            DataGridColumnHeaderDateFilter.DonHang.PropertyChanged += DonHang_PropertyChanged;
+            DonHang_PropertyChanged(null, null);
         }
 
         void tDonHangView_Unloaded(object sender, System.Windows.RoutedEventArgs e)

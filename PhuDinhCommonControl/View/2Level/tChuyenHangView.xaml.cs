@@ -37,8 +37,9 @@ namespace PhuDinhCommonControl
         void tChuyenHangView_Loaded(object sender, System.Windows.RoutedEventArgs e)
         {
             DataGridColumnHeaderDateFilter.ChuyenHang.Date = _filterDate;
-            DataGridColumnHeaderDateFilter.ChuyenHang.PropertyChanged += ChuyenHang_PropertyChanged;
             DataGridColumnHeaderDateFilter.ChuyenHang.IsUsed = _isUsedDateFilter;
+            DataGridColumnHeaderDateFilter.ChuyenHang.PropertyChanged += ChuyenHang_PropertyChanged;
+            ChuyenHang_PropertyChanged(null, null);
         }
 
         void tChuyenHangView_Unloaded(object sender, System.Windows.RoutedEventArgs e)
