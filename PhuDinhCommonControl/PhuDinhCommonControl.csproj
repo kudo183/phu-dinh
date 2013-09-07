@@ -227,6 +227,7 @@
     <Compile Include="View\ComplexView\NhanVienView.xaml.cs">
       <DependentUpon>NhanVienView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Filter\Filter_tChiPhi.cs" />
     <Compile Include="View\Filter\Filter_tDonHang.cs" />
     <Compile Include="VisualTreeUtils.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">

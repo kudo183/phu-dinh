@@ -24,6 +24,7 @@ namespace PhuDinhCommonControl
         {
             _rLoaiChiPhiView.dgLoaiChiPhi.SelectionChanged += dgLoaiChiPhi_SelectionChanged;
 
+            _rChiPhiNhanVienGiaoHangView.FilterChiPhi.FilterLoaiChiPhi = (p => false);
             _rLoaiChiPhiView.RefreshView();
         }
 
@@ -37,12 +38,12 @@ namespace PhuDinhCommonControl
             var loaiChiPhi = ((DataGrid)sender).SelectedItem as PhuDinhData.rLoaiChiPhi;
             if (loaiChiPhi == null)
             {
-                _rChiPhiNhanVienGiaoHangView.FilterChiPhiNhanVienGiaoHang = null;
+                _rChiPhiNhanVienGiaoHangView.FilterChiPhi.FilterLoaiChiPhi = (p => false);
                 _rChiPhiNhanVienGiaoHangView.RefreshView();
                 return;
             }
 
-            _rChiPhiNhanVienGiaoHangView.FilterChiPhiNhanVienGiaoHang = (p => p.MaLoaiChiPhi == loaiChiPhi.Ma);
+            _rChiPhiNhanVienGiaoHangView.FilterChiPhi.FilterLoaiChiPhi = (p => p.MaLoaiChiPhi == loaiChiPhi.Ma);
             _rChiPhiNhanVienGiaoHangView.rLoaiChiPhiDefault = loaiChiPhi;
             _rChiPhiNhanVienGiaoHangView.RefreshView();
         }

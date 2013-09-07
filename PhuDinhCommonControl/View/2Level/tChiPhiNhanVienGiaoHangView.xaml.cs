@@ -14,7 +14,7 @@ namespace PhuDinhCommonControl
     /// </summary>
     public partial class tChiPhiNhanVienGiaoHangView : BaseView
     {
-        public Expression<Func<PhuDinhData.tChiPhiNhanVienGiaoHang, bool>> FilterChiPhiNhanVienGiaoHang { get; set; }
+        public Filter_tChiPhi FilterChiPhi { get; set; }
         public Expression<Func<PhuDinhData.rLoaiChiPhi, bool>> FilterLoaiChiPhi { get; set; }
         public Expression<Func<PhuDinhData.rNhanVienGiaoHang, bool>> FilterNhanVienGiaoHang { get; set; }
         public PhuDinhData.rLoaiChiPhi rLoaiChiPhiDefault { get; set; }
@@ -33,7 +33,7 @@ namespace PhuDinhCommonControl
         {
             InitializeComponent();
 
-            FilterChiPhiNhanVienGiaoHang = (p => true);
+            FilterChiPhi = new Filter_tChiPhi();
             FilterLoaiChiPhi = (p => true);
             FilterNhanVienGiaoHang = (p => true);
 
@@ -60,11 +60,11 @@ namespace PhuDinhCommonControl
         {
             if (DataGridColumnHeaderDateFilter.ChiPhi.IsUsed)
             {
-                FilterChiPhiNhanVienGiaoHang = (p => p.Ngay == DataGridColumnHeaderDateFilter.ChiPhi.Date);
+                FilterChiPhi.FilterNgay = (p => p.Ngay == DataGridColumnHeaderDateFilter.ChiPhi.Date);
             }
             else
             {
-                FilterChiPhiNhanVienGiaoHang = (p => true);
+                FilterChiPhi.FilterNgay = (p => true);
             }
 
             RefreshView();
@@ -75,13 +75,13 @@ namespace PhuDinhCommonControl
         {
             try
             {
-                if (FilterChiPhiNhanVienGiaoHang == null)
+                if (FilterChiPhi == null)
                 {
                     return;
                 }
 
                 var data = dgChiPhiNhanVienGiaoHang.DataContext as ObservableCollection<PhuDinhData.tChiPhiNhanVienGiaoHang>;
-                PhuDinhData.Repository.tChiPhiNhanVienGiaoHangRepository.Save(_context, data.ToList(), FilterChiPhiNhanVienGiaoHang);
+                PhuDinhData.Repository.tChiPhiNhanVienGiaoHangRepository.Save(_context, data.ToList(), FilterChiPhi.FilterChiPhi);
             }
             catch (Exception ex)
             {
@@ -100,7 +100,7 @@ namespace PhuDinhCommonControl
 
         public override void RefreshView()
         {
-            if (FilterChiPhiNhanVienGiaoHang == null)
+            if (FilterChiPhi.IsClearAllData == true)
             {
                 dgChiPhiNhanVienGiaoHang.DataContext = null;
                 return;
@@ -114,7 +114,7 @@ namespace PhuDinhCommonControl
             }
 
             _context = new PhuDinhData.PhuDinhEntities();
-            var tChiPhiNhanVienGiaoHangs = PhuDinhData.Repository.tChiPhiNhanVienGiaoHangRepository.GetData(_context, FilterChiPhiNhanVienGiaoHang);
+            var tChiPhiNhanVienGiaoHangs = PhuDinhData.Repository.tChiPhiNhanVienGiaoHangRepository.GetData(_context, FilterChiPhi.FilterChiPhi);
 
             _tChiPhiNhanVienGiaoHangs = new ObservableCollection<PhuDinhData.tChiPhiNhanVienGiaoHang>(tChiPhiNhanVienGiaoHangs);
             _tChiPhiNhanVienGiaoHangs.CollectionChanged += collection_CollectionChanged;
