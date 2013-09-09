@@ -17,12 +17,12 @@
         <CustomControl:DataGridTimeColumn x:Name="gioColumn"/>
         <!--Nhan vien giao hang-->
         <CustomControl:DataGridComboBoxColumnExt x:Name="nhanVienGiaoHangColumn" Header="Nhân Viên" HeaderAddButtonClick="headerAddButton_Click"
-                                                 TextBinding="{Binding rNhanVienGiaoHang.TenNhanVien, Mode=OneWay}"
+                                                 TextBinding="{Binding rNhanVien.TenNhanVien, Mode=OneWay}"
                                                  DisplayMemberPath="TenNhanVien"
                                                  SelectedValuePath="Ma"
                                                  SelectedValueBinding="{Binding MaNhanVienGiaoHang, UpdateSourceTrigger=PropertyChanged}"
-                                                 SelectedItemBinding="{Binding rNhanVienGiaoHang, UpdateSourceTrigger=PropertyChanged}"
-                                                 ItemsSource="{Binding rNhanVienGiaoHangList}"/>
+                                                 SelectedItemBinding="{Binding rNhanVien, UpdateSourceTrigger=PropertyChanged}"
+                                                 ItemsSource="{Binding rNhanVienList}"/>
         <!--Tong don hang-->
         <CustomControl:DataGridReadOnlyTextColumn x:Name="tongDonHangColumn" Header="Tổng đơn hàng" Width="SizeToHeader" Binding="{Binding TongDonHang}"/>
         <!--Tong so luong theo don hang-->
