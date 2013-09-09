@@ -77,11 +77,10 @@ namespace PhuDinhCommonControl
 
             _tMatHangs = new ObservableCollection<PhuDinhData.tMatHang>(tMatHangs);
             _tMatHangs.CollectionChanged += collection_CollectionChanged;
-            dgMatHang.DataContext = _tMatHangs;
 
             UpdateLoaiHangReferenceData();
 
-            UpdateLayout();
+            dgMatHang.DataContext = _tMatHangs;
 
             dgMatHang.SelectedIndex = index;
         }

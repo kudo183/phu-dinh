@@ -77,11 +77,10 @@ namespace PhuDinhCommonControl
 
             _rKhachHangs = new ObservableCollection<PhuDinhData.rKhachHang>(rKhachHangs);
             _rKhachHangs.CollectionChanged += collection_CollectionChanged;
-            dgKhachHang.DataContext = _rKhachHangs;
 
             UpdateDiaDiemReferenceData();
 
-            dgKhachHang.UpdateLayout();
+            dgKhachHang.DataContext = _rKhachHangs;
 
             dgKhachHang.SelectedIndex = index;
         }

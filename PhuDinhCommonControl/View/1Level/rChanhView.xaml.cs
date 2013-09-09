@@ -77,11 +77,10 @@ namespace PhuDinhCommonControl
 
             _rChanhs = new ObservableCollection<PhuDinhData.rChanh>(rChanhs);
             _rChanhs.CollectionChanged += collection_CollectionChanged;
-            dgChanh.DataContext = _rChanhs;
 
             UpdateBaiXeReferenceData();
 
-            dgChanh.UpdateLayout();
+            dgChanh.DataContext = _rChanhs;
 
             dgChanh.SelectedIndex = index;
         }

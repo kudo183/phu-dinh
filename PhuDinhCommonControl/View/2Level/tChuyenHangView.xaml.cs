@@ -111,11 +111,10 @@ namespace PhuDinhCommonControl
 
             _tChuyenHangs = new ObservableCollection<PhuDinhData.tChuyenHang>(tChuyenHangs);
             _tChuyenHangs.CollectionChanged += collection_CollectionChanged;
-            dgChuyenHang.DataContext = _tChuyenHangs;
 
             UpdateNhanVienGiaoHangReferenceData();
 
-            dgChuyenHang.UpdateLayout();
+            dgChuyenHang.DataContext = _tChuyenHangs;
 
             dgChuyenHang.SelectedIndex = index;
         }

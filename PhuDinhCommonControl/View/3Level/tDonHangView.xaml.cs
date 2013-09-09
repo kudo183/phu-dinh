@@ -117,12 +117,11 @@ namespace PhuDinhCommonControl
 
             _tDonHangs = new ObservableCollection<PhuDinhData.tDonHang>(tDonHangs);
             _tDonHangs.CollectionChanged += collection_CollectionChanged;
-            dgDonHang.DataContext = _tDonHangs;
 
             UpdateChanhReferenceData();
             UpdateKhachHangReferenceData();
 
-            dgDonHang.UpdateLayout();
+            dgDonHang.DataContext = _tDonHangs;
 
             dgDonHang.SelectedIndex = index;
         }

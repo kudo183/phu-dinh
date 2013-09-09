@@ -77,11 +77,10 @@ namespace PhuDinhCommonControl
 
             _rNhanVienGiaoHangs = new ObservableCollection<PhuDinhData.rNhanVienGiaoHang>(rNhanVienGiaoHangs);
             _rNhanVienGiaoHangs.CollectionChanged += collection_CollectionChanged;
-            dgNhanVienGiaoHang.DataContext = _rNhanVienGiaoHangs;
 
             UpdatePhuongTienReferenceData();
 
-            dgNhanVienGiaoHang.UpdateLayout();
+            dgNhanVienGiaoHang.DataContext = _rNhanVienGiaoHangs;
 
             dgNhanVienGiaoHang.SelectedIndex = index;
         }

@@ -76,11 +76,10 @@ namespace PhuDinhCommonControl
 
             _rDiaDiems = new ObservableCollection<PhuDinhData.rDiaDiem>(rDiaDiems);
             _rDiaDiems.CollectionChanged += collection_CollectionChanged;
-            dgDiaDiem.DataContext = _rDiaDiems;
 
             UpdateNuocReferenceData();
 
-            dgDiaDiem.UpdateLayout();
+            dgDiaDiem.DataContext = _rDiaDiems;
 
             dgDiaDiem.SelectedIndex = index;
         }

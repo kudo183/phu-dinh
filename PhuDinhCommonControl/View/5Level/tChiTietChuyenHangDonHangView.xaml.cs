@@ -80,12 +80,11 @@ namespace PhuDinhCommonControl
 
             _tChiTietChuyenHangDonHangs = new ObservableCollection<PhuDinhData.tChiTietChuyenHangDonHang>(tChiTietChuyenHangDonHangs);
             _tChiTietChuyenHangDonHangs.CollectionChanged += collection_CollectionChanged;
-            dgChiTietChuyenHangDonHang.DataContext = _tChiTietChuyenHangDonHangs;
 
             UpdateChiTietDonHangReferenceData();
             UpdateChuyenHangDonHangReferenceData();
 
-            dgChiTietChuyenHangDonHang.UpdateLayout();
+            dgChiTietChuyenHangDonHang.DataContext = _tChiTietChuyenHangDonHangs;
 
             dgChiTietChuyenHangDonHang.SelectedIndex = index;
         }

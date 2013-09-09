@@ -118,12 +118,11 @@ namespace PhuDinhCommonControl
 
             _tChiPhiNhanVienGiaoHangs = new ObservableCollection<PhuDinhData.tChiPhiNhanVienGiaoHang>(tChiPhiNhanVienGiaoHangs);
             _tChiPhiNhanVienGiaoHangs.CollectionChanged += collection_CollectionChanged;
-            dgChiPhiNhanVienGiaoHang.DataContext = _tChiPhiNhanVienGiaoHangs;
 
             UpdateNhanVienGiaoHangReferenceData();
             UpdateLoaiChiPhiReferenceData();
 
-            dgChiPhiNhanVienGiaoHang.UpdateLayout();
+            dgChiPhiNhanVienGiaoHang.DataContext = _tChiPhiNhanVienGiaoHangs;
 
             dgChiPhiNhanVienGiaoHang.SelectedIndex = index;
         }
