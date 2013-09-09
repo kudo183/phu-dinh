@@ -28,7 +28,7 @@
                                                  SelectedValuePath="Ma"
                                                  SelectedValueBinding="{Binding MaNhanVienGiaoHang, UpdateSourceTrigger=PropertyChanged}"
                                                  SelectedItemBinding="{Binding rNhanVienGiaoHang, UpdateSourceTrigger=PropertyChanged}"
-                                                 ItemsSource="{Binding rNhanVienGiaoHangList}"/>
+                                                 ItemsSource="{Binding rNhanVienList}"/>
         <!--So tien-->
         <CustomControl:DataGridTextRightAlignColumn x:Name="soTienColumn" Binding="{Binding SoTien, StringFormat=\{0:N0\}}" Header="Số Tiền"/>            
         <!--Ghi chu-->

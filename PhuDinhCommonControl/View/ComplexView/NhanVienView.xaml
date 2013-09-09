@@ -12,6 +12,6 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <PhuDinhCommonControl:rPhuongTienView Grid.Row="0" x:Name="_rPhuongTienView"/>
-        <PhuDinhCommonControl:rNhanVienGiaoHangView Grid.Row="1" x:Name="_rNhanVienGiaoHangView"/>
+        <PhuDinhCommonControl:rNhanVienView Grid.Row="1" x:Name="_rNhanVienView"/>
     </Grid>
     </PhuDinhCommonControl:BaseView>

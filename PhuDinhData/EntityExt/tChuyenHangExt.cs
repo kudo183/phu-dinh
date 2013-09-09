@@ -11,7 +11,7 @@ namespace PhuDinhData
             get
             {
                 return string.Format("{0}_{1:hh\\:mm}_{2}",
-                    Ngay.ToShortDateString(), Gio ?? new TimeSpan(0, 0, 0, 0), rNhanVienGiaoHang.TenNhanVien);
+                    Ngay.ToShortDateString(), Gio ?? new TimeSpan(0, 0, 0, 0), rNhanVien.TenNhanVien);
             }
         }
 
@@ -50,6 +50,6 @@ namespace PhuDinhData
             }
         }
 
-        public List<rNhanVienGiaoHang> rNhanVienGiaoHangList { get; set; }
+        public List<rNhanVien> rNhanVienList { get; set; }
     }
 }

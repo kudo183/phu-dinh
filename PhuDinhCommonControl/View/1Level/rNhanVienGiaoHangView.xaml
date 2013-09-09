@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:PhuDinhCommonControl="clr-namespace:PhuDinhCommonControl"
              xmlns:EntityDataGrid="clr-namespace:PhuDinhCommonControl.EntityDataGrid"
-             xmlns:Menu="clr-namespace:PhuDinhCommonControl.Menu" x:Class="PhuDinhCommonControl.rNhanVienGiaoHangView" 
+             xmlns:Menu="clr-namespace:PhuDinhCommonControl.Menu" x:Class="PhuDinhCommonControl.rNhanVienView" 
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>

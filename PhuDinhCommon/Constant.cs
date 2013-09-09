@@ -11,7 +11,7 @@
             rKhachHang,
             rLoaiChiPhi,
             rLoaiHang,
-            rNhanVienGiaoHang,
+            rNhanVien,
             rNuoc,
             rPhuongTien,
             tChiPhiNhanVienGiaoHang,

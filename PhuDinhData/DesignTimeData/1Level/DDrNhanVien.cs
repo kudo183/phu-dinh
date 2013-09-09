@@ -2,31 +2,31 @@
 
 namespace PhuDinhData.DesignTimeData
 {
-    public static class DDrNhanVienGiaoHang
+    public static class DDrNhanVien
     {
-        private static List<rNhanVienGiaoHang> _rNhanVienGiaoHangs;
-        public static List<rNhanVienGiaoHang> rNhanVienGiaoHangs
+        private static List<rNhanVien> _rNhanViens;
+        public static List<rNhanVien> rNhanViens
         {
             get
             {
-                if (_rNhanVienGiaoHangs != null)
+                if (_rNhanViens != null)
                 {
-                    return _rNhanVienGiaoHangs;
+                    return _rNhanViens;
                 }
 
                 const int count = 10;
-                _rNhanVienGiaoHangs = new List<rNhanVienGiaoHang>(count);
+                _rNhanViens = new List<rNhanVien>(count);
                 for (var i = 1; i <= count; i++)
                 {
-                    _rNhanVienGiaoHangs.Add(Create(i));
+                    _rNhanViens.Add(Create(i));
                 }
-                return _rNhanVienGiaoHangs;
+                return _rNhanViens;
             }
         }
 
-        public static rNhanVienGiaoHang Create(int i)
+        public static rNhanVien Create(int i)
         {
-            return new rNhanVienGiaoHang()
+            return new rNhanVien()
             {
                 Ma = i,
                 MaPhuongTien = i,

@@ -33,8 +33,8 @@ namespace PhuDinhData.DesignTimeData
                 MaNhanVienGiaoHang = i,
                 Ngay = System.DateTime.Now,
                 Gio = System.DateTime.Now.TimeOfDay,
-                rNhanVienGiaoHang = DDrNhanVienGiaoHang.Create(i),
-                rNhanVienGiaoHangList = DDrNhanVienGiaoHang.rNhanVienGiaoHangs
+                rNhanVien = DDrNhanVien.Create(i),
+                rNhanVienList = DDrNhanVien.rNhanViens
             };
         }
     }

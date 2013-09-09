@@ -34,9 +34,9 @@ namespace PhuDinhData.DesignTimeData
                 MaNhanVienGiaoHang = i,
                 SoTien = i * 1000,
                 GhiChu = "Ghi chú " + i,
-                rNhanVienGiaoHang = DDrNhanVienGiaoHang.Create(i),
+                rNhanVien = DDrNhanVien.Create(i),
                 rLoaiChiPhi = DDrLoaiChiPhi.Create(i),
-                rNhanVienGiaoHangList = DDrNhanVienGiaoHang.rNhanVienGiaoHangs,
+                rNhanVienList = DDrNhanVien.rNhanViens,
                 rLoaiChiPhiList = DDrLoaiChiPhi.rLoaiChiPhis
             };
         }

@@ -12,9 +12,9 @@ namespace PhuDinhData
     using System;
     using System.Collections.Generic;
     
-    public partial class rNhanVienGiaoHang : BindableObject
+    public partial class rNhanVien : BindableObject
     {
-        public rNhanVienGiaoHang()
+        public rNhanVien()
         {
             this.tChiPhiNhanVienGiaoHangs = new HashSet<tChiPhiNhanVienGiaoHang>();
             this.tChuyenHangs = new HashSet<tChuyenHang>();

@@ -2,7 +2,7 @@
 
 namespace PhuDinhData
 {
-    public partial class rNhanVienGiaoHang
+    public partial class rNhanVien
     {
         public List<rPhuongTien> rPhuongTienList { get; set; }
     }

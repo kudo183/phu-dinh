@@ -55,7 +55,7 @@
     <Compile Include="DesignTimeData\2Level\DDtChuyenHang.cs" />
     <Compile Include="DesignTimeData\2Level\DDtChiPhiNhanVienGiaoHang.cs" />
     <Compile Include="DesignTimeData\1Level\DDtMatHang.cs" />
-    <Compile Include="DesignTimeData\1Level\DDrNhanVienGiaoHang.cs" />
+    <Compile Include="DesignTimeData\1Level\DDrNhanVien.cs" />
     <Compile Include="DesignTimeData\0Level\DDrPhuongTien.cs" />
     <Compile Include="DesignTimeData\0Level\DDrLoaiHang.cs" />
     <Compile Include="DesignTimeData\0Level\DDrLoaiChiPhi.cs" />
@@ -81,7 +81,7 @@
     <Compile Include="Repository\tChiPhiNhanVienGiaoHangRepository.cs" />
     <Compile Include="Repository\tDonHangRepository.cs" />
     <Compile Include="Repository\rPhuongTienRepository.cs" />
-    <Compile Include="Repository\rNhanVienGiaoHangRepository.cs" />
+    <Compile Include="Repository\rNhanVienRepository.cs" />
     <Compile Include="Repository\rLoaiChiPhiRepository.cs" />
     <Compile Include="Repository\rDiaDiemRepository.cs" />
     <Compile Include="Repository\rKhachHangRepository.cs" />
@@ -89,6 +89,9 @@
     <Compile Include="Repository\rLoaiHangRepository.cs" />
     <Compile Include="Repository\rBaiXeRepository.cs" />
     <Compile Include="Repository\rChanhRepository.cs" />
+    <Compile Include="rNhanVien.cs">
+      <DependentUpon>PhuDinh.tt</DependentUpon>
+    </Compile>
     <Compile Include="rNuoc.cs">
       <DependentUpon>PhuDinh.tt</DependentUpon>
     </Compile>
@@ -99,7 +102,7 @@
       <DependentUpon>PhuDinh.tt</DependentUpon>
     </Compile>
     <Compile Include="EntityExt\tMatHangExt.cs" />
-    <Compile Include="EntityExt\rNhanVienGiaoHangExt.cs" />
+    <Compile Include="EntityExt\rNhanVienExt.cs" />
     <Compile Include="EntityExt\tChiTietDonHangExt.cs" />
     <Compile Include="EntityExt\tDonHangExt.cs" />
     <Compile Include="rKhachHang.cs">
@@ -132,9 +135,6 @@
       <DependentUpon>PhuDinh.tt</DependentUpon>
     </Compile>
     <Compile Include="rLoaiHang.cs">
-      <DependentUpon>PhuDinh.tt</DependentUpon>
-    </Compile>
-    <Compile Include="rNhanVienGiaoHang.cs">
       <DependentUpon>PhuDinh.tt</DependentUpon>
     </Compile>
     <Compile Include="rPhuongTien.cs">

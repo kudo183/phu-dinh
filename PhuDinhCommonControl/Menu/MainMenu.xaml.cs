@@ -72,8 +72,8 @@ namespace PhuDinhCommonControl.Menu
                 case "rLoaiHang":
                     SelectedItem = Constant.MainMenuItems.rLoaiHang;
                     break;
-                case "rNhanVienGiaoHang":
-                    SelectedItem = Constant.MainMenuItems.rNhanVienGiaoHang;
+                case "rNhanVien":
+                    SelectedItem = Constant.MainMenuItems.rNhanVien;
                     break;
                 case "rNuoc":
                     SelectedItem = Constant.MainMenuItems.rNuoc;

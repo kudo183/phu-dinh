@@ -34,6 +34,6 @@ namespace PhuDinhData
     
     
         public virtual rLoaiChiPhi rLoaiChiPhi { get; set; }
-        public virtual rNhanVienGiaoHang rNhanVienGiaoHang { get; set; }
+        public virtual rNhanVien rNhanVien { get; set; }
     }
 }

@@ -32,7 +32,7 @@ namespace PhuDinhData
         public Nullable<System.TimeSpan> Gio { get { return _gio; } set { if(_gio == value) return; _gio = value; base.RaisePropertyChanged("Gio");} }
     
     
-        public virtual rNhanVienGiaoHang rNhanVienGiaoHang { get; set; }
         public virtual ICollection<tChuyenHangDonHang> tChuyenHangDonHangs { get; set; }
+        public virtual rNhanVien rNhanVien { get; set; }
     }
 }

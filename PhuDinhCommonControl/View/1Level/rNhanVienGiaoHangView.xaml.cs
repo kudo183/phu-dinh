@@ -11,22 +11,22 @@ namespace PhuDinhCommonControl
     /// <summary>
     /// Interaction logic for View.xaml
     /// </summary>
-    public partial class rNhanVienGiaoHangView : BaseView
+    public partial class rNhanVienView : BaseView
     {
-        public Expression<Func<PhuDinhData.rNhanVienGiaoHang, bool>> FilterNhanVienGiaoHang { get; set; }
+        public Expression<Func<PhuDinhData.rNhanVien, bool>> FilterNhanVien { get; set; }
         public Expression<Func<PhuDinhData.rPhuongTien, bool>> FilterPhuongTien { get; set; }
         public PhuDinhData.rPhuongTien rPhuongTienDefault { get; set; }
 
-        private ObservableCollection<PhuDinhData.rNhanVienGiaoHang> _rNhanVienGiaoHangs;
+        private ObservableCollection<PhuDinhData.rNhanVien> _rNhanViens;
         private List<PhuDinhData.rPhuongTien> _rPhuongTiens;
         private PhuDinhData.PhuDinhEntities _context = new PhuDinhData.PhuDinhEntities();
 
-        public rNhanVienGiaoHangView()
+        public rNhanVienView()
         {
             InitializeComponent();
 
             FilterPhuongTien = (p => true);
-            FilterNhanVienGiaoHang = (p => true);
+            FilterNhanVien = (p => true);
         }
 
         #region Override base view method
@@ -34,13 +34,13 @@ namespace PhuDinhCommonControl
         {
             try
             {
-                if (FilterNhanVienGiaoHang == null)
+                if (FilterNhanVien == null)
                 {
                     return;
                 }
 
-                var data = dgNhanVienGiaoHang.DataContext as ObservableCollection<PhuDinhData.rNhanVienGiaoHang>;
-                PhuDinhData.Repository.rNhanVienGiaoHangRepository.Save(_context, data.ToList(), FilterNhanVienGiaoHang);
+                var data = dgNhanVienGiaoHang.DataContext as ObservableCollection<PhuDinhData.rNhanVien>;
+                PhuDinhData.Repository.rNhanVienRepository.Save(_context, data.ToList(), FilterNhanVien);
             }
             catch (Exception ex)
             {
@@ -59,7 +59,7 @@ namespace PhuDinhCommonControl
 
         public override void RefreshView()
         {
-            if (FilterNhanVienGiaoHang == null)
+            if (FilterNhanVien == null)
             {
                 dgNhanVienGiaoHang.DataContext = null;
                 return;
@@ -67,20 +67,20 @@ namespace PhuDinhCommonControl
 
             var index = dgNhanVienGiaoHang.SelectedIndex;
 
-            if (_rNhanVienGiaoHangs != null)
+            if (_rNhanViens != null)
             {
-                _rNhanVienGiaoHangs.CollectionChanged -= collection_CollectionChanged;
+                _rNhanViens.CollectionChanged -= collection_CollectionChanged;
             }
 
             _context = new PhuDinhData.PhuDinhEntities();
-            var rNhanVienGiaoHangs = PhuDinhData.Repository.rNhanVienGiaoHangRepository.GetData(_context, FilterNhanVienGiaoHang);
+            var rNhanViens = PhuDinhData.Repository.rNhanVienRepository.GetData(_context, FilterNhanVien);
 
-            _rNhanVienGiaoHangs = new ObservableCollection<PhuDinhData.rNhanVienGiaoHang>(rNhanVienGiaoHangs);
-            _rNhanVienGiaoHangs.CollectionChanged += collection_CollectionChanged;
+            _rNhanViens = new ObservableCollection<PhuDinhData.rNhanVien>(rNhanViens);
+            _rNhanViens.CollectionChanged += collection_CollectionChanged;
 
             UpdatePhuongTienReferenceData();
 
-            dgNhanVienGiaoHang.DataContext = _rNhanVienGiaoHangs;
+            dgNhanVienGiaoHang.DataContext = _rNhanViens;
 
             dgNhanVienGiaoHang.SelectedIndex = index;
         }
@@ -89,7 +89,7 @@ namespace PhuDinhCommonControl
         {
             if (e.Action == NotifyCollectionChangedAction.Add)
             {
-                var nhanVienGiaoHang = e.NewItems[0] as PhuDinhData.rNhanVienGiaoHang;
+                var nhanVienGiaoHang = e.NewItems[0] as PhuDinhData.rNhanVien;
                 nhanVienGiaoHang.rPhuongTienList = _rPhuongTiens;
 
                 if (rPhuongTienDefault != null)
@@ -115,14 +115,14 @@ namespace PhuDinhCommonControl
         {
             _rPhuongTiens = PhuDinhData.Repository.rPhuongTienRepository.GetData(_context, FilterPhuongTien);
 
-            if (_rNhanVienGiaoHangs == null)
+            if (_rNhanViens == null)
             {
                 return;
             }
 
-            foreach (var rNhanVienGiaoHang in _rNhanVienGiaoHangs)
+            foreach (var rNhanVien in _rNhanViens)
             {
-                rNhanVienGiaoHang.rPhuongTienList = _rPhuongTiens;
+                rNhanVien.rPhuongTienList = _rPhuongTiens;
             }
         }
     }

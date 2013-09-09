@@ -25,14 +25,14 @@ namespace PhuDinhCommonControl
             var phuongTien = ((DataGrid)sender).SelectedItem as PhuDinhData.rPhuongTien;
             if (phuongTien == null)
             {
-                _rNhanVienGiaoHangView.FilterNhanVienGiaoHang = null;
-                _rNhanVienGiaoHangView.RefreshView();
+                _rNhanVienView.FilterNhanVien = null;
+                _rNhanVienView.RefreshView();
                 return;
             }
 
-            _rNhanVienGiaoHangView.FilterNhanVienGiaoHang = (p => p.MaPhuongTien == phuongTien.Ma);
-            _rNhanVienGiaoHangView.rPhuongTienDefault = phuongTien;
-            _rNhanVienGiaoHangView.RefreshView();
+            _rNhanVienView.FilterNhanVien = (p => p.MaPhuongTien == phuongTien.Ma);
+            _rNhanVienView.rPhuongTienDefault = phuongTien;
+            _rNhanVienView.RefreshView();
         }
     }
 }

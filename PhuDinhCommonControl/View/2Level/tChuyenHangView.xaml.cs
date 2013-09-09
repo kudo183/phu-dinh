@@ -14,10 +14,10 @@ namespace PhuDinhCommonControl
     public partial class tChuyenHangView : BaseView
     {
         public Expression<Func<PhuDinhData.tChuyenHang, bool>> FilterChuyenHang { get; set; }
-        public Expression<Func<PhuDinhData.rNhanVienGiaoHang, bool>> FilterNhanVienGiaoHang { get; set; }
+        public Expression<Func<PhuDinhData.rNhanVien, bool>> FilterNhanVien { get; set; }
 
         private ObservableCollection<PhuDinhData.tChuyenHang> _tChuyenHangs;
-        private List<PhuDinhData.rNhanVienGiaoHang> _rNhanVienGiaoHangs;
+        private List<PhuDinhData.rNhanVien> _rNhanViens;
 
         private PhuDinhData.PhuDinhEntities _context = new PhuDinhData.PhuDinhEntities();
 
@@ -28,7 +28,7 @@ namespace PhuDinhCommonControl
         {
             InitializeComponent();
 
-            FilterNhanVienGiaoHang = (p => true);
+            FilterNhanVien = (p => true);
 
             Loaded += tChuyenHangView_Loaded;
             Unloaded += tChuyenHangView_Unloaded;
@@ -126,7 +126,7 @@ namespace PhuDinhCommonControl
                 var tChuyenHang = e.NewItems[0] as PhuDinhData.tChuyenHang;
                 tChuyenHang.Ngay = (DataGridColumnHeaderDateFilter.ChuyenHang.IsUsed) ? DataGridColumnHeaderDateFilter.ChuyenHang.Date : DateTime.Now;
                 tChuyenHang.Gio = DateTime.Now.TimeOfDay;
-                tChuyenHang.rNhanVienGiaoHangList = _rNhanVienGiaoHangs;
+                tChuyenHang.rNhanVienList = _rNhanViens;
             }
         }
 
@@ -136,7 +136,7 @@ namespace PhuDinhCommonControl
         {
             dgChuyenHang.CommitEdit();
 
-            var view = new rNhanVienGiaoHangView();
+            var view = new rNhanVienView();
             view.RefreshView();
             ChildWindowUtils.ShowChildWindow("Nhân Viên", view);
 
@@ -145,7 +145,7 @@ namespace PhuDinhCommonControl
 
         private void UpdateNhanVienGiaoHangReferenceData()
         {
-            _rNhanVienGiaoHangs = PhuDinhData.Repository.rNhanVienGiaoHangRepository.GetData(_context, FilterNhanVienGiaoHang);
+            _rNhanViens = PhuDinhData.Repository.rNhanVienRepository.GetData(_context, FilterNhanVien);
 
             if (_tChuyenHangs == null)
             {
@@ -154,7 +154,7 @@ namespace PhuDinhCommonControl
 
             foreach (var tChuyenHang in _tChuyenHangs)
             {
-                tChuyenHang.rNhanVienGiaoHangList = _rNhanVienGiaoHangs;
+                tChuyenHang.rNhanVienList = _rNhanViens;
             }
         }
     }

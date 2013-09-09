@@ -16,13 +16,13 @@ namespace PhuDinhCommonControl
     {
         public Filter_tChiPhi FilterChiPhi { get; set; }
         public Expression<Func<PhuDinhData.rLoaiChiPhi, bool>> FilterLoaiChiPhi { get; set; }
-        public Expression<Func<PhuDinhData.rNhanVienGiaoHang, bool>> FilterNhanVienGiaoHang { get; set; }
+        public Expression<Func<PhuDinhData.rNhanVien, bool>> FilterNhanVien { get; set; }
         public PhuDinhData.rLoaiChiPhi rLoaiChiPhiDefault { get; set; }
-        public PhuDinhData.rNhanVienGiaoHang rNhanVienGiaoHangDefault { get; set; }
+        public PhuDinhData.rNhanVien rNhanVienDefault { get; set; }
 
         private ObservableCollection<PhuDinhData.tChiPhiNhanVienGiaoHang> _tChiPhiNhanVienGiaoHangs;
         private List<PhuDinhData.rLoaiChiPhi> _rLoaiChiPhis;
-        private List<PhuDinhData.rNhanVienGiaoHang> _rNhanVienGiaoHangs;
+        private List<PhuDinhData.rNhanVien> _rNhanViens;
 
         private PhuDinhData.PhuDinhEntities _context = new PhuDinhData.PhuDinhEntities();
 
@@ -35,7 +35,7 @@ namespace PhuDinhCommonControl
 
             FilterChiPhi = new Filter_tChiPhi();
             FilterLoaiChiPhi = (p => true);
-            FilterNhanVienGiaoHang = (p => true);
+            FilterNhanVien = (p => true);
 
             Loaded += tChiPhiNhanVienGiaoHangView_Loaded;
             Unloaded += tChiPhiNhanVienGiaoHangView_Unloaded;
@@ -134,16 +134,16 @@ namespace PhuDinhCommonControl
                 var tChiPhiNhanVienGiaoHang = e.NewItems[0] as PhuDinhData.tChiPhiNhanVienGiaoHang;
                 tChiPhiNhanVienGiaoHang.Ngay = (DataGridColumnHeaderDateFilter.ChiPhi.IsUsed) ? DataGridColumnHeaderDateFilter.ChiPhi.Date : DateTime.Now;
                 tChiPhiNhanVienGiaoHang.rLoaiChiPhiList = _rLoaiChiPhis;
-                tChiPhiNhanVienGiaoHang.rNhanVienGiaoHangList = _rNhanVienGiaoHangs;
+                tChiPhiNhanVienGiaoHang.rNhanVienList = _rNhanViens;
 
                 if (rLoaiChiPhiDefault != null)
                 {
                     tChiPhiNhanVienGiaoHang.MaLoaiChiPhi = rLoaiChiPhiDefault.Ma;
                 }
 
-                if (rNhanVienGiaoHangDefault != null)
+                if (rNhanVienDefault != null)
                 {
-                    tChiPhiNhanVienGiaoHang.MaNhanVienGiaoHang = rNhanVienGiaoHangDefault.Ma;
+                    tChiPhiNhanVienGiaoHang.MaNhanVienGiaoHang = rNhanVienDefault.Ma;
                 }
             }
         }
@@ -161,7 +161,7 @@ namespace PhuDinhCommonControl
             switch (header.Content.ToString())
             {
                 case "Nhân Viên":
-                    view = new rNhanVienGiaoHangView();
+                    view = new rNhanVienView();
                     view.RefreshView();
                     ChildWindowUtils.ShowChildWindow("Nhân Viên", view);
 
@@ -194,7 +194,7 @@ namespace PhuDinhCommonControl
 
         private void UpdateNhanVienGiaoHangReferenceData()
         {
-            _rNhanVienGiaoHangs = PhuDinhData.Repository.rNhanVienGiaoHangRepository.GetData(_context, FilterNhanVienGiaoHang);
+            _rNhanViens = PhuDinhData.Repository.rNhanVienRepository.GetData(_context, FilterNhanVien);
 
             if (_tChiPhiNhanVienGiaoHangs == null)
             {
@@ -203,7 +203,7 @@ namespace PhuDinhCommonControl
 
             foreach (var tChiPhiNhanVienGiaoHang in _tChiPhiNhanVienGiaoHangs)
             {
-                tChiPhiNhanVienGiaoHang.rNhanVienGiaoHangList = _rNhanVienGiaoHangs;
+                tChiPhiNhanVienGiaoHang.rNhanVienList = _rNhanViens;
             }
         }
     }
