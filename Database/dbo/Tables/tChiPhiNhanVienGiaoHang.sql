@@ -7,6 +7,8 @@
     [GhiChu]             NVARCHAR (MAX) NULL,
     CONSTRAINT [PK_ChiPhiNhanVienGiaoHang] PRIMARY KEY CLUSTERED ([Ma] ASC),
     CONSTRAINT [FK_tChiPhiNhanVienGiaoHang_rLoaiChiPhi] FOREIGN KEY ([MaLoaiChiPhi]) REFERENCES [dbo].[rLoaiChiPhi] ([Ma]),
-    CONSTRAINT [FK_tChiPhiNhanVienGiaoHang_rNhanVienGiaoHang] FOREIGN KEY ([MaNhanVienGiaoHang]) REFERENCES [dbo].[rNhanVienGiaoHang] ([Ma])
+    CONSTRAINT [FK_tChiPhiNhanVienGiaoHang_rNhanVienGiaoHang] FOREIGN KEY ([MaNhanVienGiaoHang]) REFERENCES [dbo].[rNhanVien] ([Ma])
 );
+
+
 
