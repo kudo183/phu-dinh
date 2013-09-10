@@ -6,11 +6,11 @@ namespace PhuDinhCommonControl
 {
     public class Filter_tChiPhi
     {
-        private Expression<Func<PhuDinhData.tChiPhiNhanVienGiaoHang, bool>> _filterNhanVien;
-        private Expression<Func<PhuDinhData.tChiPhiNhanVienGiaoHang, bool>> _filterLoaiChiPhi;
-        private Expression<Func<PhuDinhData.tChiPhiNhanVienGiaoHang, bool>> _filterSoTien;
-        private Expression<Func<PhuDinhData.tChiPhiNhanVienGiaoHang, bool>> _filterNgay;
-        private Expression<Func<PhuDinhData.tChiPhiNhanVienGiaoHang, bool>> _filterGhiChu;
+        private Expression<Func<PhuDinhData.tChiPhi, bool>> _filterNhanVien;
+        private Expression<Func<PhuDinhData.tChiPhi, bool>> _filterLoaiChiPhi;
+        private Expression<Func<PhuDinhData.tChiPhi, bool>> _filterSoTien;
+        private Expression<Func<PhuDinhData.tChiPhi, bool>> _filterNgay;
+        private Expression<Func<PhuDinhData.tChiPhi, bool>> _filterGhiChu;
         private bool _isClearAllData;
 
         public bool IsClearAllData
@@ -36,7 +36,7 @@ namespace PhuDinhCommonControl
             IsClearAllData = false;
         }
 
-        public Expression<Func<PhuDinhData.tChiPhiNhanVienGiaoHang, bool>> FilterNhanVien
+        public Expression<Func<PhuDinhData.tChiPhi, bool>> FilterNhanVien
         {
             get { return _filterNhanVien; }
             set
@@ -46,7 +46,7 @@ namespace PhuDinhCommonControl
             }
         }
 
-        public Expression<Func<PhuDinhData.tChiPhiNhanVienGiaoHang, bool>> FilterLoaiChiPhi
+        public Expression<Func<PhuDinhData.tChiPhi, bool>> FilterLoaiChiPhi
         {
             get { return _filterLoaiChiPhi; }
             set
@@ -56,7 +56,7 @@ namespace PhuDinhCommonControl
             }
         }
 
-        public Expression<Func<PhuDinhData.tChiPhiNhanVienGiaoHang, bool>> FilterSoTien
+        public Expression<Func<PhuDinhData.tChiPhi, bool>> FilterSoTien
         {
             get { return _filterSoTien; }
             set
@@ -66,7 +66,7 @@ namespace PhuDinhCommonControl
             }
         }
 
-        public Expression<Func<PhuDinhData.tChiPhiNhanVienGiaoHang, bool>> FilterNgay
+        public Expression<Func<PhuDinhData.tChiPhi, bool>> FilterNgay
         {
             get { return _filterNgay; }
             set
@@ -76,7 +76,7 @@ namespace PhuDinhCommonControl
             }
         }
 
-        public Expression<Func<PhuDinhData.tChiPhiNhanVienGiaoHang, bool>> FilterGhiChu
+        public Expression<Func<PhuDinhData.tChiPhi, bool>> FilterGhiChu
         {
             get { return _filterGhiChu; }
             set
@@ -86,7 +86,7 @@ namespace PhuDinhCommonControl
             }
         }
 
-        public Expression<Func<PhuDinhData.tChiPhiNhanVienGiaoHang, bool>> FilterChiPhi
+        public Expression<Func<PhuDinhData.tChiPhi, bool>> FilterChiPhi
         {
             get { return FilterLoaiChiPhi.And(FilterNhanVien).And(FilterNgay).And(FilterSoTien).And(FilterGhiChu); }
         }

@@ -16,7 +16,7 @@ namespace PhuDinhData
     {
         public rNhanVien()
         {
-            this.tChiPhiNhanVienGiaoHangs = new HashSet<tChiPhiNhanVienGiaoHang>();
+            this.tChiPhis = new HashSet<tChiPhi>();
             this.tChuyenHangs = new HashSet<tChuyenHang>();
         }
     
@@ -31,7 +31,7 @@ namespace PhuDinhData
     
     
         public virtual rPhuongTien rPhuongTien { get; set; }
-        public virtual ICollection<tChiPhiNhanVienGiaoHang> tChiPhiNhanVienGiaoHangs { get; set; }
+        public virtual ICollection<tChiPhi> tChiPhis { get; set; }
         public virtual ICollection<tChuyenHang> tChuyenHangs { get; set; }
     }
 }

@@ -12,7 +12,7 @@ namespace PhuDinhData
     using System;
     using System.Collections.Generic;
     
-    public partial class tChiPhiNhanVienGiaoHang : BindableObject
+    public partial class tChiPhi : BindableObject
     {
         private int _ma;
         public int Ma { get { return _ma; } set { if(_ma == value) return; _ma = value; base.RaisePropertyChanged("Ma");} }

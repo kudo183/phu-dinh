@@ -10,9 +10,9 @@ using System.Windows.Controls.Primitives;
 namespace PhuDinhCommonControl
 {
     /// <summary>
-    /// Interaction logic for tChiPhiNhanVienGiaoHangView.xaml
+    /// Interaction logic for tChiPhiView.xaml
     /// </summary>
-    public partial class tChiPhiNhanVienGiaoHangView : BaseView
+    public partial class tChiPhiView : BaseView
     {
         public Filter_tChiPhi FilterChiPhi { get; set; }
         public Expression<Func<PhuDinhData.rLoaiChiPhi, bool>> FilterLoaiChiPhi { get; set; }
@@ -20,7 +20,7 @@ namespace PhuDinhCommonControl
         public PhuDinhData.rLoaiChiPhi rLoaiChiPhiDefault { get; set; }
         public PhuDinhData.rNhanVien rNhanVienDefault { get; set; }
 
-        private ObservableCollection<PhuDinhData.tChiPhiNhanVienGiaoHang> _tChiPhiNhanVienGiaoHangs;
+        private ObservableCollection<PhuDinhData.tChiPhi> _tChiPhis;
         private List<PhuDinhData.rLoaiChiPhi> _rLoaiChiPhis;
         private List<PhuDinhData.rNhanVien> _rNhanViens;
 
@@ -29,7 +29,7 @@ namespace PhuDinhCommonControl
         private bool _isUsedDateFilter = true;
         private DateTime _filterDate = DateTime.Now.Date;
 
-        public tChiPhiNhanVienGiaoHangView()
+        public tChiPhiView()
         {
             InitializeComponent();
 
@@ -37,11 +37,11 @@ namespace PhuDinhCommonControl
             FilterLoaiChiPhi = (p => true);
             FilterNhanVien = (p => true);
 
-            Loaded += tChiPhiNhanVienGiaoHangView_Loaded;
-            Unloaded += tChiPhiNhanVienGiaoHangView_Unloaded;
+            Loaded += tChiPhiView_Loaded;
+            Unloaded += tChiPhiView_Unloaded;
         }
 
-        void tChiPhiNhanVienGiaoHangView_Loaded(object sender, System.Windows.RoutedEventArgs e)
+        void tChiPhiView_Loaded(object sender, System.Windows.RoutedEventArgs e)
         {
             DataGridColumnHeaderDateFilter.ChiPhi.Date = _filterDate;
             DataGridColumnHeaderDateFilter.ChiPhi.IsUsed = _isUsedDateFilter;
@@ -49,7 +49,7 @@ namespace PhuDinhCommonControl
             ChiPhi_PropertyChanged(null, null);
         }
 
-        void tChiPhiNhanVienGiaoHangView_Unloaded(object sender, System.Windows.RoutedEventArgs e)
+        void tChiPhiView_Unloaded(object sender, System.Windows.RoutedEventArgs e)
         {
             DataGridColumnHeaderDateFilter.ChiPhi.PropertyChanged -= ChiPhi_PropertyChanged;
             _filterDate = DataGridColumnHeaderDateFilter.ChiPhi.Date;
@@ -80,8 +80,8 @@ namespace PhuDinhCommonControl
                     return;
                 }
 
-                var data = dgChiPhiNhanVienGiaoHang.DataContext as ObservableCollection<PhuDinhData.tChiPhiNhanVienGiaoHang>;
-                PhuDinhData.Repository.tChiPhiNhanVienGiaoHangRepository.Save(_context, data.ToList(), FilterChiPhi.FilterChiPhi);
+                var data = dgChiPhi.DataContext as ObservableCollection<PhuDinhData.tChiPhi>;
+                PhuDinhData.Repository.tChiPhiRepository.Save(_context, data.ToList(), FilterChiPhi.FilterChiPhi);
             }
             catch (Exception ex)
             {
@@ -102,57 +102,57 @@ namespace PhuDinhCommonControl
         {
             if (FilterChiPhi.IsClearAllData == true)
             {
-                dgChiPhiNhanVienGiaoHang.DataContext = null;
+                dgChiPhi.DataContext = null;
                 return;
             }
 
-            var index = dgChiPhiNhanVienGiaoHang.SelectedIndex;
+            var index = dgChiPhi.SelectedIndex;
 
-            if (_tChiPhiNhanVienGiaoHangs != null)
+            if (_tChiPhis != null)
             {
-                _tChiPhiNhanVienGiaoHangs.CollectionChanged -= collection_CollectionChanged;
+                _tChiPhis.CollectionChanged -= collection_CollectionChanged;
             }
 
             _context = new PhuDinhData.PhuDinhEntities();
-            var tChiPhiNhanVienGiaoHangs = PhuDinhData.Repository.tChiPhiNhanVienGiaoHangRepository.GetData(_context, FilterChiPhi.FilterChiPhi);
+            var tChiPhis = PhuDinhData.Repository.tChiPhiRepository.GetData(_context, FilterChiPhi.FilterChiPhi);
 
-            _tChiPhiNhanVienGiaoHangs = new ObservableCollection<PhuDinhData.tChiPhiNhanVienGiaoHang>(tChiPhiNhanVienGiaoHangs);
-            _tChiPhiNhanVienGiaoHangs.CollectionChanged += collection_CollectionChanged;
+            _tChiPhis = new ObservableCollection<PhuDinhData.tChiPhi>(tChiPhis);
+            _tChiPhis.CollectionChanged += collection_CollectionChanged;
 
             UpdateNhanVienGiaoHangReferenceData();
             UpdateLoaiChiPhiReferenceData();
 
-            dgChiPhiNhanVienGiaoHang.DataContext = _tChiPhiNhanVienGiaoHangs;
+            dgChiPhi.DataContext = _tChiPhis;
 
-            dgChiPhiNhanVienGiaoHang.SelectedIndex = index;
+            dgChiPhi.SelectedIndex = index;
         }
 
         void collection_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             if (e.Action == NotifyCollectionChangedAction.Add)
             {
-                var tChiPhiNhanVienGiaoHang = e.NewItems[0] as PhuDinhData.tChiPhiNhanVienGiaoHang;
-                tChiPhiNhanVienGiaoHang.Ngay = (DataGridColumnHeaderDateFilter.ChiPhi.IsUsed) ? DataGridColumnHeaderDateFilter.ChiPhi.Date : DateTime.Now;
-                tChiPhiNhanVienGiaoHang.rLoaiChiPhiList = _rLoaiChiPhis;
-                tChiPhiNhanVienGiaoHang.rNhanVienList = _rNhanViens;
+                var tChiPhi = e.NewItems[0] as PhuDinhData.tChiPhi;
+                tChiPhi.Ngay = (DataGridColumnHeaderDateFilter.ChiPhi.IsUsed) ? DataGridColumnHeaderDateFilter.ChiPhi.Date : DateTime.Now;
+                tChiPhi.rLoaiChiPhiList = _rLoaiChiPhis;
+                tChiPhi.rNhanVienList = _rNhanViens;
 
                 if (rLoaiChiPhiDefault != null)
                 {
-                    tChiPhiNhanVienGiaoHang.MaLoaiChiPhi = rLoaiChiPhiDefault.Ma;
+                    tChiPhi.MaLoaiChiPhi = rLoaiChiPhiDefault.Ma;
                 }
 
                 if (rNhanVienDefault != null)
                 {
-                    tChiPhiNhanVienGiaoHang.MaNhanVienGiaoHang = rNhanVienDefault.Ma;
+                    tChiPhi.MaNhanVienGiaoHang = rNhanVienDefault.Ma;
                 }
             }
         }
 
         #endregion
 
-        private void dgChiPhiNhanVienGiaoHang_HeaderAddButtonClick(object sender, EventArgs e)
+        private void dgChiPhi_HeaderAddButtonClick(object sender, EventArgs e)
         {
-            dgChiPhiNhanVienGiaoHang.CommitEdit();
+            dgChiPhi.CommitEdit();
 
             var header = sender as DataGridColumnHeader;
 
@@ -181,14 +181,14 @@ namespace PhuDinhCommonControl
         {
             _rLoaiChiPhis = PhuDinhData.Repository.rLoaiChiPhiRepository.GetData(_context, FilterLoaiChiPhi);
 
-            if (_tChiPhiNhanVienGiaoHangs == null)
+            if (_tChiPhis == null)
             {
                 return;
             }
 
-            foreach (var tChiPhiNhanVienGiaoHang in _tChiPhiNhanVienGiaoHangs)
+            foreach (var tChiPhi in _tChiPhis)
             {
-                tChiPhiNhanVienGiaoHang.rLoaiChiPhiList = _rLoaiChiPhis;
+                tChiPhi.rLoaiChiPhiList = _rLoaiChiPhis;
             }
         }
 
@@ -196,14 +196,14 @@ namespace PhuDinhCommonControl
         {
             _rNhanViens = PhuDinhData.Repository.rNhanVienRepository.GetData(_context, FilterNhanVien);
 
-            if (_tChiPhiNhanVienGiaoHangs == null)
+            if (_tChiPhis == null)
             {
                 return;
             }
 
-            foreach (var tChiPhiNhanVienGiaoHang in _tChiPhiNhanVienGiaoHangs)
+            foreach (var tChiPhi in _tChiPhis)
             {
-                tChiPhiNhanVienGiaoHang.rNhanVienList = _rNhanViens;
+                tChiPhi.rNhanVienList = _rNhanViens;
             }
         }
     }

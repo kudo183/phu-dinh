@@ -95,6 +95,9 @@
     <Compile Include="rNuoc.cs">
       <DependentUpon>PhuDinh.tt</DependentUpon>
     </Compile>
+    <Compile Include="tChiPhi.cs">
+      <DependentUpon>PhuDinh.tt</DependentUpon>
+    </Compile>
     <Compile Include="tChiTietChuyenHangDonHang.cs">
       <DependentUpon>PhuDinh.tt</DependentUpon>
     </Compile>
@@ -140,10 +143,7 @@
     <Compile Include="rPhuongTien.cs">
       <DependentUpon>PhuDinh.tt</DependentUpon>
     </Compile>
-    <Compile Include="tChiPhiNhanVienGiaoHang.cs">
-      <DependentUpon>PhuDinh.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EntityExt\tChiPhiNhanVienGiaoHangExt.cs" />
+    <Compile Include="EntityExt\tChiPhiExt.cs" />
     <Compile Include="tChiTietDonHang.cs">
       <DependentUpon>PhuDinh.tt</DependentUpon>
     </Compile>

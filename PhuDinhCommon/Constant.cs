@@ -14,7 +14,7 @@
             rNhanVien,
             rNuoc,
             rPhuongTien,
-            tChiPhiNhanVienGiaoHang,
+            tChiPhi,
             tChiTietChuyenHangDonHang,
             tChiTietDonHang,
             tChuyenHang,

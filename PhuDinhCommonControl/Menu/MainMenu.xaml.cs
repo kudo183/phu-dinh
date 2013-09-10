@@ -81,8 +81,8 @@ namespace PhuDinhCommonControl.Menu
                 case "rPhuongTien":
                     SelectedItem = Constant.MainMenuItems.rPhuongTien;
                     break;
-                case "tChiPhiNhanVienGiaoHang":
-                    SelectedItem = Constant.MainMenuItems.tChiPhiNhanVienGiaoHang;
+                case "tChiPhi":
+                    SelectedItem = Constant.MainMenuItems.tChiPhi;
                     break;
                 case "tChiTietChuyenHangDonHang":
                     SelectedItem = Constant.MainMenuItems.tChiTietChuyenHangDonHang;

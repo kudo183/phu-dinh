@@ -12,6 +12,6 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <PhuDinhCommonControl:rLoaiChiPhiView Grid.Row="0" x:Name="_rLoaiChiPhiView"/>
-        <PhuDinhCommonControl:tChiPhiNhanVienGiaoHangView Grid.Row="1" x:Name="_rChiPhiNhanVienGiaoHangView"/>
+        <PhuDinhCommonControl:tChiPhiView Grid.Row="1" x:Name="_rChiPhiNhanVienGiaoHangView"/>
     </Grid>
 </PhuDinhCommonControl:BaseView>

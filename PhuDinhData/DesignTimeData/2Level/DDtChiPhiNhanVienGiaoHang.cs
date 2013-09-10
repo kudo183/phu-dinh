@@ -2,32 +2,32 @@
 
 namespace PhuDinhData.DesignTimeData
 {
-    public static class DDtChiPhiNhanVienGiaoHang
+    public static class DDtChiPhi
     {
-        private static List<tChiPhiNhanVienGiaoHang> _tChiPhiNhanVienGiaoHangs;
-        public static List<tChiPhiNhanVienGiaoHang> tChiPhiNhanVienGiaoHangs
+        private static List<tChiPhi> _tChiPhis;
+        public static List<tChiPhi> tChiPhis
         {
             get
             {
-                if (_tChiPhiNhanVienGiaoHangs != null)
+                if (_tChiPhis != null)
                 {
-                    return _tChiPhiNhanVienGiaoHangs;
+                    return _tChiPhis;
                 }
 
                 const int count = 10;
-                _tChiPhiNhanVienGiaoHangs = new List<tChiPhiNhanVienGiaoHang>(count);
+                _tChiPhis = new List<tChiPhi>(count);
                 for (var i = 1; i <= count; i++)
                 {
-                    _tChiPhiNhanVienGiaoHangs.Add(Create(i));
+                    _tChiPhis.Add(Create(i));
                 }
 
-                return _tChiPhiNhanVienGiaoHangs;
+                return _tChiPhis;
             }
         }
 
-        public static tChiPhiNhanVienGiaoHang Create(int i)
+        public static tChiPhi Create(int i)
         {
-            return new tChiPhiNhanVienGiaoHang()
+            return new tChiPhi()
             {
                 Ma = i,
                 MaLoaiChiPhi = i,

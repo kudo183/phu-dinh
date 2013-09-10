@@ -6,7 +6,7 @@
              xmlns:PhuDinhCommonControl="clr-namespace:PhuDinhCommonControl"
              xmlns:EntityDataGrid="clr-namespace:PhuDinhCommonControl.EntityDataGrid"
              xmlns:Menu="clr-namespace:PhuDinhCommonControl.Menu"
-             x:Class="PhuDinhCommonControl.tChiPhiNhanVienGiaoHangView" 
+             x:Class="PhuDinhCommonControl.tChiPhiView" 
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="500">
     <Grid>
@@ -14,7 +14,7 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <EntityDataGrid:DGChiPhiNhanVienGiaoHang Grid.Row="0" x:Name="dgChiPhiNhanVienGiaoHang" HeaderAddButtonClick="dgChiPhiNhanVienGiaoHang_HeaderAddButtonClick"/>
+        <EntityDataGrid:DGChiPhi Grid.Row="0" x:Name="dgChiPhi" HeaderAddButtonClick="dgChiPhi_HeaderAddButtonClick"/>
         <Menu:BottomMenu Grid.Row="1" x:Name="bmMenu" Button.Click="bmMenu_Click"/>
     </Grid>
 </PhuDinhCommonControl:BaseView>

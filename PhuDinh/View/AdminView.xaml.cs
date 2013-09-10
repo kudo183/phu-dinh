@@ -60,8 +60,8 @@ namespace PhuDinh
                 case Constant.MainMenuItems.rPhuongTien:
                     result = new rPhuongTienView();
                     break;
-                case Constant.MainMenuItems.tChiPhiNhanVienGiaoHang:
-                    result = new tChiPhiNhanVienGiaoHangView();
+                case Constant.MainMenuItems.tChiPhi:
+                    result = new tChiPhiView();
                     break;
                 case Constant.MainMenuItems.tChiTietChuyenHangDonHang:
                     result = new tChiTietChuyenHangDonHangView();

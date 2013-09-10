@@ -16,7 +16,7 @@ namespace PhuDinhData
     {
         public rLoaiChiPhi()
         {
-            this.tChiPhiNhanVienGiaoHangs = new HashSet<tChiPhiNhanVienGiaoHang>();
+            this.tChiPhis = new HashSet<tChiPhi>();
         }
     
         private int _ma;
@@ -26,6 +26,6 @@ namespace PhuDinhData
         public string TenLoaiChiPhi { get { return _tenloaichiphi; } set { if(_tenloaichiphi == value) return; _tenloaichiphi = value; base.RaisePropertyChanged("TenLoaiChiPhi");} }
     
     
-        public virtual ICollection<tChiPhiNhanVienGiaoHang> tChiPhiNhanVienGiaoHangs { get; set; }
+        public virtual ICollection<tChiPhi> tChiPhis { get; set; }
     }
 }
