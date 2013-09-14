@@ -9,7 +9,7 @@ namespace PhuDinhData.Repository
     {
         public static List<rDiaDiem> GetData(PhuDinhEntities context, Expression<Func<rDiaDiem, bool>> filter)
         {
-            return Repository<rDiaDiem>.GetData(context, filter).OrderBy(p => p.Tinh).ToList();
+            return Repository<rDiaDiem>.GetData(context, filter).ToList().OrderBy(p => p.Tinh).ToList();
         }
 
         public static void Save(PhuDinhEntities context, List<rDiaDiem> data, Expression<Func<rDiaDiem, bool>> filter)
