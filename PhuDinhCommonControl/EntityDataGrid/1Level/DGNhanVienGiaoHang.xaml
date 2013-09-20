@@ -6,7 +6,7 @@
                            xmlns:CustomControl="clr-namespace:PhuDinhCommonControl.CustomControl"
                            xmlns:DesignTimeData="clr-namespace:PhuDinhData.DesignTimeData;assembly=PhuDinhData"
                            mc:Ignorable="d"
-                           d:DataContext="{x:Static DesignTimeData:DDrNhanVienGiaoHang.rNhanVienGiaoHangs}"
+                           d:DataContext="{x:Static DesignTimeData:DDrNhanVien.rNhanViens}"
                            AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" SelectionMode="Single">
     <DataGrid.Columns>
         <!--Ma-->
