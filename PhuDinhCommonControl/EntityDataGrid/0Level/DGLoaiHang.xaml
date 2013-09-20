@@ -7,7 +7,7 @@
                            xmlns:DesignTimeData="clr-namespace:PhuDinhData.DesignTimeData;assembly=PhuDinhData"
                            mc:Ignorable="d"
                            d:DataContext="{x:Static DesignTimeData:DDrLoaiHang.rLoaiHangs}"
-                           AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" SelectionMode="Single">
+                           AutoGenerateColumns="False" EnableRowVirtualization="False" ItemsSource="{Binding}" SelectionMode="Single">
     <DataGrid.Columns>
         <!--Ma-->
         <CustomControl:DataGridReadOnlyTextColumn x:Name="maColumn"/>
