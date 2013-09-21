@@ -41,6 +41,11 @@ namespace PhuDinhCommonControl
 
         void dgKhachHang_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (sender != e.OriginalSource)
+            {
+                return;
+            }
+
             var khachHang = ((DataGrid)sender).SelectedItem as PhuDinhData.rKhachHang;
             if (khachHang == null)
             {
