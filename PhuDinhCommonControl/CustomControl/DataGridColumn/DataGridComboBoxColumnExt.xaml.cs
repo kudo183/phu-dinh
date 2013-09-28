@@ -42,8 +42,13 @@ namespace PhuDinhCommonControl.CustomControl
             BindingOperations.SetBinding(element, ComboBox.ItemsSourceProperty, binding);
         }
 
-        void headerAddButton_Click(object sender, EventArgs e)
+        void headerAddButton_Click(object sender, RoutedEventArgs e)
         {
+            if (e.OriginalSource is System.Windows.Controls.Primitives.DataGridColumnHeader)
+            {
+                return;
+            }
+
             if (HeaderAddButtonClick == null)
             {
                 return;
