@@ -3,16 +3,57 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:Menu="clr-namespace:PhuDinhCommonControl.Menu;assembly=PhuDinhCommonControl" mc:Ignorable="d" 
+             xmlns:PhuDinhCommonControl="clr-namespace:PhuDinhCommonControl;assembly=PhuDinhCommonControl"
+             mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <Menu:MainMenu Grid.Column="0" Background="Gray" Margin="0,0,5,0" x:Name="_spMenu" MenuItemClick="_spMenu_MenuItemClick"/>
-        <GridSplitter VerticalAlignment="Stretch" Grid.Column="0" Width="5"/>
-        <Border Grid.Column="1" x:Name="_brdMain" BorderThickness="1" BorderBrush="Black" Margin="3" Padding="2">
-        </Border>
-    </Grid>
+    <TabControl TabStripPlacement="Left">
+        <TabItem Header="Bãi xe" Background="Gray">
+            <PhuDinhCommonControl:rBaiXeView/>
+        </TabItem>
+        <TabItem Header="Chành" Background="Gray">
+            <PhuDinhCommonControl:rChanhView/>
+        </TabItem>
+        <TabItem Header="Địa điểm" Background="Gray">
+            <PhuDinhCommonControl:rDiaDiemView/>
+        </TabItem>
+        <TabItem Header="Khách hàng" Background="Gray">
+            <PhuDinhCommonControl:rKhachHangView/>
+        </TabItem>
+        <TabItem Header="Loại chi phí" Background="Gray">
+            <PhuDinhCommonControl:rLoaiChiPhiView/>
+        </TabItem>
+        <TabItem Header="Loại hàng" Background="Gray">
+            <PhuDinhCommonControl:rLoaiHangView/>
+        </TabItem>
+        <TabItem Header="Nhân viên" Background="Gray">
+            <PhuDinhCommonControl:rNhanVienView/>
+        </TabItem>
+        <TabItem Header="Nước" Background="Gray">
+            <PhuDinhCommonControl:rNuocView/>
+        </TabItem>
+        <TabItem Header="Phương tiện" Background="Gray">
+            <PhuDinhCommonControl:rPhuongTienView/>
+        </TabItem>
+        <TabItem Header="Chi phí" Background="Gray">
+            <PhuDinhCommonControl:tChiPhiView/>
+        </TabItem>
+        <TabItem Header="Chi tiết chuyến hàng đơn hàng" Background="Gray">
+            <PhuDinhCommonControl:tChiTietChuyenHangDonHangView/>
+        </TabItem>
+        <TabItem Header="Chi tiết đơn hàng" Background="Gray">
+            <PhuDinhCommonControl:tChiTietDonHangView/>
+        </TabItem>
+        <TabItem Header="Chuyến hàng" Background="Gray">
+            <PhuDinhCommonControl:tChuyenHangView/>
+        </TabItem>
+        <TabItem Header="Chuyến hàng đơn hàng" Background="Gray">
+            <PhuDinhCommonControl:tChuyenHangDonHangView/>
+        </TabItem>
+        <TabItem Header="Đơn hàng" Background="Gray">
+            <PhuDinhCommonControl:tDonHangView/>
+        </TabItem>
+        <TabItem Header="Mặt hàng" Background="Gray">
+            <PhuDinhCommonControl:tMatHangView/>
+        </TabItem>
+    </TabControl>    
 </UserControl>
