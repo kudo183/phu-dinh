@@ -138,6 +138,9 @@
     <Compile Include="EntityDataGrid\1Level\DGChanh.xaml.cs">
       <DependentUpon>DGChanh.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Menu\BottomMenu.xaml.cs">
+      <DependentUpon>BottomMenu.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\1Level\rDiaDiemView.xaml.cs">
       <DependentUpon>rDiaDiemView.xaml</DependentUpon>
     </Compile>
@@ -355,6 +358,10 @@
     <Page Include="EntityDataGrid\1Level\DGChanh.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Menu\BottomMenu.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="View\1Level\rDiaDiemView.xaml">
       <Generator>MSBuild:Compile</Generator>
