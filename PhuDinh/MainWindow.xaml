@@ -3,25 +3,20 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" x:Class="PhuDinh.MainWindow"
+        xmlns:PhuDinhCommonControl="clr-namespace:PhuDinhCommonControl;assembly=PhuDinhCommonControl" mc:Ignorable="d" x:Class="PhuDinh.MainWindow"
         Title="MainWindow" Height="350" Width="525" WindowState="Maximized">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
-            <StackPanel Orientation="Horizontal" Background="Tan" ScrollViewer.HorizontalScrollBarVisibility="Auto">
-                <RadioButton GroupName="group" Style="{StaticResource {x:Type ToggleButton}}" Padding="5" Margin="5" Content="Chuyến Hàng" x:Name="btnChuyenHang" Click="btnChuyenHang_Click"/>
-                <RadioButton GroupName="group" Style="{StaticResource {x:Type ToggleButton}}" Padding="5" Margin="5" Content="Đơn Hàng" x:Name="btnDonHang" Click="btnDonHang_Click"/>
-                <RadioButton GroupName="group" Style="{StaticResource {x:Type ToggleButton}}" Padding="5" Margin="5" Content="Bãi Xe" x:Name="btnBaiXe" Click="btnBaiXe_Click"/>
-                <RadioButton GroupName="group" Style="{StaticResource {x:Type ToggleButton}}" Padding="5" Margin="5" Content="Mặt Hàng" x:Name="btnMatHang" Click="btnMatHang_Click"/>
-                <RadioButton GroupName="group" Style="{StaticResource {x:Type ToggleButton}}" Padding="5" Margin="5" Content="Nhân Viên" x:Name="btnNhanVien" Click="btnNhanVien_Click"/>
-                <RadioButton GroupName="group" Style="{StaticResource {x:Type ToggleButton}}" Padding="5" Margin="5" Content="Chi Phí" x:Name="btnChiPhi" Click="btnChiPhi_Click"/>
-                <RadioButton GroupName="group" Style="{StaticResource {x:Type ToggleButton}}" Padding="5" Margin="5" Content="Khách Hàng" x:Name="btnKhachHang" Click="btnKhachHang_Click"/>
-                <RadioButton GroupName="group" Style="{StaticResource {x:Type ToggleButton}}" Padding="5" Margin="5" Content="Tất cả" x:Name="btnAdmin" Click="btnAdmin_Click"/>
-            </StackPanel>
-        </ScrollViewer>
-        <Border Grid.Row="1" x:Name="_brdMainContent" BorderThickness="1" BorderBrush="Black" Margin="3" Padding="2"/>
-    </Grid>
+    <TabControl>
+        <TabItem Header="Don Hang" Background="Aquamarine">
+            <PhuDinhCommonControl:DonHangView/>
+        </TabItem>
+        <TabItem Header="Chuyen Hang" Background="Aquamarine">
+            <PhuDinhCommonControl:ChuyenHangView/>
+        </TabItem>
+        <TabItem Header="Khach Hang" Background="Aquamarine">
+            <PhuDinhCommonControl:KhachHangView/>
+        </TabItem>
+        <TabItem Header="Chi Phi" Background="Aquamarine">
+            <PhuDinhCommonControl:ChiPhiView/>
+        </TabItem>
+    </TabControl>
 </Window>
