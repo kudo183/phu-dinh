@@ -218,6 +218,8 @@
           <Property Name="Ma" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="MaLoai" Type="int" Nullable="false" />
           <Property Name="TenMatHang" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="SoKy" Type="int" Nullable="false" />
+          <Property Name="SoMet" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK_rChanh_rBaiXe">
           <End Role="rBaiXe" Type="PhuDinhModel.Store.rBaiXe" Multiplicity="1" />
@@ -636,6 +638,8 @@
           <Property Type="String" Name="TenMatHang" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="rLoaiHang" Relationship="PhuDinhModel.FK_tMatHang_rLoaiHang" FromRole="tMatHang" ToRole="rLoaiHang" />
           <NavigationProperty Name="tChiTietDonHangs" Relationship="PhuDinhModel.FK_tChiTietDonHang_tMatHang" FromRole="tMatHang" ToRole="tChiTietDonHang" />
+          <Property Type="Int32" Name="SoKy" Nullable="false" />
+          <Property Type="Int32" Name="SoMet" Nullable="false" />
         </EntityType>
         <Association Name="FK_rChanh_rBaiXe">
           <End Type="PhuDinhModel.rBaiXe" Role="rBaiXe" Multiplicity="1" />
@@ -980,6 +984,8 @@
           <EntitySetMapping Name="tMatHangs">
             <EntityTypeMapping TypeName="PhuDinhModel.tMatHang">
               <MappingFragment StoreEntitySet="tMatHang">
+                <ScalarProperty Name="SoMet" ColumnName="SoMet" />
+                <ScalarProperty Name="SoKy" ColumnName="SoKy" />
                 <ScalarProperty Name="TenMatHang" ColumnName="TenMatHang" />
                 <ScalarProperty Name="MaLoai" ColumnName="MaLoai" />
                 <ScalarProperty Name="Ma" ColumnName="Ma" />

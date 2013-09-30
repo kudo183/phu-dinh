@@ -28,6 +28,12 @@ namespace PhuDinhData
         private string _tenmathang;
         public string TenMatHang { get { return _tenmathang; } set { if(_tenmathang == value) return; _tenmathang = value; base.RaisePropertyChanged("TenMatHang");} }
     
+        private int _soky;
+        public int SoKy { get { return _soky; } set { if(_soky == value) return; _soky = value; base.RaisePropertyChanged("SoKy");} }
+    
+        private int _somet;
+        public int SoMet { get { return _somet; } set { if(_somet == value) return; _somet = value; base.RaisePropertyChanged("SoMet");} }
+    
     
         public virtual rLoaiHang rLoaiHang { get; set; }
         public virtual ICollection<tChiTietDonHang> tChiTietDonHangs { get; set; }

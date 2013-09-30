@@ -31,6 +31,8 @@ namespace PhuDinhData.DesignTimeData
                 Ma = i,
                 MaLoai = i,
                 TenMatHang = "Mặt hàng " + i,
+                SoKy = i,
+                SoMet = i * 10,
                 rLoaiHang = DDrLoaiHang.Create(i),
                 rLoaiHangList = DDrLoaiHang.rLoaiHangs
             };

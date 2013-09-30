@@ -20,5 +20,7 @@
                                                  SelectedItemBinding="{Binding rLoaiHang, UpdateSourceTrigger=PropertyChanged}"
                                                  ItemsSource="{Binding rLoaiHangList}"/>
         <CustomControl:DataGridTextColumnExt x:Name="tenMatHangColumn" Header="Tên Mặt Hàng" Binding="{Binding TenMatHang}"/>
+        <CustomControl:DataGridTextRightAlignColumn x:Name="soKyColumn" Header="Số ký" Binding="{Binding SoKy}"/>
+        <CustomControl:DataGridTextRightAlignColumn x:Name="soMetColumn" Header="Số Mét" Binding="{Binding SoMet}"/>
     </DataGrid.Columns>
 </CustomControl:DataGridExt>
