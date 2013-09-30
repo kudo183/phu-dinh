@@ -2,7 +2,11 @@
     [Ma]         INT            IDENTITY (1, 1) NOT NULL,
     [MaLoai]     INT            NOT NULL,
     [TenMatHang] NVARCHAR (200) NOT NULL,
+    [SoKy]       INT            CONSTRAINT [DF_tMatHang_SoKy] DEFAULT ((0)) NOT NULL,
+    [SoMet]      INT            CONSTRAINT [DF_tMatHang_SoMet] DEFAULT ((0)) NOT NULL,
     CONSTRAINT [PK_Product] PRIMARY KEY CLUSTERED ([Ma] ASC),
     CONSTRAINT [FK_tMatHang_rLoaiHang] FOREIGN KEY ([MaLoai]) REFERENCES [dbo].[rLoaiHang] ([Ma])
 );
+
+
 
