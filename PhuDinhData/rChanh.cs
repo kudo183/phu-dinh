@@ -17,6 +17,7 @@ namespace PhuDinhData
         public rChanh()
         {
             this.tDonHangs = new HashSet<tDonHang>();
+            this.rKhachHangChanhs = new HashSet<rKhachHangChanh>();
         }
     
         private int _ma;
@@ -31,5 +32,6 @@ namespace PhuDinhData
     
         public virtual rBaiXe rBaiXe { get; set; }
         public virtual ICollection<tDonHang> tDonHangs { get; set; }
+        public virtual ICollection<rKhachHangChanh> rKhachHangChanhs { get; set; }
     }
 }

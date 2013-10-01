@@ -37,6 +37,9 @@
         <EntityTypeShape EntityType="PhuDinhModel.tChiPhi" Width="1.5" PointX="7.8038561641256585" PointY="19.69652410768742" />
         <AssociationConnector Association="PhuDinhModel.FK_tChiPhiNhanVienGiaoHang_rLoaiChiPhi" />
         <AssociationConnector Association="PhuDinhModel.FK_tChiPhiNhanVienGiaoHang_rNhanVienGiaoHang" />
+        <EntityTypeShape EntityType="PhuDinhModel.rKhachHangChanh" Width="1.5" PointX="11.178631430109325" PointY="16.354379736052071" />
+        <AssociationConnector Association="PhuDinhModel.FK_rKhachHangChanh_rChanh" />
+        <AssociationConnector Association="PhuDinhModel.FK_rKhachHangChanh_rKhachHang" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
