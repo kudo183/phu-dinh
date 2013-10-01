@@ -117,8 +117,8 @@
     <Compile Include="EntityDataGrid\0Level\DGPhuongTien.xaml.cs">
       <DependentUpon>DGPhuongTien.xaml</DependentUpon>
     </Compile>
-    <Compile Include="EntityDataGrid\1Level\DGNhanVienGiaoHang.xaml.cs">
-      <DependentUpon>DGNhanVienGiaoHang.xaml</DependentUpon>
+    <Compile Include="EntityDataGrid\1Level\DGNhanVien.xaml.cs">
+      <DependentUpon>DGNhanVien.xaml</DependentUpon>
     </Compile>
     <Compile Include="EntityDataGrid\0Level\DGLoaiChiPhi.xaml.cs">
       <DependentUpon>DGLoaiChiPhi.xaml</DependentUpon>
@@ -169,8 +169,8 @@
     <Compile Include="View\2Level\tChiPhiView.xaml.cs">
       <DependentUpon>tChiPhiView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\1Level\rNhanVienGiaoHangView.xaml.cs">
-      <DependentUpon>rNhanVienGiaoHangView.xaml</DependentUpon>
+    <Compile Include="View\1Level\rNhanVienView.xaml.cs">
+      <DependentUpon>rNhanVienView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\0Level\rLoaiChiPhiView.xaml.cs">
       <DependentUpon>rLoaiChiPhiView.xaml</DependentUpon>
@@ -331,7 +331,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="EntityDataGrid\1Level\DGNhanVienGiaoHang.xaml">
+    <Page Include="EntityDataGrid\1Level\DGNhanVien.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -399,7 +399,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\1Level\rNhanVienGiaoHangView.xaml">
+    <Page Include="View\1Level\rNhanVienView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

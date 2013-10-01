@@ -3,11 +3,11 @@
 namespace PhuDinhCommonControl.EntityDataGrid
 {
     /// <summary>
-    /// Interaction logic for DGNhanVienGiaoHang.xaml
+    /// Interaction logic for DGNhanVien.xaml
     /// </summary>
-    public partial class DGNhanVienGiaoHang : DataGridExt
+    public partial class DGNhanVien : DataGridExt
     {
-        public DGNhanVienGiaoHang()
+        public DGNhanVien()
         {
             InitializeComponent();
         }

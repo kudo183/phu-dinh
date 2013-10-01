@@ -39,7 +39,7 @@ namespace PhuDinhCommonControl
                     return;
                 }
 
-                var data = dgNhanVienGiaoHang.DataContext as ObservableCollection<PhuDinhData.rNhanVien>;
+                var data = dgNhanVien.DataContext as ObservableCollection<PhuDinhData.rNhanVien>;
                 PhuDinhData.Repository.rNhanVienRepository.Save(_context, data.ToList(), FilterNhanVien);
             }
             catch (Exception ex)
@@ -61,11 +61,11 @@ namespace PhuDinhCommonControl
         {
             if (FilterNhanVien == null)
             {
-                dgNhanVienGiaoHang.DataContext = null;
+                dgNhanVien.DataContext = null;
                 return;
             }
 
-            var index = dgNhanVienGiaoHang.SelectedIndex;
+            var index = dgNhanVien.SelectedIndex;
 
             if (_rNhanViens != null)
             {
@@ -80,9 +80,9 @@ namespace PhuDinhCommonControl
 
             UpdatePhuongTienReferenceData();
 
-            dgNhanVienGiaoHang.DataContext = _rNhanViens;
+            dgNhanVien.DataContext = _rNhanViens;
 
-            dgNhanVienGiaoHang.SelectedIndex = index;
+            dgNhanVien.SelectedIndex = index;
         }
 
         void collection_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
@@ -100,9 +100,9 @@ namespace PhuDinhCommonControl
         }
         #endregion
 
-        private void dgNhanVienGiaoHang_HeaderAddButtonClick(object sender, EventArgs e)
+        private void dgNhanVien_HeaderAddButtonClick(object sender, EventArgs e)
         {
-            dgNhanVienGiaoHang.CommitEdit();
+            dgNhanVien.CommitEdit();
 
             var view = new rPhuongTienView();
             view.RefreshView();
