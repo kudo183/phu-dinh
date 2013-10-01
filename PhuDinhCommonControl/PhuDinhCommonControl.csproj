@@ -96,6 +96,9 @@
     <Compile Include="EntityDataGrid\0Level\DGNuoc.xaml.cs">
       <DependentUpon>DGNuoc.xaml</DependentUpon>
     </Compile>
+    <Compile Include="EntityDataGrid\3Level\DGKhachHangChanh.xaml.cs">
+      <DependentUpon>DGKhachHangChanh.xaml</DependentUpon>
+    </Compile>
     <Compile Include="EntityDataGrid\3Level\DGDonHang.xaml.cs">
       <DependentUpon>DGDonHang.xaml</DependentUpon>
     </Compile>
@@ -146,6 +149,9 @@
     </Compile>
     <Compile Include="View\0Level\rNuocView.xaml.cs">
       <DependentUpon>rNuocView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\3Level\rKhachHangChanhView.xaml.cs">
+      <DependentUpon>rKhachHangChanhView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\4Level\tChuyenHangDonHangView.xaml.cs">
       <DependentUpon>tChuyenHangDonHangView.xaml</DependentUpon>
@@ -303,6 +309,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="EntityDataGrid\3Level\DGKhachHangChanh.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="EntityDataGrid\3Level\DGDonHang.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -368,6 +378,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="View\0Level\rNuocView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\3Level\rKhachHangChanhView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

@@ -19,6 +19,9 @@
         <TabItem Header="Khách hàng" Background="Gray">
             <PhuDinhCommonControl:rKhachHangView/>
         </TabItem>
+        <TabItem Header="Khách hàng chành" Background="Gray">
+            <PhuDinhCommonControl:rKhachHangChanhView/>
+        </TabItem>
         <TabItem Header="Loại chi phí" Background="Gray">
             <PhuDinhCommonControl:rLoaiChiPhiView/>
         </TabItem>

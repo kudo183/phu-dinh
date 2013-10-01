@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="BindableObject.cs" />
     <Compile Include="BusinessLogics\BusinessLogics.cs" />
+    <Compile Include="DesignTimeData\3Level\DDrKhachHangChanh.cs" />
     <Compile Include="DesignTimeData\5Level\DDtChiTietChuyenHangDonHang.cs" />
     <Compile Include="DesignTimeData\4Level\DDtChuyenHangDonHang.cs" />
     <Compile Include="DesignTimeData\3Level\DDtDonHang.cs" />
@@ -64,6 +65,7 @@
     <Compile Include="DesignTimeData\0Level\DDrNuoc.cs" />
     <Compile Include="DesignTimeData\0Level\DDrBaiXe.cs" />
     <Compile Include="DesignTimeData\1Level\DDrChanh.cs" />
+    <Compile Include="EntityExt\rKhachHangChanhExt.cs" />
     <Compile Include="EntityExt\tChuyenHangDonHangExt.cs" />
     <Compile Include="EntityExt\tChiTietChuyenHangDonHangExt.cs" />
     <Compile Include="EntityExt\rKhachHangExt.cs" />
@@ -72,6 +74,7 @@
     <Compile Include="rDiaDiem.cs">
       <DependentUpon>PhuDinh.tt</DependentUpon>
     </Compile>
+    <Compile Include="Repository\rKhachHangChanhRepository.cs" />
     <Compile Include="Repository\Repository.cs" />
     <Compile Include="Repository\rNuocRepository.cs" />
     <Compile Include="Repository\tChuyenHangRepository.cs" />
