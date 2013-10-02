@@ -218,6 +218,9 @@
     <Compile Include="View\ComplexView\ChuyenHangView.xaml.cs">
       <DependentUpon>ChuyenHangView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\ComplexView\KhachHangChanhView.xaml.cs">
+      <DependentUpon>KhachHangChanhView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\ComplexView\DonHangView.xaml.cs">
       <DependentUpon>DonHangView.xaml</DependentUpon>
     </Compile>
@@ -450,6 +453,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="View\ComplexView\ChuyenHangView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\ComplexView\KhachHangChanhView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
