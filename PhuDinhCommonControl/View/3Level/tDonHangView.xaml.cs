@@ -162,7 +162,7 @@ namespace PhuDinhCommonControl
                     UpdateKhachHangReferenceData();
                     break;
                 case "Chành":
-                    view = new rChanhView();
+                    view = new rKhachHangChanhView();
                     view.RefreshView();
                     ChildWindowUtils.ShowChildWindow("Chành", view);
 
