@@ -52,7 +52,7 @@ namespace PhuDinhCommonControl
 
             RefreshChiTietChuyenHangDonHang(chuyenHangDonHang);
 
-            if (chuyenHangDonHang.tChiTietChuyenHangDonHangs.Count > 0)
+            if (chuyenHangDonHang != null && chuyenHangDonHang.tChiTietChuyenHangDonHangs.Count > 0)
             {
                 return;
             }
