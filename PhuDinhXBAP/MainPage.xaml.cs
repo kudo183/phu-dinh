@@ -36,7 +36,7 @@ namespace PhuDinhXBAP
             var hashed = hasher.ComputeHash(unhashedPassword);
             var base64 = System.Convert.ToBase64String(hashed);
 
-            if (string.Equals(base64, ConfigurationManager.AppSettings["Login"]))
+            if (string.Equals(base64, ConfigurationManager.AppSettings["LoginHash"]))
             {
                 mainContent.Visibility = Visibility.Visible;
                 loginSP.Visibility = Visibility.Collapsed;
