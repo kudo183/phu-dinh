@@ -11,8 +11,8 @@ BEGIN
 	delete from dbo.tChiTietDonHang
 	delete from dbo.tDonHang
 	delete from dbo.tChuyenHang
-	delete from dbo.tChiPhiNhanVienGiaoHang
-	delete from dbo.rNhanVienGiaoHang
+	delete from dbo.tChiPhi
+	delete from dbo.rNhanVien
 	delete from dbo.tMatHang
 	delete from dbo.rKhachHang
 	delete from dbo.rPhuongTien
@@ -27,8 +27,8 @@ BEGIN
 	dbcc checkident (tChiTietDonHang, reseed, 0)
 	dbcc checkident (tDonHang, reseed, 0)
 	dbcc checkident (tChuyenHang, reseed, 0)
-	dbcc checkident (tChiPhiNhanVienGiaoHang, reseed, 0)
-	dbcc checkident (rNhanVienGiaoHang, reseed, 0)
+	dbcc checkident (tChiPhi, reseed, 0)
+	dbcc checkident (rNhanVien, reseed, 0)
 	dbcc checkident (tMatHang, reseed, 0)
 	dbcc checkident (rKhachHang, reseed, 0)
 	dbcc checkident (rPhuongTien, reseed, 0)
