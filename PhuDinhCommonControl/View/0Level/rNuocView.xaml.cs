@@ -12,7 +12,7 @@ namespace PhuDinhCommonControl
     {
         public Expression<Func<PhuDinhData.rNuoc, bool>> FilterNuoc { get; set; }
 
-        private PhuDinhData.PhuDinhEntities _context = new PhuDinhData.PhuDinhEntities();
+        private PhuDinhData.PhuDinhEntities _context = ContextFactory.CreateContext();
 
         public rNuocView()
         {
@@ -48,7 +48,7 @@ namespace PhuDinhCommonControl
         {
             var index = dgNuoc.SelectedIndex;
 
-            _context = new PhuDinhData.PhuDinhEntities();
+            _context = ContextFactory.CreateContext();
             dgNuoc.DataContext = PhuDinhData.Repository.rNuocRepository.GetData(_context, FilterNuoc);
 
             dgNuoc.SelectedIndex = index;

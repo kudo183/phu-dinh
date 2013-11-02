@@ -23,7 +23,7 @@ namespace PhuDinhCommonControl
         private List<PhuDinhData.rKhachHang> _rKhachHangs;
         private List<PhuDinhData.rChanh> _rChanhs;
 
-        private PhuDinhData.PhuDinhEntities _context = new PhuDinhData.PhuDinhEntities();
+        private PhuDinhData.PhuDinhEntities _context = ContextFactory.CreateContext();
 
         private bool _isUsedDateFilter = true;
         private DateTime _filterDate = DateTime.Now.Date;
@@ -112,7 +112,7 @@ namespace PhuDinhCommonControl
                 _tDonHangs.CollectionChanged -= collection_CollectionChanged;
             }
 
-            _context = new PhuDinhData.PhuDinhEntities();
+            _context = ContextFactory.CreateContext();
             var tDonHangs = PhuDinhData.Repository.tDonHangRepository.GetData(_context, FilterDonHang.FilterDonHang);
 
             _tDonHangs = new ObservableCollection<PhuDinhData.tDonHang>(tDonHangs);

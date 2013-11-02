@@ -19,7 +19,7 @@ namespace PhuDinhCommonControl
 
         private ObservableCollection<PhuDinhData.rChanh> _rChanhs;
         private List<PhuDinhData.rBaiXe> _rBaiXes;
-        private PhuDinhData.PhuDinhEntities _context = new PhuDinhData.PhuDinhEntities();
+        private PhuDinhData.PhuDinhEntities _context = ContextFactory.CreateContext();
 
         public rChanhView()
         {
@@ -72,7 +72,7 @@ namespace PhuDinhCommonControl
                 _rChanhs.CollectionChanged -= collection_CollectionChanged;
             }
 
-            _context = new PhuDinhData.PhuDinhEntities();
+            _context = ContextFactory.CreateContext();
             var rChanhs = PhuDinhData.Repository.rChanhRepository.GetData(_context, FilterChanh);
 
             _rChanhs = new ObservableCollection<PhuDinhData.rChanh>(rChanhs);

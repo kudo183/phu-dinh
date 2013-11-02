@@ -11,8 +11,8 @@ namespace PhuDinhCommonControl
     public partial class rPhuongTienView : BaseView
     {
         public Expression<Func<PhuDinhData.rPhuongTien, bool>> FilterPhuongTien { get; set; }
-        
-        private PhuDinhData.PhuDinhEntities _context = new PhuDinhData.PhuDinhEntities();
+
+        private PhuDinhData.PhuDinhEntities _context = ContextFactory.CreateContext();
 
         public rPhuongTienView()
         {
@@ -49,7 +49,7 @@ namespace PhuDinhCommonControl
         {
             var index = dgPhuongTien.SelectedIndex;
 
-            _context = new PhuDinhData.PhuDinhEntities();
+            _context = ContextFactory.CreateContext();
             dgPhuongTien.DataContext = PhuDinhData.Repository.rPhuongTienRepository.GetData(_context, FilterPhuongTien);
 
             dgPhuongTien.SelectedIndex = index;

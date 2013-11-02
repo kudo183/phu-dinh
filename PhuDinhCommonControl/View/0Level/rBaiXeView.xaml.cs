@@ -12,7 +12,7 @@ namespace PhuDinhCommonControl
     {
         public Expression<Func<PhuDinhData.rBaiXe, bool>> FilterBaiXe { get; set; }
 
-        private PhuDinhData.PhuDinhEntities _context = new PhuDinhData.PhuDinhEntities();
+        private PhuDinhData.PhuDinhEntities _context = ContextFactory.CreateContext();
 
         public rBaiXeView()
         {
@@ -48,7 +48,7 @@ namespace PhuDinhCommonControl
         {
             var index = dgBaiXe.SelectedIndex;
 
-            _context = new PhuDinhData.PhuDinhEntities();
+            _context = ContextFactory.CreateContext();
             dgBaiXe.DataContext = PhuDinhData.Repository.rBaiXeRepository.GetData(_context, FilterBaiXe);
 
             dgBaiXe.SelectedIndex = index;

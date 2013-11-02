@@ -43,6 +43,7 @@
     <Reference Include="ReachFramework" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Deployment" />
@@ -63,6 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ChildWindowUtils.cs" />
+    <Compile Include="ContextFactory.cs" />
     <Compile Include="CustomControl\DataGridColumn\DataGridCheckBoxColumnExt.xaml.cs">
       <DependentUpon>DataGridCheckBoxColumnExt.xaml</DependentUpon>
     </Compile>
@@ -243,7 +245,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="App.config" />
     <None Include="packages.config" />
     <None Include="Properties\DataSources\PhuDinhData.PhuDinhEntities.datasource" />
     <None Include="Properties\DataSources\PhuDinhData.rBaiXe.datasource" />

@@ -12,7 +12,7 @@ namespace PhuDinhCommonControl
     {
         public Expression<Func<PhuDinhData.rLoaiChiPhi, bool>> FilterLoaiChiPhi { get; set; }
 
-        private PhuDinhData.PhuDinhEntities _context = new PhuDinhData.PhuDinhEntities();
+        private PhuDinhData.PhuDinhEntities _context = ContextFactory.CreateContext();
 
         public rLoaiChiPhiView()
         {
@@ -48,7 +48,7 @@ namespace PhuDinhCommonControl
         {
             var index = dgLoaiChiPhi.SelectedIndex;
 
-            _context = new PhuDinhData.PhuDinhEntities();
+            _context = ContextFactory.CreateContext();
             dgLoaiChiPhi.DataContext = PhuDinhData.Repository.rLoaiChiPhiRepository.GetData(_context, FilterLoaiChiPhi);
 
             dgLoaiChiPhi.SelectedIndex = index;

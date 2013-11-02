@@ -12,7 +12,7 @@ namespace PhuDinhCommonControl
     {
         public Expression<Func<PhuDinhData.rLoaiHang, bool>> FilterLoaiHang { get; set; }
 
-        private PhuDinhData.PhuDinhEntities _context = new PhuDinhData.PhuDinhEntities();
+        private PhuDinhData.PhuDinhEntities _context = ContextFactory.CreateContext();
 
         public rLoaiHangView()
         {
@@ -48,7 +48,7 @@ namespace PhuDinhCommonControl
         {
             var index = dgLoaiHang.SelectedIndex;
 
-            _context = new PhuDinhData.PhuDinhEntities();
+            _context = ContextFactory.CreateContext();
             dgLoaiHang.DataContext = PhuDinhData.Repository.rLoaiHangRepository.GetData(_context, FilterLoaiHang);
 
             dgLoaiHang.SelectedIndex = index;

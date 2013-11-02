@@ -19,7 +19,7 @@ namespace PhuDinhCommonControl
 
         private ObservableCollection<PhuDinhData.rKhachHang> _rKhachHangs;
         private List<PhuDinhData.rDiaDiem> _rDiaDiems;
-        private PhuDinhData.PhuDinhEntities _context = new PhuDinhData.PhuDinhEntities();
+        private PhuDinhData.PhuDinhEntities _context = ContextFactory.CreateContext();
 
         public rKhachHangView()
         {
@@ -72,7 +72,7 @@ namespace PhuDinhCommonControl
                 _rKhachHangs.CollectionChanged -= collection_CollectionChanged;
             }
 
-            _context = new PhuDinhData.PhuDinhEntities();
+            _context = ContextFactory.CreateContext();
             var rKhachHangs = PhuDinhData.Repository.rKhachHangRepository.GetData(_context, FilterKhachHang);
 
             _rKhachHangs = new ObservableCollection<PhuDinhData.rKhachHang>(rKhachHangs);

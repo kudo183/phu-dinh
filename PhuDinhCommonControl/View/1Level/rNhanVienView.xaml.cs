@@ -19,7 +19,7 @@ namespace PhuDinhCommonControl
 
         private ObservableCollection<PhuDinhData.rNhanVien> _rNhanViens;
         private List<PhuDinhData.rPhuongTien> _rPhuongTiens;
-        private PhuDinhData.PhuDinhEntities _context = new PhuDinhData.PhuDinhEntities();
+        private PhuDinhData.PhuDinhEntities _context = ContextFactory.CreateContext();
 
         public rNhanVienView()
         {
@@ -72,7 +72,7 @@ namespace PhuDinhCommonControl
                 _rNhanViens.CollectionChanged -= collection_CollectionChanged;
             }
 
-            _context = new PhuDinhData.PhuDinhEntities();
+            _context = ContextFactory.CreateContext();
             var rNhanViens = PhuDinhData.Repository.rNhanVienRepository.GetData(_context, FilterNhanVien);
 
             _rNhanViens = new ObservableCollection<PhuDinhData.rNhanVien>(rNhanViens);

@@ -19,7 +19,7 @@ namespace PhuDinhCommonControl
         private ObservableCollection<PhuDinhData.tChuyenHang> _tChuyenHangs;
         private List<PhuDinhData.rNhanVien> _rNhanViens;
 
-        private PhuDinhData.PhuDinhEntities _context = new PhuDinhData.PhuDinhEntities();
+        private PhuDinhData.PhuDinhEntities _context = ContextFactory.CreateContext();
 
         private bool _isUsedDateFilter = true;
         private DateTime _filterDate = DateTime.Now.Date;
@@ -106,7 +106,7 @@ namespace PhuDinhCommonControl
                 _tChuyenHangs.CollectionChanged -= collection_CollectionChanged;
             }
 
-            _context = new PhuDinhData.PhuDinhEntities();
+            _context = ContextFactory.CreateContext();
             var tChuyenHangs = PhuDinhData.Repository.tChuyenHangRepository.GetData(_context, FilterChuyenHang);
 
             _tChuyenHangs = new ObservableCollection<PhuDinhData.tChuyenHang>(tChuyenHangs);

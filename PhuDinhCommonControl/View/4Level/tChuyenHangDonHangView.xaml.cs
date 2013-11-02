@@ -24,7 +24,7 @@ namespace PhuDinhCommonControl
         private ObservableCollection<PhuDinhData.tChuyenHangDonHang> _tChuyenHangDonHangs;
         private List<PhuDinhData.tChuyenHang> _tChuyenHangs;
         private List<PhuDinhData.tDonHang> _tDonHangs;
-        private PhuDinhData.PhuDinhEntities _context = new PhuDinhData.PhuDinhEntities();
+        private PhuDinhData.PhuDinhEntities _context = ContextFactory.CreateContext();
 
         public tChuyenHangDonHangView()
         {
@@ -78,7 +78,7 @@ namespace PhuDinhCommonControl
                 _tChuyenHangDonHangs.CollectionChanged -= collection_CollectionChanged;
             }
 
-            _context = new PhuDinhData.PhuDinhEntities();
+            _context = ContextFactory.CreateContext();
             var tChuyenHangDonHangs = PhuDinhData.Repository.tChuyenHangDonHangRepository.GetData(_context, FilterChuyenHangDonHang);
 
             _tChuyenHangDonHangs = new ObservableCollection<PhuDinhData.tChuyenHangDonHang>(tChuyenHangDonHangs);

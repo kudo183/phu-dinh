@@ -18,7 +18,7 @@ namespace PhuDinhCommonControl
 
         private ObservableCollection<PhuDinhData.rDiaDiem> _rDiaDiems;
         private List<PhuDinhData.rNuoc> _rNuocs;
-        private PhuDinhData.PhuDinhEntities _context = new PhuDinhData.PhuDinhEntities();
+        private PhuDinhData.PhuDinhEntities _context = ContextFactory.CreateContext();
 
         public rDiaDiemView()
         {
@@ -71,7 +71,7 @@ namespace PhuDinhCommonControl
                 _rDiaDiems.CollectionChanged -= collection_CollectionChanged;
             }
 
-            _context = new PhuDinhData.PhuDinhEntities();
+            _context = ContextFactory.CreateContext();
             var rDiaDiems = PhuDinhData.Repository.rDiaDiemRepository.GetData(_context, FilterDiaDiem);
 
             _rDiaDiems = new ObservableCollection<PhuDinhData.rDiaDiem>(rDiaDiems);

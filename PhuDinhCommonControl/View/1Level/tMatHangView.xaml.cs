@@ -19,7 +19,7 @@ namespace PhuDinhCommonControl
 
         private ObservableCollection<PhuDinhData.tMatHang> _tMatHangs;
         private List<PhuDinhData.rLoaiHang> _rLoaiHangs;
-        private PhuDinhData.PhuDinhEntities _context = new PhuDinhData.PhuDinhEntities();
+        private PhuDinhData.PhuDinhEntities _context = ContextFactory.CreateContext();
 
         public tMatHangView()
         {
@@ -72,7 +72,7 @@ namespace PhuDinhCommonControl
                 _tMatHangs.CollectionChanged -= collection_CollectionChanged;
             }
 
-            _context = new PhuDinhData.PhuDinhEntities();
+            _context = ContextFactory.CreateContext();
             var tMatHangs = PhuDinhData.Repository.tMatHangRepository.GetData(_context, FilterMatHang);
 
             _tMatHangs = new ObservableCollection<PhuDinhData.tMatHang>(tMatHangs);
