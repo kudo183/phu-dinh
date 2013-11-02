@@ -1,4 +1,5 @@
-﻿using System.Security.Cryptography;
+﻿using System.Configuration;
+using System.Security.Cryptography;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -34,7 +35,8 @@ namespace PhuDinhXBAP
             var unhashedPassword = System.Text.Encoding.Unicode.GetBytes(txtPassword.Password);
             var hashed = hasher.ComputeHash(unhashedPassword);
             var base64 = System.Convert.ToBase64String(hashed);
-            if (string.Equals(base64, "zLhmNPCmBNoiyzeJ9TqQJn6EDxSY1eUp2oblFCuVOc8="))
+
+            if (string.Equals(base64, ConfigurationManager.AppSettings["Login"]))
             {
                 mainContent.Visibility = Visibility.Visible;
                 loginSP.Visibility = Visibility.Collapsed;
