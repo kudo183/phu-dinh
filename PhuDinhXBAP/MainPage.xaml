@@ -27,6 +27,9 @@
             <TabItem Header="Chi Phi" Background="Aquamarine">
                 <PhuDinhCommonControl:ChiPhiView/>
             </TabItem>
+            <TabItem Header="Tat ca" Background="Aquamarine">
+                <PhuDinhCommonControl:AdminView/>
+            </TabItem>
         </TabControl>
     </Grid>
 </Page>

@@ -209,6 +209,9 @@
     <Compile Include="View\1Level\tMatHangView.xaml.cs">
       <DependentUpon>tMatHangView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\ComplexView\AdminView.xaml.cs">
+      <DependentUpon>AdminView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\ComplexView\BaiXeView.xaml.cs">
       <DependentUpon>BaiXeView.xaml</DependentUpon>
     </Compile>
@@ -443,6 +446,10 @@
     <Page Include="View\1Level\tMatHangView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ComplexView\AdminView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="View\ComplexView\BaiXeView.xaml">
       <Generator>MSBuild:Compile</Generator>

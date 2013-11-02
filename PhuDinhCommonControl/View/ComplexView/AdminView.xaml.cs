@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace PhuDinh
+namespace PhuDinhCommonControl
 {
     /// <summary>
     /// Interaction logic for AdminView.xaml
