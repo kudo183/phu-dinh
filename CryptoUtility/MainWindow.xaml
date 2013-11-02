@@ -1,0 +1,18 @@
+﻿<Window x:Class="CryptoUtility.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="525">
+    <StackPanel Width="500">
+        <TextBlock Text="Input Password"/>
+        <TextBox Name="txtInputPassword"/>
+        <TextBlock Text="Input Text"/>
+        <TextBox Name="txtInputText"/>
+        <StackPanel Orientation="Horizontal">
+            <Button Name="btnEncrypt" Content="Encrypt" Margin="5" Click="btnEncrypt_Click"/>
+            <Button Name="btnDecrypt" Content="Decrypt" Margin="5" Click="btnDecrypt_Click"/>
+            <Button Name="btnHash" Content="Hash" Margin="5" Click="btnHash_Click"/>
+        </StackPanel>
+        <TextBlock Text="Output Text"/>
+        <TextBox Name="txtOutput" IsReadOnly="True"/>
+    </StackPanel>
+</Window>
