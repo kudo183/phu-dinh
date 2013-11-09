@@ -1,5 +1,7 @@
 ﻿using System.Configuration;
+using System.Globalization;
 using System.Security.Cryptography;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -14,6 +16,7 @@ namespace PhuDinhXBAP
         public Page1()
         {
             InitializeComponent();
+            Thread.CurrentThread.CurrentCulture = new CultureInfo("vi-VN");
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
