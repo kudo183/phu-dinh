@@ -42,5 +42,11 @@ namespace PhuDinhData
         public DbSet<rNhanVien> rNhanViens { get; set; }
         public DbSet<tChiPhi> tChiPhis { get; set; }
         public DbSet<rKhachHangChanh> rKhachHangChanhs { get; set; }
+        public DbSet<rLoaiNguyenLieu> rLoaiNguyenLieux { get; set; }
+        public DbSet<rMatHangNguyenLieu> rMatHangNguyenLieux { get; set; }
+        public DbSet<rNguyenLieu> rNguyenLieux { get; set; }
+        public DbSet<rNhaCungCap> rNhaCungCaps { get; set; }
+        public DbSet<tNhapMatHang> tNhapMatHangs { get; set; }
+        public DbSet<tNhapNguyenLieu> tNhapNguyenLieux { get; set; }
     }
 }

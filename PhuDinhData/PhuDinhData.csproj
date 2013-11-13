@@ -95,6 +95,18 @@
     <Compile Include="rKhachHangChanh.cs">
       <DependentUpon>PhuDinh.tt</DependentUpon>
     </Compile>
+    <Compile Include="rLoaiNguyenLieu.cs">
+      <DependentUpon>PhuDinh.tt</DependentUpon>
+    </Compile>
+    <Compile Include="rMatHangNguyenLieu.cs">
+      <DependentUpon>PhuDinh.tt</DependentUpon>
+    </Compile>
+    <Compile Include="rNguyenLieu.cs">
+      <DependentUpon>PhuDinh.tt</DependentUpon>
+    </Compile>
+    <Compile Include="rNhaCungCap.cs">
+      <DependentUpon>PhuDinh.tt</DependentUpon>
+    </Compile>
     <Compile Include="rNhanVien.cs">
       <DependentUpon>PhuDinh.tt</DependentUpon>
     </Compile>
@@ -160,6 +172,12 @@
       <DependentUpon>PhuDinh.tt</DependentUpon>
     </Compile>
     <Compile Include="tMatHang.cs">
+      <DependentUpon>PhuDinh.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tNhapMatHang.cs">
+      <DependentUpon>PhuDinh.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tNhapNguyenLieu.cs">
       <DependentUpon>PhuDinh.tt</DependentUpon>
     </Compile>
   </ItemGroup>

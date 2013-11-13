@@ -17,6 +17,8 @@ namespace PhuDinhData
         public tMatHang()
         {
             this.tChiTietDonHangs = new HashSet<tChiTietDonHang>();
+            this.rMatHangNguyenLieux = new HashSet<rMatHangNguyenLieu>();
+            this.tNhapMatHangs = new HashSet<tNhapMatHang>();
         }
     
         private int _ma;
@@ -34,8 +36,13 @@ namespace PhuDinhData
         private int _somet;
         public int SoMet { get { return _somet; } set { if(_somet == value) return; _somet = value; base.RaisePropertyChanged("SoMet");} }
     
+        private string _tenmathangdaydu;
+        public string TenMatHangDayDu { get { return _tenmathangdaydu; } set { if(_tenmathangdaydu == value) return; _tenmathangdaydu = value; base.RaisePropertyChanged("TenMatHangDayDu");} }
+    
     
         public virtual rLoaiHang rLoaiHang { get; set; }
         public virtual ICollection<tChiTietDonHang> tChiTietDonHangs { get; set; }
+        public virtual ICollection<rMatHangNguyenLieu> rMatHangNguyenLieux { get; set; }
+        public virtual ICollection<tNhapMatHang> tNhapMatHangs { get; set; }
     }
 }
