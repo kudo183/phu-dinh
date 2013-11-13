@@ -1,0 +1,33 @@
+﻿<CustomControl:DataGridExt x:Class="PhuDinhCommonControl.EntityDataGrid.DGNhapNguyenLieu"
+                           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                           xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                           xmlns:CustomControl="clr-namespace:PhuDinhCommonControl.CustomControl"
+                           xmlns:DesignTimeData="clr-namespace:PhuDinhData.DesignTimeData;assembly=PhuDinhData"
+                           xmlns:PhuDinhCommonControl="clr-namespace:PhuDinhCommonControl" mc:Ignorable="d"
+                           d:DataContext="{x:Static DesignTimeData:DDtNhapNguyenLieu.tNhapNguyenLieus}"
+                           AutoGenerateColumns="False" EnableRowVirtualization="False" ItemsSource="{Binding}" SelectionMode="Single">
+    <DataGrid.Columns>
+        <!--Ma-->
+        <CustomControl:DataGridReadOnlyTextColumn x:Name="maColumn"/>
+        <!--Ngay-->
+        <CustomControl:DataGridDateColumn x:Name="ngayColumn" Header="{x:Static PhuDinhCommonControl:DataGridColumnHeaderDateFilter.NhapNguyenLieu}"/>
+        <!--Nha cung cap-->
+        <CustomControl:DataGridComboBoxColumnExt x:Name="nhaCungCapColumn" Header="Nhà cung cấp" HeaderAddButtonClick="headerAddButton_Click"
+                                                 TextBinding="{Binding rNhaCungCap.TenNhaCungCap, Mode=OneWay}"
+                                                 DisplayMemberPath="TenNhaCungCap"
+                                                 SelectedValuePath="Ma"
+                                                 SelectedValueBinding="{Binding MaNhaCungCap, UpdateSourceTrigger=PropertyChanged}"
+                                                 SelectedItemBinding="{Binding rNhaCungCap, UpdateSourceTrigger=PropertyChanged}"
+                                                 ItemsSource="{Binding rNhaCungCapList}"/>
+        <!--Nguyen lieu-->
+        <CustomControl:DataGridComboBoxColumnExt x:Name="nguyenLieuColumn" Header="Nguyên Liệu" HeaderAddButtonClick="headerAddButton_Click"
+                                                 TextBinding="{Binding rNguyenLieu.TenNguyenLieu, Mode=OneWay}"
+                                                 DisplayMemberPath="TenNguyenLieu"
+                                                 SelectedValuePath="Ma"
+                                                 SelectedValueBinding="{Binding MaNguyenLieu, UpdateSourceTrigger=PropertyChanged}"
+                                                 SelectedItemBinding="{Binding rNguyenLieu, UpdateSourceTrigger=PropertyChanged}"
+                                                 ItemsSource="{Binding rNguyenLieuList}"/>
+    </DataGrid.Columns>
+</CustomControl:DataGridExt>

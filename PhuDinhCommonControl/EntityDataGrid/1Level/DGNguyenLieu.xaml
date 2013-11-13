@@ -1,0 +1,24 @@
+﻿<CustomControl:DataGridExt x:Class="PhuDinhCommonControl.EntityDataGrid.DGNguyenLieu"
+                           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                           xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                           xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                           xmlns:CustomControl="clr-namespace:PhuDinhCommonControl.CustomControl"
+                           xmlns:DesignTimeData="clr-namespace:PhuDinhData.DesignTimeData;assembly=PhuDinhData"
+                           mc:Ignorable="d"
+                           d:DataContext="{x:Static DesignTimeData:DDrNguyenLieu.rNguyenLieus}"
+                           AutoGenerateColumns="False" EnableRowVirtualization="False" ItemsSource="{Binding}" SelectionMode="Single">
+    <DataGrid.Columns>
+        <!--Ma-->
+        <CustomControl:DataGridReadOnlyTextColumn x:Name="maColumn"/>
+        <!--Loai Nguyen Lieu-->
+        <CustomControl:DataGridComboBoxColumnExt x:Name="loaiNguyenLieuColumn" Header="Loại Nguyên Liệu" HeaderAddButtonClick="headerAddButton_Click"
+                                                 TextBinding="{Binding rLoaiNguyenLieu.TenLoai, Mode=OneWay}"
+                                                 DisplayMemberPath="TenLoai"
+                                                 SelectedValuePath="Ma"
+                                                 SelectedValueBinding="{Binding MaLoaiNguyenLieu, UpdateSourceTrigger=PropertyChanged}"
+                                                 SelectedItemBinding="{Binding rLoaiNguyenLieu, UpdateSourceTrigger=PropertyChanged}"
+                                                 ItemsSource="{Binding rLoaiNguyenLieuList}"/>
+        <CustomControl:DataGridTextRightAlignColumn x:Name="duongKinhColumn" Header="Đường Kính" Binding="{Binding DuongKinh}"/>
+    </DataGrid.Columns>
+</CustomControl:DataGridExt>

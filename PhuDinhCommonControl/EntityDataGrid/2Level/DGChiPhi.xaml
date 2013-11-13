@@ -23,11 +23,11 @@
                                                  ItemsSource="{Binding rLoaiChiPhiList}"/>
         <!--Nhan vien giao hang-->
         <CustomControl:DataGridComboBoxColumnExt x:Name="nhanVienGiaoHangColumn" Header="Nhân Viên" HeaderAddButtonClick="headerAddButton_Click"
-                                                 TextBinding="{Binding rNhanVienGiaoHang.TenNhanVien, Mode=OneWay}"
+                                                 TextBinding="{Binding rNhanVien.TenNhanVien, Mode=OneWay}"
                                                  DisplayMemberPath="TenNhanVien"
                                                  SelectedValuePath="Ma"
                                                  SelectedValueBinding="{Binding MaNhanVienGiaoHang, UpdateSourceTrigger=PropertyChanged}"
-                                                 SelectedItemBinding="{Binding rNhanVienGiaoHang, UpdateSourceTrigger=PropertyChanged}"
+                                                 SelectedItemBinding="{Binding rNhanVien, UpdateSourceTrigger=PropertyChanged}"
                                                  ItemsSource="{Binding rNhanVienList}"/>
         <!--So tien-->
         <CustomControl:DataGridTextRightAlignColumn x:Name="soTienColumn" Binding="{Binding SoTien, StringFormat=\{0:N0\}}" Header="Số Tiền"/>            

@@ -92,11 +92,29 @@
       <DependentUpon>TimeInput.xaml</DependentUpon>
     </Compile>
     <Compile Include="DataGridColumnHeaderDateFilter.cs" />
+    <Compile Include="EntityDataGrid\0Level\DGNhaCungCap.xaml.cs">
+      <DependentUpon>DGNhaCungCap.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataGrid\0Level\DGLoaiNguyenLieu.xaml.cs">
+      <DependentUpon>DGLoaiNguyenLieu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataGrid\1Level\DGNguyenLieu.xaml.cs">
+      <DependentUpon>DGNguyenLieu.xaml</DependentUpon>
+    </Compile>
     <Compile Include="EntityDataGrid\1Level\DGDiaDiem.xaml.cs">
       <DependentUpon>DGDiaDiem.xaml</DependentUpon>
     </Compile>
     <Compile Include="EntityDataGrid\0Level\DGNuoc.xaml.cs">
       <DependentUpon>DGNuoc.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataGrid\2Level\DGNhapNguyenLieu.xaml.cs">
+      <DependentUpon>DGNhapNguyenLieu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataGrid\2Level\DGNhapMatHang.xaml.cs">
+      <DependentUpon>DGNhapMatHang.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataGrid\2Level\DGMatHangNguyenLieu.xaml.cs">
+      <DependentUpon>DGMatHangNguyenLieu.xaml</DependentUpon>
     </Compile>
     <Compile Include="EntityDataGrid\3Level\DGKhachHangChanh.xaml.cs">
       <DependentUpon>DGKhachHangChanh.xaml</DependentUpon>
@@ -308,11 +326,35 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="EntityDataGrid\0Level\DGNhaCungCap.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="EntityDataGrid\0Level\DGLoaiNguyenLieu.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="EntityDataGrid\1Level\DGNguyenLieu.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="EntityDataGrid\1Level\DGDiaDiem.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
     <Page Include="EntityDataGrid\0Level\DGNuoc.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="EntityDataGrid\2Level\DGNhapNguyenLieu.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="EntityDataGrid\2Level\DGNhapMatHang.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="EntityDataGrid\2Level\DGMatHangNguyenLieu.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

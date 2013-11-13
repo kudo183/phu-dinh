@@ -1,0 +1,31 @@
+﻿<CustomControl:DataGridExt x:Class="PhuDinhCommonControl.EntityDataGrid.DGMatHangNguyenLieu"
+                           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                           xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                           xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                           xmlns:CustomControl="clr-namespace:PhuDinhCommonControl.CustomControl"
+                           xmlns:DesignTimeData="clr-namespace:PhuDinhData.DesignTimeData;assembly=PhuDinhData"
+                           mc:Ignorable="d"
+                           d:DataContext="{x:Static DesignTimeData:DDrMatHangNguyenLieu.rMatHangNguyenLieus}"
+                           AutoGenerateColumns="False" EnableRowVirtualization="False" ItemsSource="{Binding}" SelectionMode="Single">
+    <DataGrid.Columns>
+        <!--Ma-->
+        <CustomControl:DataGridReadOnlyTextColumn x:Name="maColumn"/>
+        <!--Mat hang-->
+        <CustomControl:DataGridComboBoxColumnExt x:Name="matHangColumn" Header="Mặt Hàng" HeaderAddButtonClick="headerAddButton_Click"
+                                                 TextBinding="{Binding tMatHang.TenMatHang, Mode=OneWay}"
+                                                 DisplayMemberPath="TenMatHang"
+                                                 SelectedValuePath="Ma"
+                                                 SelectedValueBinding="{Binding MaMatHang, UpdateSourceTrigger=PropertyChanged}"
+                                                 SelectedItemBinding="{Binding tMatHang, UpdateSourceTrigger=PropertyChanged}"
+                                                 ItemsSource="{Binding tMatHangList}"/>
+        <!--Nguyen lieu-->
+        <CustomControl:DataGridComboBoxColumnExt x:Name="nguyenLieuColumn" Header="Nguyên Liệu" HeaderAddButtonClick="headerAddButton_Click"
+                                                 TextBinding="{Binding rNguyenLieu.TenNguyenLieu, Mode=OneWay}"
+                                                 DisplayMemberPath="TenNguyenLieu"
+                                                 SelectedValuePath="Ma"
+                                                 SelectedValueBinding="{Binding MaNguyenLieu, UpdateSourceTrigger=PropertyChanged}"
+                                                 SelectedItemBinding="{Binding rNguyenLieu, UpdateSourceTrigger=PropertyChanged}"
+                                                 ItemsSource="{Binding rNguyenLieuList}"/>
+    </DataGrid.Columns>
+</CustomControl:DataGridExt>

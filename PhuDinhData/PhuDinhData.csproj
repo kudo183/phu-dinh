@@ -48,13 +48,19 @@
   <ItemGroup>
     <Compile Include="BindableObject.cs" />
     <Compile Include="BusinessLogics\BusinessLogics.cs" />
+    <Compile Include="DesignTimeData\0Level\DDrNhaCungCap.cs" />
+    <Compile Include="DesignTimeData\0Level\DDrLoaiNguyenLieu.cs" />
+    <Compile Include="DesignTimeData\1Level\DDrNguyenLieu.cs" />
+    <Compile Include="DesignTimeData\2Level\DDtNhapNguyenLieu.cs" />
+    <Compile Include="DesignTimeData\2Level\DDtNhapMatHang.cs" />
+    <Compile Include="DesignTimeData\2Level\DDrMatHangNguyenLieu.cs" />
+    <Compile Include="DesignTimeData\2Level\DDtChiPhi.cs" />
     <Compile Include="DesignTimeData\3Level\DDrKhachHangChanh.cs" />
     <Compile Include="DesignTimeData\5Level\DDtChiTietChuyenHangDonHang.cs" />
     <Compile Include="DesignTimeData\4Level\DDtChuyenHangDonHang.cs" />
     <Compile Include="DesignTimeData\3Level\DDtDonHang.cs" />
     <Compile Include="DesignTimeData\4Level\DDtChiTietDonHang.cs" />
     <Compile Include="DesignTimeData\2Level\DDtChuyenHang.cs" />
-    <Compile Include="DesignTimeData\2Level\DDtChiPhiNhanVienGiaoHang.cs" />
     <Compile Include="DesignTimeData\1Level\DDtMatHang.cs" />
     <Compile Include="DesignTimeData\1Level\DDrNhanVien.cs" />
     <Compile Include="DesignTimeData\0Level\DDrPhuongTien.cs" />
@@ -65,6 +71,10 @@
     <Compile Include="DesignTimeData\0Level\DDrNuoc.cs" />
     <Compile Include="DesignTimeData\0Level\DDrBaiXe.cs" />
     <Compile Include="DesignTimeData\1Level\DDrChanh.cs" />
+    <Compile Include="EntityExt\tNhapNguyenLieuExt.cs" />
+    <Compile Include="EntityExt\tNhapMatHangExt.cs" />
+    <Compile Include="EntityExt\rMatHangNguyenLieuExt.cs" />
+    <Compile Include="EntityExt\rNguyenLieuExt.cs" />
     <Compile Include="EntityExt\rKhachHangChanhExt.cs" />
     <Compile Include="EntityExt\tChuyenHangDonHangExt.cs" />
     <Compile Include="EntityExt\tChiTietChuyenHangDonHangExt.cs" />

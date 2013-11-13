@@ -8,6 +8,8 @@ namespace PhuDinhCommonControl
         public static readonly DataGridColumnHeaderDateFilter DonHang = new DataGridColumnHeaderDateFilter("Ngày");
         public static readonly DataGridColumnHeaderDateFilter ChuyenHang = new DataGridColumnHeaderDateFilter("Ngày");
         public static readonly DataGridColumnHeaderDateFilter ChiPhi = new DataGridColumnHeaderDateFilter("Ngày");
+        public static readonly DataGridColumnHeaderDateFilter NhapMatHang = new DataGridColumnHeaderDateFilter("Ngày");
+        public static readonly DataGridColumnHeaderDateFilter NhapNguyenLieu = new DataGridColumnHeaderDateFilter("Ngày");
 
         private DataGridColumnHeaderDateFilter(string name)
         {
