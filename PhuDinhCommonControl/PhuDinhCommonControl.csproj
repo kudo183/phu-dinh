@@ -179,6 +179,9 @@
     <Compile Include="View\0Level\rNuocView.xaml.cs">
       <DependentUpon>rNuocView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\2Level\rMatHangNguyenLieuView.xaml.cs">
+      <DependentUpon>rMatHangNguyenLieuView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\3Level\rKhachHangChanhView.xaml.cs">
       <DependentUpon>rKhachHangChanhView.xaml</DependentUpon>
     </Compile>
@@ -448,6 +451,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="View\0Level\rNuocView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\2Level\rMatHangNguyenLieuView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

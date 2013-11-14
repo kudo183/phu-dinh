@@ -66,5 +66,8 @@
         <TabItem Header="Nguyên liệu" Background="Gray">
             <PhuDinhCommonControl:rNguyenLieuView/>
         </TabItem>
+        <TabItem Header="Mặt hàng nguyên liệu" Background="Gray">
+            <PhuDinhCommonControl:rMatHangNguyenLieuView/>
+        </TabItem>
     </TabControl>    
 </UserControl>
