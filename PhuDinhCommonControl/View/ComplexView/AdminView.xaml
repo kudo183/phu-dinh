@@ -63,5 +63,8 @@
         <TabItem Header="Nhà cung cấp" Background="Gray">
             <PhuDinhCommonControl:rNhaCungCapView/>
         </TabItem>
+        <TabItem Header="Nguyên liệu" Background="Gray">
+            <PhuDinhCommonControl:rNguyenLieuView/>
+        </TabItem>
     </TabControl>    
 </UserControl>

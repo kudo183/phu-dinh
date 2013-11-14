@@ -170,6 +170,9 @@
     <Compile Include="View\0Level\rLoaiNguyenLieuView.xaml.cs">
       <DependentUpon>rLoaiNguyenLieuView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\1Level\rNguyenLieuView.xaml.cs">
+      <DependentUpon>rNguyenLieuView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\1Level\rDiaDiemView.xaml.cs">
       <DependentUpon>rDiaDiemView.xaml</DependentUpon>
     </Compile>
@@ -433,6 +436,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="View\0Level\rLoaiNguyenLieuView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\1Level\rNguyenLieuView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

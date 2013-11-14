@@ -19,6 +19,6 @@
                                                  SelectedValueBinding="{Binding MaLoaiNguyenLieu, UpdateSourceTrigger=PropertyChanged}"
                                                  SelectedItemBinding="{Binding rLoaiNguyenLieu, UpdateSourceTrigger=PropertyChanged}"
                                                  ItemsSource="{Binding rLoaiNguyenLieuList}"/>
-        <CustomControl:DataGridTextRightAlignColumn x:Name="duongKinhColumn" Header="Đường Kính" Binding="{Binding DuongKinh}"/>
+        <CustomControl:DataGridTextRightAlignColumn x:Name="duongKinhColumn" Header="Đường Kính" Binding="{Binding DuongKinh}" Width="120"/>
     </DataGrid.Columns>
 </CustomControl:DataGridExt>
