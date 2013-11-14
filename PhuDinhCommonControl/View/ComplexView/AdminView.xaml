@@ -57,5 +57,11 @@
         <TabItem Header="Mặt hàng" Background="Gray">
             <PhuDinhCommonControl:tMatHangView/>
         </TabItem>
+        <TabItem Header="Loại nguyên liệu" Background="Gray">
+            <PhuDinhCommonControl:rLoaiNguyenLieuView/>
+        </TabItem>
+        <TabItem Header="Nhà cung cấp" Background="Gray">
+            <PhuDinhCommonControl:rNhaCungCapView/>
+        </TabItem>
     </TabControl>    
 </UserControl>
