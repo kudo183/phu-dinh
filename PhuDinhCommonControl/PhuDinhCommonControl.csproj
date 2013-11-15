@@ -179,6 +179,9 @@
     <Compile Include="View\0Level\rNuocView.xaml.cs">
       <DependentUpon>rNuocView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\2Level\tNhapNguyenLieuView.xaml.cs">
+      <DependentUpon>tNhapNguyenLieuView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\2Level\tNhapMatHangView.xaml.cs">
       <DependentUpon>tNhapMatHangView.xaml</DependentUpon>
     </Compile>
@@ -271,6 +274,7 @@
     <Compile Include="View\ComplexView\NhanVienView.xaml.cs">
       <DependentUpon>NhanVienView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Filter\Filter_tNhapNguyenLieu.cs" />
     <Compile Include="View\Filter\Filter_tNhapMatHang.cs" />
     <Compile Include="View\Filter\Filter_tChiPhi.cs" />
     <Compile Include="View\Filter\Filter_tDonHang.cs" />
@@ -455,6 +459,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="View\0Level\rNuocView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\2Level\tNhapNguyenLieuView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

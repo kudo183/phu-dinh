@@ -84,6 +84,7 @@
     <Compile Include="rDiaDiem.cs">
       <DependentUpon>PhuDinh.tt</DependentUpon>
     </Compile>
+    <Compile Include="Repository\tNhapNguyenLieuRepository.cs" />
     <Compile Include="Repository\tNhapMatHangRepository.cs" />
     <Compile Include="Repository\rMatHangNguyenLieuRepository.cs" />
     <Compile Include="Repository\rNguyenLieuRepository.cs" />
