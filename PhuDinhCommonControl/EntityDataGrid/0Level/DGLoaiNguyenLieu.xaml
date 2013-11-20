@@ -12,6 +12,6 @@
         <!--Ma-->
         <CustomControl:DataGridReadOnlyTextColumn x:Name="maColumn"/>
         <!--Ten loai-->
-        <CustomControl:DataGridTextColumnExt x:Name="tenLoaiColumn" Header="Tên Loại Nguyên Liệu" Binding="{Binding TenLoai}"/>
+        <CustomControl:DataGridTextColumnExt x:Name="tenLoaiColumn" Header="Tên Loại Nguyên Liệu" Binding="{Binding TenLoai, UpdateSourceTrigger=PropertyChanged}"/>
     </DataGrid.Columns>
 </CustomControl:DataGridExt>

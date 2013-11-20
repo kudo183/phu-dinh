@@ -20,6 +20,6 @@
                                                  SelectedItemBinding="{Binding rNuoc, UpdateSourceTrigger=PropertyChanged}"
                                                  ItemsSource="{Binding rNuocList}"/>            
         <!--Tinh-->
-        <CustomControl:DataGridTextColumnExt x:Name="tinhColumn" Header="Tỉnh" Binding="{Binding Tinh}"/>
+        <CustomControl:DataGridTextColumnExt x:Name="tinhColumn" Header="Tỉnh" Binding="{Binding Tinh, UpdateSourceTrigger=PropertyChanged}"/>
     </DataGrid.Columns>
 </CustomControl:DataGridExt>

@@ -12,6 +12,6 @@
         <!--Ma-->
         <CustomControl:DataGridReadOnlyTextColumn x:Name="maColumn"/>
         <!--Dia diem bai xe-->
-        <CustomControl:DataGridTextColumnExt x:Name="tenNhaCungCapColumn" Header="Tên Nhà Cung Cấp" Binding="{Binding TenNhaCungCap}"/>
+        <CustomControl:DataGridTextColumnExt x:Name="tenNhaCungCapColumn" Header="Tên Nhà Cung Cấp" Binding="{Binding TenNhaCungCap, UpdateSourceTrigger=PropertyChanged}"/>
     </DataGrid.Columns>
 </CustomControl:DataGridExt>

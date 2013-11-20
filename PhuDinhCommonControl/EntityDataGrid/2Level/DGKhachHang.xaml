@@ -20,6 +20,6 @@
                                                  SelectedItemBinding="{Binding rDiaDiem, UpdateSourceTrigger=PropertyChanged}"
                                                  ItemsSource="{Binding rDiaDiemList}"/>
         <!--Ten khach hang-->
-        <CustomControl:DataGridTextColumnExt x:Name="tenKhachHangColumn" Header="Tên Khách Hàng" Binding="{Binding TenKhachHang}"/>
+        <CustomControl:DataGridTextColumnExt x:Name="tenKhachHangColumn" Header="Tên Khách Hàng" Binding="{Binding TenKhachHang, UpdateSourceTrigger=PropertyChanged}"/>
     </DataGrid.Columns>
 </CustomControl:DataGridExt>

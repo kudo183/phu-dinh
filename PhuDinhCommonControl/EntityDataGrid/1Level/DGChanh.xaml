@@ -20,6 +20,6 @@
                                                  SelectedItemBinding="{Binding rBaiXe, UpdateSourceTrigger=PropertyChanged}"
                                                  ItemsSource="{Binding rBaiXeList}"/>
         <!--Ten chanh-->
-        <CustomControl:DataGridTextColumnExt x:Name="tenChanhColumn" Header="Tên Chành" Binding="{Binding TenChanh}"/>
+        <CustomControl:DataGridTextColumnExt x:Name="tenChanhColumn" Header="Tên Chành" Binding="{Binding TenChanh, UpdateSourceTrigger=PropertyChanged}"/>
     </DataGrid.Columns>
 </CustomControl:DataGridExt>

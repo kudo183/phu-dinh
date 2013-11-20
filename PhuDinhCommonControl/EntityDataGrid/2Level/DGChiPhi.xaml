@@ -30,8 +30,8 @@
                                                  SelectedItemBinding="{Binding rNhanVien, UpdateSourceTrigger=PropertyChanged}"
                                                  ItemsSource="{Binding rNhanVienList}"/>
         <!--So tien-->
-        <CustomControl:DataGridTextRightAlignColumn x:Name="soTienColumn" Binding="{Binding SoTien, StringFormat=\{0:N0\}}" Header="Số Tiền"/>            
+        <CustomControl:DataGridTextRightAlignColumn x:Name="soTienColumn" Binding="{Binding SoTien, StringFormat=\{0:N0\}, UpdateSourceTrigger=PropertyChanged}" Header="Số Tiền"/>            
         <!--Ghi chu-->
-        <CustomControl:DataGridTextColumnExt x:Name="ghiChuColumn" Binding="{Binding GhiChu}" Header="Ghi Chú"/>
+        <CustomControl:DataGridTextColumnExt x:Name="ghiChuColumn" Binding="{Binding GhiChu, UpdateSourceTrigger=PropertyChanged}" Header="Ghi Chú"/>
     </DataGrid.Columns>
 </CustomControl:DataGridExt>

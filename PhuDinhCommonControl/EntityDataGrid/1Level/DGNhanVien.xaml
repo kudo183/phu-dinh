@@ -19,6 +19,6 @@
                                                  SelectedValueBinding="{Binding MaPhuongTien, UpdateSourceTrigger=PropertyChanged}"
                                                  SelectedItemBinding="{Binding rPhuongTien, UpdateSourceTrigger=PropertyChanged}"
                                                  ItemsSource="{Binding rPhuongTienList}"/>
-        <CustomControl:DataGridTextColumnExt x:Name="tenNhanVienColumn" Header="Tên Nhân Viên" Binding="{Binding TenNhanVien}"/>
+        <CustomControl:DataGridTextColumnExt x:Name="tenNhanVienColumn" Header="Tên Nhân Viên" Binding="{Binding TenNhanVien, UpdateSourceTrigger=PropertyChanged}"/>
     </DataGrid.Columns>
 </CustomControl:DataGridExt>
