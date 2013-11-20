@@ -71,6 +71,12 @@ namespace PhuDinhCommonControl
         }
 
         #region Override base view method
+        public override void CommitEdit()
+        {
+            dgChiPhi.CommitEdit();
+            base.CommitEdit();
+        }
+
         public override void Save()
         {
             try
@@ -152,7 +158,7 @@ namespace PhuDinhCommonControl
 
         private void dgChiPhi_HeaderAddButtonClick(object sender, EventArgs e)
         {
-            dgChiPhi.CommitEdit();
+            CommitEdit();
 
             var header = sender as DataGridColumnHeader;
 

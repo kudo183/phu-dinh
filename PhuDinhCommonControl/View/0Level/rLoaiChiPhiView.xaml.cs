@@ -22,8 +22,15 @@ namespace PhuDinhCommonControl
         }
 
         #region Override base view method
+        public override void CommitEdit()
+        {
+            dgLoaiChiPhi.CommitEdit();
+            base.CommitEdit();
+        }
+
         public override void Save()
         {
+            CommitEdit();
             try
             {
                 var data = dgLoaiChiPhi.DataContext as List<PhuDinhData.rLoaiChiPhi>;

@@ -30,8 +30,15 @@ namespace PhuDinhCommonControl
         }
 
         #region Override base view method
+        public override void CommitEdit()
+        {
+            dgKhachHang.CommitEdit();
+            base.CommitEdit();
+        }
+
         public override void Save()
         {
+            CommitEdit();
             try
             {
                 if (FilterKhachHang == null)
@@ -103,7 +110,7 @@ namespace PhuDinhCommonControl
 
         private void dgKhachHang_HeaderAddButtonClick(object sender, EventArgs e)
         {
-            dgKhachHang.CommitEdit();
+            CommitEdit();
 
             var view = new rDiaDiemView();
             view.RefreshView();

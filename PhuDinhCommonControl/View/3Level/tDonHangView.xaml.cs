@@ -70,8 +70,15 @@ namespace PhuDinhCommonControl
         }
 
         #region Override base view method
+        public override void CommitEdit()
+        {
+            dgDonHang.CommitEdit();
+            base.CommitEdit();
+        }
+        
         public override void Save()
         {
+            CommitEdit();
             try
             {
                 if (FilterDonHang == null)
@@ -146,8 +153,7 @@ namespace PhuDinhCommonControl
 
         private void dgDonHang_HeaderAddButtonClick(object sender, EventArgs e)
         {
-            dgDonHang.CommitEdit();
-
+            CommitEdit();
             var header = sender as DataGridColumnHeader;
 
             BaseView view = null;

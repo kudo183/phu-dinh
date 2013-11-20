@@ -22,8 +22,15 @@ namespace PhuDinhCommonControl
         }
 
         #region Override base view method
+        public override void CommitEdit()
+        {
+            dgNuoc.CommitEdit();
+            base.CommitEdit();
+        }
+
         public override void Save()
         {
+            CommitEdit();
             try
             {
                 var data = dgNuoc.DataContext as List<PhuDinhData.rNuoc>;

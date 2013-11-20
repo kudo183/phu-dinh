@@ -22,8 +22,15 @@ namespace PhuDinhCommonControl
         }
 
         #region Override base view method
+        public override void CommitEdit()
+        {
+            dgBaiXe.CommitEdit();
+            base.CommitEdit();
+        }
+
         public override void Save()
         {
+            CommitEdit();
             try
             {
                 var data = dgBaiXe.DataContext as List<PhuDinhData.rBaiXe>;

@@ -30,8 +30,15 @@ namespace PhuDinhCommonControl
         }
 
         #region Override base view method
+        public override void CommitEdit()
+        {
+            dgMatHang.CommitEdit();
+            base.CommitEdit();
+        }
+
         public override void Save()
         {
+            CommitEdit();
             try
             {
                 if (FilterMatHang == null)
@@ -103,7 +110,7 @@ namespace PhuDinhCommonControl
 
         private void dgMatHang_HeaderAddButtonClick(object sender, EventArgs e)
         {
-            dgMatHang.CommitEdit();
+            CommitEdit();
 
             var view = new rLoaiHangView();
             view.RefreshView();

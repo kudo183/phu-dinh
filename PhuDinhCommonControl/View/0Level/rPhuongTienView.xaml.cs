@@ -22,8 +22,15 @@ namespace PhuDinhCommonControl
         }
 
         #region Override base view method
+        public override void CommitEdit()
+        {
+            dgPhuongTien.CommitEdit();
+            base.CommitEdit();
+        }
+
         public override void Save()
         {
+            CommitEdit();
             try
             {
                 var data = dgPhuongTien.DataContext as List<PhuDinhData.rPhuongTien>;

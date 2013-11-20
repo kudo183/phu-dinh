@@ -29,8 +29,15 @@ namespace PhuDinhCommonControl
         }
 
         #region Override base view method
+        public override void CommitEdit()
+        {
+            dgDiaDiem.CommitEdit();
+            base.CommitEdit();
+        }
+
         public override void Save()
         {
+            CommitEdit();
             try
             {
                 if (FilterDiaDiem == null)
@@ -97,7 +104,7 @@ namespace PhuDinhCommonControl
 
         private void dgDiaDiem_HeaderAddButtonClick(object sender, EventArgs e)
         {
-            dgDiaDiem.CommitEdit();
+            CommitEdit();
 
             var view = new rNuocView();
             view.RefreshView();            

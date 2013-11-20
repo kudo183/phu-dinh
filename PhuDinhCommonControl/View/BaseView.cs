@@ -31,6 +31,11 @@ namespace PhuDinhCommonControl
             }
         }
 
+        public virtual void CommitEdit()
+        {
+            
+        }
+
         public virtual void RefreshView()
         {
 

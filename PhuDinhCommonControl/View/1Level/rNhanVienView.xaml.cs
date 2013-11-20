@@ -30,8 +30,15 @@ namespace PhuDinhCommonControl
         }
 
         #region Override base view method
+        public override void CommitEdit()
+        {
+            dgNhanVien.CommitEdit();
+            base.CommitEdit();
+        }
+
         public override void Save()
         {
+            CommitEdit();
             try
             {
                 if (FilterNhanVien == null)
@@ -102,7 +109,7 @@ namespace PhuDinhCommonControl
 
         private void dgNhanVien_HeaderAddButtonClick(object sender, EventArgs e)
         {
-            dgNhanVien.CommitEdit();
+            CommitEdit();
 
             var view = new rPhuongTienView();
             view.RefreshView();
