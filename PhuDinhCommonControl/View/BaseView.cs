@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace PhuDinhCommonControl
 {
@@ -9,9 +10,30 @@ namespace PhuDinhCommonControl
         public event EventHandler AfterSave;
         public event EventHandler AfterCancel;
 
+        public BaseView()
+        {
+            PreviewKeyDown += BaseView_PreviewKeyDown;
+        }
+
+        void BaseView_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (Keyboard.Modifiers == ModifierKeys.Control)
+            {
+                switch (e.Key)
+                {
+                    case Key.S:
+                        Save();
+                        break;
+                    case Key.X:
+                        Cancel();
+                        break;
+                }
+            }
+        }
+
         public virtual void RefreshView()
         {
-            
+
         }
 
         public virtual void Save()
