@@ -61,15 +61,18 @@ namespace PhuDinhCommonControl
                 _tChiTietChuyenHangDonHangView.dgChiTietChuyenHangDonHang.DataContext
                 as ObservableCollection<PhuDinhData.tChiTietChuyenHangDonHang>;
 
+            if (chuyenHangDonHang == null)
+                return;
+
             foreach (var tChiTietDonHang in chuyenHangDonHang.tDonHang.tChiTietDonHangs.Where(p => p.Xong == false))
             {
                 var ct = new PhuDinhData.tChiTietChuyenHangDonHang
-                {
-                    MaChiTietDonHang = tChiTietDonHang.Ma,
-                    tChuyenHangDonHang = chuyenHangDonHang,
-                    tChiTietDonHang = tChiTietDonHang,
-                    SoLuong = tChiTietDonHang.SoLuong - tChiTietDonHang.tChiTietChuyenHangDonHangs.Sum(p => p.SoLuong)
-                };
+                             {
+                                 MaChiTietDonHang = tChiTietDonHang.Ma,
+                                 tChuyenHangDonHang = chuyenHangDonHang,
+                                 tChiTietDonHang = tChiTietDonHang,
+                                 SoLuong = tChiTietDonHang.SoLuong - tChiTietDonHang.tChiTietChuyenHangDonHangs.Sum(p => p.SoLuong)
+                             };
 
                 context.Add(ct);
             }
