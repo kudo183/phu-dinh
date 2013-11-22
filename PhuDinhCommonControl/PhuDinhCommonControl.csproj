@@ -274,10 +274,10 @@
     <Compile Include="View\ComplexView\NhanVienView.xaml.cs">
       <DependentUpon>NhanVienView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Filter\Filter_tNhapNguyenLieu.cs" />
-    <Compile Include="Filter\Filter_tNhapMatHang.cs" />
-    <Compile Include="Filter\Filter_tChiPhi.cs" />
-    <Compile Include="Filter\Filter_tDonHang.cs" />
+    <Compile Include="Filter_Entity\Filter_tNhapNguyenLieu.cs" />
+    <Compile Include="Filter_Entity\Filter_tNhapMatHang.cs" />
+    <Compile Include="Filter_Entity\Filter_tChiPhi.cs" />
+    <Compile Include="Filter_Entity\Filter_tDonHang.cs" />
     <Compile Include="VisualTreeUtils.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
