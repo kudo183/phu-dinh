@@ -7,113 +7,35 @@
     mc:Ignorable="d" x:Class="PhuDinh.MainWindow"
         Title="MainWindow" Height="350" Width="525" WindowState="Maximized">
     <TabControl>
-        <TabItem Header="Don Hang" Background="Aquamarine">
-            <TabItem.Style>
-                <Style TargetType="TabItem">
-                    <Style.Triggers>
-                        <Trigger Property="IsSelected" Value="True">
-                            <Setter Property="Content">
-                                <Setter.Value>
-                                    <PhuDinhCommonControl:DonHangView/>
-                                </Setter.Value>
-                            </Setter>
-                        </Trigger>
-                        <Trigger Property="IsSelected" Value="False">
-                            <Setter Property="Content" Value="{Binding Content, RelativeSource={RelativeSource Self}}"/>
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </TabItem.Style>
+        <TabItem Header="Don Hang" Background="Aquamarine">            
+            <TabItem.Tag>
+                <PhuDinhCommonControl:DonHangView/>
+            </TabItem.Tag>
         </TabItem>
         <TabItem Header="Chuyen Hang" Background="Aquamarine">
-            <TabItem.Style>
-                <Style TargetType="TabItem">
-                    <Style.Triggers>
-                        <Trigger Property="IsSelected" Value="True">
-                            <Setter Property="Content">
-                                <Setter.Value>
-                                    <PhuDinhCommonControl:ChuyenHangView/>
-                                </Setter.Value>
-                            </Setter>
-                        </Trigger>
-                        <Trigger Property="IsSelected" Value="False">
-                            <Setter Property="Content" Value="{Binding Content, RelativeSource={RelativeSource Self}}"/>
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </TabItem.Style>
+            <TabItem.Tag>
+                <PhuDinhCommonControl:ChuyenHangView/>
+            </TabItem.Tag>
         </TabItem>
         <TabItem Header="Khach Hang" Background="Aquamarine">
-            <TabItem.Style>
-                <Style TargetType="TabItem">
-                    <Style.Triggers>
-                        <Trigger Property="IsSelected" Value="True">
-                            <Setter Property="Content">
-                                <Setter.Value>
-                                    <PhuDinhCommonControl:KhachHangView/>
-                                </Setter.Value>
-                            </Setter>
-                        </Trigger>
-                        <Trigger Property="IsSelected" Value="False">
-                            <Setter Property="Content" Value="{Binding Content, RelativeSource={RelativeSource Self}}"/>
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </TabItem.Style>
+            <TabItem.Tag>
+                <PhuDinhCommonControl:KhachHangView/>
+            </TabItem.Tag>
         </TabItem>
         <TabItem Header="Mat Hang" Background="Aquamarine">
-            <TabItem.Style>
-                <Style TargetType="TabItem">
-                    <Style.Triggers>
-                        <Trigger Property="IsSelected" Value="True">
-                            <Setter Property="Content">
-                                <Setter.Value>
-                                    <PhuDinhCommonControl:MatHangView/>
-                                </Setter.Value>
-                            </Setter>
-                        </Trigger>
-                        <Trigger Property="IsSelected" Value="False">
-                            <Setter Property="Content" Value="{Binding Content, RelativeSource={RelativeSource Self}}"/>
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </TabItem.Style>
+            <TabItem.Tag>
+                <PhuDinhCommonControl:MatHangView/>
+            </TabItem.Tag>
         </TabItem>
         <TabItem Header="Chi Phi" Background="Aquamarine">
-            <TabItem.Style>
-                <Style TargetType="TabItem">
-                    <Style.Triggers>
-                        <Trigger Property="IsSelected" Value="True">
-                            <Setter Property="Content">
-                                <Setter.Value>
-                                    <PhuDinhCommonControl:ChiPhiView/>
-                                </Setter.Value>
-                            </Setter>
-                        </Trigger>
-                        <Trigger Property="IsSelected" Value="False">
-                            <Setter Property="Content" Value="{Binding Content, RelativeSource={RelativeSource Self}}"/>
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </TabItem.Style>
+            <TabItem.Tag>
+                <PhuDinhCommonControl:ChiPhiView/>
+            </TabItem.Tag>
         </TabItem>
         <TabItem Header="Tat ca" Background="Aquamarine">
-            <TabItem.Style>
-                <Style TargetType="TabItem">
-                    <Style.Triggers>
-                        <Trigger Property="IsSelected" Value="True">
-                            <Setter Property="Content">
-                                <Setter.Value>
-                                    <PhuDinhCommonControl:AdminView/>
-                                </Setter.Value>
-                            </Setter>
-                        </Trigger>
-                        <Trigger Property="IsSelected" Value="False">
-                            <Setter Property="Content" Value="{Binding Content, RelativeSource={RelativeSource Self}}"/>
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </TabItem.Style>
+            <TabItem.Tag>
+                <PhuDinhCommonControl:AdminView/>
+            </TabItem.Tag>
         </TabItem>
     </TabControl>
 </Window>

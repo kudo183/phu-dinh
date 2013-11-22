@@ -7,73 +7,117 @@
              d:DesignHeight="300" d:DesignWidth="300">
     <TabControl TabStripPlacement="Left">
         <TabItem Header="Bãi xe" Background="Gray">
-            <PhuDinhCommonControl:rBaiXeView/>
+            <TabItem.Tag>
+                <PhuDinhCommonControl:rBaiXeView/>
+            </TabItem.Tag>
         </TabItem>
         <TabItem Header="Chành" Background="Gray">
             <PhuDinhCommonControl:rChanhView/>
         </TabItem>
         <TabItem Header="Địa điểm" Background="Gray">
-            <PhuDinhCommonControl:rDiaDiemView/>
+            <TabItem.Tag>
+                <PhuDinhCommonControl:rDiaDiemView/>
+            </TabItem.Tag>
         </TabItem>
         <TabItem Header="Khách hàng" Background="Gray">
-            <PhuDinhCommonControl:rKhachHangView/>
+            <TabItem.Tag>
+                <PhuDinhCommonControl:rKhachHangView/>
+            </TabItem.Tag>
         </TabItem>
         <TabItem Header="Khách hàng chành" Background="Gray">
-            <PhuDinhCommonControl:rKhachHangChanhView/>
+            <TabItem.Tag>
+                <PhuDinhCommonControl:rKhachHangChanhView/>
+            </TabItem.Tag>
         </TabItem>
         <TabItem Header="Loại chi phí" Background="Gray">
-            <PhuDinhCommonControl:rLoaiChiPhiView/>
+            <TabItem.Tag>
+                <PhuDinhCommonControl:rLoaiChiPhiView/>
+            </TabItem.Tag>
         </TabItem>
         <TabItem Header="Loại hàng" Background="Gray">
-            <PhuDinhCommonControl:rLoaiHangView/>
+            <TabItem.Tag>
+                <PhuDinhCommonControl:rLoaiHangView/>
+            </TabItem.Tag>
         </TabItem>
         <TabItem Header="Nhân viên" Background="Gray">
-            <PhuDinhCommonControl:rNhanVienView/>
+            <TabItem.Tag>
+                <PhuDinhCommonControl:rNhanVienView/>
+            </TabItem.Tag>
         </TabItem>
         <TabItem Header="Nước" Background="Gray">
-            <PhuDinhCommonControl:rNuocView/>
+            <TabItem.Tag>
+                <PhuDinhCommonControl:rNuocView/>
+            </TabItem.Tag>
         </TabItem>
         <TabItem Header="Phương tiện" Background="Gray">
-            <PhuDinhCommonControl:rPhuongTienView/>
+            <TabItem.Tag>
+                <PhuDinhCommonControl:rPhuongTienView/>
+            </TabItem.Tag>
         </TabItem>
         <TabItem Header="Chi phí" Background="Gray">
-            <PhuDinhCommonControl:tChiPhiView/>
+            <TabItem.Tag>
+                <PhuDinhCommonControl:tChiPhiView/>
+            </TabItem.Tag>
         </TabItem>
         <TabItem Header="Chi tiết chuyến hàng đơn hàng" Background="Gray">
-            <PhuDinhCommonControl:tChiTietChuyenHangDonHangView/>
+            <TabItem.Tag>
+                <PhuDinhCommonControl:tChiTietChuyenHangDonHangView/>
+            </TabItem.Tag>
         </TabItem>
         <TabItem Header="Chi tiết đơn hàng" Background="Gray">
-            <PhuDinhCommonControl:tChiTietDonHangView/>
+            <TabItem.Tag>
+                <PhuDinhCommonControl:tChiTietDonHangView/>
+            </TabItem.Tag>
         </TabItem>
         <TabItem Header="Chuyến hàng" Background="Gray">
-            <PhuDinhCommonControl:tChuyenHangView/>
+            <TabItem.Tag>
+                <PhuDinhCommonControl:tChuyenHangView/>
+            </TabItem.Tag>
         </TabItem>
         <TabItem Header="Chuyến hàng đơn hàng" Background="Gray">
-            <PhuDinhCommonControl:tChuyenHangDonHangView/>
+            <TabItem.Tag>
+                <PhuDinhCommonControl:tChuyenHangDonHangView/>
+            </TabItem.Tag>
         </TabItem>
         <TabItem Header="Đơn hàng" Background="Gray">
-            <PhuDinhCommonControl:tDonHangView/>
+            <TabItem.Tag>
+                <PhuDinhCommonControl:tDonHangView/>
+            </TabItem.Tag>
         </TabItem>
         <TabItem Header="Mặt hàng" Background="Gray">
-            <PhuDinhCommonControl:tMatHangView/>
+            <TabItem.Tag>
+                <PhuDinhCommonControl:tMatHangView/>
+            </TabItem.Tag>
         </TabItem>
         <TabItem Header="Loại nguyên liệu" Background="Gray">
-            <PhuDinhCommonControl:rLoaiNguyenLieuView/>
+            <TabItem.Tag>
+                <PhuDinhCommonControl:rLoaiNguyenLieuView/>
+            </TabItem.Tag>
         </TabItem>
         <TabItem Header="Nhà cung cấp" Background="Gray">
-            <PhuDinhCommonControl:rNhaCungCapView/>
+            <TabItem.Tag>
+                <PhuDinhCommonControl:rNhaCungCapView/>
+            </TabItem.Tag>
         </TabItem>
         <TabItem Header="Nguyên liệu" Background="Gray">
-            <PhuDinhCommonControl:rNguyenLieuView/>
+            <TabItem.Tag>
+                <PhuDinhCommonControl:rNguyenLieuView/>
+            </TabItem.Tag>
         </TabItem>
         <TabItem Header="Mặt hàng nguyên liệu" Background="Gray">
-            <PhuDinhCommonControl:rMatHangNguyenLieuView/>
+            <TabItem.Tag>
+                <PhuDinhCommonControl:rMatHangNguyenLieuView/>
+            </TabItem.Tag>
         </TabItem>
         <TabItem Header="Nhập mặt hàng" Background="Gray">
-            <PhuDinhCommonControl:tNhapMatHangView/>
+            <TabItem.Tag>
+                <PhuDinhCommonControl:tNhapMatHangView/>
+            </TabItem.Tag>
         </TabItem>
         <TabItem Header="Nhập nguyên liệu" Background="Gray">
-            <PhuDinhCommonControl:tNhapNguyenLieuView/>
+            <TabItem.Tag>
+                <PhuDinhCommonControl:tNhapNguyenLieuView/>
+            </TabItem.Tag>
         </TabItem>
     </TabControl>    
 </UserControl>
