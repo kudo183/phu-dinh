@@ -28,10 +28,8 @@ namespace PhuDinhCommonControl
         private bool _isUsedDateFilter = true;
         private DateTime _filterDate = DateTime.Now.Date;
 
-        private bool _isUsedKhachHangFilter = true;
         private string _filterKhachHang = string.Empty;
 
-        private bool _isUsedChanhFilter = true;
         private string _filterChanh = string.Empty;
 
         public tDonHangView()
