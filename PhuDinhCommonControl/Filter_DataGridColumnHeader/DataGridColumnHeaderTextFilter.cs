@@ -6,7 +6,10 @@ namespace PhuDinhCommonControl
     {
         public static readonly DataGridColumnHeaderTextFilter DonHang_KhachHang = new DataGridColumnHeaderTextFilter("Khách Hàng");
         public static readonly DataGridColumnHeaderTextFilter DonHang_Chanh = new DataGridColumnHeaderTextFilter("Chành");
+
+        //1level
         public static readonly DataGridColumnHeaderTextFilter Chanh_BaiXe = new DataGridColumnHeaderTextFilter("Bãi Xe");
+        public static readonly DataGridColumnHeaderTextFilter DiaDiem_Nuoc = new DataGridColumnHeaderTextFilter("Nước");
 
         private DataGridColumnHeaderTextFilter(string name)
         {
