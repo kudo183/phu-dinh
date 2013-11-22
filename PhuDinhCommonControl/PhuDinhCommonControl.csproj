@@ -91,7 +91,7 @@
     <Compile Include="CustomControl\TimeInput.xaml.cs">
       <DependentUpon>TimeInput.xaml</DependentUpon>
     </Compile>
-    <Compile Include="DataGridColumnHeaderDateFilter.cs" />
+    <Compile Include="Filter_DataGridColumnHeader\DataGridColumnHeaderDateFilter.cs" />
     <Compile Include="EntityDataGrid\0Level\DGNhaCungCap.xaml.cs">
       <DependentUpon>DGNhaCungCap.xaml</DependentUpon>
     </Compile>
