@@ -14,7 +14,8 @@
         <!--Ngay-->
         <CustomControl:DataGridDateColumn x:Name="ngayColumn" Header="{x:Static PhuDinhCommonControl:DataGridColumnHeaderDateFilter.DonHang}"/>
         <!--Khach hang-->
-        <CustomControl:DataGridComboBoxColumnExt x:Name="khachHangColumn" Header="Khách hàng" HeaderAddButtonClick="headerAddButton_Click"
+        <CustomControl:DataGridComboBoxColumnExt x:Name="khachHangColumn" Header="{x:Static PhuDinhCommonControl:DataGridColumnHeaderTextFilter.DonHang_KhachHang}"
+                                                 HeaderAddButtonClick="headerAddButton_Click"
                                                  TextBinding="{Binding rKhachHang.TenKhachHangDiaDiem, Mode=OneWay}"
                                                  DisplayMemberPath="TenKhachHangDiaDiem"
                                                  SelectedValuePath="Ma"
@@ -22,7 +23,8 @@
                                                  SelectedItemBinding="{Binding rKhachHang, UpdateSourceTrigger=PropertyChanged}"
                                                  ItemsSource="{Binding rKhachHangList}"/>
         <!--Chanh-->
-        <CustomControl:DataGridComboBoxColumnExt x:Name="chanhColumn" Header="Chành" HeaderAddButtonClick="headerAddButton_Click"
+        <CustomControl:DataGridComboBoxColumnExt x:Name="chanhColumn" Header="{x:Static PhuDinhCommonControl:DataGridColumnHeaderTextFilter.DonHang_Chanh}"
+                                                 HeaderAddButtonClick="headerAddButton_Click"
                                                  TextBinding="{Binding rChanh.TenBaiXeChanh, Mode=OneWay}"
                                                  DisplayMemberPath="TenBaiXeChanh"
                                                  SelectedValuePath="Ma"

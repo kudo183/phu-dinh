@@ -28,6 +28,12 @@ namespace PhuDinhCommonControl
         private bool _isUsedDateFilter = true;
         private DateTime _filterDate = DateTime.Now.Date;
 
+        private bool _isUsedKhachHangFilter = true;
+        private string _filterKhachHang = string.Empty;
+
+        private bool _isUsedChanhFilter = true;
+        private string _filterChanh = string.Empty;
+
         public tDonHangView()
         {
             InitializeComponent();
@@ -45,7 +51,15 @@ namespace PhuDinhCommonControl
             DataGridColumnHeaderDateFilter.DonHang.Date = _filterDate;
             DataGridColumnHeaderDateFilter.DonHang.IsUsed = _isUsedDateFilter;
             DataGridColumnHeaderDateFilter.DonHang.PropertyChanged += DonHang_PropertyChanged;
-            DonHang_PropertyChanged(null, null);
+            FilterDonHang.FilterNgay = (p => p.Ngay == DataGridColumnHeaderDateFilter.DonHang.Date);
+
+            DataGridColumnHeaderTextFilter.DonHang_KhachHang.Text = _filterKhachHang;
+            DataGridColumnHeaderTextFilter.DonHang_KhachHang.PropertyChanged += DonHang_KhachHang_PropertyChanged;
+
+            DataGridColumnHeaderTextFilter.DonHang_Chanh.Text = _filterChanh;
+            DataGridColumnHeaderTextFilter.DonHang_Chanh.PropertyChanged += DonHang_Chanh_PropertyChanged;
+
+            RefreshView();
         }
 
         void tDonHangView_Unloaded(object sender, System.Windows.RoutedEventArgs e)
@@ -53,6 +67,40 @@ namespace PhuDinhCommonControl
             DataGridColumnHeaderDateFilter.DonHang.PropertyChanged -= DonHang_PropertyChanged;
             _filterDate = DataGridColumnHeaderDateFilter.DonHang.Date;
             _isUsedDateFilter = DataGridColumnHeaderDateFilter.DonHang.IsUsed;
+
+            DataGridColumnHeaderTextFilter.DonHang_Chanh.PropertyChanged -= DonHang_Chanh_PropertyChanged;
+            _filterChanh = DataGridColumnHeaderTextFilter.DonHang_Chanh.Text;
+
+            DataGridColumnHeaderTextFilter.DonHang_KhachHang.PropertyChanged -= DonHang_KhachHang_PropertyChanged;
+            _filterKhachHang = DataGridColumnHeaderTextFilter.DonHang_KhachHang.Text;
+        }
+
+        void DonHang_KhachHang_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(DataGridColumnHeaderTextFilter.DonHang_KhachHang.Text) == false)
+            {
+                FilterDonHang.FilterKhachHang = (p => p.rKhachHang.TenKhachHang == DataGridColumnHeaderTextFilter.DonHang_KhachHang.Text);
+            }
+            else
+            {
+                FilterDonHang.FilterKhachHang = (p => true);
+            }
+
+            RefreshView();
+        }
+
+        void DonHang_Chanh_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(DataGridColumnHeaderTextFilter.DonHang_Chanh.Text) == false)
+            {
+                FilterDonHang.FilterChanh = (p => p.rChanh.TenChanh == DataGridColumnHeaderTextFilter.DonHang_Chanh.Text);
+            }
+            else
+            {
+                FilterDonHang.FilterChanh = (p => true);
+            }
+
+            RefreshView();
         }
 
         void DonHang_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -75,7 +123,7 @@ namespace PhuDinhCommonControl
             dgDonHang.CommitEdit();
             base.CommitEdit();
         }
-        
+
         public override void Save()
         {
             CommitEdit();

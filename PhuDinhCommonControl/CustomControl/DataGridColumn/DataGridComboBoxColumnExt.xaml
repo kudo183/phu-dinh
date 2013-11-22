@@ -13,11 +13,13 @@
                     <DataTemplate>
                         <Grid HorizontalAlignment="Stretch">
                             <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Column="0" Text="{Binding}"/>
-                            <Button Grid.Column="1" Width="25" HorizontalContentAlignment="Center">
+                            <TextBlock Grid.Column="0" Text="{Binding Name}"/>
+                            <TextBox Grid.Column="1" Text="{Binding Text, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Margin="3,0,3,0"/>
+                            <Button Grid.Column="2" Width="25" HorizontalContentAlignment="Center">
                                 <Button.Content>
                                     <TextBlock Text="+" FontSize="12" FontWeight="Bold" Padding="0" Margin="0"/>
                                 </Button.Content>
