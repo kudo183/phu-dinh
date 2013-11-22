@@ -13,7 +13,7 @@ namespace PhuDinhCommonControl
     /// </summary>
     public partial class rChanhView : BaseView
     {
-        public Expression<Func<PhuDinhData.rChanh, bool>> FilterChanh { get; set; }
+        public Filter_rChanh FilterChanh { get; set; }
         public Expression<Func<PhuDinhData.rBaiXe, bool>> FilterBaiXe { get; set; }
         public PhuDinhData.rBaiXe rBaiXeDefault { get; set; }
 
@@ -21,12 +21,43 @@ namespace PhuDinhCommonControl
         private List<PhuDinhData.rBaiXe> _rBaiXes;
         private PhuDinhData.PhuDinhEntities _context = ContextFactory.CreateContext();
 
+        private string _filterBaiXe = string.Empty;
+
         public rChanhView()
         {
             InitializeComponent();
 
-            FilterChanh = (p => true);
+            FilterChanh = new Filter_rChanh();
             FilterBaiXe = (p => true);
+
+            Loaded += rChanhView_Loaded;
+            Unloaded += rChanhView_Unloaded;
+        }
+
+        void rChanhView_Loaded(object sender, System.Windows.RoutedEventArgs e)
+        {
+            DataGridColumnHeaderTextFilter.Chanh_BaiXe.Text = _filterBaiXe;
+            DataGridColumnHeaderTextFilter.Chanh_BaiXe.PropertyChanged += Chanh_BaiXe_PropertyChanged;
+        }
+
+        void rChanhView_Unloaded(object sender, System.Windows.RoutedEventArgs e)
+        {
+            _filterBaiXe = DataGridColumnHeaderTextFilter.Chanh_BaiXe.Text;
+            DataGridColumnHeaderTextFilter.Chanh_BaiXe.PropertyChanged -= Chanh_BaiXe_PropertyChanged;
+        }
+
+        void Chanh_BaiXe_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(DataGridColumnHeaderTextFilter.Chanh_BaiXe.Text) == false)
+            {
+                FilterChanh.FilterBaiXe = (p => p.rBaiXe.DiaDiemBaiXe.Contains(DataGridColumnHeaderTextFilter.Chanh_BaiXe.Text));
+            }
+            else
+            {
+                FilterChanh.FilterBaiXe = (p => true);
+            }
+
+            RefreshView();
         }
 
         #region Override base view method
@@ -47,7 +78,7 @@ namespace PhuDinhCommonControl
                 }
 
                 var data = dgChanh.DataContext as ObservableCollection<PhuDinhData.rChanh>;
-                PhuDinhData.Repository.rChanhRepository.Save(_context, data.ToList(), FilterChanh);
+                PhuDinhData.Repository.rChanhRepository.Save(_context, data.ToList(), FilterChanh.FilterChanh);
             }
             catch (Exception ex)
             {
@@ -80,7 +111,7 @@ namespace PhuDinhCommonControl
             }
 
             _context = ContextFactory.CreateContext();
-            var rChanhs = PhuDinhData.Repository.rChanhRepository.GetData(_context, FilterChanh);
+            var rChanhs = PhuDinhData.Repository.rChanhRepository.GetData(_context, FilterChanh.FilterChanh);
 
             _rChanhs = new ObservableCollection<PhuDinhData.rChanh>(rChanhs);
             _rChanhs.CollectionChanged += collection_CollectionChanged;

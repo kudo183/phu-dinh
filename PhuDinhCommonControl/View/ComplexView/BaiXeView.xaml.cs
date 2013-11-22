@@ -30,7 +30,7 @@ namespace PhuDinhCommonControl
                 return;
             }
 
-            _rChanhView.FilterChanh = (p => p.MaBaiXe == baixe.Ma);
+            _rChanhView.FilterChanh.FilterBaiXe = (p => p.MaBaiXe == baixe.Ma);
             _rChanhView.rBaiXeDefault = baixe;
             _rChanhView.RefreshView();
         }

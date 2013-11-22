@@ -162,6 +162,7 @@
       <DependentUpon>DGChanh.xaml</DependentUpon>
     </Compile>
     <Compile Include="Filter_DataGridColumnHeader\DataGridColumnHeaderTextFilter.cs" />
+    <Compile Include="Filter_Entity\1Level\Filter_rChanh.cs" />
     <Compile Include="Menu\BottomMenu.xaml.cs">
       <DependentUpon>BottomMenu.xaml</DependentUpon>
     </Compile>
