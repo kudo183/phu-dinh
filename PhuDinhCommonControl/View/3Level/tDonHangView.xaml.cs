@@ -77,7 +77,7 @@ namespace PhuDinhCommonControl
         {
             if (string.IsNullOrEmpty(DataGridColumnHeaderTextFilter.DonHang_KhachHang.Text) == false)
             {
-                FilterDonHang.FilterKhachHang = (p => p.rKhachHang.TenKhachHang == DataGridColumnHeaderTextFilter.DonHang_KhachHang.Text);
+                FilterDonHang.FilterKhachHang = (p => p.rKhachHang.TenKhachHang.Contains(DataGridColumnHeaderTextFilter.DonHang_KhachHang.Text));
             }
             else
             {
@@ -91,7 +91,7 @@ namespace PhuDinhCommonControl
         {
             if (string.IsNullOrEmpty(DataGridColumnHeaderTextFilter.DonHang_Chanh.Text) == false)
             {
-                FilterDonHang.FilterChanh = (p => p.rChanh.TenChanh == DataGridColumnHeaderTextFilter.DonHang_Chanh.Text);
+                FilterDonHang.FilterChanh = (p => p.rChanh.TenChanh.Contains(DataGridColumnHeaderTextFilter.DonHang_Chanh.Text));
             }
             else
             {
