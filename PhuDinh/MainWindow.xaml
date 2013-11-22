@@ -8,22 +8,112 @@
         Title="MainWindow" Height="350" Width="525" WindowState="Maximized">
     <TabControl>
         <TabItem Header="Don Hang" Background="Aquamarine">
-            <PhuDinhCommonControl:DonHangView/>
+            <TabItem.Style>
+                <Style TargetType="TabItem">
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Content">
+                                <Setter.Value>
+                                    <PhuDinhCommonControl:DonHangView/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                        <Trigger Property="IsSelected" Value="False">
+                            <Setter Property="Content" Value="{Binding Content, RelativeSource={RelativeSource Self}}"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </TabItem.Style>
         </TabItem>
         <TabItem Header="Chuyen Hang" Background="Aquamarine">
-            <PhuDinhCommonControl:ChuyenHangView/>
+            <TabItem.Style>
+                <Style TargetType="TabItem">
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Content">
+                                <Setter.Value>
+                                    <PhuDinhCommonControl:ChuyenHangView/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                        <Trigger Property="IsSelected" Value="False">
+                            <Setter Property="Content" Value="{Binding Content, RelativeSource={RelativeSource Self}}"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </TabItem.Style>
         </TabItem>
         <TabItem Header="Khach Hang" Background="Aquamarine">
-            <PhuDinhCommonControl:KhachHangView/>
+            <TabItem.Style>
+                <Style TargetType="TabItem">
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Content">
+                                <Setter.Value>
+                                    <PhuDinhCommonControl:KhachHangView/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                        <Trigger Property="IsSelected" Value="False">
+                            <Setter Property="Content" Value="{Binding Content, RelativeSource={RelativeSource Self}}"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </TabItem.Style>
         </TabItem>
         <TabItem Header="Mat Hang" Background="Aquamarine">
-            <PhuDinhCommonControl:MatHangView/>
+            <TabItem.Style>
+                <Style TargetType="TabItem">
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Content">
+                                <Setter.Value>
+                                    <PhuDinhCommonControl:MatHangView/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                        <Trigger Property="IsSelected" Value="False">
+                            <Setter Property="Content" Value="{Binding Content, RelativeSource={RelativeSource Self}}"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </TabItem.Style>
         </TabItem>
         <TabItem Header="Chi Phi" Background="Aquamarine">
-            <PhuDinhCommonControl:ChiPhiView/>
+            <TabItem.Style>
+                <Style TargetType="TabItem">
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Content">
+                                <Setter.Value>
+                                    <PhuDinhCommonControl:ChiPhiView/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                        <Trigger Property="IsSelected" Value="False">
+                            <Setter Property="Content" Value="{Binding Content, RelativeSource={RelativeSource Self}}"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </TabItem.Style>
         </TabItem>
         <TabItem Header="Tat ca" Background="Aquamarine">
-            <PhuDinhCommonControl:AdminView/>
+            <TabItem.Style>
+                <Style TargetType="TabItem">
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Content">
+                                <Setter.Value>
+                                    <PhuDinhCommonControl:AdminView/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                        <Trigger Property="IsSelected" Value="False">
+                            <Setter Property="Content" Value="{Binding Content, RelativeSource={RelativeSource Self}}"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </TabItem.Style>
         </TabItem>
     </TabControl>
 </Window>
