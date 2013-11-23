@@ -21,8 +21,6 @@ namespace PhuDinhCommonControl
             _tDonHangView.dgDonHang.SelectionChanged += dgDonHang_SelectionChanged;
             _tChiTietDonHangView.AfterSave += _tChiTietDonHangView_AfterSave;
             _tDonHangView.AfterSave += _tDonHangView_AfterSave;
-
-            _tDonHangView.RefreshView();
         }
 
         void DonHangView_Unloaded(object sender, RoutedEventArgs e)
