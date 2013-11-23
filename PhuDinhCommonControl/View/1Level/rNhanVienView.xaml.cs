@@ -13,7 +13,7 @@ namespace PhuDinhCommonControl
     /// </summary>
     public partial class rNhanVienView : BaseView
     {
-        public Expression<Func<PhuDinhData.rNhanVien, bool>> FilterNhanVien { get; set; }
+        public Filter_rNhanVien FilterNhanVien { get; set; }
         public Expression<Func<PhuDinhData.rPhuongTien, bool>> FilterPhuongTien { get; set; }
         public PhuDinhData.rPhuongTien rPhuongTienDefault { get; set; }
 
@@ -21,12 +21,43 @@ namespace PhuDinhCommonControl
         private List<PhuDinhData.rPhuongTien> _rPhuongTiens;
         private PhuDinhData.PhuDinhEntities _context = ContextFactory.CreateContext();
 
+        private string _filterPhuongTien = string.Empty;
+
         public rNhanVienView()
         {
             InitializeComponent();
 
             FilterPhuongTien = (p => true);
-            FilterNhanVien = (p => true);
+            FilterNhanVien = new Filter_rNhanVien();
+
+            Loaded += rNhanVienView_Loaded;
+            Unloaded += rNhanVienView_Unloaded;
+        }
+
+        void rNhanVienView_Loaded(object sender, System.Windows.RoutedEventArgs e)
+        {
+            DataGridColumnHeaderTextFilter.NhanVien_PhuongTien.Text = _filterPhuongTien;
+            DataGridColumnHeaderTextFilter.NhanVien_PhuongTien.PropertyChanged += NhanVien_PhuongTien_PropertyChanged;
+        }
+
+        void rNhanVienView_Unloaded(object sender, System.Windows.RoutedEventArgs e)
+        {
+            _filterPhuongTien = DataGridColumnHeaderTextFilter.NhanVien_PhuongTien.Text;
+            DataGridColumnHeaderTextFilter.NhanVien_PhuongTien.PropertyChanged -= NhanVien_PhuongTien_PropertyChanged;
+        }
+
+        void NhanVien_PhuongTien_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(DataGridColumnHeaderTextFilter.NhanVien_PhuongTien.Text) == false)
+            {
+                FilterNhanVien.FilterPhuongTien = (p => p.rPhuongTien.TenPhuongTien.Contains(DataGridColumnHeaderTextFilter.NhanVien_PhuongTien.Text));
+            }
+            else
+            {
+                FilterNhanVien.FilterPhuongTien = (p => true);
+            }
+
+            RefreshView();
         }
 
         #region Override base view method
@@ -47,7 +78,7 @@ namespace PhuDinhCommonControl
                 }
 
                 var data = dgNhanVien.DataContext as ObservableCollection<PhuDinhData.rNhanVien>;
-                PhuDinhData.Repository.rNhanVienRepository.Save(_context, data.ToList(), FilterNhanVien);
+                PhuDinhData.Repository.rNhanVienRepository.Save(_context, data.ToList(), FilterNhanVien.FilterPhuongTien);
             }
             catch (Exception ex)
             {
@@ -80,7 +111,7 @@ namespace PhuDinhCommonControl
             }
 
             _context = ContextFactory.CreateContext();
-            var rNhanViens = PhuDinhData.Repository.rNhanVienRepository.GetData(_context, FilterNhanVien);
+            var rNhanViens = PhuDinhData.Repository.rNhanVienRepository.GetData(_context, FilterNhanVien.FilterPhuongTien);
 
             _rNhanViens = new ObservableCollection<PhuDinhData.rNhanVien>(rNhanViens);
             _rNhanViens.CollectionChanged += collection_CollectionChanged;

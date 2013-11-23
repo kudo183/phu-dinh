@@ -10,6 +10,9 @@ namespace PhuDinhCommonControl
         //1level
         public static readonly DataGridColumnHeaderTextFilter Chanh_BaiXe = new DataGridColumnHeaderTextFilter("Bãi Xe");
         public static readonly DataGridColumnHeaderTextFilter DiaDiem_Nuoc = new DataGridColumnHeaderTextFilter("Nước");
+        public static readonly DataGridColumnHeaderTextFilter NguyenLieu_LoaiNguyenLieu = new DataGridColumnHeaderTextFilter("Loại Nguyên Liệu");
+        public static readonly DataGridColumnHeaderTextFilter NhanVien_PhuongTien = new DataGridColumnHeaderTextFilter("Phương Tiện");
+        public static readonly DataGridColumnHeaderTextFilter MatHang_LoaiHang = new DataGridColumnHeaderTextFilter("Loại Hàng");
 
         private DataGridColumnHeaderTextFilter(string name)
         {

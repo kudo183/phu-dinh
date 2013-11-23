@@ -30,7 +30,7 @@ namespace PhuDinhCommonControl
                 return;
             }
 
-            _rNhanVienView.FilterNhanVien = (p => p.MaPhuongTien == phuongTien.Ma);
+            _rNhanVienView.FilterNhanVien.FilterPhuongTien = (p => p.MaPhuongTien == phuongTien.Ma);
             _rNhanVienView.rPhuongTienDefault = phuongTien;
             _rNhanVienView.RefreshView();
         }

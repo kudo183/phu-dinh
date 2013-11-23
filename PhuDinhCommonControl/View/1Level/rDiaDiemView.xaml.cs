@@ -28,6 +28,7 @@ namespace PhuDinhCommonControl
 
             FilterDiaDiem = new Filter_rDiaDiem();
             FilterNuoc = (p => true);
+
             Loaded += rDiaDiemView_Loaded;
             Unloaded += rDiaDiemView_Unloaded;
         }
@@ -35,16 +36,16 @@ namespace PhuDinhCommonControl
         void rDiaDiemView_Loaded(object sender, System.Windows.RoutedEventArgs e)
         {
             DataGridColumnHeaderTextFilter.DiaDiem_Nuoc.Text = _filterNuoc;
-            DataGridColumnHeaderTextFilter.DiaDiem_Nuoc.PropertyChanged += DiaDiem_BaiXe_PropertyChanged;
+            DataGridColumnHeaderTextFilter.DiaDiem_Nuoc.PropertyChanged += DiaDiem_Nuoc_PropertyChanged;
         }
 
         void rDiaDiemView_Unloaded(object sender, System.Windows.RoutedEventArgs e)
         {
             _filterNuoc = DataGridColumnHeaderTextFilter.DiaDiem_Nuoc.Text;
-            DataGridColumnHeaderTextFilter.DiaDiem_Nuoc.PropertyChanged -= DiaDiem_BaiXe_PropertyChanged;
+            DataGridColumnHeaderTextFilter.DiaDiem_Nuoc.PropertyChanged -= DiaDiem_Nuoc_PropertyChanged;
         }
 
-        void DiaDiem_BaiXe_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        void DiaDiem_Nuoc_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
             if (string.IsNullOrEmpty(DataGridColumnHeaderTextFilter.DiaDiem_Nuoc.Text) == false)
             {

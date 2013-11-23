@@ -30,7 +30,7 @@ namespace PhuDinhCommonControl
                 return;
             }
 
-            _tMatHangView.FilterMatHang = (p => p.MaLoai == loaihang.Ma);
+            _tMatHangView.FilterMatHang.FilterLoai = (p => p.MaLoai == loaihang.Ma);
             _tMatHangView.rLoaiHangDefault = loaihang;
             _tMatHangView.RefreshView();
         }

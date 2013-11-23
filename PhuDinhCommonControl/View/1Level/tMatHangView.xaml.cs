@@ -13,7 +13,7 @@ namespace PhuDinhCommonControl
     /// </summary>
     public partial class tMatHangView : BaseView
     {
-        public Expression<Func<PhuDinhData.tMatHang, bool>> FilterMatHang { get; set; }
+        public Filter_tMatHang FilterMatHang { get; set; }
         public Expression<Func<PhuDinhData.rLoaiHang, bool>> FilterLoaiHang { get; set; }
         public PhuDinhData.rLoaiHang rLoaiHangDefault { get; set; }
 
@@ -21,12 +21,43 @@ namespace PhuDinhCommonControl
         private List<PhuDinhData.rLoaiHang> _rLoaiHangs;
         private PhuDinhData.PhuDinhEntities _context = ContextFactory.CreateContext();
 
+        private string _filterLoaiHang = string.Empty;
+
         public tMatHangView()
         {
             InitializeComponent();
 
-            FilterMatHang = (p => true);
+            FilterMatHang = new Filter_tMatHang();
             FilterLoaiHang = (p => true);
+
+            Loaded += tMatHangView_Loaded;
+            Unloaded += tMatHangView_Unloaded;
+        }
+
+        void tMatHangView_Loaded(object sender, System.Windows.RoutedEventArgs e)
+        {
+            DataGridColumnHeaderTextFilter.MatHang_LoaiHang.Text = _filterLoaiHang;
+            DataGridColumnHeaderTextFilter.MatHang_LoaiHang.PropertyChanged += MatHang_LoaiHang_PropertyChanged;
+        }
+
+        void tMatHangView_Unloaded(object sender, System.Windows.RoutedEventArgs e)
+        {
+            _filterLoaiHang = DataGridColumnHeaderTextFilter.MatHang_LoaiHang.Text;
+            DataGridColumnHeaderTextFilter.MatHang_LoaiHang.PropertyChanged -= MatHang_LoaiHang_PropertyChanged;
+        }
+
+        void MatHang_LoaiHang_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(DataGridColumnHeaderTextFilter.MatHang_LoaiHang.Text) == false)
+            {
+                FilterMatHang.FilterLoai = (p => p.rLoaiHang.TenLoai.Contains(DataGridColumnHeaderTextFilter.MatHang_LoaiHang.Text));
+            }
+            else
+            {
+                FilterMatHang.FilterLoai = (p => true);
+            }
+
+            RefreshView();
         }
 
         #region Override base view method
@@ -47,7 +78,7 @@ namespace PhuDinhCommonControl
                 }
 
                 var data = dgMatHang.DataContext as ObservableCollection<PhuDinhData.tMatHang>;
-                PhuDinhData.Repository.tMatHangRepository.Save(_context, data.ToList(), FilterMatHang);
+                PhuDinhData.Repository.tMatHangRepository.Save(_context, data.ToList(), FilterMatHang.FiltetMatHang);
             }
             catch (Exception ex)
             {
@@ -80,7 +111,7 @@ namespace PhuDinhCommonControl
             }
 
             _context = ContextFactory.CreateContext();
-            var tMatHangs = PhuDinhData.Repository.tMatHangRepository.GetData(_context, FilterMatHang);
+            var tMatHangs = PhuDinhData.Repository.tMatHangRepository.GetData(_context, FilterMatHang.FiltetMatHang);
 
             _tMatHangs = new ObservableCollection<PhuDinhData.tMatHang>(tMatHangs);
             _tMatHangs.CollectionChanged += collection_CollectionChanged;

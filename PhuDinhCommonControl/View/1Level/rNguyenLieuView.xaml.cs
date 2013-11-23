@@ -13,7 +13,7 @@ namespace PhuDinhCommonControl
     /// </summary>
     public partial class rNguyenLieuView : BaseView
     {
-        public Expression<Func<PhuDinhData.rNguyenLieu, bool>> FilterNguyenLieu { get; set; }
+        public Filter_rNguyenLieu FilterNguyenLieu { get; set; }
         public Expression<Func<PhuDinhData.rLoaiNguyenLieu, bool>> FilterLoaiNguyenLieu { get; set; }
         public PhuDinhData.rLoaiNguyenLieu rLoaiNguyenLieuDefault { get; set; }
 
@@ -21,12 +21,43 @@ namespace PhuDinhCommonControl
         private List<PhuDinhData.rLoaiNguyenLieu> _rLoaiNguyenLieus;
         private PhuDinhData.PhuDinhEntities _context = ContextFactory.CreateContext();
 
+        private string _filterLoaiNguyenLieu = string.Empty;
+
         public rNguyenLieuView()
         {
             InitializeComponent();
 
-            FilterNguyenLieu = (p => true);
+            FilterNguyenLieu = new Filter_rNguyenLieu();
             FilterLoaiNguyenLieu = (p => true);
+
+            Loaded += rNguyenLieuView_Loaded;
+            Unloaded += rNguyenLieuView_Unloaded;
+        }
+
+        void rNguyenLieuView_Loaded(object sender, System.Windows.RoutedEventArgs e)
+        {
+            DataGridColumnHeaderTextFilter.NguyenLieu_LoaiNguyenLieu.Text = _filterLoaiNguyenLieu;
+            DataGridColumnHeaderTextFilter.NguyenLieu_LoaiNguyenLieu.PropertyChanged += NguyenLieu_LoaiNguyenLieu_PropertyChanged;
+        }
+
+        void rNguyenLieuView_Unloaded(object sender, System.Windows.RoutedEventArgs e)
+        {
+            _filterLoaiNguyenLieu = DataGridColumnHeaderTextFilter.NguyenLieu_LoaiNguyenLieu.Text;
+            DataGridColumnHeaderTextFilter.NguyenLieu_LoaiNguyenLieu.PropertyChanged -= NguyenLieu_LoaiNguyenLieu_PropertyChanged;
+        }
+
+        void NguyenLieu_LoaiNguyenLieu_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(DataGridColumnHeaderTextFilter.NguyenLieu_LoaiNguyenLieu.Text) == false)
+            {
+                FilterNguyenLieu.FilterLoaiNguyenLieu = (p => p.rLoaiNguyenLieu.TenLoai.Contains(DataGridColumnHeaderTextFilter.NguyenLieu_LoaiNguyenLieu.Text));
+            }
+            else
+            {
+                FilterNguyenLieu.FilterLoaiNguyenLieu = (p => true);
+            }
+
+            RefreshView();
         }
 
         #region Override base view method
@@ -47,7 +78,7 @@ namespace PhuDinhCommonControl
                 }
 
                 var data = dgNguyenLieu.DataContext as ObservableCollection<PhuDinhData.rNguyenLieu>;
-                PhuDinhData.Repository.rNguyenLieuRepository.Save(_context, data.ToList(), FilterNguyenLieu);
+                PhuDinhData.Repository.rNguyenLieuRepository.Save(_context, data.ToList(), FilterNguyenLieu.FilterNguyenLieu);
             }
             catch (Exception ex)
             {
@@ -80,7 +111,7 @@ namespace PhuDinhCommonControl
             }
 
             _context = ContextFactory.CreateContext();
-            var rNguyenLieus = PhuDinhData.Repository.rNguyenLieuRepository.GetData(_context, FilterNguyenLieu);
+            var rNguyenLieus = PhuDinhData.Repository.rNguyenLieuRepository.GetData(_context, FilterNguyenLieu.FilterNguyenLieu);
 
             _rNguyenLieus = new ObservableCollection<PhuDinhData.rNguyenLieu>(rNguyenLieus);
             _rNguyenLieus.CollectionChanged += collection_CollectionChanged;
