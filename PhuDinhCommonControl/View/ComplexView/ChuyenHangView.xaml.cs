@@ -25,8 +25,6 @@ namespace PhuDinhCommonControl
             _tChuyenHangView.AfterSave += _tChuyenHangView_AfterSave;
             _tChuyenHangDonHangView.AfterSave += _tChuyenHangDonHangView_AfterSave;
             _tChiTietChuyenHangDonHangView.AfterSave += _tChiTietChuyenHangDonHangView_AfterSave;
-
-            _tChuyenHangView.RefreshView();
         }
 
         void ChuyenHangView_Unloaded(object sender, System.Windows.RoutedEventArgs e)
