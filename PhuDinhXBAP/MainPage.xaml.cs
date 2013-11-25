@@ -1,4 +1,5 @@
-﻿using System.Configuration;
+﻿using PhuDinhCommon;
+using System.Configuration;
 using System.Globalization;
 using System.Security.Cryptography;
 using System.Threading;
@@ -15,6 +16,9 @@ namespace PhuDinhXBAP
     {
         public Page1()
         {
+            LogManager.Log(event_type.et_Internal, severity_type.st_info, new string('*', 20));
+            LogManager.Log(event_type.et_Internal, severity_type.st_info, "Start main page");
+
             InitializeComponent();
             Thread.CurrentThread.CurrentCulture = new CultureInfo("vi-VN");
         }
