@@ -51,5 +51,10 @@ namespace PhuDinhData
         }
 
         public List<rNhanVien> rNhanVienList { get; set; }
+
+        public override string ToString()
+        {
+            return string.Format("[Ma {0}] [Ngay {1}] [Gio {2}] [NhanVien {3}]", Ma, Ngay, Gio, rNhanVien);
+        }
     }
 }

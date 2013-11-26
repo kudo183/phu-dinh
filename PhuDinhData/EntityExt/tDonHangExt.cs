@@ -29,5 +29,10 @@ namespace PhuDinhData
 
         public List<rKhachHang> rKhachHangList { get; set; }
         public List<rChanh> rChanhList { get; set; }
+
+        public override string ToString()
+        {
+            return string.Format("[Ma {0}] [Ngay {1}] [KhachHang {2}] [Chanh {3}]", Ma, Ngay, rKhachHang, rChanh);
+        }
     }
 }

@@ -31,5 +31,10 @@ namespace PhuDinhData
             }
             return result;
         }
+        
+        public override string ToString()
+        {
+            return string.Format("[Ma {0}] [LoaiNguyenLieu {1}] [DuongKinh {2}]", Ma, rLoaiNguyenLieu, DuongKinh);
+        }
     }
 }

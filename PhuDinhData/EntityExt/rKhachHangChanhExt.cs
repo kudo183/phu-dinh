@@ -6,5 +6,10 @@ namespace PhuDinhData
     {
         public List<rKhachHang> rKhachHangList { get; set; }
         public List<rChanh> rChanhList { get; set; }
+
+        public override string ToString()
+        {
+            return string.Format("[Ma {0}] [KhachHang {1}] [Chanh {2}]", Ma, rKhachHang, rChanh);
+        }
     }
 }

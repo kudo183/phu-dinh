@@ -40,5 +40,10 @@ namespace PhuDinhData
                 }
             }
         }
+        
+        public override string ToString()
+        {
+            return string.Format("[Ma {0}] [ChuyenHangDonHang {1}] [ChiTietDonHang {2}] [SoLuong {3}]", Ma, tChuyenHangDonHang, tChiTietDonHang, SoLuong);
+        }
     }
 }

@@ -74,6 +74,13 @@
     <Compile Include="DesignTimeData\0Level\DDrNuoc.cs" />
     <Compile Include="DesignTimeData\0Level\DDrBaiXe.cs" />
     <Compile Include="DesignTimeData\1Level\DDrChanh.cs" />
+    <Compile Include="EntityExt\rNhaCungCapExt.cs" />
+    <Compile Include="EntityExt\rLoaiHangExt.cs" />
+    <Compile Include="EntityExt\rLoaiChiPhiExt.cs" />
+    <Compile Include="EntityExt\rPhuongTienExt.cs" />
+    <Compile Include="EntityExt\rLoaiNguyenLieuExt.cs" />
+    <Compile Include="EntityExt\rBaiXeExt.cs" />
+    <Compile Include="EntityExt\rNuocExt.cs" />
     <Compile Include="EntityExt\tNhapNguyenLieuExt.cs" />
     <Compile Include="EntityExt\tNhapMatHangExt.cs" />
     <Compile Include="EntityExt\rMatHangNguyenLieuExt.cs" />
