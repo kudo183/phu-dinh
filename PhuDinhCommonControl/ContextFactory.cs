@@ -1,5 +1,5 @@
 ﻿using System.Configuration;
-using System.Data.EntityClient;
+using System.Data.Entity.Core.EntityClient;
 using System.Data.SqlClient;
 using PhuDinhCommon;
 using PhuDinhData;
