@@ -5,119 +5,172 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:PhuDinhCommonControl="clr-namespace:PhuDinhCommonControl" mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <TabControl TabStripPlacement="Left">
-        <TabItem Header="Bãi xe" Background="Gray">
-            <TabItem.Tag>
-                <PhuDinhCommonControl:rBaiXeView/>
-            </TabItem.Tag>
-        </TabItem>
-        <TabItem Header="Chành" Background="Gray">
-            <PhuDinhCommonControl:rChanhView/>
-        </TabItem>
-        <TabItem Header="Địa điểm" Background="Gray">
-            <TabItem.Tag>
-                <PhuDinhCommonControl:rDiaDiemView/>
-            </TabItem.Tag>
-        </TabItem>
-        <TabItem Header="Khách hàng" Background="Gray">
-            <TabItem.Tag>
-                <PhuDinhCommonControl:rKhachHangView/>
-            </TabItem.Tag>
-        </TabItem>
-        <TabItem Header="Khách hàng chành" Background="Gray">
-            <TabItem.Tag>
-                <PhuDinhCommonControl:rKhachHangChanhView/>
-            </TabItem.Tag>
-        </TabItem>
-        <TabItem Header="Loại chi phí" Background="Gray">
-            <TabItem.Tag>
-                <PhuDinhCommonControl:rLoaiChiPhiView/>
-            </TabItem.Tag>
-        </TabItem>
-        <TabItem Header="Loại hàng" Background="Gray">
-            <TabItem.Tag>
-                <PhuDinhCommonControl:rLoaiHangView/>
-            </TabItem.Tag>
-        </TabItem>
-        <TabItem Header="Nhân viên" Background="Gray">
-            <TabItem.Tag>
-                <PhuDinhCommonControl:rNhanVienView/>
-            </TabItem.Tag>
-        </TabItem>
-        <TabItem Header="Nước" Background="Gray">
-            <TabItem.Tag>
-                <PhuDinhCommonControl:rNuocView/>
-            </TabItem.Tag>
-        </TabItem>
-        <TabItem Header="Phương tiện" Background="Gray">
-            <TabItem.Tag>
-                <PhuDinhCommonControl:rPhuongTienView/>
-            </TabItem.Tag>
-        </TabItem>
-        <TabItem Header="Chi phí" Background="Gray">
-            <TabItem.Tag>
-                <PhuDinhCommonControl:tChiPhiView/>
-            </TabItem.Tag>
-        </TabItem>
-        <TabItem Header="Chi tiết chuyến hàng đơn hàng" Background="Gray">
-            <TabItem.Tag>
-                <PhuDinhCommonControl:tChiTietChuyenHangDonHangView/>
-            </TabItem.Tag>
-        </TabItem>
-        <TabItem Header="Chi tiết đơn hàng" Background="Gray">
-            <TabItem.Tag>
-                <PhuDinhCommonControl:tChiTietDonHangView/>
-            </TabItem.Tag>
-        </TabItem>
-        <TabItem Header="Chuyến hàng" Background="Gray">
-            <TabItem.Tag>
-                <PhuDinhCommonControl:tChuyenHangView/>
-            </TabItem.Tag>
-        </TabItem>
-        <TabItem Header="Chuyến hàng đơn hàng" Background="Gray">
-            <TabItem.Tag>
-                <PhuDinhCommonControl:tChuyenHangDonHangView/>
-            </TabItem.Tag>
-        </TabItem>
-        <TabItem Header="Đơn hàng" Background="Gray">
-            <TabItem.Tag>
-                <PhuDinhCommonControl:tDonHangView/>
-            </TabItem.Tag>
-        </TabItem>
-        <TabItem Header="Mặt hàng" Background="Gray">
-            <TabItem.Tag>
-                <PhuDinhCommonControl:tMatHangView/>
-            </TabItem.Tag>
-        </TabItem>
-        <TabItem Header="Loại nguyên liệu" Background="Gray">
-            <TabItem.Tag>
-                <PhuDinhCommonControl:rLoaiNguyenLieuView/>
-            </TabItem.Tag>
-        </TabItem>
-        <TabItem Header="Nhà cung cấp" Background="Gray">
-            <TabItem.Tag>
-                <PhuDinhCommonControl:rNhaCungCapView/>
-            </TabItem.Tag>
-        </TabItem>
-        <TabItem Header="Nguyên liệu" Background="Gray">
-            <TabItem.Tag>
-                <PhuDinhCommonControl:rNguyenLieuView/>
-            </TabItem.Tag>
-        </TabItem>
-        <TabItem Header="Mặt hàng nguyên liệu" Background="Gray">
-            <TabItem.Tag>
-                <PhuDinhCommonControl:rMatHangNguyenLieuView/>
-            </TabItem.Tag>
-        </TabItem>
-        <TabItem Header="Nhập mặt hàng" Background="Gray">
-            <TabItem.Tag>
-                <PhuDinhCommonControl:tNhapMatHangView/>
-            </TabItem.Tag>
-        </TabItem>
-        <TabItem Header="Nhập nguyên liệu" Background="Gray">
-            <TabItem.Tag>
-                <PhuDinhCommonControl:tNhapNguyenLieuView/>
-            </TabItem.Tag>
-        </TabItem>
-    </TabControl>    
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <TreeView Grid.Column="0" SelectedItemChanged="TreeView_SelectedItemChanged" Margin="5">
+            <TreeViewItem Header="0Level">
+                <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_BaiXe}"/>
+                <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_LoaiChiPhi}"/>
+                <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_LoaiHang}"/>
+                <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_LoaiNguyenLieu}"/>
+                <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_NhaCungCap}"/>
+                <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_Nuoc}"/>
+                <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_PhuongTien}"/>
+            </TreeViewItem>
+            <TreeViewItem Header="1Level">
+                <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_Chanh}">
+                    <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_BaiXe}"/>
+                </TreeViewItem>
+                <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_DiaDiem}">
+                    <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_Nuoc}"/>
+                </TreeViewItem>
+                <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_NguyenLieu}">
+                    <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_LoaiNguyenLieu}"/>
+                </TreeViewItem>
+                <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_NhanVien}">
+                    <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_PhuongTien}"/>
+                </TreeViewItem>
+                <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_MatHang}">
+                    <TreeViewItem  Header="{x:Static PhuDinhCommonControl:Constant.ViewName_LoaiHang}"/>
+                </TreeViewItem>
+            </TreeViewItem>
+            <TreeViewItem Header="2Level">
+                <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_KhachHang}">
+                    <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_DiaDiem}">
+                        <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_Nuoc}"/>
+                    </TreeViewItem>
+                </TreeViewItem>
+                <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_MatHangNguyenLieu}">
+                    <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_MatHang}">
+                        <TreeViewItem  Header="{x:Static PhuDinhCommonControl:Constant.ViewName_LoaiHang}"/>
+                    </TreeViewItem>
+                    <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_NguyenLieu}">
+                        <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_LoaiNguyenLieu}"/>
+                    </TreeViewItem>
+                </TreeViewItem>
+                <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_ChiPhi}">
+                    <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_LoaiChiPhi}"/>
+                    <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_NhanVien}">
+                        <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_PhuongTien}"/>
+                    </TreeViewItem>
+                </TreeViewItem>
+                <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_ChuyenHang}">
+                    <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_NhanVien}">
+                        <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_PhuongTien}"/>
+                    </TreeViewItem>
+                </TreeViewItem>
+                <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_NhapMatHang}">
+                    <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_NhanVien}">
+                        <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_PhuongTien}"/>
+                    </TreeViewItem>
+                    <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_MatHang}">
+                        <TreeViewItem  Header="{x:Static PhuDinhCommonControl:Constant.ViewName_LoaiHang}"/>
+                    </TreeViewItem>
+                </TreeViewItem>
+                <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_NhapNguyenLieu}">
+                    <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_NguyenLieu}">
+                        <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_LoaiNguyenLieu}"/>
+                    </TreeViewItem>
+                    <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_NhaCungCap}"/>
+                </TreeViewItem>
+            </TreeViewItem>
+            <TreeViewItem Header="3Level">
+                <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_KhachHangChanh}">
+                    <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_KhachHang}">
+                        <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_DiaDiem}">
+                            <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_Nuoc}"/>
+                        </TreeViewItem>
+                    </TreeViewItem>
+                    <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_Chanh}">
+                        <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_BaiXe}"/>
+                    </TreeViewItem>
+                </TreeViewItem>
+                <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_DonHang}">
+                    <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_KhachHang}">
+                        <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_DiaDiem}">
+                            <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_Nuoc}"/>
+                        </TreeViewItem>
+                    </TreeViewItem>
+                    <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_Chanh}">
+                        <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_BaiXe}"/>
+                    </TreeViewItem>
+                </TreeViewItem>
+            </TreeViewItem>
+            <TreeViewItem Header="4Level">
+                <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_ChiTietDonHang}">
+                    <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_DonHang}">
+                        <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_KhachHang}">
+                            <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_DiaDiem}">
+                                <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_Nuoc}"/>
+                            </TreeViewItem>
+                        </TreeViewItem>
+                        <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_Chanh}">
+                            <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_BaiXe}"/>
+                        </TreeViewItem>
+                    </TreeViewItem>
+                    <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_MatHang}">
+                        <TreeViewItem  Header="{x:Static PhuDinhCommonControl:Constant.ViewName_LoaiHang}"/>
+                    </TreeViewItem>
+                </TreeViewItem>
+                <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_ChuyenHangDonHang}">
+                    <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_ChuyenHang}">
+                        <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_NhanVien}">
+                            <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_PhuongTien}"/>
+                        </TreeViewItem>
+                    </TreeViewItem>
+                    <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_DonHang}">
+                        <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_KhachHang}">
+                            <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_DiaDiem}">
+                                <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_Nuoc}"/>
+                            </TreeViewItem>
+                        </TreeViewItem>
+                        <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_Chanh}">
+                            <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_BaiXe}"/>
+                        </TreeViewItem>
+                    </TreeViewItem>
+                </TreeViewItem>
+            </TreeViewItem>
+            <TreeViewItem Header="5Level">
+                <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_ChiTietChuyenHangDonHang}">
+                    <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_ChuyenHangDonHang}">
+                        <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_ChuyenHang}">
+                            <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_NhanVien}">
+                                <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_PhuongTien}"/>
+                            </TreeViewItem>
+                        </TreeViewItem>
+                        <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_DonHang}">
+                            <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_KhachHang}">
+                                <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_DiaDiem}">
+                                    <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_Nuoc}"/>
+                                </TreeViewItem>
+                            </TreeViewItem>
+                            <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_Chanh}">
+                                <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_BaiXe}"/>
+                            </TreeViewItem>
+                        </TreeViewItem>
+                    </TreeViewItem>
+                </TreeViewItem>
+                <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_ChiTietDonHang}">
+                    <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_DonHang}">
+                        <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_KhachHang}">
+                            <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_DiaDiem}">
+                                <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_Nuoc}"/>
+                            </TreeViewItem>
+                        </TreeViewItem>
+                        <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_Chanh}">
+                            <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_BaiXe}"/>
+                        </TreeViewItem>
+                    </TreeViewItem>
+                    <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_MatHang}">
+                        <TreeViewItem  Header="{x:Static PhuDinhCommonControl:Constant.ViewName_LoaiHang}"/>
+                    </TreeViewItem>
+                </TreeViewItem>
+            </TreeViewItem>
+        </TreeView>
+        <Border Grid.Column="1" Name="brdContent" Margin="5"/>
+        <GridSplitter Grid.Column="0" VerticalAlignment="Stretch" HorizontalAlignment="Right" Width="5" Margin="5"/>
+    </Grid>
 </UserControl>
