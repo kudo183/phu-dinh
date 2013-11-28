@@ -152,22 +152,22 @@
                             </TreeViewItem>
                         </TreeViewItem>
                     </TreeViewItem>
-                </TreeViewItem>
-                <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_ChiTietDonHang}">
-                    <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_DonHang}">
-                        <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_KhachHang}">
-                            <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_DiaDiem}">
-                                <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_Nuoc}"/>
+                    <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_ChiTietDonHang}">
+                        <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_DonHang}">
+                            <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_KhachHang}">
+                                <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_DiaDiem}">
+                                    <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_Nuoc}"/>
+                                </TreeViewItem>
+                            </TreeViewItem>
+                            <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_Chanh}">
+                                <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_BaiXe}"/>
                             </TreeViewItem>
                         </TreeViewItem>
-                        <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_Chanh}">
-                            <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_BaiXe}"/>
+                        <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_MatHang}">
+                            <TreeViewItem  Header="{x:Static PhuDinhCommonControl:Constant.ViewName_LoaiHang}"/>
                         </TreeViewItem>
                     </TreeViewItem>
-                    <TreeViewItem Header="{x:Static PhuDinhCommonControl:Constant.ViewName_MatHang}">
-                        <TreeViewItem  Header="{x:Static PhuDinhCommonControl:Constant.ViewName_LoaiHang}"/>
-                    </TreeViewItem>
-                </TreeViewItem>
+                </TreeViewItem>                
             </TreeViewItem>
         </TreeView>
         <Border Grid.Column="1" Name="brdContent" Margin="5"/>
