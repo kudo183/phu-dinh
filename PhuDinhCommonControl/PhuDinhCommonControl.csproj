@@ -67,7 +67,7 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ChildWindowUtils.cs" />
+    <Compile Include="Utils\ChildWindowUtils.cs" />
     <Compile Include="Constant.cs" />
     <Compile Include="Factory\ContextFactory.cs" />
     <Compile Include="CustomControl\DataGridColumn\DataGridCheckBoxColumnExt.xaml.cs">
@@ -290,7 +290,7 @@
     <Compile Include="Filter_Entity\Filter_tNhapMatHang.cs" />
     <Compile Include="Filter_Entity\Filter_tChiPhi.cs" />
     <Compile Include="Filter_Entity\Filter_tDonHang.cs" />
-    <Compile Include="VisualTreeUtils.cs" />
+    <Compile Include="Utils\VisualTreeUtils.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
