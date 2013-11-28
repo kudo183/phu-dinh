@@ -69,7 +69,7 @@
   <ItemGroup>
     <Compile Include="ChildWindowUtils.cs" />
     <Compile Include="Constant.cs" />
-    <Compile Include="ContextFactory.cs" />
+    <Compile Include="Factory\ContextFactory.cs" />
     <Compile Include="CustomControl\DataGridColumn\DataGridCheckBoxColumnExt.xaml.cs">
       <DependentUpon>DataGridCheckBoxColumnExt.xaml</DependentUpon>
     </Compile>
@@ -175,7 +175,7 @@
     <Compile Include="Menu\BottomMenu.xaml.cs">
       <DependentUpon>BottomMenu.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewFactory.cs" />
+    <Compile Include="Factory\ViewFactory.cs" />
     <Compile Include="View\0Level\rNhaCungCapView.xaml.cs">
       <DependentUpon>rNhaCungCapView.xaml</DependentUpon>
     </Compile>
