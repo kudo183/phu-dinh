@@ -30,7 +30,7 @@ namespace PhuDinhCommonControl
                 return;
             }
 
-            _rKhachHangChanhView.FilterKhachHangChanh = (p => p.MaKhachHang == rKhachHang.Ma);
+            _rKhachHangChanhView.FilterKhachHangChanh.FilterKhachHang = (p => p.MaKhachHang == rKhachHang.Ma);
             _rKhachHangChanhView.RefreshView();
         }
     }

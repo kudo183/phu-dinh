@@ -4,15 +4,19 @@ namespace PhuDinhCommonControl
 {
     public class DataGridColumnHeaderTextFilter : INotifyPropertyChanged
     {
-        public static readonly DataGridColumnHeaderTextFilter DonHang_KhachHang = new DataGridColumnHeaderTextFilter("Khách Hàng");
-        public static readonly DataGridColumnHeaderTextFilter DonHang_Chanh = new DataGridColumnHeaderTextFilter("Chành");
-
+        //0Lvel
         //1level
         public static readonly DataGridColumnHeaderTextFilter Chanh_BaiXe = new DataGridColumnHeaderTextFilter("Bãi Xe");
         public static readonly DataGridColumnHeaderTextFilter DiaDiem_Nuoc = new DataGridColumnHeaderTextFilter("Nước");
         public static readonly DataGridColumnHeaderTextFilter NguyenLieu_LoaiNguyenLieu = new DataGridColumnHeaderTextFilter("Loại Nguyên Liệu");
         public static readonly DataGridColumnHeaderTextFilter NhanVien_PhuongTien = new DataGridColumnHeaderTextFilter("Phương Tiện");
         public static readonly DataGridColumnHeaderTextFilter MatHang_LoaiHang = new DataGridColumnHeaderTextFilter("Loại Hàng");
+        //2Lvel
+        //3Level
+        public static readonly DataGridColumnHeaderTextFilter DonHang_KhachHang = new DataGridColumnHeaderTextFilter("Khách Hàng");
+        public static readonly DataGridColumnHeaderTextFilter DonHang_Chanh = new DataGridColumnHeaderTextFilter("Chành");
+        public static readonly DataGridColumnHeaderTextFilter KhachHangChanh_KhachHang = new DataGridColumnHeaderTextFilter("Khách Hàng");
+        public static readonly DataGridColumnHeaderTextFilter KhachHangChanh_Chanh = new DataGridColumnHeaderTextFilter("Chành");
 
         private DataGridColumnHeaderTextFilter(string name)
         {

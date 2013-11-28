@@ -4,14 +4,16 @@
                            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                            xmlns:CustomControl="clr-namespace:CustomControl;assembly=CustomControl"
-                           xmlns:DesignTimeData="clr-namespace:PhuDinhData.DesignTimeData;assembly=PhuDinhData" mc:Ignorable="d"
+                           xmlns:DesignTimeData="clr-namespace:PhuDinhData.DesignTimeData;assembly=PhuDinhData"
+                           xmlns:PhuDinhCommonControl="clr-namespace:PhuDinhCommonControl" mc:Ignorable="d"
                            d:DataContext="{x:Static DesignTimeData:DDrKhachHangChanh.rKhachHangChanhs}"
                            AutoGenerateColumns="False" EnableRowVirtualization="False" ItemsSource="{Binding}" SelectionMode="Single">
     <DataGrid.Columns>
         <!--Ma-->
         <CustomControl:DataGridReadOnlyTextColumn x:Name="maColumn"/>
         <!--Khach hang-->
-        <CustomControl:DataGridComboBoxColumnExt x:Name="khachHangColumn" Header="Khách hàng" HeaderAddButtonClick="headerAddButton_Click"
+        <CustomControl:DataGridComboBoxColumnExt x:Name="khachHangColumn" Header="{x:Static PhuDinhCommonControl:DataGridColumnHeaderTextFilter.KhachHangChanh_KhachHang}"
+                                                 HeaderAddButtonClick="headerAddButton_Click"
                                                  TextBinding="{Binding rKhachHang.TenKhachHangDiaDiem, Mode=OneWay}"
                                                  DisplayMemberPath="TenKhachHangDiaDiem"
                                                  SelectedValuePath="Ma"
@@ -19,7 +21,8 @@
                                                  SelectedItemBinding="{Binding rKhachHang, UpdateSourceTrigger=PropertyChanged}"
                                                  ItemsSource="{Binding rKhachHangList}"/>
         <!--Chanh-->
-        <CustomControl:DataGridComboBoxColumnExt x:Name="chanhColumn" Header="Chành" HeaderAddButtonClick="headerAddButton_Click"
+        <CustomControl:DataGridComboBoxColumnExt x:Name="chanhColumn" Header="{x:Static PhuDinhCommonControl:DataGridColumnHeaderTextFilter.KhachHangChanh_Chanh}"
+                                                 HeaderAddButtonClick="headerAddButton_Click"
                                                  TextBinding="{Binding rChanh.TenBaiXeChanh, Mode=OneWay}"
                                                  DisplayMemberPath="TenBaiXeChanh"
                                                  SelectedValuePath="Ma"
