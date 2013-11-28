@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace PhuDinhCommonControl.CustomControl
+namespace CustomControl
 {
     public class TextBoxExt:TextBox
     {

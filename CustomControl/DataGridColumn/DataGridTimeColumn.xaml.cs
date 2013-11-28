@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 
-namespace PhuDinhCommonControl.CustomControl
+namespace CustomControl
 {
     /// <summary>
     /// Interaction logic for DataGridTimeColumn.xaml

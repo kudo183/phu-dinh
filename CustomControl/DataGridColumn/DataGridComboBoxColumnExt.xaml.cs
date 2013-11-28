@@ -3,7 +3,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 
-namespace PhuDinhCommonControl.CustomControl
+namespace CustomControl
 {
     /// <summary>
     /// Interaction logic for DataGridComboBoxColumnExt.xaml

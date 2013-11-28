@@ -70,32 +70,6 @@
     <Compile Include="Utils\ChildWindowUtils.cs" />
     <Compile Include="Constant.cs" />
     <Compile Include="Factory\ContextFactory.cs" />
-    <Compile Include="CustomControl\DataGridColumn\DataGridCheckBoxColumnExt.xaml.cs">
-      <DependentUpon>DataGridCheckBoxColumnExt.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="CustomControl\DataGridColumn\DataGridTimeColumn.xaml.cs">
-      <DependentUpon>DataGridTimeColumn.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="CustomControl\DataGridColumn\DataGridDateColumn.xaml.cs">
-      <DependentUpon>DataGridDateColumn.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="CustomControl\DataGridColumn\DataGridTextColumnExt.xaml.cs">
-      <DependentUpon>DataGridTextColumnExt.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="CustomControl\DataGridColumn\DataGridComboBoxColumnExt.xaml.cs">
-      <DependentUpon>DataGridComboBoxColumnExt.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="CustomControl\DataGridExt.cs" />
-    <Compile Include="CustomControl\DataGridColumn\DataGridReadOnlyTextColumn.xaml.cs">
-      <DependentUpon>DataGridReadOnlyTextColumn.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="CustomControl\DataGridColumn\DataGridTextRightAlignColumn.xaml.cs">
-      <DependentUpon>DataGridTextRightAlignColumn.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="CustomControl\TextBoxExt.cs" />
-    <Compile Include="CustomControl\TimeInput.xaml.cs">
-      <DependentUpon>TimeInput.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Filter_DataGridColumnHeader\DataGridColumnHeaderDateFilter.cs" />
     <Compile Include="EntityDataGrid\0Level\DGNhaCungCap.xaml.cs">
       <DependentUpon>DGNhaCungCap.xaml</DependentUpon>
@@ -290,7 +264,6 @@
     <Compile Include="Filter_Entity\Filter_tNhapMatHang.cs" />
     <Compile Include="Filter_Entity\Filter_tChiPhi.cs" />
     <Compile Include="Filter_Entity\Filter_tDonHang.cs" />
-    <Compile Include="Utils\VisualTreeUtils.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -317,6 +290,10 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CustomControl\CustomControl.csproj">
+      <Project>{64f9d717-b4f2-4508-afe6-4cbf5b811bef}</Project>
+      <Name>CustomControl</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PhuDinhCommon\PhuDinhCommon.csproj">
       <Project>{e7cdbbdc-0d94-48b8-9934-ebfbb75e533d}</Project>
       <Name>PhuDinhCommon</Name>
@@ -327,38 +304,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="CustomControl\DataGridColumn\DataGridCheckBoxColumnExt.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="CustomControl\DataGridColumn\DataGridTimeColumn.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="CustomControl\DataGridColumn\DataGridDateColumn.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="CustomControl\DataGridColumn\DataGridTextColumnExt.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="CustomControl\DataGridColumn\DataGridComboBoxColumnExt.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="CustomControl\DataGridColumn\DataGridReadOnlyTextColumn.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="CustomControl\DataGridColumn\DataGridTextRightAlignColumn.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="CustomControl\TimeInput.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="EntityDataGrid\0Level\DGNhaCungCap.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -584,7 +529,9 @@
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="CustomControl\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

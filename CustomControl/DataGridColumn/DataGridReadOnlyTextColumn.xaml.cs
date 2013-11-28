@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace PhuDinhCommonControl.CustomControl
+namespace CustomControl
 {
     /// <summary>
     /// Interaction logic for DataGridReadOnlyTextColumn.xaml

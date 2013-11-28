@@ -1,7 +1,8 @@
-﻿<DataGridCheckBoxColumn x:Class="PhuDinhCommonControl.CustomControl.DataGridCheckBoxColumnExt"
+﻿<DataGridBoundColumn x:Class="CustomControl.DataGridTimeColumn"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             mc:Ignorable="d">
-</DataGridCheckBoxColumn>
+             mc:Ignorable="d"
+                       Binding="{Binding Gio, StringFormat=\{0:hh\\:mm\}}" Header="Giờ" Width="100">
+</DataGridBoundColumn>

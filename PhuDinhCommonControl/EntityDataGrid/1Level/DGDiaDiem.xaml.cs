@@ -1,4 +1,4 @@
-﻿using PhuDinhCommonControl.CustomControl;
+﻿using CustomControl;
 
 namespace PhuDinhCommonControl.EntityDataGrid
 {

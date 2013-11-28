@@ -2,7 +2,7 @@
 using System.Windows.Controls;
 using System.Windows.Media;
 
-namespace PhuDinhCommonControl
+namespace CustomControl
 {
     public static class VisualTreeUtils
     {

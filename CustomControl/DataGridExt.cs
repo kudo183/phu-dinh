@@ -3,7 +3,7 @@ using System.ComponentModel;
 using System.Windows.Controls;
 using System.Windows.Input;
 
-namespace PhuDinhCommonControl.CustomControl
+namespace CustomControl
 {
     public class DataGridExt : DataGrid
     {
