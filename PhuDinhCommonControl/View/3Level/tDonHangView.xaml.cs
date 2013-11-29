@@ -57,7 +57,6 @@ namespace PhuDinhCommonControl
             DataGridColumnHeaderDateFilter.DonHang.Date = _filterDate;
             DataGridColumnHeaderDateFilter.DonHang.IsUsed = _isUsedDateFilter;
             DataGridColumnHeaderDateFilter.DonHang.PropertyChanged += DonHang_PropertyChanged;
-            FilterDonHang.FilterNgay = (p => p.Ngay == DataGridColumnHeaderDateFilter.DonHang.Date);
 
             DataGridColumnHeaderTextFilter.DonHang_KhachHang.Text = _filterKhachHang;
             DataGridColumnHeaderTextFilter.DonHang_KhachHang.PropertyChanged += DonHang_KhachHang_PropertyChanged;
@@ -65,6 +64,7 @@ namespace PhuDinhCommonControl
             DataGridColumnHeaderTextFilter.DonHang_KhachHangChanh.Text = _filterChanh;
             DataGridColumnHeaderTextFilter.DonHang_KhachHangChanh.PropertyChanged += DonHang_Chanh_PropertyChanged;
 
+            InitFilter();
             RefreshView();
 
             LogManager.Log(event_type.et_Internal, severity_type.st_debug, string.Format("{0} {1}", "tDonHangView_Loaded", "Exit"));
@@ -90,21 +90,21 @@ namespace PhuDinhCommonControl
         void DonHang_KhachHang_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
             LogManager.Log(event_type.et_Internal, severity_type.st_debug, string.Format("{0} {1}", "tDonHangView_DonHang_KhachHang_PropertyChanged", "Enter"));
-            LogManager.Log(event_type.et_Internal, severity_type.st_debug, string.Format("{0} {1}", "FilterKhachHang", FilterDonHang.FilterKhachHang));
+            LogManager.Log(event_type.et_Internal, severity_type.st_debug, string.Format("{0} {1}", "FilterKhachHang", FilterDonHang.FilterTenKhachHang));
 
             if (string.IsNullOrEmpty(DataGridColumnHeaderTextFilter.DonHang_KhachHang.Text) == false)
             {
-                FilterDonHang.FilterKhachHang = (p => p.rKhachHang.TenKhachHang.Contains(DataGridColumnHeaderTextFilter.DonHang_KhachHang.Text));
+                FilterDonHang.FilterTenKhachHang = (p => p.rKhachHang.TenKhachHang.Contains(DataGridColumnHeaderTextFilter.DonHang_KhachHang.Text));
             }
             else
             {
-                FilterDonHang.FilterKhachHang = (p => true);
+                FilterDonHang.FilterTenKhachHang = (p => true);
             }
 
             RefreshView();
 
             LogManager.Log(event_type.et_Internal, severity_type.st_debug, string.Format("{0} {1}", "tDonHangView_DonHang_KhachHang_PropertyChanged", "Exit"));
-            LogManager.Log(event_type.et_Internal, severity_type.st_debug, string.Format("{0} {1}", "FilterKhachHang", FilterDonHang.FilterKhachHang));
+            LogManager.Log(event_type.et_Internal, severity_type.st_debug, string.Format("{0} {1}", "FilterKhachHang", FilterDonHang.FilterTenKhachHang));
         }
 
         void DonHang_Chanh_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -147,6 +147,13 @@ namespace PhuDinhCommonControl
             LogManager.Log(event_type.et_Internal, severity_type.st_debug, string.Format("{0} {1}", "FilterDonHang", FilterDonHang.FilterDonHang));
         }
 
+        private void InitFilter()
+        {
+            DonHang_PropertyChanged(null, null);
+            DonHang_KhachHang_PropertyChanged(null, null);
+            DonHang_Chanh_PropertyChanged(null, null);
+        }
+
         #region Override base view method
         public override void CommitEdit()
         {
@@ -157,7 +164,7 @@ namespace PhuDinhCommonControl
         public override void Save()
         {
             LogManager.Log(event_type.et_Internal, severity_type.st_debug, string.Format("{0} {1}", "tDonHangView_Save", "Enter"));
-            
+
             CommitEdit();
             try
             {
