@@ -6,7 +6,8 @@ namespace PhuDinhCommonControl
 {
     public class Filter_tDonHang
     {
-        private Expression<Func<PhuDinhData.tDonHang, bool>> _filterKhachHang;
+        private Expression<Func<PhuDinhData.tDonHang, bool>> _filterMaKhachHang;
+        private Expression<Func<PhuDinhData.tDonHang, bool>> _filterTenKhachHang;
         private Expression<Func<PhuDinhData.tDonHang, bool>> _filterChanh;
         private Expression<Func<PhuDinhData.tDonHang, bool>> _filterNgay;
         private Expression<Func<PhuDinhData.tDonHang, bool>> _filterXong;
@@ -20,18 +21,29 @@ namespace PhuDinhCommonControl
 
         public Filter_tDonHang()
         {
-            FilterKhachHang = (p => true);
+            FilterMaKhachHang = (p => true);
+            FilterTenKhachHang = (p => true);
             FilterChanh = (p => true);
             FilterNgay = (p => true);
             FilterXong = (p => true);
         }
 
-        public Expression<Func<PhuDinhData.tDonHang, bool>> FilterKhachHang
+        public Expression<Func<PhuDinhData.tDonHang, bool>> FilterMaKhachHang
         {
-            get { return _filterKhachHang; }
+            get { return _filterMaKhachHang; }
             set
             {
-                _filterKhachHang = value;
+                _filterMaKhachHang = value;
+                _isClearAllData = false;
+            }
+        }
+
+        public Expression<Func<PhuDinhData.tDonHang, bool>> FilterTenKhachHang
+        {
+            get { return _filterTenKhachHang; }
+            set
+            {
+                _filterTenKhachHang = value;
                 _isClearAllData = false;
             }
         }
@@ -68,7 +80,7 @@ namespace PhuDinhCommonControl
 
         public Expression<Func<PhuDinhData.tDonHang, bool>> FilterDonHang
         {
-            get { return FilterXong.And(FilterKhachHang).And(FilterNgay).And(FilterChanh); }
+            get { return FilterMaKhachHang.And(FilterXong).And(FilterTenKhachHang).And(FilterNgay).And(FilterChanh); }
         }
     }
 }

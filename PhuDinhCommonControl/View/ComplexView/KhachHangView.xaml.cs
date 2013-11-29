@@ -14,6 +14,8 @@ namespace PhuDinhCommonControl
 
             _rDiaDiemView.dgDiaDiem.SelectionChanged += dgDiaDiem_SelectionChanged;
             _rKhachHangView.dgKhachHang.SelectionChanged += dgKhachHang_SelectionChanged;
+
+            _tDonHangView.FilterDonHang.FilterMaKhachHang = (p => false);
         }
 
         void dgDiaDiem_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -23,7 +25,7 @@ namespace PhuDinhCommonControl
                 return;
             }
 
-            _tDonHangView.FilterDonHang.FilterKhachHang = (p => false);
+            _tDonHangView.FilterDonHang.FilterMaKhachHang = (p => false);
             _tDonHangView.RefreshView();
 
             var diaDiem = ((DataGrid)sender).SelectedItem as PhuDinhData.rDiaDiem;
@@ -49,12 +51,12 @@ namespace PhuDinhCommonControl
             var khachHang = ((DataGrid)sender).SelectedItem as PhuDinhData.rKhachHang;
             if (khachHang == null)
             {
-                _tDonHangView.FilterDonHang.FilterKhachHang = (p => false);
+                _tDonHangView.FilterDonHang.FilterMaKhachHang = (p => false);
                 _tDonHangView.RefreshView();
                 return;
             }
 
-            _tDonHangView.FilterDonHang.FilterKhachHang = (p => p.MaKhachHang == khachHang.Ma);
+            _tDonHangView.FilterDonHang.FilterMaKhachHang = (p => p.MaKhachHang == khachHang.Ma);
             _tDonHangView.rKhachHangDefault = khachHang;
             _tDonHangView.RefreshView();
         }
