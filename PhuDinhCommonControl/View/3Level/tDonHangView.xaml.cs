@@ -62,8 +62,8 @@ namespace PhuDinhCommonControl
             DataGridColumnHeaderTextFilter.DonHang_KhachHang.Text = _filterKhachHang;
             DataGridColumnHeaderTextFilter.DonHang_KhachHang.PropertyChanged += DonHang_KhachHang_PropertyChanged;
 
-            DataGridColumnHeaderTextFilter.DonHang_Chanh.Text = _filterChanh;
-            DataGridColumnHeaderTextFilter.DonHang_Chanh.PropertyChanged += DonHang_Chanh_PropertyChanged;
+            DataGridColumnHeaderTextFilter.DonHang_KhachHangChanh.Text = _filterChanh;
+            DataGridColumnHeaderTextFilter.DonHang_KhachHangChanh.PropertyChanged += DonHang_Chanh_PropertyChanged;
 
             RefreshView();
 
@@ -78,8 +78,8 @@ namespace PhuDinhCommonControl
             _filterDate = DataGridColumnHeaderDateFilter.DonHang.Date;
             _isUsedDateFilter = DataGridColumnHeaderDateFilter.DonHang.IsUsed;
 
-            DataGridColumnHeaderTextFilter.DonHang_Chanh.PropertyChanged -= DonHang_Chanh_PropertyChanged;
-            _filterChanh = DataGridColumnHeaderTextFilter.DonHang_Chanh.Text;
+            DataGridColumnHeaderTextFilter.DonHang_KhachHangChanh.PropertyChanged -= DonHang_Chanh_PropertyChanged;
+            _filterChanh = DataGridColumnHeaderTextFilter.DonHang_KhachHangChanh.Text;
 
             DataGridColumnHeaderTextFilter.DonHang_KhachHang.PropertyChanged -= DonHang_KhachHang_PropertyChanged;
             _filterKhachHang = DataGridColumnHeaderTextFilter.DonHang_KhachHang.Text;
@@ -112,9 +112,9 @@ namespace PhuDinhCommonControl
             LogManager.Log(event_type.et_Internal, severity_type.st_debug, string.Format("{0} {1}", "tDonHangView_DonHang_Chanh_PropertyChanged", "Enter"));
             LogManager.Log(event_type.et_Internal, severity_type.st_debug, string.Format("{0} {1}", "FilterChanh", FilterDonHang.FilterChanh));
 
-            if (string.IsNullOrEmpty(DataGridColumnHeaderTextFilter.DonHang_Chanh.Text) == false)
+            if (string.IsNullOrEmpty(DataGridColumnHeaderTextFilter.DonHang_KhachHangChanh.Text) == false)
             {
-                FilterDonHang.FilterChanh = (p => p.rChanh.TenChanh.Contains(DataGridColumnHeaderTextFilter.DonHang_Chanh.Text));
+                FilterDonHang.FilterChanh = (p => p.rChanh.TenChanh.Contains(DataGridColumnHeaderTextFilter.DonHang_KhachHangChanh.Text));
             }
             else
             {
@@ -253,24 +253,24 @@ namespace PhuDinhCommonControl
             LogManager.Log(event_type.et_Internal, severity_type.st_debug, string.Format("{0} {1}", "dgDonHang_HeaderAddButtonClick", "Enter"));
 
             CommitEdit();
-            var header = sender as DataGridColumnHeader;
-            LogManager.Log(event_type.et_Internal, severity_type.st_info, string.Format("{0} {1}", "Header Add Button Click", header.Content));
+            var header = (sender as DataGridColumnHeader).Content as DataGridColumnHeaderTextFilter;
+            LogManager.Log(event_type.et_Internal, severity_type.st_info, string.Format("{0} {1}", "Header Add Button Click", header.Name));
 
             BaseView view = null;
 
-            switch (header.Content.ToString())
+            switch (header.Name)
             {
-                case "Khách hàng":
+                case Constant.ViewName_KhachHang:
                     view = new rKhachHangView();
                     view.RefreshView();
-                    ChildWindowUtils.ShowChildWindow("Khách hàng", view);
+                    ChildWindowUtils.ShowChildWindow(header.Name, view);
 
                     UpdateKhachHangReferenceData();
                     break;
-                case "Chành":
+                case Constant.ViewName_KhachHangChanh:
                     view = new rKhachHangChanhView();
                     view.RefreshView();
-                    ChildWindowUtils.ShowChildWindow("Chành", view);
+                    ChildWindowUtils.ShowChildWindow(header.Name, view);
 
                     UpdateChanhReferenceData();
                     break;

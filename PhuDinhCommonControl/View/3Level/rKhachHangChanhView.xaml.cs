@@ -175,23 +175,23 @@ namespace PhuDinhCommonControl
         {
             CommitEdit();
 
-            var header = sender as DataGridColumnHeader;
+            var header = (sender as DataGridColumnHeader).Content as DataGridColumnHeaderTextFilter;
 
             BaseView view = null;
 
-            switch (header.Content.ToString())
+            switch (header.Name)
             {
-                case "Khách hàng":
+                case Constant.ViewName_KhachHang:
                     view = new rKhachHangView();
                     view.RefreshView();
-                    ChildWindowUtils.ShowChildWindow("Khách hàng", view);
+                    ChildWindowUtils.ShowChildWindow(header.Name, view);
 
                     UpdateKhachHangReferenceData();
                     break;
-                case "Chành":
+                case Constant.ViewName_Chanh:
                     view = new rChanhView();
                     view.RefreshView();
-                    ChildWindowUtils.ShowChildWindow("Chành", view);
+                    ChildWindowUtils.ShowChildWindow(header.Name, view);
 
                     UpdateChanhReferenceData();
                     break;

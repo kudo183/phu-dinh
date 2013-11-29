@@ -22,8 +22,9 @@
                                                  SelectedValueBinding="{Binding MaKhachHang, UpdateSourceTrigger=PropertyChanged}"
                                                  SelectedItemBinding="{Binding rKhachHang, UpdateSourceTrigger=PropertyChanged}"
                                                  ItemsSource="{Binding rKhachHangList}"/>
-        <!--Chanh-->
-        <CustomControl:DataGridComboBoxColumnExt x:Name="chanhColumn" Header="{x:Static PhuDinhCommonControl:DataGridColumnHeaderTextFilter.DonHang_Chanh}"
+        <!--Khach Hang Chanh-->
+        <CustomControl:DataGridComboBoxColumnExt x:Name="khachHangChanhColumn" Header="{x:Static PhuDinhCommonControl:DataGridColumnHeaderTextFilter.DonHang_KhachHangChanh}"
+                                                 Width="250"
                                                  HeaderAddButtonClick="headerAddButton_Click"
                                                  TextBinding="{Binding rChanh.TenBaiXeChanh, Mode=OneWay}"
                                                  DisplayMemberPath="TenBaiXeChanh"

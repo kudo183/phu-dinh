@@ -13,10 +13,10 @@ namespace PhuDinhCommonControl
         public static readonly DataGridColumnHeaderTextFilter MatHang_LoaiHang = new DataGridColumnHeaderTextFilter("Loại Hàng");
         //2Lvel
         //3Level
-        public static readonly DataGridColumnHeaderTextFilter DonHang_KhachHang = new DataGridColumnHeaderTextFilter("Khách Hàng");
-        public static readonly DataGridColumnHeaderTextFilter DonHang_Chanh = new DataGridColumnHeaderTextFilter("Chành");
-        public static readonly DataGridColumnHeaderTextFilter KhachHangChanh_KhachHang = new DataGridColumnHeaderTextFilter("Khách Hàng");
-        public static readonly DataGridColumnHeaderTextFilter KhachHangChanh_Chanh = new DataGridColumnHeaderTextFilter("Chành");
+        public static readonly DataGridColumnHeaderTextFilter DonHang_KhachHang = new DataGridColumnHeaderTextFilter(Constant.ViewName_KhachHang);
+        public static readonly DataGridColumnHeaderTextFilter DonHang_KhachHangChanh = new DataGridColumnHeaderTextFilter(Constant.ViewName_KhachHangChanh);
+        public static readonly DataGridColumnHeaderTextFilter KhachHangChanh_KhachHang = new DataGridColumnHeaderTextFilter(Constant.ViewName_KhachHang);
+        public static readonly DataGridColumnHeaderTextFilter KhachHangChanh_Chanh = new DataGridColumnHeaderTextFilter(Constant.ViewName_Chanh);
 
         private DataGridColumnHeaderTextFilter(string name)
         {
