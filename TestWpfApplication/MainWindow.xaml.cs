@@ -20,38 +20,13 @@ namespace TestWpfApplication
     /// </summary>
     public partial class MainWindow : Window
     {
-        private List<TestCombobox> lst;
         public MainWindow()
         {
-           
             InitializeComponent();
-            lst = new List<TestCombobox>() { new TestCombobox() };
-            TestCombobox.ComboboxSource = new List<Item>() { new Item() { Text1 = "text11", Text2 = "itext21" }, new Item() { Text1 = "text12", Text2 = "text22" } };
+         
+            var context = new PhuDinhEntities();
 
-            this.DataContext = lst;
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-    }
-
-    public class TestCombobox
-    {
-        public DateTime Ngay { get; set; }
-        public string SelectedValue { get; set; }
-        public static List<Item> ComboboxSource { get; set; }
-    }
-
-    public class Item
-    {
-        public string Text1 { get; set; }
-        public string Text2 { get; set; }
-
-        public override string ToString()
-        {
-            return string.Format("{0} : {1}", Text1, Text2);
+            Pager.Source = context.tChiTietDonHangs.OrderBy(p => p.Ma);
         }
     }
 }

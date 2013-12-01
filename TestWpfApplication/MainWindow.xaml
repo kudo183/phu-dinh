@@ -3,51 +3,16 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:TestWpfApplication="clr-namespace:TestWpfApplication" Title="MainWindow" Height="350" Width="525">
     <Grid>
-        <Grid.Resources>
-            <Style TargetType="{x:Type DatePickerTextBox}">
-                <Setter Property="Control.Template">
-                    <Setter.Value>
-                        <ControlTemplate>
-                            <TextBox x:Name="PART_TextBox"
-     Text="{Binding Path=SelectedDate, StringFormat='dd/MM/yyyy', 
-     RelativeSource={RelativeSource AncestorType={x:Type DatePicker}}}" />
-                        </ControlTemplate>
-                    </Setter.Value>
-                </Setter>
-            </Style>
-        </Grid.Resources>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <DataGrid ItemsSource="{Binding}" AutoGenerateColumns="False">
-            <DataGrid.Columns>
-                <!--<DataGridComboBoxColumn Header="Combo" 
-                                        TextBinding="{Binding Text1}"
-                                        DisplayMemberPath="Text2"
-                                        SelectedValuePath="Text2"
-                                        SelectedValueBinding="{Binding SelectedValue}"
-                                        ItemsSource="{x:Static TestWpfApplication:TestCombobox.ComboboxSource}"/>-->
-                <DataGridTemplateColumn Header="Template">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <ComboBox ItemsSource="{x:Static TestWpfApplication:TestCombobox.ComboboxSource}" IsTextSearchEnabled="True" IsEditable="True"
-                                      StaysOpenOnEdit="True"
-                                      SelectedValuePath="Text2"
-                                      DisplayMemberPath="Text2"
-                                        SelectedValue="{Binding SelectedValue, UpdateSourceTrigger=PropertyChanged}"/>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-                <DataGridTemplateColumn Header="Ngay" Width="*">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <DatePicker SelectedDate="{Binding Ngay, UpdateSourceTrigger=PropertyChanged}"/>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-            </DataGrid.Columns>
+        <DataGrid x:Name="dg" Grid.Row="0" ItemsSource="{Binding ElementName=Pager, Path=Page}" AutoGenerateColumns="True">
+            <!--<DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Text1}" Header="Text1" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Text2}" Header="Text1" Width="*"/>
+            </DataGrid.Columns>-->
         </DataGrid>
-        <Button Grid.Row="1" Content="Save" Click="Button_Click"/>
+        <TestWpfApplication:Pager x:Name="Pager" Grid.Row="1"/>
     </Grid>
 </Window>
