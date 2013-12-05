@@ -72,6 +72,7 @@
       <DependentUpon>DataGridTimeColumn.xaml</DependentUpon>
     </Compile>
     <Compile Include="DataGridExt.cs" />
+    <Compile Include="DataPager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -127,6 +128,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="DataGridColumn\DataGridTimeColumn.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Generic.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
