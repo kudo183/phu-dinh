@@ -166,15 +166,15 @@ namespace CustomControl
         #endregion
 
         #region Source
-        public IQueryable<object> Source
+        public IEnumerable<object> Source
         {
-            get { return ((IQueryable<object>)GetValue(SourceProperty)); }
+            get { return ((IEnumerable<object>)GetValue(SourceProperty)); }
             set { SetValue(SourceProperty, value); }
         }
 
         // Using a DependencyProperty as the backing store for Source.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty SourceProperty =
-            DependencyProperty.Register("Source", typeof(IQueryable<object>), typeof(DataPager), new PropertyMetadata(null, SourcePropertyChangedCallback));
+            DependencyProperty.Register("Source", typeof(IEnumerable<object>), typeof(DataPager), new PropertyMetadata(null, SourcePropertyChangedCallback));
 
         private static void SourcePropertyChangedCallback(DependencyObject dependencyObject,
             DependencyPropertyChangedEventArgs e)
@@ -189,6 +189,8 @@ namespace CustomControl
             pager.RefreshPage();
         }
         #endregion
+
+        public event EventHandler PageChanged;
 
         public DataPager()
         {
@@ -253,7 +255,7 @@ namespace CustomControl
         void LastPageButtonElement_Click(object sender, RoutedEventArgs e)
         {
             CurrentPageIndex = PageCount;
-        }        
+        }
 
         private void RefreshPage()
         {
@@ -269,7 +271,15 @@ namespace CustomControl
             if (takeItem > PageSize)
                 takeItem = PageSize;
 
-            Page = Source.Skip(skippedItem).Take(takeItem).ToList();
+            var queryable = Source as IQueryable<object>;
+
+            Page = queryable!=null ? queryable.Skip(skippedItem).Take(takeItem).ToList()
+                : Source.Skip(skippedItem).Take(takeItem).ToList();
+
+            if (PageChanged != null)
+            {
+                PageChanged(this, null);
+            }
         }
 
         private void Reset()
