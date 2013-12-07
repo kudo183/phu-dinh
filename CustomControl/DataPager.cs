@@ -100,7 +100,7 @@ namespace CustomControl
 
         // Using a DependencyProperty as the backing store for PageSize.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty PageSizeProperty =
-            DependencyProperty.Register("PageSize", typeof(int), typeof(DataPager), new PropertyMetadata(0, PageSizePropertyChangedCallback));
+            DependencyProperty.Register("PageSize", typeof(int), typeof(DataPager), new PropertyMetadata(30, PageSizePropertyChangedCallback));
 
         private static void PageSizePropertyChangedCallback(DependencyObject dependencyObject,
             DependencyPropertyChangedEventArgs e)
@@ -155,7 +155,7 @@ namespace CustomControl
         // Using a DependencyProperty as the backing store for CurrentPageIndex.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty CurrentPageIndexProperty =
             DependencyProperty.Register("CurrentPageIndex", typeof(int), typeof(DataPager),
-            new PropertyMetadata(0, CurrentPageIndexPropertyChangedCallback));
+            new PropertyMetadata(1, CurrentPageIndexPropertyChangedCallback));
 
         private static void CurrentPageIndexPropertyChangedCallback(DependencyObject dependencyObject
             , DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs)
@@ -194,7 +194,6 @@ namespace CustomControl
 
         public DataPager()
         {
-            PageSize = 30;
             DataContext = this;
         }
 
@@ -273,7 +272,7 @@ namespace CustomControl
 
             var queryable = Source as IQueryable<object>;
 
-            Page = queryable!=null ? queryable.Skip(skippedItem).Take(takeItem).ToList()
+            Page = queryable != null ? queryable.Skip(skippedItem).Take(takeItem).ToList()
                 : Source.Skip(skippedItem).Take(takeItem).ToList();
 
             if (PageChanged != null)
