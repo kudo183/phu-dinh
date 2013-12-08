@@ -24,6 +24,8 @@ namespace PhuDinhCommonControl
         private List<PhuDinhData.tChiTietDonHang> _tChiTietDonHangs;
         private PhuDinhData.PhuDinhEntities _context = ContextFactory.CreateContext();
 
+        private List<PhuDinhData.tChiTietChuyenHangDonHang> _origData;
+
         public tChiTietChuyenHangDonHangView()
         {
             InitializeComponent();
@@ -50,7 +52,7 @@ namespace PhuDinhCommonControl
                 }
 
                 var data = dgChiTietChuyenHangDonHang.DataContext as ObservableCollection<PhuDinhData.tChiTietChuyenHangDonHang>;
-                PhuDinhData.Repository.tChiTietChuyenHangDonHangRepository.Save(_context, data.ToList(), FilterChiTietChuyenHangDonHang);
+                PhuDinhData.Repository.tChiTietChuyenHangDonHangRepository.Save(_context, data.ToList(), _origData);
             }
             catch (Exception ex)
             {
@@ -83,9 +85,9 @@ namespace PhuDinhCommonControl
             }
 
             _context = ContextFactory.CreateContext();
-            var tChiTietChuyenHangDonHangs = PhuDinhData.Repository.tChiTietChuyenHangDonHangRepository.GetData(_context, FilterChiTietChuyenHangDonHang);
+            _origData = PhuDinhData.Repository.tChiTietChuyenHangDonHangRepository.GetData(_context, FilterChiTietChuyenHangDonHang);
 
-            _tChiTietChuyenHangDonHangs = new ObservableCollection<PhuDinhData.tChiTietChuyenHangDonHang>(tChiTietChuyenHangDonHangs);
+            _tChiTietChuyenHangDonHangs = new ObservableCollection<PhuDinhData.tChiTietChuyenHangDonHang>(_origData);
             _tChiTietChuyenHangDonHangs.CollectionChanged += collection_CollectionChanged;
 
             UpdateChiTietDonHangReferenceData();

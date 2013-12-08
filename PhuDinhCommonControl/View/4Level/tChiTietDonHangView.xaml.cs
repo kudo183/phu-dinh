@@ -24,6 +24,8 @@ namespace PhuDinhCommonControl
         private List<PhuDinhData.tMatHang> _tMatHangs;
         private PhuDinhData.PhuDinhEntities _context = ContextFactory.CreateContext();
 
+        private List<PhuDinhData.tChiTietDonHang> _origData;
+
         public tChiTietDonHangView()
         {
             InitializeComponent();
@@ -51,7 +53,7 @@ namespace PhuDinhCommonControl
                 }
 
                 var data = dgChiTietDonHang.DataContext as ObservableCollection<PhuDinhData.tChiTietDonHang>;
-                PhuDinhData.Repository.tChiTietDonHangRepository.Save(_context, data.ToList(), FilterChiTietDonHang);
+                PhuDinhData.Repository.tChiTietDonHangRepository.Save(_context, data.ToList(), _origData);
             }
             catch (Exception ex)
             {
@@ -84,9 +86,9 @@ namespace PhuDinhCommonControl
             }
 
             _context = ContextFactory.CreateContext();
-            var tChiTietDonHangs = PhuDinhData.Repository.tChiTietDonHangRepository.GetData(_context, FilterChiTietDonHang);
+            _origData = PhuDinhData.Repository.tChiTietDonHangRepository.GetData(_context, FilterChiTietDonHang);
 
-            _tChiTietDonHangs = new ObservableCollection<PhuDinhData.tChiTietDonHang>(tChiTietDonHangs);
+            _tChiTietDonHangs = new ObservableCollection<PhuDinhData.tChiTietDonHang>(_origData);
             _tChiTietDonHangs.CollectionChanged += collection_CollectionChanged;
 
             UpdateDonHangReferenceData();

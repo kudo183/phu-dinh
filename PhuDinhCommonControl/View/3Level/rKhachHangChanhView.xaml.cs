@@ -25,6 +25,8 @@ namespace PhuDinhCommonControl
         private ObservableCollection<PhuDinhData.rKhachHangChanh> _rKhachHangChanhs;
         private PhuDinhData.PhuDinhEntities _context = ContextFactory.CreateContext();
 
+        private List<PhuDinhData.rKhachHangChanh> _origData;
+
         private string _filterKhachHang = string.Empty;
 
         private string _filterChanh = string.Empty;
@@ -108,7 +110,7 @@ namespace PhuDinhCommonControl
                 }
 
                 var data = dgKhachHangChanh.DataContext as ObservableCollection<PhuDinhData.rKhachHangChanh>;
-                PhuDinhData.Repository.rKhachHangChanhRepository.Save(_context, data.ToList(), FilterKhachHangChanh.FilterKhachHangChanh);
+                PhuDinhData.Repository.rKhachHangChanhRepository.Save(_context, data.ToList(), _origData);
             }
             catch (Exception ex)
             {
@@ -141,9 +143,9 @@ namespace PhuDinhCommonControl
             }
 
             _context = ContextFactory.CreateContext();
-            var rKhachHangChanhs = PhuDinhData.Repository.rKhachHangChanhRepository.GetData(_context, FilterKhachHangChanh.FilterKhachHangChanh);
+            _origData = PhuDinhData.Repository.rKhachHangChanhRepository.GetData(_context, FilterKhachHangChanh.FilterKhachHangChanh);
 
-            _rKhachHangChanhs = new ObservableCollection<PhuDinhData.rKhachHangChanh>(rKhachHangChanhs);
+            _rKhachHangChanhs = new ObservableCollection<PhuDinhData.rKhachHangChanh>(_origData);
             _rKhachHangChanhs.CollectionChanged += collection_CollectionChanged;
 
             UpdateChanhReferenceData();

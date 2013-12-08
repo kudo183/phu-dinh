@@ -14,6 +14,8 @@ namespace PhuDinhCommonControl
 
         private PhuDinhData.PhuDinhEntities _context = ContextFactory.CreateContext();
 
+        private List<PhuDinhData.rNuoc> _origData;
+
         public rNuocView()
         {
             InitializeComponent();
@@ -34,7 +36,7 @@ namespace PhuDinhCommonControl
             try
             {
                 var data = dgNuoc.DataContext as List<PhuDinhData.rNuoc>;
-                PhuDinhData.Repository.rNuocRepository.Save(_context, data, FilterNuoc);
+                PhuDinhData.Repository.rNuocRepository.Save(_context, data, _origData);
             }
             catch (Exception ex)
             {
@@ -56,7 +58,8 @@ namespace PhuDinhCommonControl
             var index = dgNuoc.SelectedIndex;
 
             _context = ContextFactory.CreateContext();
-            dgNuoc.DataContext = PhuDinhData.Repository.rNuocRepository.GetData(_context, FilterNuoc);
+            _origData = PhuDinhData.Repository.rNuocRepository.GetData(_context, FilterNuoc);
+            dgNuoc.DataContext = _origData;
 
             dgNuoc.SelectedIndex = index;
         }

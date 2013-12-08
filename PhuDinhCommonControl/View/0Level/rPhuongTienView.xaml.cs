@@ -14,6 +14,8 @@ namespace PhuDinhCommonControl
 
         private PhuDinhData.PhuDinhEntities _context = ContextFactory.CreateContext();
 
+        private List<PhuDinhData.rPhuongTien> _origData;
+
         public rPhuongTienView()
         {
             InitializeComponent();
@@ -34,7 +36,7 @@ namespace PhuDinhCommonControl
             try
             {
                 var data = dgPhuongTien.DataContext as List<PhuDinhData.rPhuongTien>;
-                PhuDinhData.Repository.rPhuongTienRepository.Save(_context, data, FilterPhuongTien);
+                PhuDinhData.Repository.rPhuongTienRepository.Save(_context, data, _origData);
                 RefreshView();
             }
             catch (Exception ex)
@@ -57,7 +59,8 @@ namespace PhuDinhCommonControl
             var index = dgPhuongTien.SelectedIndex;
 
             _context = ContextFactory.CreateContext();
-            dgPhuongTien.DataContext = PhuDinhData.Repository.rPhuongTienRepository.GetData(_context, FilterPhuongTien);
+            _origData = PhuDinhData.Repository.rPhuongTienRepository.GetData(_context, FilterPhuongTien);
+            dgPhuongTien.DataContext = _origData;
 
             dgPhuongTien.SelectedIndex = index;
         }

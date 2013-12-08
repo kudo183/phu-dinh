@@ -14,6 +14,8 @@ namespace PhuDinhCommonControl
 
         private PhuDinhData.PhuDinhEntities _context = ContextFactory.CreateContext();
 
+        private List<PhuDinhData.rLoaiChiPhi> _origData;
+
         public rLoaiChiPhiView()
         {
             InitializeComponent();
@@ -34,7 +36,7 @@ namespace PhuDinhCommonControl
             try
             {
                 var data = dgLoaiChiPhi.DataContext as List<PhuDinhData.rLoaiChiPhi>;
-                PhuDinhData.Repository.rLoaiChiPhiRepository.Save(_context, data, FilterLoaiChiPhi);
+                PhuDinhData.Repository.rLoaiChiPhiRepository.Save(_context, data, _origData);
             }
             catch (Exception ex)
             {
@@ -56,7 +58,8 @@ namespace PhuDinhCommonControl
             var index = dgLoaiChiPhi.SelectedIndex;
 
             _context = ContextFactory.CreateContext();
-            dgLoaiChiPhi.DataContext = PhuDinhData.Repository.rLoaiChiPhiRepository.GetData(_context, FilterLoaiChiPhi);
+            _origData = PhuDinhData.Repository.rLoaiChiPhiRepository.GetData(_context, FilterLoaiChiPhi);            
+            dgLoaiChiPhi.DataContext = _origData;
 
             dgLoaiChiPhi.SelectedIndex = index;
         }

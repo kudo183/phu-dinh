@@ -21,6 +21,8 @@ namespace PhuDinhCommonControl
         private List<PhuDinhData.rLoaiHang> _rLoaiHangs;
         private PhuDinhData.PhuDinhEntities _context = ContextFactory.CreateContext();
 
+        private List<PhuDinhData.tMatHang> _origData;
+
         private string _filterLoaiHang = string.Empty;
 
         public tMatHangView()
@@ -78,7 +80,7 @@ namespace PhuDinhCommonControl
                 }
 
                 var data = dgMatHang.DataContext as ObservableCollection<PhuDinhData.tMatHang>;
-                PhuDinhData.Repository.tMatHangRepository.Save(_context, data.ToList(), FilterMatHang.FiltetMatHang);
+                PhuDinhData.Repository.tMatHangRepository.Save(_context, data.ToList(), _origData);
             }
             catch (Exception ex)
             {
@@ -111,9 +113,9 @@ namespace PhuDinhCommonControl
             }
 
             _context = ContextFactory.CreateContext();
-            var tMatHangs = PhuDinhData.Repository.tMatHangRepository.GetData(_context, FilterMatHang.FiltetMatHang);
+            _origData = PhuDinhData.Repository.tMatHangRepository.GetData(_context, FilterMatHang.FiltetMatHang);
 
-            _tMatHangs = new ObservableCollection<PhuDinhData.tMatHang>(tMatHangs);
+            _tMatHangs = new ObservableCollection<PhuDinhData.tMatHang>(_origData);
             _tMatHangs.CollectionChanged += collection_CollectionChanged;
 
             UpdateLoaiHangReferenceData();

@@ -21,6 +21,8 @@ namespace PhuDinhCommonControl
         private List<PhuDinhData.rLoaiNguyenLieu> _rLoaiNguyenLieus;
         private PhuDinhData.PhuDinhEntities _context = ContextFactory.CreateContext();
 
+        private List<PhuDinhData.rNguyenLieu> _origData;
+
         private string _filterLoaiNguyenLieu = string.Empty;
 
         public rNguyenLieuView()
@@ -78,7 +80,7 @@ namespace PhuDinhCommonControl
                 }
 
                 var data = dgNguyenLieu.DataContext as ObservableCollection<PhuDinhData.rNguyenLieu>;
-                PhuDinhData.Repository.rNguyenLieuRepository.Save(_context, data.ToList(), FilterNguyenLieu.FilterNguyenLieu);
+                PhuDinhData.Repository.rNguyenLieuRepository.Save(_context, data.ToList(), _origData);
             }
             catch (Exception ex)
             {
@@ -111,9 +113,9 @@ namespace PhuDinhCommonControl
             }
 
             _context = ContextFactory.CreateContext();
-            var rNguyenLieus = PhuDinhData.Repository.rNguyenLieuRepository.GetData(_context, FilterNguyenLieu.FilterNguyenLieu);
+            _origData = PhuDinhData.Repository.rNguyenLieuRepository.GetData(_context, FilterNguyenLieu.FilterNguyenLieu);
 
-            _rNguyenLieus = new ObservableCollection<PhuDinhData.rNguyenLieu>(rNguyenLieus);
+            _rNguyenLieus = new ObservableCollection<PhuDinhData.rNguyenLieu>(_origData);
             _rNguyenLieus.CollectionChanged += collection_CollectionChanged;
 
             UpdateLoaiNguyenLieuReferenceData();

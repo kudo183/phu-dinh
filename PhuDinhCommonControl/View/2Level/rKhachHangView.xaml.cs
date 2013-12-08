@@ -21,6 +21,8 @@ namespace PhuDinhCommonControl
         private List<PhuDinhData.rDiaDiem> _rDiaDiems;
         private PhuDinhData.PhuDinhEntities _context = ContextFactory.CreateContext();
 
+        private List<PhuDinhData.rKhachHang> _origData;
+
         public rKhachHangView()
         {
             InitializeComponent();
@@ -47,7 +49,7 @@ namespace PhuDinhCommonControl
                 }
 
                 var data = dgKhachHang.DataContext as ObservableCollection<PhuDinhData.rKhachHang>;
-                PhuDinhData.Repository.rKhachHangRepository.Save(_context, data.ToList(), FilterKhachHang);
+                PhuDinhData.Repository.rKhachHangRepository.Save(_context, data.ToList(), _origData);
             }
             catch (Exception ex)
             {
@@ -80,9 +82,9 @@ namespace PhuDinhCommonControl
             }
 
             _context = ContextFactory.CreateContext();
-            var rKhachHangs = PhuDinhData.Repository.rKhachHangRepository.GetData(_context, FilterKhachHang);
+            _origData = PhuDinhData.Repository.rKhachHangRepository.GetData(_context, FilterKhachHang);
 
-            _rKhachHangs = new ObservableCollection<PhuDinhData.rKhachHang>(rKhachHangs);
+            _rKhachHangs = new ObservableCollection<PhuDinhData.rKhachHang>(_origData);
             _rKhachHangs.CollectionChanged += collection_CollectionChanged;
 
             UpdateDiaDiemReferenceData();

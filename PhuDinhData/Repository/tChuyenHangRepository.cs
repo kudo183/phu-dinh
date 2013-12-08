@@ -12,9 +12,9 @@ namespace PhuDinhData.Repository
             return Repository<tChuyenHang>.GetData(context, filter).OrderByDescending(p => p.Ngay).ToList();
         }
 
-        public static void Save(PhuDinhEntities context, List<tChuyenHang> data, Expression<Func<tChuyenHang, bool>> filter)
+        public static List<Repository<tChuyenHang>.ChangedItemData> Save(PhuDinhEntities context, List<tChuyenHang> data, List<tChuyenHang> origData)
         {
-            Repository<tChuyenHang>.Save(context, data, filter, (p => p.Ma == 0), ((p1, p2) => p1.Ma == p2.Ma));
+            return Repository<tChuyenHang>.Save(context, data, origData, (p => p.Ma == 0), ((p1, p2) => p1.Ma == p2.Ma));
         }
     }
 }

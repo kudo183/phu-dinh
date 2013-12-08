@@ -14,22 +14,21 @@ namespace PhuDinhData.Repository
                 ThenBy(p => p.tChuyenHangDonHang.tChuyenHang.Gio).ToList();
         }
 
-        public static void Save(PhuDinhEntities context, List<tChiTietChuyenHangDonHang> data, Expression<Func<tChiTietChuyenHangDonHang, bool>> filter)
+        public static List<Repository<tChiTietChuyenHangDonHang>.ChangedItemData> Save(PhuDinhEntities context, List<tChiTietChuyenHangDonHang> data, List<tChiTietChuyenHangDonHang> origData)
         {
-            var changed = Repository<tChiTietChuyenHangDonHang>.Save(context, data, filter, (p => p.Ma == 0), ((p1, p2) => p1.Ma == p2.Ma));
+            var changed = Repository<tChiTietChuyenHangDonHang>.Save(context, data, origData, (p => p.Ma == 0), ((p1, p2) => p1.Ma == p2.Ma));
 
-            if (changed.Count == 0)
+            if (changed.Count > 0)
             {
-                return;
+                var maChuyenHangDonHangs = changed.Select(p => p.CurrentValues.MaChuyenHangDonHang).ToList();
+
+                var maDonHangs = maChuyenHangDonHangs.Select(
+                    ma => Repository<tChuyenHangDonHang>.GetData(context, (p => p.Ma == ma)).First())
+                    .Select(chuyenHangDonHang => chuyenHangDonHang.MaDonHang).ToList();
+
+                BusinessLogics.BusinessLogics.UpdateXong(context, maDonHangs);
             }
-
-            var maChuyenHangDonHangs = changed.Select(p => p.Entity.MaChuyenHangDonHang).ToList();
-
-            var maDonHangs = maChuyenHangDonHangs.Select(
-                ma => Repository<tChuyenHangDonHang>.GetData(context, (p => p.Ma == ma)).First())
-                .Select(chuyenHangDonHang => chuyenHangDonHang.MaDonHang).ToList();
-            
-            BusinessLogics.BusinessLogics.UpdateXong(context, maDonHangs);
+            return changed;
         }
     }
 }

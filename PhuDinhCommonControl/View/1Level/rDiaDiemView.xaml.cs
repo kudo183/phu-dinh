@@ -20,6 +20,8 @@ namespace PhuDinhCommonControl
         private List<PhuDinhData.rNuoc> _rNuocs;
         private PhuDinhData.PhuDinhEntities _context = ContextFactory.CreateContext();
 
+        private List<PhuDinhData.rDiaDiem> _origData;
+
         private string _filterNuoc = string.Empty;
 
         public rDiaDiemView()
@@ -77,7 +79,7 @@ namespace PhuDinhCommonControl
                 }
 
                 var data = dgDiaDiem.DataContext as ObservableCollection<PhuDinhData.rDiaDiem>;
-                PhuDinhData.Repository.rDiaDiemRepository.Save(_context, data.ToList(), FilterDiaDiem.FilterDiaDiem);
+                PhuDinhData.Repository.rDiaDiemRepository.Save(_context, data.ToList(), _origData);
             }
             catch (Exception ex)
             {
@@ -110,9 +112,9 @@ namespace PhuDinhCommonControl
             }
 
             _context = ContextFactory.CreateContext();
-            var rDiaDiems = PhuDinhData.Repository.rDiaDiemRepository.GetData(_context, FilterDiaDiem.FilterDiaDiem);
+            _origData = PhuDinhData.Repository.rDiaDiemRepository.GetData(_context, FilterDiaDiem.FilterDiaDiem);
 
-            _rDiaDiems = new ObservableCollection<PhuDinhData.rDiaDiem>(rDiaDiems);
+            _rDiaDiems = new ObservableCollection<PhuDinhData.rDiaDiem>(_origData);
             _rDiaDiems.CollectionChanged += collection_CollectionChanged;
 
             UpdateNuocReferenceData();

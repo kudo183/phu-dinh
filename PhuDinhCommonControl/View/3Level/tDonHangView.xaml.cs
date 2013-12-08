@@ -26,6 +26,8 @@ namespace PhuDinhCommonControl
 
         private PhuDinhData.PhuDinhEntities _context = ContextFactory.CreateContext();
 
+        private List<PhuDinhData.tDonHang> _origData;
+
         private bool _isUsedDateFilter = true;
         private DateTime _filterDate = DateTime.Now.Date;
 
@@ -174,7 +176,7 @@ namespace PhuDinhCommonControl
                 }
 
                 var data = dgDonHang.DataContext as ObservableCollection<PhuDinhData.tDonHang>;
-                PhuDinhData.Repository.tDonHangRepository.Save(_context, data.ToList(), FilterDonHang.FilterDonHang);
+                PhuDinhData.Repository.tDonHangRepository.Save(_context, data.ToList(), _origData);
             }
             catch (Exception ex)
             {
@@ -217,9 +219,9 @@ namespace PhuDinhCommonControl
             }
 
             _context = ContextFactory.CreateContext();
-            var tDonHangs = PhuDinhData.Repository.tDonHangRepository.GetData(_context, FilterDonHang.FilterDonHang);
+            _origData = PhuDinhData.Repository.tDonHangRepository.GetData(_context, FilterDonHang.FilterDonHang);
 
-            _tDonHangs = new ObservableCollection<PhuDinhData.tDonHang>(tDonHangs);
+            _tDonHangs = new ObservableCollection<PhuDinhData.tDonHang>(_origData);
             LogManager.Log(event_type.et_Internal, severity_type.st_info, string.Format("{0} {1} {2}", "tDonHangView_RefreshView", "Count", _tDonHangs.Count));
             _tDonHangs.CollectionChanged += collection_CollectionChanged;
 

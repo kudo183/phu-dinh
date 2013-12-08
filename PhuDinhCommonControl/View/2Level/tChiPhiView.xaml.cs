@@ -26,6 +26,8 @@ namespace PhuDinhCommonControl
 
         private PhuDinhData.PhuDinhEntities _context = ContextFactory.CreateContext();
 
+        private List<PhuDinhData.tChiPhi> _origData;
+
         private bool _isUsedDateFilter = true;
         private DateTime _filterDate = DateTime.Now.Date;
 
@@ -87,7 +89,7 @@ namespace PhuDinhCommonControl
                 }
 
                 var data = dgChiPhi.DataContext as ObservableCollection<PhuDinhData.tChiPhi>;
-                PhuDinhData.Repository.tChiPhiRepository.Save(_context, data.ToList(), FilterChiPhi.FilterChiPhi);
+                PhuDinhData.Repository.tChiPhiRepository.Save(_context, data.ToList(), _origData);
             }
             catch (Exception ex)
             {
@@ -120,9 +122,9 @@ namespace PhuDinhCommonControl
             }
 
             _context = ContextFactory.CreateContext();
-            var tChiPhis = PhuDinhData.Repository.tChiPhiRepository.GetData(_context, FilterChiPhi.FilterChiPhi);
+            _origData = PhuDinhData.Repository.tChiPhiRepository.GetData(_context, FilterChiPhi.FilterChiPhi);
 
-            _tChiPhis = new ObservableCollection<PhuDinhData.tChiPhi>(tChiPhis);
+            _tChiPhis = new ObservableCollection<PhuDinhData.tChiPhi>(_origData);
             _tChiPhis.CollectionChanged += collection_CollectionChanged;
 
             UpdateNhanVienGiaoHangReferenceData();

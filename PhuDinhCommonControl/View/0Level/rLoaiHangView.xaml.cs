@@ -14,13 +14,15 @@ namespace PhuDinhCommonControl
 
         private PhuDinhData.PhuDinhEntities _context = ContextFactory.CreateContext();
 
+        private List<PhuDinhData.rLoaiHang> _origData;
+
         public rLoaiHangView()
         {
             InitializeComponent();
 
             FilterLoaiHang = (p => true);
         }
-        
+
         #region Override base view method
         public override void CommitEdit()
         {
@@ -34,7 +36,7 @@ namespace PhuDinhCommonControl
             try
             {
                 var data = dgLoaiHang.DataContext as List<PhuDinhData.rLoaiHang>;
-                PhuDinhData.Repository.rLoaiHangRepository.Save(_context, data, FilterLoaiHang);
+                PhuDinhData.Repository.rLoaiHangRepository.Save(_context, data, _origData);
             }
             catch (Exception ex)
             {
@@ -56,7 +58,8 @@ namespace PhuDinhCommonControl
             var index = dgLoaiHang.SelectedIndex;
 
             _context = ContextFactory.CreateContext();
-            dgLoaiHang.DataContext = PhuDinhData.Repository.rLoaiHangRepository.GetData(_context, FilterLoaiHang);
+            _origData = PhuDinhData.Repository.rLoaiHangRepository.GetData(_context, FilterLoaiHang);
+            dgLoaiHang.DataContext = _origData;
 
             dgLoaiHang.SelectedIndex = index;
         }

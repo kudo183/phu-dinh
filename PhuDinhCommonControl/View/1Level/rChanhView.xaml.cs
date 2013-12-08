@@ -21,6 +21,8 @@ namespace PhuDinhCommonControl
         private List<PhuDinhData.rBaiXe> _rBaiXes;
         private PhuDinhData.PhuDinhEntities _context = ContextFactory.CreateContext();
 
+        private List<PhuDinhData.rChanh> _origData;
+
         private string _filterBaiXe = string.Empty;
 
         public rChanhView()
@@ -78,7 +80,7 @@ namespace PhuDinhCommonControl
                 }
 
                 var data = dgChanh.DataContext as ObservableCollection<PhuDinhData.rChanh>;
-                PhuDinhData.Repository.rChanhRepository.Save(_context, data.ToList(), FilterChanh.FilterChanh);
+                PhuDinhData.Repository.rChanhRepository.Save(_context, data.ToList(), _origData);
             }
             catch (Exception ex)
             {
@@ -111,9 +113,9 @@ namespace PhuDinhCommonControl
             }
 
             _context = ContextFactory.CreateContext();
-            var rChanhs = PhuDinhData.Repository.rChanhRepository.GetData(_context, FilterChanh.FilterChanh);
+            _origData = PhuDinhData.Repository.rChanhRepository.GetData(_context, FilterChanh.FilterChanh);
 
-            _rChanhs = new ObservableCollection<PhuDinhData.rChanh>(rChanhs);
+            _rChanhs = new ObservableCollection<PhuDinhData.rChanh>(_origData);
             _rChanhs.CollectionChanged += collection_CollectionChanged;
 
             UpdateBaiXeReferenceData();

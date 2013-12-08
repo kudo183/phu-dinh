@@ -12,9 +12,9 @@ namespace PhuDinhData.Repository
             return Repository<rNuoc>.GetData(context, filter).ToList();
         }
 
-        public static void Save(PhuDinhEntities context, List<rNuoc> data, Expression<Func<rNuoc, bool>> filter)
+        public static List<Repository<rNuoc>.ChangedItemData> Save(PhuDinhEntities context, List<rNuoc> data, List<rNuoc> origData)
         {
-            Repository<rNuoc>.Save(context, data, filter, (p => p.Ma == 0), ((p1, p2) => p1.Ma == p2.Ma));
+            return Repository<rNuoc>.Save(context, data, origData, (p => p.Ma == 0), ((p1, p2) => p1.Ma == p2.Ma));
         }
     }
 }

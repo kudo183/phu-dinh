@@ -12,18 +12,18 @@ namespace PhuDinhData.Repository
             return Repository<tChiTietDonHang>.GetData(context, filter).OrderByDescending(p => p.tDonHang.Ngay).ToList();
         }
 
-        public static void Save(PhuDinhEntities context, List<tChiTietDonHang> data, Expression<Func<tChiTietDonHang, bool>> filter)
+        public static List<Repository<tChiTietDonHang>.ChangedItemData> Save(PhuDinhEntities context, List<tChiTietDonHang> data, List<tChiTietDonHang> origData)
         {
-            var changed = Repository<tChiTietDonHang>.Save(context, data, filter, (p => p.Ma == 0), ((p1, p2) => p1.Ma == p2.Ma));
+            var changed = Repository<tChiTietDonHang>.Save(context, data, origData, (p => p.Ma == 0), ((p1, p2) => p1.Ma == p2.Ma));
 
-            if (changed.Count == 0)
+            if (changed.Count > 0)
             {
-                return;
+                var maDonHangs = changed.Select(p => p.CurrentValues.MaDonHang).ToList();
+
+                BusinessLogics.BusinessLogics.UpdateXong(context, maDonHangs);
             }
 
-            var maDonHangs = changed.Select(p => p.Entity.MaDonHang).ToList();
-
-            BusinessLogics.BusinessLogics.UpdateXong(context, maDonHangs);
+            return changed;
         }
     }
 }

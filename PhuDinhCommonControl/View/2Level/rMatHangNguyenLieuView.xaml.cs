@@ -26,6 +26,8 @@ namespace PhuDinhCommonControl
 
         private PhuDinhData.PhuDinhEntities _context = ContextFactory.CreateContext();
 
+        private List<PhuDinhData.rMatHangNguyenLieu> _origData;
+
         public rMatHangNguyenLieuView()
         {
             InitializeComponent();
@@ -52,7 +54,7 @@ namespace PhuDinhCommonControl
                 }
 
                 var data = dgMatHangNguyenLieu.DataContext as ObservableCollection<PhuDinhData.rMatHangNguyenLieu>;
-                PhuDinhData.Repository.rMatHangNguyenLieuRepository.Save(_context, data.ToList(), FilterMatHangNguyenLieu);
+                PhuDinhData.Repository.rMatHangNguyenLieuRepository.Save(_context, data.ToList(), _origData);
             }
             catch (Exception ex)
             {
@@ -85,9 +87,9 @@ namespace PhuDinhCommonControl
             }
 
             _context = ContextFactory.CreateContext();
-            var rMatHangNguyenLieus = PhuDinhData.Repository.rMatHangNguyenLieuRepository.GetData(_context, FilterMatHangNguyenLieu);
+            _origData = PhuDinhData.Repository.rMatHangNguyenLieuRepository.GetData(_context, FilterMatHangNguyenLieu);
 
-            _rMatHangNguyenLieus = new ObservableCollection<PhuDinhData.rMatHangNguyenLieu>(rMatHangNguyenLieus);
+            _rMatHangNguyenLieus = new ObservableCollection<PhuDinhData.rMatHangNguyenLieu>(_origData);
             _rMatHangNguyenLieus.CollectionChanged += collection_CollectionChanged;
 
             UpdateNhanVienGiaoHangReferenceData();

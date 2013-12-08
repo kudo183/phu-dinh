@@ -14,6 +14,8 @@ namespace PhuDinhCommonControl
 
         private PhuDinhData.PhuDinhEntities _context = ContextFactory.CreateContext();
 
+        private List<PhuDinhData.rBaiXe> _origData;
+
         public rBaiXeView()
         {
             InitializeComponent();
@@ -34,7 +36,7 @@ namespace PhuDinhCommonControl
             try
             {
                 var data = dgBaiXe.DataContext as List<PhuDinhData.rBaiXe>;
-                PhuDinhData.Repository.rBaiXeRepository.Save(_context, data, FilterBaiXe);
+                PhuDinhData.Repository.rBaiXeRepository.Save(_context, data, _origData);
             }
             catch (Exception ex)
             {
@@ -56,7 +58,8 @@ namespace PhuDinhCommonControl
             var index = dgBaiXe.SelectedIndex;
 
             _context = ContextFactory.CreateContext();
-            dgBaiXe.DataContext = PhuDinhData.Repository.rBaiXeRepository.GetData(_context, FilterBaiXe);
+            _origData = PhuDinhData.Repository.rBaiXeRepository.GetData(_context, FilterBaiXe);
+            dgBaiXe.DataContext = _origData;
 
             dgBaiXe.SelectedIndex = index;
         }
