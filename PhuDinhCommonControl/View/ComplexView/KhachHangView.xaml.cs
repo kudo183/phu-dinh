@@ -15,7 +15,7 @@ namespace PhuDinhCommonControl
             _rDiaDiemView.dgDiaDiem.SelectionChanged += dgDiaDiem_SelectionChanged;
             _rKhachHangView.dgKhachHang.SelectionChanged += dgKhachHang_SelectionChanged;
 
-            _tDonHangView.ViewModel.MainFilter.FilterMaKhachHang = (p => false);
+            _tDonHangView.ViewModel.MainFilter.SetFilterMaKhachHang(null, true);
         }
 
         void dgDiaDiem_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -25,20 +25,20 @@ namespace PhuDinhCommonControl
                 return;
             }
 
-            _tDonHangView.ViewModel.MainFilter.FilterMaKhachHang = (p => false);
+            _tDonHangView.ViewModel.MainFilter.SetFilterMaKhachHang(null, true);
             _tDonHangView.RefreshView();
 
             var diaDiem = ((DataGrid)sender).SelectedItem as PhuDinhData.rDiaDiem;
             if (diaDiem == null)
             {
                 _rKhachHangView.FilterKhachHang = null;
-                _rKhachHangView.RefreshView();  
+                _rKhachHangView.RefreshView();
                 return;
             }
 
             _rKhachHangView.FilterKhachHang = (p => p.MaDiaDiem == diaDiem.Ma);
             _rKhachHangView.rDiaDiemDefault = diaDiem;
-            _rKhachHangView.RefreshView();            
+            _rKhachHangView.RefreshView();
         }
 
         void dgKhachHang_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -51,12 +51,12 @@ namespace PhuDinhCommonControl
             var khachHang = ((DataGrid)sender).SelectedItem as PhuDinhData.rKhachHang;
             if (khachHang == null)
             {
-                _tDonHangView.ViewModel.MainFilter.FilterMaKhachHang = (p => false);
+                _tDonHangView.ViewModel.MainFilter.SetFilterMaKhachHang(null, true);
                 _tDonHangView.RefreshView();
                 return;
             }
 
-            _tDonHangView.ViewModel.MainFilter.FilterMaKhachHang = (p => p.MaKhachHang == khachHang.Ma);
+            _tDonHangView.ViewModel.MainFilter.SetFilterMaKhachHang(khachHang.Ma);
             _tDonHangView.ViewModel.rKhachHangDefault = khachHang;
             _tDonHangView.RefreshView();
         }

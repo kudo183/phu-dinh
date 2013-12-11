@@ -8,11 +8,11 @@ namespace PhuDinhData.Filter
     {
         private Expression<Func<tDonHang, bool>> _filterMaKhachHang;
         private Expression<Func<tDonHang, bool>> _filterTenKhachHang;
-        private Expression<Func<tDonHang, bool>> _filterChanh;
+        private Expression<Func<tDonHang, bool>> _filterTenChanh;
         private Expression<Func<tDonHang, bool>> _filterNgay;
         private Expression<Func<tDonHang, bool>> _filterXong;
-        private bool _isClearAllData;
 
+        private bool _isClearAllData;
         public bool IsClearAllData
         {
             get { return _isClearAllData; }
@@ -21,66 +21,135 @@ namespace PhuDinhData.Filter
 
         public Filter_tDonHang()
         {
-            FilterMaKhachHang = (p => true);
-            FilterTenKhachHang = (p => true);
-            FilterChanh = (p => true);
-            FilterNgay = (p => true);
-            FilterXong = (p => true);
+            _isClearAllData = false;
+
+            _filterMaKhachHang = (p => true);
+            _filterTenKhachHang = (p => true);
+            _filterTenChanh = (p => true);
+            _filterNgay = (p => true);
+            _filterXong = (p => true);
         }
 
-        public Expression<Func<tDonHang, bool>> FilterMaKhachHang
+        public void SetFilterMaKhachHang(int? maKhachHang, bool setFalse = false)
         {
-            get { return _filterMaKhachHang; }
-            set
+            _isClearAllData = false;
+
+            if (setFalse == true)
             {
-                _filterMaKhachHang = value;
-                _isClearAllData = false;
+                _filterMaKhachHang = (p => false);
             }
-        }
-
-        public Expression<Func<tDonHang, bool>> FilterTenKhachHang
-        {
-            get { return _filterTenKhachHang; }
-            set
+            else
             {
-                _filterTenKhachHang = value;
-                _isClearAllData = false;
+                if (maKhachHang == null)
+                {
+                    _filterMaKhachHang = (p => true);
+                }
+                else
+                {
+                    _filterMaKhachHang = (p => p.MaKhachHang == maKhachHang);
+                }
             }
+
+            UpdateMainFilter();
         }
 
-        public Expression<Func<tDonHang, bool>> FilterChanh
+        public void SetFilterXong(bool? xong, bool setFalse = false)
         {
-            get { return _filterChanh; }
-            set
+            _isClearAllData = false;
+
+            if (setFalse == true)
             {
-                _filterChanh = value;
-                _isClearAllData = false;
+                _filterXong = (p => false);
             }
-        }
-
-        public Expression<Func<tDonHang, bool>> FilterNgay
-        {
-            get { return _filterNgay; }
-            set
+            else
             {
-                _filterNgay = value;
-                _isClearAllData = false;
+                if (xong == null)
+                {
+                    _filterXong = (p => true);
+                }
+                else
+                {
+                    _filterNgay = (p => p.Xong == xong);
+                }
             }
+
+            UpdateMainFilter();
         }
 
-        public Expression<Func<tDonHang, bool>> FilterXong
+        public void SetFilterTenChanh(string tenChanh, bool setFalse = false)
         {
-            get { return _filterXong; }
-            set
+            _isClearAllData = false;
+
+            if (setFalse == true)
             {
-                _filterXong = value;
-                _isClearAllData = false;
+                _filterTenChanh = (p => false);
             }
+            else
+            {
+                if (string.IsNullOrEmpty(tenChanh))
+                {
+                    _filterTenChanh = (p => true);
+                }
+                else
+                {
+                    _filterTenChanh = (p => p.rChanh.TenChanh.Contains(tenChanh));
+                }
+            }
+
+            UpdateMainFilter();
         }
 
-        public Expression<Func<tDonHang, bool>> FilterDonHang
+        public void SetFilterTenKhachHang(string tenKhachHang, bool setFalse = false)
         {
-            get { return FilterMaKhachHang.And(FilterXong).And(FilterTenKhachHang).And(FilterNgay).And(FilterChanh); }
+            _isClearAllData = false;
+
+            if (setFalse == true)
+            {
+                _filterTenKhachHang = (p => false);
+            }
+            else
+            {
+                if (string.IsNullOrEmpty(tenKhachHang))
+                {
+                    _filterTenKhachHang = (p => true);
+                }
+                else
+                {
+                    _filterTenKhachHang = (p => p.rKhachHang.TenKhachHang.Contains(tenKhachHang));
+                }
+            }
+
+            UpdateMainFilter();
         }
+
+        public void SetFilterNgay(DateTime? date, bool setFalse = false)
+        {
+            _isClearAllData = false;
+
+            if (setFalse == true)
+            {
+                _filterNgay = (p => false);
+            }
+            else
+            {
+                if (date == null)
+                {
+                    _filterNgay = (p => true);
+                }
+                else
+                {
+                    _filterNgay = (p => p.Ngay == date);
+                }
+            }
+
+            UpdateMainFilter();
+        }
+
+        private void UpdateMainFilter()
+        {
+            FilterDonHang = _filterMaKhachHang.And(_filterXong).And(_filterTenKhachHang).And(_filterNgay).And(_filterTenChanh);
+        }
+
+        public Expression<Func<tDonHang, bool>> FilterDonHang { get; private set; }
     }
 }
