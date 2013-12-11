@@ -42,7 +42,7 @@ namespace PhuDinhData.ViewModel
             FilterChanh = new Filter_rChanh();            
         }
 
-        public void Loaded()
+        public void Load()
         {
             Entity.CollectionChanged += Entity_CollectionChanged;
 
@@ -50,7 +50,7 @@ namespace PhuDinhData.ViewModel
             DGChanhViewModel.BaiXe.PropertyChanged += BaiXe_PropertyChanged;
         }
 
-        public void Unloaded()
+        public void Unload()
         {
             Entity.CollectionChanged -= Entity_CollectionChanged;
 
