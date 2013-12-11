@@ -25,13 +25,13 @@ namespace PhuDinhCommonControl
             var baixe = ((DataGrid)sender).SelectedItem as PhuDinhData.rBaiXe;
             if(baixe == null)
             {
-                _rChanhView.FilterChanh = null;
+                _rChanhView.ViewModel.FilterChanh = null;
                 _rChanhView.RefreshView();
                 return;
             }
 
-            _rChanhView.FilterChanh.FilterBaiXe = (p => p.MaBaiXe == baixe.Ma);
-            _rChanhView.rBaiXeDefault = baixe;
+            _rChanhView.ViewModel.FilterChanh.FilterBaiXe = (p => p.MaBaiXe == baixe.Ma);
+            _rChanhView.ViewModel.rBaiXeDefault = baixe;
             _rChanhView.RefreshView();
         }
     }

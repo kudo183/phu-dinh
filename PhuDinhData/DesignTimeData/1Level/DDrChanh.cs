@@ -1,26 +1,32 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections.ObjectModel;
+using PhuDinhData.ViewModel;
 
 namespace PhuDinhData.DesignTimeData
 {
     public static class DDrChanh
     {
-        private static List<rChanh> _rChanhs;
-        public static List<rChanh> rChanhs
+        private static DGChanhViewModel _viewModel;
+        public static DGChanhViewModel ViewModel
         {
             get
             {
-                if (_rChanhs != null)
+                if(_viewModel!=null)
                 {
-                    return _rChanhs;
+                    return _viewModel;
                 }
+                
+                _viewModel = new DGChanhViewModel();
 
                 const int count = 10;
-                _rChanhs = new List<rChanh>(count);
+                var chanhs = new ObservableCollection<rChanh>();
                 for (var i = 1; i <= count; i++)
                 {
-                    _rChanhs.Add(Create(i));
+                    chanhs.Add(Create(i));
                 }
-                return _rChanhs;
+
+                _viewModel.Entity = chanhs;
+
+                return _viewModel;
             }
         }
 

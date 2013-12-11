@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace PhuDinhData.DesignTimeData
 {
@@ -37,7 +38,7 @@ namespace PhuDinhData.DesignTimeData
                 rKhachHang = DDrKhachHang.Create(i),
                 rChanh = DDrChanh.Create(i),
                 rKhachHangList = DDrKhachHang.rKhachHangs,
-                rChanhList = DDrChanh.rChanhs
+                rChanhList = DDrChanh.ViewModel.Entity.ToList()
             };
         }
     }

@@ -42,6 +42,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -54,6 +55,7 @@
   <ItemGroup>
     <Compile Include="BindableObject.cs" />
     <Compile Include="BusinessLogics\BusinessLogics.cs" />
+    <Compile Include="ContextFactory.cs" />
     <Compile Include="DesignTimeData\0Level\DDrNhaCungCap.cs" />
     <Compile Include="DesignTimeData\0Level\DDrLoaiNguyenLieu.cs" />
     <Compile Include="DesignTimeData\1Level\DDrNguyenLieu.cs" />
@@ -94,6 +96,7 @@
     <Compile Include="EntityExt\rKhachHangExt.cs" />
     <Compile Include="EntityExt\rDiaDiemExt.cs" />
     <Compile Include="EntityExt\rChanhExt.cs" />
+    <Compile Include="Filter\Filter_rChanh.cs" />
     <Compile Include="rDiaDiem.cs">
       <DependentUpon>PhuDinh.tt</DependentUpon>
     </Compile>
@@ -209,6 +212,9 @@
     <Compile Include="tNhapNguyenLieu.cs">
       <DependentUpon>PhuDinh.tt</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\DataGridColumnHeaderFilterModel\HeaderDateFilter.cs" />
+    <Compile Include="ViewModel\DataGridColumnHeaderFilterModel\HeaderTextFilter.cs" />
+    <Compile Include="ViewModel\DGChanhViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="PhuDinh.edmx">
@@ -248,6 +254,12 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PhuDinhCommon\PhuDinhCommon.csproj">
+      <Project>{e7cdbbdc-0d94-48b8-9934-ebfbb75e533d}</Project>
+      <Name>PhuDinhCommon</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
