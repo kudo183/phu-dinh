@@ -5,8 +5,6 @@ using System.Collections.Specialized;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 using PhuDinhData.Filter;
 using PhuDinhData.Repository;
 using PhuDinhData.ViewModel.DataGridColumnHeaderFilterModel;
@@ -153,9 +151,11 @@ namespace PhuDinhData.ViewModel
             _context = ContextFactory.CreateContext();
             _origData = tDonHangRepository.GetData(_context, MainFilter.FilterDonHang);
 
+            Unload();
+
             Entity.Clear();
 
-            var tDonHangs = new ObservableCollection<PhuDinhData.tDonHang>(_origData);
+            var tDonHangs = new ObservableCollection<tDonHang>(_origData);
             foreach (var tDonHang in tDonHangs)
             {
                 Entity.Add(tDonHang);
@@ -163,6 +163,8 @@ namespace PhuDinhData.ViewModel
 
             UpdateChanhReferenceData();
             UpdateKhachHangReferenceData();
+
+            Load();
         }
 
         public void UpdateChanhReferenceData()

@@ -131,10 +131,9 @@ namespace PhuDinhCommonControl
             var index = dgDonHang.SelectedIndex;
 
             _viewModel.RefreshData();
-
+            
             dgDonHang.SelectedIndex = index;
         }
         #endregion
-
     }
 }
