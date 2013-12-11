@@ -96,6 +96,7 @@
     <Compile Include="EntityExt\rKhachHangExt.cs" />
     <Compile Include="EntityExt\rDiaDiemExt.cs" />
     <Compile Include="EntityExt\rChanhExt.cs" />
+    <Compile Include="Filter\Filter_DonHang.cs" />
     <Compile Include="Filter\Filter_rChanh.cs" />
     <Compile Include="rDiaDiem.cs">
       <DependentUpon>PhuDinh.tt</DependentUpon>
@@ -215,6 +216,7 @@
     <Compile Include="ViewModel\DataGridColumnHeaderFilterModel\HeaderDateFilter.cs" />
     <Compile Include="ViewModel\DataGridColumnHeaderFilterModel\HeaderTextFilter.cs" />
     <Compile Include="ViewModel\DGChanhViewModel.cs" />
+    <Compile Include="ViewModel\DGDonHangViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="PhuDinh.edmx">

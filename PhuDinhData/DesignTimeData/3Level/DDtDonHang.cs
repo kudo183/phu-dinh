@@ -1,29 +1,34 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections.ObjectModel;
 using System.Linq;
+using PhuDinhData.ViewModel;
 
 namespace PhuDinhData.DesignTimeData
 {
     public class DDtDonHang
     {
-        private static List<tDonHang> _tDonHangs;
-        public static List<tDonHang> tDonHangs
+        private static DGDonHangViewModel _viewModel;
+        public static DGDonHangViewModel ViewModel
         {
-            get
+            get 
             {
-                if (_tDonHangs != null)
+                if(_viewModel != null)
                 {
-                    return _tDonHangs;
+                    return _viewModel;
                 }
+
+                _viewModel = new DGDonHangViewModel();
 
                 const int count = 10;
-                _tDonHangs = new List<tDonHang>(count);
+                var donhangs = new ObservableCollection<tDonHang>();
                 for (int i = 1; i <= count; i++)
                 {
-                    _tDonHangs.Add(Create(i));
+                    donhangs.Add(Create(i));
 
                 }
 
-                return _tDonHangs;
+                _viewModel.Entity = donhangs;
+
+                return _viewModel;
             }
         }
 
