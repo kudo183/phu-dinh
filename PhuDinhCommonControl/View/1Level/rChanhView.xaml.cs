@@ -28,7 +28,7 @@ namespace PhuDinhCommonControl
         {
             _viewModel.FilterChanged += _viewModel_FilterChanged;
             
-            _viewModel.Loaded();
+            _viewModel.Load();
 
             RefreshView();
         }
@@ -37,7 +37,7 @@ namespace PhuDinhCommonControl
         {
             _viewModel.FilterChanged -= _viewModel_FilterChanged;
 
-            _viewModel.Unloaded();
+            _viewModel.Unload();
         }
 
         void _viewModel_FilterChanged(object sender, EventArgs e)
