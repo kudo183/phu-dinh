@@ -96,7 +96,7 @@
     <Compile Include="EntityExt\rKhachHangExt.cs" />
     <Compile Include="EntityExt\rDiaDiemExt.cs" />
     <Compile Include="EntityExt\rChanhExt.cs" />
-    <Compile Include="Filter\Filter_DonHang.cs" />
+    <Compile Include="Filter\Filter_tDonHang.cs" />
     <Compile Include="Filter\Filter_rChanh.cs" />
     <Compile Include="rDiaDiem.cs">
       <DependentUpon>PhuDinh.tt</DependentUpon>
