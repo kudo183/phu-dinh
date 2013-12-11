@@ -10,21 +10,19 @@ namespace PhuDinhData.DesignTimeData
         {
             get
             {
-                if(_viewModel!=null)
+                if (_viewModel != null)
                 {
                     return _viewModel;
                 }
-                
+
                 _viewModel = new DGChanhViewModel();
 
                 const int count = 10;
-                var chanhs = new ObservableCollection<rChanh>();
+
                 for (var i = 1; i <= count; i++)
                 {
-                    chanhs.Add(Create(i));
+                    _viewModel.Entity.Add(Create(i));
                 }
-
-                _viewModel.Entity = chanhs;
 
                 return _viewModel;
             }

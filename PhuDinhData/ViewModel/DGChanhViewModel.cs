@@ -36,7 +36,6 @@ namespace PhuDinhData.ViewModel
 
         public DGChanhViewModel()
         {
-            _context = ContextFactory.CreateContext();
             Entity = new ObservableCollection<rChanh>();
 
             FilterBaiXe = (p => true);
