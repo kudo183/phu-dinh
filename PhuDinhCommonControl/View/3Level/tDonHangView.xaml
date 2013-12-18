@@ -5,7 +5,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:PhuDinhCommonControl="clr-namespace:PhuDinhCommonControl"
              xmlns:EntityDataGrid="clr-namespace:PhuDinhCommonControl.EntityDataGrid"
-             xmlns:Menu="clr-namespace:PhuDinhCommonControl.Menu" x:Class="PhuDinhCommonControl.tDonHangView" 
+             xmlns:Menu="clr-namespace:PhuDinhCommonControl.Menu"
+             xmlns:CustomControl="clr-namespace:CustomControl;assembly=CustomControl"
+             x:Class="PhuDinhCommonControl.tDonHangView" 
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="500">
     <Grid>
@@ -14,6 +16,16 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <EntityDataGrid:DGDonHang Grid.Row="0" x:Name="dgDonHang" x:FieldModifier="public" HeaderAddButtonClick="dgDonHang_HeaderAddButtonClick"/>
-        <Menu:BottomMenu Grid.Row="1" x:Name="bmMenu" Button.Click="bmMenu_Click"/>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <CustomControl:Pager Grid.Column="0"
+                                 CurrentPageIndex="{Binding CurrentPageIndex, Mode=TwoWay}"
+                                 PageSize="{Binding PageSize, Mode=OneWay}"
+                                 ItemCount="{Binding ItemCount, Mode=OneWay}"/>
+            <Menu:BottomMenu Grid.Column="1" x:Name="bmMenu" Button.Click="bmMenu_Click"/>
+        </Grid>
     </Grid>
 </PhuDinhCommonControl:BaseView>

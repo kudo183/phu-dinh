@@ -28,7 +28,7 @@ namespace PhuDinhCommonControl
             Loaded += tDonHangView_Loaded;
             Unloaded += tDonHangView_Unloaded;
 
-            dgDonHang.DataContext = _viewModel;
+            DataContext = _viewModel;
 
             LogManager.Log(event_type.et_Internal, severity_type.st_debug, string.Format("{0} {1}", "tDonHangView_Contructor", "Exit"));
         }

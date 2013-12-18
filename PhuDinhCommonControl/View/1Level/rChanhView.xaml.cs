@@ -21,12 +21,12 @@ namespace PhuDinhCommonControl
             Loaded += rChanhView_Loaded;
             Unloaded += rChanhView_Unloaded;
 
-            dgChanh.DataContext = _viewModel;
+            DataContext = _viewModel;
         }
 
         void rChanhView_Loaded(object sender, System.Windows.RoutedEventArgs e)
         {
-            _viewModel.FilterChanged += _viewModel_FilterChanged;
+            _viewModel.HeaderFilterChanged += _viewModel_FilterChanged;
             
             _viewModel.Load();
 
@@ -35,7 +35,7 @@ namespace PhuDinhCommonControl
 
         void rChanhView_Unloaded(object sender, System.Windows.RoutedEventArgs e)
         {
-            _viewModel.FilterChanged -= _viewModel_FilterChanged;
+            _viewModel.HeaderFilterChanged -= _viewModel_FilterChanged;
 
             _viewModel.Unload();
         }
@@ -86,7 +86,7 @@ namespace PhuDinhCommonControl
 
         public override void RefreshView()
         {
-            if (_viewModel.FilterChanh.IsClearAllData)
+            if (_viewModel.MainFilter.IsClearAllData)
             {
                 _viewModel.Entity.Clear();
                 return;

@@ -22,4 +22,23 @@
             </Setter.Value>
         </Setter>
     </Style>
+
+    <Style TargetType="{x:Type local:Pager}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:Pager}">
+                    <StackPanel Orientation="Horizontal">
+                        <Button Content="Prev" x:Name="PrevPageButton"/>
+                        <Button Content="Next" x:Name="NextPageButton"/>
+                        <TextBlock Text="Page" VerticalAlignment="Center"/>
+                        <TextBox x:Name="CurrentPageIndexTextBox" Width="30" VerticalContentAlignment="Center"/>
+                        <TextBlock Text=" of " VerticalAlignment="Center"/>
+                        <TextBlock x:Name="PageCountTextBlock" VerticalAlignment="Center"/>
+                        <Button Content="First" x:Name="FirstPageButton"/>
+                        <Button Content="Last" x:Name="LastPageButton"/>
+                    </StackPanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 </ResourceDictionary>

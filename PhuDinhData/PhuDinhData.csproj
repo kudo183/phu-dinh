@@ -213,6 +213,7 @@
     <Compile Include="tNhapNguyenLieu.cs">
       <DependentUpon>PhuDinh.tt</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\DataGridColumnHeaderFilterModel\HeaderDateFilter.cs" />
     <Compile Include="ViewModel\DataGridColumnHeaderFilterModel\HeaderTextFilter.cs" />
     <Compile Include="ViewModel\1Level\DGChanhViewModel.cs" />

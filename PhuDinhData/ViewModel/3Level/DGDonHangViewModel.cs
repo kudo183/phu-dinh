@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
+using System.ComponentModel;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
@@ -11,13 +12,10 @@ using PhuDinhData.ViewModel.DataGridColumnHeaderFilterModel;
 
 namespace PhuDinhData.ViewModel
 {
-    public class DGDonHangViewModel
+    public class DGDonHangViewModel : BaseViewModel<tDonHang>
     {
         private List<rKhachHang> _rKhachHangs;
         private List<rChanh> _rChanhs;
-
-        private PhuDinhEntities _context;
-        private List<tDonHang> _origData;
 
         private bool _isUsedDateFilter = true;
         private DateTime _filterDate = DateTime.Now.Date;
@@ -25,8 +23,6 @@ namespace PhuDinhData.ViewModel
         private string _filterKhachHang = string.Empty;
 
         private string _filterChanh = string.Empty;
-
-        private bool _isLoading;
 
         public Filter_tDonHang MainFilter { get; private set; }
         public Expression<Func<rKhachHang, bool>> Reference_FilterKhachHang { get; set; }
@@ -36,10 +32,6 @@ namespace PhuDinhData.ViewModel
         public static HeaderDateFilter Header_Ngay = new HeaderDateFilter("Ngày");
         public static HeaderTextFilter Header_KhachHang = new HeaderTextFilter("Khách Hàng");
         public static HeaderTextFilter Header_KhachHangChanh = new HeaderTextFilter("Khách Hàng Chành");
-
-        public ObservableCollection<tDonHang> Entity { get; set; }
-
-        public event EventHandler HeaderFilterChanged;
 
         public DGDonHangViewModel()
         {
@@ -86,7 +78,7 @@ namespace PhuDinhData.ViewModel
             _filterChanh = DGDonHangViewModel.Header_KhachHangChanh.Text;
         }
 
-        void Header_Ngay_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        void Header_Ngay_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             if (DGDonHangViewModel.Header_Ngay.IsUsed)
             {
@@ -100,32 +92,20 @@ namespace PhuDinhData.ViewModel
             OnHeaderFilterChanged();
         }
 
-        void Header_KhachHang_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        void Header_KhachHang_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             MainFilter.SetFilterTenKhachHang(DGDonHangViewModel.Header_KhachHang.Text);
 
             OnHeaderFilterChanged();
         }
 
-        void Header_KhachHangChanh_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        void Header_KhachHangChanh_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             MainFilter.SetFilterTenChanh(DGDonHangViewModel.Header_KhachHangChanh.Text);
 
             OnHeaderFilterChanged();
         }
 
-        private void OnHeaderFilterChanged()
-        {
-            if (_isLoading == true)
-            {
-                return;
-            }
-
-            if (HeaderFilterChanged != null)
-            {
-                HeaderFilterChanged(this, null);
-            }
-        }
 
         void Entity_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
@@ -146,10 +126,19 @@ namespace PhuDinhData.ViewModel
             }
         }
 
-        public void RefreshData()
+        public override void RefreshData()
         {
+            if (MainFilter.FilterDonHang == null)
+            {
+                return;
+            }
+
             _context = ContextFactory.CreateContext();
-            _origData = tDonHangRepository.GetData(_context, MainFilter.FilterDonHang);
+
+            int itemCount;
+            _origData = tDonHangRepository.GetData(_context, MainFilter.FilterDonHang, PageSize, CurrentPageIndex, out itemCount);
+
+            ItemCount = itemCount;
 
             Unload();
 

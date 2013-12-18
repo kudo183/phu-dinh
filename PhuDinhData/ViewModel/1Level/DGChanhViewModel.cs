@@ -11,10 +11,8 @@ using System;
 
 namespace PhuDinhData.ViewModel
 {
-    public class DGChanhViewModel
+    public class DGChanhViewModel : BaseViewModel<rChanh>
     {
-        private PhuDinhEntities _context;
-        private List<rChanh> _origData;
         private List<rBaiXe> _rBaiXes;
         private string _filterBaiXe = string.Empty;
 
@@ -24,22 +22,18 @@ namespace PhuDinhData.ViewModel
 
         public Expression<Func<rBaiXe, bool>> FilterBaiXe { get; set; }
 
-        public ObservableCollection<rChanh> Entity { get; set; }
-
         public rBaiXe rBaiXeDefault { get; set; }
 
-        public Filter_rChanh FilterChanh { get; set; }
+        public Filter_rChanh MainFilter { get; set; }
 
         public static HeaderTextFilter BaiXe = new HeaderTextFilter("Bãi Xe");
-
-        public event EventHandler FilterChanged;
 
         public DGChanhViewModel()
         {
             Entity = new ObservableCollection<rChanh>();
 
             FilterBaiXe = (p => true);
-            FilterChanh = new Filter_rChanh();            
+            MainFilter = new Filter_rChanh();
         }
 
         public void Load()
@@ -62,17 +56,14 @@ namespace PhuDinhData.ViewModel
         {
             if (string.IsNullOrEmpty(DGChanhViewModel.BaiXe.Text) == false)
             {
-                FilterChanh.FilterBaiXe = (p => p.rBaiXe.DiaDiemBaiXe.Contains(DGChanhViewModel.BaiXe.Text));
+                MainFilter.FilterBaiXe = (p => p.rBaiXe.DiaDiemBaiXe.Contains(DGChanhViewModel.BaiXe.Text));
             }
             else
             {
-                FilterChanh.FilterBaiXe = (p => true);
+                MainFilter.FilterBaiXe = (p => true);
             }
 
-            if (FilterChanged != null)
-            {
-                FilterChanged(this, null);
-            }
+            OnHeaderFilterChanged();
         }
 
         void Entity_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
@@ -89,12 +80,23 @@ namespace PhuDinhData.ViewModel
             }
         }
 
-        public void RefreshData()
+        public override void RefreshData()
         {
-            _context = ContextFactory.CreateContext();
-            _origData = rChanhRepository.GetData(_context, FilterChanh.FilterChanh);
+            if (MainFilter.FilterChanh == null)
+            {
+                return;
+            }
 
+            _context = ContextFactory.CreateContext();
+            _origData = rChanhRepository.GetData(_context, MainFilter.FilterChanh);
+
+            Unload();
             Entity.Clear();
+
+            int itemCount;
+            _origData = rChanhRepository.GetData(_context, MainFilter.FilterChanh, PageSize, CurrentPageIndex, out itemCount);
+
+            ItemCount = itemCount;
 
             var rChanhs = new ObservableCollection<rChanh>(_origData);
 
@@ -104,6 +106,8 @@ namespace PhuDinhData.ViewModel
             }
 
             UpdateBaiXeReferenceData();
+
+            Load();
         }
 
         public void UpdateBaiXeReferenceData()
@@ -129,7 +133,7 @@ namespace PhuDinhData.ViewModel
             }
             catch (Exception)
             {
-                PhuDinhCommon.EntityFrameworkUtils.UndoContextChange(_context, EntityState.Modified);                
+                PhuDinhCommon.EntityFrameworkUtils.UndoContextChange(_context, EntityState.Modified);
                 throw;
             }
         }
