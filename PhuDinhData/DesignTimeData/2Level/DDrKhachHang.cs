@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace PhuDinhData.DesignTimeData
 {
@@ -33,7 +34,7 @@ namespace PhuDinhData.DesignTimeData
                 MaDiaDiem = i,
                 TenKhachHang = "Khách hàng " + i,
                 rDiaDiem = DDrDiaDiem.Create(i),
-                rDiaDiemList = DDrDiaDiem.rDiaDiems
+                rDiaDiemList = DDrDiaDiem.ViewModel.Entity.ToList()
             };
         }
     }

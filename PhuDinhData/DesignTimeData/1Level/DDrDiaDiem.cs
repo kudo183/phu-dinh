@@ -1,26 +1,29 @@
-﻿using System.Collections.Generic;
+﻿using PhuDinhData.ViewModel;
 
 namespace PhuDinhData.DesignTimeData
 {
     public static class DDrDiaDiem
     {
-        private static List<rDiaDiem> _rDiaDiems;
-        public static List<rDiaDiem> rDiaDiems
+        private static DiaDiemViewModel _viewModel;
+        public static DiaDiemViewModel ViewModel
         {
             get
             {
-                if (_rDiaDiems != null)
+                if (_viewModel != null)
                 {
-                    return _rDiaDiems;
+                    return _viewModel;
                 }
 
+                _viewModel = new DiaDiemViewModel();
+
                 const int count = 10;
-                _rDiaDiems = new List<rDiaDiem>(count);
+
                 for (var i = 1; i <= count; i++)
                 {
-                    _rDiaDiems.Add(Create(i));
+                    _viewModel.Entity.Add(Create(i));
                 }
-                return _rDiaDiems;
+
+                return _viewModel;
             }
         }
 
