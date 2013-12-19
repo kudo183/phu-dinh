@@ -216,8 +216,8 @@
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\DataGridColumnHeaderFilterModel\HeaderDateFilter.cs" />
     <Compile Include="ViewModel\DataGridColumnHeaderFilterModel\HeaderTextFilter.cs" />
-    <Compile Include="ViewModel\1Level\DGChanhViewModel.cs" />
-    <Compile Include="ViewModel\3Level\DGDonHangViewModel.cs" />
+    <Compile Include="ViewModel\1Level\ChanhViewModel.cs" />
+    <Compile Include="ViewModel\3Level\DonHangViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="PhuDinh.edmx">
