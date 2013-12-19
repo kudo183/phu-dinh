@@ -13,9 +13,9 @@
         <!--Ma-->
         <CustomControl:DataGridReadOnlyTextColumn x:Name="maColumn"/>
         <!--Ngay-->
-        <CustomControl:DataGridDateColumn x:Name="ngayColumn" Header="{x:Static ViewModel:DGDonHangViewModel.Header_Ngay}"/>
+        <CustomControl:DataGridDateColumn x:Name="ngayColumn" Header="{x:Static ViewModel:DonHangViewModel.Header_Ngay}"/>
         <!--Khach hang-->
-        <CustomControl:DataGridComboBoxColumnExt x:Name="khachHangColumn" Header="{x:Static ViewModel:DGDonHangViewModel.Header_KhachHang}"
+        <CustomControl:DataGridComboBoxColumnExt x:Name="khachHangColumn" Header="{x:Static ViewModel:DonHangViewModel.Header_KhachHang}"
                                                  HeaderAddButtonClick="headerAddButton_Click"
                                                  TextBinding="{Binding rKhachHang.TenKhachHangDiaDiem, Mode=OneWay}"
                                                  DisplayMemberPath="TenKhachHangDiaDiem"
@@ -24,7 +24,7 @@
                                                  SelectedItemBinding="{Binding rKhachHang, UpdateSourceTrigger=PropertyChanged}"
                                                  ItemsSource="{Binding rKhachHangList}"/>
         <!--Khach Hang Chanh-->
-        <CustomControl:DataGridComboBoxColumnExt x:Name="khachHangChanhColumn" Header="{x:Static ViewModel:DGDonHangViewModel.Header_KhachHangChanh}"
+        <CustomControl:DataGridComboBoxColumnExt x:Name="khachHangChanhColumn" Header="{x:Static ViewModel:DonHangViewModel.Header_KhachHangChanh}"
                                                  Width="250"
                                                  HeaderAddButtonClick="headerAddButton_Click"
                                                  TextBinding="{Binding rChanh.TenBaiXeChanh, Mode=OneWay}"

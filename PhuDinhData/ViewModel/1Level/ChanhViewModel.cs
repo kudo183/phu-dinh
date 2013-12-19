@@ -11,7 +11,7 @@ using System;
 
 namespace PhuDinhData.ViewModel
 {
-    public class DGChanhViewModel : BaseViewModel<rChanh>
+    public class ChanhViewModel : BaseViewModel<rChanh>
     {
         private List<rBaiXe> _rBaiXes;
         private string _filterBaiXe = string.Empty;
@@ -28,7 +28,7 @@ namespace PhuDinhData.ViewModel
 
         public static HeaderTextFilter BaiXe = new HeaderTextFilter("Bãi Xe");
 
-        public DGChanhViewModel()
+        public ChanhViewModel()
         {
             Entity = new ObservableCollection<rChanh>();
 
@@ -40,23 +40,23 @@ namespace PhuDinhData.ViewModel
         {
             Entity.CollectionChanged += Entity_CollectionChanged;
 
-            DGChanhViewModel.BaiXe.Text = _filterBaiXe;
-            DGChanhViewModel.BaiXe.PropertyChanged += BaiXe_PropertyChanged;
+            ChanhViewModel.BaiXe.Text = _filterBaiXe;
+            ChanhViewModel.BaiXe.PropertyChanged += BaiXe_PropertyChanged;
         }
 
         public void Unload()
         {
             Entity.CollectionChanged -= Entity_CollectionChanged;
 
-            _filterBaiXe = DGChanhViewModel.BaiXe.Text;
-            DGChanhViewModel.BaiXe.PropertyChanged -= BaiXe_PropertyChanged;
+            _filterBaiXe = ChanhViewModel.BaiXe.Text;
+            ChanhViewModel.BaiXe.PropertyChanged -= BaiXe_PropertyChanged;
         }
 
         void BaiXe_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            if (string.IsNullOrEmpty(DGChanhViewModel.BaiXe.Text) == false)
+            if (string.IsNullOrEmpty(ChanhViewModel.BaiXe.Text) == false)
             {
-                MainFilter.FilterBaiXe = (p => p.rBaiXe.DiaDiemBaiXe.Contains(DGChanhViewModel.BaiXe.Text));
+                MainFilter.FilterBaiXe = (p => p.rBaiXe.DiaDiemBaiXe.Contains(ChanhViewModel.BaiXe.Text));
             }
             else
             {

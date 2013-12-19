@@ -6,8 +6,8 @@ namespace PhuDinhData.DesignTimeData
 {
     public class DDtDonHang
     {
-        private static DGDonHangViewModel _viewModel;
-        public static DGDonHangViewModel ViewModel
+        private static DonHangViewModel _viewModel;
+        public static DonHangViewModel ViewModel
         {
             get 
             {
@@ -16,7 +16,7 @@ namespace PhuDinhData.DesignTimeData
                     return _viewModel;
                 }
 
-                _viewModel = new DGDonHangViewModel();
+                _viewModel = new DonHangViewModel();
 
                 const int count = 10;
                 var donhangs = new ObservableCollection<tDonHang>();

@@ -12,7 +12,7 @@ using PhuDinhData.ViewModel.DataGridColumnHeaderFilterModel;
 
 namespace PhuDinhData.ViewModel
 {
-    public class DGDonHangViewModel : BaseViewModel<tDonHang>
+    public class DonHangViewModel : BaseViewModel<tDonHang>
     {
         private List<rKhachHang> _rKhachHangs;
         private List<rChanh> _rChanhs;
@@ -33,7 +33,7 @@ namespace PhuDinhData.ViewModel
         public static HeaderTextFilter Header_KhachHang = new HeaderTextFilter("Khách Hàng");
         public static HeaderTextFilter Header_KhachHangChanh = new HeaderTextFilter("Khách Hàng Chành");
 
-        public DGDonHangViewModel()
+        public DonHangViewModel()
         {
             Entity = new ObservableCollection<tDonHang>();
 
@@ -52,12 +52,12 @@ namespace PhuDinhData.ViewModel
             Header_KhachHang.PropertyChanged += Header_KhachHang_PropertyChanged;
             Header_KhachHangChanh.PropertyChanged += Header_KhachHangChanh_PropertyChanged;
 
-            DGDonHangViewModel.Header_Ngay.Date = _filterDate;
-            DGDonHangViewModel.Header_Ngay.IsUsed = _isUsedDateFilter;
+            DonHangViewModel.Header_Ngay.Date = _filterDate;
+            DonHangViewModel.Header_Ngay.IsUsed = _isUsedDateFilter;
 
-            DGDonHangViewModel.Header_KhachHang.Text = _filterKhachHang;
+            DonHangViewModel.Header_KhachHang.Text = _filterKhachHang;
 
-            DGDonHangViewModel.Header_KhachHangChanh.Text = _filterChanh;
+            DonHangViewModel.Header_KhachHangChanh.Text = _filterChanh;
 
             _isLoading = false;
         }
@@ -70,19 +70,19 @@ namespace PhuDinhData.ViewModel
             Header_KhachHang.PropertyChanged -= Header_KhachHang_PropertyChanged;
             Header_KhachHangChanh.PropertyChanged -= Header_KhachHangChanh_PropertyChanged;
 
-            _filterDate = DGDonHangViewModel.Header_Ngay.Date;
-            _isUsedDateFilter = DGDonHangViewModel.Header_Ngay.IsUsed;
+            _filterDate = DonHangViewModel.Header_Ngay.Date;
+            _isUsedDateFilter = DonHangViewModel.Header_Ngay.IsUsed;
 
-            _filterKhachHang = DGDonHangViewModel.Header_KhachHang.Text;
+            _filterKhachHang = DonHangViewModel.Header_KhachHang.Text;
 
-            _filterChanh = DGDonHangViewModel.Header_KhachHangChanh.Text;
+            _filterChanh = DonHangViewModel.Header_KhachHangChanh.Text;
         }
 
         void Header_Ngay_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (DGDonHangViewModel.Header_Ngay.IsUsed)
+            if (DonHangViewModel.Header_Ngay.IsUsed)
             {
-                MainFilter.SetFilterNgay(DGDonHangViewModel.Header_Ngay.Date);
+                MainFilter.SetFilterNgay(DonHangViewModel.Header_Ngay.Date);
             }
             else
             {
@@ -94,14 +94,14 @@ namespace PhuDinhData.ViewModel
 
         void Header_KhachHang_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            MainFilter.SetFilterTenKhachHang(DGDonHangViewModel.Header_KhachHang.Text);
+            MainFilter.SetFilterTenKhachHang(DonHangViewModel.Header_KhachHang.Text);
 
             OnHeaderFilterChanged();
         }
 
         void Header_KhachHangChanh_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            MainFilter.SetFilterTenChanh(DGDonHangViewModel.Header_KhachHangChanh.Text);
+            MainFilter.SetFilterTenChanh(DonHangViewModel.Header_KhachHangChanh.Text);
 
             OnHeaderFilterChanged();
         }
@@ -113,8 +113,8 @@ namespace PhuDinhData.ViewModel
             {
                 var tDonHang = e.NewItems[0] as tDonHang;
 
-                tDonHang.Ngay = (DGDonHangViewModel.Header_Ngay.IsUsed)
-                    ? DGDonHangViewModel.Header_Ngay.Date : DateTime.Now;
+                tDonHang.Ngay = (DonHangViewModel.Header_Ngay.IsUsed)
+                    ? DonHangViewModel.Header_Ngay.Date : DateTime.Now;
 
                 tDonHang.rChanhList = _rChanhs;
                 tDonHang.rKhachHangList = _rKhachHangs;

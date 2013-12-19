@@ -16,8 +16,8 @@ namespace PhuDinhCommonControl
     /// </summary>
     public partial class tDonHangView : BaseView
     {
-        private readonly DGDonHangViewModel _viewModel = new DGDonHangViewModel();
-        public DGDonHangViewModel ViewModel { get { return _viewModel; } }
+        private readonly DonHangViewModel _viewModel = new DonHangViewModel();
+        public DonHangViewModel ViewModel { get { return _viewModel; } }
 
         public tDonHangView()
         {

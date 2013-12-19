@@ -11,8 +11,8 @@ namespace PhuDinhCommonControl
     /// </summary>
     public partial class rChanhView : BaseView
     {
-        private readonly DGChanhViewModel _viewModel = new DGChanhViewModel();
-        public DGChanhViewModel ViewModel { get { return _viewModel; } }
+        private readonly ChanhViewModel _viewModel = new ChanhViewModel();
+        public ChanhViewModel ViewModel { get { return _viewModel; } }
 
         public rChanhView()
         {

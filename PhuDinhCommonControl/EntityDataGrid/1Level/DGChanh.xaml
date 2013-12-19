@@ -12,7 +12,7 @@
         <!--Ma-->
         <CustomControl:DataGridReadOnlyTextColumn x:Name="maColumn"/>
         <!--Bai xe-->
-        <CustomControl:DataGridComboBoxColumnExt x:Name="baiXeColumn" Header="{x:Static ViewModel:DGChanhViewModel.BaiXe}"
+        <CustomControl:DataGridComboBoxColumnExt x:Name="baiXeColumn" Header="{x:Static ViewModel:ChanhViewModel.BaiXe}"
                                                  HeaderAddButtonClick="headerAddButton_Click"
                                                  TextBinding="{Binding rBaiXe.DiaDiemBaiXe, Mode=OneWay}"
                                                  DisplayMemberPath="DiaDiemBaiXe"

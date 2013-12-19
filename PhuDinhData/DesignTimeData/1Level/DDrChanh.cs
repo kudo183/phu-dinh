@@ -5,8 +5,8 @@ namespace PhuDinhData.DesignTimeData
 {
     public static class DDrChanh
     {
-        private static DGChanhViewModel _viewModel;
-        public static DGChanhViewModel ViewModel
+        private static ChanhViewModel _viewModel;
+        public static ChanhViewModel ViewModel
         {
             get
             {
@@ -15,7 +15,7 @@ namespace PhuDinhData.DesignTimeData
                     return _viewModel;
                 }
 
-                _viewModel = new DGChanhViewModel();
+                _viewModel = new ChanhViewModel();
 
                 const int count = 10;
 
