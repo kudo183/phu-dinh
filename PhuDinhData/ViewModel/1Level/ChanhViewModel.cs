@@ -16,11 +16,7 @@ namespace PhuDinhData.ViewModel
         private List<rBaiXe> _rBaiXes;
         private string _filterBaiXe = string.Empty;
 
-        public PhuDinhEntities Context { get { return _context; } }
-
-        public List<rBaiXe> rBaiXe { get { return _rBaiXes; } }
-
-        public Expression<Func<rBaiXe, bool>> FilterBaiXe { get; set; }
+        public Expression<Func<rBaiXe, bool>> Reference_FilterBaiXe { get; set; }
 
         public rBaiXe rBaiXeDefault { get; set; }
 
@@ -32,7 +28,7 @@ namespace PhuDinhData.ViewModel
         {
             Entity = new ObservableCollection<rChanh>();
 
-            FilterBaiXe = (p => true);
+            Reference_FilterBaiXe = (p => true);
             MainFilter = new Filter_rChanh();
         }
 
@@ -64,7 +60,7 @@ namespace PhuDinhData.ViewModel
             if (e.Action == NotifyCollectionChangedAction.Add)
             {
                 var chanh = e.NewItems[0] as rChanh;
-                chanh.rBaiXeList = rBaiXe;
+                chanh.rBaiXeList = _rBaiXes;
 
                 if (rBaiXeDefault != null)
                 {
@@ -101,7 +97,7 @@ namespace PhuDinhData.ViewModel
 
         public void UpdateBaiXeReferenceData()
         {
-            _rBaiXes = rBaiXeRepository.GetData(_context, FilterBaiXe);
+            _rBaiXes = rBaiXeRepository.GetData(_context, Reference_FilterBaiXe);
 
             if (Entity == null)
             {

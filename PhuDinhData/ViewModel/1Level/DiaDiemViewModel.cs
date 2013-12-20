@@ -16,11 +16,7 @@ namespace PhuDinhData.ViewModel
         private List<rNuoc> _rNuocs;
         private string _filterNuoc = string.Empty;
 
-        public PhuDinhEntities Context { get { return _context; } }
-
-        public List<rNuoc> rNuoc { get { return _rNuocs; } }
-
-        public Expression<Func<rNuoc, bool>> FilterNuoc { get; set; }
+        public Expression<Func<rNuoc, bool>> Reference_FilterNuoc { get; set; }
 
         public rNuoc rNuocDefault { get; set; }
 
@@ -32,7 +28,7 @@ namespace PhuDinhData.ViewModel
         {
             Entity = new ObservableCollection<rDiaDiem>();
 
-            FilterNuoc = (p => true);
+            Reference_FilterNuoc = (p => true);
             MainFilter = new Filter_rDiaDiem();
         }
 
@@ -64,7 +60,7 @@ namespace PhuDinhData.ViewModel
             if (e.Action == NotifyCollectionChangedAction.Add)
             {
                 var diadiem = e.NewItems[0] as rDiaDiem;
-                diadiem.rNuocList = rNuoc;
+                diadiem.rNuocList = _rNuocs;
 
                 if (rNuocDefault != null)
                 {
@@ -101,7 +97,7 @@ namespace PhuDinhData.ViewModel
 
         public void UpdateNuocReferenceData()
         {
-            _rNuocs = rNuocRepository.GetData(_context, FilterNuoc);
+            _rNuocs = rNuocRepository.GetData(_context, Reference_FilterNuoc);
 
             if (Entity == null)
             {
