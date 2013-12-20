@@ -10,8 +10,7 @@ namespace PhuDinhCommonControl
         public KhachHangView()
         {
             InitializeComponent();
-            _rDiaDiemView.RefreshView();
-
+            
             _rDiaDiemView.dgDiaDiem.SelectionChanged += dgDiaDiem_SelectionChanged;
             _rKhachHangView.dgKhachHang.SelectionChanged += dgKhachHang_SelectionChanged;
 

@@ -6,54 +6,97 @@ namespace PhuDinhData.Filter
 {
     public class Filter_rChanh
     {
-        private Expression<Func<rChanh, bool>> _filterBaiXe;
+        private Expression<Func<rChanh, bool>> _filterMaBaiXe;
+        private Expression<Func<rChanh, bool>> _filterDiaDiemBaiXe;
         private Expression<Func<rChanh, bool>> _filterTenChanh;
 
-        private bool _isClearAllData;
-
-        public bool IsClearAllData
-        {
-            get { return _isClearAllData; }
-            set
-            {
-                _isClearAllData = value;
-
-                if (_isClearAllData == false)
-                {
-                    _filterBaiXe = (p => true);
-                    _filterTenChanh = (p => true);
-                }
-            }
-        }
+        public bool IsClearAllData { get; set; }
 
         public Filter_rChanh()
         {
             IsClearAllData = false;
+
+            _filterMaBaiXe = (p => true);
+            _filterDiaDiemBaiXe = (p => true);
+            _filterTenChanh = (p => true);
+
+            UpdateMainFilter();
         }
 
-        public Expression<Func<rChanh, bool>> FilterBaiXe
+        public void SetFilterMaBaiXe(int? maBaiXe, bool setFalse = false)
         {
-            get { return _filterBaiXe; }
-            set
+            IsClearAllData = false;
+
+            if (setFalse == true)
             {
-                _filterBaiXe = value;
-                _isClearAllData = false;
+                _filterMaBaiXe = (p => false);
             }
-        }
-
-        public Expression<Func<rChanh, bool>> FilterTenChanh
-        {
-            get { return _filterTenChanh; }
-            set
+            else
             {
-                _filterTenChanh = value;
-                _isClearAllData = false;
+                if (maBaiXe == null)
+                {
+                    _filterMaBaiXe = (p => true);
+                }
+                else
+                {
+                    _filterMaBaiXe = (p => p.MaBaiXe == maBaiXe);
+                }
             }
+
+            UpdateMainFilter();
         }
 
-        public Expression<Func<rChanh, bool>> FilterChanh
+        public void SetFilterDiaDiemBaiXe(string diaDiemBaiXe, bool setFalse = false)
         {
-            get { return FilterTenChanh.And(FilterBaiXe); }
+            IsClearAllData = false;
+
+            if (setFalse == true)
+            {
+                _filterDiaDiemBaiXe = (p => false);
+            }
+            else
+            {
+                if (string.IsNullOrEmpty(diaDiemBaiXe))
+                {
+                    _filterDiaDiemBaiXe = (p => true);
+                }
+                else
+                {
+                    _filterDiaDiemBaiXe = (p => p.rBaiXe.DiaDiemBaiXe.Contains(diaDiemBaiXe));
+                }
+            }
+
+            UpdateMainFilter();
         }
+
+        public void SetFilterTenChanh(string tenChanh, bool setFalse = false)
+        {
+            IsClearAllData = false;
+
+            if (setFalse == true)
+            {
+                _filterTenChanh = (p => false);
+            }
+            else
+            {
+                if (string.IsNullOrEmpty(tenChanh))
+                {
+                    _filterTenChanh = (p => true);
+                }
+                else
+                {
+                    _filterTenChanh = (p => p.TenChanh.Contains(tenChanh));
+                }
+            }
+
+            UpdateMainFilter();
+        }
+
+        private void UpdateMainFilter()
+        {
+            FilterChanh = _filterTenChanh.And(_filterMaBaiXe).And(_filterDiaDiemBaiXe);
+        }
+
+        public Expression<Func<rChanh, bool>> FilterChanh { get; private set; }
     }
 }

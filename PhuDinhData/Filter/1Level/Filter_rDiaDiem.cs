@@ -6,54 +6,97 @@ namespace PhuDinhData.Filter
 {
     public class Filter_rDiaDiem
     {
-        private Expression<Func<rDiaDiem, bool>> _filterNuoc;
-        private Expression<Func<rDiaDiem, bool>> _filterTinh;
+        private Expression<Func<rDiaDiem, bool>> _filterMaNuoc;
+        private Expression<Func<rDiaDiem, bool>> _filterTenNuoc;
+        private Expression<Func<rDiaDiem, bool>> _filterTenTinh;
 
-        private bool _isClearAllData;
-
-        public bool IsClearAllData
-        {
-            get { return _isClearAllData; }
-            set
-            {
-                _isClearAllData = value;
-
-                if (_isClearAllData == false)
-                {
-                    _filterNuoc = (p => true);
-                    _filterTinh = (p => true);
-                }
-            }
-        }
+        public bool IsClearAllData { get; set; }
 
         public Filter_rDiaDiem()
         {
             IsClearAllData = false;
+
+            _filterMaNuoc = (p => true);
+            _filterTenNuoc = (p => true);
+            _filterTenTinh = (p => true);
+
+            UpdateMainFilter();
         }
 
-        public Expression<Func<rDiaDiem, bool>> FilterNuoc
+        public void SetFilterMaNuoc(int? maNuoc, bool setFalse = false)
         {
-            get { return _filterNuoc; }
-            set
+            IsClearAllData = false;
+
+            if (setFalse == true)
             {
-                _filterNuoc = value;
-                _isClearAllData = false;
+                _filterMaNuoc = (p => false);
             }
-        }
-
-        public Expression<Func<rDiaDiem, bool>> FilterTinh
-        {
-            get { return _filterTinh; }
-            set
+            else
             {
-                _filterTinh = value;
-                _isClearAllData = false;
+                if (maNuoc == null)
+                {
+                    _filterMaNuoc = (p => true);
+                }
+                else
+                {
+                    _filterMaNuoc = (p => p.MaNuoc == maNuoc);
+                }
             }
+
+            UpdateMainFilter();
         }
 
-        public Expression<Func<rDiaDiem, bool>> FilterDiaDiem
+        public void SetFilterTenNuoc(string tenNuoc, bool setFalse = false)
         {
-            get { return FilterTinh.And(FilterNuoc); }
+            IsClearAllData = false;
+
+            if (setFalse == true)
+            {
+                _filterTenNuoc = (p => false);
+            }
+            else
+            {
+                if (string.IsNullOrEmpty(tenNuoc))
+                {
+                    _filterTenNuoc = (p => true);
+                }
+                else
+                {
+                    _filterTenNuoc = (p => p.rNuoc.TenNuoc.Contains(tenNuoc));
+                }
+            }
+
+            UpdateMainFilter();
         }
+
+        public void SetFilterTenTinh(string tenTinh, bool setFalse = false)
+        {
+            IsClearAllData = false;
+
+            if (setFalse == true)
+            {
+                _filterTenTinh = (p => false);
+            }
+            else
+            {
+                if (string.IsNullOrEmpty(tenTinh))
+                {
+                    _filterTenTinh = (p => true);
+                }
+                else
+                {
+                    _filterTenTinh = (p => p.Tinh.Contains(tenTinh));
+                }
+            }
+
+            UpdateMainFilter();
+        }
+
+        private void UpdateMainFilter()
+        {
+            FilterDiaDiem = _filterTenTinh.And(_filterMaNuoc).And(_filterTenNuoc);
+        }
+
+        public Expression<Func<rDiaDiem, bool>> FilterDiaDiem { get; private set; }
     }
 }

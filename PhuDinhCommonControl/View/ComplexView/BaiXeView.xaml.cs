@@ -11,7 +11,7 @@ namespace PhuDinhCommonControl
         {
             InitializeComponent();
             _rBaiXeView.RefreshView();
-            
+
             _rBaiXeView.dgBaiXe.SelectionChanged += dgBaiXe_SelectionChanged;
         }
 
@@ -23,14 +23,14 @@ namespace PhuDinhCommonControl
             }
 
             var baixe = ((DataGrid)sender).SelectedItem as PhuDinhData.rBaiXe;
-            if(baixe == null)
+            if (baixe == null)
             {
-                _rChanhView.ViewModel.MainFilter = null;
+                _rChanhView.ViewModel.MainFilter.SetFilterMaBaiXe(null, true);
                 _rChanhView.RefreshView();
                 return;
             }
 
-            _rChanhView.ViewModel.MainFilter.FilterBaiXe = (p => p.MaBaiXe == baixe.Ma);
+            _rChanhView.ViewModel.MainFilter.SetFilterMaBaiXe(baixe.Ma);
             _rChanhView.ViewModel.rBaiXeDefault = baixe;
             _rChanhView.RefreshView();
         }

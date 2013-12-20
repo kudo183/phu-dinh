@@ -26,7 +26,7 @@ namespace PhuDinhData.ViewModel
 
         public Filter_rChanh MainFilter { get; set; }
 
-        public static HeaderTextFilter BaiXe = new HeaderTextFilter("Bãi Xe");
+        public static HeaderTextFilter Header_BaiXe = new HeaderTextFilter("Bãi Xe");
 
         public ChanhViewModel()
         {
@@ -40,28 +40,21 @@ namespace PhuDinhData.ViewModel
         {
             Entity.CollectionChanged += Entity_CollectionChanged;
 
-            ChanhViewModel.BaiXe.Text = _filterBaiXe;
-            ChanhViewModel.BaiXe.PropertyChanged += BaiXe_PropertyChanged;
+            ChanhViewModel.Header_BaiXe.Text = _filterBaiXe;
+            ChanhViewModel.Header_BaiXe.PropertyChanged += BaiXe_PropertyChanged;
         }
 
         public void Unload()
         {
             Entity.CollectionChanged -= Entity_CollectionChanged;
 
-            _filterBaiXe = ChanhViewModel.BaiXe.Text;
-            ChanhViewModel.BaiXe.PropertyChanged -= BaiXe_PropertyChanged;
+            _filterBaiXe = ChanhViewModel.Header_BaiXe.Text;
+            ChanhViewModel.Header_BaiXe.PropertyChanged -= BaiXe_PropertyChanged;
         }
 
         void BaiXe_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            if (string.IsNullOrEmpty(ChanhViewModel.BaiXe.Text) == false)
-            {
-                MainFilter.FilterBaiXe = (p => p.rBaiXe.DiaDiemBaiXe.Contains(ChanhViewModel.BaiXe.Text));
-            }
-            else
-            {
-                MainFilter.FilterBaiXe = (p => true);
-            }
+            MainFilter.SetFilterDiaDiemBaiXe(ChanhViewModel.Header_BaiXe.Text);
 
             OnHeaderFilterChanged();
         }
@@ -93,14 +86,10 @@ namespace PhuDinhData.ViewModel
             Unload();
             Entity.Clear();
 
-            int itemCount;
-            _origData = rChanhRepository.GetData(_context, MainFilter.FilterChanh, PageSize, CurrentPageIndex, out itemCount);
+            ItemCount = rChanhRepository.GetDataCount(_context, MainFilter.FilterChanh);
+            _origData = rChanhRepository.GetData(_context, MainFilter.FilterChanh, PageSize, CurrentPageIndex, ItemCount);
 
-            ItemCount = itemCount;
-
-            var rChanhs = new ObservableCollection<rChanh>(_origData);
-
-            foreach (var rChanh in rChanhs)
+            foreach (var rChanh in _origData)
             {
                 Entity.Add(rChanh);
             }

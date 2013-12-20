@@ -26,7 +26,7 @@ namespace PhuDinhData.ViewModel
 
         public Filter_rDiaDiem MainFilter { get; set; }
 
-        public static HeaderTextFilter Nuoc = new HeaderTextFilter("Nước");
+        public static HeaderTextFilter Header_Nuoc = new HeaderTextFilter("Nước");
 
         public DiaDiemViewModel()
         {
@@ -40,28 +40,21 @@ namespace PhuDinhData.ViewModel
         {
             Entity.CollectionChanged += Entity_CollectionChanged;
 
-            DiaDiemViewModel.Nuoc.Text = _filterNuoc;
-            DiaDiemViewModel.Nuoc.PropertyChanged += Nuoc_PropertyChanged;
+            DiaDiemViewModel.Header_Nuoc.Text = _filterNuoc;
+            DiaDiemViewModel.Header_Nuoc.PropertyChanged += Nuoc_PropertyChanged;
         }
 
         public void Unload()
         {
             Entity.CollectionChanged -= Entity_CollectionChanged;
 
-            _filterNuoc = DiaDiemViewModel.Nuoc.Text;
-            DiaDiemViewModel.Nuoc.PropertyChanged -= Nuoc_PropertyChanged;
+            _filterNuoc = DiaDiemViewModel.Header_Nuoc.Text;
+            DiaDiemViewModel.Header_Nuoc.PropertyChanged -= Nuoc_PropertyChanged;
         }
 
         void Nuoc_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            if (string.IsNullOrEmpty(DiaDiemViewModel.Nuoc.Text) == false)
-            {
-                MainFilter.FilterNuoc = (p => p.rNuoc.TenNuoc.Contains(DiaDiemViewModel.Nuoc.Text));
-            }
-            else
-            {
-                MainFilter.FilterNuoc = (p => true);
-            }
+            MainFilter.SetFilterTenNuoc(DiaDiemViewModel.Header_Nuoc.Text);
 
             OnHeaderFilterChanged();
         }
@@ -90,17 +83,13 @@ namespace PhuDinhData.ViewModel
             _context = ContextFactory.CreateContext();
             _origData = rDiaDiemRepository.GetData(_context, MainFilter.FilterDiaDiem);
 
+            ItemCount = rDiaDiemRepository.GetDataCount(_context, MainFilter.FilterDiaDiem);
+            _origData = rDiaDiemRepository.GetData(_context, MainFilter.FilterDiaDiem, PageSize, CurrentPageIndex, ItemCount);
+
             Unload();
             Entity.Clear();
 
-            int itemCount;
-            _origData = rDiaDiemRepository.GetData(_context, MainFilter.FilterDiaDiem, PageSize, CurrentPageIndex, out itemCount);
-
-            ItemCount = itemCount;
-
-            var rDiaDiems = new ObservableCollection<rDiaDiem>(_origData);
-
-            foreach (var rDiaDiem in rDiaDiems)
+            foreach (var rDiaDiem in _origData)
             {
                 Entity.Add(rDiaDiem);
             }

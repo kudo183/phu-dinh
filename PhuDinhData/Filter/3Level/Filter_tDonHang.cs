@@ -12,27 +12,24 @@ namespace PhuDinhData.Filter
         private Expression<Func<tDonHang, bool>> _filterNgay;
         private Expression<Func<tDonHang, bool>> _filterXong;
 
-        private bool _isClearAllData;
-        public bool IsClearAllData
-        {
-            get { return _isClearAllData; }
-            set { _isClearAllData = value; }
-        }
+        public bool IsClearAllData { get; set; }
 
         public Filter_tDonHang()
         {
-            _isClearAllData = false;
+            IsClearAllData = false;
 
             _filterMaKhachHang = (p => true);
             _filterTenKhachHang = (p => true);
             _filterTenChanh = (p => true);
             _filterNgay = (p => true);
             _filterXong = (p => true);
+
+            UpdateMainFilter();
         }
 
         public void SetFilterMaKhachHang(int? maKhachHang, bool setFalse = false)
         {
-            _isClearAllData = false;
+            IsClearAllData = false;
 
             if (setFalse == true)
             {
@@ -55,7 +52,7 @@ namespace PhuDinhData.Filter
 
         public void SetFilterXong(bool? xong, bool setFalse = false)
         {
-            _isClearAllData = false;
+            IsClearAllData = false;
 
             if (setFalse == true)
             {
@@ -78,7 +75,7 @@ namespace PhuDinhData.Filter
 
         public void SetFilterTenChanh(string tenChanh, bool setFalse = false)
         {
-            _isClearAllData = false;
+            IsClearAllData = false;
 
             if (setFalse == true)
             {
@@ -101,7 +98,7 @@ namespace PhuDinhData.Filter
 
         public void SetFilterTenKhachHang(string tenKhachHang, bool setFalse = false)
         {
-            _isClearAllData = false;
+            IsClearAllData = false;
 
             if (setFalse == true)
             {
@@ -124,7 +121,7 @@ namespace PhuDinhData.Filter
 
         public void SetFilterNgay(DateTime? date, bool setFalse = false)
         {
-            _isClearAllData = false;
+            IsClearAllData = false;
 
             if (setFalse == true)
             {

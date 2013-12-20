@@ -135,17 +135,14 @@ namespace PhuDinhData.ViewModel
 
             _context = ContextFactory.CreateContext();
 
-            int itemCount;
-            _origData = tDonHangRepository.GetData(_context, MainFilter.FilterDonHang, PageSize, CurrentPageIndex, out itemCount);
-
-            ItemCount = itemCount;
+            ItemCount = tDonHangRepository.GetDataCount(_context, MainFilter.FilterDonHang);
+            _origData = tDonHangRepository.GetData(_context, MainFilter.FilterDonHang, PageSize, CurrentPageIndex, ItemCount);
 
             Unload();
 
             Entity.Clear();
 
-            var tDonHangs = new ObservableCollection<tDonHang>(_origData);
-            foreach (var tDonHang in tDonHangs)
+            foreach (var tDonHang in _origData)
             {
                 Entity.Add(tDonHang);
             }
