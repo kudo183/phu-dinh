@@ -148,11 +148,6 @@ namespace CustomControl
 
         public event EventHandler PageChanged;
 
-        public Pager()
-        {
-            //DataContext = this;
-        }
-
         public override void OnApplyTemplate()
         {
             this.NextPageButtonElement = this.GetTemplateChild(Pager.NextPageButtonElementName) as Button;
@@ -187,7 +182,19 @@ namespace CustomControl
         {
             if (e.Key == Key.Return)
             {
-                CurrentPageIndex = int.Parse(CurrentPageIndexElement.Text);
+                var index = int.Parse(CurrentPageIndexElement.Text);
+                if (index < 1)
+                {
+                    CurrentPageIndex = 1;
+                }
+                else if (index > PageCount)
+                {
+                    CurrentPageIndex = PageCount;
+                }
+                else
+                {
+                    CurrentPageIndex = index;
+                }
             }
         }
 
@@ -221,13 +228,25 @@ namespace CustomControl
 
         void LastPageButtonElement_Click(object sender, RoutedEventArgs e)
         {
-            CurrentPageIndex = PageCount;
+            if (PageCount == 0)
+            {
+                CurrentPageIndex = 1;
+            }
+            else
+            {
+                CurrentPageIndex = PageCount;
+            }
         }
 
         private void Reset()
         {
             PageCount = (ItemCount + PageSize - 1) / PageSize;
-            if (CurrentPageIndex > PageCount && PageCount > 0)
+
+            if (PageCount == 0)
+            {
+                CurrentPageIndex = 1;
+            }
+            else if (CurrentPageIndex > PageCount)
             {
                 CurrentPageIndex = PageCount;
             }
