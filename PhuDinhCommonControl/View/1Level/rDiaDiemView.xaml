@@ -7,9 +7,10 @@
              xmlns:EntityDataGrid="clr-namespace:PhuDinhCommonControl.EntityDataGrid"
              xmlns:Menu="clr-namespace:PhuDinhCommonControl.Menu"
              xmlns:CustomControl="clr-namespace:CustomControl;assembly=CustomControl"
+             xmlns:DesignTimeData="clr-namespace:PhuDinhData.DesignTimeData;assembly=PhuDinhData"
              x:Class="PhuDinhCommonControl.rDiaDiemView" 
-             mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             mc:Ignorable="d"
+             d:DataContext="{x:Static DesignTimeData:DDrDiaDiem.ViewModel}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
