@@ -10,29 +10,26 @@ namespace PhuDinhData.Repository
         public static int GetDataCount(PhuDinhEntities context, Expression<Func<tDonHang, bool>> filter)
         {
             var data = Repository<tDonHang>.GetData(context, filter).OrderByDescending(p => p.Ngay);
-
             return data.Count();
         }
 
         public static List<tDonHang> GetData(PhuDinhEntities context,
             Expression<Func<tDonHang, bool>> filter,
-            int pageSize, int currentPageIndex, out int itemCount)
+            int pageSize, int currentPageIndex, int itemCount)
         {
             var data = Repository<tDonHang>.GetData(context, filter).OrderByDescending(p => p.Ngay);
 
-            itemCount = data.Count();
-
             var skippedItem = pageSize * (currentPageIndex - 1);
-
-            if (skippedItem < 0)
-            {
-                return new List<tDonHang>();
-            }
 
             var takeItem = itemCount - skippedItem;
             if (takeItem > pageSize)
             {
                 takeItem = pageSize;
+            }
+
+            if (takeItem <= 0)
+            {
+                return new List<tDonHang>();
             }
 
             return data.Skip(skippedItem).Take(takeItem).ToList();

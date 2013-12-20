@@ -7,23 +7,29 @@ namespace PhuDinhData.Repository
 {
     public static class rDiaDiemRepository
     {
-        public static List<rDiaDiem> GetData(PhuDinhEntities context, Expression<Func<rDiaDiem, bool>> filter, int pageSize, int currentPageIndex, out int itemCount)
+        public static int GetDataCount(PhuDinhEntities context, Expression<Func<rDiaDiem, bool>> filter)
+        {
+            var data = Repository<rDiaDiem>.GetData(context, filter).OrderBy(p => p.Tinh);
+            return data.Count();
+        }
+
+        public static List<rDiaDiem> GetData(PhuDinhEntities context,
+            Expression<Func<rDiaDiem, bool>> filter,
+            int pageSize, int currentPageIndex, int itemCount)
         {
             var data = Repository<rDiaDiem>.GetData(context, filter).OrderBy(p => p.Tinh);
 
-            itemCount = data.Count();
-
             var skippedItem = pageSize * (currentPageIndex - 1);
-
-            if (skippedItem < 0)
-            {
-                return new List<rDiaDiem>();
-            }
 
             var takeItem = itemCount - skippedItem;
             if (takeItem > pageSize)
             {
                 takeItem = pageSize;
+            }
+
+            if (takeItem <= 0)
+            {
+                return new List<rDiaDiem>();
             }
 
             return data.Skip(skippedItem).Take(takeItem).ToList();

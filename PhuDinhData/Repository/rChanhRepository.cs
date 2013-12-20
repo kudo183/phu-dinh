@@ -7,23 +7,29 @@ namespace PhuDinhData.Repository
 {
     public static class rChanhRepository
     {
-        public static List<rChanh> GetData(PhuDinhEntities context, Expression<Func<rChanh, bool>> filter, int pageSize, int currentPageIndex, out int itemCount)
+        public static int GetDataCount(PhuDinhEntities context, Expression<Func<rChanh, bool>> filter)
+        {
+            var data = Repository<rChanh>.GetData(context, filter).OrderBy(p => p.rBaiXe.DiaDiemBaiXe).ThenBy(p => p.TenChanh);
+            return data.Count();
+        }
+
+        public static List<rChanh> GetData(PhuDinhEntities context,
+            Expression<Func<rChanh, bool>> filter,
+            int pageSize, int currentPageIndex, int itemCount)
         {
             var data = Repository<rChanh>.GetData(context, filter).OrderBy(p => p.rBaiXe.DiaDiemBaiXe).ThenBy(p => p.TenChanh);
 
-            itemCount = data.Count();
-
             var skippedItem = pageSize * (currentPageIndex - 1);
-
-            if (skippedItem < 0)
-            {
-                return new List<rChanh>();
-            }
 
             var takeItem = itemCount - skippedItem;
             if (takeItem > pageSize)
             {
                 takeItem = pageSize;
+            }
+
+            if (takeItem <= 0)
+            {
+                return new List<rChanh>();
             }
 
             return data.Skip(skippedItem).Take(takeItem).ToList();
