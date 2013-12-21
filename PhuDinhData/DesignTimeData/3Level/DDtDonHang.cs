@@ -1,5 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using System.Linq;
+﻿using System.Linq;
 using PhuDinhData.ViewModel;
 
 namespace PhuDinhData.DesignTimeData
@@ -19,14 +18,12 @@ namespace PhuDinhData.DesignTimeData
                 _viewModel = new DonHangViewModel();
 
                 const int count = 10;
-                var donhangs = new ObservableCollection<tDonHang>();
+                
                 for (int i = 1; i <= count; i++)
                 {
-                    donhangs.Add(Create(i));
+                    _viewModel.Entity.Add(Create(i));
 
                 }
-
-                _viewModel.Entity = donhangs;
 
                 return _viewModel;
             }

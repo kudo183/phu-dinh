@@ -25,13 +25,13 @@ namespace PhuDinhCommonControl
             var loaihang = ((DataGrid)sender).SelectedItem as PhuDinhData.rLoaiHang;
             if (loaihang == null)
             {
-                _tMatHangView.FilterMatHang = null;
+                _tMatHangView.ViewModel.MainFilter.SetFilter(PhuDinhData.Filter.Filter_tMatHang.MaLoaiHang, null, true);
                 _tMatHangView.RefreshView();
                 return;
             }
 
-            _tMatHangView.FilterMatHang.FilterLoai = (p => p.MaLoai == loaihang.Ma);
-            _tMatHangView.rLoaiHangDefault = loaihang;
+            _tMatHangView.ViewModel.MainFilter.SetFilter(PhuDinhData.Filter.Filter_tMatHang.MaLoaiHang, loaihang.Ma);
+            _tMatHangView.ViewModel.rLoaiHangDefault = loaihang;
             _tMatHangView.RefreshView();
         }
     }

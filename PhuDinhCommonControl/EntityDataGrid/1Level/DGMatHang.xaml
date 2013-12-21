@@ -5,14 +5,14 @@
                            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                            xmlns:CustomControl="clr-namespace:CustomControl;assembly=CustomControl"
                            xmlns:DesignTimeData="clr-namespace:PhuDinhData.DesignTimeData;assembly=PhuDinhData"
-                           xmlns:PhuDinhCommonControl="clr-namespace:PhuDinhCommonControl" mc:Ignorable="d"
-                           d:DataContext="{x:Static DesignTimeData:DDtMatHang.tMatHangs}"
-                           AutoGenerateColumns="False" EnableRowVirtualization="False" ItemsSource="{Binding}" SelectionMode="Single">
+                           xmlns:ViewModel="clr-namespace:PhuDinhData.ViewModel;assembly=PhuDinhData" mc:Ignorable="d"
+                           d:DataContext="{x:Static DesignTimeData:DDtMatHang.ViewModel}"
+                           AutoGenerateColumns="False" EnableRowVirtualization="False" ItemsSource="{Binding Entity}" SelectionMode="Single">
     <DataGrid.Columns>
         <!--Ma-->
         <CustomControl:DataGridReadOnlyTextColumn x:Name="maColumn"/>
         <!--Loai Hang-->
-        <CustomControl:DataGridComboBoxColumnExt x:Name="loaiHangColumn" Header="{x:Static PhuDinhCommonControl:DataGridColumnHeaderTextFilter.MatHang_LoaiHang}"
+        <CustomControl:DataGridComboBoxColumnExt x:Name="loaiHangColumn" Header="{x:Static ViewModel:MatHangViewModel.Header_LoaiHang}"
                                                  HeaderAddButtonClick="headerAddButton_Click"
                                                  TextBinding="{Binding rLoaiHang.TenLoai, Mode=OneWay}"
                                                  DisplayMemberPath="TenLoai"

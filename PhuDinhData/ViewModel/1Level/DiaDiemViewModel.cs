@@ -33,7 +33,7 @@ namespace PhuDinhData.ViewModel
             Entity.CollectionChanged += Entity_CollectionChanged;
 
             DiaDiemViewModel.Header_Nuoc.Text = _filterNuoc;
-            DiaDiemViewModel.Header_Nuoc.PropertyChanged += Nuoc_PropertyChanged;
+            DiaDiemViewModel.Header_Nuoc.PropertyChanged += Header_Nuoc_PropertyChanged;
         }
 
         public override void Unload()
@@ -41,10 +41,10 @@ namespace PhuDinhData.ViewModel
             Entity.CollectionChanged -= Entity_CollectionChanged;
 
             _filterNuoc = DiaDiemViewModel.Header_Nuoc.Text;
-            DiaDiemViewModel.Header_Nuoc.PropertyChanged -= Nuoc_PropertyChanged;
+            DiaDiemViewModel.Header_Nuoc.PropertyChanged -= Header_Nuoc_PropertyChanged;
         }
 
-        void Nuoc_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        void Header_Nuoc_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
             MainFilter.SetFilter(Filter_rDiaDiem.TenNuoc, DiaDiemViewModel.Header_Nuoc.Text);
 

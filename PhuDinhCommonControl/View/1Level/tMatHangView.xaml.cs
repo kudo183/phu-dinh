@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Collections.Specialized;
-using System.Data.Entity;
-using System.Linq;
-using System.Linq.Expressions;
+using PhuDinhData.ViewModel;
+using PhuDinhCommon;
 
 namespace PhuDinhCommonControl
 {
@@ -13,55 +9,50 @@ namespace PhuDinhCommonControl
     /// </summary>
     public partial class tMatHangView : BaseView
     {
-        public Filter_tMatHang FilterMatHang { get; set; }
-        public Expression<Func<PhuDinhData.rLoaiHang, bool>> FilterLoaiHang { get; set; }
-        public PhuDinhData.rLoaiHang rLoaiHangDefault { get; set; }
-
-        private ObservableCollection<PhuDinhData.tMatHang> _tMatHangs;
-        private List<PhuDinhData.rLoaiHang> _rLoaiHangs;
-        private PhuDinhData.PhuDinhEntities _context = ContextFactory.CreateContext();
-
-        private List<PhuDinhData.tMatHang> _origData;
-
-        private string _filterLoaiHang = string.Empty;
+        private readonly MatHangViewModel _viewModel = new MatHangViewModel();
+        public MatHangViewModel ViewModel { get { return _viewModel; } }
 
         public tMatHangView()
         {
             InitializeComponent();
 
-            FilterMatHang = new Filter_tMatHang();
-            FilterLoaiHang = (p => true);
-
             Loaded += tMatHangView_Loaded;
             Unloaded += tMatHangView_Unloaded;
+
+            DataContext = _viewModel;
         }
 
         void tMatHangView_Loaded(object sender, System.Windows.RoutedEventArgs e)
         {
-            DataGridColumnHeaderTextFilter.MatHang_LoaiHang.Text = _filterLoaiHang;
-            DataGridColumnHeaderTextFilter.MatHang_LoaiHang.PropertyChanged += MatHang_LoaiHang_PropertyChanged;
-        }
+            _viewModel.HeaderFilterChanged += _viewModel_FilterChanged;
 
-        void tMatHangView_Unloaded(object sender, System.Windows.RoutedEventArgs e)
-        {
-            _filterLoaiHang = DataGridColumnHeaderTextFilter.MatHang_LoaiHang.Text;
-            DataGridColumnHeaderTextFilter.MatHang_LoaiHang.PropertyChanged -= MatHang_LoaiHang_PropertyChanged;
-        }
-
-        void MatHang_LoaiHang_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
-        {
-            if (string.IsNullOrEmpty(DataGridColumnHeaderTextFilter.MatHang_LoaiHang.Text) == false)
-            {
-                FilterMatHang.FilterLoai = (p => p.rLoaiHang.TenLoai.Contains(DataGridColumnHeaderTextFilter.MatHang_LoaiHang.Text));
-            }
-            else
-            {
-                FilterMatHang.FilterLoai = (p => true);
-            }
+            _viewModel.Load();
 
             RefreshView();
         }
 
+        void tMatHangView_Unloaded(object sender, System.Windows.RoutedEventArgs e)
+        {
+            _viewModel.HeaderFilterChanged -= _viewModel_FilterChanged;
+
+            _viewModel.Unload();
+        }
+
+        void _viewModel_FilterChanged(object sender, EventArgs e)
+        {
+            RefreshView();
+        }
+
+        private void dgMatHang_HeaderAddButtonClick(object sender, EventArgs e)
+        {
+            CommitEdit();
+
+            var view = new rLoaiHangView();
+            view.RefreshView();
+            ChildWindowUtils.ShowChildWindow(Constant.ViewName_LoaiHang, view);
+
+            _viewModel.UpdateLoaiHangReferenceData();
+        }
         #region Override base view method
         public override void CommitEdit()
         {
@@ -74,17 +65,11 @@ namespace PhuDinhCommonControl
             CommitEdit();
             try
             {
-                if (FilterMatHang == null)
-                {
-                    return;
-                }
-
-                var data = dgMatHang.DataContext as ObservableCollection<PhuDinhData.tMatHang>;
-                PhuDinhData.Repository.tMatHangRepository.Save(_context, data.ToList(), _origData);
+                _viewModel.Save();
             }
             catch (Exception ex)
             {
-                PhuDinhCommon.EntityFrameworkUtils.UndoContextChange(_context, EntityState.Modified);
+                
             }
 
             base.Save();
@@ -99,73 +84,18 @@ namespace PhuDinhCommonControl
 
         public override void RefreshView()
         {
-            if (FilterMatHang == null)
+            if (_viewModel.MainFilter.IsClearAllData)
             {
-                dgMatHang.DataContext = null;
+                _viewModel.Entity.Clear();
                 return;
             }
 
             var index = dgMatHang.SelectedIndex;
 
-            if (_tMatHangs != null)
-            {
-                _tMatHangs.CollectionChanged -= collection_CollectionChanged;
-            }
-
-            _context = ContextFactory.CreateContext();
-            _origData = PhuDinhData.Repository.tMatHangRepository.GetData(_context, FilterMatHang.FiltetMatHang);
-
-            _tMatHangs = new ObservableCollection<PhuDinhData.tMatHang>(_origData);
-            _tMatHangs.CollectionChanged += collection_CollectionChanged;
-
-            UpdateLoaiHangReferenceData();
-
-            dgMatHang.DataContext = _tMatHangs;
+            _viewModel.RefreshData();
 
             dgMatHang.SelectedIndex = index;
         }
-
-        void collection_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
-        {
-            if (e.Action == NotifyCollectionChangedAction.Add)
-            {
-                var tMatHang = e.NewItems[0] as PhuDinhData.tMatHang;
-                tMatHang.rLoaiHangList = _rLoaiHangs;
-
-                if (rLoaiHangDefault != null)
-                {
-                    tMatHang.MaLoai = rLoaiHangDefault.Ma;
-                }
-            }
-        }
-
         #endregion
-
-        private void dgMatHang_HeaderAddButtonClick(object sender, EventArgs e)
-        {
-            CommitEdit();
-
-            var view = new rLoaiHangView();
-            view.RefreshView();
-            ChildWindowUtils.ShowChildWindow("Loại Hàng", view);
-
-            UpdateLoaiHangReferenceData();
-        }
-
-        private void UpdateLoaiHangReferenceData()
-        {
-            _rLoaiHangs = PhuDinhData.Repository.rLoaiHangRepository.GetData(_context, FilterLoaiHang);
-
-            if (_tMatHangs == null)
-            {
-                return;
-            }
-
-            foreach (var tMatHang in _tMatHangs)
-            {
-                tMatHang.rLoaiHangList = _rLoaiHangs;
-            }
-
-        }
     }
 }

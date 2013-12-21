@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace PhuDinhData.DesignTimeData
 {
@@ -33,7 +34,7 @@ namespace PhuDinhData.DesignTimeData
                 MaMatHang = i,
                 MaNguyenLieu = i,
                 tMatHang = DDtMatHang.Create(i),
-                tMatHangList = DDtMatHang.tMatHangs,
+                tMatHangList = DDtMatHang.ViewModel.Entity.ToList(),
                 rNguyenLieu = DDrNguyenLieu.Create(i),
                 rNguyenLieuList = DDrNguyenLieu.rNguyenLieus
             };

@@ -33,7 +33,7 @@ namespace PhuDinhData.ViewModel
             Entity.CollectionChanged += Entity_CollectionChanged;
 
             ChanhViewModel.Header_BaiXe.Text = _filterBaiXe;
-            ChanhViewModel.Header_BaiXe.PropertyChanged += BaiXe_PropertyChanged;
+            ChanhViewModel.Header_BaiXe.PropertyChanged += Header_BaiXe_PropertyChanged;
         }
 
         public override void Unload()
@@ -41,10 +41,10 @@ namespace PhuDinhData.ViewModel
             Entity.CollectionChanged -= Entity_CollectionChanged;
 
             _filterBaiXe = ChanhViewModel.Header_BaiXe.Text;
-            ChanhViewModel.Header_BaiXe.PropertyChanged -= BaiXe_PropertyChanged;
+            ChanhViewModel.Header_BaiXe.PropertyChanged -= Header_BaiXe_PropertyChanged;
         }
 
-        void BaiXe_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        void Header_BaiXe_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
             MainFilter.SetFilter(Filter_rChanh.DiaDiemBaiXe, ChanhViewModel.Header_BaiXe.Text);
 

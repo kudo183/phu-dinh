@@ -29,6 +29,7 @@
         public const string ColumnName_Ngay = "Ngay";
         public const string ColumnName_KhachHang = "Khach Hang";
         public const string ColumnName_KhachHangChanh = "Khach Hang Chanh";
+        public const string ColumnName_LoaiHang = "Loai Hang";
 
         //0Level
         public const string ViewName_BaiXe = "Bai Xe";

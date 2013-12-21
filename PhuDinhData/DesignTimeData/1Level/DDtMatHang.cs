@@ -1,26 +1,29 @@
-﻿using System.Collections.Generic;
+﻿using PhuDinhData.ViewModel;
 
 namespace PhuDinhData.DesignTimeData
 {
     public static class DDtMatHang
     {
-        private static List<tMatHang> _tMatHangs;
-        public static List<tMatHang> tMatHangs
+        private static MatHangViewModel _viewModel;
+        public static MatHangViewModel ViewModel
         {
             get
             {
-                if (_tMatHangs != null)
+                if (_viewModel != null)
                 {
-                    return _tMatHangs;
+                    return _viewModel;
                 }
 
+                _viewModel = new MatHangViewModel();
+
                 const int count = 10;
-                _tMatHangs = new List<tMatHang>(count);
+
                 for (var i = 1; i <= count; i++)
                 {
-                    _tMatHangs.Add(Create(i));
+                    _viewModel.Entity.Add(Create(i));
                 }
-                return _tMatHangs;
+
+                return _viewModel;
             }
         }
 
