@@ -24,6 +24,8 @@
         }
         #endregion
 
+        public const string ColumnName_BaiXe = "Bai Xe";
+        public const string ColumnName_Nuoc = "Nuoc";
         public const string ColumnName_Ngay = "Ngay";
         public const string ColumnName_KhachHang = "Khach Hang";
         public const string ColumnName_KhachHangChanh = "Khach Hang Chanh";

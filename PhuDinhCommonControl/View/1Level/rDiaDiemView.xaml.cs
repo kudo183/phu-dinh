@@ -6,6 +6,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
 using PhuDinhData.ViewModel;
+using PhuDinhCommon;
 
 namespace PhuDinhCommonControl
 {
@@ -54,7 +55,7 @@ namespace PhuDinhCommonControl
 
             var view = new rNuocView();
             view.RefreshView();
-            ChildWindowUtils.ShowChildWindow("Nước", view);
+            ChildWindowUtils.ShowChildWindow(Constant.ViewName_Nuoc, view);
 
             _viewModel.UpdateNuocReferenceData();
         }

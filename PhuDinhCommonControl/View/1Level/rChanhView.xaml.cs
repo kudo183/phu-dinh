@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Linq;
 using PhuDinhData.ViewModel;
+using PhuDinhCommon;
 
 namespace PhuDinhCommonControl
 {
@@ -27,7 +28,7 @@ namespace PhuDinhCommonControl
         void rChanhView_Loaded(object sender, System.Windows.RoutedEventArgs e)
         {
             _viewModel.HeaderFilterChanged += _viewModel_FilterChanged;
-            
+
             _viewModel.Load();
 
             RefreshView();
@@ -51,7 +52,7 @@ namespace PhuDinhCommonControl
 
             var view = new rBaiXeView();
             view.RefreshView();
-            ChildWindowUtils.ShowChildWindow("Bãi Xe", view);
+            ChildWindowUtils.ShowChildWindow(Constant.ViewName_BaiXe, view);
 
             _viewModel.UpdateBaiXeReferenceData();
         }

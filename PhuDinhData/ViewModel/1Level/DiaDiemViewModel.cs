@@ -5,6 +5,7 @@ using System.Linq.Expressions;
 using PhuDinhData.Filter;
 using PhuDinhData.ViewModel.DataGridColumnHeaderFilterModel;
 using System;
+using PhuDinhCommon;
 
 namespace PhuDinhData.ViewModel
 {
@@ -17,7 +18,7 @@ namespace PhuDinhData.ViewModel
 
         public rNuoc rNuocDefault { get; set; }
 
-        public static HeaderTextFilterModel Header_Nuoc = new HeaderTextFilterModel("Nước");
+        public static HeaderTextFilterModel Header_Nuoc = new HeaderTextFilterModel(Constant.ColumnName_Nuoc);
 
         public DiaDiemViewModel()
         {
