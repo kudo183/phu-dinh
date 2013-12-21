@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using PhuDinhCommon;
 
 namespace PhuDinhCommonControl
 {

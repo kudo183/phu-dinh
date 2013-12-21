@@ -108,6 +108,8 @@ namespace PhuDinhData.ViewModel
                 action(item);
             }
         }
+        
+        protected abstract void UpdateAllReferenceData();
 
         public virtual List<Repository<T>.ChangedItemData> Save()
         {
@@ -122,9 +124,33 @@ namespace PhuDinhData.ViewModel
             }
         }
 
+        public abstract void Load();
+
+        public abstract void Unload();
+
         public virtual void RefreshData()
         {
+            if (MainFilter.Filter == null)
+            {
+                return;
+            }
 
+            _context = ContextFactory.CreateContext();
+
+            ItemCount = RepositoryLocator<T>.GetDataCount(_context, MainFilter.Filter);
+            _origData = RepositoryLocator<T>.GetData(_context, MainFilter.Filter, PageSize, CurrentPageIndex, ItemCount);
+
+            Unload();
+            Entity.Clear();
+
+            foreach (var item in _origData)
+            {
+                Entity.Add(item);
+            }
+
+            UpdateAllReferenceData();
+
+            Load();
         }
     }
 }

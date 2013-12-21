@@ -1,4 +1,6 @@
-﻿namespace PhuDinhCommonControl
+﻿using PhuDinhCommon;
+
+namespace PhuDinhCommonControl
 {
     public static class ViewFactory
     {

@@ -3,7 +3,6 @@ using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Linq.Expressions;
 using PhuDinhData.Filter;
-using PhuDinhData.Repository;
 using PhuDinhData.ViewModel.DataGridColumnHeaderFilterModel;
 using System;
 
@@ -18,9 +17,7 @@ namespace PhuDinhData.ViewModel
 
         public rBaiXe rBaiXeDefault { get; set; }
 
-        public Filter_rChanh MainFilter { get; set; }
-
-        public static HeaderTextFilter Header_BaiXe = new HeaderTextFilter("Bãi Xe");
+        public static HeaderTextFilterModel Header_BaiXe = new HeaderTextFilterModel("Bãi Xe");
 
         public ChanhViewModel()
         {
@@ -30,7 +27,7 @@ namespace PhuDinhData.ViewModel
             MainFilter = new Filter_rChanh();
         }
 
-        public void Load()
+        public override void Load()
         {
             Entity.CollectionChanged += Entity_CollectionChanged;
 
@@ -38,7 +35,7 @@ namespace PhuDinhData.ViewModel
             ChanhViewModel.Header_BaiXe.PropertyChanged += BaiXe_PropertyChanged;
         }
 
-        public void Unload()
+        public override void Unload()
         {
             Entity.CollectionChanged -= Entity_CollectionChanged;
 
@@ -67,34 +64,14 @@ namespace PhuDinhData.ViewModel
             }
         }
 
-        public override void RefreshData()
-        {
-            if (MainFilter.Filter == null)
-            {
-                return;
-            }
-
-            _context = ContextFactory.CreateContext();
-
-            ItemCount = rChanhRepository.GetDataCount(_context, MainFilter.Filter);
-            _origData = rChanhRepository.GetData(_context, MainFilter.Filter, PageSize, CurrentPageIndex, ItemCount);
-
-            Unload();
-            Entity.Clear();
-
-            foreach (var rChanh in _origData)
-            {
-                Entity.Add(rChanh);
-            }
-
-            UpdateBaiXeReferenceData();
-
-            Load();
-        }
-
         public void UpdateBaiXeReferenceData()
         {
             UpdateReferenceData(out _rBaiXes, RFilter_BaiXe, (p => p.rBaiXeList = _rBaiXes));
+        }
+
+        protected override void UpdateAllReferenceData()
+        {
+            UpdateBaiXeReferenceData();
         }
     }
 }

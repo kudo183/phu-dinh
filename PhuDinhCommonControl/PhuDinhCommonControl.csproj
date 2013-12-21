@@ -69,7 +69,6 @@
   <ItemGroup>
     <Compile Include="Filter_Entity\3Level\Filter_rKhachHangChanh.cs" />
     <Compile Include="Utils\ChildWindowUtils.cs" />
-    <Compile Include="Constant.cs" />
     <Compile Include="Factory\ContextFactory.cs" />
     <Compile Include="Filter_DataGridColumnHeader\DataGridColumnHeaderDateFilter.cs" />
     <Compile Include="EntityDataGrid\0Level\DGNhaCungCap.xaml.cs">

@@ -8,6 +8,7 @@ using System.Linq.Expressions;
 using System.Windows.Controls.Primitives;
 using PhuDinhCommon;
 using PhuDinhData.ViewModel;
+using PhuDinhData.ViewModel.DataGridColumnHeaderFilterModel;
 
 namespace PhuDinhCommonControl
 {
@@ -57,24 +58,24 @@ namespace PhuDinhCommonControl
             LogManager.Log(event_type.et_Internal, severity_type.st_debug, string.Format("{0} {1}", "dgDonHang_HeaderAddButtonClick", "Enter"));
 
             CommitEdit();
-            var header = (sender as DataGridColumnHeader).Content as DataGridColumnHeaderTextFilter;
+            var header = (sender as DataGridColumnHeader).Content as IHeaderFilterModel;
             LogManager.Log(event_type.et_Internal, severity_type.st_info, string.Format("{0} {1}", "Header Add Button Click", header.Name));
 
             BaseView view = null;
 
             switch (header.Name)
             {
-                case Constant.ViewName_KhachHang:
+                case Constant.ColumnName_KhachHang:
                     view = new rKhachHangView();
                     view.RefreshView();
-                    ChildWindowUtils.ShowChildWindow(header.Name, view);
+                    ChildWindowUtils.ShowChildWindow(Constant.ViewName_KhachHang, view);
 
                     _viewModel.UpdateKhachHangReferenceData();
                     break;
-                case Constant.ViewName_KhachHangChanh:
+                case Constant.ColumnName_KhachHangChanh:
                     view = new rKhachHangChanhView();
                     view.RefreshView();
-                    ChildWindowUtils.ShowChildWindow(header.Name, view);
+                    ChildWindowUtils.ShowChildWindow(Constant.ViewName_KhachHangChanh, view);
 
                     _viewModel.UpdateChanhReferenceData();
                     break;
@@ -131,7 +132,7 @@ namespace PhuDinhCommonControl
             var index = dgDonHang.SelectedIndex;
 
             _viewModel.RefreshData();
-            
+
             dgDonHang.SelectedIndex = index;
         }
         #endregion

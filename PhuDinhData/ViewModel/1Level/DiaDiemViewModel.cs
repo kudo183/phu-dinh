@@ -3,7 +3,6 @@ using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Linq.Expressions;
 using PhuDinhData.Filter;
-using PhuDinhData.Repository;
 using PhuDinhData.ViewModel.DataGridColumnHeaderFilterModel;
 using System;
 
@@ -18,7 +17,7 @@ namespace PhuDinhData.ViewModel
 
         public rNuoc rNuocDefault { get; set; }
 
-        public static HeaderTextFilter Header_Nuoc = new HeaderTextFilter("Nước");
+        public static HeaderTextFilterModel Header_Nuoc = new HeaderTextFilterModel("Nước");
 
         public DiaDiemViewModel()
         {
@@ -28,7 +27,7 @@ namespace PhuDinhData.ViewModel
             MainFilter = new Filter_rDiaDiem();
         }
 
-        public void Load()
+        public override void Load()
         {
             Entity.CollectionChanged += Entity_CollectionChanged;
 
@@ -36,7 +35,7 @@ namespace PhuDinhData.ViewModel
             DiaDiemViewModel.Header_Nuoc.PropertyChanged += Nuoc_PropertyChanged;
         }
 
-        public void Unload()
+        public override void Unload()
         {
             Entity.CollectionChanged -= Entity_CollectionChanged;
 
@@ -65,34 +64,14 @@ namespace PhuDinhData.ViewModel
             }
         }
 
-        public override void RefreshData()
-        {
-            if (MainFilter.Filter == null)
-            {
-                return;
-            }
-
-            _context = ContextFactory.CreateContext();
-
-            ItemCount = rDiaDiemRepository.GetDataCount(_context, MainFilter.Filter);
-            _origData = rDiaDiemRepository.GetData(_context, MainFilter.Filter, PageSize, CurrentPageIndex, ItemCount);
-
-            Unload();
-            Entity.Clear();
-
-            foreach (var rDiaDiem in _origData)
-            {
-                Entity.Add(rDiaDiem);
-            }
-
-            UpdateNuocReferenceData();
-
-            Load();
-        }
-
         public void UpdateNuocReferenceData()
         {
             UpdateReferenceData(out _rNuocs, RFilter_Nuoc, (p => p.rNuocList = _rNuocs));
+        }
+
+        protected override void UpdateAllReferenceData()
+        {
+            UpdateNuocReferenceData();
         }
     }
 }
