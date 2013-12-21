@@ -17,16 +17,6 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <EntityDataGrid:DGDonHang Grid.Row="0" x:Name="dgDonHang" x:FieldModifier="public" HeaderAddButtonClick="dgDonHang_HeaderAddButtonClick"/>
-        <Grid Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
-            <CustomControl:Pager Grid.Column="0"
-                                 CurrentPageIndex="{Binding CurrentPageIndex, Mode=TwoWay}"
-                                 PageSize="{Binding PageSize, Mode=OneWay}"
-                                 ItemCount="{Binding ItemCount, Mode=OneWay}"/>
-            <Menu:BottomMenu Grid.Column="1" x:Name="bmMenu" Button.Click="bmMenu_Click"/>
-        </Grid>
+        <Menu:BottomMenu Grid.Row="1" x:Name="bmMenu" Button.Click="bmMenu_Click"/>
     </Grid>
 </PhuDinhCommonControl:BaseView>

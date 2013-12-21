@@ -28,14 +28,14 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:Pager}">
                     <StackPanel Orientation="Horizontal">
-                        <Button Content="Prev" x:Name="PrevPageButton"/>
-                        <Button Content="Next" x:Name="NextPageButton"/>
-                        <TextBlock Text="Page" VerticalAlignment="Center"/>
-                        <TextBox x:Name="CurrentPageIndexTextBox" Width="30" VerticalContentAlignment="Center"/>
-                        <TextBlock Text=" of " VerticalAlignment="Center"/>
-                        <TextBlock x:Name="PageCountTextBlock" VerticalAlignment="Center"/>
-                        <Button Content="First" x:Name="FirstPageButton"/>
-                        <Button Content="Last" x:Name="LastPageButton"/>
+                        <Button Content="&lt;&lt;" x:Name="FirstPageButton" Margin="2,5" Width="35"/>
+                        <Button Content="&gt;&gt;" x:Name="LastPageButton" Margin="2,5" Width="35"/>
+                        <TextBlock Text="Trang" VerticalAlignment="Center" Margin="5"/>
+                        <TextBox x:Name="CurrentPageIndexTextBox" Width="30" Margin="5" VerticalContentAlignment="Center"/>
+                        <TextBlock Text=" tren " VerticalAlignment="Center" Margin="0,5"/>
+                        <TextBlock x:Name="PageCountTextBlock" VerticalAlignment="Center" Margin="5"/>
+                        <Button Content="&lt;" x:Name="PrevPageButton" Margin="2,5" Width="35"/>
+                        <Button Content="&gt;" x:Name="NextPageButton" Margin="2,5" Width="35"/>
                     </StackPanel>
                 </ControlTemplate>
             </Setter.Value>
