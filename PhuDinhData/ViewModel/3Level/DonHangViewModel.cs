@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
-using System.Data.Entity;
-using System.Linq;
 using System.Linq.Expressions;
 using PhuDinhData.Filter;
 using PhuDinhData.Repository;
@@ -24,9 +22,8 @@ namespace PhuDinhData.ViewModel
 
         private string _filterChanh = string.Empty;
 
-        public Filter_tDonHang MainFilter { get; private set; }
-        public Expression<Func<rKhachHang, bool>> Reference_FilterKhachHang { get; set; }
-        public Expression<Func<rChanh, bool>> Reference_FilterChanh { get; set; }
+        public Expression<Func<rKhachHang, bool>> RFilter_KhachHang { get; set; }
+        public Expression<Func<rChanh, bool>> RFilter_Chanh { get; set; }
         public rKhachHang rKhachHangDefault { get; set; }
 
         public static HeaderDateFilter Header_Ngay = new HeaderDateFilter("Ngày");
@@ -37,9 +34,10 @@ namespace PhuDinhData.ViewModel
         {
             Entity = new ObservableCollection<tDonHang>();
 
-            MainFilter = new Filter_tDonHang();
-            Reference_FilterKhachHang = (p => true);
-            Reference_FilterChanh = (p => true);
+            var t = new Filter_tDonHang();
+            MainFilter = t;
+            RFilter_KhachHang = (p => true);
+            RFilter_Chanh = (p => true);
         }
 
         public void Load()
@@ -82,11 +80,11 @@ namespace PhuDinhData.ViewModel
         {
             if (DonHangViewModel.Header_Ngay.IsUsed)
             {
-                MainFilter.SetFilterNgay(DonHangViewModel.Header_Ngay.Date);
+                MainFilter.SetFilter(Filter_tDonHang.Ngay, DonHangViewModel.Header_Ngay.Date);
             }
             else
             {
-                MainFilter.SetFilterNgay(null);
+                MainFilter.SetFilter(Filter_tDonHang.Ngay, null);
             }
 
             OnHeaderFilterChanged();
@@ -94,18 +92,17 @@ namespace PhuDinhData.ViewModel
 
         void Header_KhachHang_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            MainFilter.SetFilterTenKhachHang(DonHangViewModel.Header_KhachHang.Text);
+            MainFilter.SetFilter(Filter_tDonHang.TenKhachHang, DonHangViewModel.Header_KhachHang.Text);
 
             OnHeaderFilterChanged();
         }
 
         void Header_KhachHangChanh_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            MainFilter.SetFilterTenChanh(DonHangViewModel.Header_KhachHangChanh.Text);
+            MainFilter.SetFilter(Filter_tDonHang.TenChanh, DonHangViewModel.Header_KhachHangChanh.Text);
 
             OnHeaderFilterChanged();
         }
-
 
         void Entity_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
@@ -128,15 +125,15 @@ namespace PhuDinhData.ViewModel
 
         public override void RefreshData()
         {
-            if (MainFilter.FilterDonHang == null)
+            if (MainFilter.Filter == null)
             {
                 return;
             }
 
             _context = ContextFactory.CreateContext();
 
-            ItemCount = tDonHangRepository.GetDataCount(_context, MainFilter.FilterDonHang);
-            _origData = tDonHangRepository.GetData(_context, MainFilter.FilterDonHang, PageSize, CurrentPageIndex, ItemCount);
+            ItemCount = tDonHangRepository.GetDataCount(_context, MainFilter.Filter);
+            _origData = tDonHangRepository.GetData(_context, MainFilter.Filter, PageSize, CurrentPageIndex, ItemCount);
 
             Unload();
 
@@ -155,45 +152,12 @@ namespace PhuDinhData.ViewModel
 
         public void UpdateChanhReferenceData()
         {
-            _rChanhs = rChanhRepository.GetData(_context, Reference_FilterChanh);
-
-            if (Entity == null)
-            {
-                return;
-            }
-
-            foreach (var tDonHang in Entity)
-            {
-                tDonHang.rChanhList = _rChanhs;
-            }
+            UpdateReferenceData(out _rChanhs, RFilter_Chanh, (p => p.rChanhList = _rChanhs));
         }
 
         public void UpdateKhachHangReferenceData()
         {
-            _rKhachHangs = rKhachHangRepository.GetData(_context, Reference_FilterKhachHang);
-
-            if (Entity == null)
-            {
-                return;
-            }
-
-            foreach (var tDonHang in Entity)
-            {
-                tDonHang.rKhachHangList = _rKhachHangs;
-            }
-        }
-
-        public List<Repository<tDonHang>.ChangedItemData> Save()
-        {
-            try
-            {
-                return tDonHangRepository.Save(_context, Entity.ToList(), _origData);
-            }
-            catch (Exception)
-            {
-                PhuDinhCommon.EntityFrameworkUtils.UndoContextChange(_context, EntityState.Modified);
-                throw;
-            }
+            UpdateReferenceData(out _rKhachHangs, RFilter_KhachHang, (p => p.rKhachHangList = _rKhachHangs));
         }
     }
 }

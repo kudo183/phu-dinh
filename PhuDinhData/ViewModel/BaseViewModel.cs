@@ -2,10 +2,15 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Data.Entity;
+using System.Linq;
+using System.Linq.Expressions;
+using PhuDinhData.Filter;
+using PhuDinhData.Repository;
 
 namespace PhuDinhData.ViewModel
 {
-    public class BaseViewModel<T> : INotifyPropertyChanged
+    public abstract class BaseViewModel<T> : INotifyPropertyChanged where T : class
     {
         protected PhuDinhEntities _context;
 
@@ -14,6 +19,8 @@ namespace PhuDinhData.ViewModel
         protected bool _isLoading;
 
         public ObservableCollection<T> Entity { get; set; }
+
+        public IFilter<T> MainFilter { get; set; }
 
         public event EventHandler HeaderFilterChanged;
 
@@ -86,9 +93,38 @@ namespace PhuDinhData.ViewModel
             if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
         }
 
+        protected void UpdateReferenceData<T1>(out List<T1> data,
+            Expression<Func<T1, bool>> filter, Action<T> action)
+            where T1 : class
+        {
+            data = RepositoryLocator<T1>.GetData(_context, filter);
+            if (Entity == null)
+            {
+                return;
+            }
+
+            foreach (var item in Entity)
+            {
+                action(item);
+            }
+        }
+
+        public virtual List<Repository<T>.ChangedItemData> Save()
+        {
+            try
+            {
+                return RepositoryLocator<T>.Save(_context, Entity.ToList(), _origData);
+            }
+            catch (Exception)
+            {
+                PhuDinhCommon.EntityFrameworkUtils.UndoContextChange(_context, EntityState.Modified);
+                throw;
+            }
+        }
+
         public virtual void RefreshData()
         {
-            
+
         }
     }
 }

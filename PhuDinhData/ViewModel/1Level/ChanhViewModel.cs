@@ -1,8 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
-using System.Data.Entity;
-using System.Linq;
 using System.Linq.Expressions;
 using PhuDinhData.Filter;
 using PhuDinhData.Repository;
@@ -16,7 +14,7 @@ namespace PhuDinhData.ViewModel
         private List<rBaiXe> _rBaiXes;
         private string _filterBaiXe = string.Empty;
 
-        public Expression<Func<rBaiXe, bool>> Reference_FilterBaiXe { get; set; }
+        public Expression<Func<rBaiXe, bool>> RFilter_BaiXe { get; set; }
 
         public rBaiXe rBaiXeDefault { get; set; }
 
@@ -28,7 +26,7 @@ namespace PhuDinhData.ViewModel
         {
             Entity = new ObservableCollection<rChanh>();
 
-            Reference_FilterBaiXe = (p => true);
+            RFilter_BaiXe = (p => true);
             MainFilter = new Filter_rChanh();
         }
 
@@ -50,7 +48,7 @@ namespace PhuDinhData.ViewModel
 
         void BaiXe_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            MainFilter.SetFilterDiaDiemBaiXe(ChanhViewModel.Header_BaiXe.Text);
+            MainFilter.SetFilter(Filter_rChanh.DiaDiemBaiXe, ChanhViewModel.Header_BaiXe.Text);
 
             OnHeaderFilterChanged();
         }
@@ -71,19 +69,18 @@ namespace PhuDinhData.ViewModel
 
         public override void RefreshData()
         {
-            if (MainFilter.FilterChanh == null)
+            if (MainFilter.Filter == null)
             {
                 return;
             }
 
             _context = ContextFactory.CreateContext();
-            _origData = rChanhRepository.GetData(_context, MainFilter.FilterChanh);
+
+            ItemCount = rChanhRepository.GetDataCount(_context, MainFilter.Filter);
+            _origData = rChanhRepository.GetData(_context, MainFilter.Filter, PageSize, CurrentPageIndex, ItemCount);
 
             Unload();
             Entity.Clear();
-
-            ItemCount = rChanhRepository.GetDataCount(_context, MainFilter.FilterChanh);
-            _origData = rChanhRepository.GetData(_context, MainFilter.FilterChanh, PageSize, CurrentPageIndex, ItemCount);
 
             foreach (var rChanh in _origData)
             {
@@ -97,30 +94,7 @@ namespace PhuDinhData.ViewModel
 
         public void UpdateBaiXeReferenceData()
         {
-            _rBaiXes = rBaiXeRepository.GetData(_context, Reference_FilterBaiXe);
-
-            if (Entity == null)
-            {
-                return;
-            }
-
-            foreach (var rChanh in Entity)
-            {
-                rChanh.rBaiXeList = _rBaiXes;
-            }
-        }
-
-        public List<Repository<rChanh>.ChangedItemData> Save()
-        {
-            try
-            {
-                return rChanhRepository.Save(_context, Entity.ToList(), _origData);
-            }
-            catch (Exception)
-            {
-                PhuDinhCommon.EntityFrameworkUtils.UndoContextChange(_context, EntityState.Modified);
-                throw;
-            }
+            UpdateReferenceData(out _rBaiXes, RFilter_BaiXe, (p => p.rBaiXeList = _rBaiXes));
         }
     }
 }

@@ -99,9 +99,12 @@
     <Compile Include="Filter\1Level\Filter_rDiaDiem.cs" />
     <Compile Include="Filter\3Level\Filter_tDonHang.cs" />
     <Compile Include="Filter\1Level\Filter_rChanh.cs" />
+    <Compile Include="Filter\FilterBase.cs" />
+    <Compile Include="Filter\IFilter.cs" />
     <Compile Include="rDiaDiem.cs">
       <DependentUpon>PhuDinh.tt</DependentUpon>
     </Compile>
+    <Compile Include="Repository\RepositoryLocator.cs" />
     <Compile Include="Repository\tNhapNguyenLieuRepository.cs" />
     <Compile Include="Repository\tNhapMatHangRepository.cs" />
     <Compile Include="Repository\rMatHangNguyenLieuRepository.cs" />

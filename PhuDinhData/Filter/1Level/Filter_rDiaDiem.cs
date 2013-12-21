@@ -1,102 +1,63 @@
-﻿using System;
-using System.Linq.Expressions;
-using PhuDinhCommon;
-
-namespace PhuDinhData.Filter
+﻿namespace PhuDinhData.Filter
 {
-    public class Filter_rDiaDiem
+    public class Filter_rDiaDiem : FilterBase<rDiaDiem>
     {
-        private Expression<Func<rDiaDiem, bool>> _filterMaNuoc;
-        private Expression<Func<rDiaDiem, bool>> _filterTenNuoc;
-        private Expression<Func<rDiaDiem, bool>> _filterTenTinh;
-
-        public bool IsClearAllData { get; set; }
+        public const string MaNuoc = "MaNuoc";
+        public const string TenNuoc = "TenNuoc";
+        public const string TenTinh = "TenTinh";
 
         public Filter_rDiaDiem()
         {
             IsClearAllData = false;
 
-            _filterMaNuoc = (p => true);
-            _filterTenNuoc = (p => true);
-            _filterTenTinh = (p => true);
+            _filters[MaNuoc] = (p => true);
+            _filters[TenNuoc] = (p => true);
+            _filters[TenTinh] = (p => true);
 
             UpdateMainFilter();
         }
 
-        public void SetFilterMaNuoc(int? maNuoc, bool setFalse = false)
+        public override void SetFilter(string key, object value, bool setFalse = false)
+        {
+            switch (key)
+            {
+                case MaNuoc:
+                    SetFilterMaNuoc(value as int?, setFalse);
+                    break;
+                case TenNuoc:
+                    SetFilterTenNuoc(value as string, setFalse);
+                    break;
+                case TenTinh:
+                    SetFilterTenTinh(value as string, setFalse);
+                    break;
+            }
+        }
+
+        private void SetFilterMaNuoc(int? maNuoc, bool setFalse = false)
         {
             IsClearAllData = false;
 
-            if (setFalse == true)
-            {
-                _filterMaNuoc = (p => false);
-            }
-            else
-            {
-                if (maNuoc == null)
-                {
-                    _filterMaNuoc = (p => true);
-                }
-                else
-                {
-                    _filterMaNuoc = (p => p.MaNuoc == maNuoc);
-                }
-            }
+            _filters[MaNuoc] = FilterNullable(maNuoc, setFalse, p => p.MaNuoc == maNuoc);
 
             UpdateMainFilter();
         }
 
-        public void SetFilterTenNuoc(string tenNuoc, bool setFalse = false)
+        private void SetFilterTenNuoc(string tenNuoc, bool setFalse = false)
         {
             IsClearAllData = false;
 
-            if (setFalse == true)
-            {
-                _filterTenNuoc = (p => false);
-            }
-            else
-            {
-                if (string.IsNullOrEmpty(tenNuoc))
-                {
-                    _filterTenNuoc = (p => true);
-                }
-                else
-                {
-                    _filterTenNuoc = (p => p.rNuoc.TenNuoc.Contains(tenNuoc));
-                }
-            }
+            _filters[TenNuoc] = FilterText(tenNuoc, setFalse, p => p.rNuoc.TenNuoc.Contains(tenNuoc));
 
             UpdateMainFilter();
         }
 
-        public void SetFilterTenTinh(string tenTinh, bool setFalse = false)
+        private void SetFilterTenTinh(string tenTinh, bool setFalse = false)
         {
             IsClearAllData = false;
 
-            if (setFalse == true)
-            {
-                _filterTenTinh = (p => false);
-            }
-            else
-            {
-                if (string.IsNullOrEmpty(tenTinh))
-                {
-                    _filterTenTinh = (p => true);
-                }
-                else
-                {
-                    _filterTenTinh = (p => p.Tinh.Contains(tenTinh));
-                }
-            }
+            _filters[TenTinh] = FilterText(tenTinh, setFalse, p => p.Tinh.Contains(tenTinh));
 
             UpdateMainFilter();
         }
-
-        private void UpdateMainFilter()
-        {
-            FilterDiaDiem = _filterTenTinh.And(_filterMaNuoc).And(_filterTenNuoc);
-        }
-
-        public Expression<Func<rDiaDiem, bool>> FilterDiaDiem { get; private set; }
     }
 }
