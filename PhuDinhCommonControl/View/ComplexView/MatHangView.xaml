@@ -1,4 +1,4 @@
-﻿<PhuDinhCommonControl:BaseView x:Class="PhuDinhCommonControl.MatHangView"
+﻿<UserControl x:Class="PhuDinhCommonControl.MatHangView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -14,4 +14,4 @@
         <PhuDinhCommonControl:rLoaiHangView Grid.Row="0" x:Name="_rLoaiHangView"/>
         <PhuDinhCommonControl:tMatHangView Grid.Row="1" x:Name="_tMatHangView"/>
     </Grid>
-</PhuDinhCommonControl:BaseView>
+</UserControl>

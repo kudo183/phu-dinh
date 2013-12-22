@@ -5,7 +5,7 @@ namespace PhuDinhCommonControl
     /// <summary>
     /// Interaction logic for KhachHangView.xaml
     /// </summary>
-    public partial class KhachHangView : BaseView
+    public partial class KhachHangView : UserControl
     {
         public KhachHangView()
         {

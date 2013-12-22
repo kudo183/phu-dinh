@@ -7,7 +7,7 @@ namespace PhuDinhCommonControl
     /// <summary>
     /// Interaction logic for ChuyenHangView.xaml
     /// </summary>
-    public partial class ChuyenHangView : BaseView
+    public partial class ChuyenHangView : UserControl
     {
         public ChuyenHangView()
         {

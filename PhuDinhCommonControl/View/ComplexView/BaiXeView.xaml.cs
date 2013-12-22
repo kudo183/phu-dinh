@@ -5,7 +5,7 @@ namespace PhuDinhCommonControl
     /// <summary>
     /// Interaction logic for BaiXeView.xaml
     /// </summary>
-    public partial class BaiXeView : BaseView
+    public partial class BaiXeView : UserControl
     {
         public BaiXeView()
         {

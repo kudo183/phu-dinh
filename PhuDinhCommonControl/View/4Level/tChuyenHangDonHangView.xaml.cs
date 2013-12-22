@@ -63,7 +63,7 @@ namespace PhuDinhCommonControl
                     _viewModel.UpdateChuyenHangReferenceData();
                     break;
                 case Constant.ColumnName_DonHang:
-                    view = new DonHangView();
+                    view = new tDonHangView();
                     view.RefreshView();
                     ChildWindowUtils.ShowChildWindow(Constant.ViewName_DonHang, view);
 

@@ -1,4 +1,4 @@
-﻿<PhuDinhCommonControl:BaseView x:Class="PhuDinhCommonControl.ChuyenHangView"
+﻿<UserControl x:Class="PhuDinhCommonControl.ChuyenHangView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -16,4 +16,4 @@
         <PhuDinhCommonControl:tChuyenHangDonHangView Grid.Row="1" x:Name="_tChuyenHangDonHangView"/>
         <PhuDinhCommonControl:tChiTietChuyenHangDonHangView Grid.Row="2" x:Name="_tChiTietChuyenHangDonHangView"/>
     </Grid>
-</PhuDinhCommonControl:BaseView>
+</UserControl>

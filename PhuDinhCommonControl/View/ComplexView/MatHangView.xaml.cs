@@ -5,7 +5,7 @@ namespace PhuDinhCommonControl
     /// <summary>
     /// Interaction logic for MatHangView.xaml
     /// </summary>
-    public partial class MatHangView : BaseView
+    public partial class MatHangView : UserControl
     {
         public MatHangView()
         {

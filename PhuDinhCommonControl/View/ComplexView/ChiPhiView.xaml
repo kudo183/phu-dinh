@@ -1,4 +1,4 @@
-﻿<PhuDinhCommonControl:BaseView x:Class="PhuDinhCommonControl.ChiPhiView"
+﻿<UserControl x:Class="PhuDinhCommonControl.ChiPhiView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -14,4 +14,4 @@
         <PhuDinhCommonControl:rLoaiChiPhiView Grid.Row="0" x:Name="_rLoaiChiPhiView"/>
         <PhuDinhCommonControl:tChiPhiView Grid.Row="1" x:Name="_rChiPhiNhanVienGiaoHangView"/>
     </Grid>
-</PhuDinhCommonControl:BaseView>
+</UserControl>

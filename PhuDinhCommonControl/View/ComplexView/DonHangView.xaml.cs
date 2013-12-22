@@ -6,7 +6,7 @@ namespace PhuDinhCommonControl
     /// <summary>
     /// Interaction logic for DonHangView.xaml
     /// </summary>
-    public partial class DonHangView : BaseView
+    public partial class DonHangView : UserControl
     {
         public DonHangView()
         {
