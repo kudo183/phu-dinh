@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Collections.Specialized;
-using System.Data.Entity;
-using System.Linq;
-using System.Linq.Expressions;
 using System.Windows.Controls.Primitives;
+using PhuDinhCommon;
+using PhuDinhData.ViewModel;
+using PhuDinhData.ViewModel.DataGridColumnHeaderFilterModel;
 
 namespace PhuDinhCommonControl
 {
@@ -14,27 +11,65 @@ namespace PhuDinhCommonControl
     /// </summary>
     public partial class tChuyenHangDonHangView : BaseView
     {
-        public Expression<Func<PhuDinhData.tChuyenHangDonHang, bool>> FilterChuyenHangDonHang { get; set; }
-        public Expression<Func<PhuDinhData.tChuyenHang, bool>> FilterChuyenHang { get; set; }
-        public Expression<Func<PhuDinhData.tDonHang, bool>> FilterDonHang { get; set; }
-
-        public PhuDinhData.tChuyenHang tChuyenHangDefault { get; set; }
-        public PhuDinhData.tDonHang tDonHangDefault { get; set; }
-        
-        private ObservableCollection<PhuDinhData.tChuyenHangDonHang> _tChuyenHangDonHangs;
-        private List<PhuDinhData.tChuyenHang> _tChuyenHangs;
-        private List<PhuDinhData.tDonHang> _tDonHangs;
-        private PhuDinhData.PhuDinhEntities _context = ContextFactory.CreateContext();
-
-        private List<PhuDinhData.tChuyenHangDonHang> _origData;
+        private readonly ChuyenHangDonHangViewModel _viewModel = new ChuyenHangDonHangViewModel();
+        public ChuyenHangDonHangViewModel ViewModel { get { return _viewModel; } }
 
         public tChuyenHangDonHangView()
         {
             InitializeComponent();
 
-            FilterChuyenHangDonHang = (p => true);
-            FilterChuyenHang = (p => true);
-            FilterDonHang = (p => true);
+            Loaded += tChuyenHangDonHangView_Loaded;
+            Unloaded += tChuyenHangDonHangView_Unloaded;
+
+            DataContext = _viewModel;
+        }
+
+        void tChuyenHangDonHangView_Loaded(object sender, System.Windows.RoutedEventArgs e)
+        {
+            _viewModel.HeaderFilterChanged += _viewModel_HeaderFilterChanged;
+
+            _viewModel.Load();
+
+            RefreshView();
+        }
+
+        void tChuyenHangDonHangView_Unloaded(object sender, System.Windows.RoutedEventArgs e)
+        {
+            _viewModel.HeaderFilterChanged -= _viewModel_HeaderFilterChanged;
+
+            _viewModel.Unload();
+        }
+
+        void _viewModel_HeaderFilterChanged(object sender, EventArgs e)
+        {
+            RefreshView();
+        }
+
+        private void dgChuyenHangDonHang_HeaderAddButtonClick(object sender, EventArgs e)
+        {
+            CommitEdit();
+
+            var header = (sender as DataGridColumnHeader).Content as IHeaderFilterModel;
+
+            BaseView view = null;
+
+            switch (header.Name)
+            {
+                case Constant.ColumnName_ChuyenHang:
+                    view = new tChuyenHangView();
+                    view.RefreshView();
+                    ChildWindowUtils.ShowChildWindow(Constant.ViewName_ChuyenHang, view);
+
+                    _viewModel.UpdateChuyenHangReferenceData();
+                    break;
+                case Constant.ColumnName_DonHang:
+                    view = new DonHangView();
+                    view.RefreshView();
+                    ChildWindowUtils.ShowChildWindow(Constant.ViewName_DonHang, view);
+
+                    _viewModel.UpdateDonHangReferenceData();
+                    break;
+            }
         }
 
         #region Override base view method
@@ -49,17 +84,11 @@ namespace PhuDinhCommonControl
             CommitEdit();
             try
             {
-                if (FilterChuyenHangDonHang == null)
-                {
-                    return;
-                }
-
-                var data = dgChuyenHangDonHang.DataContext as ObservableCollection<PhuDinhData.tChuyenHangDonHang>;
-                PhuDinhData.Repository.tChuyenHangDonHangRepository.Save(_context, data.ToList(), _origData);
+                _viewModel.Save();
             }
             catch (Exception ex)
             {
-                PhuDinhCommon.EntityFrameworkUtils.UndoContextChange(_context, EntityState.Modified);
+                LogManager.Log(event_type.et_Internal, severity_type.st_error, string.Format("{0} {1}", "tChuyenHangDonHangView_Save", "Exception"), ex);
             }
 
             base.Save();
@@ -74,109 +103,18 @@ namespace PhuDinhCommonControl
 
         public override void RefreshView()
         {
-            if (FilterChuyenHangDonHang == null)
+            if (_viewModel.MainFilter.IsClearAllData == true)
             {
-                dgChuyenHangDonHang.DataContext = null;
+                _viewModel.Entity.Clear();
                 return;
             }
 
             var index = dgChuyenHangDonHang.SelectedIndex;
 
-            if (_tChuyenHangDonHangs != null)
-            {
-                _tChuyenHangDonHangs.CollectionChanged -= collection_CollectionChanged;
-            }
-
-            _context = ContextFactory.CreateContext();
-            _origData = PhuDinhData.Repository.tChuyenHangDonHangRepository.GetData(_context, FilterChuyenHangDonHang);
-
-            _tChuyenHangDonHangs = new ObservableCollection<PhuDinhData.tChuyenHangDonHang>(_origData);
-            _tChuyenHangDonHangs.CollectionChanged += collection_CollectionChanged;
-
-            UpdateChuyenHangReferenceData();
-            UpdateDonHangReferenceData();
-
-            dgChuyenHangDonHang.DataContext = _tChuyenHangDonHangs;
+            _viewModel.RefreshData();
 
             dgChuyenHangDonHang.SelectedIndex = index;
         }
-
-        void collection_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
-        {
-            if (e.Action == NotifyCollectionChangedAction.Add)
-            {
-                var tChuyenHangDonHang = e.NewItems[0] as PhuDinhData.tChuyenHangDonHang;
-                tChuyenHangDonHang.tChuyenHangList = _tChuyenHangs;
-                tChuyenHangDonHang.tDonHangList = _tDonHangs;
-
-                if (tChuyenHangDefault != null)
-                {
-                    tChuyenHangDonHang.MaChuyenHang = tChuyenHangDefault.Ma;
-                }
-
-                if (tDonHangDefault != null)
-                {
-                    tChuyenHangDonHang.MaDonHang = tDonHangDefault.Ma;
-                }
-            }
-        }
         #endregion
-
-        private void dgChuyenHangDonHang_HeaderAddButtonClick(object sender, EventArgs e)
-        {
-            CommitEdit();
-
-            var header = sender as DataGridColumnHeader;
-
-            BaseView view = null;
-
-            switch (header.Content.ToString())
-            {
-                case "Chuyến hàng":
-                    view = new tChuyenHangView();
-                    view.RefreshView();
-                    ChildWindowUtils.ShowChildWindow("Chuyến hàng", view);
-
-                    UpdateChuyenHangReferenceData();
-                    break;
-                case "Đơn Hàng":
-                    view = new DonHangView();
-                    view.RefreshView();
-                    ChildWindowUtils.ShowChildWindow("Đơn Hàng", view);
-
-                    UpdateDonHangReferenceData();
-                    break;
-            }
-        }
-
-        private void UpdateChuyenHangReferenceData()
-        {
-            _tChuyenHangs = PhuDinhData.Repository.tChuyenHangRepository.GetData(_context, FilterChuyenHang);
-
-            if (_tChuyenHangDonHangs == null)
-            {
-                return;
-            }
-
-            foreach (var tChuyenHangDonHang in _tChuyenHangDonHangs)
-            {
-                tChuyenHangDonHang.tChuyenHangList = _tChuyenHangs;
-            }
-        }
-
-        private void UpdateDonHangReferenceData()
-        {
-            _tDonHangs = PhuDinhData.Repository.tDonHangRepository.GetData(_context, FilterDonHang);
-
-            if (_tChuyenHangDonHangs == null)
-            {
-                return;
-            }
-
-            foreach (var tChuyenHangDonHang in _tChuyenHangDonHangs)
-            {
-                tChuyenHangDonHang.tDonHangList = _tDonHangs;
-            }
-        }
     }
 }

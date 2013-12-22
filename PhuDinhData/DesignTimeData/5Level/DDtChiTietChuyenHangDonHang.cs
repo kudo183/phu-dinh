@@ -1,4 +1,5 @@
-﻿using PhuDinhData.ViewModel;
+﻿using System.Linq;
+using PhuDinhData.ViewModel;
 
 namespace PhuDinhData.DesignTimeData
 {
@@ -39,7 +40,7 @@ namespace PhuDinhData.DesignTimeData
                 tChiTietDonHang = DDtChiTietDonHang.Create(i),
                 tChuyenHangDonHang = DDtChuyenHangDonHang.Create(i),
                 tChiTietDonHangList = DDtChiTietDonHang.tChiTietDonHangs,
-                tChuyenHangDonHangList = DDtChuyenHangDonHang.tChuyenHangDonHangs
+                tChuyenHangDonHangList = DDtChuyenHangDonHang.ViewModel.Entity.ToList()
             };
         }
     }

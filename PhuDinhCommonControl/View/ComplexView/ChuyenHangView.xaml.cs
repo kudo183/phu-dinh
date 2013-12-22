@@ -119,14 +119,19 @@ namespace PhuDinhCommonControl
 
             if (chuyenHang == null)
             {
-                _tChuyenHangDonHangView.FilterChuyenHangDonHang = null;
+                _tChuyenHangDonHangView.ViewModel.MainFilter
+                    .SetFilter(PhuDinhData.Filter.Filter_tChuyenHangDonHang.MaChuyenHang, null,true);
+
                 _tChuyenHangDonHangView.RefreshView();
                 return;
             }
 
-            _tChuyenHangDonHangView.FilterDonHang = (p => p.Xong == false);
-            _tChuyenHangDonHangView.FilterChuyenHangDonHang = (p => p.MaChuyenHang == chuyenHang.Ma);
-            _tChuyenHangDonHangView.tChuyenHangDefault = chuyenHang;
+            _tChuyenHangDonHangView.ViewModel.RFilter_DonHang = (p => p.Xong == false);
+
+            _tChuyenHangDonHangView.ViewModel.MainFilter.
+                SetFilter(PhuDinhData.Filter.Filter_tChuyenHangDonHang.MaChuyenHang, chuyenHang.Ma);
+
+            _tChuyenHangDonHangView.ViewModel.tChuyenHangDefault = chuyenHang;
             _tChuyenHangDonHangView.RefreshView();
         }
 
