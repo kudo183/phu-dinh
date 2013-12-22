@@ -18,21 +18,8 @@ namespace PhuDinhData.Repository
             int pageSize, int currentPageIndex, int itemCount)
         {
             var data = Repository<rChanh>.GetData(context, filter).OrderBy(p => p.rBaiXe.DiaDiemBaiXe).ThenBy(p => p.TenChanh);
-
-            var skippedItem = pageSize * (currentPageIndex - 1);
-
-            var takeItem = itemCount - skippedItem;
-            if (takeItem > pageSize)
-            {
-                takeItem = pageSize;
-            }
-
-            if (takeItem <= 0)
-            {
-                return new List<rChanh>();
-            }
-
-            return data.Skip(skippedItem).Take(takeItem).ToList();
+            
+            return Repository<rChanh>.PagingData(data, pageSize, currentPageIndex, itemCount);
         }
 
         public static List<rChanh> GetData(PhuDinhEntities context, Expression<Func<rChanh, bool>> filter)

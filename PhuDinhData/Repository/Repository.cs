@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
@@ -10,43 +9,27 @@ namespace PhuDinhData.Repository
 {
     public static class Repository<T> where T : class
     {
-        private static List<T> AddNewItem(PhuDinhEntities context, List<T> gridDataSource, Func<T, bool> CheckNewItemFunc)
-        {
-            var result = new List<T>();
-
-            foreach (var item in gridDataSource)
-            {
-                if (CheckNewItemFunc(item))
-                {
-                    result.Add(item);
-                    context.Set<T>().Add(item);
-                }
-            }
-
-            return result;
-        }
-
         public static IQueryable<T> GetData(PhuDinhEntities context, Expression<Func<T, bool>> filter)
         {
             return context.Set<T>().Where(filter);
         }
 
-        #region new code
-        private static List<T> RemoveItem(PhuDinhEntities context, List<T> gridDataSource, List<T> origData, Func<T, T, bool> CompareFunc)
+        public static List<T> PagingData(IQueryable<T> data, int pageSize, int currentPageIndex, int itemCount)
         {
-            var result = new List<T>();
+            var skippedItem = pageSize * (currentPageIndex - 1);
 
-            foreach (var item in origData)
+            var takeItem = itemCount - skippedItem;
+            if (takeItem > pageSize)
             {
-                var entity = gridDataSource.FirstOrDefault(p => CompareFunc(item, p));
-                if (entity == null)
-                {
-                    result.Add(item);
-                    context.Set<T>().Remove(item);
-                }
+                takeItem = pageSize;
             }
 
-            return result;
+            if (takeItem <= 0)
+            {
+                return new List<T>();
+            }
+
+            return data.Skip(skippedItem).Take(takeItem).ToList();
         }
 
         public static List<ChangedItemData> Save(PhuDinhEntities context, List<T> data, List<T> origData, Func<T, bool> CheckNewItemFunc, Func<T, T, bool> CompareFunc)
@@ -112,6 +95,38 @@ namespace PhuDinhData.Repository
             public T OriginalValues { get; set; }
             public T CurrentValues { get; set; }
         }
-        #endregion
+
+        private static List<T> AddNewItem(PhuDinhEntities context, List<T> gridDataSource, Func<T, bool> CheckNewItemFunc)
+        {
+            var result = new List<T>();
+
+            foreach (var item in gridDataSource)
+            {
+                if (CheckNewItemFunc(item))
+                {
+                    result.Add(item);
+                    context.Set<T>().Add(item);
+                }
+            }
+
+            return result;
+        }
+
+        private static List<T> RemoveItem(PhuDinhEntities context, List<T> gridDataSource, List<T> origData, Func<T, T, bool> CompareFunc)
+        {
+            var result = new List<T>();
+
+            foreach (var item in origData)
+            {
+                var entity = gridDataSource.FirstOrDefault(p => CompareFunc(item, p));
+                if (entity == null)
+                {
+                    result.Add(item);
+                    context.Set<T>().Remove(item);
+                }
+            }
+
+            return result;
+        }
     }
 }

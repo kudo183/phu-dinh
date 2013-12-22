@@ -19,20 +19,7 @@ namespace PhuDinhData.Repository
         {
             var data = Repository<rDiaDiem>.GetData(context, filter).OrderBy(p => p.Tinh);
 
-            var skippedItem = pageSize * (currentPageIndex - 1);
-
-            var takeItem = itemCount - skippedItem;
-            if (takeItem > pageSize)
-            {
-                takeItem = pageSize;
-            }
-
-            if (takeItem <= 0)
-            {
-                return new List<rDiaDiem>();
-            }
-
-            return data.Skip(skippedItem).Take(takeItem).ToList();
+            return Repository<rDiaDiem>.PagingData(data, pageSize, currentPageIndex, itemCount);
         }
 
         public static List<rDiaDiem> GetData(PhuDinhEntities context, Expression<Func<rDiaDiem, bool>> filter)

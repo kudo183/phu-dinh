@@ -19,20 +19,7 @@ namespace PhuDinhData.Repository
         {
             var data = Repository<tMatHang>.GetData(context, filter).OrderBy(p => p.TenMatHang);
 
-            var skippedItem = pageSize * (currentPageIndex - 1);
-
-            var takeItem = itemCount - skippedItem;
-            if (takeItem > pageSize)
-            {
-                takeItem = pageSize;
-            }
-
-            if (takeItem <= 0)
-            {
-                return new List<tMatHang>();
-            }
-
-            return data.Skip(skippedItem).Take(takeItem).ToList();
+            return Repository<tMatHang>.PagingData(data, pageSize, currentPageIndex, itemCount);
         }
 
         public static List<tMatHang> GetData(PhuDinhEntities context, Expression<Func<tMatHang, bool>> filter)
