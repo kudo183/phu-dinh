@@ -5,7 +5,6 @@
                            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                            xmlns:CustomControl="clr-namespace:CustomControl;assembly=CustomControl"
                            xmlns:DesignTimeData="clr-namespace:PhuDinhData.DesignTimeData;assembly=PhuDinhData"
-                           xmlns:PhuDinhCommonControl="clr-namespace:PhuDinhCommonControl"
                            xmlns:ViewModel="clr-namespace:PhuDinhData.ViewModel;assembly=PhuDinhData" mc:Ignorable="d"
                            d:DataContext="{x:Static DesignTimeData:DDtDonHang.ViewModel}"
                            AutoGenerateColumns="False" EnableRowVirtualization="False" ItemsSource="{Binding Entity}" SelectionMode="Single">

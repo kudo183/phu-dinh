@@ -45,6 +45,8 @@ namespace PhuDinhCommonControl
 
         void tDonHangView_Unloaded(object sender, System.Windows.RoutedEventArgs e)
         {
+            _viewModel.HeaderFilterChanged -= _viewModel_HeaderFilterChanged;
+
             _viewModel.Unload();
         }
 

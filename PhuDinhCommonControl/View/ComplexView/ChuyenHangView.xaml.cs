@@ -112,7 +112,9 @@ namespace PhuDinhCommonControl
 
         private void RefreshChuyenHangDonHangView(PhuDinhData.tChuyenHang chuyenHang)
         {
-            _tChiTietChuyenHangDonHangView.FilterChiTietChuyenHangDonHang = null;
+            _tChiTietChuyenHangDonHangView.ViewModel.MainFilter.SetFilter(
+                PhuDinhData.Filter.Filter_tChiTietChuyenHangDonHang.MaChuyenHangDonHang, null, true);
+
             _tChiTietChuyenHangDonHangView.RefreshView();
 
             if (chuyenHang == null)
@@ -132,16 +134,21 @@ namespace PhuDinhCommonControl
         {
             if (chuyenHangDonHang == null)
             {
-                _tChiTietChuyenHangDonHangView.FilterChiTietChuyenHangDonHang = null;
+                _tChiTietChuyenHangDonHangView.ViewModel.MainFilter.SetFilter(
+                    PhuDinhData.Filter.Filter_tChiTietChuyenHangDonHang.MaChuyenHangDonHang, null, true);
+
                 _tChiTietChuyenHangDonHangView.RefreshView();
+
                 return;
             }
 
-            _tChiTietChuyenHangDonHangView.FilterChiTietDonHang =
+            _tChiTietChuyenHangDonHangView.ViewModel.RFilter_ChiTietDonHang =
                 (p => p.Xong == false && p.MaDonHang == chuyenHangDonHang.MaDonHang);
-            _tChiTietChuyenHangDonHangView.FilterChiTietChuyenHangDonHang =
-                (p => p.MaChuyenHangDonHang == chuyenHangDonHang.Ma);
-            _tChiTietChuyenHangDonHangView.tChuyenHangDonHangDefault = chuyenHangDonHang;
+
+            _tChiTietChuyenHangDonHangView.ViewModel.MainFilter.SetFilter(
+                PhuDinhData.Filter.Filter_tChiTietChuyenHangDonHang.MaChuyenHangDonHang, chuyenHangDonHang.Ma);
+            
+            _tChiTietChuyenHangDonHangView.ViewModel.tChuyenHangDonHangDefault = chuyenHangDonHang;
             _tChiTietChuyenHangDonHangView.RefreshView();
         }
     }
