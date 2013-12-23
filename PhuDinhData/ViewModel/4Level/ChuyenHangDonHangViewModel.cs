@@ -19,9 +19,6 @@ namespace PhuDinhData.ViewModel
 
         private string _filterDonHang = string.Empty;
 
-        public Expression<Func<tChuyenHang, bool>> RFilter_ChuyenHang { get; set; }
-        public Expression<Func<tDonHang, bool>> RFilter_DonHang { get; set; }
-
         public static HeaderTextFilterModel Header_ChuyenHang = new HeaderTextFilterModel(Constant.ColumnName_ChuyenHang);
         public static HeaderTextFilterModel Header_DonHang = new HeaderTextFilterModel(Constant.ColumnName_DonHang);
 
@@ -30,8 +27,9 @@ namespace PhuDinhData.ViewModel
             Entity = new ObservableCollection<tChuyenHangDonHang>();
 
             MainFilter = new Filter_tChuyenHangDonHang();
-            RFilter_ChuyenHang = (p => true);
-            RFilter_DonHang = (p => true);
+
+            SetReferenceFilter<tChuyenHang>(Constant.ColumnName_ChuyenHang, (p => true));
+            SetReferenceFilter<tDonHang>(Constant.ColumnName_DonHang, (p => true));
         }
 
         public override void Load()
@@ -43,9 +41,9 @@ namespace PhuDinhData.ViewModel
             Header_ChuyenHang.PropertyChanged += Header_ChuyenHang_PropertyChanged;
             Header_DonHang.PropertyChanged += Header_DonHang_PropertyChanged;
 
-            DonHangViewModel.Header_KhachHang.Text = _filterChuyenHang;
+            ChuyenHangDonHangViewModel.Header_ChuyenHang.Text = _filterChuyenHang;
 
-            DonHangViewModel.Header_KhachHangChanh.Text = _filterDonHang;
+            ChuyenHangDonHangViewModel.Header_DonHang.Text = _filterDonHang;
 
             _isLoading = false;
         }
@@ -57,9 +55,9 @@ namespace PhuDinhData.ViewModel
             Header_ChuyenHang.PropertyChanged -= Header_ChuyenHang_PropertyChanged;
             Header_DonHang.PropertyChanged -= Header_DonHang_PropertyChanged;
 
-            _filterChuyenHang = DonHangViewModel.Header_KhachHang.Text;
+            _filterChuyenHang = ChuyenHangDonHangViewModel.Header_ChuyenHang.Text;
 
-            _filterDonHang = DonHangViewModel.Header_KhachHangChanh.Text;
+            _filterDonHang = ChuyenHangDonHangViewModel.Header_DonHang.Text;
         }
 
         void Header_ChuyenHang_PropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -100,12 +98,16 @@ namespace PhuDinhData.ViewModel
 
         private void UpdateChuyenHangReferenceData()
         {
-            UpdateReferenceData(out _tChuyenHangs, RFilter_ChuyenHang, (p => p.tChuyenHangList = _tChuyenHangs));
+            UpdateReferenceData(out _tChuyenHangs
+                , GetReferenceFilter<tChuyenHang>(Constant.ColumnName_ChuyenHang)
+                , (p => p.tChuyenHangList = _tChuyenHangs));
         }
 
         private void UpdateDonHangReferenceData()
         {
-            UpdateReferenceData(out _tDonHangs, RFilter_DonHang, (p => p.tDonHangList = _tDonHangs));
+            UpdateReferenceData(out _tDonHangs
+                , GetReferenceFilter<tDonHang>(Constant.ColumnName_DonHang)
+                , (p => p.tDonHangList = _tDonHangs));
         }
 
         protected override void UpdateAllReferenceData()

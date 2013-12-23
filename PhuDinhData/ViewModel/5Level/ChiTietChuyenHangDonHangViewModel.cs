@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
-using System.Linq.Expressions;
 using PhuDinhCommon;
 using PhuDinhData.Filter;
 using PhuDinhData.ViewModel.DataGridColumnHeaderFilterModel;
@@ -19,9 +18,6 @@ namespace PhuDinhData.ViewModel
 
         private string _filterChiTietDonHang = string.Empty;
 
-        public Expression<Func<tChuyenHangDonHang, bool>> RFilter_ChuyenHangDonHang { get; set; }
-        public Expression<Func<tChiTietDonHang, bool>> RFilter_ChiTietDonHang { get; set; }
-
         public static HeaderTextFilterModel Header_ChuyenHangDonHang = new HeaderTextFilterModel(Constant.ColumnName_ChuyenHangDonHang);
         public static HeaderTextFilterModel Header_ChiTietDonHang = new HeaderTextFilterModel(Constant.ColumnName_ChiTietDonHang);
 
@@ -30,8 +26,9 @@ namespace PhuDinhData.ViewModel
             Entity = new ObservableCollection<tChiTietChuyenHangDonHang>();
 
             MainFilter = new Filter_tChiTietChuyenHangDonHang();
-            RFilter_ChuyenHangDonHang = (p => true);
-            RFilter_ChiTietDonHang = (p => true);
+
+            SetReferenceFilter<tChuyenHangDonHang>(Constant.ColumnName_ChuyenHangDonHang, (p => true));
+            SetReferenceFilter<tChiTietDonHang>(Constant.ColumnName_ChiTietDonHang, (p => true));
         }
 
         public override void Load()
@@ -94,12 +91,16 @@ namespace PhuDinhData.ViewModel
 
         private void UpdateChuyenHangDonHangReferenceData()
         {
-            UpdateReferenceData(out _tChuyenHangDonHangs, RFilter_ChuyenHangDonHang, (p => p.tChuyenHangDonHangList = _tChuyenHangDonHangs));
+            UpdateReferenceData(out _tChuyenHangDonHangs
+                , GetReferenceFilter<tChuyenHangDonHang>(Constant.ColumnName_ChuyenHangDonHang)
+                , (p => p.tChuyenHangDonHangList = _tChuyenHangDonHangs));
         }
 
         private void UpdateChiTietDonHangReferenceData()
         {
-            UpdateReferenceData(out _tChiTietDonHangs, RFilter_ChiTietDonHang, (p => p.tChiTietDonHangList = _tChiTietDonHangs));
+            UpdateReferenceData(out _tChiTietDonHangs
+                , GetReferenceFilter<tChiTietDonHang>(Constant.ColumnName_ChiTietDonHang)
+                , (p => p.tChiTietDonHangList = _tChiTietDonHangs));
         }
 
         protected override void UpdateAllReferenceData()

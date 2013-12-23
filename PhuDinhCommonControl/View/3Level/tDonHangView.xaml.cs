@@ -44,7 +44,7 @@ namespace PhuDinhCommonControl
 
                     _viewModel.UpdateReferenceData(header.Name);
                     break;
-                case Constant.ColumnName_KhachHangChanh:
+                case Constant.ColumnName_Chanh:
                     view = new rKhachHangChanhView();
                     ChildWindowUtils.ShowChildWindow(Constant.ViewName_KhachHangChanh, view);
 

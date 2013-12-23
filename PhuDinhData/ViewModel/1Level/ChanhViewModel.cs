@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
-using System.Linq.Expressions;
 using PhuDinhData.Filter;
 using PhuDinhData.ViewModel.DataGridColumnHeaderFilterModel;
 using System;
@@ -14,18 +13,15 @@ namespace PhuDinhData.ViewModel
         private List<rBaiXe> _rBaiXes;
         private string _filterBaiXe = string.Empty;
 
-        public Expression<Func<rBaiXe, bool>> RFilter_BaiXe { get; set; }
-
-        public rBaiXe rBaiXeDefault { get; set; }
-
         public static HeaderTextFilterModel Header_BaiXe = new HeaderTextFilterModel(Constant.ColumnName_BaiXe);
 
         public ChanhViewModel()
         {
             Entity = new ObservableCollection<rChanh>();
 
-            RFilter_BaiXe = (p => true);
             MainFilter = new Filter_rChanh();
+
+            SetReferenceFilter<rBaiXe>(Constant.ColumnName_BaiXe, (p => true));
         }
 
         public override void Load()
@@ -67,7 +63,7 @@ namespace PhuDinhData.ViewModel
 
         private void UpdateBaiXeReferenceData()
         {
-            UpdateReferenceData(out _rBaiXes, RFilter_BaiXe, (p => p.rBaiXeList = _rBaiXes));
+            UpdateReferenceData(out _rBaiXes, GetReferenceFilter<rBaiXe>(Constant.ColumnName_BaiXe), (p => p.rBaiXeList = _rBaiXes));
         }
 
         protected override void UpdateAllReferenceData()

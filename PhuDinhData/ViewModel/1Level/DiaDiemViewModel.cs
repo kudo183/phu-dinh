@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
-using System.Linq.Expressions;
 using PhuDinhData.Filter;
 using PhuDinhData.ViewModel.DataGridColumnHeaderFilterModel;
 using System;
@@ -14,16 +13,15 @@ namespace PhuDinhData.ViewModel
         private List<rNuoc> _rNuocs;
         private string _filterNuoc = string.Empty;
 
-        public Expression<Func<rNuoc, bool>> RFilter_Nuoc { get; set; }
-
         public static HeaderTextFilterModel Header_Nuoc = new HeaderTextFilterModel(Constant.ColumnName_Nuoc);
 
         public DiaDiemViewModel()
         {
             Entity = new ObservableCollection<rDiaDiem>();
 
-            RFilter_Nuoc = (p => true);
             MainFilter = new Filter_rDiaDiem();
+
+            SetReferenceFilter<rNuoc>(Constant.ColumnName_Nuoc, (p => true));
         }
 
         public override void Load()
@@ -65,7 +63,9 @@ namespace PhuDinhData.ViewModel
 
         private void UpdateNuocReferenceData()
         {
-            UpdateReferenceData(out _rNuocs, RFilter_Nuoc, (p => p.rNuocList = _rNuocs));
+            UpdateReferenceData(out _rNuocs
+                , GetReferenceFilter<rNuoc>(Constant.ColumnName_Nuoc)
+                , (p => p.rNuocList = _rNuocs));
         }
 
         protected override void UpdateAllReferenceData()

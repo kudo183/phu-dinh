@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
-using System.Linq.Expressions;
 using PhuDinhCommon;
 using PhuDinhData.Filter;
 using PhuDinhData.ViewModel.DataGridColumnHeaderFilterModel;
@@ -22,20 +21,18 @@ namespace PhuDinhData.ViewModel
 
         private string _filterChanh = string.Empty;
 
-        public Expression<Func<rKhachHang, bool>> RFilter_KhachHang { get; set; }
-        public Expression<Func<rChanh, bool>> RFilter_Chanh { get; set; }
-
         public static HeaderDateFilterModel Header_Ngay = new HeaderDateFilterModel(Constant.ColumnName_Ngay);
         public static HeaderTextFilterModel Header_KhachHang = new HeaderTextFilterModel(Constant.ColumnName_KhachHang);
-        public static HeaderTextFilterModel Header_KhachHangChanh = new HeaderTextFilterModel(Constant.ColumnName_KhachHangChanh);
+        public static HeaderTextFilterModel Header_Chanh = new HeaderTextFilterModel(Constant.ColumnName_Chanh);
 
         public DonHangViewModel()
         {
             Entity = new ObservableCollection<tDonHang>();
 
             MainFilter = new Filter_tDonHang();
-            RFilter_KhachHang = (p => true);
-            RFilter_Chanh = (p => true);
+
+            SetReferenceFilter<rKhachHang>(Constant.ColumnName_KhachHang, (p => true));
+            SetReferenceFilter<rChanh>(Constant.ColumnName_Chanh, (p => true));
         }
 
         public override void Load()
@@ -46,14 +43,14 @@ namespace PhuDinhData.ViewModel
 
             Header_Ngay.PropertyChanged += Header_Ngay_PropertyChanged;
             Header_KhachHang.PropertyChanged += Header_KhachHang_PropertyChanged;
-            Header_KhachHangChanh.PropertyChanged += Header_KhachHangChanh_PropertyChanged;
+            Header_Chanh.PropertyChanged += Header_Chanh_PropertyChanged;
 
             DonHangViewModel.Header_Ngay.Date = _filterDate;
             DonHangViewModel.Header_Ngay.IsUsed = _isUsedDateFilter;
 
             DonHangViewModel.Header_KhachHang.Text = _filterKhachHang;
 
-            DonHangViewModel.Header_KhachHangChanh.Text = _filterChanh;
+            DonHangViewModel.Header_Chanh.Text = _filterChanh;
 
             _isLoading = false;
         }
@@ -64,14 +61,14 @@ namespace PhuDinhData.ViewModel
 
             Header_Ngay.PropertyChanged -= Header_Ngay_PropertyChanged;
             Header_KhachHang.PropertyChanged -= Header_KhachHang_PropertyChanged;
-            Header_KhachHangChanh.PropertyChanged -= Header_KhachHangChanh_PropertyChanged;
+            Header_Chanh.PropertyChanged -= Header_Chanh_PropertyChanged;
 
             _filterDate = DonHangViewModel.Header_Ngay.Date;
             _isUsedDateFilter = DonHangViewModel.Header_Ngay.IsUsed;
 
             _filterKhachHang = DonHangViewModel.Header_KhachHang.Text;
 
-            _filterChanh = DonHangViewModel.Header_KhachHangChanh.Text;
+            _filterChanh = DonHangViewModel.Header_Chanh.Text;
         }
 
         void Header_Ngay_PropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -95,9 +92,9 @@ namespace PhuDinhData.ViewModel
             OnHeaderFilterChanged();
         }
 
-        void Header_KhachHangChanh_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        void Header_Chanh_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            MainFilter.SetFilter(Filter_tDonHang.TenChanh, DonHangViewModel.Header_KhachHangChanh.Text);
+            MainFilter.SetFilter(Filter_tDonHang.TenChanh, DonHangViewModel.Header_Chanh.Text);
 
             OnHeaderFilterChanged();
         }
@@ -123,18 +120,22 @@ namespace PhuDinhData.ViewModel
 
         private void UpdateKhachHangReferenceData()
         {
-            UpdateReferenceData(out _rKhachHangs, RFilter_KhachHang, (p => p.rKhachHangList = _rKhachHangs));
+            UpdateReferenceData(out _rKhachHangs
+                , GetReferenceFilter<rKhachHang>(Constant.ColumnName_KhachHang)
+                , (p => p.rKhachHangList = _rKhachHangs));
         }
 
-        private void UpdateKhachHangChanhReferenceData()
+        private void UpdateChanhReferenceData()
         {
-            UpdateReferenceData(out _rChanhs, RFilter_Chanh, (p => p.rChanhList = _rChanhs));
+            UpdateReferenceData(out _rChanhs, 
+                GetReferenceFilter<rChanh>(Constant.ColumnName_Chanh), 
+                (p => p.rChanhList = _rChanhs));
         }
 
         protected override void UpdateAllReferenceData()
         {
             UpdateKhachHangReferenceData();
-            UpdateKhachHangChanhReferenceData();
+            UpdateChanhReferenceData();
         }
 
         public override void UpdateReferenceData(string columnName)
@@ -144,8 +145,8 @@ namespace PhuDinhData.ViewModel
                 case Constant.ColumnName_KhachHang:
                     UpdateKhachHangReferenceData();
                     break;
-                case Constant.ColumnName_KhachHangChanh:
-                    UpdateKhachHangChanhReferenceData();
+                case Constant.ColumnName_Chanh:
+                    UpdateChanhReferenceData();
                     break;
             }
         }

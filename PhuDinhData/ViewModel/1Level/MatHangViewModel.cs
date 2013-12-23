@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
-using System.Linq.Expressions;
 using PhuDinhData.Filter;
 using PhuDinhData.ViewModel.DataGridColumnHeaderFilterModel;
 using System;
@@ -14,16 +13,15 @@ namespace PhuDinhData.ViewModel
         private List<rLoaiHang> _rLoaiHangs;
         private string _filterLoaiHang = string.Empty;
 
-        public Expression<Func<rLoaiHang, bool>> RFilter_LoaiHang { get; set; }
-
         public static HeaderTextFilterModel Header_LoaiHang = new HeaderTextFilterModel(Constant.ColumnName_LoaiHang);
 
         public MatHangViewModel()
         {
             Entity = new ObservableCollection<tMatHang>();
 
-            RFilter_LoaiHang = (p => true);
             MainFilter = new Filter_tMatHang();
+
+            SetReferenceFilter<rLoaiHang>(Constant.ColumnName_LoaiHang, (p => true));
         }
 
         public override void Load()
@@ -65,7 +63,9 @@ namespace PhuDinhData.ViewModel
 
         private void UpdateLoaiHangReferenceData()
         {
-            UpdateReferenceData(out _rLoaiHangs, RFilter_LoaiHang, (p => p.rLoaiHangList = _rLoaiHangs));
+            UpdateReferenceData(out _rLoaiHangs
+                , GetReferenceFilter<rLoaiHang>(Constant.ColumnName_LoaiHang)
+                , (p => p.rLoaiHangList = _rLoaiHangs));
         }
 
         protected override void UpdateAllReferenceData()

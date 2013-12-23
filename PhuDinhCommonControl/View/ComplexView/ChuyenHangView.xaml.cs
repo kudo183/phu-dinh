@@ -127,7 +127,8 @@ namespace PhuDinhCommonControl
                 return;
             }
 
-            //_tChuyenHangDonHangView.ViewModel.RFilter_DonHang = (p => p.Xong == false);
+            _tChuyenHangDonHangView.ViewModel.
+                SetReferenceFilter<PhuDinhData.tDonHang>(Constant.ColumnName_DonHang, (p => p.Xong == false));
 
             _tChuyenHangDonHangView.ViewModel.MainFilter.
                 SetFilter(PhuDinhData.Filter.Filter_tChuyenHangDonHang.MaChuyenHang, chuyenHang.Ma);
@@ -148,8 +149,9 @@ namespace PhuDinhCommonControl
                 return;
             }
 
-            //_tChiTietChuyenHangDonHangView.ViewModel.RFilter_ChiTietDonHang =
-            //    (p => p.Xong == false && p.MaDonHang == chuyenHangDonHang.MaDonHang);
+            _tChiTietChuyenHangDonHangView.ViewModel.
+                SetReferenceFilter<PhuDinhData.tChiTietDonHang>(Constant.ColumnName_ChiTietDonHang
+                , (p => p.Xong == false && p.MaDonHang == chuyenHangDonHang.MaDonHang));
 
             _tChiTietChuyenHangDonHangView.ViewModel.MainFilter.SetFilter(
                 PhuDinhData.Filter.Filter_tChiTietChuyenHangDonHang.MaChuyenHangDonHang, chuyenHangDonHang.Ma);

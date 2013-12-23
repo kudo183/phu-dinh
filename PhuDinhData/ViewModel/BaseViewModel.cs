@@ -26,7 +26,8 @@ namespace PhuDinhData.ViewModel
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private Dictionary<string, object> _defaultValues = new Dictionary<string, object>();
+        private readonly Dictionary<string, object> _defaultValues = new Dictionary<string, object>();
+        private readonly Dictionary<string, LambdaExpression> _referenceFilters = new Dictionary<string, LambdaExpression>();
 
         private int _currentPageIndex = 1;
         public int CurrentPageIndex
@@ -131,6 +132,27 @@ namespace PhuDinhData.ViewModel
             if (_defaultValues.ContainsKey(columnName))
             {
                 return _defaultValues[columnName];
+            }
+
+            return null;
+        }
+
+        public void SetReferenceFilter<T1>(string columnName, Expression<Func<T1, bool>> filter) where T1 : class
+        {
+            if (_referenceFilters.ContainsKey(columnName))
+            {
+                _referenceFilters[columnName] = filter;
+                return;
+            }
+
+            _referenceFilters.Add(columnName, filter);
+        }
+
+        public Expression<Func<T1, bool>> GetReferenceFilter<T1>(string columnName) where T1 : class
+        {
+            if (_referenceFilters.ContainsKey(columnName))
+            {
+                return _referenceFilters[columnName] as Expression<Func<T1, bool>>;
             }
 
             return null;
