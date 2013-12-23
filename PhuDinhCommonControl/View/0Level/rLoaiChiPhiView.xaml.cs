@@ -8,7 +8,7 @@ namespace PhuDinhCommonControl
     /// <summary>
     /// Interaction logic for rLoaiChiPhiView.xaml
     /// </summary>
-    public partial class rLoaiChiPhiView : BaseView
+    public partial class rLoaiChiPhiView : BaseView<PhuDinhData.rLoaiChiPhi>
     {
         public Expression<Func<PhuDinhData.rLoaiChiPhi, bool>> FilterLoaiChiPhi { get; set; }
 

@@ -11,7 +11,7 @@ namespace PhuDinhCommonControl
     /// <summary>
     /// Interaction logic for tChuyenHangView.xaml
     /// </summary>
-    public partial class tChuyenHangView : BaseView
+    public partial class tChuyenHangView : BaseView<PhuDinhData.tChuyenHang>
     {
         public Expression<Func<PhuDinhData.tChuyenHang, bool>> FilterChuyenHang { get; set; }
         public Expression<Func<PhuDinhData.rNhanVien, bool>> FilterNhanVien { get; set; }

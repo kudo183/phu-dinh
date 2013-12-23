@@ -8,7 +8,7 @@ namespace PhuDinhCommonControl
     /// <summary>
     /// Interaction logic for rNuocView.xaml
     /// </summary>
-    public partial class rNuocView : BaseView
+    public partial class rNuocView : BaseView<PhuDinhData.rNuoc>
     {
         public Expression<Func<PhuDinhData.rNuoc, bool>> FilterNuoc { get; set; }
 

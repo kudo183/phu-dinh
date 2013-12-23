@@ -11,7 +11,7 @@ namespace PhuDinhCommonControl
     /// <summary>
     /// Interaction logic for rKhachHangView.xaml
     /// </summary>
-    public partial class rKhachHangView : BaseView
+    public partial class rKhachHangView : BaseView<PhuDinhData.rKhachHang>
     {
         public Expression<Func<PhuDinhData.rKhachHang, bool>> FilterKhachHang { get; set; }
         public Expression<Func<PhuDinhData.rDiaDiem, bool>> FilterDiaDiem { get; set; }

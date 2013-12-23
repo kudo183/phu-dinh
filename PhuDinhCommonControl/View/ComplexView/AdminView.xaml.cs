@@ -8,7 +8,7 @@ namespace PhuDinhCommonControl
     /// </summary>
     public partial class AdminView : UserControl
     {
-        Dictionary<string, BaseView> _dictView = new Dictionary<string, BaseView>();
+        Dictionary<string, UserControl> _dictView = new Dictionary<string, UserControl>();
         public AdminView()
         {
             InitializeComponent();
@@ -20,7 +20,7 @@ namespace PhuDinhCommonControl
             brdContent.Child = GetView(item.Header.ToString());
         }
 
-        private BaseView GetView(string name)
+        private UserControl GetView(string name)
         {
             if (_dictView.ContainsKey(name))
             {

@@ -7,7 +7,7 @@ namespace PhuDinhCommonControl
     /// <summary>
     /// Interaction logic for rChanhView.xaml
     /// </summary>
-    public partial class rChanhView : BaseView
+    public partial class rChanhView : BaseView<PhuDinhData.rChanh>
     {
         private readonly ChanhViewModel _viewModel = new ChanhViewModel();
         public ChanhViewModel ViewModel { get { return _viewModel; } }

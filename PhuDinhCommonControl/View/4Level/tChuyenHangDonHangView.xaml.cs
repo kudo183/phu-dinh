@@ -3,13 +3,14 @@ using System.Windows.Controls.Primitives;
 using PhuDinhCommon;
 using PhuDinhData.ViewModel;
 using PhuDinhData.ViewModel.DataGridColumnHeaderFilterModel;
+using System.Windows.Controls;
 
 namespace PhuDinhCommonControl
 {
     /// <summary>
     /// Interaction logic for tChuyenHangDonHangView.xaml
     /// </summary>
-    public partial class tChuyenHangDonHangView : BaseView
+    public partial class tChuyenHangDonHangView : BaseView<PhuDinhData.tChuyenHangDonHang>
     {
         private readonly ChuyenHangDonHangViewModel _viewModel = new ChuyenHangDonHangViewModel();
         public ChuyenHangDonHangViewModel ViewModel { get { return _viewModel; } }
@@ -51,20 +52,18 @@ namespace PhuDinhCommonControl
 
             var header = (sender as DataGridColumnHeader).Content as IHeaderFilterModel;
 
-            BaseView view = null;
+            UserControl view = null;
 
             switch (header.Name)
             {
                 case Constant.ColumnName_ChuyenHang:
                     view = new tChuyenHangView();
-                    view.RefreshView();
                     ChildWindowUtils.ShowChildWindow(Constant.ViewName_ChuyenHang, view);
 
                     _viewModel.UpdateChuyenHangReferenceData();
                     break;
                 case Constant.ColumnName_DonHang:
                     view = new tDonHangView();
-                    view.RefreshView();
                     ChildWindowUtils.ShowChildWindow(Constant.ViewName_DonHang, view);
 
                     _viewModel.UpdateDonHangReferenceData();

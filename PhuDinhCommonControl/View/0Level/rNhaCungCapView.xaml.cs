@@ -8,7 +8,7 @@ namespace PhuDinhCommonControl
     /// <summary>
     /// Interaction logic for rNhaCungCapView.xaml
     /// </summary>
-    public partial class rNhaCungCapView : BaseView
+    public partial class rNhaCungCapView : BaseView<PhuDinhData.rNhaCungCap>
     {
         public Expression<Func<PhuDinhData.rNhaCungCap, bool>> FilterNhaCungCap { get; set; }
 

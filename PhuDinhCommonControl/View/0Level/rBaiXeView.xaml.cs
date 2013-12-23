@@ -8,7 +8,7 @@ namespace PhuDinhCommonControl
     /// <summary>
     /// Interaction logic for rBaiXeView.xaml
     /// </summary>
-    public partial class rBaiXeView : BaseView
+    public partial class rBaiXeView : BaseView<PhuDinhData.rBaiXe>
     {
         public Expression<Func<PhuDinhData.rBaiXe, bool>> FilterBaiXe { get; set; }
 

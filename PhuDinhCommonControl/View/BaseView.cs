@@ -5,7 +5,7 @@ using System.Windows.Input;
 
 namespace PhuDinhCommonControl
 {
-    public class BaseView : UserControl
+    public class BaseView<T> : UserControl where T : class
     {
         public event EventHandler AfterSave;
         public event EventHandler AfterCancel;
@@ -33,7 +33,7 @@ namespace PhuDinhCommonControl
 
         public virtual void CommitEdit()
         {
-            
+
         }
 
         public virtual void RefreshView()

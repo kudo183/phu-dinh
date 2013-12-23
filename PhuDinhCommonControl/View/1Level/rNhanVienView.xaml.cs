@@ -11,7 +11,7 @@ namespace PhuDinhCommonControl
     /// <summary>
     /// Interaction logic for View.xaml
     /// </summary>
-    public partial class rNhanVienView : BaseView
+    public partial class rNhanVienView : BaseView<PhuDinhData.rNhanVien>
     {
         public Filter_rNhanVien FilterNhanVien { get; set; }
         public Expression<Func<PhuDinhData.rPhuongTien, bool>> FilterPhuongTien { get; set; }

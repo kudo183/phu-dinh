@@ -5,6 +5,7 @@ using System.Collections.Specialized;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using PhuDinhCommon;
 
@@ -13,7 +14,7 @@ namespace PhuDinhCommonControl
     /// <summary>
     /// Interaction logic for rKhachHangChanhView.xaml
     /// </summary>
-    public partial class rKhachHangChanhView : BaseView
+    public partial class rKhachHangChanhView : BaseView<PhuDinhData.rKhachHangChanh>
     {
         public Filter_rKhachHangChanh FilterKhachHangChanh { get; set; }
         public Expression<Func<PhuDinhData.rKhachHang, bool>> FilterKhachHang { get; set; }
@@ -180,20 +181,18 @@ namespace PhuDinhCommonControl
 
             var header = (sender as DataGridColumnHeader).Content as DataGridColumnHeaderTextFilter;
 
-            BaseView view = null;
+            UserControl view = null;
 
             switch (header.Name)
             {
                 case Constant.ViewName_KhachHang:
                     view = new rKhachHangView();
-                    view.RefreshView();
                     ChildWindowUtils.ShowChildWindow(header.Name, view);
 
                     UpdateKhachHangReferenceData();
                     break;
                 case Constant.ViewName_Chanh:
                     view = new rChanhView();
-                    view.RefreshView();
                     ChildWindowUtils.ShowChildWindow(header.Name, view);
 
                     UpdateChanhReferenceData();

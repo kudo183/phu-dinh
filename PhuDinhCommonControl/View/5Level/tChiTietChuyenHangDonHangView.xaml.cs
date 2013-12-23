@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using PhuDinhCommon;
 using PhuDinhData.ViewModel;
@@ -9,7 +10,7 @@ namespace PhuDinhCommonControl
     /// <summary>
     /// Interaction logic for tChiTietChuyenHangDonHangView.xaml
     /// </summary>
-    public partial class tChiTietChuyenHangDonHangView : BaseView
+    public partial class tChiTietChuyenHangDonHangView : BaseView<PhuDinhData.tChiTietChuyenHangDonHang>
     {
         private readonly ChiTietChuyenHangDonHangViewModel _viewModel = new ChiTietChuyenHangDonHangViewModel();
         public ChiTietChuyenHangDonHangViewModel ViewModel { get { return _viewModel; } }
@@ -51,20 +52,18 @@ namespace PhuDinhCommonControl
 
             var header = (sender as DataGridColumnHeader).Content as IHeaderFilterModel;
 
-            BaseView view = null;
+            UserControl view = null;
 
             switch (header.Name)
             {
                 case Constant.ColumnName_ChuyenHangDonHang:
-                    view = new tChuyenHangDonHangView();
-                    view.RefreshView();
+                    view = new tChuyenHangDonHangView();                    
                     ChildWindowUtils.ShowChildWindow(Constant.ViewName_ChuyenHangDonHang, view);
 
                     _viewModel.UpdateChuyenHangDonHangReferenceData();
                     break;
                 case Constant.ColumnName_ChiTietDonHang:
-                    view = new tMatHangView();
-                    view.RefreshView();
+                    view = new tMatHangView();                    
                     ChildWindowUtils.ShowChildWindow(Constant.ViewName_ChiTietDonHang, view);
 
                     _viewModel.UpdateChiTietDonHangReferenceData();

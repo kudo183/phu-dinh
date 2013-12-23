@@ -8,7 +8,7 @@ namespace PhuDinhCommonControl
     /// <summary>
     /// Interaction logic for rLoaiHangView.xaml
     /// </summary>
-    public partial class rLoaiHangView : BaseView
+    public partial class rLoaiHangView : BaseView<PhuDinhData.rLoaiHang>
     {
         public Expression<Func<PhuDinhData.rLoaiHang, bool>> FilterLoaiHang { get; set; }
 

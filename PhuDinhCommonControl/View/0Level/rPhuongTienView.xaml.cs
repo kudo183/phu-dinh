@@ -8,7 +8,7 @@ namespace PhuDinhCommonControl
     /// <summary>
     /// Interaction logic for rPhuongTienView.xaml
     /// </summary>
-    public partial class rPhuongTienView : BaseView
+    public partial class rPhuongTienView : BaseView<PhuDinhData.rPhuongTien>
     {
         public Expression<Func<PhuDinhData.rPhuongTien, bool>> FilterPhuongTien { get; set; }
 

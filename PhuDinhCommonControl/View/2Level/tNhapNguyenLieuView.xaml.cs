@@ -5,6 +5,7 @@ using System.Collections.Specialized;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 
 namespace PhuDinhCommonControl
@@ -12,7 +13,7 @@ namespace PhuDinhCommonControl
     /// <summary>
     /// Interaction logic for tNhapNguyenLieuView.xaml
     /// </summary>
-    public partial class tNhapNguyenLieuView : BaseView
+    public partial class tNhapNguyenLieuView : BaseView<PhuDinhData.tNhapNguyenLieu>
     {
         public Filter_tNhapNguyenLieu FilterChiPhi { get; set; }
         public Expression<Func<PhuDinhData.rNguyenLieu, bool>> FilterNguyenLieu { get; set; }
@@ -165,20 +166,18 @@ namespace PhuDinhCommonControl
 
             var header = sender as DataGridColumnHeader;
 
-            BaseView view = null;
+            UserControl view = null;
 
             switch (header.Content.ToString())
             {
                 case "Nhà Cung Cấp":
                     view = new rNhaCungCapView();
-                    view.RefreshView();
                     ChildWindowUtils.ShowChildWindow("Nhà Cung Cấp", view);
 
                     UpdateNhanVienGiaoHangReferenceData();
                     break;
                 case "Nguyên Liệu":
                     view = new rNguyenLieuView();
-                    view.RefreshView();
                     ChildWindowUtils.ShowChildWindow("Nguyên Liệu", view);
 
                     UpdateLoaiChiPhiReferenceData();

@@ -7,7 +7,7 @@ namespace PhuDinhCommonControl
     /// <summary>
     /// Interaction logic for View.xaml
     /// </summary>
-    public partial class tMatHangView : BaseView
+    public partial class tMatHangView : BaseView<PhuDinhData.tMatHang>
     {
         private readonly MatHangViewModel _viewModel = new MatHangViewModel();
         public MatHangViewModel ViewModel { get { return _viewModel; } }

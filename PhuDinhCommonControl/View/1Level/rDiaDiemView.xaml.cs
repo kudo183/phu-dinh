@@ -1,10 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Collections.Specialized;
-using System.Data.Entity;
-using System.Linq;
-using System.Linq.Expressions;
 using PhuDinhData.ViewModel;
 using PhuDinhCommon;
 
@@ -13,7 +7,7 @@ namespace PhuDinhCommonControl
     /// <summary>
     /// Interaction logic for rDiaDiemView.xaml
     /// </summary>
-    public partial class rDiaDiemView : BaseView
+    public partial class rDiaDiemView : BaseView<PhuDinhData.rDiaDiem>
     {
         private readonly DiaDiemViewModel _viewModel = new DiaDiemViewModel();
         public DiaDiemViewModel ViewModel { get { return _viewModel; } }

@@ -8,7 +8,7 @@ namespace PhuDinhCommonControl
     /// <summary>
     /// Interaction logic for rLoaiNguyenLieuView.xaml
     /// </summary>
-    public partial class rLoaiNguyenLieuView : BaseView
+    public partial class rLoaiNguyenLieuView : BaseView<PhuDinhData.rLoaiNguyenLieu>
     {
         public Expression<Func<PhuDinhData.rLoaiNguyenLieu, bool>> FilterLoaiNguyenLieu { get; set; }
 

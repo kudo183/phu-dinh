@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using PhuDinhCommon;
 using PhuDinhData.ViewModel;
@@ -9,7 +10,7 @@ namespace PhuDinhCommonControl
     /// <summary>
     /// Interaction logic for tDonHangView.xaml
     /// </summary>
-    public partial class tDonHangView : BaseView
+    public partial class tDonHangView : BaseView<PhuDinhData.tDonHang>
     {
         private readonly DonHangViewModel _viewModel = new DonHangViewModel();
         public DonHangViewModel ViewModel { get { return _viewModel; } }
@@ -57,20 +58,18 @@ namespace PhuDinhCommonControl
             var header = (sender as DataGridColumnHeader).Content as IHeaderFilterModel;
             LogManager.Log(event_type.et_Internal, severity_type.st_info, string.Format("{0} {1}", "Header Add Button Click", header.Name));
 
-            BaseView view = null;
+            UserControl view = null;
 
             switch (header.Name)
             {
                 case Constant.ColumnName_KhachHang:
                     view = new rKhachHangView();
-                    view.RefreshView();
                     ChildWindowUtils.ShowChildWindow(Constant.ViewName_KhachHang, view);
 
                     _viewModel.UpdateKhachHangReferenceData();
                     break;
                 case Constant.ColumnName_KhachHangChanh:
                     view = new rKhachHangChanhView();
-                    view.RefreshView();
                     ChildWindowUtils.ShowChildWindow(Constant.ViewName_KhachHangChanh, view);
 
                     _viewModel.UpdateChanhReferenceData();

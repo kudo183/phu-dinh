@@ -1,12 +1,13 @@
 ﻿using PhuDinhCommon;
+using System.Windows.Controls;
 
 namespace PhuDinhCommonControl
 {
     public static class ViewFactory
     {
-        public static BaseView CreateView(string viewName)
+        public static UserControl CreateView(string viewName)
         {
-            BaseView view = null;
+            UserControl view = null;
             switch (viewName)
             {
                 //0Level
