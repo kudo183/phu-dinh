@@ -28,21 +28,21 @@ namespace PhuDinhData.ViewModel
         {
             Entity.CollectionChanged += Entity_CollectionChanged;
 
-            MatHangViewModel.Header_LoaiHang.Text = _filterLoaiHang;
-            MatHangViewModel.Header_LoaiHang.PropertyChanged += Header_LoaiHang_PropertyChanged;
+            Header_LoaiHang.Text = _filterLoaiHang;
+            Header_LoaiHang.PropertyChanged += Header_LoaiHang_PropertyChanged;
         }
 
         public override void Unload()
         {
             Entity.CollectionChanged -= Entity_CollectionChanged;
 
-            _filterLoaiHang = MatHangViewModel.Header_LoaiHang.Text;
-            MatHangViewModel.Header_LoaiHang.PropertyChanged -= Header_LoaiHang_PropertyChanged;
+            _filterLoaiHang = Header_LoaiHang.Text;
+            Header_LoaiHang.PropertyChanged -= Header_LoaiHang_PropertyChanged;
         }
 
         void Header_LoaiHang_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            MainFilter.SetFilter(Filter_tMatHang.TenLoaiHang, MatHangViewModel.Header_LoaiHang.Text);
+            MainFilter.SetFilter(Filter_tMatHang.TenLoaiHang, Header_LoaiHang.Text);
 
             OnHeaderFilterChanged();
         }

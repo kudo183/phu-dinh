@@ -28,21 +28,21 @@ namespace PhuDinhData.ViewModel
         {
             Entity.CollectionChanged += Entity_CollectionChanged;
 
-            ChanhViewModel.Header_BaiXe.Text = _filterBaiXe;
-            ChanhViewModel.Header_BaiXe.PropertyChanged += Header_BaiXe_PropertyChanged;
+            Header_BaiXe.Text = _filterBaiXe;
+            Header_BaiXe.PropertyChanged += Header_BaiXe_PropertyChanged;
         }
 
         public override void Unload()
         {
             Entity.CollectionChanged -= Entity_CollectionChanged;
 
-            _filterBaiXe = ChanhViewModel.Header_BaiXe.Text;
-            ChanhViewModel.Header_BaiXe.PropertyChanged -= Header_BaiXe_PropertyChanged;
+            _filterBaiXe = Header_BaiXe.Text;
+            Header_BaiXe.PropertyChanged -= Header_BaiXe_PropertyChanged;
         }
 
         void Header_BaiXe_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            MainFilter.SetFilter(Filter_rChanh.DiaDiemBaiXe, ChanhViewModel.Header_BaiXe.Text);
+            MainFilter.SetFilter(Filter_rChanh.DiaDiemBaiXe, Header_BaiXe.Text);
 
             OnHeaderFilterChanged();
         }

@@ -45,12 +45,12 @@ namespace PhuDinhData.ViewModel
             Header_KhachHang.PropertyChanged += Header_KhachHang_PropertyChanged;
             Header_Chanh.PropertyChanged += Header_Chanh_PropertyChanged;
 
-            DonHangViewModel.Header_Ngay.Date = _filterDate;
-            DonHangViewModel.Header_Ngay.IsUsed = _isUsedDateFilter;
+            Header_Ngay.Date = _filterDate;
+            Header_Ngay.IsUsed = _isUsedDateFilter;
 
-            DonHangViewModel.Header_KhachHang.Text = _filterKhachHang;
+            Header_KhachHang.Text = _filterKhachHang;
 
-            DonHangViewModel.Header_Chanh.Text = _filterChanh;
+            Header_Chanh.Text = _filterChanh;
 
             _isLoading = false;
         }
@@ -63,19 +63,19 @@ namespace PhuDinhData.ViewModel
             Header_KhachHang.PropertyChanged -= Header_KhachHang_PropertyChanged;
             Header_Chanh.PropertyChanged -= Header_Chanh_PropertyChanged;
 
-            _filterDate = DonHangViewModel.Header_Ngay.Date;
-            _isUsedDateFilter = DonHangViewModel.Header_Ngay.IsUsed;
+            _filterDate = Header_Ngay.Date;
+            _isUsedDateFilter = Header_Ngay.IsUsed;
 
-            _filterKhachHang = DonHangViewModel.Header_KhachHang.Text;
+            _filterKhachHang = Header_KhachHang.Text;
 
-            _filterChanh = DonHangViewModel.Header_Chanh.Text;
+            _filterChanh = Header_Chanh.Text;
         }
 
         void Header_Ngay_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (DonHangViewModel.Header_Ngay.IsUsed)
+            if (Header_Ngay.IsUsed)
             {
-                MainFilter.SetFilter(Filter_tDonHang.Ngay, DonHangViewModel.Header_Ngay.Date);
+                MainFilter.SetFilter(Filter_tDonHang.Ngay, Header_Ngay.Date);
             }
             else
             {
@@ -87,14 +87,14 @@ namespace PhuDinhData.ViewModel
 
         void Header_KhachHang_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            MainFilter.SetFilter(Filter_tDonHang.TenKhachHang, DonHangViewModel.Header_KhachHang.Text);
+            MainFilter.SetFilter(Filter_tDonHang.TenKhachHang, Header_KhachHang.Text);
 
             OnHeaderFilterChanged();
         }
 
         void Header_Chanh_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            MainFilter.SetFilter(Filter_tDonHang.TenChanh, DonHangViewModel.Header_Chanh.Text);
+            MainFilter.SetFilter(Filter_tDonHang.TenChanh, Header_Chanh.Text);
 
             OnHeaderFilterChanged();
         }
@@ -105,8 +105,8 @@ namespace PhuDinhData.ViewModel
             {
                 var tDonHang = e.NewItems[0] as tDonHang;
 
-                tDonHang.Ngay = (DonHangViewModel.Header_Ngay.IsUsed)
-                    ? DonHangViewModel.Header_Ngay.Date : DateTime.Now;
+                tDonHang.Ngay = (Header_Ngay.IsUsed)
+                    ? Header_Ngay.Date : DateTime.Now;
 
                 tDonHang.rChanhList = _rChanhs;
                 tDonHang.rKhachHangList = _rKhachHangs;

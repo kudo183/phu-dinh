@@ -40,9 +40,9 @@ namespace PhuDinhData.ViewModel
             Header_KhachHang.PropertyChanged += Header_KhachHang_PropertyChanged;
             Header_Chanh.PropertyChanged += Header_Chanh_PropertyChanged;
 
-            KhachHangChanhViewModel.Header_KhachHang.Text = _filterKhachHang;
+            Header_KhachHang.Text = _filterKhachHang;
 
-            KhachHangChanhViewModel.Header_Chanh.Text = _filterChanh;
+            Header_Chanh.Text = _filterChanh;
 
             _isLoading = false;
         }
@@ -54,21 +54,21 @@ namespace PhuDinhData.ViewModel
             Header_KhachHang.PropertyChanged -= Header_KhachHang_PropertyChanged;
             Header_Chanh.PropertyChanged -= Header_Chanh_PropertyChanged;
 
-            _filterKhachHang = KhachHangChanhViewModel.Header_KhachHang.Text;
+            _filterKhachHang = Header_KhachHang.Text;
 
-            _filterChanh = KhachHangChanhViewModel.Header_Chanh.Text;
+            _filterChanh = Header_Chanh.Text;
         }
 
         void Header_KhachHang_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            MainFilter.SetFilter(Filter_rKhachHangChanh.TenKhachHang, KhachHangChanhViewModel.Header_KhachHang.Text);
+            MainFilter.SetFilter(Filter_rKhachHangChanh.TenKhachHang, Header_KhachHang.Text);
 
             OnHeaderFilterChanged();
         }
 
         void Header_Chanh_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            MainFilter.SetFilter(Filter_rKhachHangChanh.TenChanh, KhachHangChanhViewModel.Header_Chanh.Text);
+            MainFilter.SetFilter(Filter_rKhachHangChanh.TenChanh, Header_Chanh.Text);
 
             OnHeaderFilterChanged();
         }

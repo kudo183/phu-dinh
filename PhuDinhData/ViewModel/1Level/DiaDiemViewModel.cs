@@ -28,21 +28,21 @@ namespace PhuDinhData.ViewModel
         {
             Entity.CollectionChanged += Entity_CollectionChanged;
 
-            DiaDiemViewModel.Header_Nuoc.Text = _filterNuoc;
-            DiaDiemViewModel.Header_Nuoc.PropertyChanged += Header_Nuoc_PropertyChanged;
+            Header_Nuoc.Text = _filterNuoc;
+            Header_Nuoc.PropertyChanged += Header_Nuoc_PropertyChanged;
         }
 
         public override void Unload()
         {
             Entity.CollectionChanged -= Entity_CollectionChanged;
 
-            _filterNuoc = DiaDiemViewModel.Header_Nuoc.Text;
-            DiaDiemViewModel.Header_Nuoc.PropertyChanged -= Header_Nuoc_PropertyChanged;
+            _filterNuoc = Header_Nuoc.Text;
+            Header_Nuoc.PropertyChanged -= Header_Nuoc_PropertyChanged;
         }
 
         void Header_Nuoc_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            MainFilter.SetFilter(Filter_rDiaDiem.TenNuoc, DiaDiemViewModel.Header_Nuoc.Text);
+            MainFilter.SetFilter(Filter_rDiaDiem.TenNuoc, Header_Nuoc.Text);
 
             OnHeaderFilterChanged();
         }

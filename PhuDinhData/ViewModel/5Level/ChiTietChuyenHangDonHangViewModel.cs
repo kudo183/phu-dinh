@@ -40,9 +40,9 @@ namespace PhuDinhData.ViewModel
             Header_ChuyenHangDonHang.PropertyChanged += Header_ChuyenHangDonHang_PropertyChanged;
             Header_ChiTietDonHang.PropertyChanged += Header_ChiTietDonHang_PropertyChanged;
 
-            ChiTietChuyenHangDonHangViewModel.Header_ChuyenHangDonHang.Text = _filterChuyenHangDonHang;
+            Header_ChuyenHangDonHang.Text = _filterChuyenHangDonHang;
 
-            ChiTietChuyenHangDonHangViewModel.Header_ChiTietDonHang.Text = _filterChiTietDonHang;
+            Header_ChiTietDonHang.Text = _filterChiTietDonHang;
 
             _isLoading = false;
         }
@@ -54,21 +54,21 @@ namespace PhuDinhData.ViewModel
             Header_ChuyenHangDonHang.PropertyChanged -= Header_ChuyenHangDonHang_PropertyChanged;
             Header_ChiTietDonHang.PropertyChanged -= Header_ChiTietDonHang_PropertyChanged;
 
-            _filterChuyenHangDonHang = ChiTietChuyenHangDonHangViewModel.Header_ChuyenHangDonHang.Text;
+            _filterChuyenHangDonHang = Header_ChuyenHangDonHang.Text;
 
-            _filterChiTietDonHang = ChiTietChuyenHangDonHangViewModel.Header_ChiTietDonHang.Text;
+            _filterChiTietDonHang = Header_ChiTietDonHang.Text;
         }
 
         void Header_ChuyenHangDonHang_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            MainFilter.SetFilter(Filter_tChiTietChuyenHangDonHang.TenChuyenHangDonHang, ChiTietChuyenHangDonHangViewModel.Header_ChuyenHangDonHang.Text);
+            MainFilter.SetFilter(Filter_tChiTietChuyenHangDonHang.TenChuyenHangDonHang, Header_ChuyenHangDonHang.Text);
 
             OnHeaderFilterChanged();
         }
 
         void Header_ChiTietDonHang_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            MainFilter.SetFilter(Filter_tChiTietChuyenHangDonHang.TenChiTietDonHang, ChiTietChuyenHangDonHangViewModel.Header_ChiTietDonHang.Text);
+            MainFilter.SetFilter(Filter_tChiTietChuyenHangDonHang.TenChiTietDonHang, Header_ChiTietDonHang.Text);
 
             OnHeaderFilterChanged();
         }

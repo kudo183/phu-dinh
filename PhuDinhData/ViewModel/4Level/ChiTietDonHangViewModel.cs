@@ -40,9 +40,9 @@ namespace PhuDinhData.ViewModel
             Header_MatHang.PropertyChanged += Header_MatHang_PropertyChanged;
             Header_DonHang.PropertyChanged += Header_DonHang_PropertyChanged;
 
-            ChiTietDonHangViewModel.Header_MatHang.Text = _filterMatHang;
+            Header_MatHang.Text = _filterMatHang;
 
-            ChiTietDonHangViewModel.Header_DonHang.Text = _filterDonHang;
+            Header_DonHang.Text = _filterDonHang;
 
             _isLoading = false;
         }
@@ -54,21 +54,21 @@ namespace PhuDinhData.ViewModel
             Header_MatHang.PropertyChanged -= Header_MatHang_PropertyChanged;
             Header_DonHang.PropertyChanged -= Header_DonHang_PropertyChanged;
 
-            _filterMatHang = ChiTietDonHangViewModel.Header_MatHang.Text;
+            _filterMatHang = Header_MatHang.Text;
 
-            _filterDonHang = ChiTietDonHangViewModel.Header_DonHang.Text;
+            _filterDonHang = Header_DonHang.Text;
         }
 
         void Header_MatHang_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            MainFilter.SetFilter(Filter_tChiTietDonHang.TenMatHang, ChiTietDonHangViewModel.Header_MatHang.Text);
+            MainFilter.SetFilter(Filter_tChiTietDonHang.TenMatHang, Header_MatHang.Text);
 
             OnHeaderFilterChanged();
         }
 
         void Header_DonHang_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            MainFilter.SetFilter(Filter_tChiTietDonHang.TenDonHang, ChiTietDonHangViewModel.Header_DonHang.Text);
+            MainFilter.SetFilter(Filter_tChiTietDonHang.TenDonHang, Header_DonHang.Text);
 
             OnHeaderFilterChanged();
         }
