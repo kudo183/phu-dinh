@@ -2,16 +2,14 @@
 
 namespace PhuDinhData.Filter
 {
-    public class Filter_tDonHang : FilterBase<tDonHang>
+    public class Filter_rKhachHangChanh : FilterBase<rKhachHangChanh>
     {
         public const string MaKhachHang = "MaKhachHang";
         public const string TenKhachHang = "TenKhachHang";
         public const string MaChanh = "MaChanh";
         public const string TenChanh = "TenChanh";
-        public const string Ngay = "Ngay";
-        public const string Xong = "Xong";
 
-        public Filter_tDonHang()
+        public Filter_rKhachHangChanh()
         {
             IsClearAllData = false;
 
@@ -19,8 +17,6 @@ namespace PhuDinhData.Filter
             _filters[TenKhachHang] = (p => true);
             _filters[MaChanh] = (p => true);
             _filters[TenChanh] = (p => true);
-            _filters[Ngay] = (p => true);
-            _filters[Xong] = (p => true);
 
             UpdateMainFilter();
         }
@@ -40,12 +36,6 @@ namespace PhuDinhData.Filter
                     break;
                 case TenChanh:
                     SetFilterTenChanh(value as string, setFalse);
-                    break;
-                case Ngay:
-                    SetFilterNgay(value as DateTime?, setFalse);
-                    break;
-                case Xong:
-                    SetFilterXong(value as bool?, setFalse);
                     break;
             }
         }
@@ -82,24 +72,6 @@ namespace PhuDinhData.Filter
             IsClearAllData = false;
 
             _filters[TenChanh] = FilterText(tenChanh, setFalse, p => p.rChanh.TenChanh.Contains(tenChanh));
-
-            UpdateMainFilter();
-        }
-
-        private void SetFilterNgay(DateTime? date, bool setFalse = false)
-        {
-            IsClearAllData = false;
-
-            _filters[Ngay] = FilterNullable(date, setFalse, p => p.Ngay == date);
-
-            UpdateMainFilter();
-        }
-
-        private void SetFilterXong(bool? xong, bool setFalse = false)
-        {
-            IsClearAllData = false;
-
-            _filters[Xong] = FilterNullable(xong, setFalse, p => p.Xong == xong);
 
             UpdateMainFilter();
         }

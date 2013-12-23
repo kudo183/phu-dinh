@@ -25,12 +25,16 @@ namespace PhuDinhCommonControl
             var rKhachHang = ((DataGrid)sender).SelectedItem as PhuDinhData.rKhachHang;
             if (rKhachHang == null)
             {
-                _rKhachHangChanhView.FilterKhachHangChanh = null;
+                _rKhachHangChanhView.ViewModel.MainFilter.
+                SetFilter(PhuDinhData.Filter.Filter_rKhachHangChanh.MaKhachHang, null, true);
+
                 _rKhachHangChanhView.RefreshView();
                 return;
             }
 
-            _rKhachHangChanhView.FilterKhachHangChanh.FilterKhachHang = (p => p.MaKhachHang == rKhachHang.Ma);
+            _rKhachHangChanhView.ViewModel.MainFilter.
+                SetFilter(PhuDinhData.Filter.Filter_rKhachHangChanh.MaKhachHang, rKhachHang.Ma);
+
             _rKhachHangChanhView.RefreshView();
         }
     }

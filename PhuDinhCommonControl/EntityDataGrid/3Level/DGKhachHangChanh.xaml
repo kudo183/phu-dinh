@@ -5,14 +5,15 @@
                            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                            xmlns:CustomControl="clr-namespace:CustomControl;assembly=CustomControl"
                            xmlns:DesignTimeData="clr-namespace:PhuDinhData.DesignTimeData;assembly=PhuDinhData"
-                           xmlns:PhuDinhCommonControl="clr-namespace:PhuDinhCommonControl" mc:Ignorable="d"
-                           d:DataContext="{x:Static DesignTimeData:DDrKhachHangChanh.rKhachHangChanhs}"
-                           AutoGenerateColumns="False" EnableRowVirtualization="False" ItemsSource="{Binding}" SelectionMode="Single">
+                           xmlns:ViewModel="clr-namespace:PhuDinhData.ViewModel;assembly=PhuDinhData" mc:Ignorable="d"
+                           d:DataContext="{x:Static DesignTimeData:DDrKhachHangChanh.ViewModel}"
+                           AutoGenerateColumns="False" EnableRowVirtualization="False" ItemsSource="{Binding Entity}" SelectionMode="Single">
     <DataGrid.Columns>
         <!--Ma-->
         <CustomControl:DataGridReadOnlyTextColumn x:Name="maColumn"/>
         <!--Khach hang-->
-        <CustomControl:DataGridComboBoxColumnExt x:Name="khachHangColumn" Header="{x:Static PhuDinhCommonControl:DataGridColumnHeaderTextFilter.KhachHangChanh_KhachHang}"
+        <CustomControl:DataGridComboBoxColumnExt x:Name="khachHangColumn"
+                                                 Header="{x:Static ViewModel:KhachHangChanhViewModel.Header_KhachHang}"
                                                  HeaderAddButtonClick="headerAddButton_Click"
                                                  TextBinding="{Binding rKhachHang.TenKhachHangDiaDiem, Mode=OneWay}"
                                                  DisplayMemberPath="TenKhachHangDiaDiem"
@@ -21,7 +22,8 @@
                                                  SelectedItemBinding="{Binding rKhachHang, UpdateSourceTrigger=PropertyChanged}"
                                                  ItemsSource="{Binding rKhachHangList}"/>
         <!--Chanh-->
-        <CustomControl:DataGridComboBoxColumnExt x:Name="chanhColumn" Header="{x:Static PhuDinhCommonControl:DataGridColumnHeaderTextFilter.KhachHangChanh_Chanh}"
+        <CustomControl:DataGridComboBoxColumnExt x:Name="chanhColumn"
+                                                 Header="{x:Static ViewModel:KhachHangChanhViewModel.Header_Chanh}"
                                                  HeaderAddButtonClick="headerAddButton_Click"
                                                  TextBinding="{Binding rChanh.TenBaiXeChanh, Mode=OneWay}"
                                                  DisplayMemberPath="TenBaiXeChanh"

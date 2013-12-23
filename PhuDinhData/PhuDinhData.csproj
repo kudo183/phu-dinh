@@ -98,6 +98,7 @@
     <Compile Include="EntityExt\rChanhExt.cs" />
     <Compile Include="Filter\1Level\Filter_tMatHang.cs" />
     <Compile Include="Filter\1Level\Filter_rDiaDiem.cs" />
+    <Compile Include="Filter\3Level\Filter_rKhachHangChanh.cs" />
     <Compile Include="Filter\3Level\Filter_tDonHang.cs" />
     <Compile Include="Filter\1Level\Filter_rChanh.cs" />
     <Compile Include="Filter\4Level\Filter_tChiTietDonHang.cs" />
@@ -223,6 +224,7 @@
     </Compile>
     <Compile Include="ViewModel\1Level\MatHangViewModel.cs" />
     <Compile Include="ViewModel\1Level\DiaDiemViewModel.cs" />
+    <Compile Include="ViewModel\3Level\KhachHangChanhViewModel.cs" />
     <Compile Include="ViewModel\4Level\ChuyenHangDonHangViewModel.cs" />
     <Compile Include="ViewModel\4Level\ChiTietDonHangViewModel.cs" />
     <Compile Include="ViewModel\5Level\ChiTietChuyenHangDonHangViewModel.cs" />
