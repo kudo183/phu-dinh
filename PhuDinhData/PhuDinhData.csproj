@@ -100,6 +100,7 @@
     <Compile Include="Filter\1Level\Filter_rDiaDiem.cs" />
     <Compile Include="Filter\3Level\Filter_tDonHang.cs" />
     <Compile Include="Filter\1Level\Filter_rChanh.cs" />
+    <Compile Include="Filter\4Level\Filter_tChiTietDonHang.cs" />
     <Compile Include="Filter\4Level\Filter_tChuyenHangDonHang.cs" />
     <Compile Include="Filter\5Level\Filter_tChiTietChuyenHangDonHang.cs" />
     <Compile Include="Filter\FilterBase.cs" />
@@ -223,6 +224,7 @@
     <Compile Include="ViewModel\1Level\MatHangViewModel.cs" />
     <Compile Include="ViewModel\1Level\DiaDiemViewModel.cs" />
     <Compile Include="ViewModel\4Level\ChuyenHangDonHangViewModel.cs" />
+    <Compile Include="ViewModel\4Level\ChiTietDonHangViewModel.cs" />
     <Compile Include="ViewModel\5Level\ChiTietChuyenHangDonHangViewModel.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\DataGridColumnHeaderFilterModel\HeaderDateFilterModel.cs" />

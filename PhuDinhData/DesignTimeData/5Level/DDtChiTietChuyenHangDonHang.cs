@@ -39,7 +39,7 @@ namespace PhuDinhData.DesignTimeData
                 SoLuong = i * 10,
                 tChiTietDonHang = DDtChiTietDonHang.Create(i),
                 tChuyenHangDonHang = DDtChuyenHangDonHang.Create(i),
-                tChiTietDonHangList = DDtChiTietDonHang.tChiTietDonHangs,
+                tChiTietDonHangList = DDtChiTietDonHang.ViewModel.Entity.ToList(),
                 tChuyenHangDonHangList = DDtChuyenHangDonHang.ViewModel.Entity.ToList()
             };
         }

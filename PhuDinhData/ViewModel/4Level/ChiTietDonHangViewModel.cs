@@ -9,25 +9,25 @@ using PhuDinhData.ViewModel.DataGridColumnHeaderFilterModel;
 
 namespace PhuDinhData.ViewModel
 {
-    public class ChuyenHangDonHangViewModel : BaseViewModel<tChuyenHangDonHang>
+    public class ChiTietDonHangViewModel : BaseViewModel<tChiTietDonHang>
     {
-        private List<tChuyenHang> _tChuyenHangs;
         private List<tDonHang> _tDonHangs;
+        private List<tMatHang> _tMatHangs;
 
-        private string _filterChuyenHang = string.Empty;
+        private string _filterMatHang = string.Empty;
 
         private string _filterDonHang = string.Empty;
 
-        public static HeaderTextFilterModel Header_ChuyenHang = new HeaderTextFilterModel(Constant.ColumnName_ChuyenHang);
+        public static HeaderTextFilterModel Header_MatHang = new HeaderTextFilterModel(Constant.ColumnName_MatHang);
         public static HeaderTextFilterModel Header_DonHang = new HeaderTextFilterModel(Constant.ColumnName_DonHang);
 
-        public ChuyenHangDonHangViewModel()
+        public ChiTietDonHangViewModel()
         {
-            Entity = new ObservableCollection<tChuyenHangDonHang>();
+            Entity = new ObservableCollection<tChiTietDonHang>();
 
-            MainFilter = new Filter_tChuyenHangDonHang();
+            MainFilter = new Filter_tChiTietDonHang();
 
-            SetReferenceFilter<tChuyenHang>(Constant.ColumnName_ChuyenHang, (p => true));
+            SetReferenceFilter<tMatHang>(Constant.ColumnName_MatHang, (p => true));
             SetReferenceFilter<tDonHang>(Constant.ColumnName_DonHang, (p => true));
         }
 
@@ -37,12 +37,12 @@ namespace PhuDinhData.ViewModel
 
             Entity.CollectionChanged += Entity_CollectionChanged;
 
-            Header_ChuyenHang.PropertyChanged += Header_ChuyenHang_PropertyChanged;
+            Header_MatHang.PropertyChanged += Header_MatHang_PropertyChanged;
             Header_DonHang.PropertyChanged += Header_DonHang_PropertyChanged;
 
-            ChuyenHangDonHangViewModel.Header_ChuyenHang.Text = _filterChuyenHang;
+            ChiTietDonHangViewModel.Header_MatHang.Text = _filterMatHang;
 
-            ChuyenHangDonHangViewModel.Header_DonHang.Text = _filterDonHang;
+            ChiTietDonHangViewModel.Header_DonHang.Text = _filterDonHang;
 
             _isLoading = false;
         }
@@ -51,24 +51,24 @@ namespace PhuDinhData.ViewModel
         {
             Entity.CollectionChanged -= Entity_CollectionChanged;
 
-            Header_ChuyenHang.PropertyChanged -= Header_ChuyenHang_PropertyChanged;
+            Header_MatHang.PropertyChanged -= Header_MatHang_PropertyChanged;
             Header_DonHang.PropertyChanged -= Header_DonHang_PropertyChanged;
 
-            _filterChuyenHang = ChuyenHangDonHangViewModel.Header_ChuyenHang.Text;
+            _filterMatHang = ChiTietDonHangViewModel.Header_MatHang.Text;
 
-            _filterDonHang = ChuyenHangDonHangViewModel.Header_DonHang.Text;
+            _filterDonHang = ChiTietDonHangViewModel.Header_DonHang.Text;
         }
 
-        void Header_ChuyenHang_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        void Header_MatHang_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            MainFilter.SetFilter(Filter_tChuyenHangDonHang.TenChuyenHang, ChuyenHangDonHangViewModel.Header_ChuyenHang.Text);
+            MainFilter.SetFilter(Filter_tChiTietDonHang.TenMatHang, ChiTietDonHangViewModel.Header_MatHang.Text);
 
             OnHeaderFilterChanged();
         }
 
         void Header_DonHang_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            MainFilter.SetFilter(Filter_tChuyenHangDonHang.TenDonHang, ChuyenHangDonHangViewModel.Header_DonHang.Text);
+            MainFilter.SetFilter(Filter_tChiTietDonHang.TenDonHang, ChiTietDonHangViewModel.Header_DonHang.Text);
 
             OnHeaderFilterChanged();
         }
@@ -77,29 +77,22 @@ namespace PhuDinhData.ViewModel
         {
             if (e.Action == NotifyCollectionChangedAction.Add)
             {
-                var tChuyenHangDonHang = e.NewItems[0] as tChuyenHangDonHang;
-                tChuyenHangDonHang.tChuyenHangList = _tChuyenHangs;
-                tChuyenHangDonHang.tDonHangList = _tDonHangs;
-
-                if (GetDefaultValue(Constant.ColumnName_MaChuyenHang) != null)
-                {
-                    tChuyenHangDonHang.MaChuyenHang =
-                        Convert.ToInt32(GetDefaultValue(Constant.ColumnName_MaChuyenHang));
-                }
-
+                var tChiTietDonHang = e.NewItems[0] as tChiTietDonHang;
+                tChiTietDonHang.tDonHangList = _tDonHangs;
+                
                 if (GetDefaultValue(Constant.ColumnName_MaDonHang) != null)
                 {
-                    tChuyenHangDonHang.MaDonHang =
+                    tChiTietDonHang.MaDonHang =
                         Convert.ToInt32(GetDefaultValue(Constant.ColumnName_MaDonHang));
                 }
             }
         }
 
-        private void UpdateChuyenHangReferenceData()
+        private void UpdateMatHangReferenceData()
         {
-            UpdateReferenceData(out _tChuyenHangs
-                , GetReferenceFilter<tChuyenHang>(Constant.ColumnName_ChuyenHang)
-                , (p => p.tChuyenHangList = _tChuyenHangs));
+            UpdateReferenceData(out _tMatHangs
+                , GetReferenceFilter<tMatHang>(Constant.ColumnName_MatHang)
+                , (p => p.tMatHangList = _tMatHangs));
         }
 
         private void UpdateDonHangReferenceData()
@@ -111,7 +104,7 @@ namespace PhuDinhData.ViewModel
 
         protected override void UpdateAllReferenceData()
         {
-            UpdateChuyenHangReferenceData();
+            UpdateMatHangReferenceData();
             UpdateDonHangReferenceData();
         }
 
@@ -119,8 +112,8 @@ namespace PhuDinhData.ViewModel
         {
             switch (columnName)
             {
-                case Constant.ColumnName_ChuyenHang:
-                    UpdateChuyenHangReferenceData();
+                case Constant.ColumnName_MatHang:
+                    UpdateMatHangReferenceData();
                     break;
                 case Constant.ColumnName_DonHang:
                     UpdateDonHangReferenceData();

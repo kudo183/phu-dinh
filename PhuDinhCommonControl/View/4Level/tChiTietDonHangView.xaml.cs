@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Collections.Specialized;
-using System.Data.Entity;
-using System.Linq;
-using System.Linq.Expressions;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
+using PhuDinhData.ViewModel;
+using PhuDinhData.ViewModel.DataGridColumnHeaderFilterModel;
+using PhuDinhCommon;
 
 namespace PhuDinhCommonControl
 {
@@ -15,159 +12,38 @@ namespace PhuDinhCommonControl
     /// </summary>
     public partial class tChiTietDonHangView : BaseView<PhuDinhData.tChiTietDonHang>
     {
-        public Expression<Func<PhuDinhData.tChiTietDonHang, bool>> FilterChiTietDonHang { get; set; }
-        public Expression<Func<PhuDinhData.tDonHang, bool>> FilterDonHang { get; set; }
-        public Expression<Func<PhuDinhData.tMatHang, bool>> FilterMatHang { get; set; }
-        public PhuDinhData.tDonHang tDonHangDefault { get; set; }
-
-        private ObservableCollection<PhuDinhData.tChiTietDonHang> _tChiTietDonHangs;
-        private List<PhuDinhData.tDonHang> _tDonHangs;
-        private List<PhuDinhData.tMatHang> _tMatHangs;
-        private PhuDinhData.PhuDinhEntities _context = ContextFactory.CreateContext();
-
-        private List<PhuDinhData.tChiTietDonHang> _origData;
-
         public tChiTietDonHangView()
         {
             InitializeComponent();
 
-            FilterChiTietDonHang = (p => true);
-            FilterDonHang = (p => true);
-            FilterMatHang = (p => true);
+            dg = dgChiTietDonHang;
+
+            _viewModel = new ChiTietDonHangViewModel();
+            DataContext = _viewModel;
         }
-
-        #region Override base view method
-        public override void CommitEdit()
-        {
-            dgChiTietDonHang.CommitEdit();
-            base.CommitEdit();
-        }
-
-        public override void Save()
-        {
-            CommitEdit();
-            try
-            {
-                if (FilterChiTietDonHang == null)
-                {
-                    return;
-                }
-
-                var data = dgChiTietDonHang.DataContext as ObservableCollection<PhuDinhData.tChiTietDonHang>;
-                PhuDinhData.Repository.tChiTietDonHangRepository.Save(_context, data.ToList(), _origData);
-            }
-            catch (Exception ex)
-            {
-                PhuDinhCommon.EntityFrameworkUtils.UndoContextChange(_context, EntityState.Modified);
-            }
-
-            base.Save();
-        }
-
-        public override void Cancel()
-        {
-            RefreshView();
-
-            base.Cancel();
-        }
-
-        public override void RefreshView()
-        {
-            if (FilterChiTietDonHang == null)
-            {
-                dgChiTietDonHang.DataContext = null;
-                return;
-            }
-
-            var index = dgChiTietDonHang.SelectedIndex;
-
-            if (_tChiTietDonHangs != null)
-            {
-                _tChiTietDonHangs.CollectionChanged -= collection_CollectionChanged;
-            }
-
-            _context = ContextFactory.CreateContext();
-            _origData = PhuDinhData.Repository.tChiTietDonHangRepository.GetData(_context, FilterChiTietDonHang);
-
-            _tChiTietDonHangs = new ObservableCollection<PhuDinhData.tChiTietDonHang>(_origData);
-            _tChiTietDonHangs.CollectionChanged += collection_CollectionChanged;
-
-            UpdateDonHangReferenceData();
-            UpdateMatHangReferenceData();
-
-            dgChiTietDonHang.DataContext = _tChiTietDonHangs;
-
-            dgChiTietDonHang.SelectedIndex = index;
-        }
-
-        void collection_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
-        {
-            if (e.Action == NotifyCollectionChangedAction.Add)
-            {
-                var tChiTietDonHang = e.NewItems[0] as PhuDinhData.tChiTietDonHang;
-                tChiTietDonHang.tDonHangList = _tDonHangs;
-                tChiTietDonHang.tMatHangList = _tMatHangs;
-
-                if (tDonHangDefault != null)
-                {
-                    tChiTietDonHang.MaDonHang = tDonHangDefault.Ma;
-                }
-            }
-        }
-        #endregion
 
         private void dgChiTietDonHang_HeaderAddButtonClick(object sender, EventArgs e)
         {
             CommitEdit();
 
-            var header = sender as DataGridColumnHeader;
+            var header = (sender as DataGridColumnHeader).Content as IHeaderFilterModel;
 
             UserControl view = null;
 
-            switch (header.Content.ToString())
+            switch (header.Name)
             {
-                case "Đơn hàng":
+                case Constant.ColumnName_DonHang:
                     view = new tDonHangView();
-                    ChildWindowUtils.ShowChildWindow("Đơn hàng", view);
+                    ChildWindowUtils.ShowChildWindow(Constant.ViewName_DonHang, view);
 
-                    UpdateDonHangReferenceData();
+                    _viewModel.UpdateReferenceData(header.Name);
                     break;
-                case "Mặt Hàng":
+                case Constant.ColumnName_MatHang:
                     view = new tMatHangView();
-                    ChildWindowUtils.ShowChildWindow("Mặt Hàng", view);
+                    ChildWindowUtils.ShowChildWindow(Constant.ViewName_MatHang, view);
 
-                    UpdateMatHangReferenceData();
+                    _viewModel.UpdateReferenceData(header.Name);
                     break;
-            }
-        }
-
-        private void UpdateDonHangReferenceData()
-        {
-            _tDonHangs = PhuDinhData.Repository.tDonHangRepository.GetData(_context, FilterDonHang);
-
-            if (_tChiTietDonHangs == null)
-            {
-                return;
-            }
-
-            foreach (var tChiTietDonHang in _tChiTietDonHangs)
-            {
-                tChiTietDonHang.tDonHangList = _tDonHangs;
-            }
-        }
-
-        private void UpdateMatHangReferenceData()
-        {
-            _tMatHangs = PhuDinhData.Repository.tMatHangRepository.GetData(_context, FilterMatHang);
-
-            if (_tChiTietDonHangs == null)
-            {
-                return;
-            }
-
-            foreach (var tChiTietDonHang in _tChiTietDonHangs)
-            {
-                tChiTietDonHang.tMatHangList = _tMatHangs;
             }
         }
     }

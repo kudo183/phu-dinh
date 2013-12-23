@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using PhuDinhCommon;
 
 namespace PhuDinhCommonControl
 {
@@ -56,13 +57,15 @@ namespace PhuDinhCommonControl
         {
             if (donHang == null)
             {
-                _tChiTietDonHangView.FilterChiTietDonHang = null;
+                _tChiTietDonHangView.ViewModel.MainFilter.
+                SetFilter(PhuDinhData.Filter.Filter_tChiTietDonHang.MaDonHang, null, true);
                 _tChiTietDonHangView.RefreshView();
                 return;
             }
 
-            _tChiTietDonHangView.FilterChiTietDonHang = (p => p.MaDonHang == donHang.Ma);
-            _tChiTietDonHangView.tDonHangDefault = donHang;
+            _tChiTietDonHangView.ViewModel.MainFilter.
+                SetFilter(PhuDinhData.Filter.Filter_tChiTietDonHang.MaDonHang, donHang.Ma);
+            _tChiTietDonHangView.ViewModel.SetDefaultValue(Constant.ColumnName_MaDonHang, donHang.Ma);
             _tChiTietDonHangView.RefreshView();
         }
     }

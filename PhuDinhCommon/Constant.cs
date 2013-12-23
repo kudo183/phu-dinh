@@ -42,6 +42,8 @@
         public const string ColumnName_ChiTietDonHang = "Chi Tiet Don Hang";
         public const string ColumnName_ChuyenHang = "Chuyen Hang";
         public const string ColumnName_DonHang = "Don Hang";
+        public const string ColumnName_MatHang = "Mat Hang";
+
         //0Level
         public const string ViewName_BaiXe = "Bai Xe";
         public const string ViewName_LoaiChiPhi = "Loai Chi Phi";

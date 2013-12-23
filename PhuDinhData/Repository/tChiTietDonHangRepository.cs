@@ -7,6 +7,21 @@ namespace PhuDinhData.Repository
 {
     public static class tChiTietDonHangRepository
     {
+        public static int GetDataCount(PhuDinhEntities context, Expression<Func<tChiTietDonHang, bool>> filter)
+        {
+            var data = Repository<tChiTietDonHang>.GetData(context, filter).OrderByDescending(p => p.tDonHang.Ngay);
+            return data.Count();
+        }
+
+        public static List<tChiTietDonHang> GetData(PhuDinhEntities context,
+            Expression<Func<tChiTietDonHang, bool>> filter,
+            int pageSize, int currentPageIndex, int itemCount)
+        {
+            var data = Repository<tChiTietDonHang>.GetData(context, filter).OrderByDescending(p => p.tDonHang.Ngay);
+
+            return Repository<tChiTietDonHang>.PagingData(data, pageSize, currentPageIndex, itemCount);
+        }
+
         public static List<tChiTietDonHang> GetData(PhuDinhEntities context, Expression<Func<tChiTietDonHang, bool>> filter)
         {
             return Repository<tChiTietDonHang>.GetData(context, filter).OrderByDescending(p => p.tDonHang.Ngay).ToList();
