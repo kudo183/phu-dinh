@@ -26,6 +26,8 @@ namespace PhuDinhData.ViewModel
 
         public event PropertyChangedEventHandler PropertyChanged;
 
+        private Dictionary<string, object> _defaultValues = new Dictionary<string, object>();
+
         private int _currentPageIndex = 1;
         public int CurrentPageIndex
         {
@@ -108,8 +110,31 @@ namespace PhuDinhData.ViewModel
                 action(item);
             }
         }
-        
+
         protected abstract void UpdateAllReferenceData();
+
+        public abstract void UpdateReferenceData(string columnName);
+
+        public void SetDefaultValue(string columnName, object value)
+        {
+            if (_defaultValues.ContainsKey(columnName))
+            {
+                _defaultValues[columnName] = value;
+                return;
+            }
+
+            _defaultValues.Add(columnName, value);
+        }
+
+        public object GetDefaultValue(string columnName)
+        {
+            if (_defaultValues.ContainsKey(columnName))
+            {
+                return _defaultValues[columnName];
+            }
+
+            return null;
+        }
 
         public virtual List<Repository<T>.ChangedItemData> Save()
         {

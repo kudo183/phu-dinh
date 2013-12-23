@@ -1,4 +1,5 @@
 ﻿using System.Windows.Controls;
+using PhuDinhCommon;
 
 namespace PhuDinhCommonControl
 {
@@ -56,7 +57,7 @@ namespace PhuDinhCommonControl
             }
 
             _tDonHangView.ViewModel.MainFilter.SetFilter(PhuDinhData.Filter.Filter_tDonHang.MaKhachHang, khachHang.Ma);
-            _tDonHangView.ViewModel.rKhachHangDefault = khachHang;
+            _tDonHangView.ViewModel.SetDefaultValue(Constant.ColumnName_MaKhachHang, khachHang.Ma);
             _tDonHangView.RefreshView();
         }
     }

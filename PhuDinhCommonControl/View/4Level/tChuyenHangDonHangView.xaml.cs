@@ -60,13 +60,13 @@ namespace PhuDinhCommonControl
                     view = new tChuyenHangView();
                     ChildWindowUtils.ShowChildWindow(Constant.ViewName_ChuyenHang, view);
 
-                    _viewModel.UpdateChuyenHangReferenceData();
+                    _viewModel.UpdateReferenceData(header.Name);
                     break;
                 case Constant.ColumnName_DonHang:
                     view = new tDonHangView();
                     ChildWindowUtils.ShowChildWindow(Constant.ViewName_DonHang, view);
 
-                    _viewModel.UpdateDonHangReferenceData();
+                    _viewModel.UpdateReferenceData(header.Name);
                     break;
             }
         }

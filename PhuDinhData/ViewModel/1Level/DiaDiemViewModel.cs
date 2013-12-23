@@ -65,7 +65,7 @@ namespace PhuDinhData.ViewModel
             }
         }
 
-        public void UpdateNuocReferenceData()
+        private void UpdateNuocReferenceData()
         {
             UpdateReferenceData(out _rNuocs, RFilter_Nuoc, (p => p.rNuocList = _rNuocs));
         }
@@ -73,6 +73,16 @@ namespace PhuDinhData.ViewModel
         protected override void UpdateAllReferenceData()
         {
             UpdateNuocReferenceData();
+        }
+
+        public override void UpdateReferenceData(string columnName)
+        {
+            switch (columnName)
+            {
+                case Constant.ColumnName_Nuoc:
+                    UpdateNuocReferenceData();
+                    break;
+            }
         }
     }
 }

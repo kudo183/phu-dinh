@@ -23,6 +23,7 @@
             tMatHang
         }
         #endregion
+        public const string ColumnName_MaKhachHang = "Ma Khach Hang";
 
         public const string ColumnName_BaiXe = "Bai Xe";
         public const string ColumnName_Nuoc = "Nuoc";

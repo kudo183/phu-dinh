@@ -74,5 +74,15 @@ namespace PhuDinhData.ViewModel
         {
             UpdateLoaiHangReferenceData();
         }
+
+        public override void UpdateReferenceData(string columnName)
+        {
+            switch (columnName)
+            {
+                case Constant.ColumnName_LoaiHang:
+                    UpdateLoaiHangReferenceData();
+                    break;
+            }
+        }
     }
 }

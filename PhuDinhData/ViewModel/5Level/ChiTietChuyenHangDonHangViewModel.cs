@@ -93,12 +93,12 @@ namespace PhuDinhData.ViewModel
             }
         }
 
-        public void UpdateChuyenHangDonHangReferenceData()
+        private void UpdateChuyenHangDonHangReferenceData()
         {
             UpdateReferenceData(out _tChuyenHangDonHangs, RFilter_ChuyenHangDonHang, (p => p.tChuyenHangDonHangList = _tChuyenHangDonHangs));
         }
 
-        public void UpdateChiTietDonHangReferenceData()
+        private void UpdateChiTietDonHangReferenceData()
         {
             UpdateReferenceData(out _tChiTietDonHangs, RFilter_ChiTietDonHang, (p => p.tChiTietDonHangList = _tChiTietDonHangs));
         }
@@ -107,6 +107,19 @@ namespace PhuDinhData.ViewModel
         {
             UpdateChuyenHangDonHangReferenceData();
             UpdateChiTietDonHangReferenceData();
+        }
+
+        public override void UpdateReferenceData(string columnName)
+        {
+            switch (columnName)
+            {
+                case Constant.ColumnName_ChuyenHangDonHang:
+                    UpdateChuyenHangDonHangReferenceData();
+                    break;
+                case Constant.ColumnName_ChiTietDonHang:
+                    UpdateChiTietDonHangReferenceData();
+                    break;
+            }
         }
     }
 }

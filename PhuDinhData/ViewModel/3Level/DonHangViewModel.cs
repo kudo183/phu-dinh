@@ -24,7 +24,6 @@ namespace PhuDinhData.ViewModel
 
         public Expression<Func<rKhachHang, bool>> RFilter_KhachHang { get; set; }
         public Expression<Func<rChanh, bool>> RFilter_Chanh { get; set; }
-        public rKhachHang rKhachHangDefault { get; set; }
 
         public static HeaderDateFilterModel Header_Ngay = new HeaderDateFilterModel(Constant.ColumnName_Ngay);
         public static HeaderTextFilterModel Header_KhachHang = new HeaderTextFilterModel(Constant.ColumnName_KhachHang);
@@ -115,27 +114,40 @@ namespace PhuDinhData.ViewModel
                 tDonHang.rChanhList = _rChanhs;
                 tDonHang.rKhachHangList = _rKhachHangs;
 
-                if (rKhachHangDefault != null)
+                if (GetDefaultValue(Constant.ColumnName_MaKhachHang) != null)
                 {
-                    tDonHang.MaKhachHang = rKhachHangDefault.Ma;
+                    tDonHang.MaKhachHang = Convert.ToInt32(GetDefaultValue(Constant.ColumnName_MaKhachHang));
                 }
             }
         }
 
-        public void UpdateChanhReferenceData()
-        {
-            UpdateReferenceData(out _rChanhs, RFilter_Chanh, (p => p.rChanhList = _rChanhs));
-        }
-
-        public void UpdateKhachHangReferenceData()
+        private void UpdateKhachHangReferenceData()
         {
             UpdateReferenceData(out _rKhachHangs, RFilter_KhachHang, (p => p.rKhachHangList = _rKhachHangs));
         }
 
+        private void UpdateKhachHangChanhReferenceData()
+        {
+            UpdateReferenceData(out _rChanhs, RFilter_Chanh, (p => p.rChanhList = _rChanhs));
+        }
+
         protected override void UpdateAllReferenceData()
         {
-            UpdateChanhReferenceData();
             UpdateKhachHangReferenceData();
+            UpdateKhachHangChanhReferenceData();
+        }
+
+        public override void UpdateReferenceData(string columnName)
+        {
+            switch (columnName)
+            {
+                case Constant.ColumnName_KhachHang:
+                    UpdateKhachHangReferenceData();
+                    break;
+                case Constant.ColumnName_KhachHangChanh:
+                    UpdateKhachHangChanhReferenceData();
+                    break;
+            }
         }
     }
 }

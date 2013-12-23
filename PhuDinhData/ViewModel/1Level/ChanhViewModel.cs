@@ -65,7 +65,7 @@ namespace PhuDinhData.ViewModel
             }
         }
 
-        public void UpdateBaiXeReferenceData()
+        private void UpdateBaiXeReferenceData()
         {
             UpdateReferenceData(out _rBaiXes, RFilter_BaiXe, (p => p.rBaiXeList = _rBaiXes));
         }
@@ -73,6 +73,16 @@ namespace PhuDinhData.ViewModel
         protected override void UpdateAllReferenceData()
         {
             UpdateBaiXeReferenceData();
+        }
+
+        public override void UpdateReferenceData(string columnName)
+        {
+            switch (columnName)
+            {
+                case Constant.ColumnName_BaiXe:
+                    UpdateBaiXeReferenceData();
+                    break;
+            }
         }
     }
 }

@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Windows.Controls.Primitives;
 using PhuDinhData.ViewModel;
 using PhuDinhCommon;
+using PhuDinhData.ViewModel.DataGridColumnHeaderFilterModel;
 
 namespace PhuDinhCommonControl
 {
@@ -47,11 +49,13 @@ namespace PhuDinhCommonControl
         {
             CommitEdit();
 
+            var header = (sender as DataGridColumnHeader).Content as IHeaderFilterModel;
+            
             var view = new rNuocView();
             view.RefreshView();
             ChildWindowUtils.ShowChildWindow(Constant.ViewName_Nuoc, view);
 
-            _viewModel.UpdateNuocReferenceData();
+            _viewModel.UpdateReferenceData(header.Name);
         }
 
         #region Override base view method
