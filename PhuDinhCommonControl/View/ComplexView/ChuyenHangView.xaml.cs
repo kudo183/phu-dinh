@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using PhuDinhCommon;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Controls;
 
@@ -120,18 +121,18 @@ namespace PhuDinhCommonControl
             if (chuyenHang == null)
             {
                 _tChuyenHangDonHangView.ViewModel.MainFilter
-                    .SetFilter(PhuDinhData.Filter.Filter_tChuyenHangDonHang.MaChuyenHang, null,true);
+                    .SetFilter(PhuDinhData.Filter.Filter_tChuyenHangDonHang.MaChuyenHang, null, true);
 
                 _tChuyenHangDonHangView.RefreshView();
                 return;
             }
 
-            _tChuyenHangDonHangView.ViewModel.RFilter_DonHang = (p => p.Xong == false);
+            //_tChuyenHangDonHangView.ViewModel.RFilter_DonHang = (p => p.Xong == false);
 
             _tChuyenHangDonHangView.ViewModel.MainFilter.
                 SetFilter(PhuDinhData.Filter.Filter_tChuyenHangDonHang.MaChuyenHang, chuyenHang.Ma);
 
-            _tChuyenHangDonHangView.ViewModel.tChuyenHangDefault = chuyenHang;
+            _tChuyenHangDonHangView.ViewModel.SetDefaultValue(Constant.ColumnName_MaChuyenHang, chuyenHang.Ma);
             _tChuyenHangDonHangView.RefreshView();
         }
 
@@ -147,13 +148,13 @@ namespace PhuDinhCommonControl
                 return;
             }
 
-            _tChiTietChuyenHangDonHangView.ViewModel.RFilter_ChiTietDonHang =
-                (p => p.Xong == false && p.MaDonHang == chuyenHangDonHang.MaDonHang);
+            //_tChiTietChuyenHangDonHangView.ViewModel.RFilter_ChiTietDonHang =
+            //    (p => p.Xong == false && p.MaDonHang == chuyenHangDonHang.MaDonHang);
 
             _tChiTietChuyenHangDonHangView.ViewModel.MainFilter.SetFilter(
                 PhuDinhData.Filter.Filter_tChiTietChuyenHangDonHang.MaChuyenHangDonHang, chuyenHangDonHang.Ma);
-            
-            _tChiTietChuyenHangDonHangView.ViewModel.tChuyenHangDonHangDefault = chuyenHangDonHang;
+
+            _tChiTietChuyenHangDonHangView.ViewModel.SetDefaultValue(Constant.ColumnName_MaChuyenHangDonHang, chuyenHangDonHang.Ma);
             _tChiTietChuyenHangDonHangView.RefreshView();
         }
     }

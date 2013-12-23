@@ -11,38 +11,15 @@ namespace PhuDinhCommonControl
     /// </summary>
     public partial class rChanhView : BaseView<PhuDinhData.rChanh>
     {
-        private readonly ChanhViewModel _viewModel = new ChanhViewModel();
-        public ChanhViewModel ViewModel { get { return _viewModel; } }
-
         public rChanhView()
         {
             InitializeComponent();
 
-            Loaded += rChanhView_Loaded;
-            Unloaded += rChanhView_Unloaded;
+            dg = dgChanh;
 
+            _viewModel = new ChanhViewModel();
             DataContext = _viewModel;
-        }
 
-        void rChanhView_Loaded(object sender, System.Windows.RoutedEventArgs e)
-        {
-            _viewModel.HeaderFilterChanged += _viewModel_FilterChanged;
-
-            _viewModel.Load();
-
-            RefreshView();
-        }
-
-        void rChanhView_Unloaded(object sender, System.Windows.RoutedEventArgs e)
-        {
-            _viewModel.HeaderFilterChanged -= _viewModel_FilterChanged;
-
-            _viewModel.Unload();
-        }
-
-        void _viewModel_FilterChanged(object sender, EventArgs e)
-        {
-            RefreshView();
         }
 
         private void dgChanh_HeaderAddButtonClick(object sender, EventArgs e)
@@ -57,49 +34,5 @@ namespace PhuDinhCommonControl
 
             _viewModel.UpdateReferenceData(header.Name);
         }
-
-        #region Override base view method
-        public override void CommitEdit()
-        {
-            dgChanh.CommitEdit();
-            base.CommitEdit();
-        }
-
-        public override void Save()
-        {
-            CommitEdit();
-            try
-            {
-                _viewModel.Save();
-            }
-            catch (Exception ex)
-            {
-            }
-
-            base.Save();
-        }
-
-        public override void Cancel()
-        {
-            RefreshView();
-
-            base.Cancel();
-        }
-
-        public override void RefreshView()
-        {
-            if (_viewModel.MainFilter.IsClearAllData)
-            {
-                _viewModel.Entity.Clear();
-                return;
-            }
-
-            var index = dgChanh.SelectedIndex;
-
-            _viewModel.RefreshData();
-
-            dgChanh.SelectedIndex = index;
-        }
-        #endregion
     }
 }

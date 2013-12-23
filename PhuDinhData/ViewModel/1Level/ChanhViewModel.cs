@@ -58,9 +58,9 @@ namespace PhuDinhData.ViewModel
                 var chanh = e.NewItems[0] as rChanh;
                 chanh.rBaiXeList = _rBaiXes;
 
-                if (rBaiXeDefault != null)
+                if (GetDefaultValue(Constant.ColumnName_MaBaiXe) != null)
                 {
-                    chanh.MaBaiXe = rBaiXeDefault.Ma;
+                    chanh.MaBaiXe = Convert.ToInt32(GetDefaultValue(Constant.ColumnName_MaBaiXe));
                 }
             }
         }

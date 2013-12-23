@@ -1,4 +1,5 @@
 ﻿using System.Windows.Controls;
+using PhuDinhCommon;
 
 namespace PhuDinhCommonControl
 {
@@ -31,7 +32,7 @@ namespace PhuDinhCommonControl
             }
 
             _rChanhView.ViewModel.MainFilter.SetFilter(PhuDinhData.Filter.Filter_rChanh.MaBaiXe, baixe.Ma);
-            _rChanhView.ViewModel.rBaiXeDefault = baixe;
+            _rChanhView.ViewModel.SetDefaultValue(Constant.ColumnName_MaBaiXe, baixe.Ma);
             _rChanhView.RefreshView();
         }
     }

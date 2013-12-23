@@ -16,8 +16,6 @@ namespace PhuDinhData.ViewModel
 
         public Expression<Func<rLoaiHang, bool>> RFilter_LoaiHang { get; set; }
 
-        public rLoaiHang rLoaiHangDefault { get; set; }
-
         public static HeaderTextFilterModel Header_LoaiHang = new HeaderTextFilterModel(Constant.ColumnName_LoaiHang);
 
         public MatHangViewModel()
@@ -58,14 +56,14 @@ namespace PhuDinhData.ViewModel
                 var matHang = e.NewItems[0] as tMatHang;
                 matHang.rLoaiHangList = _rLoaiHangs;
 
-                if (rLoaiHangDefault != null)
+                if (GetDefaultValue(Constant.ColumnName_MaLoaiHang) != null)
                 {
-                    matHang.MaLoai = rLoaiHangDefault.Ma;
+                    matHang.MaLoai = Convert.ToInt32(GetDefaultValue(Constant.ColumnName_MaLoaiHang));
                 }
             }
         }
 
-        public void UpdateLoaiHangReferenceData()
+        private void UpdateLoaiHangReferenceData()
         {
             UpdateReferenceData(out _rLoaiHangs, RFilter_LoaiHang, (p => p.rLoaiHangList = _rLoaiHangs));
         }

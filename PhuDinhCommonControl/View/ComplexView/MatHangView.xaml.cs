@@ -1,4 +1,5 @@
 ﻿using System.Windows.Controls;
+using PhuDinhCommon;
 
 namespace PhuDinhCommonControl
 {
@@ -31,7 +32,7 @@ namespace PhuDinhCommonControl
             }
 
             _tMatHangView.ViewModel.MainFilter.SetFilter(PhuDinhData.Filter.Filter_tMatHang.MaLoaiHang, loaihang.Ma);
-            _tMatHangView.ViewModel.rLoaiHangDefault = loaihang;
+            _tMatHangView.ViewModel.SetDefaultValue(Constant.ColumnName_MaLoaiHang, loaihang.Ma);
             _tMatHangView.RefreshView();
         }
     }

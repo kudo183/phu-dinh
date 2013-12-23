@@ -12,38 +12,14 @@ namespace PhuDinhCommonControl
     /// </summary>
     public partial class tChuyenHangDonHangView : BaseView<PhuDinhData.tChuyenHangDonHang>
     {
-        private readonly ChuyenHangDonHangViewModel _viewModel = new ChuyenHangDonHangViewModel();
-        public ChuyenHangDonHangViewModel ViewModel { get { return _viewModel; } }
-
         public tChuyenHangDonHangView()
         {
             InitializeComponent();
 
-            Loaded += tChuyenHangDonHangView_Loaded;
-            Unloaded += tChuyenHangDonHangView_Unloaded;
+            dg = dgChuyenHangDonHang;
 
+            _viewModel = new ChuyenHangDonHangViewModel();
             DataContext = _viewModel;
-        }
-
-        void tChuyenHangDonHangView_Loaded(object sender, System.Windows.RoutedEventArgs e)
-        {
-            _viewModel.HeaderFilterChanged += _viewModel_HeaderFilterChanged;
-
-            _viewModel.Load();
-
-            RefreshView();
-        }
-
-        void tChuyenHangDonHangView_Unloaded(object sender, System.Windows.RoutedEventArgs e)
-        {
-            _viewModel.HeaderFilterChanged -= _viewModel_HeaderFilterChanged;
-
-            _viewModel.Unload();
-        }
-
-        void _viewModel_HeaderFilterChanged(object sender, EventArgs e)
-        {
-            RefreshView();
         }
 
         private void dgChuyenHangDonHang_HeaderAddButtonClick(object sender, EventArgs e)
@@ -70,50 +46,5 @@ namespace PhuDinhCommonControl
                     break;
             }
         }
-
-        #region Override base view method
-        public override void CommitEdit()
-        {
-            dgChuyenHangDonHang.CommitEdit();
-            base.CommitEdit();
-        }
-
-        public override void Save()
-        {
-            CommitEdit();
-            try
-            {
-                _viewModel.Save();
-            }
-            catch (Exception ex)
-            {
-                LogManager.Log(event_type.et_Internal, severity_type.st_error, string.Format("{0} {1}", "tChuyenHangDonHangView_Save", "Exception"), ex);
-            }
-
-            base.Save();
-        }
-
-        public override void Cancel()
-        {
-            RefreshView();
-
-            base.Cancel();
-        }
-
-        public override void RefreshView()
-        {
-            if (_viewModel.MainFilter.IsClearAllData == true)
-            {
-                _viewModel.Entity.Clear();
-                return;
-            }
-
-            var index = dgChuyenHangDonHang.SelectedIndex;
-
-            _viewModel.RefreshData();
-
-            dgChuyenHangDonHang.SelectedIndex = index;
-        }
-        #endregion
     }
 }

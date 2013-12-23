@@ -16,8 +16,6 @@ namespace PhuDinhData.ViewModel
 
         public Expression<Func<rNuoc, bool>> RFilter_Nuoc { get; set; }
 
-        public rNuoc rNuocDefault { get; set; }
-
         public static HeaderTextFilterModel Header_Nuoc = new HeaderTextFilterModel(Constant.ColumnName_Nuoc);
 
         public DiaDiemViewModel()
@@ -58,9 +56,9 @@ namespace PhuDinhData.ViewModel
                 var diadiem = e.NewItems[0] as rDiaDiem;
                 diadiem.rNuocList = _rNuocs;
 
-                if (rNuocDefault != null)
+                if (GetDefaultValue(Constant.ColumnName_Nuoc) != null)
                 {
-                    diadiem.MaNuoc = rNuocDefault.Ma;
+                    diadiem.MaNuoc = Convert.ToInt32(GetDefaultValue(Constant.ColumnName_Nuoc));
                 }
             }
         }

@@ -24,6 +24,12 @@
         }
         #endregion
         public const string ColumnName_MaKhachHang = "Ma Khach Hang";
+        public const string ColumnName_MaBaiXe = "Ma Bai Xe";
+        public const string ColumnName_MaNuoc = "Ma Nuoc";
+        public const string ColumnName_MaLoaiHang = "Ma Loai Hang";
+        public const string ColumnName_MaChuyenHang = "Ma Chuyen Hang";
+        public const string ColumnName_MaDonHang = "Ma Don Hang";
+        public const string ColumnName_MaChuyenHangDonHang = "Ma Chuyen Hang Don Hang";
 
         public const string ColumnName_BaiXe = "Bai Xe";
         public const string ColumnName_Nuoc = "Nuoc";

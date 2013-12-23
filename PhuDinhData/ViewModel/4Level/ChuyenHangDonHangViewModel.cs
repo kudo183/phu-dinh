@@ -13,7 +13,7 @@ namespace PhuDinhData.ViewModel
     public class ChuyenHangDonHangViewModel : BaseViewModel<tChuyenHangDonHang>
     {
         private List<tChuyenHang> _tChuyenHangs;
-        private List<tDonHang> _tDonHangs;        
+        private List<tDonHang> _tDonHangs;
 
         private string _filterChuyenHang = string.Empty;
 
@@ -22,9 +22,6 @@ namespace PhuDinhData.ViewModel
         public Expression<Func<tChuyenHang, bool>> RFilter_ChuyenHang { get; set; }
         public Expression<Func<tDonHang, bool>> RFilter_DonHang { get; set; }
 
-        public tChuyenHang tChuyenHangDefault { get; set; }
-        public tDonHang tDonHangDefault { get; set; }
-        
         public static HeaderTextFilterModel Header_ChuyenHang = new HeaderTextFilterModel(Constant.ColumnName_ChuyenHang);
         public static HeaderTextFilterModel Header_DonHang = new HeaderTextFilterModel(Constant.ColumnName_DonHang);
 
@@ -87,14 +84,16 @@ namespace PhuDinhData.ViewModel
                 tChuyenHangDonHang.tChuyenHangList = _tChuyenHangs;
                 tChuyenHangDonHang.tDonHangList = _tDonHangs;
 
-                if (tChuyenHangDefault != null)
+                if (GetDefaultValue(Constant.ColumnName_MaChuyenHang) != null)
                 {
-                    tChuyenHangDonHang.MaChuyenHang = tChuyenHangDefault.Ma;
+                    tChuyenHangDonHang.MaChuyenHang =
+                        Convert.ToInt32(GetDefaultValue(Constant.ColumnName_MaChuyenHang));
                 }
 
-                if (tDonHangDefault != null)
+                if (GetDefaultValue(Constant.ColumnName_MaDonHang) != null)
                 {
-                    tChuyenHangDonHang.MaDonHang = tDonHangDefault.Ma;
+                    tChuyenHangDonHang.MaDonHang =
+                        Convert.ToInt32(GetDefaultValue(Constant.ColumnName_MaDonHang));
                 }
             }
         }

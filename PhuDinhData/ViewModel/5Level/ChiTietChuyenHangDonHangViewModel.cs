@@ -21,7 +21,6 @@ namespace PhuDinhData.ViewModel
 
         public Expression<Func<tChuyenHangDonHang, bool>> RFilter_ChuyenHangDonHang { get; set; }
         public Expression<Func<tChiTietDonHang, bool>> RFilter_ChiTietDonHang { get; set; }
-        public tChuyenHangDonHang tChuyenHangDonHangDefault { get; set; }
 
         public static HeaderTextFilterModel Header_ChuyenHangDonHang = new HeaderTextFilterModel(Constant.ColumnName_ChuyenHangDonHang);
         public static HeaderTextFilterModel Header_ChiTietDonHang = new HeaderTextFilterModel(Constant.ColumnName_ChiTietDonHang);
@@ -86,9 +85,9 @@ namespace PhuDinhData.ViewModel
                 tChiTietChuyenHangDonHang.tChuyenHangDonHangList = _tChuyenHangDonHangs;
                 tChiTietChuyenHangDonHang.tChiTietDonHangList = _tChiTietDonHangs;
 
-                if (tChuyenHangDonHangDefault != null)
+                if (GetDefaultValue(Constant.ColumnName_MaChuyenHangDonHang) != null)
                 {
-                    tChiTietChuyenHangDonHang.MaChuyenHangDonHang = tChuyenHangDonHangDefault.Ma;
+                    tChiTietChuyenHangDonHang.MaChuyenHangDonHang = Convert.ToInt32(GetDefaultValue(Constant.ColumnName_MaChuyenHangDonHang));
                 }
             }
         }
