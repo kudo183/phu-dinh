@@ -1,28 +1,30 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
+using PhuDinhData.ViewModel;
 
 namespace PhuDinhData.DesignTimeData
 {
     public static class DDtChiPhi
     {
-        private static List<tChiPhi> _tChiPhis;
-        public static List<tChiPhi> tChiPhis
+        private static ChiPhiViewModel _viewModel;
+        public static ChiPhiViewModel ViewModel
         {
             get
             {
-                if (_tChiPhis != null)
+                if (_viewModel != null)
                 {
-                    return _tChiPhis;
+                    return _viewModel;
                 }
+
+                _viewModel = new ChiPhiViewModel();
 
                 const int count = 10;
-                _tChiPhis = new List<tChiPhi>(count);
+
                 for (var i = 1; i <= count; i++)
                 {
-                    _tChiPhis.Add(Create(i));
+                    _viewModel.Entity.Add(Create(i));
                 }
 
-                return _tChiPhis;
+                return _viewModel;
             }
         }
 

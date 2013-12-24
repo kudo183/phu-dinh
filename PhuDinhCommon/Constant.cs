@@ -35,7 +35,9 @@
         public const string ColumnName_MaDiaDiem = "Ma Dia Diem";
         public const string ColumnName_MaMatHang = "Ma Mat Hang";
         public const string ColumnName_MaNguyenLieu = "Ma Nguyen Lieu";
-
+        public const string ColumnName_MaNhanVien = "Ma Nhan Vien";
+        public const string ColumnName_MaLoaiChiPhi = "Ma Loai Chi Phi";
+        
         public const string ColumnName_BaiXe = "Bai Xe";
         public const string ColumnName_Nuoc = "Nuoc";
         public const string ColumnName_Ngay = "Ngay";
@@ -52,6 +54,8 @@
         public const string ColumnName_PhuongTien = "Phuong Tien";
         public const string ColumnName_DiaDiem = "Dia Diem";
         public const string ColumnName_NguyenLieu = "Nguyen Lieu";
+        public const string ColumnName_LoaiChiPhi = "Loai Chi Phi";
+        public const string ColumnName_NhanVien = "Nhan Vien";
 
         //0Level
         public const string ViewName_BaiXe = "Bai Xe";

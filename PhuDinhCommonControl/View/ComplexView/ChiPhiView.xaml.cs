@@ -1,4 +1,5 @@
 ﻿using System.Windows.Controls;
+using PhuDinhCommon;
 
 namespace PhuDinhCommonControl
 {
@@ -24,7 +25,9 @@ namespace PhuDinhCommonControl
         {
             _rLoaiChiPhiView.dgLoaiChiPhi.SelectionChanged += dgLoaiChiPhi_SelectionChanged;
 
-            _rChiPhiNhanVienGiaoHangView.FilterChiPhi.FilterLoaiChiPhi = (p => false);
+            _rChiPhiNhanVienGiaoHangView.SetMainFilter(
+                PhuDinhData.Filter.Filter_tChiPhi.MaLoaiChiPhi, null, true);
+
             _rLoaiChiPhiView.RefreshView();
         }
 
@@ -38,13 +41,17 @@ namespace PhuDinhCommonControl
             var loaiChiPhi = ((DataGrid)sender).SelectedItem as PhuDinhData.rLoaiChiPhi;
             if (loaiChiPhi == null)
             {
-                _rChiPhiNhanVienGiaoHangView.FilterChiPhi.FilterLoaiChiPhi = (p => false);
+                _rChiPhiNhanVienGiaoHangView.SetMainFilter(
+                PhuDinhData.Filter.Filter_tChiPhi.MaLoaiChiPhi, null, true);
+
                 _rChiPhiNhanVienGiaoHangView.RefreshView();
                 return;
             }
 
-            _rChiPhiNhanVienGiaoHangView.FilterChiPhi.FilterLoaiChiPhi = (p => p.MaLoaiChiPhi == loaiChiPhi.Ma);
-            _rChiPhiNhanVienGiaoHangView.rLoaiChiPhiDefault = loaiChiPhi;
+            _rChiPhiNhanVienGiaoHangView.SetMainFilter(
+                PhuDinhData.Filter.Filter_tChiPhi.MaLoaiChiPhi, loaiChiPhi.Ma);
+
+            _rChiPhiNhanVienGiaoHangView.SetDefaultValue(Constant.ColumnName_MaLoaiChiPhi, loaiChiPhi.Ma);
             _rChiPhiNhanVienGiaoHangView.RefreshView();
         }
     }
