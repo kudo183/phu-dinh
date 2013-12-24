@@ -10,7 +10,7 @@ using PhuDinhData.Repository;
 
 namespace PhuDinhData.ViewModel
 {
-    public abstract class BaseViewModel<T> : INotifyPropertyChanged where T : class
+    public abstract class BaseViewModel<T> : BindableObject where T : class
     {
         protected PhuDinhEntities _context;
 
@@ -23,8 +23,6 @@ namespace PhuDinhData.ViewModel
         public IFilter<T> MainFilter { get; set; }
 
         public event EventHandler HeaderFilterChanged;
-
-        public event PropertyChangedEventHandler PropertyChanged;
 
         private readonly Dictionary<string, object> _defaultValues = new Dictionary<string, object>();
         private readonly Dictionary<string, LambdaExpression> _referenceFilters = new Dictionary<string, LambdaExpression>();
@@ -43,7 +41,7 @@ namespace PhuDinhData.ViewModel
                 _currentPageIndex = value;
 
                 RefreshData();
-                OnPropertyChanged("CurrentPageIndex");
+                RaisePropertyChanged("CurrentPageIndex");
             }
         }
 
@@ -59,7 +57,7 @@ namespace PhuDinhData.ViewModel
                 }
 
                 _pageSize = value;
-                OnPropertyChanged("PageSize");
+                RaisePropertyChanged("PageSize");
             }
         }
 
@@ -75,7 +73,7 @@ namespace PhuDinhData.ViewModel
                 }
 
                 _itemCount = value;
-                OnPropertyChanged("ItemCount");
+                RaisePropertyChanged("ItemCount");
             }
         }
 
@@ -88,12 +86,6 @@ namespace PhuDinhData.ViewModel
 
             EventHandler handler = HeaderFilterChanged;
             if (handler != null) handler(this, null);
-        }
-
-        protected virtual void OnPropertyChanged(string propertyName)
-        {
-            PropertyChangedEventHandler handler = PropertyChanged;
-            if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
         }
 
         protected void UpdateReferenceData<T1>(out List<T1> data,
