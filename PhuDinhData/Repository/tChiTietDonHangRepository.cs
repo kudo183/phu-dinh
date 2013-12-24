@@ -9,22 +9,20 @@ namespace PhuDinhData.Repository
     {
         public static int GetDataCount(PhuDinhEntities context, Expression<Func<tChiTietDonHang, bool>> filter)
         {
-            var data = Repository<tChiTietDonHang>.GetData(context, filter).OrderByDescending(p => p.tDonHang.Ngay);
-            return data.Count();
+            return GetDataQuery(context, filter).Count();
         }
 
         public static List<tChiTietDonHang> GetData(PhuDinhEntities context,
             Expression<Func<tChiTietDonHang, bool>> filter,
             int pageSize, int currentPageIndex, int itemCount)
         {
-            var data = Repository<tChiTietDonHang>.GetData(context, filter).OrderByDescending(p => p.tDonHang.Ngay);
-
-            return Repository<tChiTietDonHang>.PagingData(data, pageSize, currentPageIndex, itemCount);
+            return Repository<tChiTietDonHang>.PagingData(GetDataQuery(context, filter)
+                , pageSize, currentPageIndex, itemCount);
         }
 
         public static List<tChiTietDonHang> GetData(PhuDinhEntities context, Expression<Func<tChiTietDonHang, bool>> filter)
         {
-            return Repository<tChiTietDonHang>.GetData(context, filter).OrderByDescending(p => p.tDonHang.Ngay).ToList();
+            return GetDataQuery(context, filter).ToList();
         }
 
         public static List<Repository<tChiTietDonHang>.ChangedItemData> Save(PhuDinhEntities context, List<tChiTietDonHang> data, List<tChiTietDonHang> origData)
@@ -39,6 +37,12 @@ namespace PhuDinhData.Repository
             }
 
             return changed;
+        }
+
+        private static IQueryable<tChiTietDonHang> GetDataQuery(PhuDinhEntities context
+            , Expression<Func<tChiTietDonHang, bool>> filter)
+        {
+            return Repository<tChiTietDonHang>.GetData(context, filter).OrderByDescending(p => p.tDonHang.Ngay);
         }
     }
 }

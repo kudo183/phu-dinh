@@ -9,27 +9,31 @@ namespace PhuDinhData.Repository
     {
         public static int GetDataCount(PhuDinhEntities context, Expression<Func<tMatHang, bool>> filter)
         {
-            var data = Repository<tMatHang>.GetData(context, filter).OrderBy(p => p.TenMatHang);
-            return data.Count();
+            return GetDataQuery(context, filter).Count();
         }
 
         public static List<tMatHang> GetData(PhuDinhEntities context,
             Expression<Func<tMatHang, bool>> filter,
             int pageSize, int currentPageIndex, int itemCount)
         {
-            var data = Repository<tMatHang>.GetData(context, filter).OrderBy(p => p.TenMatHang);
-
-            return Repository<tMatHang>.PagingData(data, pageSize, currentPageIndex, itemCount);
+            return Repository<tMatHang>.PagingData(GetDataQuery(context, filter)
+                , pageSize, currentPageIndex, itemCount);
         }
 
         public static List<tMatHang> GetData(PhuDinhEntities context, Expression<Func<tMatHang, bool>> filter)
         {
-            return Repository<tMatHang>.GetData(context, filter).OrderBy(p => p.TenMatHang).ToList();
+            return GetDataQuery(context, filter).ToList();
         }
 
         public static List<Repository<tMatHang>.ChangedItemData> Save(PhuDinhEntities context, List<tMatHang> data, List<tMatHang> origData)
         {
             return Repository<tMatHang>.Save(context, data, origData, (p => p.Ma == 0), ((p1, p2) => p1.Ma == p2.Ma));
+        }
+
+        private static IQueryable<tMatHang> GetDataQuery(PhuDinhEntities context
+            , Expression<Func<tMatHang, bool>> filter)
+        {
+            return Repository<tMatHang>.GetData(context, filter).OrderBy(p => p.TenMatHang);
         }
     }
 }

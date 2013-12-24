@@ -9,27 +9,32 @@ namespace PhuDinhData.Repository
     {
         public static int GetDataCount(PhuDinhEntities context, Expression<Func<rChanh, bool>> filter)
         {
-            var data = Repository<rChanh>.GetData(context, filter).OrderBy(p => p.rBaiXe.DiaDiemBaiXe).ThenBy(p => p.TenChanh);
-            return data.Count();
+            return GetDataQuery(context, filter).Count();
         }
 
         public static List<rChanh> GetData(PhuDinhEntities context,
             Expression<Func<rChanh, bool>> filter,
             int pageSize, int currentPageIndex, int itemCount)
         {
-            var data = Repository<rChanh>.GetData(context, filter).OrderBy(p => p.rBaiXe.DiaDiemBaiXe).ThenBy(p => p.TenChanh);
-            
-            return Repository<rChanh>.PagingData(data, pageSize, currentPageIndex, itemCount);
+            return Repository<rChanh>.PagingData(GetDataQuery(context, filter)
+                , pageSize, currentPageIndex, itemCount);
         }
 
         public static List<rChanh> GetData(PhuDinhEntities context, Expression<Func<rChanh, bool>> filter)
         {
-            return Repository<rChanh>.GetData(context, filter).OrderBy(p => p.rBaiXe.DiaDiemBaiXe).ThenBy(p => p.TenChanh).ToList();
+            return GetDataQuery(context, filter).ToList();
         }
 
         public static List<Repository<rChanh>.ChangedItemData> Save(PhuDinhEntities context, List<rChanh> data, List<rChanh> origData)
         {
             return Repository<rChanh>.Save(context, data, origData, (p => p.Ma == 0), ((p1, p2) => p1.Ma == p2.Ma));
+        }
+
+        private static IQueryable<rChanh> GetDataQuery(PhuDinhEntities context
+            , Expression<Func<rChanh, bool>> filter)
+        {
+            return Repository<rChanh>.GetData(context, filter)
+                .OrderBy(p => p.rBaiXe.DiaDiemBaiXe).ThenBy(p => p.TenChanh);
         }
     }
 }

@@ -7,14 +7,33 @@ namespace PhuDinhData.Repository
 {
     public static class tChiPhiRepository
     {
+        public static int GetDataCount(PhuDinhEntities context, Expression<Func<tChiPhi, bool>> filter)
+        {
+            return GetDataQuery(context, filter).Count();
+        }
+
+        public static List<tChiPhi> GetData(PhuDinhEntities context,
+            Expression<Func<tChiPhi, bool>> filter,
+            int pageSize, int currentPageIndex, int itemCount)
+        {
+            return Repository<tChiPhi>.PagingData(GetDataQuery(context, filter)
+                , pageSize, currentPageIndex, itemCount);
+        }
+
         public static List<tChiPhi> GetData(PhuDinhEntities context, Expression<Func<tChiPhi, bool>> filter)
         {
-            return Repository<tChiPhi>.GetData(context, filter).OrderByDescending(p => p.Ngay).ToList();
+            return GetDataQuery(context, filter).ToList();
         }
 
         public static List<Repository<tChiPhi>.ChangedItemData> Save(PhuDinhEntities context, List<tChiPhi> data, List<tChiPhi> origData)
         {
             return Repository<tChiPhi>.Save(context, data, origData, (p => p.Ma == 0), ((p1, p2) => p1.Ma == p2.Ma));
+        }
+
+        private static IQueryable<tChiPhi> GetDataQuery(PhuDinhEntities context
+            , Expression<Func<tChiPhi, bool>> filter)
+        {
+            return Repository<tChiPhi>.GetData(context, filter).OrderByDescending(p => p.Ngay);
         }
     }
 }
