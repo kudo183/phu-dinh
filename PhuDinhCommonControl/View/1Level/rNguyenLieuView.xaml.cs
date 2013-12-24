@@ -17,7 +17,7 @@ namespace PhuDinhCommonControl
 
             dg = dgNguyenLieu;
 
-            _viewModel = new NguyenLieuModel();
+            _viewModel = new NguyenLieuViewModel();
             DataContext = _viewModel;
         }
 

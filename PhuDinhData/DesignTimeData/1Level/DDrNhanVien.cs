@@ -4,8 +4,8 @@ namespace PhuDinhData.DesignTimeData
 {
     public static class DDrNhanVien
     {
-        private static NhanVienModel _viewModel;
-        public static NhanVienModel ViewModel
+        private static NhanVienViewModel _viewModel;
+        public static NhanVienViewModel ViewModel
         {
             get
             {
@@ -14,7 +14,7 @@ namespace PhuDinhData.DesignTimeData
                     return _viewModel;
                 }
 
-                _viewModel = new NhanVienModel();
+                _viewModel = new NhanVienViewModel();
 
                 const int count = 10;
 

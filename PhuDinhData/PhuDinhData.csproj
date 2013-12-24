@@ -225,8 +225,8 @@
     <Compile Include="tNhapNguyenLieu.cs">
       <DependentUpon>PhuDinh.tt</DependentUpon>
     </Compile>
-    <Compile Include="ViewModel\1Level\NhanVienModel.cs" />
-    <Compile Include="ViewModel\1Level\NguyenLieuModel.cs" />
+    <Compile Include="ViewModel\1Level\NhanVienViewModel.cs" />
+    <Compile Include="ViewModel\1Level\NguyenLieuViewModel.cs" />
     <Compile Include="ViewModel\1Level\MatHangViewModel.cs" />
     <Compile Include="ViewModel\1Level\DiaDiemViewModel.cs" />
     <Compile Include="ViewModel\2Level\KhachHangViewModel.cs" />

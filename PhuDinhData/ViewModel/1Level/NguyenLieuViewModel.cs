@@ -8,14 +8,14 @@ using PhuDinhCommon;
 
 namespace PhuDinhData.ViewModel
 {
-    public class NguyenLieuModel : BaseViewModel<rNguyenLieu>
+    public class NguyenLieuViewModel : BaseViewModel<rNguyenLieu>
     {
         private List<rLoaiNguyenLieu> _rLoaiNguyenLieus;
         private string _filterLoaiNguyenLieu = string.Empty;
 
         public static HeaderTextFilterModel Header_LoaiNguyenLieu = new HeaderTextFilterModel(Constant.ColumnName_LoaiNguyenLieu);
 
-        public NguyenLieuModel()
+        public NguyenLieuViewModel()
         {
             Entity = new ObservableCollection<rNguyenLieu>();
 

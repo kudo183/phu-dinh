@@ -16,7 +16,7 @@ namespace PhuDinhCommonControl
             InitializeComponent();
 
             dg = dgNhanVien;
-            _viewModel = new NhanVienModel();
+            _viewModel = new NhanVienViewModel();
             DataContext = _viewModel;
         }
 

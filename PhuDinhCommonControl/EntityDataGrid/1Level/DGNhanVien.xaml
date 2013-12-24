@@ -13,7 +13,7 @@
         <CustomControl:DataGridReadOnlyTextColumn x:Name="maColumn"/>
         <!--Phuong Tien-->
         <CustomControl:DataGridComboBoxColumnExt x:Name="phuongTienColumn"
-                                                 Header="{x:Static ViewModel:NhanVienModel.Header_PhuongTien}"
+                                                 Header="{x:Static ViewModel:NhanVienViewModel.Header_PhuongTien}"
                                                  HeaderAddButtonClick="headerAddButton_Click"
                                                  TextBinding="{Binding rPhuongTien.TenPhuongTien, Mode=OneWay}"
                                                  DisplayMemberPath="TenPhuongTien"

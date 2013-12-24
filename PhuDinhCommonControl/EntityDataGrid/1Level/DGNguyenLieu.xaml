@@ -13,7 +13,7 @@
         <CustomControl:DataGridReadOnlyTextColumn x:Name="maColumn"/>
         <!--Loai Nguyen Lieu-->
         <CustomControl:DataGridComboBoxColumnExt x:Name="loaiNguyenLieuColumn"
-                                                 Header="{x:Static ViewModel:NguyenLieuModel.Header_LoaiNguyenLieu}"
+                                                 Header="{x:Static ViewModel:NguyenLieuViewModel.Header_LoaiNguyenLieu}"
                                                  HeaderAddButtonClick="headerAddButton_Click"
                                                  TextBinding="{Binding rLoaiNguyenLieu.TenLoai, Mode=OneWay}"
                                                  DisplayMemberPath="TenLoai"
