@@ -101,6 +101,7 @@
     <Compile Include="Filter\1Level\Filter_tMatHang.cs" />
     <Compile Include="Filter\1Level\Filter_rDiaDiem.cs" />
     <Compile Include="Filter\2Level\Filter_rKhachHang.cs" />
+    <Compile Include="Filter\2Level\Filter_rMatHangNguyenLieu.cs" />
     <Compile Include="Filter\3Level\Filter_rKhachHangChanh.cs" />
     <Compile Include="Filter\3Level\Filter_tDonHang.cs" />
     <Compile Include="Filter\1Level\Filter_rChanh.cs" />
@@ -230,6 +231,7 @@
     <Compile Include="ViewModel\1Level\MatHangViewModel.cs" />
     <Compile Include="ViewModel\1Level\DiaDiemViewModel.cs" />
     <Compile Include="ViewModel\2Level\KhachHangViewModel.cs" />
+    <Compile Include="ViewModel\2Level\MatHangNguyenLieuViewModel.cs" />
     <Compile Include="ViewModel\3Level\KhachHangChanhViewModel.cs" />
     <Compile Include="ViewModel\4Level\ChuyenHangDonHangViewModel.cs" />
     <Compile Include="ViewModel\4Level\ChiTietDonHangViewModel.cs" />
