@@ -65,12 +65,13 @@ namespace PhuDinhCommonControl
 
             foreach (var tChiTietDonHang in chuyenHangDonHang.tDonHang.tChiTietDonHangs.Where(p => p.Xong == false))
             {
+                var soLuong = tChiTietDonHang.SoLuong - tChiTietDonHang.tChiTietChuyenHangDonHangs.Sum(p => p.SoLuong);
                 var ct = new PhuDinhData.tChiTietChuyenHangDonHang
                              {
                                  MaChiTietDonHang = tChiTietDonHang.Ma,
                                  tChuyenHangDonHang = chuyenHangDonHang,
                                  tChiTietDonHang = tChiTietDonHang,
-                                 SoLuong = tChiTietDonHang.SoLuong - tChiTietDonHang.tChiTietChuyenHangDonHangs.Sum(p => p.SoLuong)
+                                 SoLuong = soLuong
                              };
 
                 context.Add(ct);
@@ -113,27 +114,27 @@ namespace PhuDinhCommonControl
 
         private void RefreshChuyenHangDonHangView(PhuDinhData.tChuyenHang chuyenHang)
         {
-            _tChiTietChuyenHangDonHangView.ViewModel.MainFilter.SetFilter(
+            _tChiTietChuyenHangDonHangView.SetMainFilter(
                 PhuDinhData.Filter.Filter_tChiTietChuyenHangDonHang.MaChuyenHangDonHang, null, true);
 
             _tChiTietChuyenHangDonHangView.RefreshView();
 
             if (chuyenHang == null)
             {
-                _tChuyenHangDonHangView.ViewModel.MainFilter
-                    .SetFilter(PhuDinhData.Filter.Filter_tChuyenHangDonHang.MaChuyenHang, null, true);
+                _tChuyenHangDonHangView.SetMainFilter(
+                    PhuDinhData.Filter.Filter_tChuyenHangDonHang.MaChuyenHang, null, true);
 
                 _tChuyenHangDonHangView.RefreshView();
                 return;
             }
 
-            _tChuyenHangDonHangView.ViewModel.
-                SetReferenceFilter<PhuDinhData.tDonHang>(Constant.ColumnName_DonHang, (p => p.Xong == false));
+            _tChuyenHangDonHangView.SetReferenceFilter<PhuDinhData.tDonHang>(
+                Constant.ColumnName_DonHang, (p => p.Xong == false));
 
-            _tChuyenHangDonHangView.ViewModel.MainFilter.
-                SetFilter(PhuDinhData.Filter.Filter_tChuyenHangDonHang.MaChuyenHang, chuyenHang.Ma);
+            _tChuyenHangDonHangView.SetMainFilter(
+                PhuDinhData.Filter.Filter_tChuyenHangDonHang.MaChuyenHang, chuyenHang.Ma);
 
-            _tChuyenHangDonHangView.ViewModel.SetDefaultValue(Constant.ColumnName_MaChuyenHang, chuyenHang.Ma);
+            _tChuyenHangDonHangView.SetDefaultValue(Constant.ColumnName_MaChuyenHang, chuyenHang.Ma);
             _tChuyenHangDonHangView.RefreshView();
         }
 
@@ -141,7 +142,7 @@ namespace PhuDinhCommonControl
         {
             if (chuyenHangDonHang == null)
             {
-                _tChiTietChuyenHangDonHangView.ViewModel.MainFilter.SetFilter(
+                _tChiTietChuyenHangDonHangView.SetMainFilter(
                     PhuDinhData.Filter.Filter_tChiTietChuyenHangDonHang.MaChuyenHangDonHang, null, true);
 
                 _tChiTietChuyenHangDonHangView.RefreshView();
@@ -149,14 +150,16 @@ namespace PhuDinhCommonControl
                 return;
             }
 
-            _tChiTietChuyenHangDonHangView.ViewModel.
-                SetReferenceFilter<PhuDinhData.tChiTietDonHang>(Constant.ColumnName_ChiTietDonHang
+            _tChiTietChuyenHangDonHangView.SetReferenceFilter<PhuDinhData.tChiTietDonHang>(
+                Constant.ColumnName_ChiTietDonHang
                 , (p => p.Xong == false && p.MaDonHang == chuyenHangDonHang.MaDonHang));
 
-            _tChiTietChuyenHangDonHangView.ViewModel.MainFilter.SetFilter(
+            _tChiTietChuyenHangDonHangView.SetMainFilter(
                 PhuDinhData.Filter.Filter_tChiTietChuyenHangDonHang.MaChuyenHangDonHang, chuyenHangDonHang.Ma);
 
-            _tChiTietChuyenHangDonHangView.ViewModel.SetDefaultValue(Constant.ColumnName_MaChuyenHangDonHang, chuyenHangDonHang.Ma);
+            _tChiTietChuyenHangDonHangView.SetDefaultValue(
+                Constant.ColumnName_MaChuyenHangDonHang, chuyenHangDonHang.Ma);
+
             _tChiTietChuyenHangDonHangView.RefreshView();
         }
     }

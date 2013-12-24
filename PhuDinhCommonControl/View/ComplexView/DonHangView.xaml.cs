@@ -57,15 +57,18 @@ namespace PhuDinhCommonControl
         {
             if (donHang == null)
             {
-                _tChiTietDonHangView.ViewModel.MainFilter.
-                SetFilter(PhuDinhData.Filter.Filter_tChiTietDonHang.MaDonHang, null, true);
+                _tChiTietDonHangView.SetMainFilter(
+                    PhuDinhData.Filter.Filter_tChiTietDonHang.MaDonHang, null, true);
+
                 _tChiTietDonHangView.RefreshView();
                 return;
             }
 
-            _tChiTietDonHangView.ViewModel.MainFilter.
-                SetFilter(PhuDinhData.Filter.Filter_tChiTietDonHang.MaDonHang, donHang.Ma);
-            _tChiTietDonHangView.ViewModel.SetDefaultValue(Constant.ColumnName_MaDonHang, donHang.Ma);
+            _tChiTietDonHangView.SetMainFilter(
+                PhuDinhData.Filter.Filter_tChiTietDonHang.MaDonHang, donHang.Ma);
+
+            _tChiTietDonHangView.SetDefaultValue(Constant.ColumnName_MaDonHang, donHang.Ma);
+
             _tChiTietDonHangView.RefreshView();
         }
     }

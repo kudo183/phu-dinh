@@ -26,13 +26,13 @@ namespace PhuDinhCommonControl
             var baixe = ((DataGrid)sender).SelectedItem as PhuDinhData.rBaiXe;
             if (baixe == null)
             {
-                _rChanhView.ViewModel.MainFilter.SetFilter(PhuDinhData.Filter.Filter_rChanh.MaBaiXe, null, true);
+                _rChanhView.SetMainFilter(PhuDinhData.Filter.Filter_rChanh.MaBaiXe, null, true);
                 _rChanhView.RefreshView();
                 return;
             }
 
-            _rChanhView.ViewModel.MainFilter.SetFilter(PhuDinhData.Filter.Filter_rChanh.MaBaiXe, baixe.Ma);
-            _rChanhView.ViewModel.SetDefaultValue(Constant.ColumnName_MaBaiXe, baixe.Ma);
+            _rChanhView.SetMainFilter(PhuDinhData.Filter.Filter_rChanh.MaBaiXe, baixe.Ma);
+            _rChanhView.SetDefaultValue(Constant.ColumnName_MaBaiXe, baixe.Ma);
             _rChanhView.RefreshView();
         }
     }

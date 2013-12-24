@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq.Expressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -11,7 +12,6 @@ namespace PhuDinhCommonControl
     public class BaseView<T> : UserControl where T : class
     {
         protected BaseViewModel<T> _viewModel;
-        public BaseViewModel<T> ViewModel { get { return _viewModel; } }
 
         public event EventHandler AfterSave;
         public event EventHandler AfterCancel;
@@ -76,7 +76,7 @@ namespace PhuDinhCommonControl
         {
             if (_viewModel == null)
                 return;
-            
+
             if (_viewModel.MainFilter.IsClearAllData == true)
             {
                 _viewModel.Entity.Clear();
@@ -94,7 +94,7 @@ namespace PhuDinhCommonControl
         {
             if (_viewModel == null)
                 return;
-            
+
             CommitEdit();
 
             try
@@ -120,6 +120,21 @@ namespace PhuDinhCommonControl
             {
                 AfterCancel(this, null);
             }
+        }
+
+        public void SetMainFilter(string key, object value, bool setFalse = false)
+        {
+            _viewModel.MainFilter.SetFilter(key, value, setFalse);
+        }
+
+        public void SetReferenceFilter<T1>(string columnName, Expression<Func<T1, bool>> filter) where T1 : class
+        {
+            _viewModel.SetReferenceFilter(columnName, filter);
+        }
+
+        public void SetDefaultValue(string columnName, object value)
+        {
+            _viewModel.SetDefaultValue(columnName, value);
         }
 
         protected void bmMenu_Click(object sender, RoutedEventArgs e)
