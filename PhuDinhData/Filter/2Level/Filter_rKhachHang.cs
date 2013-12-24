@@ -1,0 +1,63 @@
+﻿namespace PhuDinhData.Filter
+{
+    public class Filter_rKhachHang : FilterBase<rKhachHang>
+    {
+        public const string MaDiaDiem = "MaDiaDiem";
+        public const string Tinh = "Tinh";
+        public const string TenKhachHang = "TenKhachHang";
+
+        public Filter_rKhachHang()
+        {
+            IsClearAllData = false;
+
+            _filters[MaDiaDiem] = (p => true);
+            _filters[Tinh] = (p => true);
+            _filters[TenKhachHang] = (p => true);
+
+            UpdateMainFilter();
+        }
+
+        public override void SetFilter(string key, object value, bool setFalse = false)
+        {
+            switch (key)
+            {
+                case MaDiaDiem:
+                    SetFilterMaDiaDiem(value as int?, setFalse);
+                    break;
+                case Tinh:
+                    SetFilterTinh(value as string, setFalse);
+                    break;
+                case TenKhachHang:
+                    SetFilterTenKhachHang(value as string, setFalse);
+                    break;
+            }
+        }
+
+        private void SetFilterMaDiaDiem(int? maDiaDiem, bool setFalse = false)
+        {
+            IsClearAllData = false;
+
+            _filters[MaDiaDiem] = FilterNullable(maDiaDiem, setFalse, p => p.MaDiaDiem == maDiaDiem);
+
+            UpdateMainFilter();
+        }
+
+        private void SetFilterTinh(string tinh, bool setFalse = false)
+        {
+            IsClearAllData = false;
+
+            _filters[Tinh] = FilterText(tinh, setFalse, p => p.rDiaDiem.Tinh.Contains(tinh));
+
+            UpdateMainFilter();
+        }
+
+        private void SetFilterTenKhachHang(string tenKhachHang, bool setFalse = false)
+        {
+            IsClearAllData = false;
+
+            _filters[TenKhachHang] = FilterText(tenKhachHang, setFalse, p => p.TenKhachHang.Contains(tenKhachHang));
+
+            UpdateMainFilter();
+        }
+    }
+}

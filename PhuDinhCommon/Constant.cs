@@ -32,6 +32,7 @@
         public const string ColumnName_MaChuyenHangDonHang = "Ma Chuyen Hang Don Hang";
         public const string ColumnName_MaLoaiNguyenLieu = "Ma Loai Nguyen Lieu";
         public const string ColumnName_MaPhuongTien = "Ma Phuong Tien";
+        public const string ColumnName_MaDiaDiem = "Ma Dia Diem";
 
         public const string ColumnName_BaiXe = "Bai Xe";
         public const string ColumnName_Nuoc = "Nuoc";
@@ -47,6 +48,7 @@
         public const string ColumnName_MatHang = "Mat Hang";
         public const string ColumnName_LoaiNguyenLieu = "Loai Nguyen Lieu";
         public const string ColumnName_PhuongTien = "Phuong Tien";
+        public const string ColumnName_DiaDiem = "Dia Diem";
 
         //0Level
         public const string ViewName_BaiXe = "Bai Xe";

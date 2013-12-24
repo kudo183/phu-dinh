@@ -40,7 +40,7 @@ namespace PhuDinhData.DesignTimeData
                 LaMacDinh = i % 2 == 0,
                 rKhachHang = DDrKhachHang.Create(i),
                 rChanh = DDrChanh.Create(i),
-                rKhachHangList = DDrKhachHang.rKhachHangs,
+                rKhachHangList = DDrKhachHang.ViewModel.Entity.ToList(),
                 rChanhList = DDrChanh.ViewModel.Entity.ToList()
             };
         }

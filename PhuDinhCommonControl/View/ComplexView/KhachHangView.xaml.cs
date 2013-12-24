@@ -31,13 +31,13 @@ namespace PhuDinhCommonControl
             var diaDiem = ((DataGrid)sender).SelectedItem as PhuDinhData.rDiaDiem;
             if (diaDiem == null)
             {
-                _rKhachHangView.FilterKhachHang = null;
+                _rKhachHangView.SetMainFilter(PhuDinhData.Filter.Filter_rKhachHang.MaDiaDiem, null, true);
                 _rKhachHangView.RefreshView();
                 return;
             }
 
-            _rKhachHangView.FilterKhachHang = (p => p.MaDiaDiem == diaDiem.Ma);
-            _rKhachHangView.rDiaDiemDefault = diaDiem;
+            _rKhachHangView.SetMainFilter(PhuDinhData.Filter.Filter_rKhachHang.MaDiaDiem, diaDiem.Ma);
+            _rKhachHangView.SetDefaultValue(Constant.ColumnName_MaDiaDiem, diaDiem.Ma);
             _rKhachHangView.RefreshView();
         }
 
