@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Windows.Controls.Primitives;
 using PhuDinhData.ViewModel;
 using PhuDinhCommon;
+using PhuDinhData.ViewModel.DataGridColumnHeaderFilterModel;
 
 namespace PhuDinhCommonControl
 {
@@ -23,11 +25,13 @@ namespace PhuDinhCommonControl
         {
             CommitEdit();
 
+            var header = (sender as DataGridColumnHeader).Content as IHeaderFilterModel;
+
             var view = new rLoaiHangView();
-            view.RefreshView();
+
             ChildWindowUtils.ShowChildWindow(Constant.ViewName_LoaiHang, view);
 
-            _viewModel.UpdateReferenceData(Constant.ColumnName_LoaiHang);
+            _viewModel.UpdateReferenceData(header.Name);
         }
     }
 }

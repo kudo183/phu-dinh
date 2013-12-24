@@ -29,7 +29,7 @@ namespace PhuDinhCommonControl
             var header = (sender as DataGridColumnHeader).Content as IHeaderFilterModel;
             
             var view = new rBaiXeView();
-            view.RefreshView();
+            
             ChildWindowUtils.ShowChildWindow(Constant.ViewName_BaiXe, view);
 
             _viewModel.UpdateReferenceData(header.Name);

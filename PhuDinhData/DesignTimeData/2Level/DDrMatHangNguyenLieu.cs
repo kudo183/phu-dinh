@@ -36,7 +36,7 @@ namespace PhuDinhData.DesignTimeData
                 tMatHang = DDtMatHang.Create(i),
                 tMatHangList = DDtMatHang.ViewModel.Entity.ToList(),
                 rNguyenLieu = DDrNguyenLieu.Create(i),
-                rNguyenLieuList = DDrNguyenLieu.rNguyenLieus
+                rNguyenLieuList = DDrNguyenLieu.ViewModel.Entity.ToList(),
             };
         }
     }

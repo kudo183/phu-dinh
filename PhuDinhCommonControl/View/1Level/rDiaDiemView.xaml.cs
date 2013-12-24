@@ -28,7 +28,7 @@ namespace PhuDinhCommonControl
             var header = (sender as DataGridColumnHeader).Content as IHeaderFilterModel;
             
             var view = new rNuocView();
-            view.RefreshView();
+            
             ChildWindowUtils.ShowChildWindow(Constant.ViewName_Nuoc, view);
 
             _viewModel.UpdateReferenceData(header.Name);
