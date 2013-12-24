@@ -96,6 +96,7 @@
     <Compile Include="EntityExt\rKhachHangExt.cs" />
     <Compile Include="EntityExt\rDiaDiemExt.cs" />
     <Compile Include="EntityExt\rChanhExt.cs" />
+    <Compile Include="Filter\1Level\Filter_rNhanVien.cs" />
     <Compile Include="Filter\1Level\Filter_rNguyenLieu.cs" />
     <Compile Include="Filter\1Level\Filter_tMatHang.cs" />
     <Compile Include="Filter\1Level\Filter_rDiaDiem.cs" />
@@ -223,6 +224,7 @@
     <Compile Include="tNhapNguyenLieu.cs">
       <DependentUpon>PhuDinh.tt</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\1Level\NhanVienModel.cs" />
     <Compile Include="ViewModel\1Level\NguyenLieuModel.cs" />
     <Compile Include="ViewModel\1Level\MatHangViewModel.cs" />
     <Compile Include="ViewModel\1Level\DiaDiemViewModel.cs" />

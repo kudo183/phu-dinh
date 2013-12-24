@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using PhuDinhCommon;
+using System.Windows.Controls;
 
 namespace PhuDinhCommonControl
 {
@@ -25,13 +26,13 @@ namespace PhuDinhCommonControl
             var phuongTien = ((DataGrid)sender).SelectedItem as PhuDinhData.rPhuongTien;
             if (phuongTien == null)
             {
-                _rNhanVienView.FilterNhanVien = null;
+                _rNhanVienView.SetMainFilter(PhuDinhData.Filter.Filter_rNhanVien.MaPhuongTien, null, true);
                 _rNhanVienView.RefreshView();
                 return;
             }
 
-            _rNhanVienView.FilterNhanVien.FilterPhuongTien = (p => p.MaPhuongTien == phuongTien.Ma);
-            _rNhanVienView.rPhuongTienDefault = phuongTien;
+            _rNhanVienView.SetMainFilter(PhuDinhData.Filter.Filter_rNhanVien.MaPhuongTien, phuongTien.Ma);
+            _rNhanVienView.SetDefaultValue(Constant.ColumnName_MaPhuongTien, phuongTien.Ma);
             _rNhanVienView.RefreshView();
         }
     }

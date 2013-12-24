@@ -5,14 +5,15 @@
                            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                            xmlns:CustomControl="clr-namespace:CustomControl;assembly=CustomControl"
                            xmlns:DesignTimeData="clr-namespace:PhuDinhData.DesignTimeData;assembly=PhuDinhData"
-                           xmlns:PhuDinhCommonControl="clr-namespace:PhuDinhCommonControl" mc:Ignorable="d"
-                           d:DataContext="{x:Static DesignTimeData:DDrNhanVien.rNhanViens}"
-                           AutoGenerateColumns="False" EnableRowVirtualization="False" ItemsSource="{Binding}" SelectionMode="Single">
+                           xmlns:ViewModel="clr-namespace:PhuDinhData.ViewModel;assembly=PhuDinhData" mc:Ignorable="d"
+                           d:DataContext="{x:Static DesignTimeData:DDrNhanVien.ViewModel}"
+                           AutoGenerateColumns="False" EnableRowVirtualization="False" ItemsSource="{Binding Entity}" SelectionMode="Single">
     <DataGrid.Columns>
         <!--Ma-->
         <CustomControl:DataGridReadOnlyTextColumn x:Name="maColumn"/>
         <!--Phuong Tien-->
-        <CustomControl:DataGridComboBoxColumnExt x:Name="phuongTienColumn" Header="{x:Static PhuDinhCommonControl:DataGridColumnHeaderTextFilter.NhanVien_PhuongTien}"
+        <CustomControl:DataGridComboBoxColumnExt x:Name="phuongTienColumn"
+                                                 Header="{x:Static ViewModel:NhanVienModel.Header_PhuongTien}"
                                                  HeaderAddButtonClick="headerAddButton_Click"
                                                  TextBinding="{Binding rPhuongTien.TenPhuongTien, Mode=OneWay}"
                                                  DisplayMemberPath="TenPhuongTien"

@@ -35,7 +35,7 @@ namespace PhuDinhData.DesignTimeData
                 MaMatHang = i,
                 Ngay = System.DateTime.Now,
                 rNhanVien = DDrNhanVien.Create(i),
-                rNhanVienList = DDrNhanVien.rNhanViens,
+                rNhanVienList = DDrNhanVien.ViewModel.Entity.ToList(),
                 tMatHang = DDtMatHang.Create(i),
                 tMatHangList = DDtMatHang.ViewModel.Entity.ToList()
             };

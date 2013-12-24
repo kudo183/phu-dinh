@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace PhuDinhData.DesignTimeData
 {
@@ -36,7 +37,7 @@ namespace PhuDinhData.DesignTimeData
                 GhiChu = "Ghi chú " + i,
                 rNhanVien = DDrNhanVien.Create(i),
                 rLoaiChiPhi = DDrLoaiChiPhi.Create(i),
-                rNhanVienList = DDrNhanVien.rNhanViens,
+                rNhanVienList = DDrNhanVien.ViewModel.Entity.ToList(),
                 rLoaiChiPhiList = DDrLoaiChiPhi.rLoaiChiPhis
             };
         }

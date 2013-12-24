@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace PhuDinhData.DesignTimeData
 {
@@ -34,7 +35,7 @@ namespace PhuDinhData.DesignTimeData
                 Ngay = System.DateTime.Now,
                 Gio = System.DateTime.Now.TimeOfDay,
                 rNhanVien = DDrNhanVien.Create(i),
-                rNhanVienList = DDrNhanVien.rNhanViens
+                rNhanVienList = DDrNhanVien.ViewModel.Entity.ToList()
             };
         }
     }
