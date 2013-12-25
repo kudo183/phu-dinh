@@ -5,16 +5,18 @@
                            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                            xmlns:CustomControl="clr-namespace:CustomControl;assembly=CustomControl"
                            xmlns:DesignTimeData="clr-namespace:PhuDinhData.DesignTimeData;assembly=PhuDinhData"
-                           xmlns:PhuDinhCommonControl="clr-namespace:PhuDinhCommonControl" mc:Ignorable="d"
-                           d:DataContext="{x:Static DesignTimeData:DDtNhapMatHang.tNhapMatHangs}"
-                           AutoGenerateColumns="False" EnableRowVirtualization="False" ItemsSource="{Binding}" SelectionMode="Single">
+                           xmlns:ViewModel="clr-namespace:PhuDinhData.ViewModel;assembly=PhuDinhData" mc:Ignorable="d"
+                           d:DataContext="{x:Static DesignTimeData:DDtNhapMatHang.ViewModel}"
+                           AutoGenerateColumns="False" EnableRowVirtualization="False" ItemsSource="{Binding Entity}" SelectionMode="Single">
     <DataGrid.Columns>
         <!--Ma-->
         <CustomControl:DataGridReadOnlyTextColumn x:Name="maColumn"/>
         <!--Ngay-->
-        <CustomControl:DataGridDateColumn x:Name="ngayColumn" Header="{x:Static PhuDinhCommonControl:DataGridColumnHeaderDateFilter.NhapMatHang}"/>
+        <CustomControl:DataGridDateColumn x:Name="ngayColumn" Header="{x:Static ViewModel:NhapMatHangViewModel.Header_Ngay}"/>
         <!--Nhan vien-->
-        <CustomControl:DataGridComboBoxColumnExt x:Name="nhanVienColumn" Header="Nhân Viên" HeaderAddButtonClick="headerAddButton_Click"
+        <CustomControl:DataGridComboBoxColumnExt x:Name="nhanVienColumn"
+                                                 Header="{x:Static ViewModel:NhapMatHangViewModel.Header_NhanVien}"
+                                                 HeaderAddButtonClick="headerAddButton_Click"
                                                  TextBinding="{Binding rNhanVien.TenNhanVien, Mode=OneWay}"
                                                  DisplayMemberPath="TenNhanVien"
                                                  SelectedValuePath="Ma"
@@ -22,7 +24,9 @@
                                                  SelectedItemBinding="{Binding rNhanVien, UpdateSourceTrigger=PropertyChanged}"
                                                  ItemsSource="{Binding rNhanVienList}"/>
         <!--Mat hang-->
-        <CustomControl:DataGridComboBoxColumnExt x:Name="matHangColumn" Header="Mặt Hàng" HeaderAddButtonClick="headerAddButton_Click"
+        <CustomControl:DataGridComboBoxColumnExt x:Name="matHangColumn"
+                                                 Header="{x:Static ViewModel:NhapMatHangViewModel.Header_MatHang}"
+                                                 HeaderAddButtonClick="headerAddButton_Click"
                                                  TextBinding="{Binding tMatHang.TenMatHangLoaiHang, Mode=OneWay}"
                                                  DisplayMemberPath="TenMatHangLoaiHang"
                                                  SelectedValuePath="Ma"

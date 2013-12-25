@@ -100,6 +100,7 @@
     <Compile Include="Filter\1Level\Filter_rNguyenLieu.cs" />
     <Compile Include="Filter\1Level\Filter_tMatHang.cs" />
     <Compile Include="Filter\1Level\Filter_rDiaDiem.cs" />
+    <Compile Include="Filter\2Level\Filter_tNhapMatHang.cs" />
     <Compile Include="Filter\2Level\Filter_tChuyenHang.cs" />
     <Compile Include="Filter\2Level\Filter_rKhachHang.cs" />
     <Compile Include="Filter\2Level\Filter_rMatHangNguyenLieu.cs" />
@@ -234,6 +235,7 @@
     <Compile Include="ViewModel\1Level\DiaDiemViewModel.cs" />
     <Compile Include="ViewModel\2Level\ChiPhiViewModel.cs" />
     <Compile Include="ViewModel\2Level\ChuyenHangViewModel.cs" />
+    <Compile Include="ViewModel\2Level\NhapMatHangViewModel.cs" />
     <Compile Include="ViewModel\2Level\KhachHangViewModel.cs" />
     <Compile Include="ViewModel\2Level\MatHangNguyenLieuViewModel.cs" />
     <Compile Include="ViewModel\3Level\KhachHangChanhViewModel.cs" />
