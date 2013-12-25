@@ -1,28 +1,30 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
+using PhuDinhData.ViewModel;
 
 namespace PhuDinhData.DesignTimeData
 {
     public static class DDtChuyenHang
     {
-        private static List<tChuyenHang> _tChuyenHangs;
-        public static List<tChuyenHang> tChuyenHangs
+        private static ChuyenHangViewModel _viewModel;
+        public static ChuyenHangViewModel ViewModel
         {
             get
             {
-                if (_tChuyenHangs != null)
+                if (_viewModel != null)
                 {
-                    return _tChuyenHangs;
+                    return _viewModel;
                 }
+
+                _viewModel = new ChuyenHangViewModel();
 
                 const int count = 10;
-                _tChuyenHangs = new List<tChuyenHang>(count);
+
                 for (var i = 1; i <= count; i++)
                 {
-                    _tChuyenHangs.Add(Create(i));
+                    _viewModel.Entity.Add(Create(i));
                 }
 
-                return _tChuyenHangs;
+                return _viewModel;
             }
         }
 

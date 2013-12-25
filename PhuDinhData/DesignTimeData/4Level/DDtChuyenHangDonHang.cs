@@ -38,7 +38,7 @@ namespace PhuDinhData.DesignTimeData
                 MaDonHang = i,
                 tChuyenHang = DDtChuyenHang.Create(i),
                 tDonHang = DDtDonHang.Create(i),
-                tChuyenHangList = DDtChuyenHang.tChuyenHangs,
+                tChuyenHangList = DDtChuyenHang.ViewModel.Entity.ToList(),
                 tDonHangList = DDtDonHang.ViewModel.Entity.ToList()
             };
         }

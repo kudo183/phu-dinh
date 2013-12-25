@@ -5,18 +5,20 @@
                            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                            xmlns:CustomControl="clr-namespace:CustomControl;assembly=CustomControl"
                            xmlns:DesignTimeData="clr-namespace:PhuDinhData.DesignTimeData;assembly=PhuDinhData"
-                           xmlns:PhuDinhCommonControl="clr-namespace:PhuDinhCommonControl" mc:Ignorable="d"
-                           d:DataContext="{x:Static DesignTimeData:DDtChuyenHang.tChuyenHangs}"
-                           AutoGenerateColumns="False" EnableRowVirtualization="False" ItemsSource="{Binding}" SelectionMode="Single">
+                           xmlns:ViewModel="clr-namespace:PhuDinhData.ViewModel;assembly=PhuDinhData" mc:Ignorable="d"
+                           d:DataContext="{x:Static DesignTimeData:DDtChuyenHang.ViewModel}"
+                           AutoGenerateColumns="False" EnableRowVirtualization="False" ItemsSource="{Binding Entity}" SelectionMode="Single">
     <DataGrid.Columns>
         <!--Ma-->
         <CustomControl:DataGridReadOnlyTextColumn x:Name="maColumn"/>
         <!--Ngay-->
-        <CustomControl:DataGridDateColumn x:Name="ngayColumn" Header="{x:Static PhuDinhCommonControl:DataGridColumnHeaderDateFilter.ChuyenHang}"/>
+        <CustomControl:DataGridDateColumn x:Name="ngayColumn" Header="{x:Static ViewModel:ChuyenHangViewModel.Header_Ngay}"/>
         <!--Gio-->
         <CustomControl:DataGridTimeColumn x:Name="gioColumn"/>
         <!--Nhan vien giao hang-->
-        <CustomControl:DataGridComboBoxColumnExt x:Name="nhanVienGiaoHangColumn" Header="Nhân Viên" HeaderAddButtonClick="headerAddButton_Click"
+        <CustomControl:DataGridComboBoxColumnExt x:Name="nhanVienGiaoHangColumn"
+                                                 Header="{x:Static ViewModel:ChuyenHangViewModel.Header_NhanVien}"
+                                                 HeaderAddButtonClick="headerAddButton_Click"
                                                  TextBinding="{Binding rNhanVien.TenNhanVien, Mode=OneWay}"
                                                  DisplayMemberPath="TenNhanVien"
                                                  SelectedValuePath="Ma"
