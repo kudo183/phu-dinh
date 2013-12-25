@@ -67,10 +67,8 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Filter_Entity\3Level\Filter_rKhachHangChanh.cs" />
     <Compile Include="Utils\ChildWindowUtils.cs" />
     <Compile Include="Factory\ContextFactory.cs" />
-    <Compile Include="Filter_DataGridColumnHeader\DataGridColumnHeaderDateFilter.cs" />
     <Compile Include="EntityDataGrid\0Level\DGNhaCungCap.xaml.cs">
       <DependentUpon>DGNhaCungCap.xaml</DependentUpon>
     </Compile>
@@ -140,12 +138,6 @@
     <Compile Include="EntityDataGrid\1Level\DGChanh.xaml.cs">
       <DependentUpon>DGChanh.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Filter_DataGridColumnHeader\DataGridColumnHeaderTextFilter.cs" />
-    <Compile Include="Filter_Entity\1Level\Filter_tMatHang.cs" />
-    <Compile Include="Filter_Entity\1Level\Filter_rNhanVien.cs" />
-    <Compile Include="Filter_Entity\1Level\Filter_rNguyenLieu.cs" />
-    <Compile Include="Filter_Entity\1Level\Filter_rDiaDiem.cs" />
-    <Compile Include="Filter_Entity\1Level\Filter_rChanh.cs" />
     <Compile Include="Menu\BottomMenu.xaml.cs">
       <DependentUpon>BottomMenu.xaml</DependentUpon>
     </Compile>
@@ -260,10 +252,6 @@
     <Compile Include="View\ComplexView\NhanVienView.xaml.cs">
       <DependentUpon>NhanVienView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Filter_Entity\2Level\Filter_tNhapNguyenLieu.cs" />
-    <Compile Include="Filter_Entity\2Level\Filter_tNhapMatHang.cs" />
-    <Compile Include="Filter_Entity\2Level\Filter_tChiPhi.cs" />
-    <Compile Include="Filter_Entity\3Level\Filter_tDonHang.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
