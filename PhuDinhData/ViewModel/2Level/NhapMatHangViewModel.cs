@@ -105,9 +105,9 @@ namespace PhuDinhData.ViewModel
                 tNhapMatHang.tMatHangList = _tMatHangs;
                 tNhapMatHang.rNhanVienList = _rNhanViens;
 
-                if (GetDefaultValue(Constant.ColumnName_MaLoaiChiPhi) != null)
+                if (GetDefaultValue(Constant.ColumnName_MaMatHang) != null)
                 {
-                    tNhapMatHang.MaMatHang = Convert.ToInt32(GetDefaultValue(Constant.ColumnName_MatHang));
+                    tNhapMatHang.MaMatHang = Convert.ToInt32(GetDefaultValue(Constant.ColumnName_MaMatHang));
                 }
 
                 if (GetDefaultValue(Constant.ColumnName_MaNhanVien) != null)

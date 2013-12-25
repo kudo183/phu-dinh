@@ -37,6 +37,7 @@
         public const string ColumnName_MaNguyenLieu = "Ma Nguyen Lieu";
         public const string ColumnName_MaNhanVien = "Ma Nhan Vien";
         public const string ColumnName_MaLoaiChiPhi = "Ma Loai Chi Phi";
+        public const string ColumnName_MaNhaCungCap = "Ma Nha Cung Cap";
         
         public const string ColumnName_BaiXe = "Bai Xe";
         public const string ColumnName_Nuoc = "Nuoc";
@@ -56,6 +57,7 @@
         public const string ColumnName_NguyenLieu = "Nguyen Lieu";
         public const string ColumnName_LoaiChiPhi = "Loai Chi Phi";
         public const string ColumnName_NhanVien = "Nhan Vien";
+        public const string ColumnName_NhanCungCap = "Nha Cung Cap";
 
         //0Level
         public const string ViewName_BaiXe = "Bai Xe";
