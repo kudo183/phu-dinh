@@ -1,4 +1,5 @@
-﻿using PhuDinhData.ViewModel;
+﻿using System.Linq;
+using PhuDinhData.ViewModel;
 
 namespace PhuDinhData.DesignTimeData
 {
@@ -35,7 +36,7 @@ namespace PhuDinhData.DesignTimeData
                 MaNuoc = i,
                 Tinh = "Tỉnh " + i,
                 rNuoc = DDrNuoc.Create(i),
-                rNuocList = DDrNuoc.rNuocs
+                rNuocList = DDrNuoc.ViewModel.Entity.ToList()
             };
         }
     }

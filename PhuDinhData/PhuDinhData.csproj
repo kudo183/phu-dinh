@@ -96,6 +96,13 @@
     <Compile Include="EntityExt\rKhachHangExt.cs" />
     <Compile Include="EntityExt\rDiaDiemExt.cs" />
     <Compile Include="EntityExt\rChanhExt.cs" />
+    <Compile Include="Filter\0Level\Filter_rPhuongTien.cs" />
+    <Compile Include="Filter\0Level\Filter_rNhaCungCap.cs" />
+    <Compile Include="Filter\0Level\Filter_rNuoc.cs" />
+    <Compile Include="Filter\0Level\Filter_rLoaiNguyenLieu.cs" />
+    <Compile Include="Filter\0Level\Filter_rLoaiHang.cs" />
+    <Compile Include="Filter\0Level\Filter_rLoaiChiPhi.cs" />
+    <Compile Include="Filter\0Level\Filter_rBaiXe.cs" />
     <Compile Include="Filter\1Level\Filter_rNhanVien.cs" />
     <Compile Include="Filter\1Level\Filter_rNguyenLieu.cs" />
     <Compile Include="Filter\1Level\Filter_tMatHang.cs" />
@@ -230,6 +237,13 @@
     <Compile Include="tNhapNguyenLieu.cs">
       <DependentUpon>PhuDinh.tt</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\0Level\BaiXeViewModel.cs" />
+    <Compile Include="ViewModel\0Level\PhuongTienViewModel.cs" />
+    <Compile Include="ViewModel\0Level\NhaCungCapViewModel.cs" />
+    <Compile Include="ViewModel\0Level\NuocViewModel.cs" />
+    <Compile Include="ViewModel\0Level\LoaiNguyenLieuViewModel.cs" />
+    <Compile Include="ViewModel\0Level\LoaiHangViewModel.cs" />
+    <Compile Include="ViewModel\0Level\LoaiChiPhiViewModel.cs" />
     <Compile Include="ViewModel\1Level\NhanVienViewModel.cs" />
     <Compile Include="ViewModel\1Level\NguyenLieuViewModel.cs" />
     <Compile Include="ViewModel\1Level\MatHangViewModel.cs" />

@@ -1,4 +1,5 @@
-﻿using PhuDinhData.ViewModel;
+﻿using System.Linq;
+using PhuDinhData.ViewModel;
 
 namespace PhuDinhData.DesignTimeData
 {
@@ -35,7 +36,7 @@ namespace PhuDinhData.DesignTimeData
                 MaBaiXe = i,
                 TenChanh = "Chành " + i,
                 rBaiXe = DDrBaiXe.Create(i),
-                rBaiXeList = DDrBaiXe.rBaiXes
+                rBaiXeList = DDrBaiXe.ViewModel.Entity.ToList()
             };
         }
     }

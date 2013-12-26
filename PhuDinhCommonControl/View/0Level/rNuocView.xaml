@@ -7,9 +7,10 @@
              xmlns:EntityDataGrid="clr-namespace:PhuDinhCommonControl.EntityDataGrid"
              xmlns:Menu="clr-namespace:PhuDinhCommonControl.Menu"
              xmlns:PhuDinhData="clr-namespace:PhuDinhData;assembly=PhuDinhData"
+             xmlns:DesignTimeData="clr-namespace:PhuDinhData.DesignTimeData;assembly=PhuDinhData"
              x:Class="PhuDinhCommonControl.rNuocView" 
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DataContext="{x:Static DesignTimeData:DDrNuoc.ViewModel}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>

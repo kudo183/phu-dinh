@@ -1,26 +1,29 @@
-﻿using System.Collections.Generic;
+﻿using PhuDinhData.ViewModel;
 
 namespace PhuDinhData.DesignTimeData
 {
     public static class DDrBaiXe
     {
-        private static List<rBaiXe> _rBaiXes;
-        public static List<rBaiXe> rBaiXes
+        private static BaiXeViewModel _viewModel;
+        public static BaiXeViewModel ViewModel
         {
             get
             {
-                if (_rBaiXes != null)
+                if (_viewModel != null)
                 {
-                    return _rBaiXes;
+                    return _viewModel;
                 }
 
+                _viewModel = new BaiXeViewModel();
+
                 const int count = 10;
-                _rBaiXes = new List<rBaiXe>(count);
+
                 for (var i = 1; i <= count; i++)
                 {
-                    _rBaiXes.Add(Create(i));
+                    _viewModel.Entity.Add(Create(i));
                 }
-                return _rBaiXes;
+
+                return _viewModel;
             }
         }
 

@@ -1,26 +1,29 @@
-﻿using System.Collections.Generic;
+﻿using PhuDinhData.ViewModel;
 
 namespace PhuDinhData.DesignTimeData
 {
     public static class DDrNhaCungCap
     {
-        private static List<rNhaCungCap> _rNhaCungCaps;
-        public static List<rNhaCungCap> rNhaCungCaps
+        private static NhaCungCapViewModel _viewModel;
+        public static NhaCungCapViewModel ViewModel
         {
             get
             {
-                if (_rNhaCungCaps != null)
+                if (_viewModel != null)
                 {
-                    return _rNhaCungCaps;
+                    return _viewModel;
                 }
 
+                _viewModel = new NhaCungCapViewModel();
+
                 const int count = 10;
-                _rNhaCungCaps = new List<rNhaCungCap>(count);
+
                 for (var i = 1; i <= count; i++)
                 {
-                    _rNhaCungCaps.Add(Create(i));
+                    _viewModel.Entity.Add(Create(i));
                 }
-                return _rNhaCungCaps;
+
+                return _viewModel;
             }
         }
 

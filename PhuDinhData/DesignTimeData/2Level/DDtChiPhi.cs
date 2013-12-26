@@ -40,7 +40,7 @@ namespace PhuDinhData.DesignTimeData
                 rNhanVien = DDrNhanVien.Create(i),
                 rLoaiChiPhi = DDrLoaiChiPhi.Create(i),
                 rNhanVienList = DDrNhanVien.ViewModel.Entity.ToList(),
-                rLoaiChiPhiList = DDrLoaiChiPhi.rLoaiChiPhis
+                rLoaiChiPhiList = DDrLoaiChiPhi.ViewModel.Entity.ToList()
             };
         }
     }

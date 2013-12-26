@@ -1,29 +1,29 @@
-﻿using System.Collections.Generic;
+﻿using PhuDinhData.ViewModel;
 
 namespace PhuDinhData.DesignTimeData
 {
     public static class DDrNuoc
     {
-        public static bool IsTouched { get; set; }
-
-        private static List<rNuoc> _rNuocs;
-        public static List<rNuoc> rNuocs
+        private static NuocViewModel _viewModel;
+        public static NuocViewModel ViewModel
         {
             get
             {
-                if (_rNuocs != null)
+                if (_viewModel != null)
                 {
-                    return _rNuocs;
+                    return _viewModel;
                 }
+
+                _viewModel = new NuocViewModel();
 
                 const int count = 10;
-                _rNuocs = new List<rNuoc>(count);
+
                 for (var i = 1; i <= count; i++)
                 {
-                    _rNuocs.Add(Create(i));
+                    _viewModel.Entity.Add(Create(i));
                 }
 
-                return _rNuocs;
+                return _viewModel;
             }
         }
 

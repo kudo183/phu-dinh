@@ -1,27 +1,29 @@
-﻿using System.Collections.Generic;
+﻿using PhuDinhData.ViewModel;
 
 namespace PhuDinhData.DesignTimeData
 {
     public static class DDrLoaiHang
     {
-        private static List<rLoaiHang> _rLoaiHangs;
-        public static List<rLoaiHang> rLoaiHangs
+        private static LoaiHangViewModel _viewModel;
+        public static LoaiHangViewModel ViewModel
         {
             get
             {
-                if (_rLoaiHangs != null)
+                if (_viewModel != null)
                 {
-                    return _rLoaiHangs;
+                    return _viewModel;
                 }
+
+                _viewModel = new LoaiHangViewModel();
 
                 const int count = 10;
-                _rLoaiHangs = new List<rLoaiHang>(count);
+
                 for (var i = 1; i <= count; i++)
                 {
-                    _rLoaiHangs.Add(Create(i));
+                    _viewModel.Entity.Add(Create(i));
                 }
 
-                return _rLoaiHangs;
+                return _viewModel;
             }
         }
 

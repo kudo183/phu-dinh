@@ -39,7 +39,7 @@ namespace PhuDinhData.DesignTimeData
                 rNguyenLieu= DDrNguyenLieu.Create(i),
                 rNguyenLieuList = DDrNguyenLieu.ViewModel.Entity.ToList(),
                 rNhaCungCap = DDrNhaCungCap.Create(i),
-                rNhaCungCapList = DDrNhaCungCap.rNhaCungCaps
+                rNhaCungCapList = DDrNhaCungCap.ViewModel.Entity.ToList()
             };
         }
     }

@@ -1,4 +1,5 @@
-﻿using PhuDinhData.ViewModel;
+﻿using System.Linq;
+using PhuDinhData.ViewModel;
 
 namespace PhuDinhData.DesignTimeData
 {
@@ -38,7 +39,7 @@ namespace PhuDinhData.DesignTimeData
                 SoKy = i,
                 SoMet = i * 10,
                 rLoaiHang = DDrLoaiHang.Create(i),
-                rLoaiHangList = DDrLoaiHang.rLoaiHangs
+                rLoaiHangList = DDrLoaiHang.ViewModel.Entity.ToList()
             };
         }
     }

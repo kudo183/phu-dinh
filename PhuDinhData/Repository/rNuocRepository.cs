@@ -33,7 +33,7 @@ namespace PhuDinhData.Repository
         private static IQueryable<rNuoc> GetDataQuery(PhuDinhEntities context
             , Expression<Func<rNuoc, bool>> filter)
         {
-            return Repository<rNuoc>.GetData(context, filter);
+            return Repository<rNuoc>.GetData(context, filter).OrderBy(p => p.TenNuoc);
         }
     }
 }
