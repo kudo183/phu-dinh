@@ -26,6 +26,11 @@ namespace PhuDinhCommonControl
             _tChuyenHangView.AfterSave += _tChuyenHangView_AfterSave;
             _tChuyenHangDonHangView.AfterSave += _tChuyenHangDonHangView_AfterSave;
             _tChiTietChuyenHangDonHangView.AfterSave += _tChiTietChuyenHangDonHangView_AfterSave;
+            
+            _tChuyenHangDonHangView.SetMainFilter(
+                    PhuDinhData.Filter.Filter_tChuyenHangDonHang.MaChuyenHang, null, true);
+            _tChiTietChuyenHangDonHangView.SetMainFilter(
+                            PhuDinhData.Filter.Filter_tChiTietChuyenHangDonHang.MaChuyenHangDonHang, null, true);
         }
 
         void ChuyenHangView_Unloaded(object sender, System.Windows.RoutedEventArgs e)

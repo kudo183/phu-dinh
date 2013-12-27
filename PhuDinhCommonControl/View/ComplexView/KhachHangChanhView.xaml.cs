@@ -10,9 +10,22 @@ namespace PhuDinhCommonControl
         public KhachHangChanhView()
         {
             InitializeComponent();
-            _rKhachHangView.RefreshView();
 
+            Loaded += KhachHangChanhView_Loaded;
+            Unloaded += KhachHangChanhView_Unloaded;
+        }
+
+        void KhachHangChanhView_Loaded(object sender, System.Windows.RoutedEventArgs e)
+        {
             _rKhachHangView.dgKhachHang.SelectionChanged += dgKhachHang_SelectionChanged;
+
+            _rKhachHangChanhView.SetMainFilter(
+                    PhuDinhData.Filter.Filter_rKhachHangChanh.MaKhachHang, null, true);
+        }
+
+        void KhachHangChanhView_Unloaded(object sender, System.Windows.RoutedEventArgs e)
+        {
+            _rKhachHangView.dgKhachHang.SelectionChanged -= dgKhachHang_SelectionChanged;
         }
 
         void dgKhachHang_SelectionChanged(object sender, SelectionChangedEventArgs e)

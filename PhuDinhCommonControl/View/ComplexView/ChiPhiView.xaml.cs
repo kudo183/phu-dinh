@@ -16,19 +16,17 @@ namespace PhuDinhCommonControl
             Unloaded += ChiPhiView_Unloaded;
         }
 
-        void ChiPhiView_Unloaded(object sender, System.Windows.RoutedEventArgs e)
-        {
-            _rLoaiChiPhiView.dgLoaiChiPhi.SelectionChanged -= dgLoaiChiPhi_SelectionChanged;
-        }
-
         void ChiPhiView_Loaded(object sender, System.Windows.RoutedEventArgs e)
         {
             _rLoaiChiPhiView.dgLoaiChiPhi.SelectionChanged += dgLoaiChiPhi_SelectionChanged;
 
             _rChiPhiNhanVienGiaoHangView.SetMainFilter(
                 PhuDinhData.Filter.Filter_tChiPhi.MaLoaiChiPhi, null, true);
+        }
 
-            _rLoaiChiPhiView.RefreshView();
+        void ChiPhiView_Unloaded(object sender, System.Windows.RoutedEventArgs e)
+        {
+            _rLoaiChiPhiView.dgLoaiChiPhi.SelectionChanged -= dgLoaiChiPhi_SelectionChanged;
         }
 
         void dgLoaiChiPhi_SelectionChanged(object sender, SelectionChangedEventArgs e)

@@ -11,9 +11,21 @@ namespace PhuDinhCommonControl
         public BaiXeView()
         {
             InitializeComponent();
-            _rBaiXeView.RefreshView();
 
+            Loaded += BaiXeView_Loaded;
+            Unloaded += BaiXeView_Unloaded;
+        }
+
+        void BaiXeView_Loaded(object sender, System.Windows.RoutedEventArgs e)
+        {
             _rBaiXeView.dgBaiXe.SelectionChanged += dgBaiXe_SelectionChanged;
+
+            _rChanhView.SetMainFilter(PhuDinhData.Filter.Filter_rChanh.MaBaiXe, null, true);
+        }
+
+        void BaiXeView_Unloaded(object sender, System.Windows.RoutedEventArgs e)
+        {
+            _rBaiXeView.dgBaiXe.SelectionChanged -= dgBaiXe_SelectionChanged;
         }
 
         void dgBaiXe_SelectionChanged(object sender, SelectionChangedEventArgs e)

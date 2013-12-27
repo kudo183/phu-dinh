@@ -12,10 +12,23 @@ namespace PhuDinhCommonControl
         {
             InitializeComponent();
 
+            Loaded += KhachHangView_Loaded;
+            Unloaded += KhachHangView_Unloaded;
+        }
+
+        void KhachHangView_Loaded(object sender, System.Windows.RoutedEventArgs e)
+        {
             _rDiaDiemView.dgDiaDiem.SelectionChanged += dgDiaDiem_SelectionChanged;
             _rKhachHangView.dgKhachHang.SelectionChanged += dgKhachHang_SelectionChanged;
 
+            _rKhachHangView.SetMainFilter(PhuDinhData.Filter.Filter_rKhachHang.MaDiaDiem, null, true);
             _tDonHangView.SetMainFilter(PhuDinhData.Filter.Filter_tDonHang.MaKhachHang, null, true);
+        }
+
+        void KhachHangView_Unloaded(object sender, System.Windows.RoutedEventArgs e)
+        {
+            _rDiaDiemView.dgDiaDiem.SelectionChanged -= dgDiaDiem_SelectionChanged;
+            _rKhachHangView.dgKhachHang.SelectionChanged -= dgKhachHang_SelectionChanged;
         }
 
         void dgDiaDiem_SelectionChanged(object sender, SelectionChangedEventArgs e)

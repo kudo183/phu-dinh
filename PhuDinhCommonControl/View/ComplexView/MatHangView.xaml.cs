@@ -11,9 +11,21 @@ namespace PhuDinhCommonControl
         public MatHangView()
         {
             InitializeComponent();
-            _rLoaiHangView.RefreshView();
 
+            Loaded += MatHangView_Loaded;
+            Unloaded += MatHangView_Unloaded;
+        }
+
+        void MatHangView_Loaded(object sender, System.Windows.RoutedEventArgs e)
+        {
             _rLoaiHangView.dgLoaiHang.SelectionChanged += dgLoaiHang_SelectionChanged;
+
+            _tMatHangView.SetMainFilter(PhuDinhData.Filter.Filter_tMatHang.MaLoaiHang, null, true);
+        }
+
+        void MatHangView_Unloaded(object sender, System.Windows.RoutedEventArgs e)
+        {
+            _rLoaiHangView.dgLoaiHang.SelectionChanged -= dgLoaiHang_SelectionChanged;
         }
 
         void dgLoaiHang_SelectionChanged(object sender, SelectionChangedEventArgs e)
