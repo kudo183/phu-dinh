@@ -68,7 +68,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Utils\ChildWindowUtils.cs" />
-    <Compile Include="Factory\ContextFactory.cs" />
     <Compile Include="EntityDataGrid\0Level\DGNhaCungCap.xaml.cs">
       <DependentUpon>DGNhaCungCap.xaml</DependentUpon>
     </Compile>
