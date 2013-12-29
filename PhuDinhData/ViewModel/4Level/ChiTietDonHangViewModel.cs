@@ -79,6 +79,7 @@ namespace PhuDinhData.ViewModel
             {
                 var tChiTietDonHang = e.NewItems[0] as tChiTietDonHang;
                 tChiTietDonHang.tDonHangList = _tDonHangs;
+                tChiTietDonHang.tMatHangList = _tMatHangs;
                 
                 if (GetDefaultValue(Constant.ColumnName_MaDonHang) != null)
                 {
