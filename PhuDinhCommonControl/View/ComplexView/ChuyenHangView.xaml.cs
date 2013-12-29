@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Controls;
+using PhuDinhData.ViewModel;
 
 namespace PhuDinhCommonControl
 {
@@ -63,7 +64,7 @@ namespace PhuDinhCommonControl
 
             var context =
                 _tChiTietChuyenHangDonHangView.dgChiTietChuyenHangDonHang.DataContext
-                as ObservableCollection<PhuDinhData.tChiTietChuyenHangDonHang>;
+                as ChiTietChuyenHangDonHangViewModel;
 
             if (chuyenHangDonHang == null)
                 return;
@@ -79,7 +80,7 @@ namespace PhuDinhCommonControl
                                  SoLuong = soLuong
                              };
 
-                context.Add(ct);
+                context.Entity.Add(ct);
             }
         }
 
