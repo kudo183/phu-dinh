@@ -16,7 +16,7 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <EntityDataGrid:DGBaiXe Grid.Row="0" x:Name="dgBaiXe" x:FieldModifier="public"/>
+        <EntityDataGrid:DGBaiXe Grid.Row="0" x:Name="dgBaiXe"/>
         <Menu:BottomMenu Grid.Row="1" x:Name="bmMenu" Button.Click="bmMenu_Click"/>
     </Grid>
 </PhuDinhCommonControl:BaseView>

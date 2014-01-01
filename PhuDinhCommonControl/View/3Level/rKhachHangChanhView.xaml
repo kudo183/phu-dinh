@@ -16,7 +16,7 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <EntityDataGrid:DGKhachHangChanh Grid.Row="0" x:Name="dgKhachHangChanh" x:FieldModifier="public" HeaderAddButtonClick="dgKhachHangChanh_HeaderAddButtonClick"/>
+        <EntityDataGrid:DGKhachHangChanh Grid.Row="0" x:Name="dgKhachHangChanh" HeaderAddButtonClick="dgKhachHangChanh_HeaderAddButtonClick"/>
         <Menu:BottomMenu Grid.Row="1" x:Name="bmMenu" Button.Click="bmMenu_Click"/>
     </Grid>
 </PhuDinhCommonControl:BaseView>

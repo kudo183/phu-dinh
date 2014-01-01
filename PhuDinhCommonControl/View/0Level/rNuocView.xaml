@@ -16,7 +16,7 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <EntityDataGrid:DGNuoc Grid.Row="0" x:Name="dgNuoc" x:FieldModifier="public"/>
+        <EntityDataGrid:DGNuoc Grid.Row="0" x:Name="dgNuoc"/>
         <Menu:BottomMenu Grid.Row="1" x:Name="bmMenu" Button.Click="bmMenu_Click"/>
     </Grid>
 </PhuDinhCommonControl:BaseView>
