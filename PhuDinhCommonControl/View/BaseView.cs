@@ -26,8 +26,16 @@ namespace PhuDinhCommonControl
 
         protected virtual void OnLoaded(object sender, RoutedEventArgs e)
         {
-            if (_viewModel == null)
+            var designTime = System.ComponentModel.DesignerProperties.GetIsInDesignMode(new DependencyObject());
+            if (designTime == true)
+            {
                 return;
+            }
+
+            if (_viewModel == null)
+            {
+                return;
+            }
 
             _viewModel.HeaderFilterChanged += OnHeaderFilterChanged;
 
