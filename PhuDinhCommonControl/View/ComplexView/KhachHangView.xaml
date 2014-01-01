@@ -4,16 +4,25 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:PhuDinhCommonControl="clr-namespace:PhuDinhCommonControl"
-             mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             xmlns:DesignTimeData="clr-namespace:PhuDinhData.DesignTimeData;assembly=PhuDinhData"
+             mc:Ignorable="d">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <PhuDinhCommonControl:rDiaDiemView Grid.Row="0" x:Name="_rDiaDiemView"/>
-        <PhuDinhCommonControl:rKhachHangView Grid.Row="1" x:Name="_rKhachHangView"/>
-        <PhuDinhCommonControl:tDonHangView Grid.Row="2" x:Name="_tDonHangView"/>
+        <PhuDinhCommonControl:rDiaDiemView
+            d:DataContext="{x:Static DesignTimeData:DDrDiaDiem.ViewModel}"
+            Grid.Row="0"
+            x:Name="_rDiaDiemView"/>
+        <PhuDinhCommonControl:rKhachHangView
+            d:DataContext="{x:Static DesignTimeData:DDrKhachHang.ViewModel}"
+            Grid.Row="1"
+            x:Name="_rKhachHangView"/>
+        <PhuDinhCommonControl:tDonHangView
+            d:DataContext="{x:Static DesignTimeData:DDtDonHang.ViewModel}"
+            Grid.Row="2"
+            x:Name="_tDonHangView"/>
     </Grid>
 </UserControl>

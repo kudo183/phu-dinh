@@ -4,16 +4,25 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:PhuDinhCommonControl="clr-namespace:PhuDinhCommonControl"
-             mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             xmlns:DesignTimeData="clr-namespace:PhuDinhData.DesignTimeData;assembly=PhuDinhData"
+             mc:Ignorable="d">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <PhuDinhCommonControl:tChuyenHangView Grid.Row="0" x:Name="_tChuyenHangView"/>
-        <PhuDinhCommonControl:tChuyenHangDonHangView Grid.Row="1" x:Name="_tChuyenHangDonHangView"/>
-        <PhuDinhCommonControl:tChiTietChuyenHangDonHangView Grid.Row="2" x:Name="_tChiTietChuyenHangDonHangView"/>
+        <PhuDinhCommonControl:tChuyenHangView
+            d:DataContext="{x:Static DesignTimeData:DDtChuyenHang.ViewModel}"
+            Grid.Row="0"
+            x:Name="_tChuyenHangView"/>
+        <PhuDinhCommonControl:tChuyenHangDonHangView
+            d:DataContext="{x:Static DesignTimeData:DDtChuyenHangDonHang.ViewModel}"
+            Grid.Row="1"
+            x:Name="_tChuyenHangDonHangView"/>
+        <PhuDinhCommonControl:tChiTietChuyenHangDonHangView
+            d:DataContext="{x:Static DesignTimeData:DDtChiTietChuyenHangDonHang.ViewModel}"
+            Grid.Row="2"
+            x:Name="_tChiTietChuyenHangDonHangView"/>
     </Grid>
 </UserControl>

@@ -4,14 +4,19 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:PhuDinhCommonControl="clr-namespace:PhuDinhCommonControl"
-             mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             xmlns:DesignTimeData="clr-namespace:PhuDinhData.DesignTimeData;assembly=PhuDinhData" mc:Ignorable="d">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <PhuDinhCommonControl:rKhachHangView Grid.Row="0" x:Name="_rKhachHangView"/>
-        <PhuDinhCommonControl:rKhachHangChanhView Grid.Row="1" x:Name="_rKhachHangChanhView"/>
+        <PhuDinhCommonControl:rKhachHangView
+            d:DataContext="{x:Static DesignTimeData:DDrKhachHang.ViewModel}"
+            Grid.Row="0"
+            x:Name="_rKhachHangView"/>
+        <PhuDinhCommonControl:rKhachHangChanhView
+            d:DataContext="{x:Static DesignTimeData:DDrKhachHangChanh.ViewModel}"
+            Grid.Row="1"
+            x:Name="_rKhachHangChanhView"/>
     </Grid>
 </UserControl>
