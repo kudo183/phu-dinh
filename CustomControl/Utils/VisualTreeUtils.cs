@@ -7,26 +7,6 @@ namespace CustomControl
     public static class VisualTreeUtils
     {
         /// <summary>
-        /// Find first editable column index
-        /// </summary>
-        /// <param name="dataGrid">data grid</param>
-        /// <returns>index. Return 0 if not found.</returns>
-        public static int FindFirstEditableColumnIndex(DataGrid dataGrid)
-        {
-            var index = 0;
-            for (int i = 0; i < dataGrid.Columns.Count; i++)
-            {
-                if (dataGrid.Columns[i].IsReadOnly == false)
-                {
-                    index = i;
-                    break;
-                }
-            }
-
-            return index;
-        }
-
-        /// <summary>
         /// Finds a Child of a given item in the visual tree. 
         /// </summary>
         /// <param name="parent">A direct parent of the queried item.</param>

@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using PhuDinhCommon;
 
 namespace PhuDinhCommonControl
@@ -15,6 +16,25 @@ namespace PhuDinhCommonControl
 
             Loaded += DonHangView_Loaded;
             Unloaded += DonHangView_Unloaded;
+        }
+
+        protected override void OnPreviewKeyDown(KeyEventArgs e)
+        {
+            base.OnPreviewKeyDown(e);
+
+            if (Keyboard.Modifiers == ModifierKeys.Control)
+            {
+                switch (e.Key)
+                {
+                    case Key.D1:
+                        _tDonHangView.dg.FocusCell(_tDonHangView.dg.Items.Count - 1, 2);
+                        break;
+                    case Key.D2:
+                        _tChiTietDonHangView.dg.FocusCell(_tChiTietDonHangView.dg.Items.Count - 1, 2);
+                        break;
+                }
+                
+            }
         }
 
         void DonHangView_Loaded(object sender, RoutedEventArgs e)

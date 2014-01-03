@@ -16,7 +16,7 @@ namespace PhuDinhCommonControl
         public event EventHandler AfterSave;
         public event EventHandler AfterCancel;
 
-        public DataGridExt dg { private get; set; }
+        public DataGridExt dg { get; set; }
 
         protected BaseView()
         {

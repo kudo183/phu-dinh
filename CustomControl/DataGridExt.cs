@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -7,6 +8,8 @@ namespace CustomControl
 {
     public class DataGridExt : DataGrid
     {
+        public readonly List<int> SkippedColumnIndex = new List<int>();
+
         public DataGridExt()
         {
             CanUserSortColumns = false;
@@ -15,37 +18,75 @@ namespace CustomControl
             HeadersVisibility = DataGridHeadersVisibility.Column;
         }
 
+        public int FindFirstEditableColumnIndex(int beginIndex, DataGrid dataGrid)
+        {
+            var index = -1;
+            for (int i = beginIndex; i < dataGrid.Columns.Count; i++)
+            {
+                if (dataGrid.Columns[i].IsReadOnly == false
+                    && SkippedColumnIndex.Contains(i) == false)
+                {
+                    index = i;
+                    break;
+                }
+            }
+
+            return index;
+        }
+
+        public void FocusCell(int row, int column)
+        {
+            Keyboard.Focus(this);
+
+            SelectedIndex = row;
+
+            CurrentCell = new DataGridCellInfo(Items[row], Columns[column]);
+
+            BeginEdit();
+        }
+
         protected override void OnPreviewKeyDown(KeyEventArgs e)
         {
             base.OnPreviewKeyDown(e);
 
             if (!Keyboard.IsKeyDown(Key.Tab)) return;
 
-            const int itemPlaceHolderCount = 1;
-            if (SelectedIndex < Items.Count - 1 - itemPlaceHolderCount)
-            {
-                return;
-            }
-
             var current = Columns.IndexOf(CurrentColumn);
-            var last = Columns.Count - 1;
 
-            if (current != last)
+            var index = FindFirstEditableColumnIndex(current + 1, this);
+
+            if (index != -1)
             {
-                return;
+                CurrentCell = new DataGridCellInfo(Items[SelectedIndex], Columns[index]);
+
+                BeginEdit();
             }
+            else//move to next row, select first editable column
+            {
+                var firstEditableColumnIndex = FindFirstEditableColumnIndex(0, this);
 
-            var type = ItemsSource.GetType();
-            var item = Items as IEditableCollectionViewAddNewItem;
-            item.AddNewItem(Activator.CreateInstance(type.GetGenericArguments()[0]));
+                const int itemPlaceHolderCount = 1;
+                if (SelectedIndex < Items.Count - 1 - itemPlaceHolderCount)
+                {
+                    SelectedIndex = SelectedIndex + 1;
 
-            var firstEditableColumnIndex = VisualTreeUtils.FindFirstEditableColumnIndex(this);
+                    CurrentCell = new DataGridCellInfo(Items[SelectedIndex], Columns[firstEditableColumnIndex]);
 
-            SelectedIndex = Items.Count - 1 - itemPlaceHolderCount;
+                    BeginEdit();
+                }
+                else //need add new item
+                {
+                    var type = ItemsSource.GetType();
+                    var item = Items as IEditableCollectionViewAddNewItem;
+                    item.AddNewItem(Activator.CreateInstance(type.GetGenericArguments()[0]));
 
-            CurrentCell = new DataGridCellInfo(Items[SelectedIndex], Columns[firstEditableColumnIndex]);
+                    SelectedIndex = Items.Count - 1 - itemPlaceHolderCount;
 
-            BeginEdit();
+                    CurrentCell = new DataGridCellInfo(Items[SelectedIndex], Columns[firstEditableColumnIndex]);
+
+                    BeginEdit();
+                }
+            }
 
             e.Handled = true;
         }
