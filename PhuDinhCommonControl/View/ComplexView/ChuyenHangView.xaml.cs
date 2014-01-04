@@ -1,5 +1,5 @@
-﻿using PhuDinhCommon;
-using System.Collections.ObjectModel;
+﻿using System.Windows.Input;
+using PhuDinhCommon;
 using System.Linq;
 using System.Windows.Controls;
 using PhuDinhData.ViewModel;
@@ -17,6 +17,51 @@ namespace PhuDinhCommonControl
 
             Loaded += ChuyenHangView_Loaded;
             Unloaded += ChuyenHangView_Unloaded;
+        }
+
+        protected override void OnPreviewKeyDown(KeyEventArgs e)
+        {
+            base.OnPreviewKeyDown(e);
+
+            if (Keyboard.Modifiers == ModifierKeys.Control)
+            {
+                switch (e.Key)
+                {
+                    case Key.D1:
+                        FocustChuyenHangView();
+                        break;
+                    case Key.D2:
+                        FocustChuyenHangDonHangView();
+                        break;
+                    case Key.D3:
+                        FocustChiTietChuyenHangDonHangView();
+                        break;
+                }
+
+            }
+        }
+
+        void FocustChuyenHangView()
+        {
+            _tChuyenHangView.dg.SelectionChanged -= dgChuyenHang_SelectionChanged;
+            _tChuyenHangView.dg.FocusCell(_tChuyenHangView.dg.Items.Count - 1, 3);
+            _tChuyenHangView.dg.SelectionChanged += dgChuyenHang_SelectionChanged;
+
+            RefreshChuyenHangDonHangView(_tChuyenHangView.dg);
+        }
+
+        void FocustChuyenHangDonHangView()
+        {
+            _tChuyenHangDonHangView.dg.SelectionChanged -= dgChuyenHangDonHang_SelectionChanged;
+            _tChuyenHangDonHangView.dg.FocusCell(_tChuyenHangDonHangView.dg.Items.Count - 1, 2);
+            _tChuyenHangDonHangView.dg.SelectionChanged += dgChuyenHangDonHang_SelectionChanged;
+
+            RefreshChiTietChuyenHangDonHangView(_tChuyenHangDonHangView.dg);
+        }
+
+        void FocustChiTietChuyenHangDonHangView()
+        {
+            _tChiTietChuyenHangDonHangView.dg.FocusCell(_tChiTietChuyenHangDonHangView.dg.Items.Count - 1, 2);
         }
 
         void ChuyenHangView_Loaded(object sender, System.Windows.RoutedEventArgs e)
@@ -55,7 +100,7 @@ namespace PhuDinhCommonControl
                 _tChuyenHangDonHangView.dgChuyenHangDonHang.SelectedItem
                 as PhuDinhData.tChuyenHangDonHang;
 
-            RefreshChiTietChuyenHangDonHang(chuyenHangDonHang);
+            RefreshChiTietChuyenHangDonHangView(_tChuyenHangDonHangView.dg);
 
             if (chuyenHangDonHang != null && chuyenHangDonHang.tChiTietChuyenHangDonHangs.Count > 0)
             {
@@ -82,12 +127,15 @@ namespace PhuDinhCommonControl
 
                 context.Entity.Add(ct);
             }
+
+            FocustChiTietChuyenHangDonHangView();
         }
 
         void _tChuyenHangView_AfterSave(object sender, System.EventArgs e)
         {
-            var chuyenHang = _tChuyenHangView.dgChuyenHang.SelectedItem as PhuDinhData.tChuyenHang;
-            RefreshChuyenHangDonHangView(chuyenHang);
+            RefreshChuyenHangDonHangView(_tChuyenHangView.dg);
+
+            FocustChuyenHangDonHangView();
         }
 
         void dgChuyenHangDonHang_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -96,9 +144,8 @@ namespace PhuDinhCommonControl
             {
                 return;
             }
-
-            var chuyenHangDonHang = ((DataGrid)sender).SelectedItem as PhuDinhData.tChuyenHangDonHang;
-            RefreshChiTietChuyenHangDonHang(chuyenHangDonHang);
+            
+            RefreshChiTietChuyenHangDonHangView(_tChuyenHangDonHangView.dg);
         }
 
         void dgChuyenHang_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -108,18 +155,18 @@ namespace PhuDinhCommonControl
                 return;
             }
 
-            var grid = ((DataGrid)sender);
-            if (grid.SelectedIndex == -1)
+            if (_tChuyenHangView.dg.SelectedIndex == -1)
             {
                 return;
             }
 
-            var chuyenHang = grid.SelectedItem as PhuDinhData.tChuyenHang;
-            RefreshChuyenHangDonHangView(chuyenHang);
+            RefreshChuyenHangDonHangView(_tChuyenHangView.dg);
         }
 
-        private void RefreshChuyenHangDonHangView(PhuDinhData.tChuyenHang chuyenHang)
+        private void RefreshChuyenHangDonHangView(DataGrid dataGrid)
         {
+            var chuyenHang = dataGrid.SelectedItem as PhuDinhData.tChuyenHang;
+
             _tChiTietChuyenHangDonHangView.SetMainFilter(
                 PhuDinhData.Filter.Filter_tChiTietChuyenHangDonHang.MaChuyenHangDonHang, null, true);
 
@@ -144,8 +191,10 @@ namespace PhuDinhCommonControl
             _tChuyenHangDonHangView.RefreshView();
         }
 
-        private void RefreshChiTietChuyenHangDonHang(PhuDinhData.tChuyenHangDonHang chuyenHangDonHang)
+        private void RefreshChiTietChuyenHangDonHangView(DataGrid dataGrid)
         {
+            var chuyenHangDonHang = dataGrid.SelectedItem as PhuDinhData.tChuyenHangDonHang;
+
             if (chuyenHangDonHang == null)
             {
                 _tChiTietChuyenHangDonHangView.SetMainFilter(

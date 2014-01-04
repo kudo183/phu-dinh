@@ -10,6 +10,9 @@ namespace PhuDinhCommonControl.EntityDataGrid
         public DGChuyenHang()
         {
             InitializeComponent();
+
+            SkippedColumnIndex.Add(1);
+            SkippedColumnIndex.Add(2);
         }
     }
 }

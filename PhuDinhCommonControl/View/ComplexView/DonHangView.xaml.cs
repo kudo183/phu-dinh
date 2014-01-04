@@ -27,14 +27,28 @@ namespace PhuDinhCommonControl
                 switch (e.Key)
                 {
                     case Key.D1:
-                        _tDonHangView.dg.FocusCell(_tDonHangView.dg.Items.Count - 1, 2);
+                        FocustDonHangView();
                         break;
                     case Key.D2:
-                        _tChiTietDonHangView.dg.FocusCell(_tChiTietDonHangView.dg.Items.Count - 1, 2);
+                        FocustChiTietDonHangView();
                         break;
                 }
                 
             }
+        }
+
+        void FocustDonHangView()
+        {
+            _tDonHangView.dg.SelectionChanged -= dgDonHang_SelectionChanged;
+            _tDonHangView.dg.FocusCell(_tDonHangView.dg.Items.Count - 1, 2);
+            _tDonHangView.dg.SelectionChanged += dgDonHang_SelectionChanged;
+
+            RefreshChiTietDonHangView(_tDonHangView.dg);
+        }
+
+        void FocustChiTietDonHangView()
+        {
+            _tChiTietDonHangView.dg.FocusCell(_tChiTietDonHangView.dg.Items.Count - 1, 2);                        
         }
 
         void DonHangView_Loaded(object sender, RoutedEventArgs e)
@@ -56,8 +70,9 @@ namespace PhuDinhCommonControl
 
         void _tDonHangView_AfterSave(object sender, System.EventArgs e)
         {
-            var donHang = _tDonHangView.dgDonHang.SelectedItem as PhuDinhData.tDonHang;
-            RefreshChiTietDonHangView(donHang);
+            RefreshChiTietDonHangView(_tDonHangView.dg);
+
+            FocustChiTietDonHangView();
         }
 
         void _tChiTietDonHangView_AfterSave(object sender, System.EventArgs e)
@@ -72,12 +87,13 @@ namespace PhuDinhCommonControl
                 return;
             }
 
-            var donHang = ((DataGrid)sender).SelectedItem as PhuDinhData.tDonHang;
-            RefreshChiTietDonHangView(donHang);
+            RefreshChiTietDonHangView(_tDonHangView.dg);
         }
 
-        private void RefreshChiTietDonHangView(PhuDinhData.tDonHang donHang)
+        private void RefreshChiTietDonHangView(DataGrid dataGrid)
         {
+            var donHang = dataGrid.SelectedItem as PhuDinhData.tDonHang;
+
             if (donHang == null)
             {
                 _tChiTietDonHangView.SetMainFilter(
