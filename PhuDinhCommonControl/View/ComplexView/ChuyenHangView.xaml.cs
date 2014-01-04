@@ -59,9 +59,9 @@ namespace PhuDinhCommonControl
             RefreshChiTietChuyenHangDonHangView(_tChuyenHangDonHangView.dg);
         }
 
-        void FocustChiTietChuyenHangDonHangView()
+        void FocustChiTietChuyenHangDonHangView(bool callBeginEdit = true)
         {
-            _tChiTietChuyenHangDonHangView.dg.FocusCell(_tChiTietChuyenHangDonHangView.dg.Items.Count - 1, 2);
+            _tChiTietChuyenHangDonHangView.dg.FocusCell(_tChiTietChuyenHangDonHangView.dg.Items.Count - 1, 2, callBeginEdit);
         }
 
         void ChuyenHangView_Loaded(object sender, System.Windows.RoutedEventArgs e)
@@ -92,6 +92,8 @@ namespace PhuDinhCommonControl
         void _tChiTietChuyenHangDonHangView_AfterSave(object sender, System.EventArgs e)
         {
             _tChuyenHangView.RefreshView();
+
+            Keyboard.Focus(_tChiTietChuyenHangDonHangView.dg);
         }
 
         void _tChuyenHangDonHangView_AfterSave(object sender, System.EventArgs e)
@@ -128,7 +130,7 @@ namespace PhuDinhCommonControl
                 context.Entity.Add(ct);
             }
 
-            FocustChiTietChuyenHangDonHangView();
+            FocustChiTietChuyenHangDonHangView(false);
         }
 
         void _tChuyenHangView_AfterSave(object sender, System.EventArgs e)

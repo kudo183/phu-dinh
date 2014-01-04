@@ -78,6 +78,8 @@ namespace PhuDinhCommonControl
         void _tChiTietDonHangView_AfterSave(object sender, System.EventArgs e)
         {
             _tDonHangView.RefreshView();
+
+            FocustDonHangView();
         }
 
         void dgDonHang_SelectionChanged(object sender, SelectionChangedEventArgs e)

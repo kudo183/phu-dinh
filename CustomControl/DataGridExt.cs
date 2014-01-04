@@ -34,7 +34,7 @@ namespace CustomControl
             return index;
         }
 
-        public void FocusCell(int row, int column)
+        public void FocusCell(int row, int column, bool callBeginEdit = true)
         {
             Keyboard.Focus(this);
 
@@ -42,7 +42,10 @@ namespace CustomControl
 
             CurrentCell = new DataGridCellInfo(Items[row], Columns[column]);
 
-            BeginEdit();
+            if(callBeginEdit)
+            {
+                BeginEdit();
+            }
         }
 
         protected override void OnPreviewKeyDown(KeyEventArgs e)
