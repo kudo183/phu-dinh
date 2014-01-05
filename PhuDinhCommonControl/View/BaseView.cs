@@ -105,6 +105,17 @@ namespace PhuDinhCommonControl
 
             CommitEdit();
 
+            //enforce data grid show Add new row placeholder
+            dg.RaiseEvent(
+                new KeyEventArgs(
+                    InputManager.Current.PrimaryKeyboardDevice
+                    , PresentationSource.FromDependencyObject(dg)
+                    , Environment.ProcessorCount
+                    , Key.Return)
+                {
+                    RoutedEvent = UIElement.KeyDownEvent
+                });
+
             try
             {
                 _viewModel.Save();
