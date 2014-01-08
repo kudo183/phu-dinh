@@ -26,10 +26,16 @@ namespace PhuDinhData.ViewModel
 
         public override void Load()
         {
+            _isLoading = true;
+
             Entity.CollectionChanged += Entity_CollectionChanged;
 
             Header_Nuoc.Text = _filterNuoc;
             Header_Nuoc.PropertyChanged += Header_Nuoc_PropertyChanged;
+
+            Header_Nuoc_PropertyChanged(null, null);
+
+            _isLoading = false;
         }
 
         public override void Unload()

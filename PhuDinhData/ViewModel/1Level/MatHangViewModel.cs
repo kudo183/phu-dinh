@@ -26,10 +26,16 @@ namespace PhuDinhData.ViewModel
 
         public override void Load()
         {
+            _isLoading = true;
+
             Entity.CollectionChanged += Entity_CollectionChanged;
 
             Header_LoaiHang.Text = _filterLoaiHang;
             Header_LoaiHang.PropertyChanged += Header_LoaiHang_PropertyChanged;
+
+            Header_LoaiHang_PropertyChanged(null, null);
+
+            _isLoading = false;
         }
 
         public override void Unload()

@@ -26,10 +26,16 @@ namespace PhuDinhData.ViewModel
 
         public override void Load()
         {
+            _isLoading = true;
+
             Entity.CollectionChanged += Entity_CollectionChanged;
 
             Header_BaiXe.Text = _filterBaiXe;
             Header_BaiXe.PropertyChanged += Header_BaiXe_PropertyChanged;
+
+            Header_BaiXe_PropertyChanged(null, null);
+
+            _isLoading = false;
         }
 
         public override void Unload()

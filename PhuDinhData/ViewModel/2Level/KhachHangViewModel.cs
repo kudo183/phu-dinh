@@ -26,10 +26,16 @@ namespace PhuDinhData.ViewModel
 
         public override void Load()
         {
+            _isLoading = true;
+
             Entity.CollectionChanged += Entity_CollectionChanged;
 
             Header_DiaDiem.Text = _filterDiaDiem;
             Header_DiaDiem.PropertyChanged += Header_DiaDiem_PropertyChanged;
+
+            Header_DiaDiem_PropertyChanged(null, null);
+
+            _isLoading = false;
         }
 
         public override void Unload()

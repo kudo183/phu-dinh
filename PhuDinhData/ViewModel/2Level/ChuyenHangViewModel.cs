@@ -34,13 +34,16 @@ namespace PhuDinhData.ViewModel
             _isLoading = true;
 
             Entity.CollectionChanged += Entity_CollectionChanged;
-            Header_Ngay.PropertyChanged += Header_Ngay_PropertyChanged;
-            Header_NhanVien.PropertyChanged += Header_NhanVien_PropertyChanged;
 
             Header_Ngay.IsUsed = _isUsedDateFilter;
             Header_Ngay.Date = _filterDate;
+            Header_Ngay.PropertyChanged += Header_Ngay_PropertyChanged;
 
             Header_NhanVien.Text = _filterNhanVien;
+            Header_NhanVien.PropertyChanged += Header_NhanVien_PropertyChanged;
+
+            Header_Ngay_PropertyChanged(null, null);
+            Header_NhanVien_PropertyChanged(null, null);
 
             _isLoading = false;
         }

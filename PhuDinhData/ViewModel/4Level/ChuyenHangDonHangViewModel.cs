@@ -37,12 +37,14 @@ namespace PhuDinhData.ViewModel
 
             Entity.CollectionChanged += Entity_CollectionChanged;
 
-            Header_ChuyenHang.PropertyChanged += Header_ChuyenHang_PropertyChanged;
-            Header_DonHang.PropertyChanged += Header_DonHang_PropertyChanged;
-
             Header_ChuyenHang.Text = _filterChuyenHang;
+            Header_ChuyenHang.PropertyChanged += Header_ChuyenHang_PropertyChanged;
 
             Header_DonHang.Text = _filterDonHang;
+            Header_DonHang.PropertyChanged += Header_DonHang_PropertyChanged;
+
+            Header_DonHang_PropertyChanged(null, null);
+            Header_ChuyenHang_PropertyChanged(null, null);
 
             _isLoading = false;
         }

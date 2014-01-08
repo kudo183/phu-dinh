@@ -31,6 +31,8 @@ namespace PhuDinhData.ViewModel
 
         public override void Load()
         {
+            _isLoading = true;
+
             Entity.CollectionChanged += Entity_CollectionChanged;
 
             Header_MatHang.Text = _filterMatHang;
@@ -38,6 +40,11 @@ namespace PhuDinhData.ViewModel
 
             Header_NguyenLieu.Text = _filterNguyenLieu;
             Header_NguyenLieu.PropertyChanged += Header_NguyenLieu_PropertyChanged;
+
+            Header_MatHang_PropertyChanged(null, null);
+            Header_NguyenLieu_PropertyChanged(null, null);
+
+            _isLoading = false;
         }
 
         public override void Unload()
