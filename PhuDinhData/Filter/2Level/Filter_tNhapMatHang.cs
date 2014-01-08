@@ -12,8 +12,6 @@ namespace PhuDinhData.Filter
 
         public Filter_tNhapMatHang()
         {
-            IsClearAllData = false;
-
             _filters[MaMatHang] = (p => true);
             _filters[TenMatHang] = (p => true);
             _filters[MaNhanVien] = (p => true);
@@ -47,8 +45,6 @@ namespace PhuDinhData.Filter
 
         private void SetFilterMaMatHang(int? maMatHang, bool setFalse = false)
         {
-            IsClearAllData = false;
-
             _filters[MaMatHang] = FilterNullable(maMatHang, setFalse, p => p.MaMatHang == maMatHang);
 
             UpdateMainFilter();
@@ -56,8 +52,6 @@ namespace PhuDinhData.Filter
 
         private void SetFilterTenMatHang(string tenMatHang, bool setFalse = false)
         {
-            IsClearAllData = false;
-
             _filters[TenMatHang] = FilterText(tenMatHang, setFalse, p => p.tMatHang.TenMatHang.Contains(tenMatHang));
 
             UpdateMainFilter();
@@ -65,8 +59,6 @@ namespace PhuDinhData.Filter
 
         private void SetFilterMaNhanVien(int? maNhanVien, bool setFalse = false)
         {
-            IsClearAllData = false;
-
             _filters[MaNhanVien] = FilterNullable(maNhanVien, setFalse, p => p.MaNhanVien == maNhanVien);
 
             UpdateMainFilter();
@@ -74,8 +66,6 @@ namespace PhuDinhData.Filter
 
         private void SetFilterTenNhanVien(string tenNhanVien, bool setFalse = false)
         {
-            IsClearAllData = false;
-
             _filters[TenNhanVien] = FilterText(tenNhanVien, setFalse, p => p.rNhanVien.TenNhanVien.Contains(tenNhanVien));
 
             UpdateMainFilter();
@@ -83,8 +73,6 @@ namespace PhuDinhData.Filter
 
         private void SetFilterNgay(DateTime? date, bool setFalse = false)
         {
-            IsClearAllData = false;
-
             _filters[Ngay] = FilterNullable(date, setFalse, p => p.Ngay == date);
 
             UpdateMainFilter();

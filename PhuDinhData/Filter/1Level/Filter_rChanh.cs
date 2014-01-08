@@ -8,8 +8,6 @@
 
         public Filter_rChanh()
         {
-            IsClearAllData = false;
-
             _filters[MaBaiXe] = (p => true);
             _filters[DiaDiemBaiXe] = (p => true);
             _filters[TenChanh] = (p => true);
@@ -35,8 +33,6 @@
 
         private void SetFilterMaBaiXe(int? maBaiXe, bool setFalse = false)
         {
-            IsClearAllData = false;
-
             _filters[MaBaiXe] = FilterNullable(maBaiXe, setFalse, p => p.MaBaiXe == maBaiXe);
 
             UpdateMainFilter();
@@ -44,8 +40,6 @@
 
         private void SetFilterDiaDiemBaiXe(string diaDiemBaiXe, bool setFalse = false)
         {
-            IsClearAllData = false;
-
             _filters[DiaDiemBaiXe] = FilterText(diaDiemBaiXe, setFalse, p => p.rBaiXe.DiaDiemBaiXe.Contains(diaDiemBaiXe));
 
             UpdateMainFilter();
@@ -53,8 +47,6 @@
 
         private void SetFilterTenChanh(string tenChanh, bool setFalse = false)
         {
-            IsClearAllData = false;
-
             _filters[TenChanh] = FilterText(tenChanh, setFalse, p => p.TenChanh.Contains(tenChanh));
 
             UpdateMainFilter();

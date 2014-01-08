@@ -6,8 +6,6 @@
 
         public Filter_rLoaiHang()
         {
-            IsClearAllData = false;
-
             _filters[TenLoai] = (p => true);
 
             UpdateMainFilter();
@@ -25,8 +23,6 @@
 
         private void SetFilterTenLoai(string tenLoai, bool setFalse = false)
         {
-            IsClearAllData = false;
-
             _filters[TenLoai] = FilterText(tenLoai, setFalse, p => p.TenLoai.Contains(tenLoai));
 
             UpdateMainFilter();

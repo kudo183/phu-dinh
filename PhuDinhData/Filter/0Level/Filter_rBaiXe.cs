@@ -6,8 +6,6 @@
 
         public Filter_rBaiXe()
         {
-            IsClearAllData = false;
-
             _filters[DiaDiemBaiXe] = (p => true);
 
             UpdateMainFilter();
@@ -25,8 +23,6 @@
 
         private void SetFilterDiaDiemBaiXe(string diaDiemBaiXe, bool setFalse = false)
         {
-            IsClearAllData = false;
-
             _filters[DiaDiemBaiXe] = FilterText(diaDiemBaiXe, setFalse, p => p.DiaDiemBaiXe.Contains(diaDiemBaiXe));
 
             UpdateMainFilter();

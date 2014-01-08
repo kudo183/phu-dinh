@@ -6,8 +6,6 @@
 
         public Filter_rNhaCungCap()
         {
-            IsClearAllData = false;
-
             _filters[TenNhaCungCap] = (p => true);
 
             UpdateMainFilter();
@@ -25,8 +23,6 @@
 
         private void SetFilterTenNhaCungCap(string tenNhaCungCap, bool setFalse = false)
         {
-            IsClearAllData = false;
-
             _filters[TenNhaCungCap] = FilterText(tenNhaCungCap, setFalse, p => p.TenNhaCungCap.Contains(tenNhaCungCap));
 
             UpdateMainFilter();

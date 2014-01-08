@@ -12,8 +12,6 @@ namespace PhuDinhData.Filter
 
         public Filter_tNhapNguyenLieu()
         {
-            IsClearAllData = false;
-
             _filters[MaNguyenLieu] = (p => true);
             _filters[TenNguyenLieu] = (p => true);
             _filters[MaNhaCungCap] = (p => true);
@@ -47,8 +45,6 @@ namespace PhuDinhData.Filter
 
         private void SetFilterMaNguyenLieu(int? maNguyenLieu, bool setFalse = false)
         {
-            IsClearAllData = false;
-
             _filters[MaNguyenLieu] = FilterNullable(maNguyenLieu, setFalse, p => p.MaNguyenLieu == maNguyenLieu);
 
             UpdateMainFilter();
@@ -56,8 +52,6 @@ namespace PhuDinhData.Filter
 
         private void SetFilterTenNguyenLieu(string tenNguyenLieu, bool setFalse = false)
         {
-            IsClearAllData = false;
-
             _filters[TenNguyenLieu] = FilterText(tenNguyenLieu, setFalse, p => p.rNguyenLieu.TenNguyenLieu.Contains(tenNguyenLieu));
 
             UpdateMainFilter();
@@ -65,8 +59,6 @@ namespace PhuDinhData.Filter
 
         private void SetFilterMaNhaCungCap(int? maNhaCungCap, bool setFalse = false)
         {
-            IsClearAllData = false;
-
             _filters[MaNhaCungCap] = FilterNullable(maNhaCungCap, setFalse, p => p.MaNhaCungCap == maNhaCungCap);
 
             UpdateMainFilter();
@@ -74,8 +66,6 @@ namespace PhuDinhData.Filter
 
         private void SetFilterTenNhaCungCap(string tenNhaCungCap, bool setFalse = false)
         {
-            IsClearAllData = false;
-
             _filters[TenNhaCungCap] = FilterText(tenNhaCungCap, setFalse, p => p.rNhaCungCap.TenNhaCungCap.Contains(tenNhaCungCap));
 
             UpdateMainFilter();
@@ -83,8 +73,6 @@ namespace PhuDinhData.Filter
 
         private void SetFilterNgay(DateTime? date, bool setFalse = false)
         {
-            IsClearAllData = false;
-
             _filters[Ngay] = FilterNullable(date, setFalse, p => p.Ngay == date);
 
             UpdateMainFilter();

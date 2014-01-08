@@ -11,8 +11,6 @@ namespace PhuDinhData.Filter
 
         public Filter_rMatHangNguyenLieu()
         {
-            IsClearAllData = false;
-
             _filters[MaMatHang] = (p => true);
             _filters[TenMatHang] = (p => true);
             _filters[MaNguyenLieu] = (p => true);
@@ -42,8 +40,6 @@ namespace PhuDinhData.Filter
 
         private void SetFilterMaMatHang(int? maMatHang, bool setFalse = false)
         {
-            IsClearAllData = false;
-
             _filters[MaMatHang] = FilterNullable(maMatHang, setFalse, p => p.MaMatHang == maMatHang);
 
             UpdateMainFilter();
@@ -51,8 +47,6 @@ namespace PhuDinhData.Filter
 
         private void SetFilterTenMatHang(string tenMatHang, bool setFalse = false)
         {
-            IsClearAllData = false;
-
             _filters[TenMatHang] = FilterText(tenMatHang, setFalse, p => p.tMatHang.TenMatHang.Contains(tenMatHang));
 
             UpdateMainFilter();
@@ -60,8 +54,6 @@ namespace PhuDinhData.Filter
 
         private void SetFilterMaNguyenLieu(int? maNguyenLieu, bool setFalse = false)
         {
-            IsClearAllData = false;
-
             _filters[MaNguyenLieu] = FilterNullable(maNguyenLieu, setFalse, p => p.MaNguyenLieu == maNguyenLieu);
 
             UpdateMainFilter();
@@ -69,8 +61,6 @@ namespace PhuDinhData.Filter
 
         private void SetFilterTenNguyenLieu(string tenNguyenLieu, bool setFalse = false)
         {
-            IsClearAllData = false;
-
             _filters[TenNguyenLieu] = FilterText(tenNguyenLieu, setFalse, p => p.rNguyenLieu.TenNguyenLieu.Contains(tenNguyenLieu));
 
             UpdateMainFilter();

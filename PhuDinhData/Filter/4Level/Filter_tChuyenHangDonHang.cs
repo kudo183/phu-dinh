@@ -9,8 +9,6 @@
 
         public Filter_tChuyenHangDonHang()
         {
-            IsClearAllData = false;
-
             _filters[MaChuyenHang] = (p => true);
             _filters[TenChuyenHang] = (p => true);
             _filters[MaDonHang] = (p => true);
@@ -39,8 +37,6 @@
 
         private void SetFilterMaChuyenHang(int? maChuyenHang, bool setFalse = false)
         {
-            IsClearAllData = false;
-
             _filters[MaChuyenHang] = FilterNullable(maChuyenHang, setFalse, p => p.MaChuyenHang == maChuyenHang);
 
             UpdateMainFilter();
@@ -48,8 +44,6 @@
 
         private void SetFilterTenChuyenHang(string tenChuyenHang, bool setFalse = false)
         {
-            IsClearAllData = false;
-
             _filters[TenChuyenHang] =
                 FilterText(tenChuyenHang, setFalse, p => p.tChuyenHang.TenChuyenHang.Contains(tenChuyenHang));
 
@@ -58,8 +52,6 @@
 
         private void SetFilterMaDonHang(int? maDonHang, bool setFalse = false)
         {
-            IsClearAllData = false;
-
             _filters[MaDonHang] = FilterNullable(maDonHang, setFalse, p => p.MaDonHang == maDonHang);
 
             UpdateMainFilter();
@@ -67,8 +59,6 @@
 
         private void SetFilterTenDonHang(string tenDonHang, bool setFalse = false)
         {
-            IsClearAllData = false;
-
             _filters[TenDonHang] =
                 FilterText(tenDonHang, setFalse, p => p.tDonHang.TenDonHang.Contains(tenDonHang));
 

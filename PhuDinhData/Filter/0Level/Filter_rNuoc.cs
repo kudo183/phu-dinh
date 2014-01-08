@@ -6,8 +6,6 @@
 
         public Filter_rNuoc()
         {
-            IsClearAllData = false;
-
             _filters[TenNuoc] = (p => true);
 
             UpdateMainFilter();
@@ -25,8 +23,6 @@
 
         private void SetFilterTenNuoc(string tenNuoc, bool setFalse = false)
         {
-            IsClearAllData = false;
-
             _filters[TenNuoc] = FilterText(tenNuoc, setFalse, p => p.TenNuoc.Contains(tenNuoc));
 
             UpdateMainFilter();

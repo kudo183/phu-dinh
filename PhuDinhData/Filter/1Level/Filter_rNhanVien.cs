@@ -7,8 +7,6 @@
 
         public Filter_rNhanVien()
         {
-            IsClearAllData = false;
-
             _filters[MaPhuongTien] = (p => true);
             _filters[TenPhuongTien] = (p => true);
 
@@ -30,8 +28,6 @@
 
         private void SetFilterMaPhuongTien(int? maPhuongTien, bool setFalse = false)
         {
-            IsClearAllData = false;
-
             _filters[MaPhuongTien] = FilterNullable(maPhuongTien, setFalse, p => p.MaPhuongTien == maPhuongTien);
 
             UpdateMainFilter();
@@ -39,8 +35,6 @@
 
         private void SetFilterTenPhuongTien(string tenPhuongTien, bool setFalse = false)
         {
-            IsClearAllData = false;
-
             _filters[TenPhuongTien] = FilterText(tenPhuongTien, setFalse, p => p.rPhuongTien.TenPhuongTien.Contains(tenPhuongTien));
 
             UpdateMainFilter();

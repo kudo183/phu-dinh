@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using PhuDinhCommon;
 
@@ -9,7 +10,15 @@ namespace PhuDinhData.Filter
     {
         public Expression<Func<T, bool>> Filter { get; protected set; }
 
-        public bool IsClearAllData { get; set; }
+        public bool IsClearAllData
+        {
+            get
+            {
+                return _filters.Any(filter =>
+                    filter.Value.Body.NodeType == ExpressionType.Constant
+                    && filter.Value.Body.ToString() == "False");
+            }
+        }
 
         protected readonly Dictionary<string, Expression<Func<T, bool>>> _filters
             = new Dictionary<string, Expression<Func<T, bool>>>();

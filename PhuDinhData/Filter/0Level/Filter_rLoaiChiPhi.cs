@@ -6,8 +6,6 @@
 
         public Filter_rLoaiChiPhi()
         {
-            IsClearAllData = false;
-
             _filters[TenLoaiChiPhi] = (p => true);
 
             UpdateMainFilter();
@@ -25,8 +23,6 @@
 
         private void SetFilterTenLoaiChiPhi(string tenLoaiChiPhi, bool setFalse = false)
         {
-            IsClearAllData = false;
-
             _filters[TenLoaiChiPhi] = FilterText(tenLoaiChiPhi, setFalse, p => p.TenLoaiChiPhi.Contains(tenLoaiChiPhi));
 
             UpdateMainFilter();

@@ -8,8 +8,6 @@
 
         public Filter_rDiaDiem()
         {
-            IsClearAllData = false;
-
             _filters[MaNuoc] = (p => true);
             _filters[TenNuoc] = (p => true);
             _filters[TenTinh] = (p => true);
@@ -35,8 +33,6 @@
 
         private void SetFilterMaNuoc(int? maNuoc, bool setFalse = false)
         {
-            IsClearAllData = false;
-
             _filters[MaNuoc] = FilterNullable(maNuoc, setFalse, p => p.MaNuoc == maNuoc);
 
             UpdateMainFilter();
@@ -44,8 +40,6 @@
 
         private void SetFilterTenNuoc(string tenNuoc, bool setFalse = false)
         {
-            IsClearAllData = false;
-
             _filters[TenNuoc] = FilterText(tenNuoc, setFalse, p => p.rNuoc.TenNuoc.Contains(tenNuoc));
 
             UpdateMainFilter();
@@ -53,8 +47,6 @@
 
         private void SetFilterTenTinh(string tenTinh, bool setFalse = false)
         {
-            IsClearAllData = false;
-
             _filters[TenTinh] = FilterText(tenTinh, setFalse, p => p.Tinh.Contains(tenTinh));
 
             UpdateMainFilter();

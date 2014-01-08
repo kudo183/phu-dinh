@@ -11,8 +11,6 @@ namespace PhuDinhData.Filter
 
         public Filter_rKhachHangChanh()
         {
-            IsClearAllData = false;
-
             _filters[MaKhachHang] = (p => true);
             _filters[TenKhachHang] = (p => true);
             _filters[MaChanh] = (p => true);
@@ -42,8 +40,6 @@ namespace PhuDinhData.Filter
 
         private void SetFilterMaKhachHang(int? maKhachHang, bool setFalse = false)
         {
-            IsClearAllData = false;
-
             _filters[MaKhachHang] = FilterNullable(maKhachHang, setFalse, p => p.MaKhachHang == maKhachHang);
 
             UpdateMainFilter();
@@ -51,8 +47,6 @@ namespace PhuDinhData.Filter
 
         private void SetFilterTenKhachHang(string tenKhachHang, bool setFalse = false)
         {
-            IsClearAllData = false;
-
             _filters[TenKhachHang] = FilterText(tenKhachHang, setFalse, p => p.rKhachHang.TenKhachHang.Contains(tenKhachHang));
 
             UpdateMainFilter();
@@ -60,8 +54,6 @@ namespace PhuDinhData.Filter
 
         private void SetFilterMaChanh(int? maChanh, bool setFalse = false)
         {
-            IsClearAllData = false;
-
             _filters[MaChanh] = FilterNullable(maChanh, setFalse, p => p.MaChanh == maChanh);
 
             UpdateMainFilter();
@@ -69,8 +61,6 @@ namespace PhuDinhData.Filter
 
         private void SetFilterTenChanh(string tenChanh, bool setFalse = false)
         {
-            IsClearAllData = false;
-
             _filters[TenChanh] = FilterText(tenChanh, setFalse, p => p.rChanh.TenChanh.Contains(tenChanh));
 
             UpdateMainFilter();

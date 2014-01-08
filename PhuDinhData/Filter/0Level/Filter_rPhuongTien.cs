@@ -6,8 +6,6 @@
 
         public Filter_rPhuongTien()
         {
-            IsClearAllData = false;
-
             _filters[TenPhuongTien] = (p => true);
 
             UpdateMainFilter();
@@ -25,8 +23,6 @@
 
         private void SetFilterTenPhuongTien(string tenPhuongTien, bool setFalse = false)
         {
-            IsClearAllData = false;
-
             _filters[TenPhuongTien] = FilterText(tenPhuongTien, setFalse, p => p.TenPhuongTien.Contains(tenPhuongTien));
 
             UpdateMainFilter();

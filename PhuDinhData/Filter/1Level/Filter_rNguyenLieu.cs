@@ -7,8 +7,6 @@
 
         public Filter_rNguyenLieu()
         {
-            IsClearAllData = false;
-
             _filters[MaLoaiNguyenLieu] = (p => true);
             _filters[TenLoaiNguyenLieu] = (p => true);
 
@@ -30,8 +28,6 @@
 
         private void SetFilterMaLoaiNguyenLieu(int? maLoaiNguyenLieu, bool setFalse = false)
         {
-            IsClearAllData = false;
-
             _filters[MaLoaiNguyenLieu] = FilterNullable(maLoaiNguyenLieu, setFalse, p => p.MaLoaiNguyenLieu == maLoaiNguyenLieu);
 
             UpdateMainFilter();
@@ -39,8 +35,6 @@
 
         private void SetFilterTenLoaiNguyenLieu(string tenLoaiNguyenLieu, bool setFalse = false)
         {
-            IsClearAllData = false;
-
             _filters[TenLoaiNguyenLieu] = FilterText(tenLoaiNguyenLieu, setFalse, p => p.rLoaiNguyenLieu.TenLoai.Contains(tenLoaiNguyenLieu));
 
             UpdateMainFilter();

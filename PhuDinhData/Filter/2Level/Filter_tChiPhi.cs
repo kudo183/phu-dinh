@@ -12,8 +12,6 @@ namespace PhuDinhData.Filter
 
         public Filter_tChiPhi()
         {
-            IsClearAllData = false;
-
             _filters[MaLoaiChiPhi] = (p => true);
             _filters[TenLoaiChiPhi] = (p => true);
             _filters[MaNhanVien] = (p => true);
@@ -47,8 +45,6 @@ namespace PhuDinhData.Filter
 
         private void SetFilterMaLoaiChiPhi(int? maLoaiChiPhi, bool setFalse = false)
         {
-            IsClearAllData = false;
-
             _filters[MaLoaiChiPhi] = FilterNullable(maLoaiChiPhi, setFalse, p => p.MaLoaiChiPhi == maLoaiChiPhi);
 
             UpdateMainFilter();
@@ -56,8 +52,6 @@ namespace PhuDinhData.Filter
 
         private void SetFilterTenLoaiChiPhi(string tenLoaiChiPhi, bool setFalse = false)
         {
-            IsClearAllData = false;
-
             _filters[TenLoaiChiPhi] = FilterText(tenLoaiChiPhi, setFalse, p => p.rLoaiChiPhi.TenLoaiChiPhi.Contains(tenLoaiChiPhi));
 
             UpdateMainFilter();
@@ -65,8 +59,6 @@ namespace PhuDinhData.Filter
 
         private void SetFilterMaNhanVien(int? maNhanVien, bool setFalse = false)
         {
-            IsClearAllData = false;
-
             _filters[MaNhanVien] = FilterNullable(maNhanVien, setFalse, p => p.MaNhanVienGiaoHang == maNhanVien);
 
             UpdateMainFilter();
@@ -74,8 +66,6 @@ namespace PhuDinhData.Filter
 
         private void SetFilterTenNhanVien(string tenNhanVien, bool setFalse = false)
         {
-            IsClearAllData = false;
-
             _filters[TenNhanVien] = FilterText(tenNhanVien, setFalse, p => p.rNhanVien.TenNhanVien.Contains(tenNhanVien));
 
             UpdateMainFilter();
@@ -83,8 +73,6 @@ namespace PhuDinhData.Filter
 
         private void SetFilterNgay(DateTime? date, bool setFalse = false)
         {
-            IsClearAllData = false;
-
             _filters[Ngay] = FilterNullable(date, setFalse, p => p.Ngay == date);
 
             UpdateMainFilter();
