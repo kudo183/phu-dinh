@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoUtility", "CryptoUtil
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomControl", "CustomControl\CustomControl.csproj", "{64F9D717-B4F2-4508-AFE6-4CBF5B811BEF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhuDinhReport", "PhuDinhReport\PhuDinhReport.csproj", "{A0687BE7-AC65-408D-8A17-785F7070F646}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -67,6 +69,10 @@ Global
 		{64F9D717-B4F2-4508-AFE6-4CBF5B811BEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{64F9D717-B4F2-4508-AFE6-4CBF5B811BEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{64F9D717-B4F2-4508-AFE6-4CBF5B811BEF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0687BE7-AC65-408D-8A17-785F7070F646}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0687BE7-AC65-408D-8A17-785F7070F646}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0687BE7-AC65-408D-8A17-785F7070F646}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0687BE7-AC65-408D-8A17-785F7070F646}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
