@@ -17,11 +17,6 @@
                 <PhuDinhCommonControl:ChuyenHangView/>
             </TabItem.Tag>
         </TabItem>
-        <TabItem Header="Khach Hang" Background="Aquamarine">
-            <TabItem.Tag>
-                <PhuDinhCommonControl:KhachHangView/>
-            </TabItem.Tag>
-        </TabItem>
         <TabItem Header="Mat Hang" Background="Aquamarine">
             <TabItem.Tag>
                 <PhuDinhCommonControl:MatHangView/>
