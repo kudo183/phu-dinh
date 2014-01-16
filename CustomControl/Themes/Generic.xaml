@@ -36,6 +36,7 @@
                         <TextBlock x:Name="PageCountTextBlock" VerticalAlignment="Center" Margin="5"/>
                         <Button Content="&lt;" x:Name="PrevPageButton" Margin="2,5" Width="35"/>
                         <Button Content="&gt;" x:Name="NextPageButton" Margin="2,5" Width="35"/>
+                        <TextBlock x:Name="ItemCountTextBlock" VerticalAlignment="Center" Margin="5"/>
                     </StackPanel>
                 </ControlTemplate>
             </Setter.Value>

@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
@@ -52,6 +50,7 @@ namespace CustomControl
     [TemplatePart(Name = Pager.LastPageButtonElementName, Type = typeof(ButtonBase))]
     [TemplatePart(Name = Pager.CurrentPageIndexElementName, Type = typeof(TextBox))]
     [TemplatePart(Name = Pager.PageCountElementName, Type = typeof(TextBlock))]
+    [TemplatePart(Name = Pager.ItemCountElementName, Type = typeof(TextBlock))]
 
     public class Pager : Control
     {
@@ -77,6 +76,9 @@ namespace CustomControl
 
         private const string PageCountElementName = "PageCountTextBlock";
         public TextBlock PageCountElement { get; set; }
+
+        private const string ItemCountElementName = "ItemCountTextBlock";
+        public TextBlock ItemCountElement { get; set; }
 
         #region PageSize
         public int PageSize
@@ -174,6 +176,10 @@ namespace CustomControl
             this.PageCountElement = this.GetTemplateChild(Pager.PageCountElementName) as TextBlock;
             this.ThrowIfMissing(this.PageCountElement, Pager.PageCountElementName);
             this.PageCountElement.SetBinding(TextBlock.TextProperty, new Binding("PageCount") { Source = this, Mode = BindingMode.OneWay });
+
+            this.ItemCountElement = this.GetTemplateChild(Pager.ItemCountElementName) as TextBlock;
+            this.ThrowIfMissing(this.ItemCountElement, Pager.ItemCountElementName);
+            this.ItemCountElement.SetBinding(TextBlock.TextProperty, new Binding("ItemCount") { Source = this, Mode = BindingMode.OneWay });
 
             base.OnApplyTemplate();
         }
