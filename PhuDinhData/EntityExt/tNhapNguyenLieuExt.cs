@@ -9,7 +9,7 @@ namespace PhuDinhData
 
         public override string ToString()
         {
-            return string.Format("[Ma {0}] [Ngay {1}] [NguyenLieu {2}] [NhaCungCap {3}] [SoKy {4}]", Ma, Ngay, rNguyenLieu, rNhaCungCap, SoKy);
+            return string.Format("[Ma {0}] [Ngay {1}] [NguyenLieu {2}] [NhaCungCap {3}] [SoLuong {4}]", Ma, Ngay, rNguyenLieu, rNhaCungCap, SoLuong);
         }
     }
 }

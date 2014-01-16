@@ -15,10 +15,10 @@
           <EntitySet Name="rLoaiHang" EntityType="PhuDinhModel.Store.rLoaiHang" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="rLoaiNguyenLieu" EntityType="PhuDinhModel.Store.rLoaiNguyenLieu" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="rMatHangNguyenLieu" EntityType="PhuDinhModel.Store.rMatHangNguyenLieu" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="rNuoc" EntityType="PhuDinhModel.Store.rNuoc" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="rNguyenLieu" EntityType="PhuDinhModel.Store.rNguyenLieu" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="rNhaCungCap" EntityType="PhuDinhModel.Store.rNhaCungCap" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="rNhanVien" EntityType="PhuDinhModel.Store.rNhanVien" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="rNuoc" EntityType="PhuDinhModel.Store.rNuoc" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="rPhuongTien" EntityType="PhuDinhModel.Store.rPhuongTien" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="tChiPhi" EntityType="PhuDinhModel.Store.tChiPhi" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="tChiTietChuyenHangDonHang" EntityType="PhuDinhModel.Store.tChiTietChuyenHangDonHang" store:Type="Tables" Schema="dbo" />
@@ -189,7 +189,7 @@
             <PropertyRef Name="Ma" />
           </Key>
           <Property Name="Ma" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="TenLoai" Type="nchar" Nullable="false" MaxLength="100" />
+          <Property Name="TenLoai" Type="nvarchar" Nullable="false" MaxLength="100" />
         </EntityType>
         <EntityType Name="rMatHangNguyenLieu">
           <Key>
@@ -198,13 +198,6 @@
           <Property Name="Ma" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="MaMatHang" Type="int" Nullable="false" />
           <Property Name="MaNguyenLieu" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="rNuoc">
-          <Key>
-            <PropertyRef Name="Ma" />
-          </Key>
-          <Property Name="Ma" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="TenNuoc" Type="nvarchar" Nullable="false" MaxLength="100" />
         </EntityType>
         <EntityType Name="rNguyenLieu">
           <Key>
@@ -219,7 +212,7 @@
             <PropertyRef Name="Ma" />
           </Key>
           <Property Name="Ma" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="TenNhaCungCap" Type="nchar" Nullable="false" MaxLength="200" />
+          <Property Name="TenNhaCungCap" Type="nvarchar" Nullable="false" MaxLength="200" />
         </EntityType>
         <EntityType Name="rNhanVien">
           <Key>
@@ -228,6 +221,13 @@
           <Property Name="Ma" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="MaPhuongTien" Type="int" Nullable="false" />
           <Property Name="TenNhanVien" Type="nvarchar" Nullable="false" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="rNuoc">
+          <Key>
+            <PropertyRef Name="Ma" />
+          </Key>
+          <Property Name="Ma" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="TenNuoc" Type="nvarchar" Nullable="false" MaxLength="100" />
         </EntityType>
         <EntityType Name="rPhuongTien">
           <Key>
@@ -322,7 +322,7 @@
           <Property Name="Ngay" Type="date" Nullable="false" />
           <Property Name="MaNguyenLieu" Type="int" Nullable="false" />
           <Property Name="MaNhaCungCap" Type="int" Nullable="false" />
-          <Property Name="SoKy" Type="int" Nullable="false" />
+          <Property Name="SoLuong" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK_rChanh_rBaiXe">
           <End Role="rBaiXe" Type="PhuDinhModel.Store.rBaiXe" Multiplicity="1" />
@@ -1157,7 +1157,7 @@
             <PropertyRef Name="Ma" />
           </Key>
           <Property Type="Int32" Name="Ma" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="TenLoai" Nullable="false" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="TenLoai" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="rNguyenLieux" Relationship="PhuDinhModel.FK_rNguyenLieu_rLoaiNguyenLieu" FromRole="rLoaiNguyenLieu" ToRole="rNguyenLieu" />
         </EntityType>
         <EntityType Name="rMatHangNguyenLieu">
@@ -1186,7 +1186,7 @@
             <PropertyRef Name="Ma" />
           </Key>
           <Property Type="Int32" Name="Ma" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="TenNhaCungCap" Nullable="false" MaxLength="200" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="TenNhaCungCap" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="tNhapNguyenLieux" Relationship="PhuDinhModel.FK_tNhapNguyenLieu_rNhaCungCap" FromRole="rNhaCungCap" ToRole="tNhapNguyenLieu" />
         </EntityType>
         <EntityType Name="tNhapMatHang">
@@ -1209,9 +1209,9 @@
           <Property Type="DateTime" Name="Ngay" Nullable="false" Precision="0" />
           <Property Type="Int32" Name="MaNguyenLieu" Nullable="false" />
           <Property Type="Int32" Name="MaNhaCungCap" Nullable="false" />
-          <Property Type="Int32" Name="SoKy" Nullable="false" />
           <NavigationProperty Name="rNguyenLieu" Relationship="PhuDinhModel.FK_tNhapNguyenLieu_rNguyenLieu" FromRole="tNhapNguyenLieu" ToRole="rNguyenLieu" />
           <NavigationProperty Name="rNhaCungCap" Relationship="PhuDinhModel.FK_tNhapNguyenLieu_rNhaCungCap" FromRole="tNhapNguyenLieu" ToRole="rNhaCungCap" />
+          <Property Type="Int32" Name="SoLuong" Nullable="false" />
         </EntityType>
         <Association Name="FK_rNguyenLieu_rLoaiNguyenLieu">
           <End Type="PhuDinhModel.rLoaiNguyenLieu" Role="rLoaiNguyenLieu" Multiplicity="1" />
@@ -1512,7 +1512,7 @@
           <EntitySetMapping Name="tNhapNguyenLieux">
             <EntityTypeMapping TypeName="PhuDinhModel.tNhapNguyenLieu">
               <MappingFragment StoreEntitySet="tNhapNguyenLieu">
-                <ScalarProperty Name="SoKy" ColumnName="SoKy" />
+                <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
                 <ScalarProperty Name="MaNhaCungCap" ColumnName="MaNhaCungCap" />
                 <ScalarProperty Name="MaNguyenLieu" ColumnName="MaNguyenLieu" />
                 <ScalarProperty Name="Ngay" ColumnName="Ngay" />

@@ -26,8 +26,8 @@ namespace PhuDinhData
         private int _manhacungcap;
         public int MaNhaCungCap { get { return _manhacungcap; } set { if(_manhacungcap == value) return; _manhacungcap = value; base.RaisePropertyChanged("MaNhaCungCap");} }
     
-        private int _soky;
-        public int SoKy { get { return _soky; } set { if(_soky == value) return; _soky = value; base.RaisePropertyChanged("SoKy");} }
+        private int _soluong;
+        public int SoLuong { get { return _soluong; } set { if(_soluong == value) return; _soluong = value; base.RaisePropertyChanged("SoLuong");} }
     
     
         public virtual rNguyenLieu rNguyenLieu { get; set; }

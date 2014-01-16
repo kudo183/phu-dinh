@@ -33,5 +33,11 @@
                                                  SelectedValueBinding="{Binding MaMatHang, UpdateSourceTrigger=PropertyChanged}"
                                                  SelectedItemBinding="{Binding tMatHang, UpdateSourceTrigger=PropertyChanged}"
                                                  ItemsSource="{Binding tMatHangList}"/>
+        <!--So luong-->
+        <CustomControl:DataGridTextRightAlignColumn
+            x:Name="soLuongColumn"
+            Binding="{Binding SoLuong, StringFormat=\{0:N0\}, UpdateSourceTrigger=PropertyChanged}"
+            Header="Số Lượng"
+            Width="100"/>
     </DataGrid.Columns>
 </CustomControl:DataGridExt>
