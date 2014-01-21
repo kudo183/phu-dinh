@@ -29,6 +29,7 @@ namespace PhuDinhData
 
         public List<rKhachHang> rKhachHangList { get; set; }
         public List<rChanh> rChanhList { get; set; }
+        public List<rKhoHang> rKhoHangList { get; set; }
 
         public override string ToString()
         {

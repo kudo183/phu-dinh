@@ -13,17 +13,19 @@ namespace PhuDinhData.ViewModel
     {
         private List<rKhachHang> _rKhachHangs;
         private List<rChanh> _rChanhs;
+        private List<rKhoHang> _rKhoHangs;
 
         private bool _isUsedDateFilter = true;
         private DateTime _filterDate = DateTime.Now.Date;
 
         private string _filterKhachHang = string.Empty;
-
         private string _filterChanh = string.Empty;
+        private string _filterKhoHang = string.Empty;
 
         public static HeaderDateFilterModel Header_Ngay = new HeaderDateFilterModel(Constant.ColumnName_Ngay);
         public static HeaderTextFilterModel Header_KhachHang = new HeaderTextFilterModel(Constant.ColumnName_KhachHang);
         public static HeaderTextFilterModel Header_Chanh = new HeaderTextFilterModel(Constant.ColumnName_Chanh);
+        public static HeaderTextFilterModel Header_KhoHang = new HeaderTextFilterModel(Constant.ColumnName_KhoHang);
 
         public DonHangViewModel()
         {
@@ -33,6 +35,7 @@ namespace PhuDinhData.ViewModel
 
             SetReferenceFilter<rKhachHang>(Constant.ColumnName_KhachHang, (p => true));
             SetReferenceFilter<rChanh>(Constant.ColumnName_Chanh, (p => true));
+            SetReferenceFilter<rKhoHang>(Constant.ColumnName_KhoHang, (p => true));
         }
 
         public override void Load()
@@ -51,9 +54,13 @@ namespace PhuDinhData.ViewModel
             Header_Chanh.Text = _filterChanh;
             Header_Chanh.PropertyChanged += Header_Chanh_PropertyChanged;
 
+            Header_KhoHang.Text = _filterKhoHang;
+            Header_KhoHang.PropertyChanged += Header_KhoHang_PropertyChanged;
+
             Header_Ngay_PropertyChanged(null, null);
             Header_KhachHang_PropertyChanged(null, null);
             Header_Chanh_PropertyChanged(null, null);
+            Header_KhoHang_PropertyChanged(null, null);
 
             _isLoading = false;
         }
@@ -65,13 +72,14 @@ namespace PhuDinhData.ViewModel
             Header_Ngay.PropertyChanged -= Header_Ngay_PropertyChanged;
             Header_KhachHang.PropertyChanged -= Header_KhachHang_PropertyChanged;
             Header_Chanh.PropertyChanged -= Header_Chanh_PropertyChanged;
+            Header_KhoHang.PropertyChanged -= Header_KhoHang_PropertyChanged;
 
             _filterDate = Header_Ngay.Date;
             _isUsedDateFilter = Header_Ngay.IsUsed;
 
             _filterKhachHang = Header_KhachHang.Text;
-
             _filterChanh = Header_Chanh.Text;
+            _filterKhoHang = Header_KhoHang.Text;
         }
 
         void Header_Ngay_PropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -102,6 +110,13 @@ namespace PhuDinhData.ViewModel
             OnHeaderFilterChanged();
         }
 
+        void Header_KhoHang_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            MainFilter.SetFilter(Filter_tDonHang.TenKhoHang, Header_KhoHang.Text);
+
+            OnHeaderFilterChanged();
+        }
+
         void Entity_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             if (e.Action == NotifyCollectionChangedAction.Add)
@@ -113,6 +128,7 @@ namespace PhuDinhData.ViewModel
 
                 tDonHang.rChanhList = _rChanhs;
                 tDonHang.rKhachHangList = _rKhachHangs;
+                tDonHang.rKhoHangList = _rKhoHangs;
 
                 if (GetDefaultValue(Constant.ColumnName_MaKhachHang) != null)
                 {
@@ -135,10 +151,18 @@ namespace PhuDinhData.ViewModel
                 (p => p.rChanhList = _rChanhs));
         }
 
+        private void UpdateKhoHangReferenceData()
+        {
+            UpdateReferenceData(out _rKhoHangs,
+                GetReferenceFilter<rKhoHang>(Constant.ColumnName_KhoHang),
+                (p => p.rKhoHangList = _rKhoHangs));
+        }
+
         protected override void UpdateAllReferenceData()
         {
             UpdateKhachHangReferenceData();
             UpdateChanhReferenceData();
+            UpdateKhoHangReferenceData();
         }
 
         public override void UpdateReferenceData(string columnName)
@@ -150,6 +174,9 @@ namespace PhuDinhData.ViewModel
                     break;
                 case Constant.ColumnName_Chanh:
                     UpdateChanhReferenceData();
+                    break;
+                case Constant.ColumnName_KhoHang:
+                    UpdateKhoHangReferenceData();
                     break;
             }
         }

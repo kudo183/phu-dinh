@@ -10,6 +10,7 @@ namespace PhuDinhData.Filter
         public const string TenChanh = "TenChanh";
         public const string Ngay = "Ngay";
         public const string Xong = "Xong";
+        public const string TenKhoHang = "TenKhoHang";
 
         public Filter_tDonHang()
         {
@@ -19,6 +20,7 @@ namespace PhuDinhData.Filter
             _filters[TenChanh] = (p => true);
             _filters[Ngay] = (p => true);
             _filters[Xong] = (p => true);
+            _filters[TenKhoHang] = (p => true);
 
             UpdateMainFilter();
         }
@@ -44,6 +46,9 @@ namespace PhuDinhData.Filter
                     break;
                 case Xong:
                     SetFilterXong(value as bool?, setFalse);
+                    break;
+                case TenKhoHang:
+                    SetFilterTenKhoHang(value as string, setFalse);
                     break;
             }
         }
@@ -79,6 +84,13 @@ namespace PhuDinhData.Filter
         private void SetFilterNgay(DateTime? date, bool setFalse = false)
         {
             _filters[Ngay] = FilterNullable(date, setFalse, p => p.Ngay == date);
+
+            UpdateMainFilter();
+        }
+
+        private void SetFilterTenKhoHang(string tenKhoHang, bool setFalse = false)
+        {
+            _filters[TenKhoHang] = FilterText(tenKhoHang, setFalse, p => p.rKhoHang.TenKho.Contains(tenKhoHang));
 
             UpdateMainFilter();
         }

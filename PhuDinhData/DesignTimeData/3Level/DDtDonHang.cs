@@ -36,11 +36,14 @@ namespace PhuDinhData.DesignTimeData
                 Ma = i,
                 MaChanh = i,
                 MaKhachHang = i,
+                MaKhoHang = i,
                 Ngay = System.DateTime.Now,
                 rKhachHang = DDrKhachHang.Create(i),
-                rChanh = DDrChanh.Create(i),
                 rKhachHangList = DDrKhachHang.ViewModel.Entity.ToList(),
-                rChanhList = DDrChanh.ViewModel.Entity.ToList()
+                rChanh = DDrChanh.Create(i),
+                rChanhList = DDrChanh.ViewModel.Entity.ToList(),
+                rKhoHang = DDrKhoHang.Create(i),
+                rKhoHangList = DDrKhoHang.ViewModel.Entity.ToList()
             };
         }
     }

@@ -43,5 +43,6 @@ namespace PhuDinhData
         public virtual rKhachHang rKhachHang { get; set; }
         public virtual ICollection<tChiTietDonHang> tChiTietDonHangs { get; set; }
         public virtual ICollection<tChuyenHangDonHang> tChuyenHangDonHangs { get; set; }
+        public virtual rKhoHang rKhoHang { get; set; }
     }
 }

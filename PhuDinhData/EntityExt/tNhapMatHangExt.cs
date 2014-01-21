@@ -6,6 +6,7 @@ namespace PhuDinhData
     {
         public List<rNhanVien> rNhanVienList { get; set; }
         public List<tMatHang> tMatHangList { get; set; }
+        public List<rKhoHang> rKhoHangList { get; set; }
 
         public override string ToString()
         {

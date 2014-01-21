@@ -56,6 +56,7 @@
     <Compile Include="BindableObject.cs" />
     <Compile Include="BusinessLogics\BusinessLogics.cs" />
     <Compile Include="ContextFactory.cs" />
+    <Compile Include="DesignTimeData\0Level\DDrKhoHang.cs" />
     <Compile Include="DesignTimeData\0Level\DDrNhaCungCap.cs" />
     <Compile Include="DesignTimeData\0Level\DDrLoaiNguyenLieu.cs" />
     <Compile Include="DesignTimeData\1Level\DDrNguyenLieu.cs" />
@@ -96,6 +97,7 @@
     <Compile Include="EntityExt\rKhachHangExt.cs" />
     <Compile Include="EntityExt\rDiaDiemExt.cs" />
     <Compile Include="EntityExt\rChanhExt.cs" />
+    <Compile Include="Filter\0Level\Filter_rKhoHang.cs" />
     <Compile Include="Filter\0Level\Filter_rPhuongTien.cs" />
     <Compile Include="Filter\0Level\Filter_rNhaCungCap.cs" />
     <Compile Include="Filter\0Level\Filter_rNuoc.cs" />
@@ -124,6 +126,7 @@
     <Compile Include="rDiaDiem.cs">
       <DependentUpon>PhuDinh.tt</DependentUpon>
     </Compile>
+    <Compile Include="Repository\rKhoHangRepository.cs" />
     <Compile Include="Repository\RepositoryLocator.cs" />
     <Compile Include="Repository\tNhapNguyenLieuRepository.cs" />
     <Compile Include="Repository\tNhapMatHangRepository.cs" />
@@ -150,6 +153,9 @@
     <Compile Include="Repository\rBaiXeRepository.cs" />
     <Compile Include="Repository\rChanhRepository.cs" />
     <Compile Include="rKhachHangChanh.cs">
+      <DependentUpon>PhuDinh.tt</DependentUpon>
+    </Compile>
+    <Compile Include="rKhoHang.cs">
       <DependentUpon>PhuDinh.tt</DependentUpon>
     </Compile>
     <Compile Include="rLoaiNguyenLieu.cs">
@@ -238,6 +244,7 @@
       <DependentUpon>PhuDinh.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\0Level\BaiXeViewModel.cs" />
+    <Compile Include="ViewModel\0Level\KhoHangViewModel.cs" />
     <Compile Include="ViewModel\0Level\PhuongTienViewModel.cs" />
     <Compile Include="ViewModel\0Level\NhaCungCapViewModel.cs" />
     <Compile Include="ViewModel\0Level\NuocViewModel.cs" />

@@ -39,7 +39,9 @@ namespace PhuDinhData.DesignTimeData
                 rNhanVien = DDrNhanVien.Create(i),
                 rNhanVienList = DDrNhanVien.ViewModel.Entity.ToList(),
                 tMatHang = DDtMatHang.Create(i),
-                tMatHangList = DDtMatHang.ViewModel.Entity.ToList()
+                tMatHangList = DDtMatHang.ViewModel.Entity.ToList(),
+                rKhoHang = DDrKhoHang.Create(i),
+                rKhoHangList = DDrKhoHang.ViewModel.Entity.ToList()
             };
         }
     }

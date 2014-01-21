@@ -35,5 +35,6 @@ namespace PhuDinhData
     
         public virtual rNhanVien rNhanVien { get; set; }
         public virtual tMatHang tMatHang { get; set; }
+        public virtual rKhoHang rKhoHang { get; set; }
     }
 }

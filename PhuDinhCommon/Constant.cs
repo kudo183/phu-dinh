@@ -58,6 +58,7 @@
         public const string ColumnName_LoaiChiPhi = "Loai Chi Phi";
         public const string ColumnName_NhanVien = "Nhan Vien";
         public const string ColumnName_NhanCungCap = "Nha Cung Cap";
+        public const string ColumnName_KhoHang = "KhoHang"; 
 
         //0Level
         public const string ViewName_BaiXe = "Bai Xe";
