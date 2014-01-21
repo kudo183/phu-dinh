@@ -35,6 +35,9 @@ namespace PhuDinhData
         private bool _xong;
         public bool Xong { get { return _xong; } set { if(_xong == value) return; _xong = value; base.RaisePropertyChanged("Xong");} }
     
+        private int _makhohang;
+        public int MaKhoHang { get { return _makhohang; } set { if(_makhohang == value) return; _makhohang = value; base.RaisePropertyChanged("MaKhoHang");} }
+    
     
         public virtual rChanh rChanh { get; set; }
         public virtual rKhachHang rKhachHang { get; set; }
