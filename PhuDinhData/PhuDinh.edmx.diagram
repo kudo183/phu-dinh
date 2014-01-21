@@ -56,6 +56,9 @@
         <EntityTypeShape EntityType="PhuDinhModel.rKhoHang" Width="1.5" PointX="1.5052020445024605" PointY="3.7383280264857821" />
         <AssociationConnector Association="PhuDinhModel.FK_tDonHang_rKhoHang" />
         <AssociationConnector Association="PhuDinhModel.FK_tNhapMatHang_rKhoHang" />
+        <EntityTypeShape EntityType="PhuDinhModel.tTonKho" Width="1.5" PointX="4.4496370630569935" PointY="15.955233581343309" />
+        <AssociationConnector Association="PhuDinhModel.FK_tTonKho_rKhoHang" />
+        <AssociationConnector Association="PhuDinhModel.FK_tTonKho_tMatHang" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

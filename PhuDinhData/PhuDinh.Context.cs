@@ -49,5 +49,6 @@ namespace PhuDinhData
         public DbSet<tNhapMatHang> tNhapMatHangs { get; set; }
         public DbSet<tNhapNguyenLieu> tNhapNguyenLieux { get; set; }
         public DbSet<rKhoHang> rKhoHangs { get; set; }
+        public DbSet<tTonKho> tTonKhoes { get; set; }
     }
 }

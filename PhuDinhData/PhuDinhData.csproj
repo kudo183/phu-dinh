@@ -243,6 +243,9 @@
     <Compile Include="tNhapNguyenLieu.cs">
       <DependentUpon>PhuDinh.tt</DependentUpon>
     </Compile>
+    <Compile Include="tTonKho.cs">
+      <DependentUpon>PhuDinh.tt</DependentUpon>
+    </Compile>
     <Compile Include="ViewModel\0Level\BaiXeViewModel.cs" />
     <Compile Include="ViewModel\0Level\KhoHangViewModel.cs" />
     <Compile Include="ViewModel\0Level\PhuongTienViewModel.cs" />
