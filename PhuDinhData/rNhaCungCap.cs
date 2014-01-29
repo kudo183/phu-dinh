@@ -17,6 +17,7 @@ namespace PhuDinhData
         public rNhaCungCap()
         {
             this.tNhapNguyenLieux = new HashSet<tNhapNguyenLieu>();
+            this.tNhapHangs = new HashSet<tNhapHang>();
         }
     
         private int _ma;
@@ -27,5 +28,6 @@ namespace PhuDinhData
     
     
         public virtual ICollection<tNhapNguyenLieu> tNhapNguyenLieux { get; set; }
+        public virtual ICollection<tNhapHang> tNhapHangs { get; set; }
     }
 }

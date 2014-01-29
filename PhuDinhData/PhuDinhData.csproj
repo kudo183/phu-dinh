@@ -61,7 +61,6 @@
     <Compile Include="DesignTimeData\0Level\DDrLoaiNguyenLieu.cs" />
     <Compile Include="DesignTimeData\1Level\DDrNguyenLieu.cs" />
     <Compile Include="DesignTimeData\2Level\DDtNhapNguyenLieu.cs" />
-    <Compile Include="DesignTimeData\2Level\DDtNhapMatHang.cs" />
     <Compile Include="DesignTimeData\2Level\DDrMatHangNguyenLieu.cs" />
     <Compile Include="DesignTimeData\2Level\DDtChiPhi.cs" />
     <Compile Include="DesignTimeData\3Level\DDrKhachHangChanh.cs" />
@@ -88,7 +87,6 @@
     <Compile Include="EntityExt\rBaiXeExt.cs" />
     <Compile Include="EntityExt\rNuocExt.cs" />
     <Compile Include="EntityExt\tNhapNguyenLieuExt.cs" />
-    <Compile Include="EntityExt\tNhapMatHangExt.cs" />
     <Compile Include="EntityExt\rMatHangNguyenLieuExt.cs" />
     <Compile Include="EntityExt\rNguyenLieuExt.cs" />
     <Compile Include="EntityExt\rKhachHangChanhExt.cs" />
@@ -110,7 +108,6 @@
     <Compile Include="Filter\1Level\Filter_tMatHang.cs" />
     <Compile Include="Filter\1Level\Filter_rDiaDiem.cs" />
     <Compile Include="Filter\2Level\Filter_tNhapNguyenLieu.cs" />
-    <Compile Include="Filter\2Level\Filter_tNhapMatHang.cs" />
     <Compile Include="Filter\2Level\Filter_tChuyenHang.cs" />
     <Compile Include="Filter\2Level\Filter_rKhachHang.cs" />
     <Compile Include="Filter\2Level\Filter_rMatHangNguyenLieu.cs" />
@@ -129,7 +126,6 @@
     <Compile Include="Repository\rKhoHangRepository.cs" />
     <Compile Include="Repository\RepositoryLocator.cs" />
     <Compile Include="Repository\tNhapNguyenLieuRepository.cs" />
-    <Compile Include="Repository\tNhapMatHangRepository.cs" />
     <Compile Include="Repository\rMatHangNguyenLieuRepository.cs" />
     <Compile Include="Repository\rNguyenLieuRepository.cs" />
     <Compile Include="Repository\rNhaCungCapRepository.cs" />
@@ -180,6 +176,9 @@
       <DependentUpon>PhuDinh.tt</DependentUpon>
     </Compile>
     <Compile Include="tChiTietChuyenHangDonHang.cs">
+      <DependentUpon>PhuDinh.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tChiTietNhapHang.cs">
       <DependentUpon>PhuDinh.tt</DependentUpon>
     </Compile>
     <Compile Include="tChuyenHangDonHang.cs">
@@ -237,7 +236,7 @@
     <Compile Include="tMatHang.cs">
       <DependentUpon>PhuDinh.tt</DependentUpon>
     </Compile>
-    <Compile Include="tNhapMatHang.cs">
+    <Compile Include="tNhapHang.cs">
       <DependentUpon>PhuDinh.tt</DependentUpon>
     </Compile>
     <Compile Include="tNhapNguyenLieu.cs">
@@ -261,7 +260,6 @@
     <Compile Include="ViewModel\2Level\ChiPhiViewModel.cs" />
     <Compile Include="ViewModel\2Level\ChuyenHangViewModel.cs" />
     <Compile Include="ViewModel\2Level\NhapNguyenLieuViewModel.cs" />
-    <Compile Include="ViewModel\2Level\NhapMatHangViewModel.cs" />
     <Compile Include="ViewModel\2Level\KhachHangViewModel.cs" />
     <Compile Include="ViewModel\2Level\MatHangNguyenLieuViewModel.cs" />
     <Compile Include="ViewModel\3Level\KhachHangChanhViewModel.cs" />

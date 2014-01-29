@@ -12,35 +12,22 @@ namespace PhuDinhData
     using System;
     using System.Collections.Generic;
     
-    public partial class tTonKho : BindableObject
+    public partial class tChiTietNhapHang : BindableObject
     {
-        public tTonKho()
-        {
-            this.tTonKho1 = new HashSet<tTonKho>();
-        }
-    
         private int _ma;
         public int Ma { get { return _ma; } set { if(_ma == value) return; _ma = value; base.RaisePropertyChanged("Ma");} }
     
-        private int _makhohang;
-        public int MaKhoHang { get { return _makhohang; } set { if(_makhohang == value) return; _makhohang = value; base.RaisePropertyChanged("MaKhoHang");} }
+        private int _manhaphang;
+        public int MaNhapHang { get { return _manhaphang; } set { if(_manhaphang == value) return; _manhaphang = value; base.RaisePropertyChanged("MaNhapHang");} }
     
         private int _mamathang;
         public int MaMatHang { get { return _mamathang; } set { if(_mamathang == value) return; _mamathang = value; base.RaisePropertyChanged("MaMatHang");} }
     
-        private System.DateTime _ngay;
-        public System.DateTime Ngay { get { return _ngay; } set { if(_ngay == value) return; _ngay = value; base.RaisePropertyChanged("Ngay");} }
-    
         private int _soluong;
         public int SoLuong { get { return _soluong; } set { if(_soluong == value) return; _soluong = value; base.RaisePropertyChanged("SoLuong");} }
     
-        private Nullable<int> _macon;
-        public Nullable<int> MaCon { get { return _macon; } set { if(_macon == value) return; _macon = value; base.RaisePropertyChanged("MaCon");} }
     
-    
-        public virtual rKhoHang rKhoHang { get; set; }
+        public virtual tNhapHang tNhapHang { get; set; }
         public virtual tMatHang tMatHang { get; set; }
-        public virtual ICollection<tTonKho> tTonKho1 { get; set; }
-        public virtual tTonKho tTonKho2 { get; set; }
     }
 }

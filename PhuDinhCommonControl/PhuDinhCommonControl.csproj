@@ -86,9 +86,6 @@
     <Compile Include="EntityDataGrid\2Level\DGNhapNguyenLieu.xaml.cs">
       <DependentUpon>DGNhapNguyenLieu.xaml</DependentUpon>
     </Compile>
-    <Compile Include="EntityDataGrid\2Level\DGNhapMatHang.xaml.cs">
-      <DependentUpon>DGNhapMatHang.xaml</DependentUpon>
-    </Compile>
     <Compile Include="EntityDataGrid\2Level\DGMatHangNguyenLieu.xaml.cs">
       <DependentUpon>DGMatHangNguyenLieu.xaml</DependentUpon>
     </Compile>
@@ -158,9 +155,6 @@
     </Compile>
     <Compile Include="View\2Level\tNhapNguyenLieuView.xaml.cs">
       <DependentUpon>tNhapNguyenLieuView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\2Level\tNhapMatHangView.xaml.cs">
-      <DependentUpon>tNhapMatHangView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\2Level\rMatHangNguyenLieuView.xaml.cs">
       <DependentUpon>rMatHangNguyenLieuView.xaml</DependentUpon>
@@ -315,10 +309,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="EntityDataGrid\2Level\DGNhapMatHang.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="EntityDataGrid\2Level\DGMatHangNguyenLieu.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -408,10 +398,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="View\2Level\tNhapNguyenLieuView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="View\2Level\tNhapMatHangView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

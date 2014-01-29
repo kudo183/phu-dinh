@@ -12,29 +12,32 @@ namespace PhuDinhData
     using System;
     using System.Collections.Generic;
     
-    public partial class tNhapMatHang : BindableObject
+    public partial class tNhapHang : BindableObject
     {
+        public tNhapHang()
+        {
+            this.tChiTietNhapHangs = new HashSet<tChiTietNhapHang>();
+        }
+    
         private int _ma;
         public int Ma { get { return _ma; } set { if(_ma == value) return; _ma = value; base.RaisePropertyChanged("Ma");} }
-    
-        private System.DateTime _ngay;
-        public System.DateTime Ngay { get { return _ngay; } set { if(_ngay == value) return; _ngay = value; base.RaisePropertyChanged("Ngay");} }
     
         private int _manhanvien;
         public int MaNhanVien { get { return _manhanvien; } set { if(_manhanvien == value) return; _manhanvien = value; base.RaisePropertyChanged("MaNhanVien");} }
     
-        private int _mamathang;
-        public int MaMatHang { get { return _mamathang; } set { if(_mamathang == value) return; _mamathang = value; base.RaisePropertyChanged("MaMatHang");} }
-    
-        private int _soluong;
-        public int SoLuong { get { return _soluong; } set { if(_soluong == value) return; _soluong = value; base.RaisePropertyChanged("SoLuong");} }
-    
         private int _makhohang;
         public int MaKhoHang { get { return _makhohang; } set { if(_makhohang == value) return; _makhohang = value; base.RaisePropertyChanged("MaKhoHang");} }
     
+        private int _manhacungcap;
+        public int MaNhaCungCap { get { return _manhacungcap; } set { if(_manhacungcap == value) return; _manhacungcap = value; base.RaisePropertyChanged("MaNhaCungCap");} }
     
-        public virtual rNhanVien rNhanVien { get; set; }
-        public virtual tMatHang tMatHang { get; set; }
+        private System.DateTime _ngay;
+        public System.DateTime Ngay { get { return _ngay; } set { if(_ngay == value) return; _ngay = value; base.RaisePropertyChanged("Ngay");} }
+    
+    
         public virtual rKhoHang rKhoHang { get; set; }
+        public virtual rNhaCungCap rNhaCungCap { get; set; }
+        public virtual rNhanVien rNhanVien { get; set; }
+        public virtual ICollection<tChiTietNhapHang> tChiTietNhapHangs { get; set; }
     }
 }
