@@ -1,18 +1,18 @@
 ﻿namespace PhuDinhData.Filter
 {
-    public class Filter_tChiTietDonHang : FilterBase<tChiTietDonHang>
+    public class Filter_tChiTietNhapHang : FilterBase<tChiTietNhapHang>
     {
         public const string MaMatHang = "MaMatHang";
         public const string TenMatHang = "TenMatHang";
-        public const string MaDonHang = "MaDonHang";
-        public const string TenDonHang = "TenDonHang";
+        public const string MaNhapHang = "MaNhapHang";
+        public const string TenNhapHang = "TenNhapHang";
 
-        public Filter_tChiTietDonHang()
+        public Filter_tChiTietNhapHang()
         {
             _filters[MaMatHang] = (p => true);
             _filters[TenMatHang] = (p => true);
-            _filters[MaDonHang] = (p => true);
-            _filters[TenDonHang] = (p => true);
+            _filters[MaNhapHang] = (p => true);
+            _filters[TenNhapHang] = (p => true);
             UpdateMainFilter();
         }
 
@@ -26,11 +26,11 @@
                 case TenMatHang:
                     SetFilterTenMatHang(value as string, setFalse);
                     break;
-                case MaDonHang:
-                    SetFilterMaDonHang(value as int?, setFalse);
+                case MaNhapHang:
+                    SetFilterMaNhapHang(value as int?, setFalse);
                     break;
-                case TenDonHang:
-                    SetFilterTenDonHang(value as string, setFalse);
+                case TenNhapHang:
+                    SetFilterTenNhapHang(value as string, setFalse);
                     break;
             }
         }
@@ -50,17 +50,17 @@
             UpdateMainFilter();
         }
 
-        private void SetFilterMaDonHang(int? maDonHang, bool setFalse = false)
+        private void SetFilterMaNhapHang(int? maNhapHang, bool setFalse = false)
         {
-            _filters[MaDonHang] = FilterNullable(maDonHang, setFalse, p => p.MaDonHang == maDonHang);
+            _filters[MaNhapHang] = FilterNullable(maNhapHang, setFalse, p => p.MaNhapHang == maNhapHang);
 
             UpdateMainFilter();
         }
 
-        private void SetFilterTenDonHang(string tenDonHang, bool setFalse = false)
+        private void SetFilterTenNhapHang(string tenNhapHang, bool setFalse = false)
         {
-            //_filters[TenDonHang] =
-            //    FilterText(tenDonHang, setFalse, p => p.tDonHang.TenDonHang.Contains(tenDonHang));
+            //_filters[TenNhapHang] =
+            //    FilterText(tenNhapHang, setFalse, p => p.tNhapHang.TenNhapHang.Contains(tenNhapHang));
 
             //UpdateMainFilter();
         }

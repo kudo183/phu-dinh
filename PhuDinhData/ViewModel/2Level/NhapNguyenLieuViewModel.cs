@@ -16,8 +16,8 @@ namespace PhuDinhData.ViewModel
         private bool _isUsedDateFilter = true;
         private DateTime _filterDate = DateTime.Now.Date;
 
-        private string _filterLoaiChiPhi = string.Empty;
-        private string _filterNhanVien = string.Empty;
+        private string _filterNguyenLieu = string.Empty;
+        private string _filterNhaCungCap = string.Empty;
 
         public static HeaderDateFilterModel Header_Ngay = new HeaderDateFilterModel(Constant.ColumnName_Ngay);
         public static HeaderTextFilterModel Header_NguyenLieu = new HeaderTextFilterModel(Constant.ColumnName_NguyenLieu);
@@ -43,10 +43,10 @@ namespace PhuDinhData.ViewModel
             Header_Ngay.Date = _filterDate;
             Header_Ngay.PropertyChanged += Header_Ngay_PropertyChanged;
 
-            Header_NguyenLieu.Text = _filterLoaiChiPhi;
+            Header_NguyenLieu.Text = _filterNguyenLieu;
             Header_NguyenLieu.PropertyChanged += Header_NguyenLieu_PropertyChanged;
 
-            Header_NhaCungCap.Text = _filterNhanVien;
+            Header_NhaCungCap.Text = _filterNhaCungCap;
             Header_NhaCungCap.PropertyChanged += Header_NhaCungCap_PropertyChanged;
 
             Header_Ngay_PropertyChanged(null, null);
@@ -67,9 +67,9 @@ namespace PhuDinhData.ViewModel
             _filterDate = Header_Ngay.Date;
             _isUsedDateFilter = Header_Ngay.IsUsed;
 
-            _filterLoaiChiPhi = Header_NguyenLieu.Text;
+            _filterNguyenLieu = Header_NguyenLieu.Text;
 
-            _filterNhanVien = Header_NhaCungCap.Text;
+            _filterNhaCungCap = Header_NhaCungCap.Text;
         }
 
         void Header_NguyenLieu_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
