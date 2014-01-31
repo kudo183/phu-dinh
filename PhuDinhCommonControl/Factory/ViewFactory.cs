@@ -32,6 +32,9 @@ namespace PhuDinhCommonControl
                 case Constant.ViewName_PhuongTien:
                     view = new rPhuongTienView();
                     break;
+                case Constant.ViewName_KhoHang:
+                    view = new rKhoHangView();
+                    break;
                 //1Level
                 case Constant.ViewName_Chanh:
                     view = new rChanhView();

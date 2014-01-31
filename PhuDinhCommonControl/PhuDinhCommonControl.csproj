@@ -67,6 +67,9 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EntityDataGrid\0Level\DGKhoHang.xaml.cs">
+      <DependentUpon>DGKhoHang.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Utils\ChildWindowUtils.cs" />
     <Compile Include="EntityDataGrid\0Level\DGNhaCungCap.xaml.cs">
       <DependentUpon>DGNhaCungCap.xaml</DependentUpon>
@@ -138,6 +141,9 @@
       <DependentUpon>BottomMenu.xaml</DependentUpon>
     </Compile>
     <Compile Include="Factory\ViewFactory.cs" />
+    <Compile Include="View\0Level\rKhoHangView.xaml.cs">
+      <DependentUpon>rKhoHangView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\0Level\rNhaCungCapView.xaml.cs">
       <DependentUpon>rNhaCungCapView.xaml</DependentUpon>
     </Compile>
@@ -285,6 +291,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="EntityDataGrid\0Level\DGKhoHang.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="EntityDataGrid\0Level\DGNhaCungCap.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -374,6 +384,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Menu\BottomMenu.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\0Level\rKhoHangView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

@@ -1,0 +1,19 @@
+﻿<CustomControl:DataGridExt x:Class="PhuDinhCommonControl.EntityDataGrid.DGKhoHang"
+                           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                           xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                           xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                           xmlns:CustomControl="clr-namespace:CustomControl;assembly=CustomControl"
+                           xmlns:DesignTimeData="clr-namespace:PhuDinhData.DesignTimeData;assembly=PhuDinhData"
+                           mc:Ignorable="d"
+                           d:DataContext="{x:Static DesignTimeData:DDrKhoHang.ViewModel}"
+                           AutoGenerateColumns="False" EnableRowVirtualization="False" ItemsSource="{Binding Entity}" SelectionMode="Single">
+    <DataGrid.Columns>
+        <!--Ma-->
+        <CustomControl:DataGridReadOnlyTextColumn x:Name="maColumn"/>
+        <!--Ten kho-->
+        <CustomControl:DataGridTextColumnExt x:Name="tenKhoColumn" Header="Ten Kho" Binding="{Binding TenKho, UpdateSourceTrigger=PropertyChanged}"/>
+        <!--Trang thai-->
+        <CustomControl:DataGridCheckBoxColumnExt x:Name="trangThaiColumn" Binding="{Binding TrangThai}" Header="Trang Thai"/>
+    </DataGrid.Columns>
+</CustomControl:DataGridExt>

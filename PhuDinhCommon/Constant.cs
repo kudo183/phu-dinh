@@ -70,6 +70,7 @@
         public const string ViewName_NhaCungCap = "Nha Cung Cap";
         public const string ViewName_Nuoc = "Nuoc";
         public const string ViewName_PhuongTien = "Phuong Tien";
+        public const string ViewName_KhoHang = "Kho Hang";
         //1Level
         public const string ViewName_Chanh = "Chanh";
         public const string ViewName_DiaDiem = "Dia Diem";
