@@ -64,6 +64,7 @@
     <Compile Include="DesignTimeData\2Level\DDtNhapNguyenLieu.cs" />
     <Compile Include="DesignTimeData\2Level\DDrMatHangNguyenLieu.cs" />
     <Compile Include="DesignTimeData\2Level\DDtChiPhi.cs" />
+    <Compile Include="DesignTimeData\3Level\DDtChiTietNhapHang.cs" />
     <Compile Include="DesignTimeData\3Level\DDrKhachHangChanh.cs" />
     <Compile Include="DesignTimeData\5Level\DDtChiTietChuyenHangDonHang.cs" />
     <Compile Include="DesignTimeData\4Level\DDtChuyenHangDonHang.cs" />
@@ -275,7 +276,7 @@
     <Compile Include="ViewModel\2Level\NhapNguyenLieuViewModel.cs" />
     <Compile Include="ViewModel\2Level\KhachHangViewModel.cs" />
     <Compile Include="ViewModel\2Level\MatHangNguyenLieuViewModel.cs" />
-    <Compile Include="ViewModel\3Level\ChiTieNhapnHangViewModel.cs" />
+    <Compile Include="ViewModel\3Level\ChiTieNhapHangViewModel.cs" />
     <Compile Include="ViewModel\3Level\KhachHangChanhViewModel.cs" />
     <Compile Include="ViewModel\4Level\ChuyenHangDonHangViewModel.cs" />
     <Compile Include="ViewModel\4Level\ChiTietDonHangViewModel.cs" />

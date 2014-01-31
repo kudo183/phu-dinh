@@ -59,10 +59,10 @@
 
         private void SetFilterTenNhapHang(string tenNhapHang, bool setFalse = false)
         {
-            //_filters[TenNhapHang] =
-            //    FilterText(tenNhapHang, setFalse, p => p.tNhapHang.TenNhapHang.Contains(tenNhapHang));
+            _filters[TenNhapHang] =
+                FilterText(tenNhapHang, setFalse, p => p.tNhapHang.TenNhapHang.Contains(tenNhapHang));
 
-            //UpdateMainFilter();
+            UpdateMainFilter();
         }
     }
 }

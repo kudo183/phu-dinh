@@ -77,6 +77,9 @@ namespace PhuDinhCommonControl
                 case Constant.ViewName_DonHang:
                     view = new tDonHangView();
                     break;
+                case Constant.ViewName_ChiTietNhapHang:
+                    view = new tChiTietNhapHangView();
+                    break;
                 //4Level
                 case Constant.ViewName_ChiTietDonHang:
                     view = new tChiTietDonHangView();

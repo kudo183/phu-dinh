@@ -4,6 +4,15 @@ namespace PhuDinhData
 {
     public partial class tNhapHang
     {
+        public string TenNhapHang
+        {
+            get
+            {
+                return string.Format("{0}_{1}",
+                    Ngay.ToShortDateString(), rNhaCungCap.TenNhaCungCap);
+            }
+        }
+
         public List<rNhanVien> rNhanVienList { get; set; }
         public List<rNhaCungCap> rNhaCungCapList { get; set; }
         public List<rKhoHang> rKhoHangList { get; set; }

@@ -9,7 +9,7 @@ using PhuDinhData.ViewModel.DataGridColumnHeaderFilterModel;
 
 namespace PhuDinhData.ViewModel
 {
-    public class ChiTieNhapnHangViewModel : BaseViewModel<tChiTietNhapHang>
+    public class ChiTietNhapHangViewModel : BaseViewModel<tChiTietNhapHang>
     {
         private List<tNhapHang> _tNhapHangs;
         private List<tMatHang> _tMatHangs;
@@ -21,7 +21,7 @@ namespace PhuDinhData.ViewModel
         public static HeaderTextFilterModel Header_MatHang = new HeaderTextFilterModel(Constant.ColumnName_MatHang);
         public static HeaderTextFilterModel Header_NhapHang = new HeaderTextFilterModel(Constant.ColumnName_NhapHang);
 
-        public ChiTieNhapnHangViewModel()
+        public ChiTietNhapHangViewModel()
         {
             Entity = new ObservableCollection<tChiTietNhapHang>();
 
