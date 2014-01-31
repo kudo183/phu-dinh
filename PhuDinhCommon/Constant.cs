@@ -84,6 +84,7 @@
         public const string ViewName_ChuyenHang = "Chuyen Hang";
         public const string ViewName_NhapNguyenLieu = "Nhap Nguyen Lieu";
         public const string ViewName_NhapHang = "Nhap Hang";
+        public const string ViewName_TonKho = "Ton Kho";
         //3Level
         public const string ViewName_KhachHangChanh = "Khach Hang Chanh";
         public const string ViewName_DonHang = "Don Hang";

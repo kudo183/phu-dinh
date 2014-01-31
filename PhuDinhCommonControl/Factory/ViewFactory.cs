@@ -70,6 +70,9 @@ namespace PhuDinhCommonControl
                 case Constant.ViewName_NhapNguyenLieu:
                     view = new tNhapNguyenLieuView();
                     break;
+                case Constant.ViewName_TonKho:
+                    view = new tTonKhoView();
+                    break;
                 //3Level
                 case Constant.ViewName_KhachHangChanh:
                     view = new rKhachHangChanhView();

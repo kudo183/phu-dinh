@@ -50,6 +50,12 @@ namespace PhuDinhCommonControl
 
                     _viewModel.UpdateReferenceData(header.Name);
                     break;
+                case Constant.ColumnName_KhoHang:
+                    view = new rKhachHangChanhView();
+                    ChildWindowUtils.ShowChildWindow(Constant.ViewName_KhoHang, view);
+
+                    _viewModel.UpdateReferenceData(header.Name);
+                    break;
             }
 
             LogManager.Log(event_type.et_Internal, severity_type.st_debug, string.Format("{0} {1}", "dgDonHang_HeaderAddButtonClick", "Exit"));

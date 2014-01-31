@@ -3,7 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:PhuDinhCommonControl="clr-namespace:PhuDinhCommonControl"
              xmlns:PhuDinhCommon="clr-namespace:PhuDinhCommon;assembly=PhuDinhCommon" mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
@@ -77,6 +76,12 @@
                     <TreeViewItem Header="{x:Static PhuDinhCommon:Constant.ViewName_NhaCungCap}"/>
                     <TreeViewItem Header="{x:Static PhuDinhCommon:Constant.ViewName_KhoHang}"/>
                 </TreeViewItem>
+                <TreeViewItem Header="{x:Static PhuDinhCommon:Constant.ViewName_TonKho}">
+                    <TreeViewItem Header="{x:Static PhuDinhCommon:Constant.ViewName_MatHang}">
+                        <TreeViewItem  Header="{x:Static PhuDinhCommon:Constant.ViewName_LoaiHang}"/>
+                    </TreeViewItem>
+                    <TreeViewItem Header="{x:Static PhuDinhCommon:Constant.ViewName_KhoHang}"/>
+                </TreeViewItem>
             </TreeViewItem>
             <TreeViewItem Header="3Level">
                 <TreeViewItem Header="{x:Static PhuDinhCommon:Constant.ViewName_KhachHangChanh}">
@@ -98,6 +103,7 @@
                     <TreeViewItem Header="{x:Static PhuDinhCommon:Constant.ViewName_Chanh}">
                         <TreeViewItem Header="{x:Static PhuDinhCommon:Constant.ViewName_BaiXe}"/>
                     </TreeViewItem>
+                    <TreeViewItem Header="{x:Static PhuDinhCommon:Constant.ViewName_KhoHang}"/>
                 </TreeViewItem>
                 <TreeViewItem Header="{x:Static PhuDinhCommon:Constant.ViewName_ChiTietNhapHang}">
                     <TreeViewItem Header="{x:Static PhuDinhCommon:Constant.ViewName_NhapHang}">
@@ -180,7 +186,7 @@
                             <TreeViewItem  Header="{x:Static PhuDinhCommon:Constant.ViewName_LoaiHang}"/>
                         </TreeViewItem>
                     </TreeViewItem>
-                </TreeViewItem>                
+                </TreeViewItem>
             </TreeViewItem>
         </TreeView>
         <Border Grid.Column="1" Name="brdContent" Margin="5"/>

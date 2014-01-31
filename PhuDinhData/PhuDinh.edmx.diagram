@@ -62,7 +62,6 @@
         <AssociationConnector Association="PhuDinhModel.FK_tNhapHang_rNhanVien" />
         <AssociationConnector Association="PhuDinhModel.FK_tChiTietNhapHang_tNhapHang" />
         <AssociationConnector Association="PhuDinhModel.FK_tNhapMatHang_tMatHang1" />
-        <AssociationConnector Association="PhuDinhModel.FK_tTonKho_tTonKho" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

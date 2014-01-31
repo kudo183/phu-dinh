@@ -14,11 +14,6 @@ namespace PhuDinhData
     
     public partial class tTonKho : BindableObject
     {
-        public tTonKho()
-        {
-            this.tTonKho1 = new HashSet<tTonKho>();
-        }
-    
         private int _ma;
         public int Ma { get { return _ma; } set { if(_ma == value) return; _ma = value; base.RaisePropertyChanged("Ma");} }
     
@@ -34,13 +29,8 @@ namespace PhuDinhData
         private int _soluong;
         public int SoLuong { get { return _soluong; } set { if(_soluong == value) return; _soluong = value; base.RaisePropertyChanged("SoLuong");} }
     
-        private Nullable<int> _macon;
-        public Nullable<int> MaCon { get { return _macon; } set { if(_macon == value) return; _macon = value; base.RaisePropertyChanged("MaCon");} }
-    
     
         public virtual rKhoHang rKhoHang { get; set; }
         public virtual tMatHang tMatHang { get; set; }
-        public virtual ICollection<tTonKho> tTonKho1 { get; set; }
-        public virtual tTonKho tTonKho2 { get; set; }
     }
 }

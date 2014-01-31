@@ -60,6 +60,7 @@
     <Compile Include="DesignTimeData\0Level\DDrNhaCungCap.cs" />
     <Compile Include="DesignTimeData\0Level\DDrLoaiNguyenLieu.cs" />
     <Compile Include="DesignTimeData\1Level\DDrNguyenLieu.cs" />
+    <Compile Include="DesignTimeData\2Level\DDtTonKho.cs" />
     <Compile Include="DesignTimeData\2Level\DDtNhapHang.cs" />
     <Compile Include="DesignTimeData\2Level\DDtNhapNguyenLieu.cs" />
     <Compile Include="DesignTimeData\2Level\DDrMatHangNguyenLieu.cs" />
