@@ -64,19 +64,18 @@
                         <TreeViewItem Header="{x:Static PhuDinhCommon:Constant.ViewName_PhuongTien}"/>
                     </TreeViewItem>
                 </TreeViewItem>
-                <TreeViewItem Header="{x:Static PhuDinhCommon:Constant.ViewName_NhapMatHang}">
-                    <TreeViewItem Header="{x:Static PhuDinhCommon:Constant.ViewName_NhanVien}">
-                        <TreeViewItem Header="{x:Static PhuDinhCommon:Constant.ViewName_PhuongTien}"/>
-                    </TreeViewItem>
-                    <TreeViewItem Header="{x:Static PhuDinhCommon:Constant.ViewName_MatHang}">
-                        <TreeViewItem  Header="{x:Static PhuDinhCommon:Constant.ViewName_LoaiHang}"/>
-                    </TreeViewItem>
-                </TreeViewItem>
                 <TreeViewItem Header="{x:Static PhuDinhCommon:Constant.ViewName_NhapNguyenLieu}">
                     <TreeViewItem Header="{x:Static PhuDinhCommon:Constant.ViewName_NguyenLieu}">
                         <TreeViewItem Header="{x:Static PhuDinhCommon:Constant.ViewName_LoaiNguyenLieu}"/>
                     </TreeViewItem>
                     <TreeViewItem Header="{x:Static PhuDinhCommon:Constant.ViewName_NhaCungCap}"/>
+                </TreeViewItem>
+                <TreeViewItem Header="{x:Static PhuDinhCommon:Constant.ViewName_NhapHang}">
+                    <TreeViewItem Header="{x:Static PhuDinhCommon:Constant.ViewName_NhanVien}">
+                        <TreeViewItem Header="{x:Static PhuDinhCommon:Constant.ViewName_PhuongTien}"/>
+                    </TreeViewItem>
+                    <TreeViewItem Header="{x:Static PhuDinhCommon:Constant.ViewName_NhaCungCap}"/>
+                    <TreeViewItem Header="{x:Static PhuDinhCommon:Constant.ViewName_KhoHang}"/>
                 </TreeViewItem>
             </TreeViewItem>
             <TreeViewItem Header="3Level">

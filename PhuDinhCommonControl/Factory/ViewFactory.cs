@@ -64,8 +64,8 @@ namespace PhuDinhCommonControl
                 case Constant.ViewName_ChuyenHang:
                     view = new tChuyenHangView();
                     break;
-                case Constant.ViewName_NhapMatHang:
-                    
+                case Constant.ViewName_NhapHang:
+                    view = new tNhapHangView();
                     break;
                 case Constant.ViewName_NhapNguyenLieu:
                     view = new tNhapNguyenLieuView();

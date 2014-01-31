@@ -70,6 +70,9 @@
     <Compile Include="EntityDataGrid\0Level\DGKhoHang.xaml.cs">
       <DependentUpon>DGKhoHang.xaml</DependentUpon>
     </Compile>
+    <Compile Include="EntityDataGrid\2Level\DGNhapHang.xaml.cs">
+      <DependentUpon>DGNhapHang.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Utils\ChildWindowUtils.cs" />
     <Compile Include="EntityDataGrid\0Level\DGNhaCungCap.xaml.cs">
       <DependentUpon>DGNhaCungCap.xaml</DependentUpon>
@@ -158,6 +161,9 @@
     </Compile>
     <Compile Include="View\0Level\rNuocView.xaml.cs">
       <DependentUpon>rNuocView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\2Level\tNhapHangView.xaml.cs">
+      <DependentUpon>tNhapHangView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\2Level\tNhapNguyenLieuView.xaml.cs">
       <DependentUpon>tNhapNguyenLieuView.xaml</DependentUpon>
@@ -315,6 +321,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="EntityDataGrid\2Level\DGNhapHang.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="EntityDataGrid\2Level\DGNhapNguyenLieu.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -408,6 +418,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="View\0Level\rNuocView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\2Level\tNhapHangView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
