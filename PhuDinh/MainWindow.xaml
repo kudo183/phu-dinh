@@ -22,6 +22,11 @@
                 <PhuDinhCommonControl:MatHangView/>
             </TabItem.Tag>
         </TabItem>
+        <TabItem Header="Nhap Hang" Background="Aquamarine">
+            <TabItem.Tag>
+                <PhuDinhCommonControl:NhapHangView/>
+            </TabItem.Tag>
+        </TabItem>
         <TabItem Header="Chi Phi" Background="Aquamarine">
             <TabItem.Tag>
                 <PhuDinhCommonControl:ChiPhiView/>
