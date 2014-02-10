@@ -378,6 +378,7 @@
           <Property Name="MaMatHang" Type="int" Nullable="false" />
           <Property Name="Ngay" Type="date" Nullable="false" />
           <Property Name="SoLuong" Type="int" Nullable="false" />
+          <Property Name="SoLuongCu" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK_rChanh_rBaiXe">
           <End Role="rBaiXe" Type="PhuDinhModel.Store.rBaiXe" Multiplicity="1" />
@@ -1453,6 +1454,7 @@
           <Property Type="Int32" Name="SoLuong" Nullable="false" />
           <NavigationProperty Name="rKhoHang" Relationship="PhuDinhModel.FK_tTonKho_rKhoHang" FromRole="tTonKho" ToRole="rKhoHang" />
           <NavigationProperty Name="tMatHang" Relationship="PhuDinhModel.FK_tTonKho_tMatHang" FromRole="tTonKho" ToRole="tMatHang" />
+          <Property Type="Int32" Name="SoLuongCu" Nullable="false" />
           </EntityType>
         <Association Name="FK_tTonKho_rKhoHang">
           <End Type="PhuDinhModel.rKhoHang" Role="rKhoHang" Multiplicity="1" />
@@ -1788,6 +1790,7 @@
           <EntitySetMapping Name="tTonKhoes">
             <EntityTypeMapping TypeName="PhuDinhModel.tTonKho">
               <MappingFragment StoreEntitySet="tTonKho">
+                <ScalarProperty Name="SoLuongCu" ColumnName="SoLuongCu" />
                 <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
                 <ScalarProperty Name="Ngay" ColumnName="Ngay" />
                 <ScalarProperty Name="MaMatHang" ColumnName="MaMatHang" />
