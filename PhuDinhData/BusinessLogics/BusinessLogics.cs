@@ -117,6 +117,8 @@ namespace PhuDinhData.BusinessLogics
                     {
                         if (tonMatHang.ContainsKey(ngayTruoc) == false)
                         {
+                            ngayTruoc = ngay;
+                            ngay = ngay.AddDays(1);
                             continue;
                         }
 
