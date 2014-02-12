@@ -1,0 +1,60 @@
+﻿/*----------------------------------------------------------
+The base color for this template is #5c87b2. If you'd like
+to use a different color start by replacing all instances of
+#5c87b2 with your new color.
+----------------------------------------------------------*/
+
+body {
+    background-color: #5c87b2;
+    font-size: 1.5em;
+    font-family: "Trebuchet MS", Verdana, Helvetica, Sans-Serif;
+    margin: 0;
+    padding: 0;
+    color: #696969;
+}
+
+#main {
+    padding: 15px 30px 15px 30px;
+    background-color: #fff;
+    -webkit-border-radius: 4px 0 0 0;
+    -moz-border-radius: 4px 0 0 0;
+    border-radius: 4px 0 0 0;
+}
+
+#header {
+    text-align: center;
+    font-weight: bold;
+    color: #5c87b2;
+    font-size: 1.5em;
+    padding: 15px 0px 15px 0px;
+}
+
+table {
+    border: solid 3px #e8eef4;
+    border-collapse: collapse;
+    font-size: 1.5em;
+    width: 100%;
+}
+
+table td {
+    padding: 5px;
+    border: solid 1px #e8eef4;
+}
+
+table th {
+    padding: 6px 5px;
+    text-align: center;
+    background-color: #e8eef4;
+    color: #034af3;
+    border: solid 1px #e8eef4;
+}
+
+.page {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.TenMatHangDayDu {
+    width: 70%;
+}
