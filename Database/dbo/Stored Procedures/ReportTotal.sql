@@ -10,6 +10,6 @@ CREATE PROCEDURE ReportTotal
 AS
 BEGIN
 	select sum(SoLuong) SoLuong
-from dbo.tDonHang dh join dbo.tChiTietDonHang ct on dh.ma = ct.MaDonHang
+from dbo.tDonHang dh join dbo.tChiTietDonHang ct on dh.Ma = ct.MaDonHang
 where dh.Ngay between @dateFrom and @dateTo
 END
