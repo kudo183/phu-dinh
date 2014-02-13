@@ -4,6 +4,6 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:PhuDinh="clr-namespace:PhuDinh" mc:Ignorable="d" x:Class="PhuDinh.MainWindow"
-        Title="MainWindow" Height="350" Width="525" WindowState="Maximized">
-    <PhuDinh:TabPage/>
+        Title="Main" Height="350" Width="525" WindowState="Maximized">
+    <PhuDinh:ButtonPage/>
 </Window>
