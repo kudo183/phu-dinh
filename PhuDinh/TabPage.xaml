@@ -1,0 +1,41 @@
+﻿<UserControl x:Class="PhuDinh.TabPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:PhuDinhCommonControl="clr-namespace:PhuDinhCommonControl;assembly=PhuDinhCommonControl"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <TabControl>
+        <TabItem Header="Don Hang" Background="Aquamarine">
+            <TabItem.Tag>
+                <PhuDinhCommonControl:DonHangView/>
+            </TabItem.Tag>
+        </TabItem>
+        <TabItem Header="Chuyen Hang" Background="Aquamarine">
+            <TabItem.Tag>
+                <PhuDinhCommonControl:ChuyenHangView/>
+            </TabItem.Tag>
+        </TabItem>
+        <TabItem Header="Mat Hang" Background="Aquamarine">
+            <TabItem.Tag>
+                <PhuDinhCommonControl:MatHangView/>
+            </TabItem.Tag>
+        </TabItem>
+        <TabItem Header="Nhap Hang" Background="Aquamarine">
+            <TabItem.Tag>
+                <PhuDinhCommonControl:NhapHangView/>
+            </TabItem.Tag>
+        </TabItem>
+        <TabItem Header="Ton Kho" Background="Aquamarine">
+            <TabItem.Tag>
+                <PhuDinhCommonControl:tTonKhoView/>
+            </TabItem.Tag>
+        </TabItem>
+        <TabItem Header="Tat ca" Background="Aquamarine">
+            <TabItem.Tag>
+                <PhuDinhCommonControl:AdminView/>
+            </TabItem.Tag>
+        </TabItem>
+    </TabControl>
+</UserControl>

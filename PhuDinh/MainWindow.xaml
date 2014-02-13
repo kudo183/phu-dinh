@@ -3,39 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:PhuDinhCommonControl="clr-namespace:PhuDinhCommonControl;assembly=PhuDinhCommonControl"
-    mc:Ignorable="d" x:Class="PhuDinh.MainWindow"
+        xmlns:PhuDinh="clr-namespace:PhuDinh" mc:Ignorable="d" x:Class="PhuDinh.MainWindow"
         Title="MainWindow" Height="350" Width="525" WindowState="Maximized">
-    <TabControl>
-        <TabItem Header="Don Hang" Background="Aquamarine">            
-            <TabItem.Tag>
-                <PhuDinhCommonControl:DonHangView/>
-            </TabItem.Tag>
-        </TabItem>
-        <TabItem Header="Chuyen Hang" Background="Aquamarine">
-            <TabItem.Tag>
-                <PhuDinhCommonControl:ChuyenHangView/>
-            </TabItem.Tag>
-        </TabItem>
-        <TabItem Header="Mat Hang" Background="Aquamarine">
-            <TabItem.Tag>
-                <PhuDinhCommonControl:MatHangView/>
-            </TabItem.Tag>
-        </TabItem>
-        <TabItem Header="Nhap Hang" Background="Aquamarine">
-            <TabItem.Tag>
-                <PhuDinhCommonControl:NhapHangView/>
-            </TabItem.Tag>
-        </TabItem>
-        <TabItem Header="Chi Phi" Background="Aquamarine">
-            <TabItem.Tag>
-                <PhuDinhCommonControl:ChiPhiView/>
-            </TabItem.Tag>
-        </TabItem>
-        <TabItem Header="Tat ca" Background="Aquamarine">
-            <TabItem.Tag>
-                <PhuDinhCommonControl:AdminView/>
-            </TabItem.Tag>
-        </TabItem>
-    </TabControl>
+    <PhuDinh:TabPage/>
 </Window>
