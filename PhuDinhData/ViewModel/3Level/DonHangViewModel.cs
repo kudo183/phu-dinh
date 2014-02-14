@@ -134,6 +134,11 @@ namespace PhuDinhData.ViewModel
                 {
                     tDonHang.MaKhachHang = Convert.ToInt32(GetDefaultValue(Constant.ColumnName_MaKhachHang));
                 }
+
+                if (GetDefaultValue(Constant.ColumnName_MaKhoHang) != null)
+                {
+                    tDonHang.MaKhoHang = Convert.ToInt32(GetDefaultValue(Constant.ColumnName_MaKhoHang));
+                }
             }
         }
 
@@ -146,8 +151,8 @@ namespace PhuDinhData.ViewModel
 
         private void UpdateChanhReferenceData()
         {
-            UpdateReferenceData(out _rChanhs, 
-                GetReferenceFilter<rChanh>(Constant.ColumnName_Chanh), 
+            UpdateReferenceData(out _rChanhs,
+                GetReferenceFilter<rChanh>(Constant.ColumnName_Chanh),
                 (p => p.rChanhList = _rChanhs));
         }
 
