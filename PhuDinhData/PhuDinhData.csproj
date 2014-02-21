@@ -255,6 +255,7 @@
     <Compile Include="tNhapNguyenLieu.cs">
       <DependentUpon>PhuDinh.tt</DependentUpon>
     </Compile>
+    <Compile Include="TonKhoManager.cs" />
     <Compile Include="tTonKho.cs">
       <DependentUpon>PhuDinh.tt</DependentUpon>
     </Compile>

@@ -15,9 +15,16 @@ namespace PhuDinh
         {
             LogManager.Log(event_type.et_Internal, severity_type.st_info, new string('*', 20));
             LogManager.Log(event_type.et_Internal, severity_type.st_info, "Start main window");
-            
+
             InitializeComponent();
             Thread.CurrentThread.CurrentCulture = new CultureInfo("vi-VN");
+
+            Closing += MainWindow_Closing;
+        }
+
+        void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            PhuDinhData.TonKhoManager.UpdateTonKho();
         }
     }
 }
