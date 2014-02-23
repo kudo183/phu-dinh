@@ -191,6 +191,9 @@
     <Compile Include="tChiTietChuyenHangDonHang.cs">
       <DependentUpon>PhuDinh.tt</DependentUpon>
     </Compile>
+    <Compile Include="tChiTietChuyenKho.cs">
+      <DependentUpon>PhuDinh.tt</DependentUpon>
+    </Compile>
     <Compile Include="tChiTietNhapHang.cs">
       <DependentUpon>PhuDinh.tt</DependentUpon>
     </Compile>
@@ -241,6 +244,9 @@
       <DependentUpon>PhuDinh.tt</DependentUpon>
     </Compile>
     <Compile Include="tChuyenHang.cs">
+      <DependentUpon>PhuDinh.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tChuyenKho.cs">
       <DependentUpon>PhuDinh.tt</DependentUpon>
     </Compile>
     <Compile Include="tDonHang.cs">

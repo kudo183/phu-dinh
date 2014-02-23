@@ -20,6 +20,7 @@ namespace PhuDinhData
             this.rMatHangNguyenLieux = new HashSet<rMatHangNguyenLieu>();
             this.tTonKhoes = new HashSet<tTonKho>();
             this.tChiTietNhapHangs = new HashSet<tChiTietNhapHang>();
+            this.tChiTietChuyenKhoes = new HashSet<tChiTietChuyenKho>();
         }
     
         private int _ma;
@@ -46,5 +47,6 @@ namespace PhuDinhData
         public virtual ICollection<rMatHangNguyenLieu> rMatHangNguyenLieux { get; set; }
         public virtual ICollection<tTonKho> tTonKhoes { get; set; }
         public virtual ICollection<tChiTietNhapHang> tChiTietNhapHangs { get; set; }
+        public virtual ICollection<tChiTietChuyenKho> tChiTietChuyenKhoes { get; set; }
     }
 }
