@@ -92,6 +92,8 @@
     <Build Include="dbo\Tables\tNhapHang.sql" />
     <Build Include="dbo\Tables\tChiTietNhapHang.sql" />
     <Build Include="dbo\Tables\rKhoHang.sql" />
+    <Build Include="dbo\Tables\tChuyenKho.sql" />
+    <Build Include="dbo\Tables\tChiTietChuyenKho.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SqlSchemaCompare.scmp" />
