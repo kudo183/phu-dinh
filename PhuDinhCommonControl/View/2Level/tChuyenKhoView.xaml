@@ -1,0 +1,22 @@
+﻿<PhuDinhCommonControl:BaseView x:TypeArguments="PhuDinhData:tChuyenKho"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:PhuDinhCommonControl="clr-namespace:PhuDinhCommonControl"
+             xmlns:EntityDataGrid="clr-namespace:PhuDinhCommonControl.EntityDataGrid"
+             xmlns:Menu="clr-namespace:PhuDinhCommonControl.Menu"
+             xmlns:PhuDinhData="clr-namespace:PhuDinhData;assembly=PhuDinhData"
+             xmlns:DesignTimeData="clr-namespace:PhuDinhData.DesignTimeData;assembly=PhuDinhData"
+             x:Class="PhuDinhCommonControl.tChuyenKhoView" 
+             mc:Ignorable="d" 
+             d:DataContext="{x:Static DesignTimeData:DDtChuyenKho.ViewModel}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <EntityDataGrid:DGChuyenKho Grid.Row="0" x:Name="dgChuyenKho" HeaderAddButtonClick="dgChuyenKho_HeaderAddButtonClick"/>
+        <Menu:BottomMenu Grid.Row="1" x:Name="bmMenu" Button.Click="bmMenu_Click"/>
+    </Grid>
+</PhuDinhCommonControl:BaseView>

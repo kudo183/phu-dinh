@@ -1,0 +1,45 @@
+﻿<CustomControl:DataGridExt x:Class="PhuDinhCommonControl.EntityDataGrid.DGChuyenKho"
+                           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                           xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                           xmlns:CustomControl="clr-namespace:CustomControl;assembly=CustomControl"
+                           xmlns:DesignTimeData="clr-namespace:PhuDinhData.DesignTimeData;assembly=PhuDinhData"
+                           xmlns:ViewModel="clr-namespace:PhuDinhData.ViewModel;assembly=PhuDinhData" mc:Ignorable="d"
+                           d:DataContext="{x:Static DesignTimeData:DDtChuyenKho.ViewModel}"
+                           AutoGenerateColumns="False" EnableRowVirtualization="False" ItemsSource="{Binding Entity}" SelectionMode="Single">
+    <DataGrid.Columns>
+        <!--Ma-->
+        <CustomControl:DataGridReadOnlyTextColumn x:Name="maColumn"/>
+        <!--Ngay-->
+        <CustomControl:DataGridDateColumn x:Name="ngayColumn" Header="{x:Static ViewModel:ChuyenKhoViewModel.Header_Ngay}"/>       
+        <!--Nhan vien-->
+        <CustomControl:DataGridComboBoxColumnExt x:Name="nhanVienColumn"
+                                                 Header="{x:Static ViewModel:ChuyenKhoViewModel.Header_NhanVien}"
+                                                 HeaderAddButtonClick="headerAddButton_Click"
+                                                 TextBinding="{Binding rNhanVien.TenNhanVien, Mode=OneWay}"
+                                                 DisplayMemberPath="TenNhanVien"
+                                                 SelectedValuePath="Ma"
+                                                 SelectedValueBinding="{Binding MaNhanVien, UpdateSourceTrigger=PropertyChanged}"
+                                                 SelectedItemBinding="{Binding rNhanVien, UpdateSourceTrigger=PropertyChanged}"
+                                                 ItemsSource="{Binding rNhanVienList}"/>
+        <!--Kho hang Xuat-->
+        <CustomControl:DataGridComboBoxColumnExt x:Name="khoHangXuatColumn" Header="{x:Static ViewModel:ChuyenKhoViewModel.Header_KhoHangXuat}"
+                                                 HeaderAddButtonClick="headerAddButton_Click"
+                                                 TextBinding="{Binding rKhoHangXuat.TenKho, Mode=OneWay}"
+                                                 DisplayMemberPath="TenKho"
+                                                 SelectedValuePath="Ma"
+                                                 SelectedValueBinding="{Binding MaKhoHang, UpdateSourceTrigger=PropertyChanged}"
+                                                 SelectedItemBinding="{Binding rKhoHang, UpdateSourceTrigger=PropertyChanged}"
+                                                 ItemsSource="{Binding rKhoHangList}"/>
+        <!--Kho hang Nhap-->
+        <CustomControl:DataGridComboBoxColumnExt x:Name="khoHangNhapColumn" Header="{x:Static ViewModel:ChuyenKhoViewModel.Header_KhoHangNhap}"
+                                                 HeaderAddButtonClick="headerAddButton_Click"
+                                                 TextBinding="{Binding rKhoHangNhap.TenKho, Mode=OneWay}"
+                                                 DisplayMemberPath="TenKho"
+                                                 SelectedValuePath="Ma"
+                                                 SelectedValueBinding="{Binding MaKhoHang, UpdateSourceTrigger=PropertyChanged}"
+                                                 SelectedItemBinding="{Binding rKhoHang, UpdateSourceTrigger=PropertyChanged}"
+                                                 ItemsSource="{Binding rKhoHangList}"/>
+    </DataGrid.Columns>
+</CustomControl:DataGridExt>

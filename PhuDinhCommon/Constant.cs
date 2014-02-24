@@ -38,8 +38,10 @@
         public const string ColumnName_MaNhanVien = "Ma Nhan Vien";
         public const string ColumnName_MaLoaiChiPhi = "Ma Loai Chi Phi";
         public const string ColumnName_MaNhaCungCap = "Ma Nha Cung Cap";
-        public const string ColumnName_MaKhoHang = "Ma Kho Hang";
         public const string ColumnName_MaNhapHang = "Ma Nhap Hang";
+        public const string ColumnName_MaKhoHang = "Ma Kho Hang";
+        public const string ColumnName_MaKhoHangNhap = "Ma Kho Hang Nhap";
+        public const string ColumnName_MaKhoHangXuat = "Ma Kho Hang Xuat";
 
         public const string ColumnName_BaiXe = "Bai Xe";
         public const string ColumnName_Nuoc = "Nuoc";
@@ -60,8 +62,10 @@
         public const string ColumnName_LoaiChiPhi = "Loai Chi Phi";
         public const string ColumnName_NhanVien = "Nhan Vien";
         public const string ColumnName_NhanCungCap = "Nha Cung Cap";
-        public const string ColumnName_KhoHang = "Kho Hang";
         public const string ColumnName_NhapHang = "Nhap Hang";
+        public const string ColumnName_KhoHang = "Kho Hang";
+        public const string ColumnName_KhoHangNhap = "Kho Hang Nhap";
+        public const string ColumnName_KhoHangXuat = "Kho Hang Xuat";
         //0Level
         public const string ViewName_BaiXe = "Bai Xe";
         public const string ViewName_LoaiChiPhi = "Loai Chi Phi";
