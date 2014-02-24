@@ -27,11 +27,11 @@ namespace PhuDinhData
         {
             foreach (var changedItemData in changed)
             {
-                if (changedItemData.CurrentValues.Ngay < _minDate)
+                if (changedItemData.CurrentValues != null && changedItemData.CurrentValues.Ngay < _minDate)
                 {
                     _minDate = changedItemData.CurrentValues.Ngay;
                 }
-                if (changedItemData.OriginalValues.Ngay < _minDate)
+                if (changedItemData.CurrentValues != null && changedItemData.OriginalValues.Ngay < _minDate)
                 {
                     _minDate = changedItemData.OriginalValues.Ngay;
                 }
