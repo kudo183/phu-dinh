@@ -36,6 +36,8 @@ namespace PhuDinhData.Repository
                 BusinessLogics.BusinessLogics.UpdateXong(context, maDonHangs);
             }
 
+            TonKhoManager.UpdateByChiTietDonHang(changed);
+
             return changed;
         }
 

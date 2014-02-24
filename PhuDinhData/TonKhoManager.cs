@@ -6,41 +6,123 @@ namespace PhuDinhData
 {
     public static class TonKhoManager
     {
-        private static DateTime _minDate = DateTime.Now.Date;
-
-        public static void UpdateByDonHang(List<Repository<tDonHang>.ChangedItemData> changed)
+        public static void UpdateByChiTietDonHang(List<Repository<tChiTietDonHang>.ChangedItemData> changed)
         {
+            DateTime _minDate = DateTime.Now.Date;
+
+            var checkedMaDonHang = new List<int>();
+
             foreach (var changedItemData in changed)
             {
-                if (changedItemData.CurrentValues != null && changedItemData.CurrentValues.Ngay < _minDate)
+                var chiTietDonHang = changedItemData.CurrentValues;
+                if (chiTietDonHang != null)
                 {
-                    _minDate = changedItemData.CurrentValues.Ngay;
+                    if (checkedMaDonHang.Contains(chiTietDonHang.MaDonHang) == false)
+                    {
+                        checkedMaDonHang.Add(chiTietDonHang.MaDonHang);
+                        if (chiTietDonHang.tDonHang.Ngay < _minDate)
+                        {
+                            _minDate = chiTietDonHang.tDonHang.Ngay;
+                        }
+                    }
                 }
-                if (changedItemData.OriginalValues != null && changedItemData.OriginalValues.Ngay < _minDate)
+
+                chiTietDonHang = changedItemData.OriginalValues;
+                if (chiTietDonHang != null)
                 {
-                    _minDate = changedItemData.OriginalValues.Ngay;
+                    if (checkedMaDonHang.Contains(chiTietDonHang.MaDonHang) == false)
+                    {
+                        checkedMaDonHang.Add(chiTietDonHang.MaDonHang);
+                        if (chiTietDonHang.tDonHang.Ngay < _minDate)
+                        {
+                            _minDate = chiTietDonHang.tDonHang.Ngay;
+                        }
+                    }
                 }
             }
+
+            UpdateTonKho(_minDate);
         }
 
-        public static void UpdateByNhapHang(List<Repository<tNhapHang>.ChangedItemData> changed)
+        public static void UpdateByChiTietNhapHang(List<Repository<tChiTietNhapHang>.ChangedItemData> changed)
         {
+            DateTime _minDate = DateTime.Now.Date;
+
+            var checkedMaNhapHang = new List<int>();
+
             foreach (var changedItemData in changed)
             {
-                if (changedItemData.CurrentValues != null && changedItemData.CurrentValues.Ngay < _minDate)
+                var chiTietDonHang = changedItemData.CurrentValues;
+                if (chiTietDonHang != null)
                 {
-                    _minDate = changedItemData.CurrentValues.Ngay;
+                    if (checkedMaNhapHang.Contains(chiTietDonHang.MaNhapHang) == false)
+                    {
+                        checkedMaNhapHang.Add(chiTietDonHang.MaNhapHang);
+                        if (chiTietDonHang.tNhapHang.Ngay < _minDate)
+                        {
+                            _minDate = chiTietDonHang.tNhapHang.Ngay;
+                        }
+                    }
                 }
-                if (changedItemData.CurrentValues != null && changedItemData.OriginalValues.Ngay < _minDate)
+
+                chiTietDonHang = changedItemData.OriginalValues;
+                if (chiTietDonHang != null)
                 {
-                    _minDate = changedItemData.OriginalValues.Ngay;
+                    if (checkedMaNhapHang.Contains(chiTietDonHang.MaNhapHang) == false)
+                    {
+                        checkedMaNhapHang.Add(chiTietDonHang.MaNhapHang);
+                        if (chiTietDonHang.tNhapHang.Ngay < _minDate)
+                        {
+                            _minDate = chiTietDonHang.tNhapHang.Ngay;
+                        }
+                    }
                 }
             }
+
+            UpdateTonKho(_minDate);
         }
 
-        public static void UpdateTonKho()
+        public static void UpdateByChiTietChuyenKho(List<Repository<tChiTietChuyenKho>.ChangedItemData> changed)
         {
-            BusinessLogics.BusinessLogics.UpdateTonKhosTuNgayD(ContextFactory.CreateContext(), _minDate);
+            DateTime _minDate = DateTime.Now.Date;
+
+            var checkedMaChuyenKho = new List<int>();
+
+            foreach (var changedItemData in changed)
+            {
+                var chiTietChuyenKho = changedItemData.CurrentValues;
+                if (chiTietChuyenKho != null)
+                {
+                    if (checkedMaChuyenKho.Contains(chiTietChuyenKho.MaChuyenKho) == false)
+                    {
+                        checkedMaChuyenKho.Add(chiTietChuyenKho.MaChuyenKho);
+                        if (chiTietChuyenKho.tChuyenKho.Ngay < _minDate)
+                        {
+                            _minDate = chiTietChuyenKho.tChuyenKho.Ngay;
+                        }
+                    }
+                }
+
+                chiTietChuyenKho = changedItemData.OriginalValues;
+                if (chiTietChuyenKho != null)
+                {
+                    if (checkedMaChuyenKho.Contains(chiTietChuyenKho.MaChuyenKho) == false)
+                    {
+                        checkedMaChuyenKho.Add(chiTietChuyenKho.MaChuyenKho);
+                        if (chiTietChuyenKho.tChuyenKho.Ngay < _minDate)
+                        {
+                            _minDate = chiTietChuyenKho.tChuyenKho.Ngay;
+                        }
+                    }
+                }
+            }
+
+            UpdateTonKho(_minDate);
+        }
+
+        public static void UpdateTonKho(DateTime date)
+        {
+            BusinessLogics.BusinessLogics.UpdateTonKhosTuNgayD(ContextFactory.CreateContext(), date);
         }
     }
 }

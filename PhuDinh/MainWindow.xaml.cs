@@ -18,13 +18,6 @@ namespace PhuDinh
 
             InitializeComponent();
             Thread.CurrentThread.CurrentCulture = new CultureInfo("vi-VN");
-
-            Closing += MainWindow_Closing;
-        }
-
-        void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            PhuDinhData.TonKhoManager.UpdateTonKho();
         }
     }
 }
