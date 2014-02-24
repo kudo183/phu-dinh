@@ -29,8 +29,8 @@
                                                  TextBinding="{Binding rKhoHangXuat.TenKho, Mode=OneWay}"
                                                  DisplayMemberPath="TenKho"
                                                  SelectedValuePath="Ma"
-                                                 SelectedValueBinding="{Binding MaKhoHang, UpdateSourceTrigger=PropertyChanged}"
-                                                 SelectedItemBinding="{Binding rKhoHang, UpdateSourceTrigger=PropertyChanged}"
+                                                 SelectedValueBinding="{Binding MaKhoHangXuat, UpdateSourceTrigger=PropertyChanged}"
+                                                 SelectedItemBinding="{Binding rKhoHangXuat, UpdateSourceTrigger=PropertyChanged}"
                                                  ItemsSource="{Binding rKhoHangList}"/>
         <!--Kho hang Nhap-->
         <CustomControl:DataGridComboBoxColumnExt x:Name="khoHangNhapColumn" Header="{x:Static ViewModel:ChuyenKhoViewModel.Header_KhoHangNhap}"
@@ -38,8 +38,8 @@
                                                  TextBinding="{Binding rKhoHangNhap.TenKho, Mode=OneWay}"
                                                  DisplayMemberPath="TenKho"
                                                  SelectedValuePath="Ma"
-                                                 SelectedValueBinding="{Binding MaKhoHang, UpdateSourceTrigger=PropertyChanged}"
-                                                 SelectedItemBinding="{Binding rKhoHang, UpdateSourceTrigger=PropertyChanged}"
+                                                 SelectedValueBinding="{Binding MaKhoHangNhap, UpdateSourceTrigger=PropertyChanged}"
+                                                 SelectedItemBinding="{Binding rKhoHangNhap, UpdateSourceTrigger=PropertyChanged}"
                                                  ItemsSource="{Binding rKhoHangList}"/>
     </DataGrid.Columns>
 </CustomControl:DataGridExt>

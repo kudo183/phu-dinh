@@ -66,6 +66,7 @@
     <Compile Include="DesignTimeData\2Level\DDtNhapNguyenLieu.cs" />
     <Compile Include="DesignTimeData\2Level\DDrMatHangNguyenLieu.cs" />
     <Compile Include="DesignTimeData\2Level\DDtChiPhi.cs" />
+    <Compile Include="DesignTimeData\3Level\DDtChiTietChuyenKho.cs" />
     <Compile Include="DesignTimeData\3Level\DDtChiTietNhapHang.cs" />
     <Compile Include="DesignTimeData\3Level\DDrKhachHangChanh.cs" />
     <Compile Include="DesignTimeData\5Level\DDtChiTietChuyenHangDonHang.cs" />
@@ -97,6 +98,7 @@
     <Compile Include="EntityExt\2Level\tNhapNguyenLieuExt.cs" />
     <Compile Include="EntityExt\2Level\rMatHangNguyenLieuExt.cs" />
     <Compile Include="EntityExt\1Level\rNguyenLieuExt.cs" />
+    <Compile Include="EntityExt\3Level\tChiTietChuyenKhoExt.cs" />
     <Compile Include="EntityExt\3Level\rKhachHangChanhExt.cs" />
     <Compile Include="EntityExt\3Level\tChiTietNhapHangExt.cs" />
     <Compile Include="EntityExt\4Level\tChuyenHangDonHangExt.cs" />
@@ -124,6 +126,7 @@
     <Compile Include="Filter\2Level\Filter_rKhachHang.cs" />
     <Compile Include="Filter\2Level\Filter_rMatHangNguyenLieu.cs" />
     <Compile Include="Filter\2Level\Filter_tChiPhi.cs" />
+    <Compile Include="Filter\3Level\Filter_tChiTietChuyenKho.cs" />
     <Compile Include="Filter\3Level\Filter_rKhachHangChanh.cs" />
     <Compile Include="Filter\3Level\Filter_tChiTietNhapHang.cs" />
     <Compile Include="Filter\3Level\Filter_tDonHang.cs" />
@@ -140,6 +143,7 @@
     <Compile Include="Repository\2Level\tChuyenKhoRepository.cs" />
     <Compile Include="Repository\2Level\tTonKhoRepository.cs" />
     <Compile Include="Repository\2Level\tNhapHangRepository.cs" />
+    <Compile Include="Repository\3Level\tChiTietChuyenKhoRepository.cs" />
     <Compile Include="Repository\3Level\tChiTietNhapHangRepository.cs" />
     <Compile Include="Repository\RepositoryLocator.cs" />
     <Compile Include="Repository\2Level\tNhapNguyenLieuRepository.cs" />
@@ -290,6 +294,7 @@
     <Compile Include="ViewModel\2Level\KhachHangViewModel.cs" />
     <Compile Include="ViewModel\2Level\MatHangNguyenLieuViewModel.cs" />
     <Compile Include="ViewModel\3Level\ChiTieNhapHangViewModel.cs" />
+    <Compile Include="ViewModel\3Level\ChiTietChuyenKhoViewModel.cs" />
     <Compile Include="ViewModel\3Level\KhachHangChanhViewModel.cs" />
     <Compile Include="ViewModel\4Level\ChuyenHangDonHangViewModel.cs" />
     <Compile Include="ViewModel\4Level\ChiTietDonHangViewModel.cs" />

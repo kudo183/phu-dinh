@@ -12,6 +12,11 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Right" VerticalAlignment="Center">
+            <Button Width="130" Height="80" FontSize="20" Margin="10" Content="Nhan Vien">
+                <Button.Tag>
+                    <PhuDinhCommonControl:NhanVienView/>
+                </Button.Tag>
+            </Button>
             <Button Width="130" Height="80" FontSize="20" Margin="10" Content="Nhap Hang">
                 <Button.Tag>
                     <PhuDinhCommonControl:NhapHangView/>
@@ -42,6 +47,11 @@
             <Button Width="130" Height="80" FontSize="20" Margin="10" Content="Ton Kho">
                 <Button.Tag>
                     <PhuDinhCommonControl:tTonKhoView/>
+                </Button.Tag>
+            </Button>
+            <Button Width="130" Height="80" FontSize="20" Margin="10" Content="Chuyen Kho">
+                <Button.Tag>
+                    <PhuDinhCommonControl:ChuyenKhoView/>
                 </Button.Tag>
             </Button>
         </StackPanel>

@@ -79,6 +79,9 @@
     <Compile Include="EntityDataGrid\2Level\DGNhapHang.xaml.cs">
       <DependentUpon>DGNhapHang.xaml</DependentUpon>
     </Compile>
+    <Compile Include="EntityDataGrid\3Level\DGChiTietChuyenKho.xaml.cs">
+      <DependentUpon>DGChiTietChuyenKho.xaml</DependentUpon>
+    </Compile>
     <Compile Include="EntityDataGrid\3Level\DGChiTietNhapHang.xaml.cs">
       <DependentUpon>DGChiTietNhapHang.xaml</DependentUpon>
     </Compile>
@@ -186,6 +189,9 @@
     <Compile Include="View\2Level\rMatHangNguyenLieuView.xaml.cs">
       <DependentUpon>rMatHangNguyenLieuView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\3Level\tChiTietChuyenKhoView.xaml.cs">
+      <DependentUpon>tChiTietChuyenKhoView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\3Level\rKhachHangChanhView.xaml.cs">
       <DependentUpon>rKhachHangChanhView.xaml</DependentUpon>
     </Compile>
@@ -259,6 +265,9 @@
     </Compile>
     <Compile Include="View\ComplexView\ChuyenHangView.xaml.cs">
       <DependentUpon>ChuyenHangView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ComplexView\ChuyenKhoView.xaml.cs">
+      <DependentUpon>ChuyenKhoView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ComplexView\NhapHangView.xaml.cs">
       <DependentUpon>NhapHangView.xaml</DependentUpon>
@@ -359,6 +368,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="EntityDataGrid\2Level\DGMatHangNguyenLieu.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="EntityDataGrid\3Level\DGChiTietChuyenKho.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -474,6 +487,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="View\3Level\tChiTietChuyenKhoView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="View\3Level\rKhachHangChanhView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -551,6 +568,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="View\ComplexView\ChuyenHangView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\ComplexView\ChuyenKhoView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
