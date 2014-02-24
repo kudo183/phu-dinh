@@ -235,6 +235,37 @@ namespace PhuDinhData.BusinessLogics
                 }
             }
 
+            var chuyenKhos = RepositoryLocator<tChuyenKho>.GetData(
+                context, p => p.Ngay >= ngayD);
+
+            foreach (var chuyenKho in chuyenKhos)
+            {
+                var kho = chuyenKho.MaKhoHangXuat;
+                if (xuat.ContainsKey(kho) == false)
+                {
+                    xuat.Add(kho, new Dictionary<int, Dictionary<DateTime, int>>());
+                }
+
+                var chiTietKho = xuat[kho];
+                foreach (var chiTietChuyenKho in chuyenKho.tChiTietChuyenKhoes)
+                {
+                    var maMatHang = chiTietChuyenKho.MaMatHang;
+                    if (chiTietKho.ContainsKey(maMatHang) == false)
+                    {
+                        chiTietKho.Add(maMatHang, new Dictionary<DateTime, int>());
+                    }
+
+                    var ngay = chuyenKho.Ngay;
+                    var chiTietMatHang = chiTietKho[maMatHang];
+                    if (chiTietMatHang.ContainsKey(ngay) == false)
+                    {
+                        chiTietMatHang.Add(ngay, 0);
+                    }
+
+                    chiTietMatHang[ngay] += chiTietChuyenKho.SoLuong;
+                }
+            }
+
             return xuat;
         }
 
@@ -273,6 +304,37 @@ namespace PhuDinhData.BusinessLogics
                     }
 
                     chiTietMatHang[ngay] += chiTietDonHang.SoLuong;
+                }
+            }
+
+            var chuyenKhos = RepositoryLocator<tChuyenKho>.GetData(
+                context, p => p.Ngay >= ngayD);
+
+            foreach (var chuyenKho in chuyenKhos)
+            {
+                var kho = chuyenKho.MaKhoHangNhap;
+                if (nhap.ContainsKey(kho) == false)
+                {
+                    nhap.Add(kho, new Dictionary<int, Dictionary<DateTime, int>>());
+                }
+
+                var chiTietKho = nhap[kho];
+                foreach (var chiTietChuyenKho in chuyenKho.tChiTietChuyenKhoes)
+                {
+                    var maMatHang = chiTietChuyenKho.MaMatHang;
+                    if (chiTietKho.ContainsKey(maMatHang) == false)
+                    {
+                        chiTietKho.Add(maMatHang, new Dictionary<DateTime, int>());
+                    }
+
+                    var ngay = chuyenKho.Ngay;
+                    var chiTietMatHang = chiTietKho[maMatHang];
+                    if (chiTietMatHang.ContainsKey(ngay) == false)
+                    {
+                        chiTietMatHang.Add(ngay, 0);
+                    }
+
+                    chiTietMatHang[ngay] += chiTietChuyenKho.SoLuong;
                 }
             }
 

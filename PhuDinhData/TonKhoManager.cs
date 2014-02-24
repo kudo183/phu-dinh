@@ -8,7 +8,7 @@ namespace PhuDinhData
     {
         public static void UpdateByChiTietDonHang(List<Repository<tChiTietDonHang>.ChangedItemData> changed)
         {
-            DateTime _minDate = DateTime.Now.Date;
+            DateTime minDate = DateTime.Now.Date;
 
             var checkedMaDonHang = new List<int>();
 
@@ -20,9 +20,9 @@ namespace PhuDinhData
                     if (checkedMaDonHang.Contains(chiTietDonHang.MaDonHang) == false)
                     {
                         checkedMaDonHang.Add(chiTietDonHang.MaDonHang);
-                        if (chiTietDonHang.tDonHang.Ngay < _minDate)
+                        if (chiTietDonHang.tDonHang.Ngay < minDate)
                         {
-                            _minDate = chiTietDonHang.tDonHang.Ngay;
+                            minDate = chiTietDonHang.tDonHang.Ngay;
                         }
                     }
                 }
@@ -33,20 +33,20 @@ namespace PhuDinhData
                     if (checkedMaDonHang.Contains(chiTietDonHang.MaDonHang) == false)
                     {
                         checkedMaDonHang.Add(chiTietDonHang.MaDonHang);
-                        if (chiTietDonHang.tDonHang.Ngay < _minDate)
+                        if (chiTietDonHang.tDonHang.Ngay < minDate)
                         {
-                            _minDate = chiTietDonHang.tDonHang.Ngay;
+                            minDate = chiTietDonHang.tDonHang.Ngay;
                         }
                     }
                 }
             }
 
-            UpdateTonKho(_minDate);
+            UpdateTonKho(minDate);
         }
 
         public static void UpdateByChiTietNhapHang(List<Repository<tChiTietNhapHang>.ChangedItemData> changed)
         {
-            DateTime _minDate = DateTime.Now.Date;
+            DateTime minDate = DateTime.Now.Date;
 
             var checkedMaNhapHang = new List<int>();
 
@@ -58,9 +58,9 @@ namespace PhuDinhData
                     if (checkedMaNhapHang.Contains(chiTietDonHang.MaNhapHang) == false)
                     {
                         checkedMaNhapHang.Add(chiTietDonHang.MaNhapHang);
-                        if (chiTietDonHang.tNhapHang.Ngay < _minDate)
+                        if (chiTietDonHang.tNhapHang.Ngay < minDate)
                         {
-                            _minDate = chiTietDonHang.tNhapHang.Ngay;
+                            minDate = chiTietDonHang.tNhapHang.Ngay;
                         }
                     }
                 }
@@ -71,20 +71,20 @@ namespace PhuDinhData
                     if (checkedMaNhapHang.Contains(chiTietDonHang.MaNhapHang) == false)
                     {
                         checkedMaNhapHang.Add(chiTietDonHang.MaNhapHang);
-                        if (chiTietDonHang.tNhapHang.Ngay < _minDate)
+                        if (chiTietDonHang.tNhapHang.Ngay < minDate)
                         {
-                            _minDate = chiTietDonHang.tNhapHang.Ngay;
+                            minDate = chiTietDonHang.tNhapHang.Ngay;
                         }
                     }
                 }
             }
 
-            UpdateTonKho(_minDate);
+            UpdateTonKho(minDate);
         }
 
         public static void UpdateByChiTietChuyenKho(List<Repository<tChiTietChuyenKho>.ChangedItemData> changed)
         {
-            DateTime _minDate = DateTime.Now.Date;
+            DateTime minDate = DateTime.Now.Date;
 
             var checkedMaChuyenKho = new List<int>();
 
@@ -96,9 +96,9 @@ namespace PhuDinhData
                     if (checkedMaChuyenKho.Contains(chiTietChuyenKho.MaChuyenKho) == false)
                     {
                         checkedMaChuyenKho.Add(chiTietChuyenKho.MaChuyenKho);
-                        if (chiTietChuyenKho.tChuyenKho.Ngay < _minDate)
+                        if (chiTietChuyenKho.tChuyenKho.Ngay < minDate)
                         {
-                            _minDate = chiTietChuyenKho.tChuyenKho.Ngay;
+                            minDate = chiTietChuyenKho.tChuyenKho.Ngay;
                         }
                     }
                 }
@@ -109,15 +109,15 @@ namespace PhuDinhData
                     if (checkedMaChuyenKho.Contains(chiTietChuyenKho.MaChuyenKho) == false)
                     {
                         checkedMaChuyenKho.Add(chiTietChuyenKho.MaChuyenKho);
-                        if (chiTietChuyenKho.tChuyenKho.Ngay < _minDate)
+                        if (chiTietChuyenKho.tChuyenKho.Ngay < minDate)
                         {
-                            _minDate = chiTietChuyenKho.tChuyenKho.Ngay;
+                            minDate = chiTietChuyenKho.tChuyenKho.Ngay;
                         }
                     }
                 }
             }
 
-            UpdateTonKho(_minDate);
+            UpdateTonKho(minDate);
         }
 
         public static void UpdateTonKho(DateTime date)
