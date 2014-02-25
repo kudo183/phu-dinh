@@ -18,6 +18,8 @@ namespace PhuDinh
 
             InitializeComponent();
             Thread.CurrentThread.CurrentCulture = new CultureInfo("vi-VN");
+
+            PhuDinhData.TonKhoManager.UpdateTonKho();
         }
     }
 }
