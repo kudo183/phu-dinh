@@ -24,9 +24,10 @@ namespace PhuDinhData
                     if (checkedMaDonHang.Contains(chiTietDonHang.MaDonHang) == false)
                     {
                         checkedMaDonHang.Add(chiTietDonHang.MaDonHang);
-                        if (chiTietDonHang.tDonHang.Ngay < minDate)
+                        var donHang = context.tDonHangs.First(p => p.Ma == chiTietDonHang.MaDonHang);
+                        if (donHang.Ngay < minDate)
                         {
-                            minDate = chiTietDonHang.tDonHang.Ngay;
+                            minDate = donHang.Ngay;
                         }
                     }
                 }
@@ -37,9 +38,10 @@ namespace PhuDinhData
                     if (checkedMaDonHang.Contains(chiTietDonHang.MaDonHang) == false)
                     {
                         checkedMaDonHang.Add(chiTietDonHang.MaDonHang);
-                        if (chiTietDonHang.tDonHang.Ngay < minDate)
+                        var donHang = context.tDonHangs.First(p => p.Ma == chiTietDonHang.MaDonHang);
+                        if (donHang.Ngay < minDate)
                         {
-                            minDate = chiTietDonHang.tDonHang.Ngay;
+                            minDate = donHang.Ngay;
                         }
                     }
                 }
@@ -64,28 +66,30 @@ namespace PhuDinhData
 
             foreach (var changedItemData in changed)
             {
-                var chiTietDonHang = changedItemData.CurrentValues;
-                if (chiTietDonHang != null)
+                var chiTietNhapHang = changedItemData.CurrentValues;
+                if (chiTietNhapHang != null)
                 {
-                    if (checkedMaNhapHang.Contains(chiTietDonHang.MaNhapHang) == false)
+                    if (checkedMaNhapHang.Contains(chiTietNhapHang.MaNhapHang) == false)
                     {
-                        checkedMaNhapHang.Add(chiTietDonHang.MaNhapHang);
-                        if (chiTietDonHang.tNhapHang.Ngay < minDate)
+                        checkedMaNhapHang.Add(chiTietNhapHang.MaNhapHang);
+                        var nhapHang = context.tNhapHangs.First(p => p.Ma == chiTietNhapHang.MaNhapHang);
+                        if (nhapHang.Ngay < minDate)
                         {
-                            minDate = chiTietDonHang.tNhapHang.Ngay;
+                            minDate = chiTietNhapHang.tNhapHang.Ngay;
                         }
                     }
                 }
 
-                chiTietDonHang = changedItemData.OriginalValues;
-                if (chiTietDonHang != null)
+                chiTietNhapHang = changedItemData.OriginalValues;
+                if (chiTietNhapHang != null)
                 {
-                    if (checkedMaNhapHang.Contains(chiTietDonHang.MaNhapHang) == false)
+                    if (checkedMaNhapHang.Contains(chiTietNhapHang.MaNhapHang) == false)
                     {
-                        checkedMaNhapHang.Add(chiTietDonHang.MaNhapHang);
-                        if (chiTietDonHang.tNhapHang.Ngay < minDate)
+                        checkedMaNhapHang.Add(chiTietNhapHang.MaNhapHang);
+                        var nhapHang = context.tNhapHangs.First(p => p.Ma == chiTietNhapHang.MaNhapHang);
+                        if (nhapHang.Ngay < minDate)
                         {
-                            minDate = chiTietDonHang.tNhapHang.Ngay;
+                            minDate = chiTietNhapHang.tNhapHang.Ngay;
                         }
                     }
                 }
