@@ -9,6 +9,8 @@ namespace PhuDinhWeb.Controllers
     {
         public ActionResult Index()
         {
+            TonKhoManager.UpdateTonKho();
+
             var context = ContextFactory.CreateContext();
             var now = DateTime.Now.Date;
 
