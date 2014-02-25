@@ -34,23 +34,22 @@ namespace PhuDinhData.BusinessLogics
             context.SaveChanges();
         }
 
-        public static void UpdateTonKhosTuNgayD(PhuDinhEntities context,
-            DateTime ngayD)
+        public static void UpdateTonKhosTuNgayDDenNgayN(PhuDinhEntities context,
+            DateTime ngayD,
+            DateTime ngayN)
         {
             var ngayTruocNgayD = ngayD.Subtract(new TimeSpan(1, 0, 0, 0));
 
-            var tons = TinhChiTietTonTuNgayD(context, ngayTruocNgayD);
+            var tons = TinhChiTietTonTuNgayD(context, ngayTruocNgayD, ngayN);
 
-            var xuats = TinhChiTietXuatTuNgayD(context, ngayD);
+            var xuats = TinhChiTietXuatTuNgayD(context, ngayD, ngayN);
 
-            var nhaps = TinhChiTietNhapTuNgayD(context, ngayD);
+            var nhaps = TinhChiTietNhapTuNgayD(context, ngayD, ngayN);
 
             var khos = RepositoryLocator<rKhoHang>.GetData(context, p => true);
             var matHangs = RepositoryLocator<tMatHang>.GetData(context, p => true);
 
-            var now = DateTime.Now.Date;
-
-            var soNgay = (now - ngayD).Days + 1;
+            var soNgay = (ngayN - ngayD).Days + 1;
 
             Dictionary<int, Dictionary<DateTime, tTonKho>> tonKho;
             Dictionary<int, Dictionary<DateTime, int>> xuatKho, nhapKho;
@@ -164,12 +163,13 @@ namespace PhuDinhData.BusinessLogics
         //<kho, maMatHang, ngay, soLuong>
         private static Dictionary<int, Dictionary<int, Dictionary<DateTime, tTonKho>>> TinhChiTietTonTuNgayD(
             PhuDinhEntities context,
-            DateTime ngayD)
+            DateTime ngayD,
+            DateTime ngayN)
         {
             var ton = new Dictionary<int, Dictionary<int, Dictionary<DateTime, tTonKho>>>();
 
             var tonKhos = RepositoryLocator<tTonKho>.GetData(
-                   context, p => p.Ngay >= ngayD);
+                   context, p => p.Ngay >= ngayD && p.Ngay <= ngayN);
 
             foreach (var tonKho in tonKhos)
             {
@@ -200,12 +200,13 @@ namespace PhuDinhData.BusinessLogics
         //<kho, maMatHang, ngay, soLuong>
         private static Dictionary<int, Dictionary<int, Dictionary<DateTime, int>>> TinhChiTietXuatTuNgayD(
             PhuDinhEntities context,
-            DateTime ngayD)
+            DateTime ngayD,
+            DateTime ngayN)
         {
             var xuat = new Dictionary<int, Dictionary<int, Dictionary<DateTime, int>>>();
 
             var donHangs = RepositoryLocator<tDonHang>.GetData(
-                context, p => p.Ngay >= ngayD);
+                context, p => p.Ngay >= ngayD && p.Ngay<=ngayN);
 
             foreach (var donHang in donHangs)
             {
@@ -236,7 +237,7 @@ namespace PhuDinhData.BusinessLogics
             }
 
             var chuyenKhos = RepositoryLocator<tChuyenKho>.GetData(
-                context, p => p.Ngay >= ngayD);
+                context, p => p.Ngay >= ngayD && p.Ngay <= ngayN);
 
             foreach (var chuyenKho in chuyenKhos)
             {
@@ -272,12 +273,13 @@ namespace PhuDinhData.BusinessLogics
         //<ngay, kho, maMatHang, soLuong>
         private static Dictionary<int, Dictionary<int, Dictionary<DateTime, int>>> TinhChiTietNhapTuNgayD(
             PhuDinhEntities context,
-            DateTime ngayD)
+            DateTime ngayD,
+            DateTime ngayN)
         {
             var nhap = new Dictionary<int, Dictionary<int, Dictionary<DateTime, int>>>();
 
             var nhapHangs = RepositoryLocator<tNhapHang>.GetData(
-                context, p => p.Ngay >= ngayD);
+                context, p => p.Ngay >= ngayD && p.Ngay <= ngayN);
 
             foreach (var nhapHang in nhapHangs)
             {
@@ -308,7 +310,7 @@ namespace PhuDinhData.BusinessLogics
             }
 
             var chuyenKhos = RepositoryLocator<tChuyenKho>.GetData(
-                context, p => p.Ngay >= ngayD);
+                context, p => p.Ngay >= ngayD && p.Ngay <= ngayN);
 
             foreach (var chuyenKho in chuyenKhos)
             {

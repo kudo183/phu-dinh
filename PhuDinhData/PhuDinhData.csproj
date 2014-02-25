@@ -260,6 +260,9 @@
     <Compile Include="tDonHang.cs">
       <DependentUpon>PhuDinh.tt</DependentUpon>
     </Compile>
+    <Compile Include="ThamSoNgay.cs">
+      <DependentUpon>PhuDinh.tt</DependentUpon>
+    </Compile>
     <Compile Include="tMatHang.cs">
       <DependentUpon>PhuDinh.tt</DependentUpon>
     </Compile>

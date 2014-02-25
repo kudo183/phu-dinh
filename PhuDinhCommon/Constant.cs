@@ -2,7 +2,7 @@
 {
     public class Constant
     {
-        #region enum
+        #region enum        
         public enum MainMenuItems
         {
             rBaiXe,
@@ -23,6 +23,9 @@
             tMatHang
         }
         #endregion
+
+        public const string ThamSo_NgayCapNhatTonKhoCuoiCung = "NgayCapNhatTonKhoCuoiCung";
+
         public const string ColumnName_MaKhachHang = "Ma Khach Hang";
         public const string ColumnName_MaBaiXe = "Ma Bai Xe";
         public const string ColumnName_MaNuoc = "Ma Nuoc";

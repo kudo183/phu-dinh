@@ -1,6 +1,8 @@
 ﻿using PhuDinhData.Repository;
 using System;
+using System.Linq;
 using System.Collections.Generic;
+using PhuDinhCommon;
 
 namespace PhuDinhData
 {
@@ -8,7 +10,9 @@ namespace PhuDinhData
     {
         public static void UpdateByChiTietDonHang(List<Repository<tChiTietDonHang>.ChangedItemData> changed)
         {
-            DateTime minDate = DateTime.Now.Date;
+            var context = ContextFactory.CreateContext();
+            var thamSoNgayCapNhatTonKhoCuoiCung = context.ThamSoNgays.First(p => p.Ten == Constant.ThamSo_NgayCapNhatTonKhoCuoiCung);
+            var minDate = thamSoNgayCapNhatTonKhoCuoiCung.GiaTri;
 
             var checkedMaDonHang = new List<int>();
 
@@ -41,12 +45,20 @@ namespace PhuDinhData
                 }
             }
 
-            UpdateTonKho(minDate);
+            var now = DateTime.Now.Date;
+
+            UpdateTonKho(minDate, now);
+
+            thamSoNgayCapNhatTonKhoCuoiCung.GiaTri = now;
+
+            context.SaveChanges();
         }
 
         public static void UpdateByChiTietNhapHang(List<Repository<tChiTietNhapHang>.ChangedItemData> changed)
         {
-            DateTime minDate = DateTime.Now.Date;
+            var context = ContextFactory.CreateContext();
+            var thamSoNgayCapNhatTonKhoCuoiCung = context.ThamSoNgays.First(p => p.Ten == Constant.ThamSo_NgayCapNhatTonKhoCuoiCung);
+            var minDate = thamSoNgayCapNhatTonKhoCuoiCung.GiaTri;
 
             var checkedMaNhapHang = new List<int>();
 
@@ -79,12 +91,20 @@ namespace PhuDinhData
                 }
             }
 
-            UpdateTonKho(minDate);
+            var now = DateTime.Now.Date;
+
+            UpdateTonKho(minDate, now);
+
+            thamSoNgayCapNhatTonKhoCuoiCung.GiaTri = now;
+
+            context.SaveChanges();
         }
 
         public static void UpdateByChiTietChuyenKho(List<Repository<tChiTietChuyenKho>.ChangedItemData> changed)
         {
-            DateTime minDate = DateTime.Now.Date;
+            var context = ContextFactory.CreateContext();
+            var thamSoNgayCapNhatTonKhoCuoiCung = context.ThamSoNgays.First(p => p.Ten == Constant.ThamSo_NgayCapNhatTonKhoCuoiCung);
+            var minDate = thamSoNgayCapNhatTonKhoCuoiCung.GiaTri;
 
             var checkedMaChuyenKho = new List<int>();
 
@@ -117,12 +137,46 @@ namespace PhuDinhData
                 }
             }
 
-            UpdateTonKho(minDate);
+            var now = DateTime.Now.Date;
+
+            UpdateTonKho(minDate, now);
+
+            thamSoNgayCapNhatTonKhoCuoiCung.GiaTri = now;
+
+            context.SaveChanges();
         }
 
-        public static void UpdateTonKho(DateTime date)
+        public static void UpdateTonKho(DateTime begin, DateTime end)
         {
-            BusinessLogics.BusinessLogics.UpdateTonKhosTuNgayD(ContextFactory.CreateContext(), date);
+            BusinessLogics.BusinessLogics.UpdateTonKhosTuNgayDDenNgayN(ContextFactory.CreateContext(), begin, end);
+        }
+
+        public static void UpdateTonKho()
+        {
+            var context = ContextFactory.CreateContext();
+
+            var now = DateTime.Now.Date;
+
+            var thamSoNgayCapNhatTonKhoCuoiCung = context.ThamSoNgays.FirstOrDefault(p => p.Ten == Constant.ThamSo_NgayCapNhatTonKhoCuoiCung);
+
+            if (thamSoNgayCapNhatTonKhoCuoiCung == null)
+            {
+                thamSoNgayCapNhatTonKhoCuoiCung = context.ThamSoNgays.Add(
+                    new ThamSoNgay() { Ten = Constant.ThamSo_NgayCapNhatTonKhoCuoiCung, GiaTri = now.Subtract(new TimeSpan(1, 0, 0, 0)) });
+            }
+
+            var minDate = thamSoNgayCapNhatTonKhoCuoiCung.GiaTri;
+
+            if (minDate == now)
+            {
+                return;
+            }
+
+            UpdateTonKho(minDate, now);
+
+            thamSoNgayCapNhatTonKhoCuoiCung.GiaTri = now;
+
+            context.SaveChanges();
         }
     }
 }

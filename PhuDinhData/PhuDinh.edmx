@@ -16,10 +16,10 @@
           <EntitySet Name="rLoaiHang" EntityType="PhuDinhModel.Store.rLoaiHang" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="rLoaiNguyenLieu" EntityType="PhuDinhModel.Store.rLoaiNguyenLieu" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="rMatHangNguyenLieu" EntityType="PhuDinhModel.Store.rMatHangNguyenLieu" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="rNuoc" EntityType="PhuDinhModel.Store.rNuoc" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="rNguyenLieu" EntityType="PhuDinhModel.Store.rNguyenLieu" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="rNhaCungCap" EntityType="PhuDinhModel.Store.rNhaCungCap" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="rNhanVien" EntityType="PhuDinhModel.Store.rNhanVien" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="rNuoc" EntityType="PhuDinhModel.Store.rNuoc" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="rPhuongTien" EntityType="PhuDinhModel.Store.rPhuongTien" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="tChiPhi" EntityType="PhuDinhModel.Store.tChiPhi" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="tChiTietChuyenHangDonHang" EntityType="PhuDinhModel.Store.tChiTietChuyenHangDonHang" store:Type="Tables" Schema="dbo" />
@@ -34,6 +34,7 @@
           <EntitySet Name="tNhapHang" EntityType="PhuDinhModel.Store.tNhapHang" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="tNhapNguyenLieu" EntityType="PhuDinhModel.Store.tNhapNguyenLieu" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="tTonKho" EntityType="PhuDinhModel.Store.tTonKho" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ThamSoNgay" EntityType="PhuDinhModel.Store.ThamSoNgay" store:Type="Tables" Schema="dbo" />
           <AssociationSet Name="FK_rChanh_rBaiXe" Association="PhuDinhModel.Store.FK_rChanh_rBaiXe">
             <End Role="rBaiXe" EntitySet="rBaiXe" />
             <End Role="rChanh" EntitySet="rChanh" />
@@ -256,6 +257,13 @@
           <Property Name="MaMatHang" Type="int" Nullable="false" />
           <Property Name="MaNguyenLieu" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="rNuoc">
+          <Key>
+            <PropertyRef Name="Ma" />
+          </Key>
+          <Property Name="Ma" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="TenNuoc" Type="nvarchar" Nullable="false" MaxLength="100" />
+        </EntityType>
         <EntityType Name="rNguyenLieu">
           <Key>
             <PropertyRef Name="Ma" />
@@ -278,13 +286,6 @@
           <Property Name="Ma" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="MaPhuongTien" Type="int" Nullable="false" />
           <Property Name="TenNhanVien" Type="nvarchar" Nullable="false" MaxLength="200" />
-        </EntityType>
-        <EntityType Name="rNuoc">
-          <Key>
-            <PropertyRef Name="Ma" />
-          </Key>
-          <Property Name="Ma" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="TenNuoc" Type="nvarchar" Nullable="false" MaxLength="100" />
         </EntityType>
         <EntityType Name="rPhuongTien">
           <Key>
@@ -420,6 +421,13 @@
           <Property Name="Ngay" Type="date" Nullable="false" />
           <Property Name="SoLuong" Type="int" Nullable="false" />
           <Property Name="SoLuongCu" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ThamSoNgay">
+          <Key>
+            <PropertyRef Name="Ten" />
+          </Key>
+          <Property Name="Ten" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="GiaTri" Type="date" Nullable="false" />
         </EntityType>
         <Association Name="FK_rChanh_rBaiXe">
           <End Role="rBaiXe" Type="PhuDinhModel.Store.rBaiXe" Multiplicity="1" />
@@ -1030,6 +1038,7 @@
             <End Role="tMatHang" EntitySet="tMatHangs" />
             <End Role="tChiTietChuyenKho" EntitySet="tChiTietChuyenKhoes" />
           </AssociationSet>
+          <EntitySet Name="ThamSoNgays" EntityType="PhuDinhModel.ThamSoNgay" />
         </EntityContainer>
         <EntityType Name="rBaiXe">
           <Key>
@@ -1777,6 +1786,13 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="ThamSoNgay">
+          <Key>
+            <PropertyRef Name="Ten" />
+          </Key>
+          <Property Type="String" Name="Ten" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="GiaTri" Nullable="false" Precision="0" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2050,6 +2066,14 @@
                 <ScalarProperty Name="MaKhoHangXuat" ColumnName="MaKhoHangXuat" />
                 <ScalarProperty Name="MaNhanVien" ColumnName="MaNhanVien" />
                 <ScalarProperty Name="Ma" ColumnName="Ma" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ThamSoNgays">
+            <EntityTypeMapping TypeName="PhuDinhModel.ThamSoNgay">
+              <MappingFragment StoreEntitySet="ThamSoNgay">
+                <ScalarProperty Name="GiaTri" ColumnName="GiaTri" />
+                <ScalarProperty Name="Ten" ColumnName="Ten" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
