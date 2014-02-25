@@ -120,7 +120,8 @@ namespace PhuDinhData
                     if (checkedMaChuyenKho.Contains(chiTietChuyenKho.MaChuyenKho) == false)
                     {
                         checkedMaChuyenKho.Add(chiTietChuyenKho.MaChuyenKho);
-                        if (chiTietChuyenKho.tChuyenKho.Ngay < minDate)
+                        var chuyenKho = context.tChuyenKhoes.First(p => p.Ma == chiTietChuyenKho.MaChuyenKho);
+                        if (chuyenKho.Ngay < minDate)
                         {
                             minDate = chiTietChuyenKho.tChuyenKho.Ngay;
                         }
@@ -133,7 +134,8 @@ namespace PhuDinhData
                     if (checkedMaChuyenKho.Contains(chiTietChuyenKho.MaChuyenKho) == false)
                     {
                         checkedMaChuyenKho.Add(chiTietChuyenKho.MaChuyenKho);
-                        if (chiTietChuyenKho.tChuyenKho.Ngay < minDate)
+                        var chuyenKho = context.tChuyenKhoes.First(p => p.Ma == chiTietChuyenKho.MaChuyenKho);
+                        if (chuyenKho.Ngay < minDate)
                         {
                             minDate = chiTietChuyenKho.tChuyenKho.Ngay;
                         }
