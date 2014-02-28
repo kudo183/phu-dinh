@@ -13,7 +13,7 @@
                                  CurrentPageIndex="{Binding CurrentPageIndex, Mode=TwoWay}"
                                  PageSize="{Binding PageSize, Mode=OneWay}"
                                  ItemCount="{Binding ItemCount, Mode=OneWay}"/>
-        <StackPanel Grid.Column="1" Orientation="Horizontal" Margin="30,0,0,0">
+        <StackPanel x:Name="sp" Grid.Column="1" Orientation="Horizontal" Margin="30,0,0,0">
             <Button Content="Lưu" VerticalAlignment="Top" Width="75" Margin="5" x:Name="btnSave"/>
             <Button Content="Hủy" VerticalAlignment="Top" Width="75" Margin="5" x:Name="btnCancel"/>
         </StackPanel>

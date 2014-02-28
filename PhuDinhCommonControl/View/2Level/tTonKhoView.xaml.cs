@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
+using PhuDinhCommonControl.View;
 using PhuDinhData.ViewModel;
 using PhuDinhData.ViewModel.DataGridColumnHeaderFilterModel;
 using PhuDinhCommon;
@@ -45,6 +46,18 @@ namespace PhuDinhCommonControl
                     _viewModel.UpdateReferenceData(header.Name);
                     break;
             }
+        }
+
+        protected override void bmMenu_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            var button = e.OriginalSource as Button;
+            if (button.Content.ToString() == "Cap Nhat Ton Kho")
+            {
+                ChildWindowUtils.ShowChildWindow("Cap Nhat Ton Kho", new CapNhatTonKhoView());
+                return;
+            }
+
+            base.bmMenu_Click(sender, e);
         }
     }
 }

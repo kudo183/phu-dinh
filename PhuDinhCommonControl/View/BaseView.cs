@@ -156,7 +156,7 @@ namespace PhuDinhCommonControl
             _viewModel.SetDefaultValue(columnName, value);
         }
 
-        protected void bmMenu_Click(object sender, RoutedEventArgs e)
+        protected virtual void bmMenu_Click(object sender, RoutedEventArgs e)
         {
             var button = e.OriginalSource as Button;
             if (button.Name == "btnSave")
