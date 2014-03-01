@@ -11,6 +11,8 @@ namespace PhuDinhCommonControl.Menu
     public partial class BottomMenu : UserControl
     {
         public List<UIElement> ExtButton { get; set; }
+        private bool _isFirstLoad = true;
+
         public BottomMenu()
         {
             ExtButton = new List<UIElement>();
@@ -21,10 +23,17 @@ namespace PhuDinhCommonControl.Menu
 
         void BottomMenu_Loaded(object sender, RoutedEventArgs e)
         {
+            if (_isFirstLoad == false)
+            {
+                return;
+            }
+
             foreach (var button in ExtButton)
             {
                 sp.Children.Add(button);
             }
+
+            _isFirstLoad = false;
         }
     }
 }

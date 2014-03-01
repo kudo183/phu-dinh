@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
-using PhuDinhCommonControl.View;
 using PhuDinhData.ViewModel;
 using PhuDinhData.ViewModel.DataGridColumnHeaderFilterModel;
 using PhuDinhCommon;
