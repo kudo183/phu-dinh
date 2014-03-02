@@ -37,7 +37,6 @@ namespace PhuDinhCommonControl
                         FocustChiTietChuyenHangDonHangView();
                         break;
                 }
-
             }
         }
 
@@ -70,9 +69,11 @@ namespace PhuDinhCommonControl
             _tChuyenHangDonHangView.dgChuyenHangDonHang.SelectionChanged += dgChuyenHangDonHang_SelectionChanged;
 
             _tChuyenHangView.AfterSave += _tChuyenHangView_AfterSave;
+            _tChuyenHangView.MoveFocus += _tChuyenHangView_MoveFocus;
             _tChuyenHangDonHangView.AfterSave += _tChuyenHangDonHangView_AfterSave;
+            _tChuyenHangDonHangView.MoveFocus += _tChuyenHangDonHangView_MoveFocus;
             _tChiTietChuyenHangDonHangView.AfterSave += _tChiTietChuyenHangDonHangView_AfterSave;
-            
+
             _tChuyenHangDonHangView.SetMainFilter(
                     PhuDinhData.Filter.Filter_tChuyenHangDonHang.MaChuyenHang, null, true);
             _tChiTietChuyenHangDonHangView.SetMainFilter(
@@ -85,7 +86,9 @@ namespace PhuDinhCommonControl
             _tChuyenHangDonHangView.dgChuyenHangDonHang.SelectionChanged -= dgChuyenHangDonHang_SelectionChanged;
 
             _tChuyenHangView.AfterSave -= _tChuyenHangView_AfterSave;
+            _tChuyenHangView.MoveFocus -= _tChuyenHangView_MoveFocus;
             _tChuyenHangDonHangView.AfterSave -= _tChuyenHangDonHangView_AfterSave;
+            _tChuyenHangDonHangView.MoveFocus -= _tChuyenHangDonHangView_MoveFocus;
             _tChiTietChuyenHangDonHangView.AfterSave -= _tChiTietChuyenHangDonHangView_AfterSave;
         }
 
@@ -129,14 +132,20 @@ namespace PhuDinhCommonControl
 
                 context.Entity.Add(ct);
             }
+        }
 
+        void _tChuyenHangDonHangView_MoveFocus(object sender, System.EventArgs e)
+        {
             FocustChiTietChuyenHangDonHangView(false);
         }
 
         void _tChuyenHangView_AfterSave(object sender, System.EventArgs e)
         {
             RefreshChuyenHangDonHangView(_tChuyenHangView.dg);
+        }
 
+        void _tChuyenHangView_MoveFocus(object sender, System.EventArgs e)
+        {
             FocustChuyenHangDonHangView();
         }
 
@@ -146,7 +155,7 @@ namespace PhuDinhCommonControl
             {
                 return;
             }
-            
+
             RefreshChiTietChuyenHangDonHangView(_tChuyenHangDonHangView.dg);
         }
 

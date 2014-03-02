@@ -33,7 +33,6 @@ namespace PhuDinhCommonControl
                         FocustChiTietDonHangView();
                         break;
                 }
-                
             }
         }
 
@@ -48,14 +47,16 @@ namespace PhuDinhCommonControl
 
         void FocustChiTietDonHangView()
         {
-            _tChiTietDonHangView.dg.FocusCell(_tChiTietDonHangView.dg.Items.Count - 1, 2);                        
+            _tChiTietDonHangView.dg.FocusCell(_tChiTietDonHangView.dg.Items.Count - 1, 2);
         }
 
         void DonHangView_Loaded(object sender, RoutedEventArgs e)
         {
             _tDonHangView.dgDonHang.SelectionChanged += dgDonHang_SelectionChanged;
             _tChiTietDonHangView.AfterSave += _tChiTietDonHangView_AfterSave;
+            _tChiTietDonHangView.MoveFocus += _tChiTietDonHangView_MoveFocus;
             _tDonHangView.AfterSave += _tDonHangView_AfterSave;
+            _tDonHangView.MoveFocus += _tDonHangView_MoveFocus;
 
             _tChiTietDonHangView.SetMainFilter(
                     PhuDinhData.Filter.Filter_tChiTietDonHang.MaDonHang, null, true);
@@ -65,13 +66,18 @@ namespace PhuDinhCommonControl
         {
             _tDonHangView.dgDonHang.SelectionChanged -= dgDonHang_SelectionChanged;
             _tChiTietDonHangView.AfterSave -= _tChiTietDonHangView_AfterSave;
+            _tChiTietDonHangView.MoveFocus -= _tChiTietDonHangView_MoveFocus;
             _tDonHangView.AfterSave -= _tDonHangView_AfterSave;
+            _tDonHangView.MoveFocus -= _tDonHangView_MoveFocus;
         }
 
         void _tDonHangView_AfterSave(object sender, System.EventArgs e)
         {
             RefreshChiTietDonHangView(_tDonHangView.dg);
+        }
 
+        void _tDonHangView_MoveFocus(object sender, System.EventArgs e)
+        {
             FocustChiTietDonHangView();
         }
 
@@ -79,6 +85,11 @@ namespace PhuDinhCommonControl
         {
             _tDonHangView.RefreshView();
 
+            Keyboard.Focus(_tChiTietDonHangView.dg);
+        }
+
+        void _tChiTietDonHangView_MoveFocus(object sender, System.EventArgs e)
+        {
             FocustDonHangView();
         }
 

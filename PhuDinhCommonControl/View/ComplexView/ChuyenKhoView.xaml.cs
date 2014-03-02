@@ -33,7 +33,6 @@ namespace PhuDinhCommonControl
                         FocustChiTietChuyenKhoView();
                         break;
                 }
-                
             }
         }
 
@@ -55,7 +54,9 @@ namespace PhuDinhCommonControl
         {
             _tChuyenKhoView.dgChuyenKho.SelectionChanged += dgChuyenKho_SelectionChanged;
             _tChiTietChuyenKhoView.AfterSave += _tChiTietChuyenKhoView_AfterSave;
+            _tChiTietChuyenKhoView.MoveFocus += _tChiTietChuyenKhoView_MoveFocus;
             _tChuyenKhoView.AfterSave += _tChuyenKhoView_AfterSave;
+            _tChuyenKhoView.MoveFocus += _tChuyenKhoView_MoveFocus;
 
             _tChiTietChuyenKhoView.SetMainFilter(
                     PhuDinhData.Filter.Filter_tChiTietChuyenKho.MaChuyenKho, null, true);
@@ -65,20 +66,28 @@ namespace PhuDinhCommonControl
         {
             _tChuyenKhoView.dgChuyenKho.SelectionChanged -= dgChuyenKho_SelectionChanged;
             _tChiTietChuyenKhoView.AfterSave -= _tChiTietChuyenKhoView_AfterSave;
+            _tChiTietChuyenKhoView.MoveFocus -= _tChiTietChuyenKhoView_MoveFocus;
             _tChuyenKhoView.AfterSave -= _tChuyenKhoView_AfterSave;
+            _tChuyenKhoView.MoveFocus -= _tChuyenKhoView_MoveFocus;
         }
 
         void _tChuyenKhoView_AfterSave(object sender, System.EventArgs e)
         {
             RefreshChiTietChuyenKhoView(_tChuyenKhoView.dg);
+        }
 
+        void _tChuyenKhoView_MoveFocus(object sender, System.EventArgs e)
+        {
             FocustChiTietChuyenKhoView();
         }
 
         void _tChiTietChuyenKhoView_AfterSave(object sender, System.EventArgs e)
         {
             _tChuyenKhoView.RefreshView();
+        }
 
+        void _tChiTietChuyenKhoView_MoveFocus(object sender, System.EventArgs e)
+        {
             FocustChuyenKhoView();
         }
 

@@ -16,6 +16,8 @@ namespace PhuDinhCommonControl
         public event EventHandler AfterSave;
         public event EventHandler AfterCancel;
 
+        public event EventHandler MoveFocus;
+
         public DataGridExt dg { get; set; }
 
         protected BaseView()
@@ -65,8 +67,16 @@ namespace PhuDinhCommonControl
             {
                 switch (e.Key)
                 {
+                    case Key.Q:
+                        Save();
+                        break;
                     case Key.S:
                         Save();
+
+                        if (MoveFocus != null)
+                        {
+                            MoveFocus(this, null);
+                        }
                         break;
                     case Key.X:
                         Cancel();
