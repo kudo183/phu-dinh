@@ -29,6 +29,9 @@ namespace PhuDinhData
         private string _tenkhachhang;
         public string TenKhachHang { get { return _tenkhachhang; } set { if(_tenkhachhang == value) return; _tenkhachhang = value; base.RaisePropertyChanged("TenKhachHang");} }
     
+        private bool _khachrieng;
+        public bool KhachRieng { get { return _khachrieng; } set { if(_khachrieng == value) return; _khachrieng = value; base.RaisePropertyChanged("KhachRieng");} }
+    
     
         public virtual rDiaDiem rDiaDiem { get; set; }
         public virtual ICollection<tDonHang> tDonHangs { get; set; }

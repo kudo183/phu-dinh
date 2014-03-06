@@ -4,14 +4,10 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:PhuDinhCommonControl="clr-namespace:PhuDinhCommonControl;assembly=PhuDinhCommonControl"
-             mc:Ignorable="d"
+             xmlns:PhuDinhReport="clr-namespace:PhuDinhReport;assembly=PhuDinhReport" mc:Ignorable="d"
              Background="#FF627E97">
-    <Grid Margin="50" Button.Click="Grid_Click">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <StackPanel Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Right" VerticalAlignment="Center">
+    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="50" Button.Click="Button_Click">
+        <StackPanel Orientation="Vertical">
             <Button Width="130" Height="80" FontSize="20" Margin="10" Content="Nhan Vien">
                 <Button.Tag>
                     <PhuDinhCommonControl:NhanVienView/>
@@ -33,7 +29,7 @@
                 </Button.Tag>
             </Button>
         </StackPanel>
-        <StackPanel Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Center">
+        <StackPanel Orientation="Vertical">
             <Button Width="130" Height="80" FontSize="20" Margin="10" Content="Mat Hang">
                 <Button.Tag>
                     <PhuDinhCommonControl:MatHangView/>
@@ -55,5 +51,12 @@
                 </Button.Tag>
             </Button>
         </StackPanel>
-    </Grid>
+        <StackPanel Orientation="Vertical">
+            <Button Width="250" Height="80" FontSize="20" Margin="10" Content="Thong Ke Theo Mat Hang">
+                <Button.Tag>
+                    <PhuDinhReport:ReportByMatHangView/>
+                </Button.Tag>
+            </Button>
+        </StackPanel>
+    </StackPanel>
 </UserControl>

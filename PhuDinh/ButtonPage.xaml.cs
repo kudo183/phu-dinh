@@ -13,7 +13,7 @@ namespace PhuDinh
             InitializeComponent();
         }
 
-        private void Grid_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
             var button = (e.OriginalSource as Button);
             if (button == null)

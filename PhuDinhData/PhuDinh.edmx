@@ -210,6 +210,7 @@
           <Property Name="Ma" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="MaDiaDiem" Type="int" Nullable="false" />
           <Property Name="TenKhachHang" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="KhachRieng" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="rKhachHangChanh">
           <Key>
@@ -1079,6 +1080,7 @@
           <NavigationProperty Name="rDiaDiem" Relationship="PhuDinhModel.FK_rKhachHang_rDiaDiem" FromRole="rKhachHang" ToRole="rDiaDiem" />
           <NavigationProperty Name="tDonHangs" Relationship="PhuDinhModel.FK_tDonHang_rKhachHang" FromRole="rKhachHang" ToRole="tDonHang" />
           <NavigationProperty Name="rKhachHangChanhs" Relationship="PhuDinhModel.FK_rKhachHangChanh_rKhachHang" FromRole="rKhachHang" ToRole="rKhachHangChanh" />
+          <Property Type="Boolean" Name="KhachRieng" Nullable="false" />
         </EntityType>
         <EntityType Name="rLoaiChiPhi">
           <Key>
@@ -1828,6 +1830,7 @@
           <EntitySetMapping Name="rKhachHangs">
             <EntityTypeMapping TypeName="PhuDinhModel.rKhachHang">
               <MappingFragment StoreEntitySet="rKhachHang">
+                <ScalarProperty Name="KhachRieng" ColumnName="KhachRieng" />
                 <ScalarProperty Name="TenKhachHang" ColumnName="TenKhachHang" />
                 <ScalarProperty Name="MaDiaDiem" ColumnName="MaDiaDiem" />
                 <ScalarProperty Name="Ma" ColumnName="Ma" />
