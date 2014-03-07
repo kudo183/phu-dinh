@@ -14,12 +14,12 @@ namespace PhuDinhData.ReportData
 
         public static List<ReportByMatHangData> FilterByDate(DateTime ngay)
         {
-            return Filter(p => p.tDonHang.Ngay == ngay && p.tDonHang.rKhachHang.KhachRieng == false);
+            return Filter(p => p.tDonHang.Ngay == ngay);
         }
 
         public static List<ReportByMatHangData> FilterByDate(DateTime tuNgay, DateTime denNgay)
         {
-            return Filter(p => p.tDonHang.Ngay >= tuNgay && p.tDonHang.Ngay <= denNgay && p.tDonHang.rKhachHang.KhachRieng == false);
+            return Filter(p => p.tDonHang.Ngay >= tuNgay && p.tDonHang.Ngay <= denNgay);
         }
 
         private static List<ReportByMatHangData> Filter(System.Linq.Expressions.Expression<Func<tChiTietDonHang, bool>> filter)
