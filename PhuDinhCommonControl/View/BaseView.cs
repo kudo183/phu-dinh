@@ -78,7 +78,7 @@ namespace PhuDinhCommonControl
                             MoveFocus(this, null);
                         }
                         break;
-                    case Key.X:
+                    case Key.Z:
                         Cancel();
                         break;
                 }
