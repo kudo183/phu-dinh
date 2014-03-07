@@ -57,6 +57,11 @@
                     <PhuDinhReport:ReportByMatHangView/>
                 </Button.Tag>
             </Button>
+            <Button Width="250" Height="80" FontSize="20" Margin="10" Content="Thong Ke Theo Loai Hang">
+                <Button.Tag>
+                    <PhuDinhReport:ReportByLoaiHangView/>
+                </Button.Tag>
+            </Button>
         </StackPanel>
     </StackPanel>
 </UserControl>
