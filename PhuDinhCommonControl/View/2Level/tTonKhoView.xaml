@@ -20,6 +20,7 @@
         <Menu:BottomMenu Grid.Row="1" x:Name="bmMenu" Button.Click="bmMenu_Click">
             <Menu:BottomMenu.ExtButton>
                 <Button Content="Cap Nhat Ton Kho" Margin="5" Padding="20,0"/>
+                <TextBlock Text="{Binding Message}" VerticalAlignment="Center"/>
             </Menu:BottomMenu.ExtButton>
         </Menu:BottomMenu>
     </Grid>

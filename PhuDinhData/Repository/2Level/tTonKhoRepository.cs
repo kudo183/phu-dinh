@@ -7,6 +7,11 @@ namespace PhuDinhData.Repository
 {
     public static class tTonKhoRepository
     {
+        public static int SumSoLuong(PhuDinhEntities context, Expression<Func<tTonKho, bool>> filter)
+        {
+            return GetDataQuery(context, filter).Sum(p => p.SoLuong);
+        }
+
         public static int GetDataCount(PhuDinhEntities context, Expression<Func<tTonKho, bool>> filter)
         {
             return GetDataQuery(context, filter).Count();

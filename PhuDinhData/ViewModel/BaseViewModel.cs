@@ -21,6 +21,23 @@ namespace PhuDinhData.ViewModel
 
         public IFilter<T> MainFilter { get; set; }
 
+        private string _message;
+        public string Message
+        {
+            get { return _message; } 
+            set
+            {
+                if (_message == value)
+                {
+                    return;
+                }
+
+                _message = value;
+
+                RaisePropertyChanged("Message");
+            }
+        }
+
         public event EventHandler HeaderFilterChanged;
 
         private readonly Dictionary<string, object> _defaultValues = new Dictionary<string, object>();

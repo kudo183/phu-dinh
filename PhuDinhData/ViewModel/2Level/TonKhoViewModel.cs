@@ -152,5 +152,12 @@ namespace PhuDinhData.ViewModel
                     break;
             }
         }
+
+        public override void RefreshData()
+        {
+            base.RefreshData();
+
+            Message = string.Format("Tong cong: {0} cuon", Repository.tTonKhoRepository.SumSoLuong(_context, MainFilter.Filter));
+        }
     }
 }
