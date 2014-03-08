@@ -43,6 +43,7 @@ namespace CustomControl
     [TemplatePartAttribute(Name = Pager.LastPageButtonElementName, Type = typeof(ButtonBase))]
     [TemplatePartAttribute(Name = Pager.CurrentPageIndexElementName, Type = typeof(TextBox))]
     [TemplatePartAttribute(Name = Pager.PageCountElementName, Type = typeof(TextBlock))]
+    [TemplatePartAttribute(Name = Pager.ItemCountElementName, Type = typeof(TextBlock))]
 
     [TemplatePart(Name = Pager.NextPageButtonElementName, Type = typeof(ButtonBase))]
     [TemplatePart(Name = Pager.PrevPageButtonElementName, Type = typeof(ButtonBase))]
