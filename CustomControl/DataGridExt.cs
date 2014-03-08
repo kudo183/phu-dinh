@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 
 namespace CustomControl
 {
@@ -12,6 +13,9 @@ namespace CustomControl
 
         public DataGridExt()
         {
+            RowBackground = new SolidColorBrush(Colors.LightBlue);
+            AlternatingRowBackground = new SolidColorBrush(Colors.LightGoldenrodYellow);
+            AlternationCount = 2;
             CanUserSortColumns = false;
             CanUserReorderColumns = false;
             CanUserResizeRows = false;
@@ -42,7 +46,7 @@ namespace CustomControl
 
             CurrentCell = new DataGridCellInfo(Items[row], Columns[column]);
 
-            if(callBeginEdit)
+            if (callBeginEdit)
             {
                 BeginEdit();
             }
