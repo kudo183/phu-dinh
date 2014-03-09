@@ -32,7 +32,7 @@
                                                  SelectedItemBinding="{Binding tChiTietDonHang, UpdateSourceTrigger=PropertyChanged}"
                                                  ItemsSource="{Binding tChiTietDonHangList}"/>
         <!--So luong-->
-        <CustomControl:DataGridTextRightAlignColumn x:Name="soLuongColumn" Binding="{Binding SoLuong, StringFormat=\{0:N0\}, UpdateSourceTrigger=PropertyChanged}"/>
+        <CustomControl:DataGridTextRightAlignColumn x:Name="soLuongColumn" Width="100" Binding="{Binding SoLuong, StringFormat=\{0:N0\}, UpdateSourceTrigger=PropertyChanged}"/>
         <!--So luong theo don hang-->
         <CustomControl:DataGridReadOnlyTextColumn x:Name="soLuongDonHangColumn" Header="SL theo đơn hàng" Width="SizeToHeader" Binding="{Binding SoLuongTheoDonHang}"/>
         <!--Xong-->
