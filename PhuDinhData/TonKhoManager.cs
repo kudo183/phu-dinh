@@ -157,32 +157,37 @@ namespace PhuDinhData
             BusinessLogics.BusinessLogics.UpdateTonKhosTuNgayDDenNgayN(ContextFactory.CreateContext(), begin, end);
         }
 
+        private static readonly object _lock = new object();
+
         public static void UpdateTonKho()
         {
-            var context = ContextFactory.CreateContext();
-
-            var now = DateTime.Now.Date;
-
-            var thamSoNgayCapNhatTonKhoCuoiCung = context.ThamSoNgays.FirstOrDefault(p => p.Ten == Constant.ThamSo_NgayCapNhatTonKhoCuoiCung);
-
-            if (thamSoNgayCapNhatTonKhoCuoiCung == null)
+            lock (_lock)
             {
-                thamSoNgayCapNhatTonKhoCuoiCung = context.ThamSoNgays.Add(
-                    new ThamSoNgay() { Ten = Constant.ThamSo_NgayCapNhatTonKhoCuoiCung, GiaTri = now.Subtract(new TimeSpan(1, 0, 0, 0)) });
+                var context = ContextFactory.CreateContext();
+
+                var now = DateTime.Now.Date;
+
+                var thamSoNgayCapNhatTonKhoCuoiCung = context.ThamSoNgays.FirstOrDefault(p => p.Ten == Constant.ThamSo_NgayCapNhatTonKhoCuoiCung);
+
+                if (thamSoNgayCapNhatTonKhoCuoiCung == null)
+                {
+                    thamSoNgayCapNhatTonKhoCuoiCung = context.ThamSoNgays.Add(
+                        new ThamSoNgay() { Ten = Constant.ThamSo_NgayCapNhatTonKhoCuoiCung, GiaTri = now.Subtract(new TimeSpan(1, 0, 0, 0)) });
+                }
+
+                var minDate = thamSoNgayCapNhatTonKhoCuoiCung.GiaTri;
+
+                if (minDate == now)
+                {
+                    return;
+                }
+
+                UpdateTonKho(minDate, now);
+
+                thamSoNgayCapNhatTonKhoCuoiCung.GiaTri = now;
+
+                context.SaveChanges();
             }
-
-            var minDate = thamSoNgayCapNhatTonKhoCuoiCung.GiaTri;
-
-            if (minDate == now)
-            {
-                return;
-            }
-
-            UpdateTonKho(minDate, now);
-
-            thamSoNgayCapNhatTonKhoCuoiCung.GiaTri = now;
-
-            context.SaveChanges();
         }
     }
 }
