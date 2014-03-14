@@ -67,6 +67,11 @@
                     <PhuDinhReport:ReportByDonHangView/>
                 </Button.Tag>
             </Button>
+            <Button Height="80" FontSize="20" Margin="10" Content="Thong Ke Hang Ngay">
+                <Button.Tag>
+                    <PhuDinhReport:ReportDailyView/>
+                </Button.Tag>
+            </Button>
         </StackPanel>
     </StackPanel>
 </UserControl>
