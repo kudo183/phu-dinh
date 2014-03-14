@@ -1,0 +1,13 @@
+﻿@model IEnumerable<PhuDinhData.ReportData.ReportDaily.ReportDailyData>
+@{
+    ViewBag.Title = "Bao cao hang ngay";
+    var grid = new WebGrid(Model, canPage: false, canSort: false);
+}
+
+@grid.GetHtml(columns: new[]
+{
+    grid.Column("TenKho", "Ten Kho"),
+    grid.Column("TenKhachHang", "Ten Khach Hang"),
+    grid.Column("TenMatHang", "Ten Mat Hang"),
+    grid.Column("SoLuong", "So Luong")
+})

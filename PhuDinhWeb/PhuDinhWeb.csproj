@@ -102,6 +102,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\BinhChanhController.cs" />
+    <Compile Include="Controllers\BaoCaoHangNgayController.cs" />
     <Compile Include="Controllers\DucHoaController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\PhuDinhController.cs" />
@@ -201,6 +202,7 @@
     <Content Include="Views\Error\Index.cshtml" />
     <Content Include="Views\PhuDinh\Index.cshtml" />
     <Content Include="Views\DucHoa\Index.cshtml" />
+    <Content Include="Views\BaoCaoHangNgay\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
