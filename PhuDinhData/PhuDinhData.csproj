@@ -139,6 +139,7 @@
     <Compile Include="rDiaDiem.cs">
       <DependentUpon>PhuDinh.tt</DependentUpon>
     </Compile>
+    <Compile Include="ReportData\ReportByDonHang.cs" />
     <Compile Include="ReportData\ReportByLoaiHang.cs" />
     <Compile Include="ReportData\ReportByMatHang.cs" />
     <Compile Include="Repository\0Level\rKhoHangRepository.cs" />

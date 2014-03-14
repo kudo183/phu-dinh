@@ -57,6 +57,9 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ReportByDonHangView.xaml.cs">
+      <DependentUpon>ReportByDonHangView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ReportByLoaiHangView.xaml.cs">
       <DependentUpon>ReportByLoaiHangView.xaml</DependentUpon>
     </Compile>
@@ -89,6 +92,10 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="ReportByDonHangView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="ReportByLoaiHangView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

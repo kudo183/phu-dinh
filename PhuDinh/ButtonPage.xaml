@@ -7,59 +7,64 @@
              xmlns:PhuDinhReport="clr-namespace:PhuDinhReport;assembly=PhuDinhReport" mc:Ignorable="d"
              Background="#FF627E97">
     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="50" Button.Click="Button_Click">
-        <StackPanel Orientation="Vertical">
-            <Button Width="130" Height="80" FontSize="20" Margin="10" Content="Nhan Vien">
+        <StackPanel Width="150" Orientation="Vertical">
+            <Button Height="80" FontSize="20" Margin="10" Content="Nhan Vien">
                 <Button.Tag>
                     <PhuDinhCommonControl:NhanVienView/>
                 </Button.Tag>
             </Button>
-            <Button Width="130" Height="80" FontSize="20" Margin="10" Content="Nhap Hang">
+            <Button Height="80" FontSize="20" Margin="10" Content="Nhap Hang">
                 <Button.Tag>
                     <PhuDinhCommonControl:NhapHangView/>
                 </Button.Tag>
             </Button>
-            <Button Width="130" Height="80" FontSize="20" Margin="10" Content="Don Hang">
+            <Button Height="80" FontSize="20" Margin="10" Content="Don Hang">
                 <Button.Tag>
                     <PhuDinhCommonControl:DonHangView/>
                 </Button.Tag>
             </Button>
-            <Button Width="130" Height="80" FontSize="20" Margin="10" Content="Chuyen Hang">
+            <Button Height="80" FontSize="20" Margin="10" Content="Chuyen Hang">
                 <Button.Tag>
                     <PhuDinhCommonControl:ChuyenHangView/>
                 </Button.Tag>
             </Button>
         </StackPanel>
-        <StackPanel Orientation="Vertical">
-            <Button Width="130" Height="80" FontSize="20" Margin="10" Content="Mat Hang">
+        <StackPanel Width="150" Orientation="Vertical">
+            <Button Height="80" FontSize="20" Margin="10" Content="Mat Hang">
                 <Button.Tag>
                     <PhuDinhCommonControl:MatHangView/>
                 </Button.Tag>
             </Button>
-            <Button Width="130" Height="80" FontSize="20" Margin="10" Content="Khach Hang">
+            <Button Height="80" FontSize="20" Margin="10" Content="Khach Hang">
                 <Button.Tag>
                     <PhuDinhCommonControl:KhachHangView/>
                 </Button.Tag>
             </Button>
-            <Button Width="130" Height="80" FontSize="20" Margin="10" Content="Ton Kho">
+            <Button Height="80" FontSize="20" Margin="10" Content="Ton Kho">
                 <Button.Tag>
                     <PhuDinhCommonControl:tTonKhoView/>
                 </Button.Tag>
             </Button>
-            <Button Width="130" Height="80" FontSize="20" Margin="10" Content="Chuyen Kho">
+            <Button Height="80" FontSize="20" Margin="10" Content="Chuyen Kho">
                 <Button.Tag>
                     <PhuDinhCommonControl:ChuyenKhoView/>
                 </Button.Tag>
             </Button>
         </StackPanel>
-        <StackPanel Orientation="Vertical">
-            <Button Width="250" Height="80" FontSize="20" Margin="10" Content="Thong Ke Theo Mat Hang">
+        <StackPanel Width="280" Orientation="Vertical">
+            <Button Height="80" FontSize="20" Margin="10" Content="Thong Ke Theo Mat Hang">
                 <Button.Tag>
                     <PhuDinhReport:ReportByMatHangView/>
                 </Button.Tag>
             </Button>
-            <Button Width="250" Height="80" FontSize="20" Margin="10" Content="Thong Ke Theo Loai Hang">
+            <Button Height="80" FontSize="20" Margin="10" Content="Thong Ke Theo Loai Hang">
                 <Button.Tag>
                     <PhuDinhReport:ReportByLoaiHangView/>
+                </Button.Tag>
+            </Button>
+            <Button Height="80" FontSize="20" Margin="10" Content="Thong Ke Theo Don Hang">
+                <Button.Tag>
+                    <PhuDinhReport:ReportByDonHangView/>
                 </Button.Tag>
             </Button>
         </StackPanel>
