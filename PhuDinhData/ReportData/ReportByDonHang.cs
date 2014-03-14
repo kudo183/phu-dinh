@@ -6,7 +6,7 @@ namespace PhuDinhData.ReportData
 {
     public static class ReportByDonHang
     {
-        public class ReportDailyByDonHangData
+        public class ReportByDonHangData
         {
             public string TenKho { get; set; }
             public string TenKhachHang { get; set; }
@@ -14,17 +14,17 @@ namespace PhuDinhData.ReportData
             public string SoLuong { get; set; }
         }
 
-        public static List<ReportDailyByDonHangData> FilterByDate(DateTime ngay)
+        public static List<ReportByDonHangData> FilterByDate(DateTime ngay)
         {
             return Filter(p => p.Ngay == ngay);
         }
 
-        public static List<ReportDailyByDonHangData> FilterByDate(DateTime tuNgay, DateTime denNgay)
+        public static List<ReportByDonHangData> FilterByDate(DateTime tuNgay, DateTime denNgay)
         {
             return Filter(p => p.Ngay >= tuNgay && p.Ngay <= denNgay);
         }
 
-        private static List<ReportDailyByDonHangData> Filter(System.Linq.Expressions.Expression<Func<tDonHang, bool>> filter)
+        private static List<ReportByDonHangData> Filter(System.Linq.Expressions.Expression<Func<tDonHang, bool>> filter)
         {
             var context = ContextFactory.CreateContext();
 
@@ -51,7 +51,6 @@ namespace PhuDinhData.ReportData
                 {
                     gKhoHangs.Add(donHang.MaKhoHang, new Dictionary<int, Dictionary<int, int>>());
                 }
-
                 var gKhachHangs = gKhoHangs[donHang.MaKhoHang];
                 if (gKhachHangs.ContainsKey(donHang.MaKhachHang) == false)
                 {
@@ -74,23 +73,23 @@ namespace PhuDinhData.ReportData
                 }
             }
 
-            var result = new List<ReportDailyByDonHangData>();
+            var result = new List<ReportByDonHangData>();
 
             foreach (var gKhoHang in gKhoHangs)
             {
-                result.Add(new ReportDailyByDonHangData()
+                result.Add(new ReportByDonHangData()
                 {
                     TenKho = khoHangs[gKhoHang.Key]
                 });
                 foreach (var gKhachHang in gKhoHang.Value)
                 {
-                    result.Add(new ReportDailyByDonHangData()
+                    result.Add(new ReportByDonHangData()
                     {
                         TenKhachHang = khachHangs[gKhachHang.Key]
                     });
                     foreach (var gMatHang in gKhachHang.Value)
                     {
-                        result.Add(new ReportDailyByDonHangData()
+                        result.Add(new ReportByDonHangData()
                         {
                             TenMatHang = matHangs[gMatHang.Key],
                             SoLuong = gMatHang.Value.ToString()
