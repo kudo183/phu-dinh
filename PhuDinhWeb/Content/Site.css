@@ -16,9 +16,6 @@ body {
 #main {
     padding: 15px 30px 15px 30px;
     background-color: #fff;
-    -webkit-border-radius: 4px 0 0 0;
-    -moz-border-radius: 4px 0 0 0;
-    border-radius: 4px 0 0 0;
 }
 
 #header {
@@ -32,8 +29,7 @@ body {
 table {
     border: solid 3px #e8eef4;
     border-collapse: collapse;
-    font-size: 1.5em;
-    width: 100%;
+    font-size: 0.8em;
 }
 
 table td {
@@ -42,7 +38,7 @@ table td {
 }
 
 table th {
-    padding: 6px 5px;
+    display: none;
     text-align: center;
     background-color: #e8eef4;
     color: #034af3;
@@ -50,11 +46,19 @@ table th {
 }
 
 .page {
-    width: 90%;
+    width: 99%;
     margin-left: auto;
     margin-right: auto;
 }
 
 .TenMatHangDayDu {
-    width: 70%;
+    width: 300px;
+}
+
+.TenKhachHang {
+    text-decoration: underline;
+}
+
+.TenKho {
+    font-weight: bold;
 }
