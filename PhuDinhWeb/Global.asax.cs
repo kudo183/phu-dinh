@@ -24,6 +24,12 @@ namespace PhuDinhWeb
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                "TonKho", // Route name
+                "TonKho/{*id}", // URL with parameters
+                new { controller = "TonKho", action = "Index", id = UrlParameter.Optional } // Parameter defaults
+            );
+
+            routes.MapRoute(
                 "Default", // Route name
                 "{controller}/{action}/{id}", // URL with parameters
                 new { controller = "Error", action = "Index", id = UrlParameter.Optional } // Parameter defaults

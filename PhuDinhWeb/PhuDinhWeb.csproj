@@ -101,11 +101,9 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\BinhChanhController.cs" />
     <Compile Include="Controllers\BaoCaoHangNgayController.cs" />
-    <Compile Include="Controllers\DucHoaController.cs" />
+    <Compile Include="Controllers\TonKhoController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
-    <Compile Include="Controllers\PhuDinhController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -198,11 +196,9 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
-    <Content Include="Views\BinhChanh\Index.cshtml" />
     <Content Include="Views\Error\Index.cshtml" />
-    <Content Include="Views\PhuDinh\Index.cshtml" />
-    <Content Include="Views\DucHoa\Index.cshtml" />
     <Content Include="Views\BaoCaoHangNgay\Index.cshtml" />
+    <Content Include="Views\TonKho\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

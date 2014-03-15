@@ -1,7 +1,6 @@
 ﻿@model IEnumerable<PhuDinhData.tTonKho>
 @{
-    ViewBag.Title = "Binh Chanh";
-    var grid = new WebGrid(Model, canPage:false, canSort:false);
+    var grid = new WebGrid(Model, canPage: false, canSort: false);
 }
 
 @grid.GetHtml(columns: new []
