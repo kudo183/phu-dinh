@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 namespace PhuDinhData.ReportData
 {
@@ -36,9 +37,20 @@ namespace PhuDinhData.ReportData
                 });
                 foreach (var tDonHang in donHang)
                 {
+                    var ten = tDonHang.rKhachHang.TenKhachHang;
+                    if (ten == "Chợ")
+                    {
+                        var sb = new StringBuilder();
+                        foreach (var tChuyenHangDonHang in tDonHang.tChuyenHangDonHangs)
+                        {
+                            sb.AppendFormat("{0}, ", tChuyenHangDonHang.tChuyenHang.rNhanVien.TenNhanVien);
+                        }
+                        ten = string.Format("{0} ({1})", ten, sb.ToString(0, sb.Length - 2));
+                    }
+
                     result.Add(new ReportDailyData()
                     {
-                        TenKhachHang = tDonHang.rKhachHang.TenKhachHang
+                        TenKhachHang = ten
                     });
                     foreach (var tChiTietDonHang in tDonHang.tChiTietDonHangs)
                     {
