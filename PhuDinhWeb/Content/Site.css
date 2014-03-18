@@ -3,6 +3,11 @@ The base color for this template is #5c87b2. If you'd like
 to use a different color start by replacing all instances of
 #5c87b2 with your new color.
 ----------------------------------------------------------*/
+@media print {
+    .no-print {
+        display: none;
+    }
+}
 
 body {
     background-color: #5c87b2;
@@ -18,32 +23,24 @@ body {
     background-color: #fff;
 }
 
-#header {
-    text-align: center;
-    font-weight: bold;
-    color: #5c87b2;
-    font-size: 1.5em;
-    padding: 15px 0px 15px 0px;
-}
-
 table {
     border: solid 3px #e8eef4;
     border-collapse: collapse;
     font-size: 0.65em;
 }
 
-table td {
-    padding: 5px;
-    border: solid 1px #e8eef4;
-}
+    table td {
+        padding: 5px;
+        border: solid 1px #e8eef4;
+    }
 
-table th {
-    display: none;
-    text-align: center;
-    background-color: #e8eef4;
-    color: #034af3;
-    border: solid 1px #e8eef4;
-}
+    table th {
+        display: none;
+        text-align: center;
+        background-color: #e8eef4;
+        color: #034af3;
+        border: solid 1px #e8eef4;
+    }
 
 .page {
     width: 99%;
@@ -62,3 +59,20 @@ table th {
 .TenKho {
     font-weight: bold;
 }
+
+ul#menu li {
+    display: inline;
+    list-style: none;
+}
+
+    ul#menu li a {
+        padding: 5px 10px;
+        font-size: 0.65em;
+        font-weight: bold;
+        text-decoration: none;
+        background-color: #e8eef4;
+        color: #034af3;
+        -webkit-border-radius: 4px 4px 0 0;
+        -moz-border-radius: 4px 4px 0 0;
+        border-radius: 4px 4px 0 0;
+    }
