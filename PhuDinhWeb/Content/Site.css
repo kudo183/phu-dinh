@@ -3,11 +3,6 @@ The base color for this template is #5c87b2. If you'd like
 to use a different color start by replacing all instances of
 #5c87b2 with your new color.
 ----------------------------------------------------------*/
-@media print {
-    .no-print {
-        display: none;
-    }
-}
 
 body {
     background-color: #5c87b2;
@@ -19,14 +14,13 @@ body {
 }
 
 #main {
-    padding: 15px 30px 15px 30px;
     background-color: #fff;
 }
 
 table {
     border: solid 3px #e8eef4;
     border-collapse: collapse;
-    font-size: 0.65em;
+    font-size: 0.75em;
 }
 
     table td {
@@ -44,8 +38,8 @@ table {
 
 .page {
     width: 99%;
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
 .TenMatHangDayDu {
@@ -60,6 +54,11 @@ table {
     font-weight: bold;
 }
 
+ul#menu {
+    padding: 0px 0px 0px 5px;
+    margin: 0px 0px 5px 0px;
+}
+
 ul#menu li {
     display: inline;
     list-style: none;
@@ -67,7 +66,7 @@ ul#menu li {
 
     ul#menu li a {
         padding: 5px 10px;
-        font-size: 0.65em;
+        font-size: 0.5em;
         font-weight: bold;
         text-decoration: none;
         background-color: #e8eef4;
@@ -76,3 +75,15 @@ ul#menu li {
         -moz-border-radius: 4px 4px 0 0;
         border-radius: 4px 4px 0 0;
     }
+
+@media print {
+    .no-print {
+        display: none;
+    }
+
+    table {
+        border: solid 3px #e8eef4;
+        border-collapse: collapse;
+        font-size: 0.65em;
+    }
+}
