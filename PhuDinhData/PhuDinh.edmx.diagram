@@ -70,6 +70,9 @@
         <AssociationConnector Association="PhuDinhModel.FK_tChiTietChuyenKho_tChuyenKho" />
         <AssociationConnector Association="PhuDinhModel.FK_tChiTietChuyenKho_tMatHang" />
         <EntityTypeShape EntityType="PhuDinhModel.ThamSoNgay" Width="1.5" PointX="0.57975114163931041" PointY="1.7956850090044014" />
+        <EntityTypeShape EntityType="PhuDinhModel.rCanhBaoTonKho" Width="1.5" PointX="7.2264964632813342" PointY="1.5107152171017206" />
+        <AssociationConnector Association="PhuDinhModel.FK_rCanhBaoTonKho_rKhoHang" />
+        <AssociationConnector Association="PhuDinhModel.FK_rCanhBaoTonKho_tMatHang" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

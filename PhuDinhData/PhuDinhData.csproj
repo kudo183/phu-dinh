@@ -60,6 +60,7 @@
     <Compile Include="DesignTimeData\0Level\DDrNhaCungCap.cs" />
     <Compile Include="DesignTimeData\0Level\DDrLoaiNguyenLieu.cs" />
     <Compile Include="DesignTimeData\1Level\DDrNguyenLieu.cs" />
+    <Compile Include="DesignTimeData\2Level\DDrCanhBaoTonKho.cs" />
     <Compile Include="DesignTimeData\2Level\DDtChuyenKho.cs" />
     <Compile Include="DesignTimeData\2Level\DDtTonKho.cs" />
     <Compile Include="DesignTimeData\2Level\DDtNhapHang.cs" />
@@ -92,6 +93,7 @@
     <Compile Include="EntityExt\0Level\rLoaiNguyenLieuExt.cs" />
     <Compile Include="EntityExt\0Level\rBaiXeExt.cs" />
     <Compile Include="EntityExt\0Level\rNuocExt.cs" />
+    <Compile Include="EntityExt\2Level\rCanhBaoTonKhoExt.cs" />
     <Compile Include="EntityExt\2Level\tChuyenKhoExt.cs" />
     <Compile Include="EntityExt\2Level\tTonKhoExt.cs" />
     <Compile Include="EntityExt\2Level\tNhapHangExt.cs" />
@@ -118,6 +120,7 @@
     <Compile Include="Filter\1Level\Filter_rNguyenLieu.cs" />
     <Compile Include="Filter\1Level\Filter_tMatHang.cs" />
     <Compile Include="Filter\1Level\Filter_rDiaDiem.cs" />
+    <Compile Include="Filter\2Level\Filter_rCanhBaoTonKho.cs" />
     <Compile Include="Filter\2Level\Filter_tChuyenKho.cs" />
     <Compile Include="Filter\2Level\Filter_tTonKho.cs" />
     <Compile Include="Filter\2Level\Filter_tNhapHang.cs" />
@@ -136,6 +139,9 @@
     <Compile Include="Filter\5Level\Filter_tChiTietChuyenHangDonHang.cs" />
     <Compile Include="Filter\FilterBase.cs" />
     <Compile Include="Filter\IFilter.cs" />
+    <Compile Include="rCanhBaoTonKho.cs">
+      <DependentUpon>PhuDinh.tt</DependentUpon>
+    </Compile>
     <Compile Include="rDiaDiem.cs">
       <DependentUpon>PhuDinh.tt</DependentUpon>
     </Compile>
@@ -144,6 +150,7 @@
     <Compile Include="ReportData\ReportByLoaiHang.cs" />
     <Compile Include="ReportData\ReportByMatHang.cs" />
     <Compile Include="Repository\0Level\rKhoHangRepository.cs" />
+    <Compile Include="Repository\2Level\rCanhBaoTonKhoRepository.cs" />
     <Compile Include="Repository\2Level\tChuyenKhoRepository.cs" />
     <Compile Include="Repository\2Level\tTonKhoRepository.cs" />
     <Compile Include="Repository\2Level\tNhapHangRepository.cs" />
@@ -295,6 +302,7 @@
     <Compile Include="ViewModel\2Level\ChiPhiViewModel.cs" />
     <Compile Include="ViewModel\2Level\ChuyenHangViewModel.cs" />
     <Compile Include="ViewModel\2Level\ChuyenKhoViewModel.cs" />
+    <Compile Include="ViewModel\2Level\CanhBaoTonKhoViewModel.cs" />
     <Compile Include="ViewModel\2Level\TonKhoViewModel.cs" />
     <Compile Include="ViewModel\2Level\NhapHangViewModel.cs" />
     <Compile Include="ViewModel\2Level\NhapNguyenLieuViewModel.cs" />

@@ -7,10 +7,15 @@
              xmlns:PhuDinhReport="clr-namespace:PhuDinhReport;assembly=PhuDinhReport" mc:Ignorable="d"
              Background="#FF627E97">
     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="50" Button.Click="Button_Click">
-        <StackPanel Width="150" Orientation="Vertical">
+        <StackPanel Width="200" Orientation="Vertical">
             <Button Height="80" FontSize="20" Margin="10" Content="Tat ca">
                 <Button.Tag>
                     <PhuDinhCommonControl:AdminView/>
+                </Button.Tag>
+            </Button>
+            <Button Height="80" FontSize="20" Margin="10" Content="Canh Bao Ton Kho">
+                <Button.Tag>
+                    <PhuDinhCommonControl:rCanhBaoTonKhoView/>
                 </Button.Tag>
             </Button>
         </StackPanel>

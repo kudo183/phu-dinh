@@ -7,6 +7,7 @@
     <Schema Namespace="PhuDinhModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="PhuDinhModelStoreContainer">
           <EntitySet Name="rBaiXe" EntityType="PhuDinhModel.Store.rBaiXe" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="rCanhBaoTonKho" EntityType="PhuDinhModel.Store.rCanhBaoTonKho" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="rChanh" EntityType="PhuDinhModel.Store.rChanh" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="rDiaDiem" EntityType="PhuDinhModel.Store.rDiaDiem" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="rKhachHang" EntityType="PhuDinhModel.Store.rKhachHang" store:Type="Tables" Schema="dbo" />
@@ -35,6 +36,14 @@
           <EntitySet Name="tNhapNguyenLieu" EntityType="PhuDinhModel.Store.tNhapNguyenLieu" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="tTonKho" EntityType="PhuDinhModel.Store.tTonKho" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="ThamSoNgay" EntityType="PhuDinhModel.Store.ThamSoNgay" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_rCanhBaoTonKho_rKhoHang" Association="PhuDinhModel.Store.FK_rCanhBaoTonKho_rKhoHang">
+            <End Role="rKhoHang" EntitySet="rKhoHang" />
+            <End Role="rCanhBaoTonKho" EntitySet="rCanhBaoTonKho" />
+          </AssociationSet>
+          <AssociationSet Name="FK_rCanhBaoTonKho_tMatHang" Association="PhuDinhModel.Store.FK_rCanhBaoTonKho_tMatHang">
+            <End Role="tMatHang" EntitySet="tMatHang" />
+            <End Role="rCanhBaoTonKho" EntitySet="rCanhBaoTonKho" />
+          </AssociationSet>
           <AssociationSet Name="FK_rChanh_rBaiXe" Association="PhuDinhModel.Store.FK_rChanh_rBaiXe">
             <End Role="rBaiXe" EntitySet="rBaiXe" />
             <End Role="rChanh" EntitySet="rChanh" />
@@ -186,6 +195,16 @@
           </Key>
           <Property Name="Ma" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="DiaDiemBaiXe" Type="nvarchar" Nullable="false" MaxLength="300" />
+        </EntityType>
+        <EntityType Name="rCanhBaoTonKho">
+          <Key>
+            <PropertyRef Name="Ma" />
+          </Key>
+          <Property Name="Ma" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="MaMatHang" Type="int" Nullable="false" />
+          <Property Name="MaKhoHang" Type="int" Nullable="false" />
+          <Property Name="TonCaoNhat" Type="int" Nullable="false" />
+          <Property Name="TonThapNhat" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="rChanh">
           <Key>
@@ -430,6 +449,30 @@
           <Property Name="Ten" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="GiaTri" Type="date" Nullable="false" />
         </EntityType>
+        <Association Name="FK_rCanhBaoTonKho_rKhoHang">
+          <End Role="rKhoHang" Type="PhuDinhModel.Store.rKhoHang" Multiplicity="1" />
+          <End Role="rCanhBaoTonKho" Type="PhuDinhModel.Store.rCanhBaoTonKho" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="rKhoHang">
+              <PropertyRef Name="Ma" />
+            </Principal>
+            <Dependent Role="rCanhBaoTonKho">
+              <PropertyRef Name="MaKhoHang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_rCanhBaoTonKho_tMatHang">
+          <End Role="tMatHang" Type="PhuDinhModel.Store.tMatHang" Multiplicity="1" />
+          <End Role="rCanhBaoTonKho" Type="PhuDinhModel.Store.rCanhBaoTonKho" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tMatHang">
+              <PropertyRef Name="Ma" />
+            </Principal>
+            <Dependent Role="rCanhBaoTonKho">
+              <PropertyRef Name="MaMatHang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_rChanh_rBaiXe">
           <End Role="rBaiXe" Type="PhuDinhModel.Store.rBaiXe" Multiplicity="1" />
           <End Role="rChanh" Type="PhuDinhModel.Store.rChanh" Multiplicity="*" />
@@ -1040,6 +1083,15 @@
             <End Role="tChiTietChuyenKho" EntitySet="tChiTietChuyenKhoes" />
           </AssociationSet>
           <EntitySet Name="ThamSoNgays" EntityType="PhuDinhModel.ThamSoNgay" />
+          <EntitySet Name="rCanhBaoTonKhoes" EntityType="PhuDinhModel.rCanhBaoTonKho" />
+          <AssociationSet Name="FK_rCanhBaoTonKho_rKhoHang" Association="PhuDinhModel.FK_rCanhBaoTonKho_rKhoHang">
+            <End Role="rKhoHang" EntitySet="rKhoHangs" />
+            <End Role="rCanhBaoTonKho" EntitySet="rCanhBaoTonKhoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_rCanhBaoTonKho_tMatHang" Association="PhuDinhModel.FK_rCanhBaoTonKho_tMatHang">
+            <End Role="tMatHang" EntitySet="tMatHangs" />
+            <End Role="rCanhBaoTonKho" EntitySet="rCanhBaoTonKhoes" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="rBaiXe">
           <Key>
@@ -1192,6 +1244,7 @@
           <NavigationProperty Name="tTonKhoes" Relationship="PhuDinhModel.FK_tTonKho_tMatHang" FromRole="tMatHang" ToRole="tTonKho" />
           <NavigationProperty Name="tChiTietNhapHangs" Relationship="PhuDinhModel.FK_tNhapMatHang_tMatHang1" FromRole="tMatHang" ToRole="tChiTietNhapHang" />
           <NavigationProperty Name="tChiTietChuyenKhoes" Relationship="PhuDinhModel.FK_tChiTietChuyenKho_tMatHang" FromRole="tMatHang" ToRole="tChiTietChuyenKho" />
+          <NavigationProperty Name="rCanhBaoTonKhoes" Relationship="PhuDinhModel.FK_rCanhBaoTonKho_tMatHang" FromRole="tMatHang" ToRole="rCanhBaoTonKho" />
         </EntityType>
         <Association Name="FK_rChanh_rBaiXe">
           <End Type="PhuDinhModel.rBaiXe" Role="rBaiXe" Multiplicity="1" />
@@ -1568,6 +1621,7 @@
           <NavigationProperty Name="tNhapHangs" Relationship="PhuDinhModel.FK_tNhapHang_rKhoHang" FromRole="rKhoHang" ToRole="tNhapHang" />
           <NavigationProperty Name="tChuyenKhoes" Relationship="PhuDinhModel.FK_tChuyenKho_rKhoHangNhap" FromRole="rKhoHang" ToRole="tChuyenKho" />
           <NavigationProperty Name="tChuyenKhoes1" Relationship="PhuDinhModel.FK_tChuyenKho_rKhoHangXuat" FromRole="rKhoHang" ToRole="tChuyenKho" />
+          <NavigationProperty Name="rCanhBaoTonKhoes" Relationship="PhuDinhModel.FK_rCanhBaoTonKho_rKhoHang" FromRole="rKhoHang" ToRole="rCanhBaoTonKho" />
         </EntityType>
         <Association Name="FK_tDonHang_rKhoHang">
           <End Type="PhuDinhModel.rKhoHang" Role="rKhoHang" Multiplicity="1" />
@@ -1795,6 +1849,42 @@
           <Property Type="String" Name="Ten" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="DateTime" Name="GiaTri" Nullable="false" Precision="0" />
         </EntityType>
+        <EntityType Name="rCanhBaoTonKho">
+          <Key>
+            <PropertyRef Name="Ma" />
+          </Key>
+          <Property Type="Int32" Name="Ma" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="MaMatHang" Nullable="false" />
+          <Property Type="Int32" Name="MaKhoHang" Nullable="false" />
+          <Property Type="Int32" Name="TonCaoNhat" Nullable="false" />
+          <Property Type="Int32" Name="TonThapNhat" Nullable="false" />
+          <NavigationProperty Name="rKhoHang" Relationship="PhuDinhModel.FK_rCanhBaoTonKho_rKhoHang" FromRole="rCanhBaoTonKho" ToRole="rKhoHang" />
+          <NavigationProperty Name="tMatHang" Relationship="PhuDinhModel.FK_rCanhBaoTonKho_tMatHang" FromRole="rCanhBaoTonKho" ToRole="tMatHang" />
+        </EntityType>
+        <Association Name="FK_rCanhBaoTonKho_rKhoHang">
+          <End Type="PhuDinhModel.rKhoHang" Role="rKhoHang" Multiplicity="1" />
+          <End Type="PhuDinhModel.rCanhBaoTonKho" Role="rCanhBaoTonKho" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="rKhoHang">
+              <PropertyRef Name="Ma" />
+            </Principal>
+            <Dependent Role="rCanhBaoTonKho">
+              <PropertyRef Name="MaKhoHang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_rCanhBaoTonKho_tMatHang">
+          <End Type="PhuDinhModel.tMatHang" Role="tMatHang" Multiplicity="1" />
+          <End Type="PhuDinhModel.rCanhBaoTonKho" Role="rCanhBaoTonKho" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tMatHang">
+              <PropertyRef Name="Ma" />
+            </Principal>
+            <Dependent Role="rCanhBaoTonKho">
+              <PropertyRef Name="MaMatHang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2077,6 +2167,17 @@
               <MappingFragment StoreEntitySet="ThamSoNgay">
                 <ScalarProperty Name="GiaTri" ColumnName="GiaTri" />
                 <ScalarProperty Name="Ten" ColumnName="Ten" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="rCanhBaoTonKhoes">
+            <EntityTypeMapping TypeName="PhuDinhModel.rCanhBaoTonKho">
+              <MappingFragment StoreEntitySet="rCanhBaoTonKho">
+                <ScalarProperty Name="TonThapNhat" ColumnName="TonThapNhat" />
+                <ScalarProperty Name="TonCaoNhat" ColumnName="TonCaoNhat" />
+                <ScalarProperty Name="MaKhoHang" ColumnName="MaKhoHang" />
+                <ScalarProperty Name="MaMatHang" ColumnName="MaMatHang" />
+                <ScalarProperty Name="Ma" ColumnName="Ma" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
