@@ -62,6 +62,7 @@ namespace PhuDinhData.ViewModel
 
             Header_Ngay.PropertyChanged -= Header_Ngay_PropertyChanged;
             Header_MatHang.PropertyChanged -= Header_MatHang_PropertyChanged;
+            Header_KhoHang.PropertyChanged -= Header_KhoHang_PropertyChanged;
 
             _filterDate = Header_Ngay.Date;
             _isUsedDateFilter = Header_Ngay.IsUsed;
