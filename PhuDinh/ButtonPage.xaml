@@ -8,6 +8,13 @@
              Background="#FF627E97">
     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="50" Button.Click="Button_Click">
         <StackPanel Width="150" Orientation="Vertical">
+            <Button Height="80" FontSize="20" Margin="10" Content="Tat ca">
+                <Button.Tag>
+                    <PhuDinhCommonControl:AdminView/>
+                </Button.Tag>
+            </Button>
+        </StackPanel>
+        <StackPanel Width="150" Orientation="Vertical">
             <Button Height="80" FontSize="20" Margin="10" Content="Nhan Vien">
                 <Button.Tag>
                     <PhuDinhCommonControl:NhanVienView/>
