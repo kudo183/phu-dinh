@@ -189,5 +189,10 @@ namespace PhuDinhData
                 context.SaveChanges();
             }
         }
+
+        public static IEnumerable<tTonKho> GetTonKho(Filter.Filter_tTonKho filter)
+        {
+            return RepositoryLocator<tTonKho>.GetData(ContextFactory.CreateContext(), filter.Filter);
+        }
     }
 }

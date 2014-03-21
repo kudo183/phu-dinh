@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using PhuDinhData;
+using PhuDinhData.Filter;
 
 namespace PhuDinhWeb.Controllers
 {
@@ -27,12 +28,16 @@ namespace PhuDinhWeb.Controllers
 
             TonKhoManager.UpdateTonKho();
 
-            var context = ContextFactory.CreateContext();
             var now = DateTime.Now.Date;
 
             var kho = _khos[parameters[0].ToLower()];
 
             ViewBag.TiTle = _titles[kho];
+
+            var filter = new Filter_tTonKho();
+
+            filter.SetFilter(Filter_tTonKho.MaKhoHang, kho);
+            filter.SetFilter(Filter_tTonKho.Ngay, now);
 
             if (parameters.Length > 1)
             {
@@ -40,13 +45,10 @@ namespace PhuDinhWeb.Controllers
 
                 ViewBag.TiTle = string.Format("{0} - {1}", _titles[kho], _titlesLoai[loai]);
 
-                return View(context.tTonKhoes.Where(p => p.MaKhoHang == kho && p.Ngay == now && p.tMatHang.TenMatHang.Contains("ChTQ") == loai)
-                .OrderBy(p => p.tMatHang.TenMatHangDayDu).ToList());
-
+                filter.SetFilter(loai == false ? Filter_tTonKho.KhongTenMatHang : Filter_tTonKho.TenMatHang, "ChTQ");
             }
 
-            return View(context.tTonKhoes.Where(p => p.MaKhoHang == kho && p.Ngay == now)
-            .OrderBy(p => p.tMatHang.TenMatHangDayDu).ToList());
+            return View(TonKhoManager.GetTonKho(filter).OrderBy(p => p.tMatHang.TenMatHangDayDu));
         }
     }
 }
