@@ -23,6 +23,8 @@ namespace PhuDinhData.Filter
         protected readonly Dictionary<string, Expression<Func<T, bool>>> _filters
             = new Dictionary<string, Expression<Func<T, bool>>>();
 
+        protected readonly Dictionary<string, object> _filtersValue = new Dictionary<string, object>();
+
         protected Expression<Func<T, bool>> FilterNullable(object value, bool setFalse, Expression<Func<T, bool>> filter)
         {
             Expression<Func<T, bool>> result;
@@ -79,5 +81,10 @@ namespace PhuDinhData.Filter
         }
 
         public abstract void SetFilter(string key, object value, bool setFalse = false);
+
+        public virtual object GetFilterValue(string key)
+        {
+            return _filtersValue.ContainsKey(key) ? _filtersValue[key] : null;
+        }
     }
 }

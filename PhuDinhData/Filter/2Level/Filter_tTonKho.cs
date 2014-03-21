@@ -24,6 +24,8 @@ namespace PhuDinhData.Filter
 
         public override void SetFilter(string key, object value, bool setFalse = false)
         {
+            _filtersValue[key] = value;
+
             switch (key)
             {
                 case MaMatHang:

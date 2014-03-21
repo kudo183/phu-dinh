@@ -192,7 +192,36 @@ namespace PhuDinhData
 
         public static IEnumerable<tTonKho> GetTonKho(Filter.Filter_tTonKho filter)
         {
-            return RepositoryLocator<tTonKho>.GetData(ContextFactory.CreateContext(), filter.Filter);
+            var context = ContextFactory.CreateContext();
+
+            var kho = filter.GetFilterValue(Filter.Filter_tTonKho.MaKhoHang);
+
+            var filterCanhBaoTonKho = new Filter.Filter_rCanhBaoTonKho();
+            filterCanhBaoTonKho.SetFilter(Filter.Filter_rCanhBaoTonKho.MaKhoHang, kho);
+
+            var canhBaoTonKhos = RepositoryLocator<rCanhBaoTonKho>.GetData(context, filterCanhBaoTonKho.Filter).ToDictionary(p => p.MaMatHang);
+
+            var result = RepositoryLocator<tTonKho>.GetData(context, filter.Filter);
+
+            foreach (var tTonKho in result)
+            {
+                tTonKho.CanhBao = 0;
+                if (canhBaoTonKhos.ContainsKey(tTonKho.MaMatHang) == false)
+                {
+                    continue;
+                }
+
+                if (tTonKho.SoLuong < canhBaoTonKhos[tTonKho.MaMatHang].TonThapNhat)
+                {
+                    tTonKho.CanhBao = -1;
+                }
+                else if (tTonKho.SoLuong > canhBaoTonKhos[tTonKho.MaMatHang].TonCaoNhat)
+                {
+                    tTonKho.CanhBao = 1;
+                }
+            }
+
+            return result;
         }
     }
 }

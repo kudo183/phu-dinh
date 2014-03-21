@@ -1,10 +1,11 @@
-﻿@model IEnumerable<PhuDinhData.tTonKho>
+﻿@using PhuDinhWeb
+@model IEnumerable<PhuDinhData.tTonKho>
 @{
     var grid = new WebGrid(Model, canPage: false, canSort: false);
 }
 
-@grid.GetHtml(columns: new []
+@grid.GetHtml(columns: new[]
 {
     grid.Column("tMatHang.TenMatHangDayDu", "Mat Hang", style:"TenMatHangDayDu"),
-    grid.Column("SoLuong", "So Luong", style:"SoLuong")
+    grid.Column("SoLuong", "So Luong", style:"SoLuong", format: item => Html.FormatSoLuongTonKho(item.Value as PhuDinhData.tTonKho))
 })
