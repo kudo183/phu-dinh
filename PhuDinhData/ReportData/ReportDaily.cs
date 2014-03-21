@@ -41,11 +41,16 @@ namespace PhuDinhData.ReportData
                     if (ten == "Chợ")
                     {
                         var sb = new StringBuilder();
-                        foreach (var tChuyenHangDonHang in tDonHang.tChuyenHangDonHangs)
+
+                        if (tDonHang.tChuyenHangDonHangs.Count > 0)
                         {
-                            sb.AppendFormat("{0}, ", tChuyenHangDonHang.tChuyenHang.rNhanVien.TenNhanVien);
+                            foreach (var tChuyenHangDonHang in tDonHang.tChuyenHangDonHangs)
+                            {
+                                sb.AppendFormat("{0}, ", tChuyenHangDonHang.tChuyenHang.rNhanVien.TenNhanVien);
+                            }
+
+                            ten = string.Format("{0} ({1})", ten, sb.ToString(0, sb.Length - 2));
                         }
-                        ten = string.Format("{0} ({1})", ten, sb.ToString(0, sb.Length - 2));
                     }
 
                     result.Add(new ReportDailyData()
