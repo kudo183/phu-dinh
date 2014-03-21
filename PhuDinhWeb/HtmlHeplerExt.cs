@@ -23,5 +23,24 @@ namespace PhuDinhWeb
 
             return new HtmlString(result);
         }
+
+        public static IHtmlString FormatTenMatHangTonKho(this HtmlHelper helper, PhuDinhData.tTonKho t)
+        {
+            var result = "<font color=\"{0}\">{1}</font> ";
+            if (t.CanhBao == 0)
+            {
+                result = t.tMatHang.TenMatHangDayDu;
+            }
+            else if (t.CanhBao < 0)
+            {
+                result = string.Format(result, "red", t.tMatHang.TenMatHangDayDu);
+            }
+            else if (t.CanhBao > 0)
+            {
+                result = string.Format(result, "blue", t.tMatHang.TenMatHangDayDu);
+            }
+
+            return new HtmlString(result);
+        }
     }
 }

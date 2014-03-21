@@ -6,6 +6,6 @@
 
 @grid.GetHtml(columns: new[]
 {
-    grid.Column("tMatHang.TenMatHangDayDu", "Mat Hang", style:"TenMatHangDayDu"),
-    grid.Column("SoLuong", "So Luong", style:"SoLuong", format: item => Html.FormatSoLuongTonKho(item.Value as PhuDinhData.tTonKho))
+    grid.Column(header: "Mat Hang", style:"TenMatHangDayDu", format: item => Html.FormatTenMatHangTonKho(item.Value as PhuDinhData.tTonKho)),
+    grid.Column(header: "So Luong", style:"SoLuong", format: item => Html.FormatSoLuongTonKho(item.Value as PhuDinhData.tTonKho))
 })
