@@ -7,6 +7,7 @@ using PhuDinhData.Filter;
 
 namespace PhuDinhWeb.Controllers
 {
+    [Authorize]
     public class TonKhoController : Controller
     {
         private readonly Dictionary<string, int> _khos;
