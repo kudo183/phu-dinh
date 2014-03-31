@@ -21,6 +21,29 @@ namespace PhuDinhReport
 
         private void btnNgay_Click(object sender, System.Windows.RoutedEventArgs e)
         {
+            ShowReportNgay();
+        }
+
+        private void btnPrev_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            var ngay = dpNgay.SelectedDate.Value.Date;
+
+            dpNgay.SelectedDate = ngay.AddDays(-1);
+
+            ShowReportNgay();
+        }
+
+        private void btnNext_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            var ngay = dpNgay.SelectedDate.Value.Date;
+
+            dpNgay.SelectedDate = ngay.AddDays(1);
+
+            ShowReportNgay();
+        }
+
+        private void ShowReportNgay()
+        {
             var ngay = dpNgay.SelectedDate.Value.Date;
 
             dg.ItemsSource = ReportByMatHang.FilterByDate(ngay);
@@ -34,5 +57,6 @@ namespace PhuDinhReport
 
             dg.ItemsSource = ReportByMatHang.FilterByDate(tuNgay, denNgay);
         }
+
     }
 }
