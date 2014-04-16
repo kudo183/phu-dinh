@@ -33,7 +33,7 @@ namespace PhuDinhCommonControl
             switch (header.Name)
             {
                 case Constant.ColumnName_NhanVien:
-                    view = new rNguyenLieuView();
+                    view = new rNhanVienView();
                     ChildWindowUtils.ShowChildWindow(Constant.ViewName_NhanVien, view);
 
                     _viewModel.UpdateReferenceData(header.Name);
