@@ -48,7 +48,7 @@ namespace PhuDinhData.Filter
             return result;
         }
 
-        protected Expression<Func<T, bool>> FilterText(string text, bool setFalse, Expression<Func<T, bool>> filter)
+        protected Expression<Func<T, bool>> FilterText(string text, bool setFalse, string propertyPath)
         {
             Expression<Func<T, bool>> result;
 
@@ -64,7 +64,39 @@ namespace PhuDinhData.Filter
                 }
                 else
                 {
-                    result = filter;
+                    var pe = Expression.Parameter(typeof(T), "p");
+
+                    Expression left = pe;
+                    foreach (var property in propertyPath.Split('.'))
+                    {
+                        left = Expression.Property(left, property);
+                    }
+
+                    if (text[0] == '$')
+                    {
+                        text = text.Substring(1, text.Length - 1);
+                        Expression right = Expression.Constant(text);
+                        var predicateBody = Expression.Equal(left, right);
+
+                        result = Expression.Lambda<Func<T, bool>>(predicateBody, new[] { pe });
+                    }
+                    else if (text[0] == '#')
+                    {
+                        text = text.Substring(1, text.Length - 1);
+                        Expression right = Expression.Constant(text);
+
+                        var predicateBody = Expression.Call(left, "Contains", null, new[] { right });
+
+                        result = Expression.Lambda<Func<T, bool>>(Expression.Not(predicateBody), new[] { pe });
+                    }
+                    else
+                    {
+                        Expression right = Expression.Constant(text);
+
+                        var predicateBody = Expression.Call(left, "Contains", null, new[] { right });
+
+                        result = Expression.Lambda<Func<T, bool>>(predicateBody, new[] { pe });
+                    }
                 }
             }
             return result;

@@ -23,7 +23,7 @@
 
         private void SetFilterDiaDiemBaiXe(string diaDiemBaiXe, bool setFalse = false)
         {
-            _filters[DiaDiemBaiXe] = FilterText(diaDiemBaiXe, setFalse, p => p.DiaDiemBaiXe.Contains(diaDiemBaiXe));
+            _filters[DiaDiemBaiXe] = FilterText(diaDiemBaiXe, setFalse, "DiaDiemBaiXe");
 
             UpdateMainFilter();
         }

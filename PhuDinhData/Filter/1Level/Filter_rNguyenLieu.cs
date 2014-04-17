@@ -35,7 +35,7 @@
 
         private void SetFilterTenLoaiNguyenLieu(string tenLoaiNguyenLieu, bool setFalse = false)
         {
-            _filters[TenLoaiNguyenLieu] = FilterText(tenLoaiNguyenLieu, setFalse, p => p.rLoaiNguyenLieu.TenLoai.Contains(tenLoaiNguyenLieu));
+            _filters[TenLoaiNguyenLieu] = FilterText(tenLoaiNguyenLieu, setFalse, "rLoaiNguyenLieu.TenLoai");
 
             UpdateMainFilter();
         }

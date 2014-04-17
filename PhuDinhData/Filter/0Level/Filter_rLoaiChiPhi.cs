@@ -23,7 +23,7 @@
 
         private void SetFilterTenLoaiChiPhi(string tenLoaiChiPhi, bool setFalse = false)
         {
-            _filters[TenLoaiChiPhi] = FilterText(tenLoaiChiPhi, setFalse, p => p.TenLoaiChiPhi.Contains(tenLoaiChiPhi));
+            _filters[TenLoaiChiPhi] = FilterText(tenLoaiChiPhi, setFalse, "TenLoaiChiPhi");
 
             UpdateMainFilter();
         }

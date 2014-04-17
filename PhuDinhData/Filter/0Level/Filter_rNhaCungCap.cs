@@ -23,7 +23,7 @@
 
         private void SetFilterTenNhaCungCap(string tenNhaCungCap, bool setFalse = false)
         {
-            _filters[TenNhaCungCap] = FilterText(tenNhaCungCap, setFalse, p => p.TenNhaCungCap.Contains(tenNhaCungCap));
+            _filters[TenNhaCungCap] = FilterText(tenNhaCungCap, setFalse, "TenNhaCungCap");
 
             UpdateMainFilter();
         }

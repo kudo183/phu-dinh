@@ -45,7 +45,7 @@
         private void SetFilterTenChuyenHang(string tenChuyenHang, bool setFalse = false)
         {
             _filters[TenChuyenHang] =
-                FilterText(tenChuyenHang, setFalse, p => p.tChuyenHang.TenChuyenHang.Contains(tenChuyenHang));
+                FilterText(tenChuyenHang, setFalse, "tChuyenHang.TenChuyenHang");
 
             UpdateMainFilter();
         }
@@ -60,7 +60,7 @@
         private void SetFilterTenDonHang(string tenDonHang, bool setFalse = false)
         {
             _filters[TenDonHang] =
-                FilterText(tenDonHang, setFalse, p => p.tDonHang.TenDonHang.Contains(tenDonHang));
+                FilterText(tenDonHang, setFalse, "tDonHang.TenDonHang");
 
             UpdateMainFilter();
         }

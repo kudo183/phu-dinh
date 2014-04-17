@@ -23,7 +23,7 @@
 
         private void SetFilterTenPhuongTien(string tenPhuongTien, bool setFalse = false)
         {
-            _filters[TenPhuongTien] = FilterText(tenPhuongTien, setFalse, p => p.TenPhuongTien.Contains(tenPhuongTien));
+            _filters[TenPhuongTien] = FilterText(tenPhuongTien, setFalse, "TenPhuongTien");
 
             UpdateMainFilter();
         }

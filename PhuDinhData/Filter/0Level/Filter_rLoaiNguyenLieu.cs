@@ -23,7 +23,7 @@
 
         private void SetFilterTenLoai(string tenLoai, bool setFalse = false)
         {
-            _filters[TenLoai] = FilterText(tenLoai, setFalse, p => p.TenLoai.Contains(tenLoai));
+            _filters[TenLoai] = FilterText(tenLoai, setFalse, "TenLoai");
 
             UpdateMainFilter();
         }

@@ -62,7 +62,7 @@ namespace PhuDinhData.Filter
 
         private void SetFilterTenKhachHang(string tenKhachHang, bool setFalse = false)
         {
-            _filters[TenKhachHang] = FilterText(tenKhachHang, setFalse, p => p.rKhachHang.TenKhachHang.Contains(tenKhachHang));
+            _filters[TenKhachHang] = FilterText(tenKhachHang, setFalse, "rKhachHang.TenKhachHang");
 
             UpdateMainFilter();
         }
@@ -76,7 +76,7 @@ namespace PhuDinhData.Filter
 
         private void SetFilterTenChanh(string tenChanh, bool setFalse = false)
         {
-            _filters[TenChanh] = FilterText(tenChanh, setFalse, p => p.rChanh.TenChanh.Contains(tenChanh));
+            _filters[TenChanh] = FilterText(tenChanh, setFalse, "rChanh.TenChanh");
 
             UpdateMainFilter();
         }
@@ -90,7 +90,7 @@ namespace PhuDinhData.Filter
 
         private void SetFilterTenKhoHang(string tenKhoHang, bool setFalse = false)
         {
-            _filters[TenKhoHang] = FilterText(tenKhoHang, setFalse, p => p.rKhoHang.TenKho.Contains(tenKhoHang));
+            _filters[TenKhoHang] = FilterText(tenKhoHang, setFalse, "rKhoHang.TenKho");
 
             UpdateMainFilter();
         }

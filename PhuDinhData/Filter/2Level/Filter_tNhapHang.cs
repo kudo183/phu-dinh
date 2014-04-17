@@ -62,7 +62,7 @@ namespace PhuDinhData.Filter
 
         private void SetFilterTenKhoHang(string tenKhoHang, bool setFalse = false)
         {
-            _filters[TenKhoHang] = FilterText(TenKhoHang, setFalse, p => p.rKhoHang.TenKho.Contains(tenKhoHang));
+            _filters[TenKhoHang] = FilterText(TenKhoHang, setFalse, "rKhoHang.TenKho");
 
             UpdateMainFilter();
         }
@@ -76,7 +76,7 @@ namespace PhuDinhData.Filter
 
         private void SetFilterTenNhaCungCap(string tenNhaCungCap, bool setFalse = false)
         {
-            _filters[TenNhaCungCap] = FilterText(tenNhaCungCap, setFalse, p => p.rNhaCungCap.TenNhaCungCap.Contains(tenNhaCungCap));
+            _filters[TenNhaCungCap] = FilterText(tenNhaCungCap, setFalse, "rNhaCungCap.TenNhaCungCap");
 
             UpdateMainFilter();
         }
@@ -90,7 +90,7 @@ namespace PhuDinhData.Filter
 
         private void SetFilterTenNhanVien(string tenNhanVien, bool setFalse = false)
         {
-            _filters[TenNhanVien] = FilterText(tenNhanVien, setFalse, p => p.rNhanVien.TenNhanVien.Contains(tenNhanVien));
+            _filters[TenNhanVien] = FilterText(tenNhanVien, setFalse, "rNhanVien.TenNhanVien");
 
             UpdateMainFilter();
         }

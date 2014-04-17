@@ -52,7 +52,7 @@ namespace PhuDinhData.Filter
 
         private void SetFilterTenLoaiChiPhi(string tenLoaiChiPhi, bool setFalse = false)
         {
-            _filters[TenLoaiChiPhi] = FilterText(tenLoaiChiPhi, setFalse, p => p.rLoaiChiPhi.TenLoaiChiPhi.Contains(tenLoaiChiPhi));
+            _filters[TenLoaiChiPhi] = FilterText(tenLoaiChiPhi, setFalse, "rLoaiChiPhi.TenLoaiChiPhi");
 
             UpdateMainFilter();
         }
@@ -66,7 +66,7 @@ namespace PhuDinhData.Filter
 
         private void SetFilterTenNhanVien(string tenNhanVien, bool setFalse = false)
         {
-            _filters[TenNhanVien] = FilterText(tenNhanVien, setFalse, p => p.rNhanVien.TenNhanVien.Contains(tenNhanVien));
+            _filters[TenNhanVien] = FilterText(tenNhanVien, setFalse, "rNhanVien.TenNhanVien");
 
             UpdateMainFilter();
         }

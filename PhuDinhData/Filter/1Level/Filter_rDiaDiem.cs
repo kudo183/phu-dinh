@@ -40,14 +40,14 @@
 
         private void SetFilterTenNuoc(string tenNuoc, bool setFalse = false)
         {
-            _filters[TenNuoc] = FilterText(tenNuoc, setFalse, p => p.rNuoc.TenNuoc.Contains(tenNuoc));
+            _filters[TenNuoc] = FilterText(tenNuoc, setFalse, "rNuoc.TenNuoc");
 
             UpdateMainFilter();
         }
 
         private void SetFilterTenTinh(string tenTinh, bool setFalse = false)
         {
-            _filters[TenTinh] = FilterText(tenTinh, setFalse, p => p.Tinh.Contains(tenTinh));
+            _filters[TenTinh] = FilterText(tenTinh, setFalse, "Tinh");
 
             UpdateMainFilter();
         }

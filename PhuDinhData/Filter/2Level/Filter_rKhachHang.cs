@@ -40,14 +40,14 @@
 
         private void SetFilterTinh(string tinh, bool setFalse = false)
         {
-            _filters[Tinh] = FilterText(tinh, setFalse, p => p.rDiaDiem.Tinh.Contains(tinh));
+            _filters[Tinh] = FilterText(tinh, setFalse, "rDiaDiem.Tinh");
 
             UpdateMainFilter();
         }
 
         private void SetFilterTenKhachHang(string tenKhachHang, bool setFalse = false)
         {
-            _filters[TenKhachHang] = FilterText(tenKhachHang, setFalse, p => p.TenKhachHang.Contains(tenKhachHang));
+            _filters[TenKhachHang] = FilterText(tenKhachHang, setFalse, "TenKhachHang");
 
             UpdateMainFilter();
         }

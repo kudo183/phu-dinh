@@ -23,7 +23,7 @@
 
         private void SetFilterDiaDiemBaiXe(string tenKho, bool setFalse = false)
         {
-            _filters[TenKho] = FilterText(tenKho, setFalse, p => p.TenKho.Contains(tenKho));
+            _filters[TenKho] = FilterText(tenKho, setFalse, "TenKho");
 
             UpdateMainFilter();
         }

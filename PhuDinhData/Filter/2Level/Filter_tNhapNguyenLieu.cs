@@ -52,7 +52,7 @@ namespace PhuDinhData.Filter
 
         private void SetFilterTenNguyenLieu(string tenNguyenLieu, bool setFalse = false)
         {
-            _filters[TenNguyenLieu] = FilterText(tenNguyenLieu, setFalse, p => p.rNguyenLieu.TenNguyenLieu.Contains(tenNguyenLieu));
+            _filters[TenNguyenLieu] = FilterText(tenNguyenLieu, setFalse, "rNguyenLieu.TenNguyenLieu");
 
             UpdateMainFilter();
         }
@@ -66,7 +66,7 @@ namespace PhuDinhData.Filter
 
         private void SetFilterTenNhaCungCap(string tenNhaCungCap, bool setFalse = false)
         {
-            _filters[TenNhaCungCap] = FilterText(tenNhaCungCap, setFalse, p => p.rNhaCungCap.TenNhaCungCap.Contains(tenNhaCungCap));
+            _filters[TenNhaCungCap] = FilterText(tenNhaCungCap, setFalse, "rNhaCungCap.TenNhaCungCap");
 
             UpdateMainFilter();
         }

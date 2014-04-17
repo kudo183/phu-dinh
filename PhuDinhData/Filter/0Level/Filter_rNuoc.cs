@@ -23,7 +23,7 @@
 
         private void SetFilterTenNuoc(string tenNuoc, bool setFalse = false)
         {
-            _filters[TenNuoc] = FilterText(tenNuoc, setFalse, p => p.TenNuoc.Contains(tenNuoc));
+            _filters[TenNuoc] = FilterText(tenNuoc, setFalse, "TenNuoc");
 
             UpdateMainFilter();
         }

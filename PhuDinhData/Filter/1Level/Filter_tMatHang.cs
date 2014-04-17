@@ -35,7 +35,7 @@
 
         private void SetFilterTenLoaiHang(string tenLoaiHang, bool setFalse = false)
         {
-            _filters[TenLoaiHang] = FilterText(tenLoaiHang, setFalse, p => p.rLoaiHang.TenLoai.Contains(tenLoaiHang));
+            _filters[TenLoaiHang] = FilterText(tenLoaiHang, setFalse, "rLoaiHang.TenLoai");
 
             UpdateMainFilter();
         }
