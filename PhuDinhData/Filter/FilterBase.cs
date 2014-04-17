@@ -66,36 +66,38 @@ namespace PhuDinhData.Filter
                 {
                     var pe = Expression.Parameter(typeof(T), "p");
 
-                    Expression left = pe;
-                    foreach (var property in propertyPath.Split('.'))
+                    var left = propertyPath.Split('.').Aggregate<string, Expression>(pe, Expression.Property);
+
+                    switch (text[0])
                     {
-                        left = Expression.Property(left, property);
-                    }
+                        case '$':
+                            {
+                                text = text.Substring(1, text.Length - 1);
+                                var right = Expression.Constant(text);
+                                var predicateBody = Expression.Equal(left, right);
 
-                    if (text[0] == '$')
-                    {
-                        text = text.Substring(1, text.Length - 1);
-                        Expression right = Expression.Constant(text);
-                        var predicateBody = Expression.Equal(left, right);
+                                result = Expression.Lambda<Func<T, bool>>(predicateBody, new[] { pe });
+                            }
+                            break;
+                        case '#':
+                            {
+                                text = text.Substring(1, text.Length - 1);
+                                var right = Expression.Constant(text);
 
-                        result = Expression.Lambda<Func<T, bool>>(predicateBody, new[] { pe });
-                    }
-                    else if (text[0] == '#')
-                    {
-                        text = text.Substring(1, text.Length - 1);
-                        Expression right = Expression.Constant(text);
+                                var predicateBody = Expression.Call(left, "Contains", null, new Expression[] { right });
 
-                        var predicateBody = Expression.Call(left, "Contains", null, new[] { right });
+                                result = Expression.Lambda<Func<T, bool>>(Expression.Not(predicateBody), new[] { pe });
+                            }
+                            break;
+                        default:
+                            {
+                                var right = Expression.Constant(text);
 
-                        result = Expression.Lambda<Func<T, bool>>(Expression.Not(predicateBody), new[] { pe });
-                    }
-                    else
-                    {
-                        Expression right = Expression.Constant(text);
+                                var predicateBody = Expression.Call(left, "Contains", null, new Expression[] { right });
 
-                        var predicateBody = Expression.Call(left, "Contains", null, new[] { right });
-
-                        result = Expression.Lambda<Func<T, bool>>(predicateBody, new[] { pe });
+                                result = Expression.Lambda<Func<T, bool>>(predicateBody, new[] { pe });
+                            }
+                            break;
                     }
                 }
             }
