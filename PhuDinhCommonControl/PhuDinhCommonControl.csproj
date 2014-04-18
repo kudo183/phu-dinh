@@ -201,8 +201,8 @@
     <Compile Include="View\3Level\rKhachHangChanhView.xaml.cs">
       <DependentUpon>rKhachHangChanhView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\3Level\tChiTietDonHangView.xaml.cs">
-      <DependentUpon>tChiTietDonHangView.xaml</DependentUpon>
+    <Compile Include="View\3Level\tChiTietNhapHangView.xaml.cs">
+      <DependentUpon>tChiTietNhapHangView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\4Level\tChuyenHangDonHangView.xaml.cs">
       <DependentUpon>tChuyenHangDonHangView.xaml</DependentUpon>
@@ -512,7 +512,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\3Level\tChiTietDonHangView.xaml">
+    <Page Include="View\3Level\tChiTietNhapHangView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

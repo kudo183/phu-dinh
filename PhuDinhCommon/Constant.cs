@@ -2,7 +2,7 @@
 {
     public class Constant
     {
-        #region enum        
+        #region enum
         public enum MainMenuItems
         {
             rBaiXe,
@@ -51,7 +51,7 @@
         public const string ColumnName_Nuoc = "Nuoc";
         public const string ColumnName_Ngay = "Ngay";
         public const string ColumnName_KhachHang = "Khach Hang";
-        public const string ColumnName_Chanh = "Chanh"; 
+        public const string ColumnName_Chanh = "Chanh";
         public const string ColumnName_KhachHangChanh = "Khach Hang Chanh";
         public const string ColumnName_LoaiHang = "Loai Hang";
         public const string ColumnName_ChuyenHangDonHang = "Chuyen Hang Don Hang";
@@ -87,6 +87,7 @@
         public const string ViewName_NhanVien = "Nhan Vien";
         public const string ViewName_MatHang = "Mat Hang";
         //2Level
+        public const string ViewName_CanhBaoTonKho = "Canh Bao Ton Kho";
         public const string ViewName_KhachHang = "Khach Hang";
         public const string ViewName_MatHangNguyenLieu = "Mat Hang Nguyen Lieu";
         public const string ViewName_ChiPhi = "Chi Phi";
@@ -97,8 +98,9 @@
         public const string ViewName_ChuyenKho = "Chuyen Kho";
         //3Level
         public const string ViewName_KhachHangChanh = "Khach Hang Chanh";
-        public const string ViewName_DonHang = "Don Hang";
+        public const string ViewName_ChiTietChuyenKho = "Chi Tiet Chuyen Kho";
         public const string ViewName_ChiTietNhapHang = "Chi Tiet Nhap Hang";
+        public const string ViewName_DonHang = "Don Hang";
         //4Level
         public const string ViewName_ChiTietDonHang = "Chi Tiet Don Hang";
         public const string ViewName_ChuyenHangDonHang = "Chuyen Hang Don Hang";

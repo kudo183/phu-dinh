@@ -52,6 +52,9 @@ namespace PhuDinhCommonControl
                     view = new tMatHangView();
                     break;
                 //2Level
+                case Constant.ViewName_CanhBaoTonKho:
+                    view = new rCanhBaoTonKhoView();
+                    break;
                 case Constant.ViewName_KhachHang:
                     view = new rKhachHangView();
                     break;
@@ -63,6 +66,9 @@ namespace PhuDinhCommonControl
                     break;
                 case Constant.ViewName_ChuyenHang:
                     view = new tChuyenHangView();
+                    break;
+                case Constant.ViewName_ChuyenKho:
+                    view = new tChuyenKhoView();
                     break;
                 case Constant.ViewName_NhapHang:
                     view = new tNhapHangView();
@@ -77,11 +83,14 @@ namespace PhuDinhCommonControl
                 case Constant.ViewName_KhachHangChanh:
                     view = new rKhachHangChanhView();
                     break;
-                case Constant.ViewName_DonHang:
-                    view = new tDonHangView();
+                case Constant.ViewName_ChiTietChuyenKho:
+                    view = new tChiTietChuyenKhoView();
                     break;
                 case Constant.ViewName_ChiTietNhapHang:
                     view = new tChiTietNhapHangView();
+                    break;
+                case Constant.ViewName_DonHang:
+                    view = new tDonHangView();
                     break;
                 //4Level
                 case Constant.ViewName_ChiTietDonHang:
