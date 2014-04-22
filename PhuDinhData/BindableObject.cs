@@ -14,7 +14,7 @@ namespace PhuDinhData
     /// managed heap fragmentation.
     /// </summary>
     [Serializable]
-    public abstract class BindableObject : INotifyPropertyChanged
+    public abstract class BindableObject : INotifyPropertyChanged, IDataErrorInfo
     {
         #region Data
 
@@ -147,5 +147,56 @@ namespace PhuDinhData
         }
 
         #endregion // Private Helpers
+
+        protected virtual void Init()
+        {
+
+        }
+
+        private readonly Dictionary<String, List<String>> errors =
+            new Dictionary<string, List<string>>();
+
+        // Adds the specified error to the errors collection if it is not already 
+        // present, inserting it in the first position.
+        public void AddError(string propertyName, string error)
+        {
+            if (!errors.ContainsKey(propertyName))
+                errors[propertyName] = new List<string>();
+
+            if (!errors[propertyName].Contains(error))
+            {
+                errors[propertyName].Insert(0, error);
+            }
+        }
+
+        // Removes the specified error from the errors collection if it is present. 
+        public void RemoveError(string propertyName, string error)
+        {
+            if (errors.ContainsKey(propertyName) &&
+                errors[propertyName].Contains(error))
+            {
+                errors[propertyName].Remove(error);
+                if (errors[propertyName].Count == 0) errors.Remove(propertyName);
+            }
+        }
+
+        public virtual bool IsValid(object value, string propertyName)
+        {
+            return true;
+        }
+
+        public string Error
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        public string this[string propertyName]
+        {
+            get
+            {
+                return (!errors.ContainsKey(propertyName) ? null :
+                    String.Join(Environment.NewLine, errors[propertyName]));
+            }
+        }
     }
 }

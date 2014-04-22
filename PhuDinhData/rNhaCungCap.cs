@@ -18,13 +18,14 @@ namespace PhuDinhData
         {
             this.tNhapNguyenLieux = new HashSet<tNhapNguyenLieu>();
             this.tNhapHangs = new HashSet<tNhapHang>();
+            Init();
         }
     
         private int _ma;
-        public int Ma { get { return _ma; } set { if(_ma == value) return; _ma = value; base.RaisePropertyChanged("Ma");} }
+        public int Ma { get { return _ma; } set { if(IsValid(value, "Ma") == false || _ma == value) return; _ma = value; base.RaisePropertyChanged("Ma");} }
     
         private string _tennhacungcap;
-        public string TenNhaCungCap { get { return _tennhacungcap; } set { if(_tennhacungcap == value) return; _tennhacungcap = value; base.RaisePropertyChanged("TenNhaCungCap");} }
+        public string TenNhaCungCap { get { return _tennhacungcap; } set { if(IsValid(value, "TenNhaCungCap") == false || _tennhacungcap == value) return; _tennhacungcap = value; base.RaisePropertyChanged("TenNhaCungCap");} }
     
     
         public virtual ICollection<tNhapNguyenLieu> tNhapNguyenLieux { get; set; }

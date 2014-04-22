@@ -18,16 +18,17 @@ namespace PhuDinhData
         {
             this.rMatHangNguyenLieux = new HashSet<rMatHangNguyenLieu>();
             this.tNhapNguyenLieux = new HashSet<tNhapNguyenLieu>();
+            Init();
         }
     
         private int _ma;
-        public int Ma { get { return _ma; } set { if(_ma == value) return; _ma = value; base.RaisePropertyChanged("Ma");} }
+        public int Ma { get { return _ma; } set { if(IsValid(value, "Ma") == false || _ma == value) return; _ma = value; base.RaisePropertyChanged("Ma");} }
     
         private int _maloainguyenlieu;
-        public int MaLoaiNguyenLieu { get { return _maloainguyenlieu; } set { if(_maloainguyenlieu == value) return; _maloainguyenlieu = value; base.RaisePropertyChanged("MaLoaiNguyenLieu");} }
+        public int MaLoaiNguyenLieu { get { return _maloainguyenlieu; } set { if(IsValid(value, "MaLoaiNguyenLieu") == false || _maloainguyenlieu == value) return; _maloainguyenlieu = value; base.RaisePropertyChanged("MaLoaiNguyenLieu");} }
     
         private int _duongkinh;
-        public int DuongKinh { get { return _duongkinh; } set { if(_duongkinh == value) return; _duongkinh = value; base.RaisePropertyChanged("DuongKinh");} }
+        public int DuongKinh { get { return _duongkinh; } set { if(IsValid(value, "DuongKinh") == false || _duongkinh == value) return; _duongkinh = value; base.RaisePropertyChanged("DuongKinh");} }
     
     
         public virtual rLoaiNguyenLieu rLoaiNguyenLieu { get; set; }

@@ -22,16 +22,17 @@ namespace PhuDinhData
             this.tChuyenKhoes = new HashSet<tChuyenKho>();
             this.tChuyenKhoes1 = new HashSet<tChuyenKho>();
             this.rCanhBaoTonKhoes = new HashSet<rCanhBaoTonKho>();
+            Init();
         }
     
         private int _ma;
-        public int Ma { get { return _ma; } set { if(_ma == value) return; _ma = value; base.RaisePropertyChanged("Ma");} }
+        public int Ma { get { return _ma; } set { if(IsValid(value, "Ma") == false || _ma == value) return; _ma = value; base.RaisePropertyChanged("Ma");} }
     
         private string _tenkho;
-        public string TenKho { get { return _tenkho; } set { if(_tenkho == value) return; _tenkho = value; base.RaisePropertyChanged("TenKho");} }
+        public string TenKho { get { return _tenkho; } set { if(IsValid(value, "TenKho") == false || _tenkho == value) return; _tenkho = value; base.RaisePropertyChanged("TenKho");} }
     
         private bool _trangthai;
-        public bool TrangThai { get { return _trangthai; } set { if(_trangthai == value) return; _trangthai = value; base.RaisePropertyChanged("TrangThai");} }
+        public bool TrangThai { get { return _trangthai; } set { if(IsValid(value, "TrangThai") == false || _trangthai == value) return; _trangthai = value; base.RaisePropertyChanged("TrangThai");} }
     
     
         public virtual ICollection<tDonHang> tDonHangs { get; set; }

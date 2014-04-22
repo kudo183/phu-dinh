@@ -22,25 +22,26 @@ namespace PhuDinhData
             this.tChiTietNhapHangs = new HashSet<tChiTietNhapHang>();
             this.tChiTietChuyenKhoes = new HashSet<tChiTietChuyenKho>();
             this.rCanhBaoTonKhoes = new HashSet<rCanhBaoTonKho>();
+            Init();
         }
     
         private int _ma;
-        public int Ma { get { return _ma; } set { if(_ma == value) return; _ma = value; base.RaisePropertyChanged("Ma");} }
+        public int Ma { get { return _ma; } set { if(IsValid(value, "Ma") == false || _ma == value) return; _ma = value; base.RaisePropertyChanged("Ma");} }
     
         private int _maloai;
-        public int MaLoai { get { return _maloai; } set { if(_maloai == value) return; _maloai = value; base.RaisePropertyChanged("MaLoai");} }
+        public int MaLoai { get { return _maloai; } set { if(IsValid(value, "MaLoai") == false || _maloai == value) return; _maloai = value; base.RaisePropertyChanged("MaLoai");} }
     
         private string _tenmathang;
-        public string TenMatHang { get { return _tenmathang; } set { if(_tenmathang == value) return; _tenmathang = value; base.RaisePropertyChanged("TenMatHang");} }
+        public string TenMatHang { get { return _tenmathang; } set { if(IsValid(value, "TenMatHang") == false || _tenmathang == value) return; _tenmathang = value; base.RaisePropertyChanged("TenMatHang");} }
     
         private int _soky;
-        public int SoKy { get { return _soky; } set { if(_soky == value) return; _soky = value; base.RaisePropertyChanged("SoKy");} }
+        public int SoKy { get { return _soky; } set { if(IsValid(value, "SoKy") == false || _soky == value) return; _soky = value; base.RaisePropertyChanged("SoKy");} }
     
         private int _somet;
-        public int SoMet { get { return _somet; } set { if(_somet == value) return; _somet = value; base.RaisePropertyChanged("SoMet");} }
+        public int SoMet { get { return _somet; } set { if(IsValid(value, "SoMet") == false || _somet == value) return; _somet = value; base.RaisePropertyChanged("SoMet");} }
     
         private string _tenmathangdaydu;
-        public string TenMatHangDayDu { get { return _tenmathangdaydu; } set { if(_tenmathangdaydu == value) return; _tenmathangdaydu = value; base.RaisePropertyChanged("TenMatHangDayDu");} }
+        public string TenMatHangDayDu { get { return _tenmathangdaydu; } set { if(IsValid(value, "TenMatHangDayDu") == false || _tenmathangdaydu == value) return; _tenmathangdaydu = value; base.RaisePropertyChanged("TenMatHangDayDu");} }
     
     
         public virtual rLoaiHang rLoaiHang { get; set; }

@@ -17,22 +17,23 @@ namespace PhuDinhData
         public tChuyenKho()
         {
             this.tChiTietChuyenKhoes = new HashSet<tChiTietChuyenKho>();
+            Init();
         }
     
         private int _ma;
-        public int Ma { get { return _ma; } set { if(_ma == value) return; _ma = value; base.RaisePropertyChanged("Ma");} }
+        public int Ma { get { return _ma; } set { if(IsValid(value, "Ma") == false || _ma == value) return; _ma = value; base.RaisePropertyChanged("Ma");} }
     
         private int _manhanvien;
-        public int MaNhanVien { get { return _manhanvien; } set { if(_manhanvien == value) return; _manhanvien = value; base.RaisePropertyChanged("MaNhanVien");} }
+        public int MaNhanVien { get { return _manhanvien; } set { if(IsValid(value, "MaNhanVien") == false || _manhanvien == value) return; _manhanvien = value; base.RaisePropertyChanged("MaNhanVien");} }
     
         private int _makhohangxuat;
-        public int MaKhoHangXuat { get { return _makhohangxuat; } set { if(_makhohangxuat == value) return; _makhohangxuat = value; base.RaisePropertyChanged("MaKhoHangXuat");} }
+        public int MaKhoHangXuat { get { return _makhohangxuat; } set { if(IsValid(value, "MaKhoHangXuat") == false || _makhohangxuat == value) return; _makhohangxuat = value; base.RaisePropertyChanged("MaKhoHangXuat");} }
     
         private int _makhohangnhap;
-        public int MaKhoHangNhap { get { return _makhohangnhap; } set { if(_makhohangnhap == value) return; _makhohangnhap = value; base.RaisePropertyChanged("MaKhoHangNhap");} }
+        public int MaKhoHangNhap { get { return _makhohangnhap; } set { if(IsValid(value, "MaKhoHangNhap") == false || _makhohangnhap == value) return; _makhohangnhap = value; base.RaisePropertyChanged("MaKhoHangNhap");} }
     
         private System.DateTime _ngay;
-        public System.DateTime Ngay { get { return _ngay; } set { if(_ngay == value) return; _ngay = value; base.RaisePropertyChanged("Ngay");} }
+        public System.DateTime Ngay { get { return _ngay; } set { if(IsValid(value, "Ngay") == false || _ngay == value) return; _ngay = value; base.RaisePropertyChanged("Ngay");} }
     
     
         public virtual rKhoHang rKhoHangNhap { get; set; }

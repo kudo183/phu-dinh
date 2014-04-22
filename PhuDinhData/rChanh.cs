@@ -18,16 +18,17 @@ namespace PhuDinhData
         {
             this.tDonHangs = new HashSet<tDonHang>();
             this.rKhachHangChanhs = new HashSet<rKhachHangChanh>();
+            Init();
         }
     
         private int _ma;
-        public int Ma { get { return _ma; } set { if(_ma == value) return; _ma = value; base.RaisePropertyChanged("Ma");} }
+        public int Ma { get { return _ma; } set { if(IsValid(value, "Ma") == false || _ma == value) return; _ma = value; base.RaisePropertyChanged("Ma");} }
     
         private int _mabaixe;
-        public int MaBaiXe { get { return _mabaixe; } set { if(_mabaixe == value) return; _mabaixe = value; base.RaisePropertyChanged("MaBaiXe");} }
+        public int MaBaiXe { get { return _mabaixe; } set { if(IsValid(value, "MaBaiXe") == false || _mabaixe == value) return; _mabaixe = value; base.RaisePropertyChanged("MaBaiXe");} }
     
         private string _tenchanh;
-        public string TenChanh { get { return _tenchanh; } set { if(_tenchanh == value) return; _tenchanh = value; base.RaisePropertyChanged("TenChanh");} }
+        public string TenChanh { get { return _tenchanh; } set { if(IsValid(value, "TenChanh") == false || _tenchanh == value) return; _tenchanh = value; base.RaisePropertyChanged("TenChanh");} }
     
     
         public virtual rBaiXe rBaiXe { get; set; }

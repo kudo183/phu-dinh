@@ -17,13 +17,14 @@ namespace PhuDinhData
         public rPhuongTien()
         {
             this.rNhanViens = new HashSet<rNhanVien>();
+            Init();
         }
     
         private int _ma;
-        public int Ma { get { return _ma; } set { if(_ma == value) return; _ma = value; base.RaisePropertyChanged("Ma");} }
+        public int Ma { get { return _ma; } set { if(IsValid(value, "Ma") == false || _ma == value) return; _ma = value; base.RaisePropertyChanged("Ma");} }
     
         private string _tenphuongtien;
-        public string TenPhuongTien { get { return _tenphuongtien; } set { if(_tenphuongtien == value) return; _tenphuongtien = value; base.RaisePropertyChanged("TenPhuongTien");} }
+        public string TenPhuongTien { get { return _tenphuongtien; } set { if(IsValid(value, "TenPhuongTien") == false || _tenphuongtien == value) return; _tenphuongtien = value; base.RaisePropertyChanged("TenPhuongTien");} }
     
     
         public virtual ICollection<rNhanVien> rNhanViens { get; set; }

@@ -17,13 +17,14 @@ namespace PhuDinhData
         public rBaiXe()
         {
             this.rChanhs = new HashSet<rChanh>();
+            Init();
         }
     
         private int _ma;
-        public int Ma { get { return _ma; } set { if(_ma == value) return; _ma = value; base.RaisePropertyChanged("Ma");} }
+        public int Ma { get { return _ma; } set { if(IsValid(value, "Ma") == false || _ma == value) return; _ma = value; base.RaisePropertyChanged("Ma");} }
     
         private string _diadiembaixe;
-        public string DiaDiemBaiXe { get { return _diadiembaixe; } set { if(_diadiembaixe == value) return; _diadiembaixe = value; base.RaisePropertyChanged("DiaDiemBaiXe");} }
+        public string DiaDiemBaiXe { get { return _diadiembaixe; } set { if(IsValid(value, "DiaDiemBaiXe") == false || _diadiembaixe == value) return; _diadiembaixe = value; base.RaisePropertyChanged("DiaDiemBaiXe");} }
     
     
         public virtual ICollection<rChanh> rChanhs { get; set; }

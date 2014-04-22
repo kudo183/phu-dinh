@@ -18,19 +18,20 @@ namespace PhuDinhData
         {
             this.tDonHangs = new HashSet<tDonHang>();
             this.rKhachHangChanhs = new HashSet<rKhachHangChanh>();
+            Init();
         }
     
         private int _ma;
-        public int Ma { get { return _ma; } set { if(_ma == value) return; _ma = value; base.RaisePropertyChanged("Ma");} }
+        public int Ma { get { return _ma; } set { if(IsValid(value, "Ma") == false || _ma == value) return; _ma = value; base.RaisePropertyChanged("Ma");} }
     
         private int _madiadiem;
-        public int MaDiaDiem { get { return _madiadiem; } set { if(_madiadiem == value) return; _madiadiem = value; base.RaisePropertyChanged("MaDiaDiem");} }
+        public int MaDiaDiem { get { return _madiadiem; } set { if(IsValid(value, "MaDiaDiem") == false || _madiadiem == value) return; _madiadiem = value; base.RaisePropertyChanged("MaDiaDiem");} }
     
         private string _tenkhachhang;
-        public string TenKhachHang { get { return _tenkhachhang; } set { if(_tenkhachhang == value) return; _tenkhachhang = value; base.RaisePropertyChanged("TenKhachHang");} }
+        public string TenKhachHang { get { return _tenkhachhang; } set { if(IsValid(value, "TenKhachHang") == false || _tenkhachhang == value) return; _tenkhachhang = value; base.RaisePropertyChanged("TenKhachHang");} }
     
         private bool _khachrieng;
-        public bool KhachRieng { get { return _khachrieng; } set { if(_khachrieng == value) return; _khachrieng = value; base.RaisePropertyChanged("KhachRieng");} }
+        public bool KhachRieng { get { return _khachrieng; } set { if(IsValid(value, "KhachRieng") == false || _khachrieng == value) return; _khachrieng = value; base.RaisePropertyChanged("KhachRieng");} }
     
     
         public virtual rDiaDiem rDiaDiem { get; set; }

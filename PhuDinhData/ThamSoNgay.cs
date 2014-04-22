@@ -15,10 +15,10 @@ namespace PhuDinhData
     public partial class ThamSoNgay : BindableObject
     {
         private string _ten;
-        public string Ten { get { return _ten; } set { if(_ten == value) return; _ten = value; base.RaisePropertyChanged("Ten");} }
+        public string Ten { get { return _ten; } set { if(IsValid(value, "Ten") == false || _ten == value) return; _ten = value; base.RaisePropertyChanged("Ten");} }
     
         private System.DateTime _giatri;
-        public System.DateTime GiaTri { get { return _giatri; } set { if(_giatri == value) return; _giatri = value; base.RaisePropertyChanged("GiaTri");} }
+        public System.DateTime GiaTri { get { return _giatri; } set { if(IsValid(value, "GiaTri") == false || _giatri == value) return; _giatri = value; base.RaisePropertyChanged("GiaTri");} }
     
     }
 }

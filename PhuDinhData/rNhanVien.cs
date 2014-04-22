@@ -20,16 +20,17 @@ namespace PhuDinhData
             this.tChiPhis = new HashSet<tChiPhi>();
             this.tNhapHangs = new HashSet<tNhapHang>();
             this.tChuyenKhoes = new HashSet<tChuyenKho>();
+            Init();
         }
     
         private int _ma;
-        public int Ma { get { return _ma; } set { if(_ma == value) return; _ma = value; base.RaisePropertyChanged("Ma");} }
+        public int Ma { get { return _ma; } set { if(IsValid(value, "Ma") == false || _ma == value) return; _ma = value; base.RaisePropertyChanged("Ma");} }
     
         private int _maphuongtien;
-        public int MaPhuongTien { get { return _maphuongtien; } set { if(_maphuongtien == value) return; _maphuongtien = value; base.RaisePropertyChanged("MaPhuongTien");} }
+        public int MaPhuongTien { get { return _maphuongtien; } set { if(IsValid(value, "MaPhuongTien") == false || _maphuongtien == value) return; _maphuongtien = value; base.RaisePropertyChanged("MaPhuongTien");} }
     
         private string _tennhanvien;
-        public string TenNhanVien { get { return _tennhanvien; } set { if(_tennhanvien == value) return; _tennhanvien = value; base.RaisePropertyChanged("TenNhanVien");} }
+        public string TenNhanVien { get { return _tennhanvien; } set { if(IsValid(value, "TenNhanVien") == false || _tennhanvien == value) return; _tennhanvien = value; base.RaisePropertyChanged("TenNhanVien");} }
     
     
         public virtual rPhuongTien rPhuongTien { get; set; }

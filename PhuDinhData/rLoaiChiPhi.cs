@@ -17,13 +17,14 @@ namespace PhuDinhData
         public rLoaiChiPhi()
         {
             this.tChiPhis = new HashSet<tChiPhi>();
+            Init();
         }
     
         private int _ma;
-        public int Ma { get { return _ma; } set { if(_ma == value) return; _ma = value; base.RaisePropertyChanged("Ma");} }
+        public int Ma { get { return _ma; } set { if(IsValid(value, "Ma") == false || _ma == value) return; _ma = value; base.RaisePropertyChanged("Ma");} }
     
         private string _tenloaichiphi;
-        public string TenLoaiChiPhi { get { return _tenloaichiphi; } set { if(_tenloaichiphi == value) return; _tenloaichiphi = value; base.RaisePropertyChanged("TenLoaiChiPhi");} }
+        public string TenLoaiChiPhi { get { return _tenloaichiphi; } set { if(IsValid(value, "TenLoaiChiPhi") == false || _tenloaichiphi == value) return; _tenloaichiphi = value; base.RaisePropertyChanged("TenLoaiChiPhi");} }
     
     
         public virtual ICollection<tChiPhi> tChiPhis { get; set; }

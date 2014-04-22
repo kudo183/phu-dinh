@@ -17,13 +17,14 @@ namespace PhuDinhData
         public rLoaiNguyenLieu()
         {
             this.rNguyenLieux = new HashSet<rNguyenLieu>();
+            Init();
         }
     
         private int _ma;
-        public int Ma { get { return _ma; } set { if(_ma == value) return; _ma = value; base.RaisePropertyChanged("Ma");} }
+        public int Ma { get { return _ma; } set { if(IsValid(value, "Ma") == false || _ma == value) return; _ma = value; base.RaisePropertyChanged("Ma");} }
     
         private string _tenloai;
-        public string TenLoai { get { return _tenloai; } set { if(_tenloai == value) return; _tenloai = value; base.RaisePropertyChanged("TenLoai");} }
+        public string TenLoai { get { return _tenloai; } set { if(IsValid(value, "TenLoai") == false || _tenloai == value) return; _tenloai = value; base.RaisePropertyChanged("TenLoai");} }
     
     
         public virtual ICollection<rNguyenLieu> rNguyenLieux { get; set; }
