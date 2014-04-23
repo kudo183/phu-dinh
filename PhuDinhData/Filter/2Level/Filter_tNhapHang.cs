@@ -62,7 +62,7 @@ namespace PhuDinhData.Filter
 
         private void SetFilterTenKhoHang(string tenKhoHang, bool setFalse = false)
         {
-            _filters[TenKhoHang] = FilterText(TenKhoHang, setFalse, "rKhoHang.TenKho");
+            _filters[TenKhoHang] = FilterText(tenKhoHang, setFalse, "rKhoHang.TenKho");
 
             UpdateMainFilter();
         }
