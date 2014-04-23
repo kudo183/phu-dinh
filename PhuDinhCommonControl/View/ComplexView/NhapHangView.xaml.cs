@@ -33,7 +33,6 @@ namespace PhuDinhCommonControl
                         FocustChiTietNhapHangView();
                         break;
                 }
-                
             }
         }
 
@@ -48,14 +47,16 @@ namespace PhuDinhCommonControl
 
         void FocustChiTietNhapHangView()
         {
-            _tChiTietNhapHangView.dg.FocusCell(_tChiTietNhapHangView.dg.Items.Count - 1, 2);                        
+            _tChiTietNhapHangView.dg.FocusCell(_tChiTietNhapHangView.dg.Items.Count - 1, 2);
         }
 
         void NhapHangView_Loaded(object sender, RoutedEventArgs e)
         {
             _tNhapHangView.dgNhapHang.SelectionChanged += dgNhapHang_SelectionChanged;
             _tChiTietNhapHangView.AfterSave += _tChiTietNhapHangView_AfterSave;
+            _tChiTietNhapHangView.MoveFocus += _tChiTietNhapHangView_MoveFocus;
             _tNhapHangView.AfterSave += _tNhapHangView_AfterSave;
+            _tNhapHangView.MoveFocus += _tNhapHangView_MoveFocus;
 
             _tChiTietNhapHangView.SetMainFilter(
                     PhuDinhData.Filter.Filter_tChiTietNhapHang.MaNhapHang, null, true);
@@ -65,13 +66,18 @@ namespace PhuDinhCommonControl
         {
             _tNhapHangView.dgNhapHang.SelectionChanged -= dgNhapHang_SelectionChanged;
             _tChiTietNhapHangView.AfterSave -= _tChiTietNhapHangView_AfterSave;
+            _tChiTietNhapHangView.MoveFocus -= _tChiTietNhapHangView_MoveFocus;
             _tNhapHangView.AfterSave -= _tNhapHangView_AfterSave;
+            _tNhapHangView.MoveFocus -= _tNhapHangView_MoveFocus;
         }
 
         void _tNhapHangView_AfterSave(object sender, System.EventArgs e)
         {
             RefreshChiTietNhapHangView(_tNhapHangView.dg);
+        }
 
+        void _tNhapHangView_MoveFocus(object sender, System.EventArgs e)
+        {
             FocustChiTietNhapHangView();
         }
 
@@ -79,6 +85,11 @@ namespace PhuDinhCommonControl
         {
             _tNhapHangView.RefreshView();
 
+            Keyboard.Focus(_tChiTietNhapHangView.dg);
+        }
+
+        void _tChiTietNhapHangView_MoveFocus(object sender, System.EventArgs e)
+        {
             FocustNhapHangView();
         }
 
