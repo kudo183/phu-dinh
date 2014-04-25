@@ -13,26 +13,38 @@ namespace PhuDinhReport
         {
             InitializeComponent();
 
+            dpNgay.dp.SelectedDateChanged += dp_SelectedDateChanged;
+
             var now = DateTime.Now;
-            dpNgay.SelectedDate = now;
-            dpTuNgay.SelectedDate = now;
-            dpDenNgay.SelectedDate = now;
+            dpNgay.dp.SelectedDate = now;
+            dpTuNgay.dp.SelectedDate = now;
+            dpDenNgay.dp.SelectedDate = now;
         }
 
-        private void btnNgay_Click(object sender, System.Windows.RoutedEventArgs e)
+        void dp_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
-            var ngay = dpNgay.SelectedDate.Value.Date;
-
-            dg.ItemsSource = ReportByDonHang.FilterByDate(ngay);
+            ReportByDate();
         }
 
         private void btnTuNgayDenNgay_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            var tuNgay = dpTuNgay.SelectedDate.Value.Date;
+            ReportFromDateToDate();
+        }
 
-            var denNgay = dpDenNgay.SelectedDate.Value.Date;
+        private void ReportFromDateToDate()
+        {
+            var tuNgay = dpTuNgay.dp.SelectedDate.Value.Date;
+
+            var denNgay = dpDenNgay.dp.SelectedDate.Value.Date;
 
             dg.ItemsSource = ReportByDonHang.FilterByDate(tuNgay, denNgay);
+        }
+
+        private void ReportByDate()
+        {
+            var ngay = dpNgay.dp.SelectedDate.Value.Date;
+
+            dg.ItemsSource = ReportByDonHang.FilterByDate(ngay);
         }
     }
 }
