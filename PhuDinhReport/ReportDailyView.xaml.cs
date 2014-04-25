@@ -13,13 +13,19 @@ namespace PhuDinhReport
         {
             InitializeComponent();
 
-            var now = DateTime.Now;
-            dpNgay.SelectedDate = now;
+            dpNgay.dp.SelectedDateChanged += dp_SelectedDateChanged;
+
+            dpNgay.dp.SelectedDate = DateTime.Now;
         }
 
-        private void btnNgay_Click(object sender, System.Windows.RoutedEventArgs e)
+        void dp_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
-            var ngay = dpNgay.SelectedDate.Value.Date;
+            Report();
+        }
+
+        private void Report()
+        {
+            var ngay = dpNgay.dp.SelectedDate.Value.Date;
 
             dg.ItemsSource = ReportDaily.FilterByDate(ngay);
         }
