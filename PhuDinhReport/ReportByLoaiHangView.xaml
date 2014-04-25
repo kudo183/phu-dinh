@@ -23,17 +23,16 @@
 
             <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="0">
                 <TextBlock Text="Ngay: " VerticalAlignment="Center" Margin="5"/>
-                <DatePicker x:Name="dpNgay" Margin="5"/>
+                <CustomControl:CustomDatePicker x:Name="dpNgay" Margin="5" Width="200"/>
             </StackPanel>
-            <Button x:Name="btnNgay" Content="OK" Grid.Row="0" Grid.Column="1" Margin="5" Click="btnNgay_Click"/>
 
             <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="0">
                 <TextBlock Text="Tu Ngay: " VerticalAlignment="Center" Margin="5"/>
-                <DatePicker x:Name="dpTuNgay" Margin="5"/>
+                <CustomControl:CustomDatePicker x:Name="dpTuNgay" Margin="5" Width="130"/>
                 <TextBlock Text="Den Ngay: " VerticalAlignment="Center" Margin="5"/>
-                <DatePicker x:Name="dpDenNgay" Margin="5"/>
+                <CustomControl:CustomDatePicker x:Name="dpDenNgay" Margin="5" Width="130"/>
+                <Button x:Name="btnTuNgayDenNgay" Content="OK" Grid.Row="2" Grid.Column="1" Margin="5" Click="btnTuNgayDenNgay_Click" Width="80"/>
             </StackPanel>
-            <Button x:Name="btnTuNgayDenNgay" Content="OK" Grid.Row="2" Grid.Column="1" Margin="5" Click="btnTuNgayDenNgay_Click"/>
         </Grid>
         <CustomControl:DataGridExt Grid.Row="1" x:Name="dg" AutoGenerateColumns="False" EnableRowVirtualization="False" SelectionMode="Single">
             <DataGrid.Columns>
