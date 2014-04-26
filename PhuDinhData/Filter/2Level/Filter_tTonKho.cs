@@ -6,7 +6,6 @@ namespace PhuDinhData.Filter
     {
         public const string MaMatHang = "MaMatHang";
         public const string TenMatHang = "TenMatHang";
-        public const string KhongTenMatHang = "KhongTenMatHang";
         public const string MaKhoHang = "MaKhoHang";
         public const string TenKhoHang = "TenKhoHang";
         public const string Ngay = "Ngay";
@@ -34,9 +33,6 @@ namespace PhuDinhData.Filter
                 case TenMatHang:
                     SetFilterTenMatHang(value as string, setFalse);
                     break;
-                case KhongTenMatHang:
-                    SetFilterKhongTenMatHang(value as string, setFalse);
-                    break;
                 case MaKhoHang:
                     SetFilterMaKhoHang(value as int?, setFalse);
                     break;
@@ -57,13 +53,6 @@ namespace PhuDinhData.Filter
         }
 
         private void SetFilterTenMatHang(string tenMatHang, bool setFalse = false)
-        {
-            _filters[TenMatHang] = FilterText(tenMatHang, setFalse, "tMatHang.TenMatHang");
-
-            UpdateMainFilter();
-        }
-
-        private void SetFilterKhongTenMatHang(string tenMatHang, bool setFalse = false)
         {
             _filters[TenMatHang] = FilterText(tenMatHang, setFalse, "tMatHang.TenMatHang");
 
