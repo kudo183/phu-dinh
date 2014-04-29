@@ -334,6 +334,10 @@
       <Project>{9e6f47f9-162f-458f-a4c3-42b455f09d43}</Project>
       <Name>PhuDinhData</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PhuDinhReport\PhuDinhReport.csproj">
+      <Project>{A0687BE7-AC65-408D-8A17-785F7070F646}</Project>
+      <Name>PhuDinhReport</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Page Include="EntityDataGrid\0Level\DGKhoHang.xaml">

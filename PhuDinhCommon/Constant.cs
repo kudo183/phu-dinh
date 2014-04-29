@@ -106,5 +106,22 @@
         public const string ViewName_ChuyenHangDonHang = "Chuyen Hang Don Hang";
         //5Level
         public const string ViewName_ChiTietChuyenHangDonHang = "Chi Tiet Chuyen Hang Don Hang";
+        //complex
+        public const string ViewName_AdminView = "AdminView";
+        public const string ViewName_BaiXeView = "BaiXeView";
+        public const string ViewName_ChiPhiView = "ChiPhiView";
+        public const string ViewName_ChuyenHangView = "ChuyenHangView";
+        public const string ViewName_ChuyenKhoView = "ChuyenKhoView";
+        public const string ViewName_DonHangView = "DonHangView";
+        public const string ViewName_KhachHangChanhView = "KhachHangChanhView";
+        public const string ViewName_KhachHangView = "KhachHangView";
+        public const string ViewName_MatHangView = "MatHangView";
+        public const string ViewName_NhanVienView = "NhanVienView";
+        public const string ViewName_NhapHangView = "NhapHangView";
+        //report
+        public const string ViewName_ReportByDonHangView = "ReportByDonHangView";
+        public const string ViewName_ReportByLoaiHangView = "ReportByLoaiHangView";
+        public const string ViewName_ReportByMatHangView = "ReportByMatHangView";
+        public const string ViewName_ReportDailyView = "ReportDailyView";
     }
 }

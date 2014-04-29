@@ -1,5 +1,6 @@
 ﻿using PhuDinhCommon;
 using System.Windows.Controls;
+using PhuDinhReport;
 
 namespace PhuDinhCommonControl
 {
@@ -102,6 +103,53 @@ namespace PhuDinhCommonControl
                 //5Level
                 case Constant.ViewName_ChiTietChuyenHangDonHang:
                     view = new tChiTietChuyenHangDonHangView();
+                    break;
+                //Complex
+                case Constant.ViewName_AdminView:
+                    view = new AdminView();
+                    break;
+                case Constant.ViewName_BaiXeView:
+                    view = new BaiXeView();
+                    break;
+                case Constant.ViewName_ChiPhiView:
+                    view = new ChiPhiView();
+                    break;
+                case Constant.ViewName_ChuyenHangView:
+                    view = new ChuyenHangView();
+                    break;
+                case Constant.ViewName_ChuyenKhoView:
+                    view = new ChuyenKhoView();
+                    break;
+                case Constant.ViewName_DonHangView:
+                    view = new DonHangView();
+                    break;
+                case Constant.ViewName_KhachHangChanhView:
+                    view = new KhachHangChanhView();
+                    break;
+                case Constant.ViewName_KhachHangView:
+                    view = new KhachHangView();
+                    break;
+                case Constant.ViewName_MatHangView:
+                    view = new MatHangView();
+                    break;
+                case Constant.ViewName_NhanVienView:
+                    view = new NhanVienView();
+                    break;
+                case Constant.ViewName_NhapHangView:
+                    view = new NhapHangView();
+                    break;
+                //Report
+                case Constant.ViewName_ReportByDonHangView:
+                    view = new ReportByDonHangView();
+                    break;
+                case Constant.ViewName_ReportByLoaiHangView:
+                    view = new ReportByLoaiHangView();
+                    break;
+                case Constant.ViewName_ReportByMatHangView:
+                    view = new ReportByMatHangView();
+                    break;
+                case Constant.ViewName_ReportDailyView:
+                    view = new ReportDailyView();
                     break;
             }
 

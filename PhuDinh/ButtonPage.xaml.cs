@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using PhuDinhCommonControl;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace PhuDinh
@@ -24,7 +25,7 @@ namespace PhuDinh
             var w = new Window
             {
                 Title = button.Content.ToString(),
-                Content = button.Tag,
+                Content = ViewFactory.CreateView(button.Tag.ToString()),
                 WindowState = WindowState.Maximized
             };
             w.Show();
