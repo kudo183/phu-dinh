@@ -70,6 +70,8 @@ namespace CustomControl
             }
             else//move to next row, select first editable column
             {
+                CommitEdit();
+
                 var firstEditableColumnIndex = FindFirstEditableColumnIndex(0, this);
 
                 const int itemPlaceHolderCount = 1;
