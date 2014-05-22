@@ -12,7 +12,7 @@
         <!--Ma-->
         <CustomControl:DataGridReadOnlyTextColumn x:Name="maColumn"/>
         <!--Kho hang-->
-        <CustomControl:DataGridComboBoxColumnExt x:Name="khoHangColumn" Header="{x:Static ViewModel:TonKhoViewModel.Header_KhoHang}"
+        <CustomControl:DataGridComboBoxColumnExt x:Name="khoHangColumn" Header="{x:Static ViewModel:CanhBaoTonKhoViewModel.Header_KhoHang}"
                                                  HeaderAddButtonClick="headerAddButton_Click"
                                                  TextBinding="{Binding rKhoHang.TenKho, Mode=OneWay}"
                                                  DisplayMemberPath="TenKho"
@@ -22,7 +22,7 @@
                                                  ItemsSource="{Binding rKhoHangList}"/>
         <!--Mat hang-->
         <CustomControl:DataGridComboBoxColumnExt x:Name="matHangColumn"
-                                                 Header="{x:Static ViewModel:TonKhoViewModel.Header_MatHang}"
+                                                 Header="{x:Static ViewModel:CanhBaoTonKhoViewModel.Header_MatHang}"
                                                  HeaderAddButtonClick="headerAddButton_Click"
                                                  TextBinding="{Binding tMatHang.TenMatHangLoaiHang, Mode=OneWay}"
                                                  DisplayMemberPath="TenMatHangLoaiHang"
