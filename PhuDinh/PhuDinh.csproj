@@ -121,6 +121,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="App.config.Debug" />
+    <None Include="App.config.release" />
+    <None Include="HandleAppConfig.bat" />
     <None Include="packages.config" />
     <None Include="Properties\DataSources\PhuDinhData.PhuDinhEntities.datasource" />
     <None Include="Properties\DataSources\PhuDinhData.rBaiXe.datasource" />
@@ -167,6 +170,9 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <PropertyGroup>
+    <PreBuildEvent>"$(ProjectDir)HandleAppConfig.bat" "$(ProjectDir)app.config.$(ConfigurationName)" "$(ProjectDir)app.config"</PreBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
