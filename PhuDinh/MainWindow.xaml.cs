@@ -19,6 +19,11 @@ namespace PhuDinh
             InitializeComponent();
             Thread.CurrentThread.CurrentCulture = new CultureInfo("vi-VN");
 
+            Title = "Chuong trinh quan ly";
+#if DEBUG
+            Title = "Debug";
+#endif
+         
             PhuDinhData.TonKhoManager.UpdateTonKho();
         }
     }
