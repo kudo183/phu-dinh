@@ -24,7 +24,7 @@
     <add key="DataSource" value="." />
     <add key="UserID" value="6aOHi/iGooUay663Lqm2/g==" />
     <add key="Password" value="0sfzHRCDCkt8jo1AX1Iz6g==" />
-    <add key="InitialCatalog" value="PhuDinh" />
+    <add key="InitialCatalog" value="PhuDinh_test" />
   </appSettings>
   <entityFramework>
     <defaultConnectionFactory type="System.Data.Entity.Infrastructure.SqlConnectionFactory, EntityFramework" />
