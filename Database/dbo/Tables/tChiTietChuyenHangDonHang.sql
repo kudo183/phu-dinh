@@ -17,8 +17,10 @@
 
 
 
+
+
 GO
-create TRIGGER [dbo].[tChiTietChuyenHangDonHang_trUpdateXong]
+CREATE TRIGGER [dbo].[tChiTietChuyenHangDonHang_trUpdateXong]
 	ON [dbo].[tChiTietChuyenHangDonHang]
 	after DELETE, INSERT, UPDATE
 	AS
@@ -28,6 +30,7 @@ create TRIGGER [dbo].[tChiTietChuyenHangDonHang_trUpdateXong]
 		Declare @SoLuongChiTietDonHang Int = 0;
 		Declare @MaDonHang Int = 0;
 		Declare @MaChiTietDonHang Int = 0;
+		Declare @MaChiTietDonHangDeleted Int = 0;
 		Declare @Xong bit = 0;
 
 		SET NOCOUNT ON
@@ -53,6 +56,16 @@ create TRIGGER [dbo].[tChiTietChuyenHangDonHang_trUpdateXong]
 		begin
 			select @MaChiTietDonHang = MaChiTietDonHang
 			from inserted
+
+			select @MaChiTietDonHangDeleted = MaChiTietDonHang
+			from deleted
+
+			if(@MaChiTietDonHang <> @MaChiTietDonHangDeleted)
+			begin
+				update [dbo].[tChiTietDonHang]
+				set Xong = 0
+				where Ma = @MaChiTietDonHangDeleted
+			end
 		end
 		
 		select @SoLuongChiTietDonHang = SoLuong, @MaDonHang = MaDonHang
