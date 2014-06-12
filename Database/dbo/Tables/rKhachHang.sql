@@ -11,3 +11,10 @@
 
 
 
+
+
+
+GO
+CREATE UNIQUE NONCLUSTERED INDEX [idx_KhachHang_TenKhachHang]
+    ON [dbo].[rKhachHang]([TenKhachHang] ASC);
+
