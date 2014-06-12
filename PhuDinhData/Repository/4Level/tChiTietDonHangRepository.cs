@@ -29,13 +29,6 @@ namespace PhuDinhData.Repository
         {
             var changed = Repository<tChiTietDonHang>.Save(context, data, origData, (p => p.Ma == 0), ((p1, p2) => p1.Ma == p2.Ma));
 
-            if (changed.Count > 0)
-            {
-                var maDonHangs = changed.Select(p => p.CurrentValues.MaDonHang).ToList();
-
-                BusinessLogics.BusinessLogics.UpdateXong(context, maDonHangs);
-            }
-
             TonKhoManager.UpdateByChiTietDonHang(changed);
 
             return changed;

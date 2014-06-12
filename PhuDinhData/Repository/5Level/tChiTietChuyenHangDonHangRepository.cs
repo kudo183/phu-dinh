@@ -31,16 +31,6 @@ namespace PhuDinhData.Repository
         {
             var changed = Repository<tChiTietChuyenHangDonHang>.Save(context, data, origData, (p => p.Ma == 0), ((p1, p2) => p1.Ma == p2.Ma));
 
-            if (changed.Count > 0)
-            {
-                var maChuyenHangDonHangs = changed.Select(p => p.CurrentValues.MaChuyenHangDonHang).ToList();
-
-                var maDonHangs = maChuyenHangDonHangs.Select(
-                    ma => Repository<tChuyenHangDonHang>.GetData(context, (p => p.Ma == ma)).First())
-                    .Select(chuyenHangDonHang => chuyenHangDonHang.MaDonHang).ToList();
-
-                BusinessLogics.BusinessLogics.UpdateXong(context, maDonHangs);
-            }
             return changed;
         }
 
