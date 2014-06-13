@@ -125,7 +125,7 @@ namespace PhuDinhCommonControl
                 var ct = new PhuDinhData.tChiTietChuyenHangDonHang
                              {
                                  MaChiTietDonHang = tChiTietDonHang.Ma,
-                                 tChuyenHangDonHang = chuyenHangDonHang,
+                                 MaChuyenHangDonHang = chuyenHangDonHang.Ma,
                                  tChiTietDonHang = tChiTietDonHang,
                                  SoLuong = soLuong
                              };
