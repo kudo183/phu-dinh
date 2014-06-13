@@ -20,11 +20,12 @@ namespace PhuDinh
             InitializeComponent();
             Thread.CurrentThread.CurrentCulture = new CultureInfo("vi-VN");
 
-            Title = string.Format("{0} - {1} - {2}", "Chuong trinh quan ly", ConfigurationManager.AppSettings["DataSource"], ConfigurationManager.AppSettings["InitialCatalog"]);
 #if DEBUG
             Title = string.Format("{0} - {1} - {2}", "Debug", ConfigurationManager.AppSettings["DataSource"], ConfigurationManager.AppSettings["InitialCatalog"]);
+#else
+            Title = string.Format("{0} - {1} - {2}", "Chuong trinh quan ly", ConfigurationManager.AppSettings["DataSource"], ConfigurationManager.AppSettings["InitialCatalog"]);
 #endif
-         
+
             PhuDinhData.TonKhoManager.UpdateTonKho();
         }
     }
