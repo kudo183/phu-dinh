@@ -18,7 +18,7 @@ namespace PhuDinhCommonControl
 
             dg = dgChiTietChuyenHangDonHang;
 
-            _viewModel=new ChiTietChuyenHangDonHangViewModel();
+            _viewModel = new ChiTietChuyenHangDonHangViewModel();
             DataContext = _viewModel;
         }
 
@@ -32,14 +32,8 @@ namespace PhuDinhCommonControl
 
             switch (header.Name)
             {
-                case Constant.ColumnName_ChuyenHangDonHang:
-                    view = new tChuyenHangDonHangView();                    
-                    ChildWindowUtils.ShowChildWindow(Constant.ViewName_ChuyenHangDonHang, view);
-
-                    _viewModel.UpdateReferenceData(header.Name);
-                    break;
                 case Constant.ColumnName_ChiTietDonHang:
-                    view = new tMatHangView();                    
+                    view = new tChiTietDonHangView();
                     ChildWindowUtils.ShowChildWindow(Constant.ViewName_ChiTietDonHang, view);
 
                     _viewModel.UpdateReferenceData(header.Name);
