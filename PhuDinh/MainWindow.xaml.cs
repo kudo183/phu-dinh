@@ -1,4 +1,5 @@
-﻿using PhuDinhCommon;
+﻿using System.Configuration;
+using PhuDinhCommon;
 using System.Globalization;
 using System.Threading;
 using System.Windows;
@@ -19,9 +20,9 @@ namespace PhuDinh
             InitializeComponent();
             Thread.CurrentThread.CurrentCulture = new CultureInfo("vi-VN");
 
-            Title = "Chuong trinh quan ly";
+            Title = string.Format("{0} - {1} - {2}", "Chuong trinh quan ly", ConfigurationManager.AppSettings["DataSource"], ConfigurationManager.AppSettings["InitialCatalog"]);
 #if DEBUG
-            Title = "Debug";
+            Title = string.Format("{0} - {1} - {2}", "Debug", ConfigurationManager.AppSettings["DataSource"], ConfigurationManager.AppSettings["InitialCatalog"]);
 #endif
          
             PhuDinhData.TonKhoManager.UpdateTonKho();
