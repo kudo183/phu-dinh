@@ -11,7 +11,6 @@ namespace PhuDinhData.ViewModel
 {
     public class ChiTietDonHangViewModel : BaseViewModel<tChiTietDonHang>
     {
-        private List<tDonHang> _tDonHangs;
         private List<tMatHang> _tMatHangs;
 
         private string _filterMatHang = string.Empty;
@@ -80,7 +79,7 @@ namespace PhuDinhData.ViewModel
             if (e.Action == NotifyCollectionChangedAction.Add)
             {
                 var tChiTietDonHang = e.NewItems[0] as tChiTietDonHang;
-                tChiTietDonHang.tDonHangList = _tDonHangs;
+                
                 tChiTietDonHang.tMatHangList = _tMatHangs;
                 
                 if (GetDefaultValue(Constant.ColumnName_MaDonHang) != null)
@@ -98,17 +97,9 @@ namespace PhuDinhData.ViewModel
                 , (p => p.tMatHangList = _tMatHangs));
         }
 
-        private void UpdateDonHangReferenceData()
-        {
-            UpdateReferenceData(out _tDonHangs
-                , GetReferenceFilter<tDonHang>(Constant.ColumnName_DonHang)
-                , (p => p.tDonHangList = _tDonHangs));
-        }
-
         protected override void UpdateAllReferenceData()
         {
             UpdateMatHangReferenceData();
-            UpdateDonHangReferenceData();
         }
 
         public override void UpdateReferenceData(string columnName)
@@ -117,9 +108,6 @@ namespace PhuDinhData.ViewModel
             {
                 case Constant.ColumnName_MatHang:
                     UpdateMatHangReferenceData();
-                    break;
-                case Constant.ColumnName_DonHang:
-                    UpdateDonHangReferenceData();
                     break;
             }
         }

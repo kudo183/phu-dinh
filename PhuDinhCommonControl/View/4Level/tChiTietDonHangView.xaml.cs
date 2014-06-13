@@ -32,12 +32,6 @@ namespace PhuDinhCommonControl
 
             switch (header.Name)
             {
-                case Constant.ColumnName_DonHang:
-                    view = new tDonHangView();
-                    ChildWindowUtils.ShowChildWindow(Constant.ViewName_DonHang, view);
-
-                    _viewModel.UpdateReferenceData(header.Name);
-                    break;
                 case Constant.ColumnName_MatHang:
                     view = new tMatHangView();
                     ChildWindowUtils.ShowChildWindow(Constant.ViewName_MatHang, view);
