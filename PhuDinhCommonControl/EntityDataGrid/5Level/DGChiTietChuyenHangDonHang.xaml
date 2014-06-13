@@ -13,18 +13,9 @@
         <!--Ma-->
         <CustomControl:DataGridReadOnlyTextColumn x:Name="maColumn"/>
         <!--Chuyen hang don hang-->
-        <CustomControl:DataGridReadOnlyLeftAlignTextColumn x:Name="chuyenHangDonHangColumn"  Width="450"
+        <CustomControl:DataGridReadOnlyLeftAlignTextColumn x:Name="chuyenHangDonHangColumn" Width="450"
                                                   Header="{x:Static PhuDinhCommon:Constant.ColumnName_ChuyenHangDonHang}"
                                                   Binding="{Binding tChuyenHangDonHang.TenChuyenHangDonHang}"/>
-        <!--<CustomControl:DataGridComboBoxColumnExt x:Name="chuyenHangDonHangColumn" Width="450" 
-                                                 Header="{x:Static ViewModel:ChiTietChuyenHangDonHangViewModel.Header_ChuyenHangDonHang}"
-                                                 HeaderAddButtonClick="headerAddButton_Click"
-                                                 TextBinding="{Binding tChuyenHangDonHang.TenChuyenHangDonHang, Mode=OneWay}"
-                                                 DisplayMemberPath="TenChuyenHangDonHang"
-                                                 SelectedValuePath="Ma"
-                                                 SelectedValueBinding="{Binding MaChuyenHangDonHang, UpdateSourceTrigger=PropertyChanged}"
-                                                 SelectedItemBinding="{Binding tChuyenHangDonHang, UpdateSourceTrigger=PropertyChanged}"
-                                                 ItemsSource="{Binding tChuyenHangDonHangList}"/>-->
         <!--Mat hang-->
         <CustomControl:DataGridComboBoxColumnExt x:Name="chiTietDonHangColumn" Width="350"
                                                  Header="{x:Static ViewModel:ChiTietChuyenHangDonHangViewModel.Header_ChiTietDonHang}"
