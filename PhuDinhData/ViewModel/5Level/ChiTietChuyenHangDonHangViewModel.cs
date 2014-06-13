@@ -11,7 +11,6 @@ namespace PhuDinhData.ViewModel
 {
     public class ChiTietChuyenHangDonHangViewModel : BaseViewModel<tChiTietChuyenHangDonHang>
     {
-        private List<tChuyenHangDonHang> _tChuyenHangDonHangs;
         private List<tChiTietDonHang> _tChiTietDonHangs;
 
         private string _filterChuyenHangDonHang = string.Empty;
@@ -81,7 +80,6 @@ namespace PhuDinhData.ViewModel
             {
                 var tChiTietChuyenHangDonHang = e.NewItems[0] as tChiTietChuyenHangDonHang;
 
-                tChiTietChuyenHangDonHang.tChuyenHangDonHangList = _tChuyenHangDonHangs;
                 tChiTietChuyenHangDonHang.tChiTietDonHangList = _tChiTietDonHangs;
 
                 if (GetDefaultValue(Constant.ColumnName_MaChuyenHangDonHang) != null)
@@ -89,13 +87,6 @@ namespace PhuDinhData.ViewModel
                     tChiTietChuyenHangDonHang.MaChuyenHangDonHang = Convert.ToInt32(GetDefaultValue(Constant.ColumnName_MaChuyenHangDonHang));
                 }
             }
-        }
-
-        private void UpdateChuyenHangDonHangReferenceData()
-        {
-            UpdateReferenceData(out _tChuyenHangDonHangs
-                , GetReferenceFilter<tChuyenHangDonHang>(Constant.ColumnName_ChuyenHangDonHang)
-                , (p => p.tChuyenHangDonHangList = _tChuyenHangDonHangs));
         }
 
         private void UpdateChiTietDonHangReferenceData()
@@ -107,7 +98,6 @@ namespace PhuDinhData.ViewModel
 
         protected override void UpdateAllReferenceData()
         {
-            UpdateChuyenHangDonHangReferenceData();
             UpdateChiTietDonHangReferenceData();
         }
 
@@ -115,9 +105,6 @@ namespace PhuDinhData.ViewModel
         {
             switch (columnName)
             {
-                case Constant.ColumnName_ChuyenHangDonHang:
-                    UpdateChuyenHangDonHangReferenceData();
-                    break;
                 case Constant.ColumnName_ChiTietDonHang:
                     UpdateChiTietDonHangReferenceData();
                     break;

@@ -55,6 +55,9 @@
     <Compile Include="CustomDatePicker.xaml.cs">
       <DependentUpon>CustomDatePicker.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DataGridColumn\DataGridReadOnlyLeftAlignTextColumn.xaml.cs">
+      <DependentUpon>DataGridReadOnlyLeftAlignTextColumn.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pager.cs" />
     <Compile Include="DataGridColumn\DataGridCheckBoxColumnExt.xaml.cs">
       <DependentUpon>DataGridCheckBoxColumnExt.xaml</DependentUpon>
@@ -112,6 +115,10 @@
     <Page Include="CustomDatePicker.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DataGridColumn\DataGridReadOnlyLeftAlignTextColumn.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="DataGridColumn\DataGridCheckBoxColumnExt.xaml">
       <Generator>MSBuild:Compile</Generator>
