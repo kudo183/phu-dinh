@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace PhuDinhData
 {
@@ -10,6 +11,19 @@ namespace PhuDinhData
             {
                 return string.Format("{0}_{1}",
                     Ngay.ToShortDateString(), rNhaCungCap.TenNhaCungCap);
+            }
+        }
+
+        public int TongSoLuong
+        {
+            get
+            {
+                int result = 0;
+                if (tChiTietNhapHangs != null)
+                {
+                    result += tChiTietNhapHangs.Sum(tChiTietNhapHang => tChiTietNhapHang.SoLuong);
+                }
+                return result;
             }
         }
 

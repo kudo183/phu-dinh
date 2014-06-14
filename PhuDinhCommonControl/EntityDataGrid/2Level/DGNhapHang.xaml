@@ -42,5 +42,7 @@
                                                  SelectedValueBinding="{Binding MaKhoHang, UpdateSourceTrigger=PropertyChanged}"
                                                  SelectedItemBinding="{Binding rKhoHang, UpdateSourceTrigger=PropertyChanged}"
                                                  ItemsSource="{Binding rKhoHangList}"/>
+        <!--Tong so luong-->
+        <CustomControl:DataGridReadOnlyTextColumn x:Name="tongSoLuongColumn" Binding="{Binding TongSoLuong}" Header="Tống số lượng" Width="SizeToHeader"/>
     </DataGrid.Columns>
 </CustomControl:DataGridExt>
