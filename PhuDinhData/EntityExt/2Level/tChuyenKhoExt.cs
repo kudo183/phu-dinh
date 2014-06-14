@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace PhuDinhData
 {
@@ -13,6 +14,19 @@ namespace PhuDinhData
             }
         }
 
+        public int TongSoLuong
+        {
+            get
+            {
+                int result = 0;
+                if (tChiTietChuyenKhoes != null)
+                {
+                    result += tChiTietChuyenKhoes.Sum(tChiTietChuyenKho => tChiTietChuyenKho.SoLuong);
+                }
+                return result;
+            }
+        }
+        
         public List<rNhanVien> rNhanVienList { get; set; }
         public List<rKhoHang> rKhoHangList { get; set; }
 
