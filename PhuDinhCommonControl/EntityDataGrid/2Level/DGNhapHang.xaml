@@ -13,16 +13,6 @@
         <CustomControl:DataGridReadOnlyTextColumn x:Name="maColumn"/>
         <!--Ngay-->
         <CustomControl:DataGridDateColumn x:Name="ngayColumn" Header="{x:Static ViewModel:NhapHangViewModel.Header_Ngay}"/>
-        <!--Nha cung cap-->
-        <CustomControl:DataGridComboBoxColumnExt x:Name="nhaCungCapColumn"
-                                                 Header="{x:Static ViewModel:NhapHangViewModel.Header_NhaCungCap}"
-                                                 HeaderAddButtonClick="headerAddButton_Click"
-                                                 TextBinding="{Binding rNhaCungCap.TenNhaCungCap, Mode=OneWay}"
-                                                 DisplayMemberPath="TenNhaCungCap"
-                                                 SelectedValuePath="Ma"
-                                                 SelectedValueBinding="{Binding MaNhaCungCap, UpdateSourceTrigger=PropertyChanged}"
-                                                 SelectedItemBinding="{Binding rNhaCungCap, UpdateSourceTrigger=PropertyChanged}"
-                                                 ItemsSource="{Binding rNhaCungCapList}"/>
         <!--Nhan vien-->
         <CustomControl:DataGridComboBoxColumnExt x:Name="nhanVienColumn"
                                                  Header="{x:Static ViewModel:NhapHangViewModel.Header_NhanVien}"
@@ -33,6 +23,16 @@
                                                  SelectedValueBinding="{Binding MaNhanVien, UpdateSourceTrigger=PropertyChanged}"
                                                  SelectedItemBinding="{Binding rNhanVien, UpdateSourceTrigger=PropertyChanged}"
                                                  ItemsSource="{Binding rNhanVienList}"/>
+        <!--Nha cung cap-->
+        <CustomControl:DataGridComboBoxColumnExt x:Name="nhaCungCapColumn"
+                                                 Header="{x:Static ViewModel:NhapHangViewModel.Header_NhaCungCap}"
+                                                 HeaderAddButtonClick="headerAddButton_Click"
+                                                 TextBinding="{Binding rNhaCungCap.TenNhaCungCap, Mode=OneWay}"
+                                                 DisplayMemberPath="TenNhaCungCap"
+                                                 SelectedValuePath="Ma"
+                                                 SelectedValueBinding="{Binding MaNhaCungCap, UpdateSourceTrigger=PropertyChanged}"
+                                                 SelectedItemBinding="{Binding rNhaCungCap, UpdateSourceTrigger=PropertyChanged}"
+                                                 ItemsSource="{Binding rNhaCungCapList}"/>
         <!--Kho hang-->
         <CustomControl:DataGridComboBoxColumnExt x:Name="khoHangColumn" Header="{x:Static ViewModel:NhapHangViewModel.Header_KhoHang}"
                                                  HeaderAddButtonClick="headerAddButton_Click"
