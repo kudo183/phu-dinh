@@ -151,6 +151,9 @@ namespace PhuDinhCommonControl
                 case Constant.ViewName_ReportDailyView:
                     view = new ReportDailyView();
                     break;
+                case Constant.ViewName_ReportByNhapNguyenLieuView:
+                    view = new ReportByNhapNguyenLieuView();
+                    break;
             }
 
             return view;

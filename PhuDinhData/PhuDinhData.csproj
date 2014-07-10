@@ -147,6 +147,7 @@
     <Compile Include="rDiaDiem.cs">
       <DependentUpon>PhuDinh.tt</DependentUpon>
     </Compile>
+    <Compile Include="ReportData\ReportByNhapNguyenLieu.cs" />
     <Compile Include="ReportData\ReportDaily.cs" />
     <Compile Include="ReportData\ReportByDonHang.cs" />
     <Compile Include="ReportData\ReportByLoaiHang.cs" />
