@@ -123,6 +123,8 @@
         public const string ViewName_ReportByLoaiHangView = "ReportByLoaiHangView";
         public const string ViewName_ReportByMatHangView = "ReportByMatHangView";
         public const string ViewName_ReportDailyView = "ReportDailyView";
+        public const string ViewName_ReportTuLamView = "ReportTuLamView";
+        public const string ViewName_ReportNhapHangView = "ReportNhapHangView";
         public const string ViewName_ReportByNhapNguyenLieuView = "ReportByNhapNguyenLieuView";
     }
 }

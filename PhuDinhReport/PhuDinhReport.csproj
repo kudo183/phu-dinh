@@ -59,6 +59,9 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ReportNhapHangView.xaml.cs">
+      <DependentUpon>ReportNhapHangView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ReportByNhapNguyenLieuView.xaml.cs">
       <DependentUpon>ReportByNhapNguyenLieuView.xaml</DependentUpon>
     </Compile>
@@ -100,6 +103,10 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="ReportNhapHangView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="ReportByNhapNguyenLieuView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

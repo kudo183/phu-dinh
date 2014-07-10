@@ -29,8 +29,7 @@
             <Button Height="80" FontSize="20" Margin="10" Content="Thong Ke Hang Ngay" Tag="{x:Static PhuDinhCommon:Constant.ViewName_ReportDailyView}"/>
         </StackPanel>
         <StackPanel Width="280" Orientation="Vertical" Background="Blue">
-            <!--<Button Height="80" FontSize="20" Margin="10" Content="Thong Ke Nhap Hang Ngoai" Tag="{x:Static PhuDinhCommon:Constant.ViewName_ReportByNhapHangNgoaiView}"/>
-            <Button Height="80" FontSize="20" Margin="10" Content="Thong Ke Tu Lam" Tag="{x:Static PhuDinhCommon:Constant.ViewName_ReportByTuLamView}"/>-->
+            <Button Height="80" FontSize="20" Margin="10" Content="Thong Ke Nhap Hang" Tag="{x:Static PhuDinhCommon:Constant.ViewName_ReportNhapHangView}"/>
             <Button Height="80" FontSize="20" Margin="10" Content="Thong Ke Nhap Nguyen Lieu" Tag="{x:Static PhuDinhCommon:Constant.ViewName_ReportByNhapNguyenLieuView}"/>
         </StackPanel>
     </StackPanel>
