@@ -157,6 +157,9 @@ namespace PhuDinhCommonControl
                 case Constant.ViewName_ReportNhapHangView:
                     view = new ReportNhapHangView();
                     break;
+                case Constant.ViewName_ReportByChiPhiView:
+                    view = new ReportByChiPhiView();
+                    break;
             }
 
             return view;

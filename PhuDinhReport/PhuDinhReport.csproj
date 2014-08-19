@@ -59,6 +59,9 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ReportByChiPhiView.xaml.cs">
+      <DependentUpon>ReportByChiPhiView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ReportNhapHangView.xaml.cs">
       <DependentUpon>ReportNhapHangView.xaml</DependentUpon>
     </Compile>
@@ -103,6 +106,10 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="ReportByChiPhiView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="ReportNhapHangView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

@@ -126,5 +126,6 @@
         public const string ViewName_ReportTuLamView = "ReportTuLamView";
         public const string ViewName_ReportNhapHangView = "ReportNhapHangView";
         public const string ViewName_ReportByNhapNguyenLieuView = "ReportByNhapNguyenLieuView";
+        public const string ViewName_ReportByChiPhiView = "ReportByChiPhiView";
     }
 }
