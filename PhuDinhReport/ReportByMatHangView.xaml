@@ -28,6 +28,8 @@
                 <TextBlock Text="Den Ngay: " VerticalAlignment="Center" Margin="5"/>
                 <CustomControl:CustomDatePicker x:Name="dpDenNgay" Margin="5" Width="130"/>
                 <Button x:Name="btnTuNgayDenNgay" Content="OK" Grid.Row="2" Margin="5" Click="btnTuNgayDenNgay_Click" Width="80"/>
+                <TextBlock Text="Tổng số cuộn: " Foreground="Blue" VerticalAlignment="Center"/>
+                <TextBlock Name="txtMsg" Text="" Foreground="Blue" VerticalAlignment="Center"/>
             </StackPanel>
         </Grid>
         <CustomControl:DataGridExt Grid.Row="1" x:Name="dg" AutoGenerateColumns="False" EnableRowVirtualization="False" SelectionMode="Single">
