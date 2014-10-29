@@ -32,11 +32,13 @@
                 <TextBlock Text="Den Ngay: " VerticalAlignment="Center" Margin="5"/>
                 <CustomControl:CustomDatePicker x:Name="dpDenNgay" Margin="5" Width="130"/>
                 <Button x:Name="btnTuNgayDenNgay" Content="OK" Grid.Row="2" Grid.Column="1" Margin="5" Click="btnTuNgayDenNgay_Click" Width="80"/>
+                <TextBlock Text="Tổng số tiền: " Foreground="Blue" VerticalAlignment="Center"/>
+                <TextBlock Name="txtMsg" Text="" Foreground="Blue" VerticalAlignment="Center"/>
             </StackPanel>
         </Grid>
         <CustomControl:DataGridExt Grid.Row="1" x:Name="dg" AutoGenerateColumns="False" EnableRowVirtualization="False" SelectionMode="Single">
             <DataGrid.Columns>
-                <CustomControl:DataGridTextColumnExt Binding="{Binding LoaiChiPhi}" Header="Loai Chi Phi" Width="100"/>
+                <CustomControl:DataGridTextColumnExt Binding="{Binding LoaiChiPhi}" Header="Loai Chi Phi" Width="250"/>
                 <CustomControl:DataGridTextRightAlignColumn Binding="{Binding SoTien, StringFormat=\{0:N0\}}" Header="So Tien" Width="100"/>
             </DataGrid.Columns>
         </CustomControl:DataGridExt>

@@ -1,5 +1,6 @@
 ﻿using PhuDinhData.ReportData;
 using System;
+using System.Linq;
 using System.Windows.Controls;
 
 namespace PhuDinhReport
@@ -37,14 +38,22 @@ namespace PhuDinhReport
 
             var denNgay = dpDenNgay.dp.SelectedDate.Value.Date;
 
-            dg.ItemsSource = ReportByChiPhi.FilterByDate(tuNgay, denNgay);
+            var result = ReportByChiPhi.FilterByDate(tuNgay, denNgay);
+
+            txtMsg.Text = result.Sum(p => p.SoTien).ToString("N0");
+
+            dg.ItemsSource = result;
         }
 
         private void ReportByDate()
         {
             var ngay = dpNgay.dp.SelectedDate.Value.Date;
 
-            dg.ItemsSource = ReportByChiPhi.FilterByDate(ngay);
+            var result = ReportByChiPhi.FilterByDate(ngay);
+
+            txtMsg.Text = result.Sum(p => p.SoTien).ToString("N0");
+
+            dg.ItemsSource = result;
         }
     }
 }
