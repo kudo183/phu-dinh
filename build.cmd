@@ -1,0 +1,1 @@
+MsBuild.exe %~dp0\PhuDinh.sln /t:Build /p:Configuration=Release /p:TargetFramework=v4.0
