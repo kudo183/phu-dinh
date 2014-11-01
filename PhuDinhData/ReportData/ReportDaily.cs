@@ -9,29 +9,36 @@ namespace PhuDinhData.ReportData
     {
         public class ReportDailyData
         {
+            public List<ReportDailyRowData> RowData { get; set; }
+
+            public DateTime DateFilter { get; set; }
+        }
+
+        public class ReportDailyRowData
+        {
             public string TenKho { get; set; }
             public string TenKhachHang { get; set; }
             public string TenMatHang { get; set; }
             public string SoLuong { get; set; }
         }
 
-        public static List<ReportDailyData> FilterByDate(DateTime ngay)
+        public static List<ReportDailyRowData> FilterByDate(DateTime ngay)
         {
             return Filter(p => p.Ngay == ngay);
         }
 
-        private static List<ReportDailyData> Filter(System.Linq.Expressions.Expression<Func<tDonHang, bool>> filter)
+        private static List<ReportDailyRowData> Filter(System.Linq.Expressions.Expression<Func<tDonHang, bool>> filter)
         {
             var context = ContextFactory.CreateContext();
 
             var donHangs = context.tDonHangs
                 .Where(filter).GroupBy(p => p.MaKhoHang);
 
-            var result = new List<ReportDailyData>();
+            var result = new List<ReportDailyRowData>();
 
             foreach (var donHang in donHangs)
             {
-                result.Add(new ReportDailyData()
+                result.Add(new ReportDailyRowData()
                 {
                     TenKho = donHang.First().rKhoHang.TenKho
                 });
@@ -53,13 +60,13 @@ namespace PhuDinhData.ReportData
                         }
                     }
 
-                    result.Add(new ReportDailyData()
+                    result.Add(new ReportDailyRowData()
                     {
                         TenKhachHang = ten
                     });
                     foreach (var tChiTietDonHang in tDonHang.tChiTietDonHangs)
                     {
-                        result.Add(new ReportDailyData()
+                        result.Add(new ReportDailyRowData()
                         {
                             TenMatHang = tChiTietDonHang.tMatHang.TenMatHangDayDu,
                             SoLuong = tChiTietDonHang.SoLuong.ToString()

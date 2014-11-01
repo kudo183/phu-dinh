@@ -1,7 +1,15 @@
-﻿@model IEnumerable<PhuDinhData.ReportData.ReportDaily.ReportDailyData>
+﻿@model PhuDinhData.ReportData.ReportDaily.ReportDailyData
 @{
     ViewBag.Title = "Bao cao hang ngay";
-    var grid = new WebGrid(Model, canPage: false, canSort: false);
+    var grid = new WebGrid(Model.RowData, canPage: false, canSort: false);
+}
+
+@using (Html.BeginForm("Index", "BaoCaoHangNgay", FormMethod.Post))
+{
+    <p style="font-size: 14px; padding-left: 100px; padding-top: 15px">
+        Chọn ngày: @Html.TextBox("date", @Model.DateFilter.ToString("yyyy-MM-dd"), new { type = "date" })
+        <input type="submit" value="OK" />
+    </p>
 }
 
 @grid.GetHtml(columns: new[]
