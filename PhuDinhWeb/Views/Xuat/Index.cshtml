@@ -4,10 +4,10 @@
     var grid = new WebGrid(Model.RowData, canPage: false, canSort: false);
 }
 
-@using (Html.BeginForm("Index", "Xuat", FormMethod.Post))
+@using (Html.BeginForm("Index", "Xuat", FormMethod.Get))
 {
     <p style="font-size: 14px; padding-left: 100px; padding-top: 15px">
-        Chọn ngày: @Html.TextBox("date", @Model.DateFilter.ToString("yyyy-MM-dd"), new { type = "date" })
+        Chọn ngày: @Html.TextBox("ngay", @Model.DateFilter.ToString("yyyy-MM-dd"), new { type = "date" })
         <input type="submit" value="OK" />
     </p>
 }

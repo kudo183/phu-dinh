@@ -7,15 +7,13 @@ namespace PhuDinhWeb.Controllers
     [Authorize]
     public class XuatController : Controller
     {
-        public ActionResult Index()
+        public ActionResult Index(DateTime? ngay)
         {
-            return Index(DateTime.Now.Date);
-        }
-
-        [HttpPost]
-        public ActionResult Index(DateTime date)
-        {
-            var result = new ReportDaily.ReportDailyData() { DateFilter = date, RowData = ReportDaily.FilterByDate(date) };
+            if (ngay==null)
+            {
+                ngay = DateTime.Now;
+            }
+            var result = new ReportDaily.ReportDailyData() { DateFilter = ngay.Value, RowData = ReportDaily.FilterByDate(ngay.Value) };
             return View(result);
         }
     }
