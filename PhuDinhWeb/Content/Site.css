@@ -80,8 +80,8 @@ ul#menu {
     width: 40px;
     height: 40px;
     position: fixed;
-    bottom: 50px;
-    right: 100px;
+    bottom: 0px;
+    right: 0px;
     text-indent: -9999px;
     background: url('./themes/scrollTopIcon.png') no-repeat;
     background-color: #000;
