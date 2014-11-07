@@ -5,7 +5,7 @@ using PhuDinhData.ReportData;
 namespace PhuDinhWeb.Controllers
 {
     [Authorize]
-    public class BaoCaoHangNgayController : Controller
+    public class XuatController : Controller
     {
         public ActionResult Index()
         {
