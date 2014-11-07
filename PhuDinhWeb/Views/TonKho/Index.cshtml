@@ -1,7 +1,30 @@
-﻿@using PhuDinhWeb
+﻿@using System.Web.UI.WebControls
+@using PhuDinhWeb
 @model IEnumerable<PhuDinhData.tTonKho>
 @{
     var grid = new WebGrid(Model, canPage: false, canSort: false);
+
+    var listKhos = new List<ListItem>
+    {
+          new ListItem { Text = "Phu Dinh", Value="pd" },
+          new ListItem { Text = "Duc Hoa", Value="dh" }
+    };
+
+    var listLoais = new List<ListItem>
+    {
+          new ListItem { Text = "Nha", Value="n" },
+          new ListItem { Text = "TQ", Value="tq" }
+    };
+}
+
+
+@using (Html.BeginForm("Index", "TonKho", FormMethod.Get))
+{
+    <p style="font-size: 14px; padding-left: 10px; padding-top: 15px">
+        Chọn kho hàng: @Html.DropDownList("tenKho", new SelectList(listKhos, "Value", "Text"))
+        Chọn loại: @Html.DropDownList("tenLoai", new SelectList(listLoais, "Value", "Text"))
+        <input type="submit" value="OK" />
+    </p>
 }
 
 @grid.GetHtml(columns: new[]

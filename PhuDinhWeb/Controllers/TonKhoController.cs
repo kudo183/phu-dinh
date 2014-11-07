@@ -23,15 +23,23 @@ namespace PhuDinhWeb.Controllers
             _titlesLoai = new Dictionary<bool, string> { { false, "Nha" }, { true, "TQ" } };
         }
 
-        public ActionResult Index(string id)
+        public ActionResult Index(string tenKho, string tenLoai)
         {
-            var parameters = id.Split('/');
+            if (string.IsNullOrEmpty(tenKho))
+            {
+                tenKho = "pd";
+            }
+
+            if (string.IsNullOrEmpty(tenLoai))
+            {
+                tenLoai = "n";
+            }
 
             TonKhoManager.UpdateTonKho();
 
             var now = DateTime.Now.Date;
 
-            var kho = _khos[parameters[0].ToLower()];
+            var kho = _khos[tenKho];
 
             ViewBag.TiTle = _titles[kho];
 
@@ -40,15 +48,12 @@ namespace PhuDinhWeb.Controllers
             filter.SetFilter(Filter_tTonKho.MaKhoHang, kho);
             filter.SetFilter(Filter_tTonKho.Ngay, now);
 
-            if (parameters.Length > 1)
-            {
-                var loai = _loais[parameters[1].ToLower()];
+            var loai = _loais[tenLoai.ToLower()];
 
-                ViewBag.TiTle = string.Format("{0} - {1}", _titles[kho], _titlesLoai[loai]);
+            ViewBag.TiTle = string.Format("{0} - {1}", _titles[kho], _titlesLoai[loai]);
 
-                filter.SetFilter(Filter_tTonKho.TenMatHang, loai == false? "#ChTQ" : "ChTQ");
-            }
-
+            filter.SetFilter(Filter_tTonKho.TenMatHang, loai == false ? "#ChTQ" : "ChTQ");
+            
             return View(TonKhoManager.GetTonKho(filter).OrderBy(p => p.tMatHang.TenMatHangDayDu));
         }
     }
