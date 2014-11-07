@@ -76,6 +76,16 @@ ul#menu {
             border-radius: 4px 4px 0 0;
         }
 
+.scrollup {
+    width: 40px;
+    height: 40px;
+    position: fixed;
+    bottom: 50px;
+    right: 100px;
+    text-indent: -9999px;
+    background: url('./themes/scrollTopIcon.png') no-repeat;
+    background-color: #000;
+}
 
 /* Styles for editor and display helpers
 ----------------------------------------------------------*/

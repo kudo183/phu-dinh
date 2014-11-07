@@ -10,6 +10,14 @@
     <script>
         $(document).ready(function () {
             $("tr:even").css("background-color", "#e8eef4");
+            
+            $('.scrollup').click(function () {
+                $("html, body").animate({
+                    scrollTop: 0
+                }, 600);
+                return false;
+            });
+            
         });
     </script>
 </head>
@@ -25,6 +33,7 @@
     <div class="page">
         <section id="main">
             @RenderBody()
+            <a href="#" class="scrollup">Scroll</a>
         </section>
         <footer>
         </footer>
