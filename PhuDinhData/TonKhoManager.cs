@@ -209,13 +209,19 @@ namespace PhuDinhData
 
             var canhBaoTonKhos = RepositoryLocator<rCanhBaoTonKho>.GetData(context, filterCanhBaoTonKho.Filter).ToDictionary(p => p.MaMatHang);
 
-            var result = RepositoryLocator<tTonKho>.GetData(context, filter.Filter);
+            var result = RepositoryLocator<tTonKho>.GetData(context, filter.Filter).OrderBy(p => p.tMatHang.TenMatHangDayDu).ToList();
 
             foreach (var tTonKho in result)
             {
                 tTonKho.CanhBao = 0;
                 if (canhBaoTonKhos.ContainsKey(tTonKho.MaMatHang) == false)
                 {
+                    continue;
+                }
+
+                if (tTonKho.SoLuong == 0 && canhBaoTonKhos[tTonKho.MaMatHang].TonThapNhat <= 0)
+                {
+                    result.Remove(tTonKho);
                     continue;
                 }
 

@@ -54,7 +54,7 @@ namespace PhuDinhWeb.Controllers
 
             filter.SetFilter(Filter_tTonKho.TenMatHang, loai == false ? "#ChTQ" : "ChTQ");
             
-            return View(TonKhoManager.GetTonKho(filter).OrderBy(p => p.tMatHang.TenMatHangDayDu));
+            return View(TonKhoManager.GetTonKho(filter));
         }
     }
 }
