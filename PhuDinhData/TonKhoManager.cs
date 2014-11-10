@@ -211,7 +211,7 @@ namespace PhuDinhData
 
             var result = RepositoryLocator<tTonKho>.GetData(context, filter.Filter).OrderBy(p => p.tMatHang.TenMatHangDayDu).ToList();
 
-            foreach (var tTonKho in result)
+            foreach (var tTonKho in result.ToList())
             {
                 tTonKho.CanhBao = 0;
                 if (canhBaoTonKhos.ContainsKey(tTonKho.MaMatHang) == false)
