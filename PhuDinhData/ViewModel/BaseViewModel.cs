@@ -24,7 +24,7 @@ namespace PhuDinhData.ViewModel
         private string _message;
         public string Message
         {
-            get { return _message; } 
+            get { return _message; }
             set
             {
                 if (_message == value)
@@ -190,7 +190,16 @@ namespace PhuDinhData.ViewModel
                 return;
             }
 
-            _context = ContextFactory.CreateContext();
+            if (_context == null)
+            {
+                _context = ContextFactory.CreateContext();
+            }
+            else
+            {
+                _context.Dispose();
+                _context = null;
+                _context = ContextFactory.CreateContext();
+            }
 
             ItemCount = RepositoryLocator<T>.GetDataCount(_context, MainFilter.Filter);
             _origData = RepositoryLocator<T>.GetData(_context, MainFilter.Filter, PageSize, CurrentPageIndex, ItemCount);
@@ -206,6 +215,12 @@ namespace PhuDinhData.ViewModel
             UpdateAllReferenceData();
 
             Load();
+        }
+
+        public virtual void Dispose()
+        {
+            _context.Dispose();
+            _context = null;
         }
     }
 }

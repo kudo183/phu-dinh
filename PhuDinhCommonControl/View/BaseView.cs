@@ -54,6 +54,7 @@ namespace PhuDinhCommonControl
             _viewModel.HeaderFilterChanged -= OnHeaderFilterChanged;
 
             _viewModel.Unload();
+            _viewModel.Dispose();
         }
 
         protected virtual void OnHeaderFilterChanged(object sender, EventArgs e)

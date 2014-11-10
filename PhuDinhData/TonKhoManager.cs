@@ -54,6 +54,8 @@ namespace PhuDinhData
             thamSoNgayCapNhatTonKhoCuoiCung.GiaTri = now;
 
             context.SaveChanges();
+
+            context.Dispose();
         }
 
         public static void UpdateByChiTietNhapHang(List<Repository<tChiTietNhapHang>.ChangedItemData> changed)
@@ -102,6 +104,8 @@ namespace PhuDinhData
             thamSoNgayCapNhatTonKhoCuoiCung.GiaTri = now;
 
             context.SaveChanges();
+
+            context.Dispose();
         }
 
         public static void UpdateByChiTietChuyenKho(List<Repository<tChiTietChuyenKho>.ChangedItemData> changed)
@@ -150,6 +154,8 @@ namespace PhuDinhData
             thamSoNgayCapNhatTonKhoCuoiCung.GiaTri = now;
 
             context.SaveChanges();
+
+            context.Dispose();
         }
 
         public static void UpdateTonKho(DateTime begin, DateTime end)
@@ -187,6 +193,8 @@ namespace PhuDinhData
                 thamSoNgayCapNhatTonKhoCuoiCung.GiaTri = now;
 
                 context.SaveChanges();
+
+                context.Dispose();
             }
         }
 
@@ -220,6 +228,8 @@ namespace PhuDinhData
                     tTonKho.CanhBao = 1;
                 }
             }
+
+            context.Dispose();
 
             return result;
         }
