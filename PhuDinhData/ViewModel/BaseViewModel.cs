@@ -219,6 +219,9 @@ namespace PhuDinhData.ViewModel
 
         public virtual void Dispose()
         {
+            if (_context == null)
+                return;
+
             _context.Dispose();
             _context = null;
         }
