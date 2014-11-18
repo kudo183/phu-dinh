@@ -34,11 +34,19 @@
                 <Button x:Name="btnTuNgayDenNgay" Content="OK" Grid.Row="2" Grid.Column="1" Margin="5" Click="btnTuNgayDenNgay_Click" Width="80"/>
             </StackPanel>
         </Grid>
-        <CustomControl:DataGridExt Grid.Row="1" x:Name="dg" AutoGenerateColumns="False" EnableRowVirtualization="False" SelectionMode="Single">
-            <DataGrid.Columns>
-                <CustomControl:DataGridTextColumnExt Binding="{Binding TenLoaiHang}" Header="Ten Loai Hang" Width="350"/>
-                <CustomControl:DataGridTextRightAlignColumn Binding="{Binding SoLuong}" Header="So Luong" Width="100"/>
-            </DataGrid.Columns>
-        </CustomControl:DataGridExt>
+        <StackPanel Grid.Row="1">
+            <CustomControl:DataGridExt x:Name="dg" AutoGenerateColumns="False" EnableRowVirtualization="False" SelectionMode="Single">
+                <DataGrid.Columns>
+                    <CustomControl:DataGridTextColumnExt Binding="{Binding TenLoaiHang}" Header="Ten Loai Hang" Width="350"/>
+                    <CustomControl:DataGridTextRightAlignColumn Binding="{Binding SoLuong}" Header="So Luong" Width="100"/>
+                </DataGrid.Columns>
+            </CustomControl:DataGridExt>
+            <CustomControl:DataGridExt Grid.Row="1" x:Name="dgDetail" AutoGenerateColumns="False" EnableRowVirtualization="False" SelectionMode="Single">
+                <DataGrid.Columns>
+                    <CustomControl:DataGridTextColumnExt Binding="{Binding TenMatHang}" Header="Ten Mat Hang" Width="350"/>
+                    <CustomControl:DataGridTextRightAlignColumn Binding="{Binding SoLuong}" Header="So Luong" Width="100"/>
+                </DataGrid.Columns>
+            </CustomControl:DataGridExt>
+        </StackPanel>
     </Grid>
 </UserControl>

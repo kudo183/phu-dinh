@@ -22,7 +22,7 @@ namespace PhuDinhData.ReportData
             return Filter(p => p.tDonHang.Ngay >= tuNgay && p.tDonHang.Ngay <= denNgay);
         }
 
-        private static List<ReportByMatHangData> Filter(System.Linq.Expressions.Expression<Func<tChiTietDonHang, bool>> filter)
+        public static List<ReportByMatHangData> Filter(System.Linq.Expressions.Expression<Func<tChiTietDonHang, bool>> filter)
         {
             var context = ContextFactory.CreateContext();
 
