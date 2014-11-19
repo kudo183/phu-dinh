@@ -59,6 +59,10 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Control\ReportDatePicker.xaml.cs">
+      <DependentUpon>ReportDatePicker.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="ReportByChiPhiView.xaml.cs">
       <DependentUpon>ReportByChiPhiView.xaml</DependentUpon>
     </Compile>
@@ -106,6 +110,10 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Control\ReportDatePicker.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ReportByChiPhiView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -145,6 +153,7 @@
       <Name>PhuDinhData</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
