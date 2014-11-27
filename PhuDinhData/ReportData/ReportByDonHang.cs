@@ -11,7 +11,7 @@ namespace PhuDinhData.ReportData
             public string TenKho { get; set; }
             public string TenKhachHang { get; set; }
             public string TenMatHang { get; set; }
-            public string SoLuong { get; set; }
+            public int SoLuong { get; set; }
         }
 
         public static List<ReportByDonHangData> FilterByDate(DateTime ngay)
@@ -92,7 +92,7 @@ namespace PhuDinhData.ReportData
                         result.Add(new ReportByDonHangData()
                         {
                             TenMatHang = matHangs[gMatHang.Key],
-                            SoLuong = gMatHang.Value.ToString()
+                            SoLuong = gMatHang.Value
                         });
                     }
                 }
