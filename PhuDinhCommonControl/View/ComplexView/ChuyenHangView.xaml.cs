@@ -116,7 +116,7 @@ namespace PhuDinhCommonControl
                 _tChiTietChuyenHangDonHangView.dgChiTietChuyenHangDonHang.DataContext
                 as ChiTietChuyenHangDonHangViewModel;
 
-            if (chuyenHangDonHang == null)
+            if (chuyenHangDonHang == null || chuyenHangDonHang.tDonHang == null)
                 return;
 
             foreach (var tChiTietDonHang in chuyenHangDonHang.tDonHang.tChiTietDonHangs.Where(p => p.Xong == false))
