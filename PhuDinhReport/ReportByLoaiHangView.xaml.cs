@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using System.Linq;
 using System.Linq.Expressions;
 using PhuDinhData;
 using PhuDinhData.ReportData;
@@ -17,14 +17,20 @@ namespace PhuDinhReport
         {
             InitializeComponent();
 
-            dpNgay.dp.SelectedDateChanged += dp_SelectedDateChanged;
-
-            var now = DateTime.Now;
-            dpNgay.dp.SelectedDate = now;
-            dpTuNgay.dp.SelectedDate = now;
-            dpDenNgay.dp.SelectedDate = now;
+            reportDatePicker.NgaySelected += reportDatePicker_NgaySelected;
+            reportDatePicker.TuNgayDenNgaySelected += reportDatePicker_TuNgayDenNgaySelected;
 
             dg.SelectionChanged += dg_SelectionChanged;
+        }
+
+        void reportDatePicker_NgaySelected(object sender, EventArgs e)
+        {
+            ReportByDate();
+        }
+
+        void reportDatePicker_TuNgayDenNgaySelected(object sender, EventArgs e)
+        {
+            ReportFromDateToDate();
         }
 
         void dg_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -39,13 +45,13 @@ namespace PhuDinhReport
             switch (_type)
             {
                 case 0:
-                    var ngay = dpNgay.dp.SelectedDate.Value.Date;
+                    var ngay = reportDatePicker.Ngay.Value.Date;
 
                     filter = p => p.tDonHang.Ngay == ngay && p.tMatHang.MaLoai == maLoai;
                     break;
                 case 1:
-                    var tuNgay = dpTuNgay.dp.SelectedDate.Value.Date;
-                    var denNgay = dpDenNgay.dp.SelectedDate.Value.Date;
+                    var tuNgay = reportDatePicker.TuNgay.Value.Date;
+                    var denNgay = reportDatePicker.DenNgay.Value.Date;
 
                     filter = p => p.tDonHang.Ngay >= tuNgay && p.tDonHang.Ngay <= denNgay && p.tMatHang.MaLoai == maLoai;
                     break;
@@ -54,34 +60,32 @@ namespace PhuDinhReport
             dgDetail.ItemsSource = ReportByMatHang.Filter(filter);
         }
 
-        void dp_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
-        {
-            ReportByDate();
-        }
-
         private void ReportByDate()
         {
             _type = 0;
 
-            var ngay = dpNgay.dp.SelectedDate.Value.Date;
+            var ngay = reportDatePicker.Ngay.Value.Date;
 
-            dg.ItemsSource = ReportByLoaiHang.FilterByDate(ngay);
-        }
+            var result = ReportByLoaiHang.FilterByDate(ngay);
 
-        private void btnTuNgayDenNgay_Click(object sender, System.Windows.RoutedEventArgs e)
-        {
-            ReportFromDateToDate();
+            reportDatePicker.NgayMsg = string.Format("Tong so cuon: {0}", result.Sum(p => p.SoLuong).ToString("N0"));
+
+            dg.ItemsSource = result;
         }
 
         private void ReportFromDateToDate()
         {
             _type = 1;
 
-            var tuNgay = dpTuNgay.dp.SelectedDate.Value.Date;
+            var tuNgay = reportDatePicker.TuNgay.Value.Date;
 
-            var denNgay = dpDenNgay.dp.SelectedDate.Value.Date;
+            var denNgay = reportDatePicker.DenNgay.Value.Date;
 
-            dg.ItemsSource = ReportByLoaiHang.FilterByDate(tuNgay, denNgay);
+            var result = ReportByLoaiHang.FilterByDate(tuNgay, denNgay);
+
+            reportDatePicker.TuNgayDenNgayMsg = string.Format("Tong so cuon: {0}", result.Sum(p => p.SoLuong).ToString("N0"));
+
+            dg.ItemsSource = result;
         }
     }
 }
