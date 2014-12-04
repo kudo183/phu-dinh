@@ -24,9 +24,9 @@ namespace PhuDinhData.ReportData
             switch (type)
             {
                 case ReportType_LayNgoai:
-                    return Filter(p => p.Ngay == ngay && p.MaNhaCungCap != 6);
+                    return FilterLayNgoai(p => p.Ngay == ngay && p.MaNhaCungCap != 6);
                 case ReportType_TuLam:
-                    return Filter(p => p.Ngay == ngay && p.MaNhaCungCap == 6);
+                    return FilterTuLam(p => p.Ngay == ngay && p.MaNhaCungCap == 6);
                 case ReportType_All:
                     return Filter(p => p.Ngay == ngay);
                 default:
