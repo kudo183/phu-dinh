@@ -51,7 +51,7 @@ namespace PhuDinhData.ReportData
 
         private static List<ReportNhapHangData> Filter(System.Linq.Expressions.Expression<Func<tNhapHang, bool>> filter)
         {
-            return null;
+            return new List<ReportNhapHangData>();
         }
 
         private static List<ReportNhapHangData> FilterTuLam(System.Linq.Expressions.Expression<Func<tNhapHang, bool>> filter)
