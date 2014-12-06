@@ -20,6 +20,9 @@
         </StackPanel>
 
         <StackPanel Orientation="Horizontal" Grid.Row="2">
+            <TextBlock Text="Thang: " VerticalAlignment="Center" Margin="5"/>
+            <DatePicker x:Name="dpThangNam" Width="31" VerticalAlignment="Center" SelectedDateChanged="dpThangNam_SelectedDateChanged"/>
+
             <TextBlock Text="Tu Ngay: " VerticalAlignment="Center" Margin="5"/>
             <CustomControl:CustomDatePicker x:Name="dpTuNgay" Margin="5" Width="130"/>
             <TextBlock Text="Den Ngay: " VerticalAlignment="Center" Margin="5"/>
