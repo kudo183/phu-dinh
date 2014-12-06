@@ -112,5 +112,16 @@ namespace PhuDinhReport.Control
 
             OnTuNgayDenNgaySelected();
         }
+
+        private void dpNam_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var date = dpNam.SelectedDate.Value;
+
+            TuNgay = new DateTime(date.Year, 1, 1);
+
+            DenNgay = new DateTime(date.Year, 12, 31);
+
+            OnTuNgayDenNgaySelected();
+        }
     }
 }
