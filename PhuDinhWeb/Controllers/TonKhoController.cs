@@ -52,7 +52,7 @@ namespace PhuDinhWeb.Controllers
 
             ViewBag.TiTle = string.Format("{0} - {1}", _titles[kho], _titlesLoai[loai]);
 
-            filter.SetFilter(Filter_tTonKho.TenMatHang, loai == false ? "#ChTQ" : "ChTQ");
+            filter.SetFilter(Filter_tTonKho.TenMatHang, loai == false ? "#TQ" : "TQ");
             
             return View(TonKhoManager.GetTonKho(filter));
         }
