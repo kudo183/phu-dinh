@@ -1,14 +1,18 @@
 ﻿using System.Configuration;
 using System.Data.Entity.Core.EntityClient;
 using System.Data.SqlClient;
+using System.Reflection;
 using PhuDinhCommon;
+using log4net;
 
 namespace PhuDinhData
 {
     public static class ContextFactory
     {
-        private static string connectionString;
-        static ContextFactory()
+        private static readonly ILog Logger = log4net.LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+
+        private static string connectionString = string.Empty;
+        private static void InitConnectionString()
         {
             var sqlConnectionStringBuilder = new SqlConnectionStringBuilder
             {
@@ -34,7 +38,27 @@ namespace PhuDinhData
 
         public static PhuDinhEntities CreateContext()
         {
-            return new PhuDinhEntities(connectionString);
+            if (string.IsNullOrEmpty(connectionString))
+            {
+                InitConnectionString();
+            }
+
+            return CreateContext(connectionString);
+        }
+
+        //for testing
+        public static PhuDinhEntities CreateContext(string s)
+        {
+            var result = new PhuDinhEntities(s);
+
+            result.Database.Log = DBLogger;
+
+            return result;
+        }
+
+        private static void DBLogger(string s)
+        {
+            Logger.Info(s);
         }
     }
 }

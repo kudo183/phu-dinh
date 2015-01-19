@@ -1,4 +1,5 @@
-﻿using System.Configuration;
+﻿using System;
+using System.Configuration;
 using PhuDinhCommon;
 using System.Globalization;
 using System.Threading;
@@ -14,6 +15,8 @@ namespace PhuDinh
     {
         public MainWindow()
         {
+            log4net.GlobalContext.Properties["name"] = DateTime.Now.ToString("yyyy_MM_dd-hh_mm_ss") + ".log";
+
             LogManager.Log(event_type.et_Internal, severity_type.st_info, new string('*', 20));
             LogManager.Log(event_type.et_Internal, severity_type.st_info, "Start main window");
 
