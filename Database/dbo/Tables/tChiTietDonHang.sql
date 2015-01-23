@@ -14,18 +14,15 @@
 
 
 
+
+
 GO
-create TRIGGER [dbo].[tChiTietDonHang_trUpdateXong]
+CREATE TRIGGER [dbo].[tChiTietDonHang_trUpdateXong]
 	ON [dbo].[tChiTietDonHang]
 	after DELETE, INSERT, UPDATE
 	AS
 	BEGIN
 		Declare @Evt Int = 0;
-		Declare @SoLuong Int = 0;
-		Declare @SoLuongChiTietDonHang Int = 0;
-		Declare @MaDonHang Int = 0;
-		Declare @MaChiTietDonHang Int = 0;
-		Declare @Xong bit = 0;
 
 		SET NOCOUNT ON
 
@@ -36,53 +33,95 @@ create TRIGGER [dbo].[tChiTietDonHang_trUpdateXong]
 			
 		IF(@Evt = 1) -- inserted
 		begin
-			select @MaDonHang = MaDonHang
-			from inserted
-
-			set @Xong = 0;
+			update [dbo].[tDonHang]
+			set Xong = 0
+			where [dbo].[tDonHang].Ma in (select distinct (i.MaDonHang) from inserted as i)
+			and [dbo].[tDonHang].Xong = 1
 		end
 
 		if(@Evt = 2) -- deleted
 		begin
-			select @MaDonHang = MaDonHang
-			from deleted
-			
-			set @Xong = 1;
+			update [dbo].[tDonHang]
+			set Xong = 1
+			where [dbo].[tDonHang].Ma in (select distinct (d.MaDonHang) from deleted as d where d.Xong = 0)			
+			and [dbo].[tDonHang].Xong = 0
+			and NOT EXISTS(select * from [dbo].[tChiTietDonHang] as ct where ct.MaDonHang = [dbo].[tDonHang].Ma and ct.Xong = 0)
 
-			if(EXISTS(select * from [dbo].[tChiTietDonHang] where MaDonHang = @MaDonHang and Xong = 0))
-				set @Xong = 0;
+			--don hang ko co [tChiTietDonHang] thi xong = 0 
+			update [dbo].[tDonHang]
+			set Xong = 0
+			where [dbo].[tDonHang].Ma in (select distinct (d.MaDonHang) from deleted as d)			
+			and [dbo].[tDonHang].Xong = 1
+			and NOT EXISTS(select * from [dbo].[tChiTietDonHang] as ct where ct.MaDonHang = [dbo].[tDonHang].Ma)
 		end
 
 		if(@Evt = 3) -- updated
 		begin
-			select @MaChiTietDonHang = Ma, @SoLuongChiTietDonHang = SoLuong, @MaDonHang = MaDonHang
-			from inserted
-				
-			if(EXISTS(select * from [dbo].[tChiTietChuyenHangDonHang] where MaChiTietDonHang = @MaChiTietDonHang))
-			begin
-				select @SoLuong = sum(SoLuong)
-				from [dbo].[tChiTietChuyenHangDonHang]
-				where MaChiTietDonHang = @MaChiTietDonHang
+			-- update xong [tChiTietDonHang]
+			update [dbo].[tChiTietDonHang]
+			set Xong = 1
+			from inserted as i
+			where [dbo].[tChiTietDonHang].Ma = i.Ma
+			and i.Xong = 0
+			and [dbo].[tChiTietDonHang].SoLuong = (select Sum(ct.SoLuong) from [dbo].[tChiTietChuyenHangDonHang] as ct where ct.MaChiTietDonHang = [dbo].[tChiTietDonHang].Ma)
 
-				set @Xong = 0;
+			update [dbo].[tChiTietDonHang]
+			set Xong = 0
+			from inserted as i
+			where [dbo].[tChiTietDonHang].Ma = i.Ma
+			and i.Xong = 1
+			and ([dbo].[tChiTietDonHang].SoLuong <> (select Sum(ct.SoLuong) from [dbo].[tChiTietChuyenHangDonHang] as ct where ct.MaChiTietDonHang = [dbo].[tChiTietDonHang].Ma)
+			or NOT EXISTS(select * from [dbo].[tChiTietChuyenHangDonHang] as ct where ct.MaChiTietDonHang = [dbo].[tChiTietDonHang].Ma))
 
-				if(@SoLuong = @SoLuongChiTietDonHang)
-					set @Xong = 1;
-
-				update [dbo].[tChiTietDonHang]
-				set Xong = @Xong
-				where Ma = @MaChiTietDonHang
-								
-				set @Xong = 1;
-
-				if(EXISTS(select * from [dbo].[tChiTietDonHang] where MaDonHang = @MaDonHang and Xong = 0))
-					set @Xong = 0;
-			end
-		end
-		
-		begin		
+			-- update xong [tDonHang]
+			-- truong hop delete: giong @Evt = 2
 			update [dbo].[tDonHang]
-			set Xong = @Xong
-			where Ma = @MaDonHang
+			set Xong = 1
+			where [dbo].[tDonHang].Ma in (select distinct (d.MaDonHang) from deleted as d where d.Xong = 0)
+			and [dbo].[tDonHang].Xong = 0
+			and NOT EXISTS(select * from [dbo].[tChiTietDonHang] as ct where ct.MaDonHang = [dbo].[tDonHang].Ma and ct.Xong = 0)
+			
+			--don hang ko co [tChiTietDonHang] thi xong = 0 
+			update [dbo].[tDonHang]
+			set Xong = 0
+			where [dbo].[tDonHang].Ma in (select distinct (d.MaDonHang) from deleted as d)			
+			and [dbo].[tDonHang].Xong = 1
+			and NOT EXISTS(select * from [dbo].[tChiTietDonHang] as ct where ct.MaDonHang = [dbo].[tDonHang].Ma)
+
+			-- truong hop insert
+			update [dbo].[tDonHang]
+			set Xong = 0
+			where [dbo].[tDonHang].Ma in (select distinct (i.MaDonHang) from inserted as i)
+			and [dbo].[tDonHang].Xong = 1
+			and EXISTS(select * from [dbo].[tChiTietDonHang] as ct where ct.MaDonHang = [dbo].[tDonHang].Ma and ct.Xong = 0)
+
+			update [dbo].[tDonHang]
+			set Xong = 1
+			where [dbo].[tDonHang].Ma in (select distinct (i.MaDonHang) from inserted as i)
+			and [dbo].[tDonHang].Xong = 0
+			and NOT EXISTS(select * from [dbo].[tChiTietDonHang] as ct where ct.MaDonHang = [dbo].[tDonHang].Ma and ct.Xong = 0)
 		end
+		 
+	END
+GO
+
+CREATE TRIGGER [dbo].[tChiTietDonHang_trUpdateTonKho]
+	ON [dbo].[tChiTietDonHang]
+	after DELETE, INSERT, UPDATE
+	AS
+	BEGIN
+		SET NOCOUNT ON
+
+		update tk
+		set tk.SoLuong = tk.SoLuong - i.SoLuong
+		from inserted i join tDonHang dh on i.MaDonHang = dh.Ma
+		join tTonKho tk on tk.MaMatHang = i.MaMatHang and tk.MaKhoHang = dh.MaKhoHang
+		where tk.Ngay >= dh.Ngay
+
+		update tk
+		set tk.SoLuong = tk.SoLuong + d.SoLuong
+		from deleted d join tDonHang dh on d.MaDonHang = dh.Ma
+		join tTonKho tk on tk.MaMatHang = d.MaMatHang and tk.MaKhoHang = dh.MaKhoHang
+		where tk.Ngay >= dh.Ngay
+
 	END

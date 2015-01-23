@@ -19,3 +19,31 @@
 
 
 
+
+
+
+GO
+create TRIGGER [dbo].[tDonHang_trUpdateTonKho]
+	ON [dbo].[tDonHang]
+	after DELETE, INSERT, UPDATE
+	AS
+	BEGIN
+
+		SET NOCOUNT ON
+
+		IF(EXISTS(SELECT * FROM inserted) and EXISTS(SELECT * FROM deleted))
+		BEGIN
+			update tk
+			set tk.SoLuong = tk.SoLuong - ct.SoLuong
+			from inserted i join tChiTietDonHang ct on i.Ma = ct.MaDonHang
+			join tTonKho tk on tk.MaMatHang = ct.MaMatHang and tk.MaKhoHang = i.MaKhoHang
+			where tk.Ngay >= i.Ngay
+
+			update tk
+			set tk.SoLuong = tk.SoLuong + ct.SoLuong
+			from deleted d join tChiTietDonHang ct on d.Ma = ct.MaDonHang
+			join tTonKho tk on tk.MaMatHang = ct.MaMatHang and tk.MaKhoHang = d.MaKhoHang
+			where tk.Ngay >= d.Ngay
+		END
+
+	END
