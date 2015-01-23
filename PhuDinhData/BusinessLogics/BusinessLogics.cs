@@ -108,11 +108,8 @@ namespace PhuDinhData.BusinessLogics
                                 Ngay = ngay,
                                 MaKhoHang = maKhoHang,
                                 MaMatHang = maMatHang,
-                                SoLuongCu = tonMatHang[ngayTruoc].SoLuong,
                                 SoLuong = tonMatHang[ngayTruoc].SoLuong + nhapNgay - xuatNgay
                             };
-
-                            t.SoLuong = t.SoLuongCu + nhapNgay - xuatNgay;
 
                             context.tTonKhoes.Add(t);
                             tonMatHang.Add(ngay, t);
@@ -120,8 +117,7 @@ namespace PhuDinhData.BusinessLogics
                         else
                         {
                             var tonNgay = tonMatHang[ngay];
-                            tonNgay.SoLuongCu = tonMatHang[ngayTruoc].SoLuong;
-                            tonNgay.SoLuong = tonNgay.SoLuongCu + nhapNgay - xuatNgay;
+                            tonNgay.SoLuong = tonMatHang[ngayTruoc].SoLuong + nhapNgay - xuatNgay;
                         }
                         
                         ngayTruoc = ngay;
