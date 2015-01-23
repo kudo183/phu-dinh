@@ -27,11 +27,7 @@ namespace PhuDinhData.Repository
 
         public static List<Repository<tChiTietNhapHang>.ChangedItemData> Save(PhuDinhEntities context, List<tChiTietNhapHang> data, List<tChiTietNhapHang> origData)
         {
-            var result = Repository<tChiTietNhapHang>.Save(context, data, origData, (p => p.Ma == 0), ((p1, p2) => p1.Ma == p2.Ma));
-
-            TonKhoManager.UpdateByChiTietNhapHang(result);
-
-            return result;
+            return Repository<tChiTietNhapHang>.Save(context, data, origData, (p => p.Ma == 0), ((p1, p2) => p1.Ma == p2.Ma));
         }
 
         private static IQueryable<tChiTietNhapHang> GetDataQuery(PhuDinhEntities context
