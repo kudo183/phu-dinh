@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Data.Entity;
 
 namespace PhuDinhData.Repository
 {
@@ -33,7 +34,7 @@ namespace PhuDinhData.Repository
         private static IQueryable<tDonHang> GetDataQuery(PhuDinhEntities context
             , Expression<Func<tDonHang, bool>> filter)
         {
-            return Repository<tDonHang>.GetData(context, filter).OrderByDescending(p => p.Ngay);
+            return (Repository<tDonHang>.GetData(context, filter)).Include("tChiTietDonHangs").OrderByDescending(p => p.Ngay);
         }
     }
 }
