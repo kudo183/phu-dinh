@@ -3,7 +3,7 @@
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
-create PROCEDURE [dbo].[ReportTotalByKhachHang] 
+CREATE PROCEDURE [dbo].[ReportTotalByKhachHang] 
 	-- Add the parameters for the stored procedure here
 	@dateFrom datetime,
 	@dateTo datetime
@@ -13,7 +13,8 @@ BEGIN
 	from dbo.rKhachHang kh
 	left join ( select dh.MaKhachHang, ct.SoLuong
 	from dbo.tChiTietDonHang ct
-	join dbo.tDonHang dh on dh.Ma = ct.MaDonHang
+	join dbo.tDonHang dh on dh.ma = ct.MaDonHang
 	where dh.Ngay between @dateFrom and @dateTo) as ct on kh.Ma = ct.MaKhachHang
 	group by kh.TenKhachHang
+	order by SoLuong desc
 END
