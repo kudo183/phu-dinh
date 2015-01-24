@@ -16,6 +16,11 @@ namespace PhuDinhData.Repository
 
         public static List<T> PagingData(IQueryable<T> data, int pageSize, int currentPageIndex, int itemCount)
         {
+            if (pageSize > itemCount)
+            {
+                return data.ToList();
+            }
+
             var skippedItem = pageSize * (currentPageIndex - 1);
 
             var takeItem = itemCount - skippedItem;
