@@ -4,6 +4,7 @@ set d=%date:/=-%
 set t=%time::=_%
 set t=%t:,=_%
 set Rar="C:\Program Files\WinRAR\rar.exe"
-set OutputName="%d% %t%.rar"
+set OutputName="%d% %t%"
 
-%Rar% a -hpnobita C:\Users\Administrator\OneDrive\server\db\release\%OutputName%.rar %~dp0\PhuDinh\bin\Release
+cd %~dp0\PhuDinh\bin\
+%Rar% a -hpnobita C:\Users\Administrator\OneDrive\server\db\release\%OutputName%.rar Release
