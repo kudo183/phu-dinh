@@ -32,6 +32,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{D1AAB3
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhuDinhConsole", "PhuDinhConsole\PhuDinhConsole.csproj", "{A3BC1D2F-F2DA-48DC-9EC3-FD5C03C50C4F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -86,6 +88,10 @@ Global
 		{EC35685C-F660-44CB-B97D-18E1D1A062F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EC35685C-F660-44CB-B97D-18E1D1A062F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EC35685C-F660-44CB-B97D-18E1D1A062F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3BC1D2F-F2DA-48DC-9EC3-FD5C03C50C4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3BC1D2F-F2DA-48DC-9EC3-FD5C03C50C4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3BC1D2F-F2DA-48DC-9EC3-FD5C03C50C4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3BC1D2F-F2DA-48DC-9EC3-FD5C03C50C4F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
