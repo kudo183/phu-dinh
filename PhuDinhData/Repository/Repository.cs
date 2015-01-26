@@ -7,16 +7,28 @@ using System.Text;
 
 namespace PhuDinhData.Repository
 {
-    public static class Repository<T> where T : class
+    public static class Repository<T> where T : BindableObject
     {
-        public static IQueryable<T> GetData(PhuDinhEntities context, Expression<Func<T, bool>> filter)
+        public static List<T> GetData(PhuDinhEntities context,
+            Expression<Func<T, bool>> filter,
+            int pageSize, int currentPageIndex, int itemCount)
+        {
+            return PagingData(RepositoryLocator<T>.GetDataQuery(GetDataQuery(context, filter)), pageSize, currentPageIndex, itemCount);
+        }
+
+        public static int GetDataCount(PhuDinhEntities context, Expression<Func<T, bool>> filter)
+        {
+            return GetDataQuery(context, filter).Count();
+        }
+
+        public static IQueryable<T> GetDataQuery(PhuDinhEntities context, Expression<Func<T, bool>> filter)
         {
             return context.Set<T>().Where(filter);
         }
 
-        public static List<T> PagingData(IQueryable<T> data, int pageSize, int currentPageIndex, int itemCount)
+        private static List<T> PagingData(IQueryable<T> data, int pageSize, int currentPageIndex, int itemCount)
         {
-            if (pageSize > itemCount)
+            if (pageSize > itemCount || pageSize == 0)
             {
                 return data.ToList();
             }
@@ -37,10 +49,10 @@ namespace PhuDinhData.Repository
             return data.Skip(skippedItem).Take(takeItem).ToList();
         }
 
-        public static List<ChangedItemData> Save(PhuDinhEntities context, List<T> data, List<T> origData, Func<T, bool> CheckNewItemFunc, Func<T, T, bool> CompareFunc)
+        public static List<ChangedItemData> Save(PhuDinhEntities context, List<T> data, List<T> origData)
         {
-            var removedItems = RemoveItem(context, data, origData, CompareFunc);
-            var addedItems = AddNewItem(context, data, CheckNewItemFunc);
+            var removedItems = RemoveItem(context, data, origData);
+            var addedItems = AddNewItem(context, data);
             var changed = context.ChangeTracker.Entries<T>().Where(p => p.State == EntityState.Modified).ToList();
 
             var changedItems = new List<ChangedItemData>();
@@ -101,13 +113,13 @@ namespace PhuDinhData.Repository
             public T CurrentValues { get; set; }
         }
 
-        private static List<T> AddNewItem(PhuDinhEntities context, List<T> gridDataSource, Func<T, bool> CheckNewItemFunc)
+        private static List<T> AddNewItem(PhuDinhEntities context, List<T> gridDataSource)
         {
             var result = new List<T>();
 
             foreach (var item in gridDataSource)
             {
-                if (CheckNewItemFunc(item))
+                if (item.IsNewItem())
                 {
                     result.Add(item);
                     context.Set<T>().Add(item);
@@ -117,13 +129,13 @@ namespace PhuDinhData.Repository
             return result;
         }
 
-        private static List<T> RemoveItem(PhuDinhEntities context, List<T> gridDataSource, List<T> origData, Func<T, T, bool> CompareFunc)
+        private static List<T> RemoveItem(PhuDinhEntities context, List<T> gridDataSource, List<T> origData)
         {
             var result = new List<T>();
 
             foreach (var item in origData)
             {
-                var entity = gridDataSource.FirstOrDefault(p => CompareFunc(item, p));
+                var entity = gridDataSource.FirstOrDefault(p => item.IsEqual(p));
                 if (entity == null)
                 {
                     result.Add(item);

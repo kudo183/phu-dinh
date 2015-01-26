@@ -57,9 +57,9 @@ namespace PhuDinhData
             var filterCanhBaoTonKho = new Filter.Filter_rCanhBaoTonKho();
             filterCanhBaoTonKho.SetFilter(Filter.Filter_rCanhBaoTonKho.MaKhoHang, kho);
 
-            var canhBaoTonKhos = RepositoryLocator<rCanhBaoTonKho>.GetData(context, filterCanhBaoTonKho.Filter).ToDictionary(p => p.MaMatHang);
+            var canhBaoTonKhos = Repository<rCanhBaoTonKho>.GetDataQuery(context, filterCanhBaoTonKho.Filter).ToDictionary(p => p.MaMatHang);
 
-            var result = RepositoryLocator<tTonKho>.GetData(context, filter.Filter).OrderBy(p => p.tMatHang.TenMatHangDayDu).ToList();
+            var result = Repository<tTonKho>.GetDataQuery(context, filter.Filter).OrderBy(p => p.tMatHang.TenMatHangDayDu).ToList();
 
             foreach (var tTonKho in result.ToList())
             {

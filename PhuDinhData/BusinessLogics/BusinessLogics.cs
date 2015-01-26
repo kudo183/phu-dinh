@@ -19,8 +19,8 @@ namespace PhuDinhData.BusinessLogics
 
             var nhaps = TinhChiTietNhapTuNgayD(context, ngayD, ngayN);
 
-            var khos = RepositoryLocator<rKhoHang>.GetData(context, p => true);
-            var matHangs = RepositoryLocator<tMatHang>.GetData(context, p => true);
+            var khos = Repository<rKhoHang>.GetDataQuery(context, p => true);
+            var matHangs = Repository<tMatHang>.GetDataQuery(context, p => true);
 
             var soNgay = (ngayN - ngayD).Days + 1;
 
@@ -137,7 +137,7 @@ namespace PhuDinhData.BusinessLogics
         {
             var ton = new Dictionary<int, Dictionary<int, Dictionary<DateTime, tTonKho>>>();
 
-            var tonKhos = RepositoryLocator<tTonKho>.GetData(
+            var tonKhos = Repository<tTonKho>.GetDataQuery(
                    context, p => p.Ngay >= ngayD && p.Ngay <= ngayN);
 
             foreach (var tonKho in tonKhos)
@@ -174,7 +174,7 @@ namespace PhuDinhData.BusinessLogics
         {
             var xuat = new Dictionary<int, Dictionary<int, Dictionary<DateTime, int>>>();
 
-            var donHangs = RepositoryLocator<tDonHang>.GetData(
+            var donHangs = Repository<tDonHang>.GetDataQuery(
                 context, p => p.Ngay >= ngayD && p.Ngay<=ngayN);
 
             foreach (var donHang in donHangs)
@@ -205,7 +205,7 @@ namespace PhuDinhData.BusinessLogics
                 }
             }
 
-            var chuyenKhos = RepositoryLocator<tChuyenKho>.GetData(
+            var chuyenKhos = Repository<tChuyenKho>.GetDataQuery(
                 context, p => p.Ngay >= ngayD && p.Ngay <= ngayN);
 
             foreach (var chuyenKho in chuyenKhos)
@@ -247,7 +247,7 @@ namespace PhuDinhData.BusinessLogics
         {
             var nhap = new Dictionary<int, Dictionary<int, Dictionary<DateTime, int>>>();
 
-            var nhapHangs = RepositoryLocator<tNhapHang>.GetData(
+            var nhapHangs = Repository<tNhapHang>.GetDataQuery(
                 context, p => p.Ngay >= ngayD && p.Ngay <= ngayN);
 
             foreach (var nhapHang in nhapHangs)
@@ -278,7 +278,7 @@ namespace PhuDinhData.BusinessLogics
                 }
             }
 
-            var chuyenKhos = RepositoryLocator<tChuyenKho>.GetData(
+            var chuyenKhos = Repository<tChuyenKho>.GetDataQuery(
                 context, p => p.Ngay >= ngayD && p.Ngay <= ngayN);
 
             foreach (var chuyenKho in chuyenKhos)

@@ -78,6 +78,19 @@ namespace PhuDinhData
             return args;
         }
 
+        public virtual bool IsNewItem()
+        {
+            return ((int)this.GetType().GetProperty("Ma").GetValue(this)) == 0;
+        }
+
+        public virtual bool IsEqual(BindableObject b)
+        {
+            var type = this.GetType();
+            var m = (int)type.GetProperty("Ma").GetValue(this);
+            var m1 = (int)type.GetProperty("Ma").GetValue(b);
+            return m == m1;
+        }
+
         #endregion // Public Members
 
         #region Protected Members

@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 
@@ -8,36 +8,12 @@ namespace PhuDinhData.Repository
     public class RepositoryLocator<T> where T : class
     {
         private const string Pattern = "PhuDinhData.Repository.{0}Repository";
-
-        public static int GetDataCount(PhuDinhEntities context, Expression<Func<T, bool>> filter)
+        
+        public static IQueryable<T> GetDataQuery(IQueryable<T> query)
         {
-            var types = new Type[] { typeof(PhuDinhEntities), typeof(Expression<Func<T, bool>>) };
+            var types = new Type[] { typeof(IQueryable<T>)};
             var method = GetMethod(MethodBase.GetCurrentMethod().Name, types);
-            return Convert.ToInt32(method.Invoke(null, new object[] { context, filter }));
-        }
-
-        public static List<T> GetData(PhuDinhEntities context,
-            Expression<Func<T, bool>> filter,
-            int pageSize, int currentPageIndex, int itemCount)
-        {
-            var types = new Type[] { typeof(PhuDinhEntities), typeof(Expression<Func<T, bool>>), typeof(int), typeof(int), typeof(int) };
-            var method = GetMethod(MethodBase.GetCurrentMethod().Name, types);
-            return method.Invoke(null, new object[] { context, filter, pageSize, currentPageIndex, itemCount }) as List<T>;
-        }
-
-        public static List<T> GetData(PhuDinhEntities context, Expression<Func<T, bool>> filter)
-        {
-            var types = new Type[] { typeof(PhuDinhEntities), typeof(Expression<Func<T, bool>>) };
-            var method = GetMethod(MethodBase.GetCurrentMethod().Name, types);
-            return method.Invoke(null, new object[] { context, filter }) as List<T>;
-        }
-
-        public static List<Repository<T>.ChangedItemData> Save(
-            PhuDinhEntities context, List<T> data, List<T> origData)
-        {
-            var types = new Type[] { typeof(PhuDinhEntities), typeof(List<T>), typeof(List<T>) };
-            var method = GetMethod(MethodBase.GetCurrentMethod().Name, types);
-            return method.Invoke(null, new object[] { context, data, origData }) as List<Repository<T>.ChangedItemData>;
+            return method.Invoke(null, new object[] { query }) as IQueryable<T>;
         }
 
         private static MethodInfo GetMethod(string methodName, Type[] types)

@@ -9,7 +9,7 @@ using PhuDinhData.Repository;
 
 namespace PhuDinhData.ViewModel
 {
-    public abstract class BaseViewModel<T> : BindableObject where T : class
+    public abstract class BaseViewModel<T> : BindableObject where T : BindableObject
     {
         protected PhuDinhEntities _context;
 
@@ -106,9 +106,9 @@ namespace PhuDinhData.ViewModel
 
         protected void UpdateReferenceData<T1>(out List<T1> data,
             Expression<Func<T1, bool>> filter, Action<T> action)
-            where T1 : class
+            where T1 : BindableObject
         {
-            data = RepositoryLocator<T1>.GetData(_context, filter);
+            data = Repository<T1>.GetDataQuery(_context, filter).ToList();
             if (Entity == null)
             {
                 return;
@@ -170,7 +170,7 @@ namespace PhuDinhData.ViewModel
         {
             try
             {
-                return RepositoryLocator<T>.Save(_context, Entity.ToList(), _origData);
+                return Repository<T>.Save(_context, Entity.ToList(), _origData);
             }
             catch (Exception)
             {
@@ -201,8 +201,8 @@ namespace PhuDinhData.ViewModel
                 _context = ContextFactory.CreateContext();
             }
 
-            ItemCount = RepositoryLocator<T>.GetDataCount(_context, MainFilter.Filter);
-            _origData = RepositoryLocator<T>.GetData(_context, MainFilter.Filter, PageSize, CurrentPageIndex, ItemCount);
+            ItemCount = Repository<T>.GetDataCount(_context, MainFilter.Filter);
+            _origData = Repository<T>.GetData(_context, MainFilter.Filter, PageSize, CurrentPageIndex, ItemCount);
 
             Unload();
             Entity.Clear();

@@ -5,11 +5,12 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using CustomControl;
 using PhuDinhCommon;
+using PhuDinhData;
 using PhuDinhData.ViewModel;
 
 namespace PhuDinhCommonControl
 {
-    public class BaseView<T> : UserControl where T : class
+    public class BaseView<T> : UserControl where T : BindableObject
     {
         protected BaseViewModel<T> _viewModel;
 
