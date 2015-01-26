@@ -13,15 +13,20 @@ namespace PhuDinhData.Repository
             Expression<Func<T, bool>> filter,
             int pageSize, int currentPageIndex, int itemCount)
         {
-            return PagingData(RepositoryLocator<T>.GetDataQuery(GetDataQuery(context, filter)), pageSize, currentPageIndex, itemCount);
+            return PagingData(RepositoryLocator<T>.GetDataQuery(GetDataQueryWithFilter(context, filter)), pageSize, currentPageIndex, itemCount);
         }
 
         public static int GetDataCount(PhuDinhEntities context, Expression<Func<T, bool>> filter)
         {
-            return GetDataQuery(context, filter).Count();
+            return GetDataQueryWithFilter(context, filter).Count();
         }
 
         public static IQueryable<T> GetDataQuery(PhuDinhEntities context, Expression<Func<T, bool>> filter)
+        {
+            return RepositoryLocator<T>.GetDataQuery(GetDataQueryWithFilter(context, filter));
+        }
+
+        private static IQueryable<T> GetDataQueryWithFilter(PhuDinhEntities context, Expression<Func<T, bool>> filter)
         {
             return context.Set<T>().Where(filter);
         }
