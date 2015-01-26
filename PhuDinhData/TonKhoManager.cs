@@ -3,6 +3,7 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 using PhuDinhCommon;
+using System.Data.Entity;
 
 namespace PhuDinhData
 {
@@ -59,7 +60,7 @@ namespace PhuDinhData
 
             var canhBaoTonKhos = Repository<rCanhBaoTonKho>.GetDataQuery(context, filterCanhBaoTonKho.Filter).ToDictionary(p => p.MaMatHang);
 
-            var result = Repository<tTonKho>.GetDataQuery(context, filter.Filter).OrderBy(p => p.tMatHang.TenMatHangDayDu).ToList();
+            var result = Repository<tTonKho>.GetDataQuery(context, filter.Filter).Include(p => p.tMatHang).OrderBy(p => p.tMatHang.TenMatHangDayDu).ToList();
 
             foreach (var tTonKho in result.ToList())
             {
