@@ -20,6 +20,8 @@ namespace PhuDinhCommonControl
 
             _viewModel = new NhapNguyenLieuViewModel();
             DataContext = _viewModel;
+
+            dg.Columns[1].Header = (_viewModel as NhapNguyenLieuViewModel).Header_Ngay;
         }
 
         private void dgNhapNguyenLieu_HeaderAddButtonClick(object sender, EventArgs e)

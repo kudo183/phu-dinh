@@ -19,9 +19,15 @@ namespace PhuDinhData.ViewModel
         private string _filterLoaiChiPhi = string.Empty;
         private string _filterNhanVien = string.Empty;
 
-        public static HeaderDateFilterModel Header_Ngay = new HeaderDateFilterModel(Constant.ColumnName_Ngay);
         public static HeaderTextFilterModel Header_LoaiChiPhi = new HeaderTextFilterModel(Constant.ColumnName_LoaiChiPhi);
         public static HeaderTextFilterModel Header_NhanVien = new HeaderTextFilterModel(Constant.ColumnName_NhanVien);
+        
+        private HeaderDateFilterModel _header_Ngay = new HeaderDateFilterModel(Constant.ColumnName_Ngay);
+        public HeaderDateFilterModel Header_Ngay
+        {
+            get { return _header_Ngay; }
+            set { _header_Ngay = value; }
+        }
 
         public ChiPhiViewModel()
         {

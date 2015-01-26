@@ -17,11 +17,12 @@ namespace PhuDinhCommonControl
             LogManager.Log(event_type.et_Internal, severity_type.st_debug, string.Format("{0} {1}", "tDonHangView_Contructor", "Enter"));
 
             InitializeComponent();
-
+            
             dg = dgDonHang;
 
             _viewModel = new DonHangViewModel();
             DataContext = _viewModel;
+            dg.Columns[1].Header = (_viewModel as DonHangViewModel).Header_Ngay;
 
             _viewModel.SetDefaultValue(Constant.ColumnName_MaKhoHang, 1);
 

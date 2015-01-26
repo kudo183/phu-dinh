@@ -20,10 +20,16 @@ namespace PhuDinhData.ViewModel
         private string _filterKhoHangNhap = string.Empty;
         private string _filterKhoHangXuat = string.Empty;
 
-        public static HeaderDateFilterModel Header_Ngay = new HeaderDateFilterModel(Constant.ColumnName_Ngay);
         public static HeaderTextFilterModel Header_NhanVien = new HeaderTextFilterModel(Constant.ColumnName_NhanVien);
         public static HeaderTextFilterModel Header_KhoHangNhap = new HeaderTextFilterModel(Constant.ColumnName_KhoHangNhap);
         public static HeaderTextFilterModel Header_KhoHangXuat = new HeaderTextFilterModel(Constant.ColumnName_KhoHangXuat);
+
+        private HeaderDateFilterModel _header_Ngay = new HeaderDateFilterModel(Constant.ColumnName_Ngay);
+        public HeaderDateFilterModel Header_Ngay
+        {
+            get { return _header_Ngay; }
+            set { _header_Ngay = value; }
+        }
 
         public ChuyenKhoViewModel()
         {

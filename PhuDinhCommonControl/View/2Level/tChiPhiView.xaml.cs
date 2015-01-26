@@ -20,6 +20,8 @@ namespace PhuDinhCommonControl
 
             _viewModel = new ChiPhiViewModel();
             DataContext = _viewModel;
+
+            dg.Columns[1].Header = (_viewModel as ChiPhiViewModel).Header_Ngay;
         }
 
         private void dgChiPhi_HeaderAddButtonClick(object sender, EventArgs e)

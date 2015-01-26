@@ -12,7 +12,7 @@
         <!--Ma-->
         <CustomControl:DataGridReadOnlyTextColumn x:Name="maColumn"/>
         <!--Ngay-->
-        <CustomControl:DataGridDateColumn x:Name="ngayColumn" Header="{x:Static ViewModel:DonHangViewModel.Header_Ngay}"/>
+        <CustomControl:DataGridDateColumn x:Name="ngayColumn"/>
         <!--Khach hang-->
         <CustomControl:DataGridComboBoxColumnExt x:Name="khachHangColumn" Header="{x:Static ViewModel:DonHangViewModel.Header_KhachHang}"
                                                  HeaderAddButtonClick="headerAddButton_Click"

@@ -12,7 +12,7 @@
         <!--Ma-->
         <CustomControl:DataGridReadOnlyTextColumn x:Name="maColumn"/>
         <!--Ngay-->
-        <CustomControl:DataGridDateColumn x:Name="ngayColumn" Header="{x:Static ViewModel:ChiPhiViewModel.Header_Ngay}"/>
+        <CustomControl:DataGridDateColumn x:Name="ngayColumn"/>
         <!--Loai chi phi-->
         <CustomControl:DataGridComboBoxColumnExt x:Name="loaiChiPhiColumn"
                                                  Header="{x:Static ViewModel:ChiPhiViewModel.Header_LoaiChiPhi}"
