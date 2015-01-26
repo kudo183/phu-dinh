@@ -13,7 +13,7 @@ namespace PhuDinhData
 
         public override string ToString()
         {
-            return string.Format("[Ma {0}] [TenKhachHang {1}] [DiaDiem {2}]", Ma, TenKhachHang, rDiaDiem);
+            return string.Format("[Ma {0}] [TenKhachHang {1}] [DiaDiem {2}]", Ma, TenKhachHang, rDiaDiem.TenDiaDiem);
         }
     }
 }

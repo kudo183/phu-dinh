@@ -63,7 +63,7 @@ namespace PhuDinhData
 
         public override string ToString()
         {
-            return string.Format("[Ma {0}] [ChuyenHang {1}] [DonHang {2}]", Ma,tChuyenHang, tDonHang);
+            return string.Format("[Ma {0}] [ChuyenHang {1}] [DonHang {2}]", Ma, tChuyenHang.TenChuyenHang, tDonHang.TenDonHang);
         }
     }
 }

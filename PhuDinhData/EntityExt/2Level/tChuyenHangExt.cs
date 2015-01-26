@@ -54,7 +54,7 @@ namespace PhuDinhData
 
         public override string ToString()
         {
-            return string.Format("[Ma {0}] [Ngay {1}] [Gio {2}] [NhanVien {3}]", Ma, Ngay, Gio, rNhanVien);
+            return string.Format("[Ma {0}] [Ngay {1}] [Gio {2}] [NhanVien {3}]", Ma, Ngay, Gio, rNhanVien.TenNhanVien);
         }
     }
 }

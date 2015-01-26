@@ -9,7 +9,7 @@ namespace PhuDinhData
 
         public override string ToString()
         {
-            return string.Format("[Ma {0}] [KhachHang {1}] [Chanh {2}]", Ma, rKhachHang, rChanh);
+            return string.Format("[Ma {0}] [KhachHang {1}] [Chanh {2}]", Ma, rKhachHang.TenKhachHang, rChanh.TenChanh);
         }
     }
 }
