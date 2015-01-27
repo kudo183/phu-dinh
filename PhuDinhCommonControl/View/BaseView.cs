@@ -150,6 +150,7 @@ namespace PhuDinhCommonControl
             try
             {
                 _viewModel.Save();
+                RefreshView();
             }
             catch (Exception ex)
             {
