@@ -7,6 +7,16 @@ namespace CustomControl
     {
         public bool IsUseEnterKeyPressBinding { get; set; }
 
+        protected override void OnPreviewMouseLeftButtonDown(MouseButtonEventArgs e)
+        {
+            if (!IsKeyboardFocusWithin)
+            {
+                e.Handled = true;
+
+                Focus();
+            }
+        }
+
         protected override void OnGotKeyboardFocus(KeyboardFocusChangedEventArgs e)
         {
             base.OnGotKeyboardFocus(e);
