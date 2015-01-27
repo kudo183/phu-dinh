@@ -58,6 +58,8 @@ namespace CustomControl
 
             if (!Keyboard.IsKeyDown(Key.Tab)) return;
 
+            if (SelectedIndex == -1) return;
+
             var current = Columns.IndexOf(CurrentColumn);
 
             var index = FindFirstEditableColumnIndex(current + 1, this);
