@@ -22,7 +22,7 @@ namespace PhuDinhData.ViewModel.DataGridColumnHeaderFilterModel
             }
         }
 
-        private bool _isUsed;
+        private bool _isUsed = true;
         public bool IsUsed
         {
             get { return _isUsed; }

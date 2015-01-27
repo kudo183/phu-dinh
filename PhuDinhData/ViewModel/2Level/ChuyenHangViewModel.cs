@@ -12,9 +12,6 @@ namespace PhuDinhData.ViewModel
     {
         private List<rNhanVien> _rNhanViens;
 
-        private bool _isUsedDateFilter = true;
-        private DateTime _filterDate = DateTime.Now.Date;
-
         private string _filterNhanVien = string.Empty;
 
         public static HeaderTextFilterModel Header_NhanVien = new HeaderTextFilterModel(Constant.ColumnName_NhanVien);
@@ -41,8 +38,6 @@ namespace PhuDinhData.ViewModel
 
             Entity.CollectionChanged += Entity_CollectionChanged;
 
-            Header_Ngay.IsUsed = _isUsedDateFilter;
-            Header_Ngay.Date = _filterDate;
             Header_Ngay.PropertyChanged += Header_Ngay_PropertyChanged;
 
             Header_NhanVien.Text = _filterNhanVien;
@@ -60,9 +55,6 @@ namespace PhuDinhData.ViewModel
 
             Header_Ngay.PropertyChanged -= Header_Ngay_PropertyChanged;
             Header_NhanVien.PropertyChanged -= Header_NhanVien_PropertyChanged;
-
-            _filterDate = Header_Ngay.Date;
-            _isUsedDateFilter = Header_Ngay.IsUsed;
 
             _filterNhanVien = Header_NhanVien.Text;
         }

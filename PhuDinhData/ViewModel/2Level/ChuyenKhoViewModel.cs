@@ -13,9 +13,6 @@ namespace PhuDinhData.ViewModel
         private List<rNhanVien> _rNhanViens;
         private List<rKhoHang> _rKhoHangs;
 
-        private bool _isUsedDateFilter = true;
-        private DateTime _filterDate = DateTime.Now.Date;
-
         private string _filterNhanVien = string.Empty;
         private string _filterKhoHangNhap = string.Empty;
         private string _filterKhoHangXuat = string.Empty;
@@ -49,8 +46,6 @@ namespace PhuDinhData.ViewModel
 
             Entity.CollectionChanged += Entity_CollectionChanged;
 
-            Header_Ngay.IsUsed = _isUsedDateFilter;
-            Header_Ngay.Date = _filterDate;
             Header_Ngay.PropertyChanged += Header_Ngay_PropertyChanged;
 
             Header_NhanVien.Text = _filterNhanVien;
@@ -77,9 +72,6 @@ namespace PhuDinhData.ViewModel
             Header_Ngay.PropertyChanged -= Header_Ngay_PropertyChanged;
             Header_NhanVien.PropertyChanged -= Header_NhanVien_PropertyChanged;
             Header_KhoHangNhap.PropertyChanged -= Header_KhoHangNhap_PropertyChanged;
-
-            _filterDate = Header_Ngay.Date;
-            _isUsedDateFilter = Header_Ngay.IsUsed;
 
             _filterNhanVien = Header_NhanVien.Text;
 
