@@ -84,6 +84,25 @@ namespace PhuDinhCommonControl
                         Cancel();
                         break;
                 }
+                return;
+            }
+
+            switch (e.Key)
+            {
+                case Key.F1:
+                    Save();
+                    break;
+                case Key.F2:
+                    Save();
+
+                    if (MoveFocus != null)
+                    {
+                        MoveFocus(this, null);
+                    }
+                    break;
+                case Key.F5:
+                    Cancel();
+                    break;
             }
         }
 
