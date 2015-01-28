@@ -33,6 +33,11 @@ namespace PhuDinhData.Repository
 
         private static List<T> PagingData(IQueryable<T> data, int pageSize, int currentPageIndex, int itemCount)
         {
+            if (itemCount == 0)
+            {
+                return new List<T>();
+            }
+
             if (pageSize > itemCount || pageSize == 0)
             {
                 return data.ToList();
