@@ -24,9 +24,9 @@ namespace PhuDinh
             Thread.CurrentThread.CurrentCulture = new CultureInfo("vi-VN");
 
 #if DEBUG
-            Title = string.Format("{0} - {1} - {2}", "Debug", ConfigurationManager.AppSettings["DataSource"], ConfigurationManager.AppSettings["InitialCatalog"]);
+            Title = string.Format("{0}", "Debug**********");
 #else
-            Title = string.Format("{0} - {1} - {2}", "Chuong trinh quan ly", ConfigurationManager.AppSettings["DataSource"], ConfigurationManager.AppSettings["InitialCatalog"]);
+            Title = string.Format("{0}", "Chuong trinh quan ly");
             PhuDinhData.TonKhoManager.UpdateTonKho();
 #endif
         }
