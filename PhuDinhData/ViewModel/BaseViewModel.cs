@@ -4,13 +4,17 @@ using System.Collections.ObjectModel;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Reflection;
 using PhuDinhData.Filter;
 using PhuDinhData.Repository;
+using log4net;
 
 namespace PhuDinhData.ViewModel
 {
     public abstract class BaseViewModel<T> : BindableObject where T : BindableObject
     {
+        private static readonly ILog Logger = log4net.LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+
         protected PhuDinhEntities _context;
 
         protected List<T> _origData;
@@ -185,8 +189,17 @@ namespace PhuDinhData.ViewModel
 
         public virtual void RefreshData()
         {
+            Logger.Info(GetType().Name + ": RefreshData");
+
             if (MainFilter.Filter == null)
             {
+                return;
+            }
+
+            if (MainFilter.IsClearAllData == true)
+            {
+                Logger.Info("     ClearAllData");
+                Entity.Clear();
                 return;
             }
 
@@ -204,6 +217,7 @@ namespace PhuDinhData.ViewModel
             ItemCount = Repository<T>.GetDataCount(_context, MainFilter.Filter);
             _origData = Repository<T>.GetData(_context, MainFilter.Filter, PageSize, CurrentPageIndex, ItemCount);
 
+            Logger.Info("     Unload");
             Unload();
             Entity.Clear();
 
@@ -212,8 +226,10 @@ namespace PhuDinhData.ViewModel
                 Entity.Add(item);
             }
 
+            Logger.Info("     UpdateAllReferenceData");
             UpdateAllReferenceData();
 
+            Logger.Info("     Load");
             Load();
         }
 

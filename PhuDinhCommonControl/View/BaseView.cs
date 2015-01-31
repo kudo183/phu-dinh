@@ -116,17 +116,13 @@ namespace PhuDinhCommonControl
             if (_viewModel == null)
                 return;
 
-            if (_viewModel.MainFilter.IsClearAllData == true)
-            {
-                _viewModel.Entity.Clear();
-                return;
-            }
-
+            dg.SkippedSelectionChangedEvent = true;
             var index = dg.SelectedIndex;
 
             _viewModel.RefreshData();
 
             dg.SelectedIndex = index;
+            dg.SkippedSelectionChangedEvent = false;
         }
 
         public virtual void Save()
