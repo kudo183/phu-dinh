@@ -89,10 +89,10 @@ namespace PhuDinhCommonControl
 
             switch (e.Key)
             {
-                case Key.F1:
+                case Key.F3:
                     Save();
                     break;
-                case Key.F2:
+                case Key.F4:
                     Save();
 
                     if (MoveFocus != null)
