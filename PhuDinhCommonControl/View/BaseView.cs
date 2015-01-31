@@ -108,7 +108,7 @@ namespace PhuDinhCommonControl
 
         public virtual void CommitEdit()
         {
-            dg.CommitEdit();
+            dg.CommitEdit(DataGridEditingUnit.Row, true);
         }
 
         public virtual void RefreshView()
@@ -131,17 +131,6 @@ namespace PhuDinhCommonControl
                 return;
 
             CommitEdit();
-
-            //enforce data grid show Add new row placeholder
-            dg.RaiseEvent(
-                new KeyEventArgs(
-                    InputManager.Current.PrimaryKeyboardDevice
-                    , PresentationSource.FromDependencyObject(dg)
-                    , Environment.ProcessorCount
-                    , Key.Return)
-                {
-                    RoutedEvent = UIElement.KeyDownEvent
-                });
 
             try
             {
