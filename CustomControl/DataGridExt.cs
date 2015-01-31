@@ -11,6 +11,8 @@ namespace CustomControl
     {
         public readonly List<int> SkippedColumnIndex = new List<int>();
 
+        public bool SkippedSelectionChangedEvent = false;
+
         public DataGridExt()
         {
             RowBackground = new SolidColorBrush(Colors.LightBlue);
@@ -22,6 +24,13 @@ namespace CustomControl
             HeadersVisibility = DataGridHeadersVisibility.Column;
         }
 
+        protected override void OnSelectionChanged(SelectionChangedEventArgs e)
+        {
+            if (SkippedSelectionChangedEvent)
+                return;
+
+            base.OnSelectionChanged(e);
+        }
         public int FindFirstEditableColumnIndex(int beginIndex, DataGrid dataGrid)
         {
             var index = -1;
