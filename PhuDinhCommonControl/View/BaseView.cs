@@ -65,46 +65,61 @@ namespace PhuDinhCommonControl
 
         protected override void OnPreviewKeyDown(KeyEventArgs e)
         {
-            if (Keyboard.Modifiers == ModifierKeys.Control)
+            if (IsSaveShortcutKey(e.Key))
             {
-                switch (e.Key)
-                {
-                    case Key.Q:
-                        Save();
-                        break;
-                    case Key.S:
-                        Save();
-
-                        if (MoveFocus != null)
-                        {
-                            MoveFocus(this, null);
-                        }
-                        break;
-                    case Key.Z:
-                        Cancel();
-                        break;
-                }
-                return;
+                Save();
             }
-
-            switch (e.Key)
+            else if (IsSaveAndMoveFocusShortcutKey(e.Key))
             {
-                case Key.F3:
-                    Save();
-                    break;
-                case Key.F4:
-                    Save();
+                Save();
 
-                    if (MoveFocus != null)
-                    {
-                        MoveFocus(this, null);
-                    }
-                    break;
-                case Key.F5:
-                    Cancel();
-                    break;
+                if (MoveFocus != null)
+                {
+                    MoveFocus(this, null);
+                }
+            }
+            else if (IsCancelShortcutKey(e.Key))
+            {
+                Cancel();
             }
         }
+
+        #region check shortcut key helper
+        
+        private bool IsSaveShortcutKey(Key key)
+        {
+            if (Keyboard.Modifiers == ModifierKeys.Control && key == Key.Q)
+                return true;
+
+            if (key == Key.F3)
+                return true;
+
+            return false;
+        }
+
+        private bool IsSaveAndMoveFocusShortcutKey(Key key)
+        {
+            if (Keyboard.Modifiers == ModifierKeys.Control && key == Key.S)
+                return true;
+
+            if (key == Key.F4)
+                return true;
+
+            return false;
+        }
+
+        private bool IsCancelShortcutKey(Key key)
+        {
+            if (Keyboard.Modifiers == ModifierKeys.Control && key == Key.Z)
+                return true;
+
+            if (key == Key.F5)
+                return true;
+
+            return false;
+        }
+
+        #endregion
 
         public virtual void CommitEdit()
         {
