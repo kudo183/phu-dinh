@@ -10,7 +10,9 @@ namespace PhuDinhData
             get
             {
                 return string.Format("{0}_{1}_{2}",
-                    Ngay.ToShortDateString(), rKhoHangXuat.TenKho, rKhoHangNhap.TenKho);
+                    Ngay.ToShortDateString()
+                    , rKhoHangXuat == null ? "" : rKhoHangXuat.TenKho
+                    , rKhoHangNhap == null ? "" : rKhoHangNhap.TenKho);
             }
         }
 
@@ -26,13 +28,16 @@ namespace PhuDinhData
                 return result;
             }
         }
-        
+
         public List<rNhanVien> rNhanVienList { get; set; }
         public List<rKhoHang> rKhoHangList { get; set; }
 
         public override string ToString()
         {
-            return string.Format("[Ma {0}] [Ngay {1}] [NhanVien {2}] [KhoHangXuat {3}] [KhoHangNhap {4}]", Ma, Ngay, rNhanVien.TenNhanVien, rKhoHangXuat.TenKho, rKhoHangNhap.TenKho);
+            return string.Format("[Ma {0}] [Ngay {1}] [NhanVien {2}] [KhoHangXuat {3}] [KhoHangNhap {4}]", Ma, Ngay
+                , rNhanVien == null ? "" : rNhanVien.TenNhanVien
+                , rKhoHangXuat == null ? "" : rKhoHangXuat.TenKho
+                , rKhoHangNhap == null ? "" : rKhoHangNhap.TenKho);
         }
     }
 }

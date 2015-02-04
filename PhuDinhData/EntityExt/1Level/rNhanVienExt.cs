@@ -8,7 +8,9 @@ namespace PhuDinhData
 
         public override string ToString()
         {
-            return string.Format("[Ma {0}] [PhuongTien {1}] [TenNhanVien {2}]", Ma, rPhuongTien, TenNhanVien);
+            return string.Format("[Ma {0}] [PhuongTien {1}] [TenNhanVien {2}]", Ma
+                , rPhuongTien == null ? "" : rPhuongTien.TenPhuongTien
+                , TenNhanVien);
         }
     }
 }

@@ -8,7 +8,7 @@ namespace PhuDinhData
         {
             get
             {
-                return string.Format("{0} {1}", rLoaiNguyenLieu.TenLoai, ConvertDuongKinhDayToString(DuongKinh));
+                return string.Format("{0} {1}", rLoaiNguyenLieu == null ? "" : rLoaiNguyenLieu.TenLoai, ConvertDuongKinhDayToString(DuongKinh));
             }
         }
 
@@ -31,10 +31,12 @@ namespace PhuDinhData
             }
             return result;
         }
-        
+
         public override string ToString()
         {
-            return string.Format("[Ma {0}] [LoaiNguyenLieu {1}] [DuongKinh {2}]", Ma, rLoaiNguyenLieu, DuongKinh);
+            return string.Format("[Ma {0}] [LoaiNguyenLieu {1}] [DuongKinh {2}]", Ma
+                , rLoaiNguyenLieu == null ? "" : rLoaiNguyenLieu.TenLoai
+                , DuongKinh);
         }
     }
 }

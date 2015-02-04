@@ -8,7 +8,9 @@ namespace PhuDinhData
         {
             get
             {
-                return string.Format("{0}_{1}", tDonHang.TenDonHang, tMatHang.TenMatHangLoaiHang);
+                return string.Format("{0}_{1}"
+                    , tDonHang == null ? "" : tDonHang.TenDonHang
+                    , tMatHang == null ? "" : tMatHang.TenMatHangLoaiHang);
             }
         }
 
@@ -17,7 +19,10 @@ namespace PhuDinhData
 
         public override string ToString()
         {
-            return string.Format("[Ma {0}] [DonHang {1}] [MatHang {2}] [SoLuong {3}] [Xong {4}]", Ma, tDonHang.TenDonHang, tMatHang.TenMatHang, SoLuong, Xong);
+            return string.Format("[Ma {0}] [DonHang {1}] [MatHang {2}] [SoLuong {3}] [Xong {4}]", Ma
+                , tDonHang == null ? "" : tDonHang.TenDonHang
+                , tMatHang == null ? "" : tMatHang.TenMatHang
+                , SoLuong, Xong);
         }
     }
 }
