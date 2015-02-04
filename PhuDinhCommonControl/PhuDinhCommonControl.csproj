@@ -298,6 +298,8 @@
     <Compile Include="View\ComplexView\NhanVienView.xaml.cs">
       <DependentUpon>NhanVienView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\ComplexView\_BaseComplexView.cs" />
+    <Compile Include="View\IBaseView.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

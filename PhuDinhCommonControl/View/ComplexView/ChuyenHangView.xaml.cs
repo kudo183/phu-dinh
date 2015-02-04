@@ -3,106 +3,82 @@ using PhuDinhCommon;
 using System.Linq;
 using System.Windows.Controls;
 using PhuDinhData.ViewModel;
+using PhuDinhCommonControl.EntityDataGrid;
 
 namespace PhuDinhCommonControl
 {
     /// <summary>
     /// Interaction logic for ChuyenHangView.xaml
     /// </summary>
-    public partial class ChuyenHangView : UserControl
+    public partial class ChuyenHangView : _BaseComplexView
     {
         public ChuyenHangView()
         {
             InitializeComponent();
 
-            Loaded += ChuyenHangView_Loaded;
-            Unloaded += ChuyenHangView_Unloaded;
+            AddView(_tChuyenHangView);
+            AddView(_tChuyenHangDonHangView);
+            AddView(_tChiTietChuyenHangDonHangView);
         }
 
-        protected override void OnPreviewKeyDown(KeyEventArgs e)
+        protected override void OnLoaded()
         {
-            base.OnPreviewKeyDown(e);
-
-            if (Keyboard.Modifiers == ModifierKeys.Control)
-            {
-                switch (e.Key)
-                {
-                    case Key.D1:
-                        FocustChuyenHangView();
-                        break;
-                    case Key.D2:
-                        FocustChuyenHangDonHangView();
-                        break;
-                    case Key.D3:
-                        FocustChiTietChuyenHangDonHangView();
-                        break;
-                }
-            }
-        }
-
-        void FocustChuyenHangView()
-        {
-            _tChuyenHangView.dg.SelectionChanged -= dgChuyenHang_SelectionChanged;
-            _tChuyenHangView.dg.FocusCell(_tChuyenHangView.dg.Items.Count - 1, 3);
-            _tChuyenHangView.dg.SelectionChanged += dgChuyenHang_SelectionChanged;
-
-            RefreshChuyenHangDonHangView(_tChuyenHangView.dg);
-        }
-
-        void FocustChuyenHangDonHangView()
-        {
-            _tChuyenHangDonHangView.dg.SelectionChanged -= dgChuyenHangDonHang_SelectionChanged;
-            _tChuyenHangDonHangView.dg.FocusCell(_tChuyenHangDonHangView.dg.Items.Count - 1, 2);
-            _tChuyenHangDonHangView.dg.SelectionChanged += dgChuyenHangDonHang_SelectionChanged;
-
-            RefreshChiTietChuyenHangDonHangView(_tChuyenHangDonHangView.dg);
-        }
-
-        void FocustChiTietChuyenHangDonHangView(bool callBeginEdit = true)
-        {
-            _tChiTietChuyenHangDonHangView.dg.FocusCell(_tChiTietChuyenHangDonHangView.dg.Items.Count - 1, 2, callBeginEdit);
-        }
-
-        void ChuyenHangView_Loaded(object sender, System.Windows.RoutedEventArgs e)
-        {
-            _tChuyenHangView.dgChuyenHang.SelectionChanged += dgChuyenHang_SelectionChanged;
-            _tChuyenHangDonHangView.dgChuyenHangDonHang.SelectionChanged += dgChuyenHangDonHang_SelectionChanged;
-
-            _tChuyenHangView.AfterSave += _tChuyenHangView_AfterSave;
-            _tChuyenHangView.MoveFocus += _tChuyenHangView_MoveFocus;
-            _tChuyenHangDonHangView.AfterSave += _tChuyenHangDonHangView_AfterSave;
-            _tChuyenHangDonHangView.MoveFocus += _tChuyenHangDonHangView_MoveFocus;
-            _tChiTietChuyenHangDonHangView.AfterSave += _tChiTietChuyenHangDonHangView_AfterSave;
-
             _tChuyenHangDonHangView.SetMainFilter(
                     PhuDinhData.Filter.Filter_tChuyenHangDonHang.MaChuyenHang, null, true);
             _tChiTietChuyenHangDonHangView.SetMainFilter(
                             PhuDinhData.Filter.Filter_tChiTietChuyenHangDonHang.MaChuyenHangDonHang, null, true);
         }
 
-        void ChuyenHangView_Unloaded(object sender, System.Windows.RoutedEventArgs e)
+        protected override void FocusView(IBaseView view)
         {
-            _tChuyenHangView.dgChuyenHang.SelectionChanged -= dgChuyenHang_SelectionChanged;
-            _tChuyenHangDonHangView.dgChuyenHangDonHang.SelectionChanged -= dgChuyenHangDonHang_SelectionChanged;
-
-            _tChuyenHangView.AfterSave -= _tChuyenHangView_AfterSave;
-            _tChuyenHangView.MoveFocus -= _tChuyenHangView_MoveFocus;
-            _tChuyenHangDonHangView.AfterSave -= _tChuyenHangDonHangView_AfterSave;
-            _tChuyenHangDonHangView.MoveFocus -= _tChuyenHangDonHangView_MoveFocus;
-            _tChiTietChuyenHangDonHangView.AfterSave -= _tChiTietChuyenHangDonHangView_AfterSave;
+            if (view is tChuyenHangView)
+            {
+                _tChuyenHangView.dg.FocusCell(_tChuyenHangView.dg.Items.Count - 1, 3);
+            }
+            else if (view is tChuyenHangDonHangView)
+            {
+                _tChuyenHangDonHangView.dg.FocusCell(_tChuyenHangDonHangView.dg.Items.Count - 1, 2);
+            }
+            else if (view is tChiTietChuyenHangDonHangView)
+            {
+                _tChiTietChuyenHangDonHangView.dg.FocusCell(_tChiTietChuyenHangDonHangView.dg.Items.Count - 1, 2, false);
+            }
         }
 
-        void _tChiTietChuyenHangDonHangView_AfterSave(object sender, System.EventArgs e)
+        protected override void OnAfterSave(IBaseView view)
         {
-            _tChuyenHangView.RefreshView();
+            if (view is tChuyenHangView)
+            {
+                RefreshChuyenHangDonHangView(_tChuyenHangView.dg);
+            }
+            else if (view is tChuyenHangDonHangView)
+            {
+                ProcessChuyenHangDonHangView_AfterSave();
+            }
+            else if (view is tChiTietChuyenHangDonHangView)
+            {
+                _tChuyenHangView.RefreshView();
 
-            Keyboard.Focus(_tChiTietChuyenHangDonHangView.dg);
+                Keyboard.Focus(_tChiTietChuyenHangDonHangView.dg);
+            }
         }
 
-        void _tChuyenHangDonHangView_AfterSave(object sender, System.EventArgs e)
+        protected override void OnSelectionChanged(object view)
+        {
+            if (view is DGChuyenHang)
+            {
+                RefreshChuyenHangDonHangView(_tChuyenHangView.dg);
+            }
+            else if (view is DGChuyenHangDonHang)
+            {
+                RefreshChiTietChuyenHangDonHangView(_tChuyenHangDonHangView.dg);
+            }
+        }
+
+        private void ProcessChuyenHangDonHangView_AfterSave()
         {
             var chuyenHangDonHang =
-                _tChuyenHangDonHangView.dgChuyenHangDonHang.SelectedItem
+                _tChuyenHangDonHangView.dg.SelectedItem
                 as PhuDinhData.tChuyenHangDonHang;
 
             RefreshChiTietChuyenHangDonHangView(_tChuyenHangDonHangView.dg);
@@ -113,7 +89,7 @@ namespace PhuDinhCommonControl
             }
 
             var context =
-                _tChiTietChuyenHangDonHangView.dgChiTietChuyenHangDonHang.DataContext
+                _tChiTietChuyenHangDonHangView.dg.DataContext
                 as ChiTietChuyenHangDonHangViewModel;
 
             if (chuyenHangDonHang == null || chuyenHangDonHang.tDonHang == null)
@@ -132,46 +108,6 @@ namespace PhuDinhCommonControl
 
                 context.Entity.Add(ct);
             }
-        }
-
-        void _tChuyenHangDonHangView_MoveFocus(object sender, System.EventArgs e)
-        {
-            FocustChiTietChuyenHangDonHangView(false);
-        }
-
-        void _tChuyenHangView_AfterSave(object sender, System.EventArgs e)
-        {
-            RefreshChuyenHangDonHangView(_tChuyenHangView.dg);
-        }
-
-        void _tChuyenHangView_MoveFocus(object sender, System.EventArgs e)
-        {
-            FocustChuyenHangDonHangView();
-        }
-
-        void dgChuyenHangDonHang_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (sender != e.OriginalSource)
-            {
-                return;
-            }
-
-            RefreshChiTietChuyenHangDonHangView(_tChuyenHangDonHangView.dg);
-        }
-
-        void dgChuyenHang_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (sender != e.OriginalSource)
-            {
-                return;
-            }
-
-            if (_tChuyenHangView.dg.SelectedIndex == -1)
-            {
-                return;
-            }
-
-            RefreshChuyenHangDonHangView(_tChuyenHangView.dg);
         }
 
         private void RefreshChuyenHangDonHangView(DataGrid dataGrid)

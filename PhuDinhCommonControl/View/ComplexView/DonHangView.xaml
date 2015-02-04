@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="PhuDinhCommonControl.DonHangView"
+﻿<PhuDinhCommonControl:_BaseComplexView x:Class="PhuDinhCommonControl.DonHangView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -19,4 +19,4 @@
             Grid.Row="1"
             x:Name="_tChiTietDonHangView"/>
     </Grid>
-</UserControl>
+</PhuDinhCommonControl:_BaseComplexView>

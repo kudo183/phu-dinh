@@ -10,7 +10,7 @@ using PhuDinhData.ViewModel;
 
 namespace PhuDinhCommonControl
 {
-    public class BaseView<T> : UserControl where T : BindableObject
+    public abstract class BaseView<T> : UserControl, IBaseView where T : BindableObject
     {
         protected BaseViewModel<T> _viewModel;
 

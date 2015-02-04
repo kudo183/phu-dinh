@@ -2,119 +2,73 @@
 using System.Windows.Controls;
 using System.Windows.Input;
 using PhuDinhCommon;
+using PhuDinhCommonControl.EntityDataGrid;
 
 namespace PhuDinhCommonControl
 {
     /// <summary>
     /// Interaction logic for DonHangView.xaml
     /// </summary>
-    public partial class DonHangView : UserControl
+    public partial class DonHangView : _BaseComplexView
     {
+        private int _prevSelectedMaDonHang = 0;
+
         public DonHangView()
         {
             InitializeComponent();
 
-            Loaded += DonHangView_Loaded;
-            Unloaded += DonHangView_Unloaded;
+            AddView(_tDonHangView);
+            AddView(_tChiTietDonHangView);
         }
 
-        protected override void OnPreviewKeyDown(KeyEventArgs e)
+        protected override void OnLoaded()
         {
-            base.OnPreviewKeyDown(e);
-
-            if (Keyboard.Modifiers == ModifierKeys.Control)
-            {
-                switch (e.Key)
-                {
-                    case Key.D1:
-                        FocustDonHangView();
-                        break;
-                    case Key.D2:
-                        FocustChiTietDonHangView();
-                        break;
-                }
-            }
-        }
-
-        void FocustDonHangView()
-        {
-            _tDonHangView.dg.SelectionChanged -= dgDonHang_SelectionChanged;
-            _tDonHangView.dg.FocusCell(_tDonHangView.dg.Items.Count - 1, 2);
-            _tDonHangView.dg.SelectionChanged += dgDonHang_SelectionChanged;
-
-            RefreshChiTietDonHangView(_tDonHangView.dg);
-        }
-
-        void FocustChiTietDonHangView()
-        {
-            _tChiTietDonHangView.dg.FocusCell(_tChiTietDonHangView.dg.Items.Count - 1, 2);
-        }
-
-        void DonHangView_Loaded(object sender, RoutedEventArgs e)
-        {
-            _tDonHangView.dgDonHang.SelectionChanged += dgDonHang_SelectionChanged;
-            _tChiTietDonHangView.AfterSave += _tChiTietDonHangView_AfterSave;
-            _tChiTietDonHangView.MoveFocus += _tChiTietDonHangView_MoveFocus;
-            _tDonHangView.AfterSave += _tDonHangView_AfterSave;
-            _tDonHangView.MoveFocus += _tDonHangView_MoveFocus;
-
             _tChiTietDonHangView.SetMainFilter(
                     PhuDinhData.Filter.Filter_tChiTietDonHang.MaDonHang, null, true);
         }
 
-        void DonHangView_Unloaded(object sender, RoutedEventArgs e)
+        protected override void OnAfterSave(IBaseView view)
         {
-            _tDonHangView.dgDonHang.SelectionChanged -= dgDonHang_SelectionChanged;
-            _tChiTietDonHangView.AfterSave -= _tChiTietDonHangView_AfterSave;
-            _tChiTietDonHangView.MoveFocus -= _tChiTietDonHangView_MoveFocus;
-            _tDonHangView.AfterSave -= _tDonHangView_AfterSave;
-            _tDonHangView.MoveFocus -= _tDonHangView_MoveFocus;
-        }
-
-        void _tDonHangView_AfterSave(object sender, System.EventArgs e)
-        {
-            RefreshChiTietDonHangView(_tDonHangView.dg);
-        }
-
-        void _tDonHangView_MoveFocus(object sender, System.EventArgs e)
-        {
-            FocustChiTietDonHangView();
-        }
-
-        void _tChiTietDonHangView_AfterSave(object sender, System.EventArgs e)
-        {
-            _tDonHangView.RefreshView();
-
-            Keyboard.Focus(_tChiTietDonHangView.dg);
-        }
-
-        void _tChiTietDonHangView_MoveFocus(object sender, System.EventArgs e)
-        {
-            FocustDonHangView();
-        }
-
-        void dgDonHang_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (sender != e.OriginalSource)
+            if (view is tDonHangView)
             {
-                return;
+                RefreshChiTietDonHangView(_tDonHangView.dg);
             }
+            else if (view is tChiTietDonHangView)
+            {
+                _tDonHangView.RefreshView();
 
-            RefreshChiTietDonHangView(_tDonHangView.dg);
+                Keyboard.Focus(_tChiTietDonHangView.dg);
+            }
+        }
+
+        protected override void OnSelectionChanged(object view)
+        {
+            if (view is DGDonHang)
+            {
+                RefreshChiTietDonHangView(_tDonHangView.dg);
+            }
         }
 
         private void RefreshChiTietDonHangView(DataGrid dataGrid)
         {
             var donHang = dataGrid.SelectedItem as PhuDinhData.tDonHang;
 
-            if (donHang == null)
+            if (donHang == null || donHang.Ma == 0)
             {
+                _prevSelectedMaDonHang = -1;
                 _tChiTietDonHangView.SetMainFilter(
                     PhuDinhData.Filter.Filter_tChiTietDonHang.MaDonHang, null, true);
 
                 _tChiTietDonHangView.RefreshView();
                 return;
             }
+
+            if (donHang.Ma == _prevSelectedMaDonHang)
+            {
+                return;
+            }
+
+            _prevSelectedMaDonHang = donHang.Ma;
 
             _tChiTietDonHangView.SetMainFilter(
                 PhuDinhData.Filter.Filter_tChiTietDonHang.MaDonHang, donHang.Ma);
