@@ -112,6 +112,11 @@ namespace PhuDinhData.ViewModel
             Expression<Func<T1, bool>> filter, Action<T> action)
             where T1 : BindableObject
         {
+            if (_context == null)
+            {
+                _context = ContextFactory.CreateContext();
+            }
+
             data = Repository<T1>.GetDataQuery(_context, filter).ToList();
             if (Entity == null)
             {
