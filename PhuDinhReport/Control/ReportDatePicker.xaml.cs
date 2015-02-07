@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 
 namespace PhuDinhReport.Control
 {
@@ -67,6 +68,37 @@ namespace PhuDinhReport.Control
             dpNgay.dp.SelectedDate = now;
             dpTuNgay.dp.SelectedDate = now;
             dpDenNgay.dp.SelectedDate = now;
+
+            dpThangNam.CalendarOpened += dpThangNam_CalendarOpened;
+            dpNam.CalendarOpened += dpNam_CalendarOpened;
+        }
+
+        void dpThangNam_CalendarOpened(object sender, RoutedEventArgs e)
+        {
+            var datepicker = sender as DatePicker;
+            if (datepicker != null)
+            {
+                var popup = datepicker.Template.FindName(
+                    "PART_Popup", datepicker) as Popup;
+                if (popup != null && popup.Child is Calendar)
+                {
+                    ((Calendar)popup.Child).DisplayMode = CalendarMode.Year;
+                }
+            }
+        }
+
+        void dpNam_CalendarOpened(object sender, RoutedEventArgs e)
+        {
+            var datepicker = sender as DatePicker;
+            if (datepicker != null)
+            {
+                var popup = datepicker.Template.FindName(
+                    "PART_Popup", datepicker) as Popup;
+                if (popup != null && popup.Child is Calendar)
+                {
+                    ((Calendar)popup.Child).DisplayMode = CalendarMode.Decade;
+                }
+            }
         }
 
         void btnTuNgayDenNgay_Click(object sender, RoutedEventArgs e)
