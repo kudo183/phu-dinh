@@ -15,6 +15,9 @@ rd /s /q %~dp0\PhuDinhConsole\bin\release\log
 rd /s /q %~dp0\PhuDinh\bin\release\log
 cd /d %~dp0\PhuDinh\bin\Release\
 
-%Rar% a -hpnobita %UserProfile%\OneDrive\server\db\release\%OutputName%.rar PhuDinh.exe
+set OutputPath=%UserProfile%\OneDrive\server\db\release\%OutputName%.rar
+rem set OutputPath=D:\%OutputName%.rar
+
+%Rar% a -hpnobita %OutputPath% PhuDinh.exe PhuDinh.exe.config
 
 cd %~dp0
