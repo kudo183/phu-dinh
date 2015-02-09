@@ -1,4 +1,4 @@
-MsBuild.exe %~dp0\PhuDinh.sln /m /t:Build /p:Configuration=Release /p:TargetFramework=v4.0
+MsBuild.exe %~dp0\PhuDinh.sln /m /t:ReBuild /p:Configuration=Release /p:TargetFramework=v4.0
 
 set d=%date:/=-%
 set t=%time::=_%
