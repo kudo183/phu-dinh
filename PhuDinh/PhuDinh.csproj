@@ -124,19 +124,6 @@
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\AssemblyInfo.template" />
-    <None Include="Properties\DataSources\PhuDinhData.PhuDinhEntities.datasource" />
-    <None Include="Properties\DataSources\PhuDinhData.rBaiXe.datasource" />
-    <None Include="Properties\DataSources\PhuDinhData.rChanh.datasource" />
-    <None Include="Properties\DataSources\PhuDinhData.rLoaiChiPhi.datasource" />
-    <None Include="Properties\DataSources\PhuDinhData.rLoaiHang.datasource" />
-    <None Include="Properties\DataSources\PhuDinhData.rNhanVienGiaoHang.datasource" />
-    <None Include="Properties\DataSources\PhuDinhData.rPhuongTien.datasource" />
-    <None Include="Properties\DataSources\PhuDinhData.sysdiagram.datasource" />
-    <None Include="Properties\DataSources\PhuDinhData.tChiPhiNhanVienGiaoHang.datasource" />
-    <None Include="Properties\DataSources\PhuDinhData.tChiTietDonHang.datasource" />
-    <None Include="Properties\DataSources\PhuDinhData.tChuyenHang.datasource" />
-    <None Include="Properties\DataSources\PhuDinhData.tDonHang.datasource" />
-    <None Include="Properties\DataSources\PhuDinhData.tMatHang.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
