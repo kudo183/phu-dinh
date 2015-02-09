@@ -13,8 +13,8 @@ set OutputName="%d% %t% r%v%"
 
 rd /s /q %~dp0\PhuDinhConsole\bin\release\log
 rd /s /q %~dp0\PhuDinh\bin\release\log
-cd /d %~dp0\PhuDinh\bin\
+cd /d %~dp0\PhuDinh\bin\Release\
 
-%Rar% a -hpnobita %UserProfile%\OneDrive\server\db\release\%OutputName%.rar Release
+%Rar% a -hpnobita %UserProfile%\OneDrive\server\db\release\%OutputName%.rar PhuDinh.exe
 
 cd %~dp0
