@@ -8,26 +8,30 @@
         <Style TargetType="DataGridColumnHeader">
             <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
             <EventSetter Event="Click" Handler="headerAddButton_Click"/>
-            <Setter Property="ContentTemplate">
-                <Setter.Value>
-                    <DataTemplate>
-                        <Grid HorizontalAlignment="Stretch">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="Auto"/>
-                            </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Column="0" Text="{Binding Name}"/>
-                            <CustomControl:TextBoxExt Grid.Column="1" Text="{Binding Text, Mode=TwoWay,UpdateSourceTrigger=Explicit}" IsUseEnterKeyPressBinding="True" Margin="3,0,3,0"/>
-                            <Button Grid.Column="2" Width="25" HorizontalContentAlignment="Center">
-                                <Button.Content>
-                                    <TextBlock Text="+" FontSize="12" FontWeight="Bold" Padding="0" Margin="0"/>
-                                </Button.Content>
-                            </Button>
-                        </Grid>
-                    </DataTemplate>
-                </Setter.Value>
-            </Setter>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding FilterType}" Value="TextFilter">
+                    <Setter Property="ContentTemplate">
+                        <Setter.Value>
+                            <DataTemplate>
+                                <Grid HorizontalAlignment="Stretch">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0" Text="{Binding Name}"/>
+                                    <CustomControl:TextBoxExt Grid.Column="1" Text="{Binding Text, Mode=TwoWay, UpdateSourceTrigger=Explicit}" IsUseEnterKeyPressBinding="True" Margin="3,0,3,0"/>
+                                    <Button Grid.Column="2" Width="25" HorizontalContentAlignment="Center">
+                                        <Button.Content>
+                                            <TextBlock Text="+" FontSize="12" FontWeight="Bold" Padding="0" Margin="0"/>
+                                        </Button.Content>
+                                    </Button>
+                                </Grid>
+                            </DataTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </DataTrigger>
+            </Style.Triggers>
         </Style>
     </DataGridComboBoxColumn.HeaderStyle>
     <DataGridComboBoxColumn.ElementStyle>

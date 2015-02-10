@@ -2,9 +2,12 @@
 {
     public abstract class HeaderFilterBaseModel : BindableObject, IHeaderFilterModel
     {
-        protected HeaderFilterBaseModel(string name)
+        public string FilterType { get; set; }
+
+        protected HeaderFilterBaseModel(string name, string filterType)
         {
             _name = name;
+            FilterType = filterType;
         }
 
         private string _name;

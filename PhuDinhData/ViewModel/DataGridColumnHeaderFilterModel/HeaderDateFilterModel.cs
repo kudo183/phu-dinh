@@ -4,7 +4,7 @@ namespace PhuDinhData.ViewModel.DataGridColumnHeaderFilterModel
 {
     public class HeaderDateFilterModel : HeaderFilterBaseModel
     {
-        public HeaderDateFilterModel(string name) : base(name) { }
+        public HeaderDateFilterModel(string name) : base(name, "DateFilter") { }
 
         private DateTime _date = DateTime.Now.Date;
         public DateTime Date
