@@ -11,9 +11,14 @@ namespace PhuDinhData.ViewModel
     public class MatHangViewModel : BaseViewModel<tMatHang>
     {
         private List<rLoaiHang> _rLoaiHangs;
-        private string _filterLoaiHang = string.Empty;
+        
+        private HeaderTextFilterModel _header_LoaiHang = new HeaderTextFilterModel(Constant.ColumnName_LoaiHang);
 
-        public static HeaderTextFilterModel Header_LoaiHang = new HeaderTextFilterModel(Constant.ColumnName_LoaiHang);
+        public HeaderTextFilterModel Header_LoaiHang
+        {
+            get { return _header_LoaiHang; }
+            set { _header_LoaiHang = value; }
+        }
 
         public MatHangViewModel()
         {
@@ -30,7 +35,6 @@ namespace PhuDinhData.ViewModel
 
             Entity.CollectionChanged += Entity_CollectionChanged;
 
-            Header_LoaiHang.Text = _filterLoaiHang;
             Header_LoaiHang.PropertyChanged += Header_LoaiHang_PropertyChanged;
 
             Header_LoaiHang_PropertyChanged(null, null);
@@ -42,7 +46,6 @@ namespace PhuDinhData.ViewModel
         {
             Entity.CollectionChanged -= Entity_CollectionChanged;
 
-            _filterLoaiHang = Header_LoaiHang.Text;
             Header_LoaiHang.PropertyChanged -= Header_LoaiHang_PropertyChanged;
         }
 

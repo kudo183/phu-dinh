@@ -5,7 +5,7 @@
                            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                            xmlns:CustomControl="clr-namespace:CustomControl;assembly=CustomControl"
                            xmlns:DesignTimeData="clr-namespace:PhuDinhData.DesignTimeData;assembly=PhuDinhData"
-                           xmlns:ViewModel="clr-namespace:PhuDinhData.ViewModel;assembly=PhuDinhData" mc:Ignorable="d"
+                           mc:Ignorable="d"
                            d:DataContext="{x:Static DesignTimeData:DDrNguyenLieu.ViewModel}"
                            AutoGenerateColumns="False" EnableRowVirtualization="False" ItemsSource="{Binding Entity}" SelectionMode="Single">
     <DataGrid.Columns>
@@ -13,7 +13,6 @@
         <CustomControl:DataGridReadOnlyTextColumn x:Name="maColumn"/>
         <!--Loai Nguyen Lieu-->
         <CustomControl:DataGridComboBoxColumnExt x:Name="loaiNguyenLieuColumn"
-                                                 Header="{x:Static ViewModel:NguyenLieuViewModel.Header_LoaiNguyenLieu}"
                                                  HeaderAddButtonClick="headerAddButton_Click"
                                                  TextBinding="{Binding rLoaiNguyenLieu.TenLoai, Mode=OneWay}"
                                                  DisplayMemberPath="TenLoai"

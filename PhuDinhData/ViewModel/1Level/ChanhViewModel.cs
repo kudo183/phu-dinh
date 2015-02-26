@@ -11,9 +11,14 @@ namespace PhuDinhData.ViewModel
     public class ChanhViewModel : BaseViewModel<rChanh>
     {
         private List<rBaiXe> _rBaiXes;
-        private string _filterBaiXe = string.Empty;
+        
+        private HeaderTextFilterModel _header_BaiXe = new HeaderTextFilterModel(Constant.ColumnName_BaiXe);
 
-        public static HeaderTextFilterModel Header_BaiXe = new HeaderTextFilterModel(Constant.ColumnName_BaiXe);
+        public HeaderTextFilterModel Header_BaiXe
+        {
+            get { return _header_BaiXe; }
+            set { _header_BaiXe = value; }
+        }
 
         public ChanhViewModel()
         {
@@ -30,7 +35,6 @@ namespace PhuDinhData.ViewModel
 
             Entity.CollectionChanged += Entity_CollectionChanged;
 
-            Header_BaiXe.Text = _filterBaiXe;
             Header_BaiXe.PropertyChanged += Header_BaiXe_PropertyChanged;
 
             Header_BaiXe_PropertyChanged(null, null);
@@ -42,7 +46,6 @@ namespace PhuDinhData.ViewModel
         {
             Entity.CollectionChanged -= Entity_CollectionChanged;
 
-            _filterBaiXe = Header_BaiXe.Text;
             Header_BaiXe.PropertyChanged -= Header_BaiXe_PropertyChanged;
         }
 

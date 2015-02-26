@@ -19,6 +19,7 @@ namespace PhuDinhCommonControl
 
             _viewModel = new MatHangViewModel();
             DataContext = _viewModel;
+            dg.Columns[1].Header = (_viewModel as MatHangViewModel).Header_LoaiHang;
         }
 
         private void dgMatHang_HeaderAddButtonClick(object sender, EventArgs e)

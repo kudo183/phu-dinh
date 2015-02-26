@@ -11,9 +11,14 @@ namespace PhuDinhData.ViewModel
     public class NguyenLieuViewModel : BaseViewModel<rNguyenLieu>
     {
         private List<rLoaiNguyenLieu> _rLoaiNguyenLieus;
-        private string _filterLoaiNguyenLieu = string.Empty;
+        
+        private HeaderTextFilterModel _header_LoaiNguyenLieu = new HeaderTextFilterModel(Constant.ColumnName_LoaiNguyenLieu);
 
-        public static HeaderTextFilterModel Header_LoaiNguyenLieu = new HeaderTextFilterModel(Constant.ColumnName_LoaiNguyenLieu);
+        public HeaderTextFilterModel Header_LoaiNguyenLieu
+        {
+            get { return _header_LoaiNguyenLieu; }
+            set { _header_LoaiNguyenLieu = value; }
+        }
 
         public NguyenLieuViewModel()
         {
@@ -30,7 +35,6 @@ namespace PhuDinhData.ViewModel
 
             Entity.CollectionChanged += Entity_CollectionChanged;
 
-            Header_LoaiNguyenLieu.Text = _filterLoaiNguyenLieu;
             Header_LoaiNguyenLieu.PropertyChanged += Header_LoaiNguyenLieu_PropertyChanged;
 
             Header_LoaiNguyenLieu_PropertyChanged(null, null);
@@ -42,7 +46,6 @@ namespace PhuDinhData.ViewModel
         {
             Entity.CollectionChanged -= Entity_CollectionChanged;
 
-            _filterLoaiNguyenLieu = Header_LoaiNguyenLieu.Text;
             Header_LoaiNguyenLieu.PropertyChanged -= Header_LoaiNguyenLieu_PropertyChanged;
         }
 

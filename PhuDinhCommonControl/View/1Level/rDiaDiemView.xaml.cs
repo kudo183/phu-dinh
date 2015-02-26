@@ -19,6 +19,7 @@ namespace PhuDinhCommonControl
 
             _viewModel = new DiaDiemViewModel();
             DataContext = _viewModel;
+            dg.Columns[1].Header = (_viewModel as DiaDiemViewModel).Header_Nuoc;
         }
 
         private void dgDiaDiem_HeaderAddButtonClick(object sender, EventArgs e)

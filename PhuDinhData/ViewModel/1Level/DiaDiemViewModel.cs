@@ -11,9 +11,14 @@ namespace PhuDinhData.ViewModel
     public class DiaDiemViewModel : BaseViewModel<rDiaDiem>
     {
         private List<rNuoc> _rNuocs;
-        private string _filterNuoc = string.Empty;
+        
+        private HeaderTextFilterModel _header_Nuoc = new HeaderTextFilterModel(Constant.ColumnName_Nuoc);
 
-        public static HeaderTextFilterModel Header_Nuoc = new HeaderTextFilterModel(Constant.ColumnName_Nuoc);
+        public HeaderTextFilterModel Header_Nuoc
+        {
+            get { return _header_Nuoc; }
+            set { _header_Nuoc = value; }
+        }
 
         public DiaDiemViewModel()
         {
@@ -30,7 +35,6 @@ namespace PhuDinhData.ViewModel
 
             Entity.CollectionChanged += Entity_CollectionChanged;
 
-            Header_Nuoc.Text = _filterNuoc;
             Header_Nuoc.PropertyChanged += Header_Nuoc_PropertyChanged;
 
             Header_Nuoc_PropertyChanged(null, null);
@@ -42,7 +46,6 @@ namespace PhuDinhData.ViewModel
         {
             Entity.CollectionChanged -= Entity_CollectionChanged;
 
-            _filterNuoc = Header_Nuoc.Text;
             Header_Nuoc.PropertyChanged -= Header_Nuoc_PropertyChanged;
         }
 

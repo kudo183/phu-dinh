@@ -19,7 +19,7 @@ namespace PhuDinhCommonControl
 
             _viewModel = new ChanhViewModel();
             DataContext = _viewModel;
-
+            dg.Columns[1].Header = (_viewModel as ChanhViewModel).Header_BaiXe;
         }
 
         private void dgChanh_HeaderAddButtonClick(object sender, EventArgs e)
