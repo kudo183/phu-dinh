@@ -13,12 +13,9 @@ namespace PhuDinhData.ViewModel
         private List<rLoaiChiPhi> _rLoaiChiPhis;
         private List<rNhanVien> _rNhanViens;
 
-        private string _filterLoaiChiPhi = string.Empty;
-        private string _filterNhanVien = string.Empty;
+        public HeaderTextFilterModel Header_LoaiChiPhi { get; set; }
+        public HeaderTextFilterModel Header_NhanVien { get; set; }
 
-        public static HeaderTextFilterModel Header_LoaiChiPhi = new HeaderTextFilterModel(Constant.ColumnName_LoaiChiPhi);
-        public static HeaderTextFilterModel Header_NhanVien = new HeaderTextFilterModel(Constant.ColumnName_NhanVien);
-        
         private HeaderDateFilterModel _header_Ngay = new HeaderDateFilterModel(Constant.ColumnName_Ngay);
         public HeaderDateFilterModel Header_Ngay
         {
@@ -34,6 +31,9 @@ namespace PhuDinhData.ViewModel
 
             SetReferenceFilter<rLoaiChiPhi>(Constant.ColumnName_LoaiChiPhi, (p => true));
             SetReferenceFilter<rNhanVien>(Constant.ColumnName_NhanVien, (p => true));
+
+            Header_LoaiChiPhi = new HeaderTextFilterModel(Constant.ColumnName_LoaiChiPhi);
+            Header_NhanVien = new HeaderTextFilterModel(Constant.ColumnName_NhanVien);
         }
 
         public override void Load()
@@ -44,10 +44,7 @@ namespace PhuDinhData.ViewModel
 
             Header_Ngay.PropertyChanged += Header_Ngay_PropertyChanged;
 
-            Header_LoaiChiPhi.Text = _filterLoaiChiPhi;
             Header_LoaiChiPhi.PropertyChanged += Header_LoaiChiPhi_PropertyChanged;
-
-            Header_NhanVien.Text = _filterNhanVien;
             Header_NhanVien.PropertyChanged += Header_NhanVien_PropertyChanged;
 
             Header_Ngay_PropertyChanged(null, null);
@@ -64,10 +61,6 @@ namespace PhuDinhData.ViewModel
             Header_Ngay.PropertyChanged -= Header_Ngay_PropertyChanged;
             Header_LoaiChiPhi.PropertyChanged -= Header_LoaiChiPhi_PropertyChanged;
             Header_NhanVien.PropertyChanged -= Header_NhanVien_PropertyChanged;
-
-            _filterLoaiChiPhi = Header_LoaiChiPhi.Text;
-
-            _filterNhanVien = Header_NhanVien.Text;
         }
 
         void Header_LoaiChiPhi_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)

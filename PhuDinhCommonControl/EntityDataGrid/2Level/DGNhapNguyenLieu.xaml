@@ -5,7 +5,7 @@
                            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                            xmlns:CustomControl="clr-namespace:CustomControl;assembly=CustomControl"
                            xmlns:DesignTimeData="clr-namespace:PhuDinhData.DesignTimeData;assembly=PhuDinhData"
-                           xmlns:ViewModel="clr-namespace:PhuDinhData.ViewModel;assembly=PhuDinhData" mc:Ignorable="d"
+                           mc:Ignorable="d"
                            d:DataContext="{x:Static DesignTimeData:DDtNhapNguyenLieu.ViewModel}"
                            AutoGenerateColumns="False" EnableRowVirtualization="False" ItemsSource="{Binding Entity}" SelectionMode="Single">
     <DataGrid.Columns>
@@ -15,7 +15,6 @@
         <CustomControl:DataGridDateColumn x:Name="ngayColumn"/>
         <!--Nha cung cap-->
         <CustomControl:DataGridComboBoxColumnExt x:Name="nhaCungCapColumn"
-                                                 Header="{x:Static ViewModel:NhapNguyenLieuViewModel.Header_NhaCungCap}"
                                                  HeaderAddButtonClick="headerAddButton_Click"
                                                  TextBinding="{Binding rNhaCungCap.TenNhaCungCap, Mode=OneWay}"
                                                  DisplayMemberPath="TenNhaCungCap"
@@ -25,7 +24,6 @@
                                                  ItemsSource="{Binding rNhaCungCapList}"/>
         <!--Nguyen lieu-->
         <CustomControl:DataGridComboBoxColumnExt x:Name="nguyenLieuColumn"
-                                                 Header="{x:Static ViewModel:NhapNguyenLieuViewModel.Header_NguyenLieu}"
                                                  HeaderAddButtonClick="headerAddButton_Click"
                                                  TextBinding="{Binding rNguyenLieu.TenNguyenLieu, Mode=OneWay}"
                                                  DisplayMemberPath="TenNguyenLieu"

@@ -22,6 +22,9 @@ namespace PhuDinhCommonControl
             DataContext = _viewModel;
 
             dg.Columns[1].Header = (_viewModel as ChuyenKhoViewModel).Header_Ngay;
+            dg.Columns[2].Header = (_viewModel as ChuyenKhoViewModel).Header_NhanVien;
+            dg.Columns[3].Header = (_viewModel as ChuyenKhoViewModel).Header_KhoHangXuat;
+            dg.Columns[4].Header = (_viewModel as ChuyenKhoViewModel).Header_KhoHangNhap;
         }
 
         private void dgChuyenKho_HeaderAddButtonClick(object sender, EventArgs e)

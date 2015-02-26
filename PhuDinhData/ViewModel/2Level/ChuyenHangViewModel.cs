@@ -12,16 +12,8 @@ namespace PhuDinhData.ViewModel
     {
         private List<rNhanVien> _rNhanViens;
 
-        private string _filterNhanVien = string.Empty;
-
-        public static HeaderTextFilterModel Header_NhanVien = new HeaderTextFilterModel(Constant.ColumnName_NhanVien);
-
-        private HeaderDateFilterModel _header_Ngay = new HeaderDateFilterModel(Constant.ColumnName_Ngay);
-        public HeaderDateFilterModel Header_Ngay
-        {
-            get { return _header_Ngay; }
-            set { _header_Ngay = value; }
-        }
+        public HeaderTextFilterModel Header_NhanVien { get; set; }
+        public HeaderDateFilterModel Header_Ngay { get; set; }
 
         public ChuyenHangViewModel()
         {
@@ -30,6 +22,9 @@ namespace PhuDinhData.ViewModel
             MainFilter = new Filter_tChuyenHang();
 
             SetReferenceFilter<rNhanVien>(Constant.ColumnName_NhanVien, (p => true));
+
+            Header_Ngay = new HeaderDateFilterModel(Constant.ColumnName_Ngay);
+            Header_NhanVien = new HeaderTextFilterModel(Constant.ColumnName_NhanVien);
         }
 
         public override void Load()
@@ -39,8 +34,6 @@ namespace PhuDinhData.ViewModel
             Entity.CollectionChanged += Entity_CollectionChanged;
 
             Header_Ngay.PropertyChanged += Header_Ngay_PropertyChanged;
-
-            Header_NhanVien.Text = _filterNhanVien;
             Header_NhanVien.PropertyChanged += Header_NhanVien_PropertyChanged;
 
             Header_Ngay_PropertyChanged(null, null);
@@ -55,8 +48,6 @@ namespace PhuDinhData.ViewModel
 
             Header_Ngay.PropertyChanged -= Header_Ngay_PropertyChanged;
             Header_NhanVien.PropertyChanged -= Header_NhanVien_PropertyChanged;
-
-            _filterNhanVien = Header_NhanVien.Text;
         }
 
         void Header_NhanVien_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)

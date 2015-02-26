@@ -13,18 +13,10 @@ namespace PhuDinhData.ViewModel
         private List<rNguyenLieu> _rNguyenLieus;
         private List<rNhaCungCap> _rNhaCungCaps;
 
-        private string _filterNguyenLieu = string.Empty;
-        private string _filterNhaCungCap = string.Empty;
+        public HeaderTextFilterModel Header_NguyenLieu { get; set; }
+        public HeaderTextFilterModel Header_NhaCungCap { get; set; }
 
-        public static HeaderTextFilterModel Header_NguyenLieu = new HeaderTextFilterModel(Constant.ColumnName_NguyenLieu);
-        public static HeaderTextFilterModel Header_NhaCungCap = new HeaderTextFilterModel(Constant.ColumnName_NhanCungCap);
-
-        private HeaderDateFilterModel _header_Ngay = new HeaderDateFilterModel(Constant.ColumnName_Ngay);
-        public HeaderDateFilterModel Header_Ngay
-        {
-            get { return _header_Ngay; }
-            set { _header_Ngay = value; }
-        }
+        public HeaderDateFilterModel Header_Ngay { get; set; }
 
         public NhapNguyenLieuViewModel()
         {
@@ -34,6 +26,11 @@ namespace PhuDinhData.ViewModel
 
             SetReferenceFilter<rNguyenLieu>(Constant.ColumnName_NguyenLieu, (p => true));
             SetReferenceFilter<rNhaCungCap>(Constant.ColumnName_NhanCungCap, (p => true));
+
+            Header_NguyenLieu = new HeaderTextFilterModel(Constant.ColumnName_NguyenLieu);
+            Header_NhaCungCap = new HeaderTextFilterModel(Constant.ColumnName_NhanCungCap);
+
+            Header_Ngay = new HeaderDateFilterModel(Constant.ColumnName_Ngay);
         }
 
         public override void Load()
@@ -43,11 +40,7 @@ namespace PhuDinhData.ViewModel
             Entity.CollectionChanged += Entity_CollectionChanged;
 
             Header_Ngay.PropertyChanged += Header_Ngay_PropertyChanged;
-
-            Header_NguyenLieu.Text = _filterNguyenLieu;
             Header_NguyenLieu.PropertyChanged += Header_NguyenLieu_PropertyChanged;
-
-            Header_NhaCungCap.Text = _filterNhaCungCap;
             Header_NhaCungCap.PropertyChanged += Header_NhaCungCap_PropertyChanged;
 
             Header_Ngay_PropertyChanged(null, null);
@@ -64,10 +57,6 @@ namespace PhuDinhData.ViewModel
             Header_Ngay.PropertyChanged -= Header_Ngay_PropertyChanged;
             Header_NguyenLieu.PropertyChanged -= Header_NguyenLieu_PropertyChanged;
             Header_NhaCungCap.PropertyChanged -= Header_NhaCungCap_PropertyChanged;
-
-            _filterNguyenLieu = Header_NguyenLieu.Text;
-
-            _filterNhaCungCap = Header_NhaCungCap.Text;
         }
 
         void Header_NguyenLieu_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)

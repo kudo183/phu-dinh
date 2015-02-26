@@ -20,6 +20,9 @@ namespace PhuDinhCommonControl
 
             _viewModel = new CanhBaoTonKhoViewModel();
             DataContext = _viewModel;
+
+            dg.Columns[1].Header = (_viewModel as CanhBaoTonKhoViewModel).Header_KhoHang;
+            dg.Columns[2].Header = (_viewModel as CanhBaoTonKhoViewModel).Header_MatHang;
         }
 
         private void dgTonKho_HeaderAddButtonClick(object sender, EventArgs e)

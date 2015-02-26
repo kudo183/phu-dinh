@@ -13,11 +13,8 @@ namespace PhuDinhData.ViewModel
         private List<tMatHang> _tMatHangs;
         private List<rNguyenLieu> _rNguyenLieus;
 
-        private string _filterMatHang = string.Empty;
-        private string _filterNguyenLieu = string.Empty;
-
-        public static HeaderTextFilterModel Header_MatHang = new HeaderTextFilterModel(Constant.ColumnName_MatHang);
-        public static HeaderTextFilterModel Header_NguyenLieu = new HeaderTextFilterModel(Constant.ColumnName_NguyenLieu);
+        public HeaderTextFilterModel Header_MatHang { get; set; }
+        public HeaderTextFilterModel Header_NguyenLieu { get; set; }
 
         public MatHangNguyenLieuViewModel()
         {
@@ -27,6 +24,9 @@ namespace PhuDinhData.ViewModel
 
             SetReferenceFilter<tMatHang>(Constant.ColumnName_MatHang, (p => true));
             SetReferenceFilter<rNguyenLieu>(Constant.ColumnName_NguyenLieu, (p => true));
+
+            Header_MatHang = new HeaderTextFilterModel(Constant.ColumnName_MatHang);
+            Header_NguyenLieu = new HeaderTextFilterModel(Constant.ColumnName_NguyenLieu);
         }
 
         public override void Load()
@@ -35,10 +35,7 @@ namespace PhuDinhData.ViewModel
 
             Entity.CollectionChanged += Entity_CollectionChanged;
 
-            Header_MatHang.Text = _filterMatHang;
             Header_MatHang.PropertyChanged += Header_MatHang_PropertyChanged;
-
-            Header_NguyenLieu.Text = _filterNguyenLieu;
             Header_NguyenLieu.PropertyChanged += Header_NguyenLieu_PropertyChanged;
 
             Header_MatHang_PropertyChanged(null, null);
@@ -51,10 +48,7 @@ namespace PhuDinhData.ViewModel
         {
             Entity.CollectionChanged -= Entity_CollectionChanged;
 
-            _filterMatHang = Header_MatHang.Text;
             Header_MatHang.PropertyChanged -= Header_MatHang_PropertyChanged;
-
-            _filterNguyenLieu = Header_NguyenLieu.Text;
             Header_NguyenLieu.PropertyChanged -= Header_NguyenLieu_PropertyChanged;
         }
 

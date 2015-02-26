@@ -22,6 +22,9 @@ namespace PhuDinhCommonControl
             DataContext = _viewModel;
 
             dg.Columns[1].Header = (_viewModel as NhapHangViewModel).Header_Ngay;
+            dg.Columns[2].Header = (_viewModel as NhapHangViewModel).Header_NhanVien;
+            dg.Columns[3].Header = (_viewModel as NhapHangViewModel).Header_NhaCungCap;
+            dg.Columns[4].Header = (_viewModel as NhapHangViewModel).Header_KhoHang;
         }
 
         private void dgNhapHang_HeaderAddButtonClick(object sender, EventArgs e)

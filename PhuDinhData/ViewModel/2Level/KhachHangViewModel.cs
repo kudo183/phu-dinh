@@ -11,9 +11,8 @@ namespace PhuDinhData.ViewModel
     public class KhachHangViewModel : BaseViewModel<rKhachHang>
     {
         private List<rDiaDiem> _rDiaDiems;
-        private string _filterDiaDiem = string.Empty;
 
-        public static HeaderTextFilterModel Header_DiaDiem = new HeaderTextFilterModel(Constant.ColumnName_DiaDiem);
+        public HeaderTextFilterModel Header_DiaDiem { get; set; }
 
         public KhachHangViewModel()
         {
@@ -22,6 +21,8 @@ namespace PhuDinhData.ViewModel
             MainFilter = new Filter_rKhachHang();
 
             SetReferenceFilter<rDiaDiem>(Constant.ColumnName_DiaDiem, (p => true));
+
+            Header_DiaDiem = new HeaderTextFilterModel(Constant.ColumnName_DiaDiem);
         }
 
         public override void Load()
@@ -29,8 +30,6 @@ namespace PhuDinhData.ViewModel
             _isLoading = true;
 
             Entity.CollectionChanged += Entity_CollectionChanged;
-
-            Header_DiaDiem.Text = _filterDiaDiem;
             Header_DiaDiem.PropertyChanged += Header_DiaDiem_PropertyChanged;
 
             Header_DiaDiem_PropertyChanged(null, null);
@@ -42,7 +41,6 @@ namespace PhuDinhData.ViewModel
         {
             Entity.CollectionChanged -= Entity_CollectionChanged;
 
-            _filterDiaDiem = Header_DiaDiem.Text;
             Header_DiaDiem.PropertyChanged -= Header_DiaDiem_PropertyChanged;
         }
 

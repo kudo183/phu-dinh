@@ -13,11 +13,8 @@ namespace PhuDinhData.ViewModel
         private List<tMatHang> _tMatHangs;
         private List<rKhoHang> _rKhoHangs;
 
-        private string _filterMatHang = string.Empty;
-        private string _filterKhoHang = string.Empty;
-
-        public static HeaderTextFilterModel Header_MatHang = new HeaderTextFilterModel(Constant.ColumnName_MatHang);
-        public static HeaderTextFilterModel Header_KhoHang = new HeaderTextFilterModel(Constant.ColumnName_KhoHang);
+        public HeaderTextFilterModel Header_MatHang { get; set; }
+        public HeaderTextFilterModel Header_KhoHang { get; set; }
 
         public CanhBaoTonKhoViewModel()
         {
@@ -27,6 +24,9 @@ namespace PhuDinhData.ViewModel
 
             SetReferenceFilter<tMatHang>(Constant.ColumnName_MatHang, (p => true));
             SetReferenceFilter<rKhoHang>(Constant.ColumnName_KhoHang, (p => true));
+
+            Header_MatHang = new HeaderTextFilterModel(Constant.ColumnName_MatHang);
+            Header_KhoHang = new HeaderTextFilterModel(Constant.ColumnName_KhoHang);
         }
 
         public override void Load()
@@ -35,10 +35,7 @@ namespace PhuDinhData.ViewModel
 
             Entity.CollectionChanged += Entity_CollectionChanged;
 
-            Header_MatHang.Text = _filterMatHang;
             Header_MatHang.PropertyChanged += Header_MatHang_PropertyChanged;
-
-            Header_KhoHang.Text = _filterKhoHang;
             Header_KhoHang.PropertyChanged += Header_KhoHang_PropertyChanged;
 
             Header_MatHang_PropertyChanged(null, null);
@@ -53,10 +50,6 @@ namespace PhuDinhData.ViewModel
 
             Header_MatHang.PropertyChanged -= Header_MatHang_PropertyChanged;
             Header_KhoHang.PropertyChanged -= Header_KhoHang_PropertyChanged;
-
-            _filterMatHang = Header_MatHang.Text;
-
-            _filterKhoHang = Header_KhoHang.Text;
         }
 
         void Header_MatHang_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -78,7 +71,7 @@ namespace PhuDinhData.ViewModel
             if (e.Action == NotifyCollectionChangedAction.Add)
             {
                 var rCanhBaoTonKho = e.NewItems[0] as rCanhBaoTonKho;
-                
+
                 rCanhBaoTonKho.tMatHangList = _tMatHangs;
                 rCanhBaoTonKho.rKhoHangList = _rKhoHangs;
 

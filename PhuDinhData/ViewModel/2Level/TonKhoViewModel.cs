@@ -13,18 +13,10 @@ namespace PhuDinhData.ViewModel
         private List<tMatHang> _tMatHangs;
         private List<rKhoHang> _rKhoHangs;
 
-        private string _filterMatHang = string.Empty;
-        private string _filterKhoHang = string.Empty;
+        public HeaderTextFilterModel Header_MatHang { get; set; }
+        public HeaderTextFilterModel Header_KhoHang { get; set; }
 
-        public static HeaderTextFilterModel Header_MatHang = new HeaderTextFilterModel(Constant.ColumnName_MatHang);
-        public static HeaderTextFilterModel Header_KhoHang = new HeaderTextFilterModel(Constant.ColumnName_KhoHang);
-
-        private HeaderDateFilterModel _header_Ngay = new HeaderDateFilterModel(Constant.ColumnName_Ngay);
-        public HeaderDateFilterModel Header_Ngay
-        {
-            get { return _header_Ngay; }
-            set { _header_Ngay = value; }
-        }
+        public HeaderDateFilterModel Header_Ngay { get; set; }
 
         public TonKhoViewModel()
         {
@@ -34,6 +26,11 @@ namespace PhuDinhData.ViewModel
 
             SetReferenceFilter<tMatHang>(Constant.ColumnName_MatHang, (p => true));
             SetReferenceFilter<rKhoHang>(Constant.ColumnName_KhoHang, (p => true));
+
+            Header_MatHang = new HeaderTextFilterModel(Constant.ColumnName_MatHang);
+            Header_KhoHang = new HeaderTextFilterModel(Constant.ColumnName_KhoHang);
+
+            Header_Ngay = new HeaderDateFilterModel(Constant.ColumnName_Ngay);
         }
 
         public override void Load()
@@ -43,11 +40,7 @@ namespace PhuDinhData.ViewModel
             Entity.CollectionChanged += Entity_CollectionChanged;
 
             Header_Ngay.PropertyChanged += Header_Ngay_PropertyChanged;
-
-            Header_MatHang.Text = _filterMatHang;
             Header_MatHang.PropertyChanged += Header_MatHang_PropertyChanged;
-
-            Header_KhoHang.Text = _filterKhoHang;
             Header_KhoHang.PropertyChanged += Header_KhoHang_PropertyChanged;
 
             Header_Ngay_PropertyChanged(null, null);
@@ -64,10 +57,6 @@ namespace PhuDinhData.ViewModel
             Header_Ngay.PropertyChanged -= Header_Ngay_PropertyChanged;
             Header_MatHang.PropertyChanged -= Header_MatHang_PropertyChanged;
             Header_KhoHang.PropertyChanged -= Header_KhoHang_PropertyChanged;
-
-            _filterMatHang = Header_MatHang.Text;
-
-            _filterKhoHang = Header_KhoHang.Text;
         }
 
         void Header_MatHang_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
