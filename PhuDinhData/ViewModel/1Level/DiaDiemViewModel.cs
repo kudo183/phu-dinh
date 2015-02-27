@@ -11,14 +11,8 @@ namespace PhuDinhData.ViewModel
     public class DiaDiemViewModel : BaseViewModel<rDiaDiem>
     {
         private List<rNuoc> _rNuocs;
-        
-        private HeaderTextFilterModel _header_Nuoc = new HeaderTextFilterModel(Constant.ColumnName_Nuoc);
 
-        public HeaderTextFilterModel Header_Nuoc
-        {
-            get { return _header_Nuoc; }
-            set { _header_Nuoc = value; }
-        }
+        public HeaderTextFilterModel Header_Nuoc { get; set; }
 
         public DiaDiemViewModel()
         {
@@ -27,6 +21,8 @@ namespace PhuDinhData.ViewModel
             MainFilter = new Filter_rDiaDiem();
 
             SetReferenceFilter<rNuoc>(Constant.ColumnName_Nuoc, (p => true));
+
+            Header_Nuoc = new HeaderTextFilterModel(Constant.ColumnName_Nuoc);
         }
 
         public override void Load()

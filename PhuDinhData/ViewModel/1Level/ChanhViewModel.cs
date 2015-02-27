@@ -11,14 +11,8 @@ namespace PhuDinhData.ViewModel
     public class ChanhViewModel : BaseViewModel<rChanh>
     {
         private List<rBaiXe> _rBaiXes;
-        
-        private HeaderTextFilterModel _header_BaiXe = new HeaderTextFilterModel(Constant.ColumnName_BaiXe);
 
-        public HeaderTextFilterModel Header_BaiXe
-        {
-            get { return _header_BaiXe; }
-            set { _header_BaiXe = value; }
-        }
+        public HeaderTextFilterModel Header_BaiXe { get; set; }
 
         public ChanhViewModel()
         {
@@ -27,6 +21,8 @@ namespace PhuDinhData.ViewModel
             MainFilter = new Filter_rChanh();
 
             SetReferenceFilter<rBaiXe>(Constant.ColumnName_BaiXe, (p => true));
+
+            Header_BaiXe = new HeaderTextFilterModel(Constant.ColumnName_BaiXe);
         }
 
         public override void Load()

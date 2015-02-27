@@ -11,14 +11,8 @@ namespace PhuDinhData.ViewModel
     public class NhanVienViewModel : BaseViewModel<rNhanVien>
     {
         private List<rPhuongTien> _rPhuongTiens;
-        
-        private HeaderTextFilterModel _header_PhuongTien = new HeaderTextFilterModel(Constant.ColumnName_PhuongTien);
 
-        public HeaderTextFilterModel Header_PhuongTien
-        {
-            get { return _header_PhuongTien; }
-            set { _header_PhuongTien = value; }
-        }
+        public HeaderTextFilterModel Header_PhuongTien { get; set; }
 
         public NhanVienViewModel()
         {
@@ -27,6 +21,8 @@ namespace PhuDinhData.ViewModel
             MainFilter = new Filter_rNhanVien();
 
             SetReferenceFilter<rPhuongTien>(Constant.ColumnName_PhuongTien, (p => true));
+
+            Header_PhuongTien = new HeaderTextFilterModel(Constant.ColumnName_PhuongTien);
         }
 
         public override void Load()
