@@ -23,7 +23,10 @@ namespace PhuDinhCommonControl
             _viewModel = new DonHangViewModel();
             DataContext = _viewModel;
             dg.Columns[1].Header = (_viewModel as DonHangViewModel).Header_Ngay;
-
+            dg.Columns[2].Header = (_viewModel as DonHangViewModel).Header_KhachHang;
+            dg.Columns[3].Header = (_viewModel as DonHangViewModel).Header_KhoHang;
+            dg.Columns[4].Header = (_viewModel as DonHangViewModel).Header_Chanh;
+            
             _viewModel.SetDefaultValue(Constant.ColumnName_MaKhoHang, 1);
 
             LogManager.Log(event_type.et_Internal, severity_type.st_debug, string.Format("{0} {1}", "tDonHangView_Contructor", "Exit"));

@@ -14,12 +14,8 @@ namespace PhuDinhData.ViewModel
         private List<rKhachHang> _rKhachHangs;
         private List<rChanh> _rChanhs;
 
-        private string _filterKhachHang = string.Empty;
-
-        private string _filterChanh = string.Empty;
-
-        public static HeaderTextFilterModel Header_KhachHang = new HeaderTextFilterModel(Constant.ColumnName_KhachHang);
-        public static HeaderTextFilterModel Header_Chanh = new HeaderTextFilterModel(Constant.ColumnName_Chanh);
+        public HeaderTextFilterModel Header_KhachHang { get; set; }
+        public HeaderTextFilterModel Header_Chanh { get; set; }
 
         public KhachHangChanhViewModel()
         {
@@ -29,6 +25,9 @@ namespace PhuDinhData.ViewModel
 
             SetReferenceFilter<rKhachHang>(Constant.ColumnName_KhachHang, (p => true));
             SetReferenceFilter<rChanh>(Constant.ColumnName_Chanh, (p => true));
+
+            Header_KhachHang = new HeaderTextFilterModel(Constant.ColumnName_KhachHang);
+            Header_Chanh = new HeaderTextFilterModel(Constant.ColumnName_Chanh);
         }
 
         public override void Load()
@@ -37,10 +36,7 @@ namespace PhuDinhData.ViewModel
 
             Entity.CollectionChanged += Entity_CollectionChanged;
 
-            Header_KhachHang.Text = _filterKhachHang;
             Header_KhachHang.PropertyChanged += Header_KhachHang_PropertyChanged;
-
-            Header_Chanh.Text = _filterChanh;
             Header_Chanh.PropertyChanged += Header_Chanh_PropertyChanged;
 
             Header_KhachHang_PropertyChanged(null, null);
@@ -55,10 +51,6 @@ namespace PhuDinhData.ViewModel
 
             Header_KhachHang.PropertyChanged -= Header_KhachHang_PropertyChanged;
             Header_Chanh.PropertyChanged -= Header_Chanh_PropertyChanged;
-
-            _filterKhachHang = Header_KhachHang.Text;
-
-            _filterChanh = Header_Chanh.Text;
         }
 
         void Header_KhachHang_PropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -99,8 +91,8 @@ namespace PhuDinhData.ViewModel
 
         private void UpdateChanhReferenceData()
         {
-            UpdateReferenceData(out _rChanhs, 
-                GetReferenceFilter<rChanh>(Constant.ColumnName_Chanh), 
+            UpdateReferenceData(out _rChanhs,
+                GetReferenceFilter<rChanh>(Constant.ColumnName_Chanh),
                 (p => p.rChanhList = _rChanhs));
         }
 

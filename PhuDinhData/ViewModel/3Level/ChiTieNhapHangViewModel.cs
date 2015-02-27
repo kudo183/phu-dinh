@@ -14,12 +14,8 @@ namespace PhuDinhData.ViewModel
         private List<tNhapHang> _tNhapHangs;
         private List<tMatHang> _tMatHangs;
 
-        private string _filterMatHang = string.Empty;
-
-        private string _filterNhapHang = string.Empty;
-
-        public static HeaderTextFilterModel Header_MatHang = new HeaderTextFilterModel(Constant.ColumnName_MatHang);
-        public static HeaderTextFilterModel Header_NhapHang = new HeaderTextFilterModel(Constant.ColumnName_NhapHang);
+        public HeaderTextFilterModel Header_MatHang { get; set; }
+        public HeaderTextFilterModel Header_NhapHang { get; set; }
 
         public ChiTietNhapHangViewModel()
         {
@@ -29,6 +25,9 @@ namespace PhuDinhData.ViewModel
 
             SetReferenceFilter<tMatHang>(Constant.ColumnName_MatHang, (p => true));
             SetReferenceFilter<tNhapHang>(Constant.ColumnName_NhapHang, (p => true));
+
+            Header_MatHang = new HeaderTextFilterModel(Constant.ColumnName_MatHang);
+            Header_NhapHang = new HeaderTextFilterModel(Constant.ColumnName_NhapHang);
         }
 
         public override void Load()
@@ -37,10 +36,7 @@ namespace PhuDinhData.ViewModel
 
             Entity.CollectionChanged += Entity_CollectionChanged;
 
-            Header_MatHang.Text = _filterMatHang;
             Header_MatHang.PropertyChanged += Header_MatHang_PropertyChanged;
-
-            Header_NhapHang.Text = _filterNhapHang;
             Header_NhapHang.PropertyChanged += Header_NhapHang_PropertyChanged;
 
             Header_NhapHang_PropertyChanged(null, null);
@@ -55,10 +51,6 @@ namespace PhuDinhData.ViewModel
 
             Header_MatHang.PropertyChanged -= Header_MatHang_PropertyChanged;
             Header_NhapHang.PropertyChanged -= Header_NhapHang_PropertyChanged;
-
-            _filterMatHang = Header_MatHang.Text;
-
-            _filterNhapHang = Header_NhapHang.Text;
         }
 
         void Header_MatHang_PropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -82,7 +74,7 @@ namespace PhuDinhData.ViewModel
                 var tChiTietNhapHang = e.NewItems[0] as tChiTietNhapHang;
                 tChiTietNhapHang.tNhapHangList = _tNhapHangs;
                 tChiTietNhapHang.tMatHangList = _tMatHangs;
-                
+
                 if (GetDefaultValue(Constant.ColumnName_MaNhapHang) != null)
                 {
                     tChiTietNhapHang.MaNhapHang =

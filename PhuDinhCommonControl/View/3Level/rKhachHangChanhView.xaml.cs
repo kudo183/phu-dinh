@@ -19,6 +19,8 @@ namespace PhuDinhCommonControl
             dg = dgKhachHangChanh;
             _viewModel = new KhachHangChanhViewModel();
             DataContext = _viewModel;
+            dg.Columns[1].Header = (_viewModel as KhachHangChanhViewModel).Header_KhachHang;
+            dg.Columns[2].Header = (_viewModel as KhachHangChanhViewModel).Header_Chanh;
         }
 
         private void dgKhachHangChanh_HeaderAddButtonClick(object sender, EventArgs e)

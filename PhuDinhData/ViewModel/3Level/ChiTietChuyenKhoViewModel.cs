@@ -14,12 +14,8 @@ namespace PhuDinhData.ViewModel
         private List<tChuyenKho> _tChuyenKhos;
         private List<tMatHang> _tMatHangs;
 
-        private string _filterMatHang = string.Empty;
-
-        private string _filterChuyenKho = string.Empty;
-
-        public static HeaderTextFilterModel Header_MatHang = new HeaderTextFilterModel(Constant.ColumnName_MatHang);
-        public static HeaderTextFilterModel Header_ChuyenKho = new HeaderTextFilterModel(Constant.ColumnName_ChuyenKho);
+        public HeaderTextFilterModel Header_MatHang { get; set; }
+        public HeaderTextFilterModel Header_ChuyenKho { get; set; }
 
         public ChiTietChuyenKhoViewModel()
         {
@@ -29,6 +25,9 @@ namespace PhuDinhData.ViewModel
 
             SetReferenceFilter<tMatHang>(Constant.ColumnName_MatHang, (p => true));
             SetReferenceFilter<tChuyenKho>(Constant.ColumnName_ChuyenKho, (p => true));
+
+            Header_MatHang = new HeaderTextFilterModel(Constant.ColumnName_MatHang);
+            Header_ChuyenKho = new HeaderTextFilterModel(Constant.ColumnName_ChuyenKho);
         }
 
         public override void Load()
@@ -37,10 +36,7 @@ namespace PhuDinhData.ViewModel
 
             Entity.CollectionChanged += Entity_CollectionChanged;
 
-            Header_MatHang.Text = _filterMatHang;
             Header_MatHang.PropertyChanged += Header_MatHang_PropertyChanged;
-
-            Header_ChuyenKho.Text = _filterChuyenKho;
             Header_ChuyenKho.PropertyChanged += Header_ChuyenKho_PropertyChanged;
 
             Header_ChuyenKho_PropertyChanged(null, null);
@@ -55,10 +51,6 @@ namespace PhuDinhData.ViewModel
 
             Header_MatHang.PropertyChanged -= Header_MatHang_PropertyChanged;
             Header_ChuyenKho.PropertyChanged -= Header_ChuyenKho_PropertyChanged;
-
-            _filterMatHang = Header_MatHang.Text;
-
-            _filterChuyenKho = Header_ChuyenKho.Text;
         }
 
         void Header_MatHang_PropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -82,7 +74,7 @@ namespace PhuDinhData.ViewModel
                 var tChiTietChuyenKho = e.NewItems[0] as tChiTietChuyenKho;
                 tChiTietChuyenKho.tChuyenKhoList = _tChuyenKhos;
                 tChiTietChuyenKho.tMatHangList = _tMatHangs;
-                
+
                 if (GetDefaultValue(Constant.ColumnName_MaChuyenKho) != null)
                 {
                     tChiTietChuyenKho.MaChuyenKho =

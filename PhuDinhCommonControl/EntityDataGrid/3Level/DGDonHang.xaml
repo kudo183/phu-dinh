@@ -5,7 +5,7 @@
                            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                            xmlns:CustomControl="clr-namespace:CustomControl;assembly=CustomControl"
                            xmlns:DesignTimeData="clr-namespace:PhuDinhData.DesignTimeData;assembly=PhuDinhData"
-                           xmlns:ViewModel="clr-namespace:PhuDinhData.ViewModel;assembly=PhuDinhData" mc:Ignorable="d"
+                           mc:Ignorable="d"
                            d:DataContext="{x:Static DesignTimeData:DDtDonHang.ViewModel}"
                            AutoGenerateColumns="False" EnableRowVirtualization="False" ItemsSource="{Binding Entity}" SelectionMode="Single">
     <DataGrid.Columns>
@@ -14,7 +14,7 @@
         <!--Ngay-->
         <CustomControl:DataGridDateColumn x:Name="ngayColumn"/>
         <!--Khach hang-->
-        <CustomControl:DataGridComboBoxColumnExt x:Name="khachHangColumn" Header="{x:Static ViewModel:DonHangViewModel.Header_KhachHang}"
+        <CustomControl:DataGridComboBoxColumnExt x:Name="khachHangColumn"
                                                  HeaderAddButtonClick="headerAddButton_Click"
                                                  TextBinding="{Binding rKhachHang.TenKhachHangDiaDiem, Mode=OneWay}"
                                                  DisplayMemberPath="TenKhachHangDiaDiem"
@@ -23,7 +23,7 @@
                                                  SelectedItemBinding="{Binding rKhachHang, UpdateSourceTrigger=PropertyChanged}"
                                                  ItemsSource="{Binding rKhachHangList}"/>
         <!--Kho hang-->
-        <CustomControl:DataGridComboBoxColumnExt x:Name="khoHangColumn" Header="{x:Static ViewModel:DonHangViewModel.Header_KhoHang}"
+        <CustomControl:DataGridComboBoxColumnExt x:Name="khoHangColumn"
                                                  HeaderAddButtonClick="headerAddButton_Click"
                                                  TextBinding="{Binding rKhoHang.TenKho, Mode=OneWay}"
                                                  DisplayMemberPath="TenKho"
@@ -32,7 +32,7 @@
                                                  SelectedItemBinding="{Binding rKhoHang, UpdateSourceTrigger=PropertyChanged}"
                                                  ItemsSource="{Binding rKhoHangList}"/>
         <!--Khach Hang Chanh-->
-        <CustomControl:DataGridComboBoxColumnExt x:Name="khachHangChanhColumn" Header="{x:Static ViewModel:DonHangViewModel.Header_Chanh}"
+        <CustomControl:DataGridComboBoxColumnExt x:Name="khachHangChanhColumn"
                                                  Width="250"
                                                  HeaderAddButtonClick="headerAddButton_Click"
                                                  TextBinding="{Binding rChanh.TenBaiXeChanh, Mode=OneWay}"

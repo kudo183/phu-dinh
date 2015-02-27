@@ -13,12 +13,8 @@ namespace PhuDinhData.ViewModel
     {
         private List<tMatHang> _tMatHangs;
 
-        private string _filterMatHang = string.Empty;
-
-        private string _filterDonHang = string.Empty;
-
-        public static HeaderTextFilterModel Header_MatHang = new HeaderTextFilterModel(Constant.ColumnName_MatHang);
-        public static HeaderTextFilterModel Header_DonHang = new HeaderTextFilterModel(Constant.ColumnName_DonHang);
+        public HeaderTextFilterModel Header_MatHang { get; set; }
+        public HeaderTextFilterModel Header_DonHang { get; set; }
 
         public ChiTietDonHangViewModel()
         {
@@ -28,6 +24,9 @@ namespace PhuDinhData.ViewModel
 
             SetReferenceFilter<tMatHang>(Constant.ColumnName_MatHang, (p => true));
             SetReferenceFilter<tDonHang>(Constant.ColumnName_DonHang, (p => true));
+
+            Header_MatHang = new HeaderTextFilterModel(Constant.ColumnName_MatHang);
+            Header_DonHang = new HeaderTextFilterModel(Constant.ColumnName_DonHang);
         }
 
         public override void Load()
@@ -36,10 +35,7 @@ namespace PhuDinhData.ViewModel
 
             Entity.CollectionChanged += Entity_CollectionChanged;
 
-            Header_MatHang.Text = _filterMatHang;
             Header_MatHang.PropertyChanged += Header_MatHang_PropertyChanged;
-
-            Header_DonHang.Text = _filterDonHang;
             Header_DonHang.PropertyChanged += Header_DonHang_PropertyChanged;
 
             Header_DonHang_PropertyChanged(null, null);
@@ -54,10 +50,6 @@ namespace PhuDinhData.ViewModel
 
             Header_MatHang.PropertyChanged -= Header_MatHang_PropertyChanged;
             Header_DonHang.PropertyChanged -= Header_DonHang_PropertyChanged;
-
-            _filterMatHang = Header_MatHang.Text;
-
-            _filterDonHang = Header_DonHang.Text;
         }
 
         void Header_MatHang_PropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -79,9 +71,9 @@ namespace PhuDinhData.ViewModel
             if (e.Action == NotifyCollectionChangedAction.Add)
             {
                 var tChiTietDonHang = e.NewItems[0] as tChiTietDonHang;
-                
+
                 tChiTietDonHang.tMatHangList = _tMatHangs;
-                
+
                 if (GetDefaultValue(Constant.ColumnName_MaDonHang) != null)
                 {
                     tChiTietDonHang.MaDonHang =

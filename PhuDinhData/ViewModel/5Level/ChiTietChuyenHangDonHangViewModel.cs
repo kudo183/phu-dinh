@@ -13,12 +13,8 @@ namespace PhuDinhData.ViewModel
     {
         private List<tChiTietDonHang> _tChiTietDonHangs;
 
-        private string _filterChuyenHangDonHang = string.Empty;
-
-        private string _filterChiTietDonHang = string.Empty;
-
-        public static HeaderTextFilterModel Header_ChuyenHangDonHang = new HeaderTextFilterModel(Constant.ColumnName_ChuyenHangDonHang);
-        public static HeaderTextFilterModel Header_ChiTietDonHang = new HeaderTextFilterModel(Constant.ColumnName_ChiTietDonHang);
+        public HeaderTextFilterModel Header_ChuyenHangDonHang { get; set; }
+        public HeaderTextFilterModel Header_ChiTietDonHang { get; set; }
 
         public ChiTietChuyenHangDonHangViewModel()
         {
@@ -28,6 +24,9 @@ namespace PhuDinhData.ViewModel
 
             SetReferenceFilter<tChuyenHangDonHang>(Constant.ColumnName_ChuyenHangDonHang, (p => true));
             SetReferenceFilter<tChiTietDonHang>(Constant.ColumnName_ChiTietDonHang, (p => true));
+
+            Header_ChuyenHangDonHang = new HeaderTextFilterModel(Constant.ColumnName_ChuyenHangDonHang);
+            Header_ChiTietDonHang = new HeaderTextFilterModel(Constant.ColumnName_ChiTietDonHang);
         }
 
         public override void Load()
@@ -36,10 +35,7 @@ namespace PhuDinhData.ViewModel
 
             Entity.CollectionChanged += Entity_CollectionChanged;
 
-            Header_ChuyenHangDonHang.Text = _filterChuyenHangDonHang;
             Header_ChuyenHangDonHang.PropertyChanged += Header_ChuyenHangDonHang_PropertyChanged;
-
-            Header_ChiTietDonHang.Text = _filterChiTietDonHang;
             Header_ChiTietDonHang.PropertyChanged += Header_ChiTietDonHang_PropertyChanged;
 
             Header_ChiTietDonHang_PropertyChanged(null, null);
@@ -54,10 +50,6 @@ namespace PhuDinhData.ViewModel
 
             Header_ChuyenHangDonHang.PropertyChanged -= Header_ChuyenHangDonHang_PropertyChanged;
             Header_ChiTietDonHang.PropertyChanged -= Header_ChiTietDonHang_PropertyChanged;
-
-            _filterChuyenHangDonHang = Header_ChuyenHangDonHang.Text;
-
-            _filterChiTietDonHang = Header_ChiTietDonHang.Text;
         }
 
         void Header_ChuyenHangDonHang_PropertyChanged(object sender, PropertyChangedEventArgs e)

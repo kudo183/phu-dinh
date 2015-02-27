@@ -5,7 +5,6 @@
                            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                            xmlns:CustomControl="clr-namespace:CustomControl;assembly=CustomControl"
                            xmlns:DesignTimeData="clr-namespace:PhuDinhData.DesignTimeData;assembly=PhuDinhData"
-                           xmlns:ViewModel="clr-namespace:PhuDinhData.ViewModel;assembly=PhuDinhData"
                            xmlns:PhuDinhCommon="clr-namespace:PhuDinhCommon;assembly=PhuDinhCommon" mc:Ignorable="d"
                            d:DataContext="{x:Static DesignTimeData:DDtChiTietChuyenHangDonHang.ViewModel}"
                            AutoGenerateColumns="False" EnableRowVirtualization="False" ItemsSource="{Binding Entity}" SelectionMode="Single">
@@ -16,9 +15,8 @@
         <CustomControl:DataGridReadOnlyLeftAlignTextColumn x:Name="chuyenHangDonHangColumn" Width="450"
                                                   Header="{x:Static PhuDinhCommon:Constant.ColumnName_ChuyenHangDonHang}"
                                                   Binding="{Binding tChuyenHangDonHang.TenChuyenHangDonHang}"/>
-        <!--Mat hang-->
+        <!--Chi tiet don hang-->
         <CustomControl:DataGridComboBoxColumnExt x:Name="chiTietDonHangColumn" Width="350"
-                                                 Header="{x:Static ViewModel:ChiTietChuyenHangDonHangViewModel.Header_ChiTietDonHang}"
                                                  HeaderAddButtonClick="headerAddButton_Click"
                                                  TextBinding="{Binding tChiTietDonHang.TenChiTietDonHang, Mode=OneWay}"
                                                  DisplayMemberPath="TenChiTietDonHang"
