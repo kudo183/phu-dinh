@@ -7,3 +7,5 @@ sqlcmd -s (local) -i backup_phudinh_db.sql
 rename "phudinh.bak" %OutputName%
 %Rar% a -hpnobita %OutputName%.rar %OutputName%
 del %OutputName%
+
+rem test
