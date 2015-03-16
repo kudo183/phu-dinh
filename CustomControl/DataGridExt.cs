@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Text;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using CustomControl.DataGridColumnHeaderFilterModel;
 
 namespace CustomControl
 {
@@ -22,6 +25,30 @@ namespace CustomControl
             CanUserReorderColumns = false;
             CanUserResizeRows = false;
             HeadersVisibility = DataGridHeadersVisibility.Column;
+
+            var menu = new ContextMenu();
+            var menuItem = new MenuItem { Header = "Copy Data" };
+            menuItem.Click += menuItem_Click;
+            menu.Items.Add(menuItem);
+            ContextMenu = menu;
+        }
+
+        void menuItem_Click(object sender, RoutedEventArgs e)
+        {
+            var data = ExportData();
+            var builder = new StringBuilder();
+            foreach (var row in data)
+            {
+                foreach (var cell in row)
+                {
+                    builder.Append(cell);
+                    builder.Append("\t");
+                }
+
+                builder.AppendLine("");
+            }
+
+            Clipboard.SetText(builder.ToString());
         }
 
         protected override void OnSelectionChanged(SelectionChangedEventArgs e)
@@ -31,6 +58,7 @@ namespace CustomControl
 
             base.OnSelectionChanged(e);
         }
+
         public int FindFirstEditableColumnIndex(int beginIndex, DataGrid dataGrid)
         {
             var index = -1;
@@ -183,6 +211,60 @@ namespace CustomControl
             }
 
             HeaderAddButtonClick(sender, e);
+        }
+
+        public List<List<object>> ExportData()
+        {
+            var result = new List<List<object>>();
+
+            var bindingsPath = new List<string>();
+
+            var header = new List<object>();
+
+            foreach (var column in Columns)
+            {
+
+                if (column.Visibility == Visibility.Visible)
+                {
+                    if (column is DataGridBoundColumn)
+                    {
+                        var temp = column as DataGridBoundColumn;
+                        bindingsPath.Add((temp.Binding as System.Windows.Data.Binding).Path.Path);
+
+                        if (temp.Header is HeaderFilterBaseModel)
+                            header.Add((temp.Header as HeaderFilterBaseModel).Name);
+                        else
+                            header.Add(temp.Header);
+                    }
+                    else if (column is DataGridComboBoxColumn)
+                    {
+                        var temp = column as DataGridComboBoxColumn;
+                        bindingsPath.Add((temp.TextBinding as System.Windows.Data.Binding).Path.Path);
+
+                        if (temp.Header is HeaderFilterBaseModel)
+                            header.Add((temp.Header as HeaderFilterBaseModel).Name);
+                        else
+                            header.Add(temp.Header);
+                    }
+                }
+            }
+
+            result.Add(header);
+
+            foreach (var item in ItemsSource)
+            {
+                var row = new List<object>();
+
+                foreach (var path in bindingsPath)
+                {
+                    var t = DataBinderUtils.Eval(item, path);
+                    row.Add(t);
+                }
+
+                result.Add(row);
+            }
+
+            return result;
         }
     }
 }

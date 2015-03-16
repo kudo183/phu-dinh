@@ -2,8 +2,8 @@
 using System.Windows.Controls.Primitives;
 using PhuDinhCommon;
 using PhuDinhData.ViewModel;
-using PhuDinhData.ViewModel.DataGridColumnHeaderFilterModel;
 using System.Windows.Controls;
+using CustomControl.DataGridColumnHeaderFilterModel;
 
 namespace PhuDinhCommonControl
 {

@@ -3,7 +3,7 @@ using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using PhuDinhCommon;
 using PhuDinhData.ViewModel;
-using PhuDinhData.ViewModel.DataGridColumnHeaderFilterModel;
+using CustomControl.DataGridColumnHeaderFilterModel;
 
 namespace PhuDinhCommonControl
 {

@@ -2,9 +2,9 @@
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using PhuDinhData.Filter;
-using PhuDinhData.ViewModel.DataGridColumnHeaderFilterModel;
 using System;
 using PhuDinhCommon;
+using CustomControl.DataGridColumnHeaderFilterModel;
 
 namespace PhuDinhData.ViewModel
 {

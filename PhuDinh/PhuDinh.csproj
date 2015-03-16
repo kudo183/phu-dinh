@@ -137,6 +137,10 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{2ccbe1b5-a9a8-4355-9ddc-acf8af4c6d41}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PhuDinhCommonControl\PhuDinhCommonControl.csproj">
       <Project>{55a6491e-8cdc-4fdc-ab34-c6a7c932185c}</Project>
       <Name>PhuDinhCommonControl</Name>

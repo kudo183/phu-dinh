@@ -5,7 +5,7 @@ using System.Collections.Specialized;
 using System.ComponentModel;
 using PhuDinhCommon;
 using PhuDinhData.Filter;
-using PhuDinhData.ViewModel.DataGridColumnHeaderFilterModel;
+using CustomControl.DataGridColumnHeaderFilterModel;
 
 namespace PhuDinhData.ViewModel
 {

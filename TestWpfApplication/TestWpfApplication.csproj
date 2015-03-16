@@ -112,6 +112,10 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{2ccbe1b5-a9a8-4355-9ddc-acf8af4c6d41}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CustomControl\CustomControl.csproj">
       <Project>{64f9d717-b4f2-4508-afe6-4cbf5b811bef}</Project>
       <Name>CustomControl</Name>

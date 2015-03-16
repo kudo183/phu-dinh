@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace PhuDinhData.ViewModel.DataGridColumnHeaderFilterModel
+namespace CustomControl.DataGridColumnHeaderFilterModel
 {
     public class HeaderDateFilterModel : HeaderFilterBaseModel
     {

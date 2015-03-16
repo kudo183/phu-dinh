@@ -11,6 +11,7 @@ namespace PhuDinhData
 {
     using System;
     using System.Collections.Generic;
+    using Common;
     
     public partial class tChuyenHangDonHang : BindableObject
     {

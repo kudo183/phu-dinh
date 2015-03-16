@@ -1,4 +1,4 @@
-﻿namespace PhuDinhData.ViewModel.DataGridColumnHeaderFilterModel
+﻿namespace CustomControl.DataGridColumnHeaderFilterModel
 {
     public interface IHeaderFilterModel
     {

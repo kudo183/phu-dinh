@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Reflection;
 
-namespace PhuDinhData
+namespace Common
 {
     /// <summary>
     /// Implements the INotifyPropertyChanged interface and 

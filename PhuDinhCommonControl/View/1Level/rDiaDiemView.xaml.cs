@@ -2,7 +2,7 @@
 using System.Windows.Controls.Primitives;
 using PhuDinhData.ViewModel;
 using PhuDinhCommon;
-using PhuDinhData.ViewModel.DataGridColumnHeaderFilterModel;
+using CustomControl.DataGridColumnHeaderFilterModel;
 
 namespace PhuDinhCommonControl
 {

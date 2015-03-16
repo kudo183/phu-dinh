@@ -1,4 +1,6 @@
-﻿namespace PhuDinhData.ViewModel.DataGridColumnHeaderFilterModel
+﻿using Common;
+
+namespace CustomControl.DataGridColumnHeaderFilterModel
 {
     public abstract class HeaderFilterBaseModel : BindableObject, IHeaderFilterModel
     {

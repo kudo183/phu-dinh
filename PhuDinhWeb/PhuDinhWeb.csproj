@@ -214,6 +214,10 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{2ccbe1b5-a9a8-4355-9ddc-acf8af4c6d41}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PhuDinhData\PhuDinhData.csproj">
       <Project>{9e6f47f9-162f-458f-a4c3-42b455f09d43}</Project>
       <Name>PhuDinhData</Name>

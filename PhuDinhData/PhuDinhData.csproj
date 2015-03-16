@@ -55,7 +55,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BindableObject.cs" />
     <Compile Include="BusinessLogics\BusinessLogics.cs" />
     <Compile Include="ContextFactory.cs" />
     <Compile Include="DesignTimeData\0Level\DDrKhoHang.cs" />
@@ -320,12 +319,8 @@
     <Compile Include="ViewModel\4Level\ChiTietDonHangViewModel.cs" />
     <Compile Include="ViewModel\5Level\ChiTietChuyenHangDonHangViewModel.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
-    <Compile Include="ViewModel\DataGridColumnHeaderFilterModel\HeaderDateFilterModel.cs" />
-    <Compile Include="ViewModel\DataGridColumnHeaderFilterModel\HeaderFilterBaseModel.cs" />
-    <Compile Include="ViewModel\DataGridColumnHeaderFilterModel\HeaderTextFilterModel.cs" />
     <Compile Include="ViewModel\1Level\ChanhViewModel.cs" />
     <Compile Include="ViewModel\3Level\DonHangViewModel.cs" />
-    <Compile Include="ViewModel\DataGridColumnHeaderFilterModel\IHeaderFilterModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="PhuDinh.edmx">
@@ -354,6 +349,14 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{2ccbe1b5-a9a8-4355-9ddc-acf8af4c6d41}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CustomControl\CustomControl.csproj">
+      <Project>{64f9d717-b4f2-4508-afe6-4cbf5b811bef}</Project>
+      <Name>CustomControl</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PhuDinhCommon\PhuDinhCommon.csproj">
       <Project>{e7cdbbdc-0d94-48b8-9934-ebfbb75e533d}</Project>
       <Name>PhuDinhCommon</Name>
