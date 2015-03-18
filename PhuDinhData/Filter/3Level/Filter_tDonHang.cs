@@ -10,6 +10,7 @@ namespace PhuDinhData.Filter
         public const string TenChanh = "TenChanh";
         public const string Ngay = "Ngay";
         public const string Xong = "Xong";
+        public const string MaKhoHang = "MaKhoHang";
         public const string TenKhoHang = "TenKhoHang";
 
         public Filter_tDonHang()
@@ -31,6 +32,9 @@ namespace PhuDinhData.Filter
             {
                 case MaKhachHang:
                     SetFilterMaKhachHang(value as int?, setFalse);
+                    break;
+                case MaKhoHang:
+                    SetFilterMaKhoHang(value as int?, setFalse);
                     break;
                 case TenKhachHang:
                     SetFilterTenKhachHang(value as string, setFalse);
@@ -56,6 +60,13 @@ namespace PhuDinhData.Filter
         private void SetFilterMaKhachHang(int? maKhachHang, bool setFalse = false)
         {
             _filters[MaKhachHang] = FilterNullable(maKhachHang, setFalse, p => p.MaKhachHang == maKhachHang);
+
+            UpdateMainFilter();
+        }
+
+        private void SetFilterMaKhoHang(int? maKhoHang, bool setFalse = false)
+        {
+            _filters[MaKhoHang] = FilterNullable(maKhoHang, setFalse, p => p.MaKhoHang == maKhoHang);
 
             UpdateMainFilter();
         }

@@ -55,6 +55,7 @@
     <Compile Include="CustomDatePicker.xaml.cs">
       <DependentUpon>CustomDatePicker.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DataGridColumnHeaderFilterModel\HeaderComboBoxFilterModel.cs" />
     <Compile Include="DataGridColumnHeaderFilterModel\HeaderDateFilterModel.cs" />
     <Compile Include="DataGridColumnHeaderFilterModel\HeaderFilterBaseModel.cs" />
     <Compile Include="DataGridColumnHeaderFilterModel\HeaderTextFilterModel.cs" />

@@ -6,6 +6,7 @@ using System.ComponentModel;
 using PhuDinhCommon;
 using PhuDinhData.Filter;
 using CustomControl.DataGridColumnHeaderFilterModel;
+using System.Linq;
 
 namespace PhuDinhData.ViewModel
 {
@@ -17,7 +18,7 @@ namespace PhuDinhData.ViewModel
 
         public HeaderTextFilterModel Header_KhachHang { get; set; }
         public HeaderTextFilterModel Header_Chanh { get; set; }
-        public HeaderTextFilterModel Header_KhoHang { get; set; }
+        public HeaderComboBoxFilterModel Header_KhoHang { get; set; }
 
         public HeaderDateFilterModel Header_Ngay { get; set; }
 
@@ -33,7 +34,7 @@ namespace PhuDinhData.ViewModel
 
             Header_KhachHang = new HeaderTextFilterModel(Constant.ColumnName_KhachHang);
             Header_Chanh = new HeaderTextFilterModel(Constant.ColumnName_Chanh);
-            Header_KhoHang = new HeaderTextFilterModel(Constant.ColumnName_KhoHang);
+            Header_KhoHang = new HeaderComboBoxFilterModel(Constant.ColumnName_KhoHang);
 
             Header_Ngay = new HeaderDateFilterModel(Constant.ColumnName_Ngay);
         }
@@ -98,7 +99,15 @@ namespace PhuDinhData.ViewModel
 
         void Header_KhoHang_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            MainFilter.SetFilter(Filter_tDonHang.TenKhoHang, Header_KhoHang.Text);
+            if (Header_KhoHang.IsUsed)
+            {
+                MainFilter.SetFilter(Filter_tDonHang.MaKhoHang, Header_KhoHang.SelectedValue);
+            }
+            else
+            {
+                MainFilter.SetFilter(Filter_tDonHang.MaKhoHang, null);
+            }
+            
 
             OnHeaderFilterChanged();
         }
@@ -147,6 +156,8 @@ namespace PhuDinhData.ViewModel
             UpdateReferenceData(out _rKhoHangs,
                 GetReferenceFilter<rKhoHang>(Constant.ColumnName_KhoHang),
                 (p => p.rKhoHangList = _rKhoHangs));
+
+            Header_KhoHang.ItemSource = _rKhoHangs.ToDictionary(p => p.Ma, p => p.TenKho);
         }
 
         protected override void UpdateAllReferenceData()

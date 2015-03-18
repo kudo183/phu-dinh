@@ -23,7 +23,7 @@
                                                  SelectedItemBinding="{Binding rKhachHang, UpdateSourceTrigger=PropertyChanged}"
                                                  ItemsSource="{Binding rKhachHangList}"/>
         <!--Kho hang-->
-        <CustomControl:DataGridComboBoxColumnExt x:Name="khoHangColumn"
+        <CustomControl:DataGridComboBoxColumnExt x:Name="khoHangColumn" Width="250"
                                                  HeaderAddButtonClick="headerAddButton_Click"
                                                  TextBinding="{Binding rKhoHang.TenKho, Mode=OneWay}"
                                                  DisplayMemberPath="TenKho"

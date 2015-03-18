@@ -44,7 +44,8 @@ namespace CustomControl
 
         void headerAddButton_Click(object sender, RoutedEventArgs e)
         {
-            if (e.OriginalSource is System.Windows.Controls.Primitives.DataGridColumnHeader)
+            var btn = e.OriginalSource as Button;
+            if (btn == null || btn.Name != "btnAdd")
             {
                 return;
             }
