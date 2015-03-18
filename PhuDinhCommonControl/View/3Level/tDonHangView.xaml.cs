@@ -57,7 +57,7 @@ namespace PhuDinhCommonControl
                     _viewModel.UpdateReferenceData(header.Name);
                     break;
                 case Constant.ColumnName_KhoHang:
-                    view = new rKhachHangChanhView();
+                    view = new rKhoHangView();
                     ChildWindowUtils.ShowChildWindow(Constant.ViewName_KhoHang, view);
 
                     _viewModel.UpdateReferenceData(header.Name);
