@@ -48,7 +48,8 @@
                                               ItemsSource="{Binding ItemSource}"
                                               SelectedValue="{Binding SelectedValue}"
                                               DisplayMemberPath="Value"
-                                              SelectedValuePath="Key"/>
+                                              SelectedValuePath="Key"
+                                              IsEnabled="{Binding Path=IsUsed}"/>
                                     <Button x:Name="btnAdd" Grid.Column="3" Width="25" HorizontalContentAlignment="Center">
                                         <Button.Content>
                                             <TextBlock Text="+" FontSize="12" FontWeight="Bold" Padding="0" Margin="0"/>

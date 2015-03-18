@@ -28,6 +28,8 @@ namespace PhuDinhData.ViewModel
 
             MainFilter = new Filter_tDonHang();
 
+            SetDefaultValue(Constant.ColumnName_MaKhoHang, 1);
+
             SetReferenceFilter<rKhachHang>(Constant.ColumnName_KhachHang, (p => true));
             SetReferenceFilter<rChanh>(Constant.ColumnName_Chanh, (p => true));
             SetReferenceFilter<rKhoHang>(Constant.ColumnName_KhoHang, (p => true));
@@ -107,7 +109,11 @@ namespace PhuDinhData.ViewModel
             {
                 MainFilter.SetFilter(Filter_tDonHang.MaKhoHang, null);
             }
-            
+
+            if (_isLoading == false)
+            {
+                SetDefaultValue(Constant.ColumnName_MaKhoHang, Header_KhoHang.SelectedValue);
+            }
 
             OnHeaderFilterChanged();
         }
@@ -158,6 +164,7 @@ namespace PhuDinhData.ViewModel
                 (p => p.rKhoHangList = _rKhoHangs));
 
             Header_KhoHang.ItemSource = _rKhoHangs.ToDictionary(p => p.Ma, p => p.TenKho);
+            Header_KhoHang.SelectedValue = GetDefaultValue(Constant.ColumnName_MaKhoHang);
         }
 
         protected override void UpdateAllReferenceData()
