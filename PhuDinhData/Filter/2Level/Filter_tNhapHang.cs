@@ -55,7 +55,7 @@ namespace PhuDinhData.Filter
 
         private void SetFilterMaKhoHang(int? maKhoHang, bool setFalse = false)
         {
-            _filters[MaKhoHang] = FilterNullable(MaKhoHang, setFalse, p => p.MaKhoHang == maKhoHang);
+            _filters[MaKhoHang] = FilterNullable(maKhoHang, setFalse, p => p.MaKhoHang == maKhoHang);
 
             UpdateMainFilter();
         }
