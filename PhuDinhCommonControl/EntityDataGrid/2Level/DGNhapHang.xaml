@@ -23,7 +23,7 @@
                                                  SelectedItemBinding="{Binding rNhanVien, UpdateSourceTrigger=PropertyChanged}"
                                                  ItemsSource="{Binding rNhanVienList}"/>
         <!--Nha cung cap-->
-        <CustomControl:DataGridComboBoxColumnExt x:Name="nhaCungCapColumn"
+        <CustomControl:DataGridComboBoxColumnExt x:Name="nhaCungCapColumn" Width="300"
                                                  HeaderAddButtonClick="headerAddButton_Click"
                                                  TextBinding="{Binding rNhaCungCap.TenNhaCungCap, Mode=OneWay}"
                                                  DisplayMemberPath="TenNhaCungCap"
@@ -32,7 +32,7 @@
                                                  SelectedItemBinding="{Binding rNhaCungCap, UpdateSourceTrigger=PropertyChanged}"
                                                  ItemsSource="{Binding rNhaCungCapList}"/>
         <!--Kho hang-->
-        <CustomControl:DataGridComboBoxColumnExt x:Name="khoHangColumn"
+        <CustomControl:DataGridComboBoxColumnExt x:Name="khoHangColumn" Width="250"
                                                  HeaderAddButtonClick="headerAddButton_Click"
                                                  TextBinding="{Binding rKhoHang.TenKho, Mode=OneWay}"
                                                  DisplayMemberPath="TenKho"

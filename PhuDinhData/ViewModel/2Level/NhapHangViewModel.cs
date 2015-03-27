@@ -5,6 +5,7 @@ using PhuDinhData.Filter;
 using System;
 using PhuDinhCommon;
 using CustomControl.DataGridColumnHeaderFilterModel;
+using System.Linq;
 
 namespace PhuDinhData.ViewModel
 {
@@ -15,8 +16,8 @@ namespace PhuDinhData.ViewModel
         private List<rKhoHang> _rKhoHangs;
 
         public HeaderTextFilterModel Header_NhanVien { get; set; }
-        public HeaderTextFilterModel Header_NhaCungCap { get; set; }
-        public HeaderTextFilterModel Header_KhoHang { get; set; }
+        public HeaderComboBoxFilterModel Header_NhaCungCap { get; set; }
+        public HeaderComboBoxFilterModel Header_KhoHang { get; set; }
 
         public HeaderDateFilterModel Header_Ngay { get; set; }
 
@@ -26,13 +27,16 @@ namespace PhuDinhData.ViewModel
 
             MainFilter = new Filter_tNhapHang();
 
+            SetDefaultValue(Constant.ColumnName_MaKhoHang, 1);
+            SetDefaultValue(Constant.ColumnName_MaNhaCungCap, 6);
+            
             SetReferenceFilter<rNhanVien>(Constant.ColumnName_NhanVien, (p => true));
             SetReferenceFilter<rNhaCungCap>(Constant.ColumnName_NhanCungCap, (p => true));
             SetReferenceFilter<rKhoHang>(Constant.ColumnName_KhoHang, (p => true));
 
             Header_NhanVien = new HeaderTextFilterModel(Constant.ColumnName_NhanVien);
-            Header_NhaCungCap = new HeaderTextFilterModel(Constant.ColumnName_NhanCungCap);
-            Header_KhoHang = new HeaderTextFilterModel(Constant.ColumnName_KhoHang);
+            Header_NhaCungCap = new HeaderComboBoxFilterModel(Constant.ColumnName_NhanCungCap);
+            Header_KhoHang = new HeaderComboBoxFilterModel(Constant.ColumnName_KhoHang);
 
             Header_Ngay = new HeaderDateFilterModel(Constant.ColumnName_Ngay);
         }
@@ -75,14 +79,38 @@ namespace PhuDinhData.ViewModel
 
         void Header_NhaCungCap_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            MainFilter.SetFilter(Filter_tNhapHang.TenNhaCungCap, Header_NhaCungCap.Text);
+            if (Header_NhaCungCap.IsUsed)
+            {
+                MainFilter.SetFilter(Filter_tNhapHang.MaNhaCungCap, Header_NhaCungCap.SelectedValue);
+            }
+            else
+            {
+                MainFilter.SetFilter(Filter_tNhapHang.MaNhaCungCap, null);
+            }
+
+            if (_isLoading == false)
+            {
+                SetDefaultValue(Constant.ColumnName_MaNhaCungCap, Header_NhaCungCap.SelectedValue);
+            }
 
             OnHeaderFilterChanged();
         }
 
         void Header_KhoHang_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            MainFilter.SetFilter(Filter_tNhapHang.TenKhoHang, Header_KhoHang.Text);
+            if (Header_KhoHang.IsUsed)
+            {
+                MainFilter.SetFilter(Filter_tNhapHang.MaKhoHang, Header_KhoHang.SelectedValue);
+            }
+            else
+            {
+                MainFilter.SetFilter(Filter_tNhapHang.MaKhoHang, null);
+            }
+
+            if (_isLoading == false)
+            {
+                SetDefaultValue(Constant.ColumnName_MaKhoHang, Header_KhoHang.SelectedValue);
+            }
 
             OnHeaderFilterChanged();
         }
@@ -140,6 +168,9 @@ namespace PhuDinhData.ViewModel
             UpdateReferenceData(out _rNhaCungCaps
                 , GetReferenceFilter<rNhaCungCap>(Constant.ColumnName_NhanCungCap)
                 , (p => p.rNhaCungCapList = _rNhaCungCaps));
+
+            Header_NhaCungCap.ItemSource = _rNhaCungCaps.ToDictionary(p => p.Ma, p => p.TenNhaCungCap);
+            Header_NhaCungCap.SelectedValue = GetDefaultValue(Constant.ColumnName_MaNhaCungCap);
         }
 
         private void UpdateKhoHangReferenceData()
@@ -147,6 +178,9 @@ namespace PhuDinhData.ViewModel
             UpdateReferenceData(out _rKhoHangs
                 , GetReferenceFilter<rKhoHang>(Constant.ColumnName_KhoHang)
                 , (p => p.rKhoHangList = _rKhoHangs));
+
+            Header_KhoHang.ItemSource = _rKhoHangs.ToDictionary(p => p.Ma, p => p.TenKho);
+            Header_KhoHang.SelectedValue = GetDefaultValue(Constant.ColumnName_MaKhoHang);
         }
 
         protected override void UpdateAllReferenceData()
