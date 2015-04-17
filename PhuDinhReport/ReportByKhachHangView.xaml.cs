@@ -6,11 +6,11 @@ using System.Windows.Controls;
 namespace PhuDinhReport
 {
     /// <summary>
-    /// Interaction logic for ReportByDonHangView.xaml
+    /// Interaction logic for ReportByKhachHangView.xaml
     /// </summary>
-    public partial class ReportByDonHangView : UserControl
+    public partial class ReportByKhachHangView : UserControl
     {
-        public ReportByDonHangView()
+        public ReportByKhachHangView()
         {
             InitializeComponent();
 
@@ -32,7 +32,7 @@ namespace PhuDinhReport
         {
             var ngay = reportDatePicker.Ngay.Value.Date;
 
-            var result = ReportByDonHang.FilterByDate(ngay);
+            var result = ReportByKhachHang.FilterByDate(ngay);
 
             reportDatePicker.NgayMsg = string.Format("Tong so cuon: {0}", result.Sum(p => p.SoLuong).ToString("N0"));
 
@@ -45,7 +45,7 @@ namespace PhuDinhReport
 
             var denNgay = reportDatePicker.DenNgay.Value.Date;
 
-            var result = ReportByDonHang.FilterByDate(tuNgay, denNgay);
+            var result = ReportByKhachHang.FilterByDate(tuNgay, denNgay);
 
             reportDatePicker.TuNgayDenNgayMsg = string.Format("Tong so cuon: {0}", result.Sum(p => p.SoLuong).ToString("N0"));
 

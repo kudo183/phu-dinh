@@ -139,8 +139,8 @@ namespace PhuDinhCommonControl
                     view = new NhapHangView();
                     break;
                 //Report
-                case Constant.ViewName_ReportByDonHangView:
-                    view = new ReportByDonHangView();
+                case Constant.ViewName_ReportByKhachHangView:
+                    view = new ReportByKhachHangView();
                     break;
                 case Constant.ViewName_ReportByLoaiHangView:
                     view = new ReportByLoaiHangView();

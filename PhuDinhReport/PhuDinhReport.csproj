@@ -75,8 +75,8 @@
     <Compile Include="ReportDailyView.xaml.cs">
       <DependentUpon>ReportDailyView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ReportByDonHangView.xaml.cs">
-      <DependentUpon>ReportByDonHangView.xaml</DependentUpon>
+    <Compile Include="ReportByKhachHangView.xaml.cs">
+      <DependentUpon>ReportByKhachHangView.xaml</DependentUpon>
     </Compile>
     <Compile Include="ReportByLoaiHangView.xaml.cs">
       <DependentUpon>ReportByLoaiHangView.xaml</DependentUpon>
@@ -130,7 +130,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="ReportByDonHangView.xaml">
+    <Page Include="ReportByKhachHangView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

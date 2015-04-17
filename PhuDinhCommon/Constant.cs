@@ -119,7 +119,7 @@
         public const string ViewName_NhanVienView = "NhanVienView";
         public const string ViewName_NhapHangView = "NhapHangView";
         //report
-        public const string ViewName_ReportByDonHangView = "ReportByDonHangView";
+        public const string ViewName_ReportByKhachHangView = "ReportByKhachHangView";
         public const string ViewName_ReportByLoaiHangView = "ReportByLoaiHangView";
         public const string ViewName_ReportByMatHangView = "ReportByMatHangView";
         public const string ViewName_ReportDailyView = "ReportDailyView";
