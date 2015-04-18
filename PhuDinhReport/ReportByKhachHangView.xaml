@@ -15,10 +15,10 @@
 
         <CustomControl:DataGridExt Grid.Row="1" x:Name="dg" AutoGenerateColumns="False" EnableRowVirtualization="False" SelectionMode="Single">
             <DataGrid.Columns>
-                <CustomControl:DataGridTextColumnExt Binding="{Binding TenKho}" Header="Kho Hang" Width="100"/>
                 <CustomControl:DataGridTextColumnExt Binding="{Binding TenKhachHang}" Header="Ten Khach Hang" Width="200"/>
+                <CustomControl:DataGridTextColumnExt Binding="{Binding Ngay}" Header="Ngay" Width="100"/>
                 <CustomControl:DataGridTextColumnExt Binding="{Binding TenMatHang}" Header="Ten Mat Hang" Width="350"/>
-                <CustomControl:DataGridTextRightAlignColumn Binding="{Binding SoLuong, StringFormat=\{0:N0\}}" Header="So Luong" Width="100"/>
+                <CustomControl:DataGridTextRightAlignColumn Binding="{Binding SoLuongText}" Header="So Luong" Width="100"/>
             </DataGrid.Columns>
         </CustomControl:DataGridExt>
     </Grid>

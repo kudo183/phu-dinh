@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Data.Entity;
 
 namespace PhuDinhData.ReportData
 {
@@ -8,10 +9,11 @@ namespace PhuDinhData.ReportData
     {
         public class ReportByKhachHangData
         {
-            public string TenKho { get; set; }
             public string TenKhachHang { get; set; }
+            public string Ngay { get; set; }
             public string TenMatHang { get; set; }
             public int SoLuong { get; set; }
+            public string SoLuongText { get; set; }
         }
 
         public static List<ReportByKhachHangData> FilterByDate(DateTime ngay)
@@ -28,77 +30,63 @@ namespace PhuDinhData.ReportData
         {
             var context = ContextFactory.CreateContext();
 
-            var donHangs = context.tDonHangs
-                .Where(filter);
-
-            var khoHangs = new Dictionary<int, string>();
-            var khachHangs = new Dictionary<int, string>();
-            var matHangs = new Dictionary<int, string>();
-
-            var gKhoHangs = new Dictionary<int, Dictionary<int, Dictionary<int, int>>>();
-            foreach (var donHang in donHangs)
-            {
-                if (khoHangs.ContainsKey(donHang.MaKhoHang) == false)
-                {
-                    khoHangs.Add(donHang.MaKhoHang, donHang.rKhoHang.TenKho);
-                }
-                if (khachHangs.ContainsKey(donHang.MaKhachHang) == false)
-                {
-                    khachHangs.Add(donHang.MaKhachHang, donHang.rKhachHang.TenKhachHang);
-                }
-
-                if (gKhoHangs.ContainsKey(donHang.MaKhoHang) == false)
-                {
-                    gKhoHangs.Add(donHang.MaKhoHang, new Dictionary<int, Dictionary<int, int>>());
-                }
-                var gKhachHangs = gKhoHangs[donHang.MaKhoHang];
-                if (gKhachHangs.ContainsKey(donHang.MaKhachHang) == false)
-                {
-                    gKhachHangs.Add(donHang.MaKhachHang, new Dictionary<int, int>());
-                }
-                var gMatHangs = gKhachHangs[donHang.MaKhachHang];
-                foreach (var chiTietDonHang in donHang.tChiTietDonHangs)
-                {
-                    if (matHangs.ContainsKey(chiTietDonHang.MaMatHang) == false)
-                    {
-                        matHangs.Add(chiTietDonHang.MaMatHang, chiTietDonHang.tMatHang.TenMatHangDayDu);
-                    }
-
-                    if (gMatHangs.ContainsKey(chiTietDonHang.MaMatHang) == false)
-                    {
-                        gMatHangs.Add(chiTietDonHang.MaMatHang, 0);
-                    }
-
-                    gMatHangs[chiTietDonHang.MaMatHang] += chiTietDonHang.SoLuong;
-                }
-            }
+            var gbKhachHang = context.tDonHangs
+                .Where(filter)
+                .Include(p => p.tChiTietDonHangs.Select(ct => ct.tMatHang))
+                .OrderBy(p => p.Ngay)
+                .GroupBy(p => p.rKhachHang.TenKhachHang);
 
             var result = new List<ReportByKhachHangData>();
 
-            foreach (var gKhoHang in gKhoHangs)
+            foreach (var donHang in gbKhachHang)
             {
                 result.Add(new ReportByKhachHangData()
                 {
-                    TenKho = khoHangs[gKhoHang.Key]
+                    TenKhachHang = donHang.Key
                 });
-                foreach (var gKhachHang in gKhoHang.Value)
+
+                foreach (var gbNgay in donHang.GroupBy(p => p.Ngay))
                 {
                     result.Add(new ReportByKhachHangData()
                     {
-                        TenKhachHang = khachHangs[gKhachHang.Key]
+                        Ngay = gbNgay.Key.ToString("dd/MM/yyyy")
                     });
-                    foreach (var gMatHang in gKhachHang.Value)
+                    
+                    foreach (var matHang in GroupByMatHang(gbNgay))
                     {
                         result.Add(new ReportByKhachHangData()
                         {
-                            TenMatHang = matHangs[gMatHang.Key],
-                            SoLuong = gMatHang.Value
+                            TenMatHang = matHang.Value.Key,
+                            SoLuong = matHang.Value.Value,
+                            SoLuongText = matHang.Value.Value.ToString("N0")
                         });
                     }
                 }
             }
 
             return result;
+        }
+
+        private static Dictionary<int, KeyValuePair<string, int>> GroupByMatHang(IEnumerable<tDonHang> gbNgay)
+        {
+            var dMatHangSoLuong = new Dictionary<int, KeyValuePair<string, int>>();
+
+            foreach (var dh in gbNgay)
+            {
+                foreach (var ct in dh.tChiTietDonHangs)
+                {
+                    if (dMatHangSoLuong.ContainsKey(ct.MaMatHang) == false)
+                    {
+                        dMatHangSoLuong.Add(ct.MaMatHang, new KeyValuePair<string, int>(ct.tMatHang.TenMatHang, 0));
+                    }
+
+                    var t = new KeyValuePair<string, int>(ct.tMatHang.TenMatHang, dMatHangSoLuong[ct.MaMatHang].Value + ct.SoLuong);
+
+                    dMatHangSoLuong[ct.MaMatHang] = t;
+                }
+            }
+
+            return dMatHangSoLuong;
         }
     }
 }
