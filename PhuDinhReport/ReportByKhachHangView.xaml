@@ -15,8 +15,56 @@
 
         <CustomControl:DataGridExt Grid.Row="1" x:Name="dg" AutoGenerateColumns="False" EnableRowVirtualization="False" SelectionMode="Single">
             <DataGrid.Columns>
-                <CustomControl:DataGridTextColumnExt Binding="{Binding TenKhachHang}" Header="Ten Khach Hang" Width="200"/>
-                <CustomControl:DataGridTextColumnExt Binding="{Binding Ngay}" Header="Ngay" Width="100"/>
+                <CustomControl:DataGridTextColumnExt Binding="{Binding TenKhachHang}" Width="300">
+                    <CustomControl:DataGridTextColumnExt.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                            <Setter Property="ContentTemplate">
+                                <Setter.Value>
+                                    <DataTemplate>
+                                        <Grid HorizontalAlignment="Stretch">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock Grid.Column="0" Text="{Binding Name}"/>
+                                            <CheckBox Grid.Column="1" VerticalAlignment="Center" Margin="5" IsChecked="{Binding Path=IsUsed}"/>
+                                            <ComboBox Grid.Column="2" Margin="3,0,3,0"
+                                              ItemsSource="{Binding ItemSource}"
+                                              SelectedValue="{Binding SelectedValue}"
+                                              DisplayMemberPath="Value"
+                                              SelectedValuePath="Key"
+                                              IsEnabled="{Binding Path=IsUsed}"/>
+                                        </Grid>
+                                    </DataTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </CustomControl:DataGridTextColumnExt.HeaderStyle>
+                </CustomControl:DataGridTextColumnExt>
+                <CustomControl:DataGridTextColumnExt Binding="{Binding Ngay}" Width="100">
+                    <CustomControl:DataGridTextColumnExt.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                            <Setter Property="ContentTemplate">
+                                <Setter.Value>
+                                    <DataTemplate>
+                                        <Grid HorizontalAlignment="Stretch">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock Grid.Column="0" Text="Ngay"/>
+                                            <CheckBox Grid.Column="1" VerticalAlignment="Center" Margin="5" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked"/>
+                                        </Grid>
+                                    </DataTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </CustomControl:DataGridTextColumnExt.HeaderStyle>
+                </CustomControl:DataGridTextColumnExt>
                 <CustomControl:DataGridTextColumnExt Binding="{Binding TenMatHang}" Header="Ten Mat Hang" Width="350"/>
                 <CustomControl:DataGridTextRightAlignColumn Binding="{Binding SoLuongText}" Header="So Luong" Width="100"/>
             </DataGrid.Columns>
