@@ -53,7 +53,6 @@ namespace PhuDinhData.ReportData
             var gbKhachHang = context.tDonHangs
                 .Where(filter)
                 .Include(p => p.tChiTietDonHangs.Select(ct => ct.tMatHang))
-                .OrderBy(p => p.Ngay)
                 .GroupBy(p => p.rKhachHang.TenKhachHang);
 
             var result = new List<ReportByKhachHangData>();
@@ -67,7 +66,7 @@ namespace PhuDinhData.ReportData
 
                 if (isGroupByDate)
                 {
-                    foreach (var gbNgay in donHang.GroupBy(p => p.Ngay))
+                    foreach (var gbNgay in donHang.OrderBy(p => p.Ngay).GroupBy(p => p.Ngay))
                     {
                         result.Add(new ReportByKhachHangData()
                         {
@@ -78,9 +77,9 @@ namespace PhuDinhData.ReportData
                         {
                             result.Add(new ReportByKhachHangData()
                             {
-                                TenMatHang = matHang.Value.Key,
-                                SoLuong = matHang.Value.Value,
-                                SoLuongText = matHang.Value.Value.ToString("N0")
+                                TenMatHang = matHang.Key,
+                                SoLuong = matHang.Value,
+                                SoLuongText = matHang.Value.ToString("N0")
                             });
                         }
                     }
@@ -91,9 +90,9 @@ namespace PhuDinhData.ReportData
                     {
                         result.Add(new ReportByKhachHangData()
                         {
-                            TenMatHang = matHang.Value.Key,
-                            SoLuong = matHang.Value.Value,
-                            SoLuongText = matHang.Value.Value.ToString("N0")
+                            TenMatHang = matHang.Key,
+                            SoLuong = matHang.Value,
+                            SoLuongText = matHang.Value.ToString("N0")
                         });
                     }
                 }
@@ -102,26 +101,24 @@ namespace PhuDinhData.ReportData
             return result;
         }
 
-        private static Dictionary<int, KeyValuePair<string, int>> GroupByMatHang(IEnumerable<tDonHang> gbNgay)
+        private static Dictionary<string, int> GroupByMatHang(IEnumerable<tDonHang> gbNgay)
         {
-            var dMatHangSoLuong = new Dictionary<int, KeyValuePair<string, int>>();
+            var dMatHangSoLuong = new Dictionary<string, int>();
 
             foreach (var dh in gbNgay)
             {
                 foreach (var ct in dh.tChiTietDonHangs)
                 {
-                    if (dMatHangSoLuong.ContainsKey(ct.MaMatHang) == false)
+                    if (dMatHangSoLuong.ContainsKey(ct.tMatHang.TenMatHang) == false)
                     {
-                        dMatHangSoLuong.Add(ct.MaMatHang, new KeyValuePair<string, int>(ct.tMatHang.TenMatHang, 0));
+                        dMatHangSoLuong.Add(ct.tMatHang.TenMatHang, 0);
                     }
 
-                    var t = new KeyValuePair<string, int>(ct.tMatHang.TenMatHang, dMatHangSoLuong[ct.MaMatHang].Value + ct.SoLuong);
-
-                    dMatHangSoLuong[ct.MaMatHang] = t;
+                    dMatHangSoLuong[ct.tMatHang.TenMatHang] += ct.SoLuong;
                 }
             }
 
-            return dMatHangSoLuong;
+            return dMatHangSoLuong.OrderBy(p => p.Key).ToDictionary(p => p.Key, p => p.Value);
         }
     }
 }
