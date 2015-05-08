@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Data.Entity;
+using System.Linq;
 
 namespace PhuDinhData.Repository
 {
@@ -6,8 +7,12 @@ namespace PhuDinhData.Repository
     {
         public static IQueryable<tChiTietChuyenHangDonHang> GetDataQuery(IQueryable<tChiTietChuyenHangDonHang> query)
         {
-            return query.OrderByDescending(p => p.tChuyenHangDonHang.tChuyenHang.Ngay).
-                ThenBy(p => p.tChuyenHangDonHang.tChuyenHang.Gio);
+            return query
+                .Include("tChuyenHangDonHang.tChuyenHang")
+                .Include("tChuyenHangDonHang.tDonHang.rKhachHang")
+                .Include("tChiTietDonHang.tMatHang")
+                .OrderByDescending(p => p.tChuyenHangDonHang.tChuyenHang.Ngay)
+                .ThenBy(p => p.tChuyenHangDonHang.tChuyenHang.Gio);
         }
     }
 }
