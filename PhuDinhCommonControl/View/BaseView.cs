@@ -131,13 +131,9 @@ namespace PhuDinhCommonControl
             if (_viewModel == null)
                 return;
 
-            var index = dg.SelectedIndex;
-
             dg.SkippedSelectionChangedEvent = true;
             _viewModel.RefreshData();
             dg.SkippedSelectionChangedEvent = false;
-
-            dg.SelectedIndex = index;
         }
 
         public virtual void Save()
