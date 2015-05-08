@@ -5,21 +5,16 @@
                            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                            xmlns:CustomControl="clr-namespace:CustomControl;assembly=CustomControl"
                            xmlns:DesignTimeData="clr-namespace:PhuDinhData.DesignTimeData;assembly=PhuDinhData"
-                           mc:Ignorable="d"
+                           xmlns:PhuDinhCommon="clr-namespace:PhuDinhCommon;assembly=PhuDinhCommon" mc:Ignorable="d"
                            d:DataContext="{x:Static DesignTimeData:DDtChiTietChuyenKho.ViewModel}"
                            AutoGenerateColumns="False" EnableRowVirtualization="False" ItemsSource="{Binding Entity}" SelectionMode="Single">
     <DataGrid.Columns>
         <!--Ma-->
         <CustomControl:DataGridReadOnlyTextColumn x:Name="maColumn"/>
         <!--Ten chuyen kho-->
-        <CustomControl:DataGridComboBoxColumnExt x:Name="chuyenKhoColumn"
-                                                 HeaderAddButtonClick="headerAddButton_Click"
-                                                 TextBinding="{Binding tChuyenKho.TenChuyenKho, Mode=OneWay}"
-                                                 DisplayMemberPath="TenChuyenKho"
-                                                 SelectedValuePath="Ma"
-                                                 SelectedValueBinding="{Binding MaChuyenKho, UpdateSourceTrigger=PropertyChanged}"
-                                                 SelectedItemBinding="{Binding tChuyenKho, UpdateSourceTrigger=PropertyChanged}"
-                                                 ItemsSource="{Binding tChuyenKhoList}"/>
+        <CustomControl:DataGridReadOnlyLeftAlignTextColumn x:Name="chuyenKhoColumn" Width="250"
+                                                  Header="{x:Static PhuDinhCommon:Constant.ColumnName_DonHang}"
+                                                  Binding="{Binding tChuyenKho.TenChuyenKho}"/>
         <!--Mat hang-->
         <CustomControl:DataGridComboBoxColumnExt x:Name="matHangColumn"
                                                  HeaderAddButtonClick="headerAddButton_Click"

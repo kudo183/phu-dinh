@@ -90,17 +90,9 @@ namespace PhuDinhData.ViewModel
                 , (p => p.tMatHangList = _tMatHangs));
         }
 
-        private void UpdateNhapHangReferenceData()
-        {
-            UpdateReferenceData(out _tNhapHangs
-                , GetReferenceFilter<tNhapHang>(Constant.ColumnName_NhapHang)
-                , (p => p.tNhapHangList = _tNhapHangs));
-        }
-
         protected override void UpdateAllReferenceData()
         {
             UpdateMatHangReferenceData();
-            UpdateNhapHangReferenceData();
         }
 
         public override void UpdateReferenceData(string columnName)
@@ -109,9 +101,6 @@ namespace PhuDinhData.ViewModel
             {
                 case Constant.ColumnName_MatHang:
                     UpdateMatHangReferenceData();
-                    break;
-                case Constant.ColumnName_NhapHang:
-                    UpdateNhapHangReferenceData();
                     break;
             }
         }

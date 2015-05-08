@@ -21,7 +21,6 @@ namespace PhuDinhCommonControl
             _viewModel = new ChiTietNhapHangViewModel();
             DataContext = _viewModel;
 
-            dg.Columns[1].Header = (_viewModel as ChiTietNhapHangViewModel).Header_NhapHang;
             dg.Columns[2].Header = (_viewModel as ChiTietNhapHangViewModel).Header_MatHang;
         }
 
@@ -35,12 +34,6 @@ namespace PhuDinhCommonControl
 
             switch (header.Name)
             {
-                case Constant.ColumnName_NhapHang:
-                    view = new tDonHangView();
-                    ChildWindowUtils.ShowChildWindow(Constant.ViewName_NhapHang, view);
-
-                    _viewModel.UpdateReferenceData(header.Name);
-                    break;
                 case Constant.ColumnName_MatHang:
                     view = new tMatHangView();
                     ChildWindowUtils.ShowChildWindow(Constant.ViewName_MatHang, view);
