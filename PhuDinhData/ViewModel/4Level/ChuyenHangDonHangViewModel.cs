@@ -89,13 +89,6 @@ namespace PhuDinhData.ViewModel
             }
         }
 
-        private void UpdateChuyenHangReferenceData()
-        {
-            UpdateReferenceData(out _tChuyenHangs
-                , GetReferenceFilter<tChuyenHang>(Constant.ColumnName_ChuyenHang)
-                , (p => p.tChuyenHangList = _tChuyenHangs));
-        }
-
         private void UpdateDonHangReferenceData()
         {
             UpdateReferenceData(out _tDonHangs
@@ -105,7 +98,6 @@ namespace PhuDinhData.ViewModel
 
         protected override void UpdateAllReferenceData()
         {
-            UpdateChuyenHangReferenceData();
             UpdateDonHangReferenceData();
         }
 
@@ -113,9 +105,6 @@ namespace PhuDinhData.ViewModel
         {
             switch (columnName)
             {
-                case Constant.ColumnName_ChuyenHang:
-                    UpdateChuyenHangReferenceData();
-                    break;
                 case Constant.ColumnName_DonHang:
                     UpdateDonHangReferenceData();
                     break;
