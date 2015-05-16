@@ -21,6 +21,8 @@
 
 
 
+
+
 GO
 -- Batch submitted through debugger: SQLQuery2.sql|7|0|C:\Users\ADMINI~1\AppData\Local\Temp\~vsF671.sql
 CREATE TRIGGER [dbo].[tChiTietChuyenHangDonHang_trUpdateXong]
@@ -32,17 +34,16 @@ CREATE TRIGGER [dbo].[tChiTietChuyenHangDonHang_trUpdateXong]
 
 		update [dbo].[tChiTietDonHang]
 		set Xong = 0
-		where Xong = 1 and Ma in (select distinct(MaChiTietDonHang) from deleted)
-
-		update [dbo].[tChiTietDonHang]
-		set Xong = 0
-		from (select distinct(MaChiTietDonHang) as Ma from inserted) as i
-		where Xong = 1 and [dbo].[tChiTietDonHang].Ma = i.Ma 
-		and SoLuong <> (select sum(SoLuong) from [dbo].[tChiTietChuyenHangDonHang] where MaChiTietDonHang = i.Ma)
+		from (select MaChiTietDonHang as Ma from inserted
+			union select MaChiTietDonHang as Ma from deleted) as t
+		where Xong = 1 and [dbo].[tChiTietDonHang].Ma = t.Ma 
+		and (SoLuong <> (select sum(SoLuong) from [dbo].[tChiTietChuyenHangDonHang] where MaChiTietDonHang = t.Ma)
+		or NOT EXISTS(select * from [dbo].[tChiTietChuyenHangDonHang] where MaChiTietDonHang = t.Ma))
 
 		update [dbo].[tChiTietDonHang]
 		set Xong = 1
-		from (select distinct(MaChiTietDonHang) as Ma from inserted union select distinct(MaChiTietDonHang) as Ma from deleted) as t
+		from (select MaChiTietDonHang as Ma from inserted
+			union select MaChiTietDonHang as Ma from deleted) as t
 		where Xong = 0 and [dbo].[tChiTietDonHang].Ma = t.Ma 
 		and SoLuong = (select sum(SoLuong) from [dbo].[tChiTietChuyenHangDonHang] where MaChiTietDonHang = t.Ma)					
 	END

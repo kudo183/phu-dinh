@@ -16,6 +16,8 @@
 
 
 
+
+
 GO
 CREATE TRIGGER [dbo].[tChiTietDonHang_trUpdateXong]
 	ON [dbo].[tChiTietDonHang]
@@ -33,6 +35,7 @@ CREATE TRIGGER [dbo].[tChiTietDonHang_trUpdateXong]
 			
 		IF(@Evt = 1) -- inserted
 		begin
+			print('trigger inserted chitietdonhang')
 			update [dbo].[tDonHang]
 			set Xong = 0
 			where [dbo].[tDonHang].Ma in (select distinct (i.MaDonHang) from inserted as i)
@@ -41,63 +44,47 @@ CREATE TRIGGER [dbo].[tChiTietDonHang_trUpdateXong]
 
 		if(@Evt = 2) -- deleted
 		begin
+			print('trigger deleted chitietdonhang')
 			update [dbo].[tDonHang]
 			set Xong = 1
 			where [dbo].[tDonHang].Ma in (select distinct (d.MaDonHang) from deleted as d where d.Xong = 0)			
 			and [dbo].[tDonHang].Xong = 0
 			and NOT EXISTS(select * from [dbo].[tChiTietDonHang] as ct where ct.MaDonHang = [dbo].[tDonHang].Ma and ct.Xong = 0)
-
-			--don hang ko co [tChiTietDonHang] thi xong = 0 
-			update [dbo].[tDonHang]
-			set Xong = 0
-			where [dbo].[tDonHang].Ma in (select distinct (d.MaDonHang) from deleted as d)			
-			and [dbo].[tDonHang].Xong = 1
-			and NOT EXISTS(select * from [dbo].[tChiTietDonHang] as ct where ct.MaDonHang = [dbo].[tDonHang].Ma)
 		end
 
 		if(@Evt = 3) -- updated
 		begin
+			print('trigger updated chitietdonhang')
 			-- update xong [tChiTietDonHang]
-			update [dbo].[tChiTietDonHang]
-			set Xong = 1
-			from inserted as i
-			where [dbo].[tChiTietDonHang].Ma = i.Ma
-			and i.Xong = 0
-			and [dbo].[tChiTietDonHang].SoLuong = (select Sum(ct.SoLuong) from [dbo].[tChiTietChuyenHangDonHang] as ct where ct.MaChiTietDonHang = [dbo].[tChiTietDonHang].Ma)
+			if(update(SoLuong))
+			begin
+				update [dbo].[tChiTietDonHang]
+				set Xong = 1
+				from inserted as i
+				where [dbo].[tChiTietDonHang].Ma = i.Ma
+				and i.Xong = 0
+				and [dbo].[tChiTietDonHang].SoLuong = (select Sum(ct.SoLuong) from [dbo].[tChiTietChuyenHangDonHang] as ct where ct.MaChiTietDonHang = [dbo].[tChiTietDonHang].Ma)
 
-			update [dbo].[tChiTietDonHang]
-			set Xong = 0
-			from inserted as i
-			where [dbo].[tChiTietDonHang].Ma = i.Ma
-			and i.Xong = 1
-			and ([dbo].[tChiTietDonHang].SoLuong <> (select Sum(ct.SoLuong) from [dbo].[tChiTietChuyenHangDonHang] as ct where ct.MaChiTietDonHang = [dbo].[tChiTietDonHang].Ma)
-			or NOT EXISTS(select * from [dbo].[tChiTietChuyenHangDonHang] as ct where ct.MaChiTietDonHang = [dbo].[tChiTietDonHang].Ma))
+				update [dbo].[tChiTietDonHang]
+				set Xong = 0
+				from inserted as i
+				where [dbo].[tChiTietDonHang].Ma = i.Ma
+				and i.Xong = 1
+				and ([dbo].[tChiTietDonHang].SoLuong <> (select Sum(ct.SoLuong) from [dbo].[tChiTietChuyenHangDonHang] as ct where ct.MaChiTietDonHang = [dbo].[tChiTietDonHang].Ma)
+				or NOT EXISTS(select * from [dbo].[tChiTietChuyenHangDonHang] as ct where ct.MaChiTietDonHang = [dbo].[tChiTietDonHang].Ma))
 
-			-- update xong [tDonHang]
-			-- truong hop delete: giong @Evt = 2
-			update [dbo].[tDonHang]
-			set Xong = 1
-			where [dbo].[tDonHang].Ma in (select distinct (d.MaDonHang) from deleted as d where d.Xong = 0)
-			and [dbo].[tDonHang].Xong = 0
-			and NOT EXISTS(select * from [dbo].[tChiTietDonHang] as ct where ct.MaDonHang = [dbo].[tDonHang].Ma and ct.Xong = 0)
-			
-			--don hang ko co [tChiTietDonHang] thi xong = 0 
-			update [dbo].[tDonHang]
-			set Xong = 0
-			where [dbo].[tDonHang].Ma in (select distinct (d.MaDonHang) from deleted as d)			
-			and [dbo].[tDonHang].Xong = 1
-			and NOT EXISTS(select * from [dbo].[tChiTietDonHang] as ct where ct.MaDonHang = [dbo].[tDonHang].Ma)
-
+				print('update xong chitietdonhang because update soluong')
+			end
 			-- truong hop insert
 			update [dbo].[tDonHang]
 			set Xong = 0
-			where [dbo].[tDonHang].Ma in (select distinct (i.MaDonHang) from inserted as i)
+			where [dbo].[tDonHang].Ma in (select deleted.MaDonHang from deleted union select inserted.MaDonHang from inserted)
 			and [dbo].[tDonHang].Xong = 1
 			and EXISTS(select * from [dbo].[tChiTietDonHang] as ct where ct.MaDonHang = [dbo].[tDonHang].Ma and ct.Xong = 0)
 
 			update [dbo].[tDonHang]
 			set Xong = 1
-			where [dbo].[tDonHang].Ma in (select distinct (i.MaDonHang) from inserted as i)
+			where [dbo].[tDonHang].Ma in (select deleted.MaDonHang from deleted union select inserted.MaDonHang from inserted)
 			and [dbo].[tDonHang].Xong = 0
 			and NOT EXISTS(select * from [dbo].[tChiTietDonHang] as ct where ct.MaDonHang = [dbo].[tDonHang].Ma and ct.Xong = 0)
 		end
