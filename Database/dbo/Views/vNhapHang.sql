@@ -1,4 +1,4 @@
-﻿CREATE VIEW dbo.[vNhapHang]
+﻿CREATE VIEW [dbo].[vNhapHang]
 AS
 SELECT        dbo.tNhapHang.Ngay, dbo.rNhanVien.Ma AS MaNV, dbo.rNhanVien.TenNhanVien, dbo.tMatHang.Ma AS MaMatHang, dbo.tMatHang.TenMatHang, 
                          dbo.tChiTietNhapHang.SoLuong
@@ -16,6 +16,8 @@ EXECUTE sp_addextendedproperty @name = N'MS_DiagramPane2', @value = N'
    End
 End
 ', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'VIEW', @level1name = N'vNhapHang';
+
+
 
 
 GO
@@ -163,5 +165,8 @@ Begin DesignProperties =
          Filter = 1350
          Or = 1350
          Or = 1350
-         Or = 1350', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'VIEW', @level1name = N'vNhapHang';
+         Or = 1350
+', @level0type = N'SCHEMA', @level0name = N'dbo', @level1type = N'VIEW', @level1name = N'vNhapHang';
+
+
 

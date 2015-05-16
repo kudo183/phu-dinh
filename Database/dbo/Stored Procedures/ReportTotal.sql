@@ -3,7 +3,7 @@
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
-CREATE PROCEDURE ReportTotal
+CREATE PROCEDURE [dbo].[ReportTotal]
 	-- Add the parameters for the stored procedure here
 	@dateFrom datetime,
 	@dateTo datetime
