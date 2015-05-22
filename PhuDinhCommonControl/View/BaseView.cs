@@ -135,6 +135,8 @@ namespace PhuDinhCommonControl
 
             dg.SkippedSelectionChangedEvent = true;
             _viewModel.RefreshData();
+            dg.CanUserAddRows = false;
+            dg.CanUserAddRows = true;
             dg.SelectedIndex = index;
             dg.SkippedSelectionChangedEvent = false;
         }
