@@ -288,7 +288,7 @@ public class CodeStringGenerator
             _code.Escape(edmProperty),
             _code.SpaceAfter(Accessibility.ForGetter(edmProperty)),
             _code.SpaceAfter(Accessibility.ForSetter(edmProperty)),
-            "set { if(IsValid(value, \""+_code.Escape(edmProperty)+"\") == false || _"+_code.Escape(edmProperty).ToLower()+" == value) return; _"+_code.Escape(edmProperty).ToLower()+" = value; base.RaisePropertyChanged(\""+_code.Escape(edmProperty)+"\");}",
+            "set { SetPropertyAndValidate(ref _"+_code.Escape(edmProperty).ToLower()+", value); }",
             "get { return _"+_code.Escape(edmProperty).ToLower()+"; }");
     }
 

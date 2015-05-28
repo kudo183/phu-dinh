@@ -23,13 +23,13 @@ namespace PhuDinhData
         }
     
         private int _ma;
-        public int Ma { get { return _ma; } set { if(IsValid(value, "Ma") == false || _ma == value) return; _ma = value; base.RaisePropertyChanged("Ma");} }
+        public int Ma { get { return _ma; } set { SetPropertyAndValidate(ref _ma, value); } }
     
         private int _maloainguyenlieu;
-        public int MaLoaiNguyenLieu { get { return _maloainguyenlieu; } set { if(IsValid(value, "MaLoaiNguyenLieu") == false || _maloainguyenlieu == value) return; _maloainguyenlieu = value; base.RaisePropertyChanged("MaLoaiNguyenLieu");} }
+        public int MaLoaiNguyenLieu { get { return _maloainguyenlieu; } set { SetPropertyAndValidate(ref _maloainguyenlieu, value); } }
     
         private int _duongkinh;
-        public int DuongKinh { get { return _duongkinh; } set { if(IsValid(value, "DuongKinh") == false || _duongkinh == value) return; _duongkinh = value; base.RaisePropertyChanged("DuongKinh");} }
+        public int DuongKinh { get { return _duongkinh; } set { SetPropertyAndValidate(ref _duongkinh, value); } }
     
     
         public virtual rLoaiNguyenLieu rLoaiNguyenLieu { get; set; }

@@ -16,16 +16,16 @@ namespace PhuDinhData
     public partial class tChiTietNhapHang : BindableObject
     {
         private int _ma;
-        public int Ma { get { return _ma; } set { if(IsValid(value, "Ma") == false || _ma == value) return; _ma = value; base.RaisePropertyChanged("Ma");} }
+        public int Ma { get { return _ma; } set { SetPropertyAndValidate(ref _ma, value); } }
     
         private int _manhaphang;
-        public int MaNhapHang { get { return _manhaphang; } set { if(IsValid(value, "MaNhapHang") == false || _manhaphang == value) return; _manhaphang = value; base.RaisePropertyChanged("MaNhapHang");} }
+        public int MaNhapHang { get { return _manhaphang; } set { SetPropertyAndValidate(ref _manhaphang, value); } }
     
         private int _mamathang;
-        public int MaMatHang { get { return _mamathang; } set { if(IsValid(value, "MaMatHang") == false || _mamathang == value) return; _mamathang = value; base.RaisePropertyChanged("MaMatHang");} }
+        public int MaMatHang { get { return _mamathang; } set { SetPropertyAndValidate(ref _mamathang, value); } }
     
         private int _soluong;
-        public int SoLuong { get { return _soluong; } set { if(IsValid(value, "SoLuong") == false || _soluong == value) return; _soluong = value; base.RaisePropertyChanged("SoLuong");} }
+        public int SoLuong { get { return _soluong; } set { SetPropertyAndValidate(ref _soluong, value); } }
     
     
         public virtual tNhapHang tNhapHang { get; set; }

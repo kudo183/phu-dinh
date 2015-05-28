@@ -22,10 +22,10 @@ namespace PhuDinhData
         }
     
         private int _ma;
-        public int Ma { get { return _ma; } set { if(IsValid(value, "Ma") == false || _ma == value) return; _ma = value; base.RaisePropertyChanged("Ma");} }
+        public int Ma { get { return _ma; } set { SetPropertyAndValidate(ref _ma, value); } }
     
         private string _diadiembaixe;
-        public string DiaDiemBaiXe { get { return _diadiembaixe; } set { if(IsValid(value, "DiaDiemBaiXe") == false || _diadiembaixe == value) return; _diadiembaixe = value; base.RaisePropertyChanged("DiaDiemBaiXe");} }
+        public string DiaDiemBaiXe { get { return _diadiembaixe; } set { SetPropertyAndValidate(ref _diadiembaixe, value); } }
     
     
         public virtual ICollection<rChanh> rChanhs { get; set; }

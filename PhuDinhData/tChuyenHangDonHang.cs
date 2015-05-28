@@ -22,13 +22,13 @@ namespace PhuDinhData
         }
     
         private int _ma;
-        public int Ma { get { return _ma; } set { if(IsValid(value, "Ma") == false || _ma == value) return; _ma = value; base.RaisePropertyChanged("Ma");} }
+        public int Ma { get { return _ma; } set { SetPropertyAndValidate(ref _ma, value); } }
     
         private int _machuyenhang;
-        public int MaChuyenHang { get { return _machuyenhang; } set { if(IsValid(value, "MaChuyenHang") == false || _machuyenhang == value) return; _machuyenhang = value; base.RaisePropertyChanged("MaChuyenHang");} }
+        public int MaChuyenHang { get { return _machuyenhang; } set { SetPropertyAndValidate(ref _machuyenhang, value); } }
     
         private int _madonhang;
-        public int MaDonHang { get { return _madonhang; } set { if(IsValid(value, "MaDonHang") == false || _madonhang == value) return; _madonhang = value; base.RaisePropertyChanged("MaDonHang");} }
+        public int MaDonHang { get { return _madonhang; } set { SetPropertyAndValidate(ref _madonhang, value); } }
     
     
         public virtual ICollection<tChiTietChuyenHangDonHang> tChiTietChuyenHangDonHangs { get; set; }

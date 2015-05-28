@@ -22,19 +22,19 @@ namespace PhuDinhData
         }
     
         private int _ma;
-        public int Ma { get { return _ma; } set { if(IsValid(value, "Ma") == false || _ma == value) return; _ma = value; base.RaisePropertyChanged("Ma");} }
+        public int Ma { get { return _ma; } set { SetPropertyAndValidate(ref _ma, value); } }
     
         private int _madonhang;
-        public int MaDonHang { get { return _madonhang; } set { if(IsValid(value, "MaDonHang") == false || _madonhang == value) return; _madonhang = value; base.RaisePropertyChanged("MaDonHang");} }
+        public int MaDonHang { get { return _madonhang; } set { SetPropertyAndValidate(ref _madonhang, value); } }
     
         private int _mamathang;
-        public int MaMatHang { get { return _mamathang; } set { if(IsValid(value, "MaMatHang") == false || _mamathang == value) return; _mamathang = value; base.RaisePropertyChanged("MaMatHang");} }
+        public int MaMatHang { get { return _mamathang; } set { SetPropertyAndValidate(ref _mamathang, value); } }
     
         private int _soluong;
-        public int SoLuong { get { return _soluong; } set { if(IsValid(value, "SoLuong") == false || _soluong == value) return; _soluong = value; base.RaisePropertyChanged("SoLuong");} }
+        public int SoLuong { get { return _soluong; } set { SetPropertyAndValidate(ref _soluong, value); } }
     
         private bool _xong;
-        public bool Xong { get { return _xong; } set { if(IsValid(value, "Xong") == false || _xong == value) return; _xong = value; base.RaisePropertyChanged("Xong");} }
+        public bool Xong { get { return _xong; } set { SetPropertyAndValidate(ref _xong, value); } }
     
     
         public virtual ICollection<tChiTietChuyenHangDonHang> tChiTietChuyenHangDonHangs { get; set; }

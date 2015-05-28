@@ -27,13 +27,13 @@ namespace PhuDinhData
         }
     
         private int _ma;
-        public int Ma { get { return _ma; } set { if(IsValid(value, "Ma") == false || _ma == value) return; _ma = value; base.RaisePropertyChanged("Ma");} }
+        public int Ma { get { return _ma; } set { SetPropertyAndValidate(ref _ma, value); } }
     
         private string _tenkho;
-        public string TenKho { get { return _tenkho; } set { if(IsValid(value, "TenKho") == false || _tenkho == value) return; _tenkho = value; base.RaisePropertyChanged("TenKho");} }
+        public string TenKho { get { return _tenkho; } set { SetPropertyAndValidate(ref _tenkho, value); } }
     
         private bool _trangthai;
-        public bool TrangThai { get { return _trangthai; } set { if(IsValid(value, "TrangThai") == false || _trangthai == value) return; _trangthai = value; base.RaisePropertyChanged("TrangThai");} }
+        public bool TrangThai { get { return _trangthai; } set { SetPropertyAndValidate(ref _trangthai, value); } }
     
     
         public virtual ICollection<tDonHang> tDonHangs { get; set; }

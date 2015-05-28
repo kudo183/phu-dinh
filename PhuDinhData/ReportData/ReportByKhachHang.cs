@@ -109,12 +109,12 @@ namespace PhuDinhData.ReportData
             {
                 foreach (var ct in dh.tChiTietDonHangs)
                 {
-                    if (dMatHangSoLuong.ContainsKey(ct.tMatHang.TenMatHang) == false)
+                    if (dMatHangSoLuong.ContainsKey(ct.tMatHang.TenMatHangDayDu) == false)
                     {
-                        dMatHangSoLuong.Add(ct.tMatHang.TenMatHang, 0);
+                        dMatHangSoLuong.Add(ct.tMatHang.TenMatHangDayDu, 0);
                     }
 
-                    dMatHangSoLuong[ct.tMatHang.TenMatHang] += ct.SoLuong;
+                    dMatHangSoLuong[ct.tMatHang.TenMatHangDayDu] += ct.SoLuong;
                 }
             }
 

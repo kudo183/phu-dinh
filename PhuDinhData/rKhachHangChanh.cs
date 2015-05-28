@@ -16,16 +16,16 @@ namespace PhuDinhData
     public partial class rKhachHangChanh : BindableObject
     {
         private int _ma;
-        public int Ma { get { return _ma; } set { if(IsValid(value, "Ma") == false || _ma == value) return; _ma = value; base.RaisePropertyChanged("Ma");} }
+        public int Ma { get { return _ma; } set { SetPropertyAndValidate(ref _ma, value); } }
     
         private int _machanh;
-        public int MaChanh { get { return _machanh; } set { if(IsValid(value, "MaChanh") == false || _machanh == value) return; _machanh = value; base.RaisePropertyChanged("MaChanh");} }
+        public int MaChanh { get { return _machanh; } set { SetPropertyAndValidate(ref _machanh, value); } }
     
         private int _makhachhang;
-        public int MaKhachHang { get { return _makhachhang; } set { if(IsValid(value, "MaKhachHang") == false || _makhachhang == value) return; _makhachhang = value; base.RaisePropertyChanged("MaKhachHang");} }
+        public int MaKhachHang { get { return _makhachhang; } set { SetPropertyAndValidate(ref _makhachhang, value); } }
     
         private bool _lamacdinh;
-        public bool LaMacDinh { get { return _lamacdinh; } set { if(IsValid(value, "LaMacDinh") == false || _lamacdinh == value) return; _lamacdinh = value; base.RaisePropertyChanged("LaMacDinh");} }
+        public bool LaMacDinh { get { return _lamacdinh; } set { SetPropertyAndValidate(ref _lamacdinh, value); } }
     
     
         public virtual rChanh rChanh { get; set; }

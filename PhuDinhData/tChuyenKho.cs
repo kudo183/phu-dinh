@@ -22,19 +22,19 @@ namespace PhuDinhData
         }
     
         private int _ma;
-        public int Ma { get { return _ma; } set { if(IsValid(value, "Ma") == false || _ma == value) return; _ma = value; base.RaisePropertyChanged("Ma");} }
+        public int Ma { get { return _ma; } set { SetPropertyAndValidate(ref _ma, value); } }
     
         private int _manhanvien;
-        public int MaNhanVien { get { return _manhanvien; } set { if(IsValid(value, "MaNhanVien") == false || _manhanvien == value) return; _manhanvien = value; base.RaisePropertyChanged("MaNhanVien");} }
+        public int MaNhanVien { get { return _manhanvien; } set { SetPropertyAndValidate(ref _manhanvien, value); } }
     
         private int _makhohangxuat;
-        public int MaKhoHangXuat { get { return _makhohangxuat; } set { if(IsValid(value, "MaKhoHangXuat") == false || _makhohangxuat == value) return; _makhohangxuat = value; base.RaisePropertyChanged("MaKhoHangXuat");} }
+        public int MaKhoHangXuat { get { return _makhohangxuat; } set { SetPropertyAndValidate(ref _makhohangxuat, value); } }
     
         private int _makhohangnhap;
-        public int MaKhoHangNhap { get { return _makhohangnhap; } set { if(IsValid(value, "MaKhoHangNhap") == false || _makhohangnhap == value) return; _makhohangnhap = value; base.RaisePropertyChanged("MaKhoHangNhap");} }
+        public int MaKhoHangNhap { get { return _makhohangnhap; } set { SetPropertyAndValidate(ref _makhohangnhap, value); } }
     
         private System.DateTime _ngay;
-        public System.DateTime Ngay { get { return _ngay; } set { if(IsValid(value, "Ngay") == false || _ngay == value) return; _ngay = value; base.RaisePropertyChanged("Ngay");} }
+        public System.DateTime Ngay { get { return _ngay; } set { SetPropertyAndValidate(ref _ngay, value); } }
     
     
         public virtual rKhoHang rKhoHangNhap { get; set; }

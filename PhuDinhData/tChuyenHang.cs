@@ -22,16 +22,16 @@ namespace PhuDinhData
         }
     
         private int _ma;
-        public int Ma { get { return _ma; } set { if(IsValid(value, "Ma") == false || _ma == value) return; _ma = value; base.RaisePropertyChanged("Ma");} }
+        public int Ma { get { return _ma; } set { SetPropertyAndValidate(ref _ma, value); } }
     
         private int _manhanviengiaohang;
-        public int MaNhanVienGiaoHang { get { return _manhanviengiaohang; } set { if(IsValid(value, "MaNhanVienGiaoHang") == false || _manhanviengiaohang == value) return; _manhanviengiaohang = value; base.RaisePropertyChanged("MaNhanVienGiaoHang");} }
+        public int MaNhanVienGiaoHang { get { return _manhanviengiaohang; } set { SetPropertyAndValidate(ref _manhanviengiaohang, value); } }
     
         private System.DateTime _ngay;
-        public System.DateTime Ngay { get { return _ngay; } set { if(IsValid(value, "Ngay") == false || _ngay == value) return; _ngay = value; base.RaisePropertyChanged("Ngay");} }
+        public System.DateTime Ngay { get { return _ngay; } set { SetPropertyAndValidate(ref _ngay, value); } }
     
         private Nullable<System.TimeSpan> _gio;
-        public Nullable<System.TimeSpan> Gio { get { return _gio; } set { if(IsValid(value, "Gio") == false || _gio == value) return; _gio = value; base.RaisePropertyChanged("Gio");} }
+        public Nullable<System.TimeSpan> Gio { get { return _gio; } set { SetPropertyAndValidate(ref _gio, value); } }
     
     
         public virtual ICollection<tChuyenHangDonHang> tChuyenHangDonHangs { get; set; }

@@ -23,22 +23,22 @@ namespace PhuDinhData
         }
     
         private int _ma;
-        public int Ma { get { return _ma; } set { if(IsValid(value, "Ma") == false || _ma == value) return; _ma = value; base.RaisePropertyChanged("Ma");} }
+        public int Ma { get { return _ma; } set { SetPropertyAndValidate(ref _ma, value); } }
     
         private int _makhachhang;
-        public int MaKhachHang { get { return _makhachhang; } set { if(IsValid(value, "MaKhachHang") == false || _makhachhang == value) return; _makhachhang = value; base.RaisePropertyChanged("MaKhachHang");} }
+        public int MaKhachHang { get { return _makhachhang; } set { SetPropertyAndValidate(ref _makhachhang, value); } }
     
         private Nullable<int> _machanh;
-        public Nullable<int> MaChanh { get { return _machanh; } set { if(IsValid(value, "MaChanh") == false || _machanh == value) return; _machanh = value; base.RaisePropertyChanged("MaChanh");} }
+        public Nullable<int> MaChanh { get { return _machanh; } set { SetPropertyAndValidate(ref _machanh, value); } }
     
         private System.DateTime _ngay;
-        public System.DateTime Ngay { get { return _ngay; } set { if(IsValid(value, "Ngay") == false || _ngay == value) return; _ngay = value; base.RaisePropertyChanged("Ngay");} }
+        public System.DateTime Ngay { get { return _ngay; } set { SetPropertyAndValidate(ref _ngay, value); } }
     
         private bool _xong;
-        public bool Xong { get { return _xong; } set { if(IsValid(value, "Xong") == false || _xong == value) return; _xong = value; base.RaisePropertyChanged("Xong");} }
+        public bool Xong { get { return _xong; } set { SetPropertyAndValidate(ref _xong, value); } }
     
         private int _makhohang;
-        public int MaKhoHang { get { return _makhohang; } set { if(IsValid(value, "MaKhoHang") == false || _makhohang == value) return; _makhohang = value; base.RaisePropertyChanged("MaKhoHang");} }
+        public int MaKhoHang { get { return _makhohang; } set { SetPropertyAndValidate(ref _makhohang, value); } }
     
     
         public virtual rChanh rChanh { get; set; }

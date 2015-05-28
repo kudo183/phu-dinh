@@ -16,19 +16,19 @@ namespace PhuDinhData
     public partial class rCanhBaoTonKho : BindableObject
     {
         private int _ma;
-        public int Ma { get { return _ma; } set { if(IsValid(value, "Ma") == false || _ma == value) return; _ma = value; base.RaisePropertyChanged("Ma");} }
+        public int Ma { get { return _ma; } set { SetPropertyAndValidate(ref _ma, value); } }
     
         private int _mamathang;
-        public int MaMatHang { get { return _mamathang; } set { if(IsValid(value, "MaMatHang") == false || _mamathang == value) return; _mamathang = value; base.RaisePropertyChanged("MaMatHang");} }
+        public int MaMatHang { get { return _mamathang; } set { SetPropertyAndValidate(ref _mamathang, value); } }
     
         private int _makhohang;
-        public int MaKhoHang { get { return _makhohang; } set { if(IsValid(value, "MaKhoHang") == false || _makhohang == value) return; _makhohang = value; base.RaisePropertyChanged("MaKhoHang");} }
+        public int MaKhoHang { get { return _makhohang; } set { SetPropertyAndValidate(ref _makhohang, value); } }
     
         private int _toncaonhat;
-        public int TonCaoNhat { get { return _toncaonhat; } set { if(IsValid(value, "TonCaoNhat") == false || _toncaonhat == value) return; _toncaonhat = value; base.RaisePropertyChanged("TonCaoNhat");} }
+        public int TonCaoNhat { get { return _toncaonhat; } set { SetPropertyAndValidate(ref _toncaonhat, value); } }
     
         private int _tonthapnhat;
-        public int TonThapNhat { get { return _tonthapnhat; } set { if(IsValid(value, "TonThapNhat") == false || _tonthapnhat == value) return; _tonthapnhat = value; base.RaisePropertyChanged("TonThapNhat");} }
+        public int TonThapNhat { get { return _tonthapnhat; } set { SetPropertyAndValidate(ref _tonthapnhat, value); } }
     
     
         public virtual rKhoHang rKhoHang { get; set; }

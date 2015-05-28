@@ -23,16 +23,16 @@ namespace PhuDinhData
         }
     
         private int _ma;
-        public int Ma { get { return _ma; } set { if(IsValid(value, "Ma") == false || _ma == value) return; _ma = value; base.RaisePropertyChanged("Ma");} }
+        public int Ma { get { return _ma; } set { SetPropertyAndValidate(ref _ma, value); } }
     
         private int _madiadiem;
-        public int MaDiaDiem { get { return _madiadiem; } set { if(IsValid(value, "MaDiaDiem") == false || _madiadiem == value) return; _madiadiem = value; base.RaisePropertyChanged("MaDiaDiem");} }
+        public int MaDiaDiem { get { return _madiadiem; } set { SetPropertyAndValidate(ref _madiadiem, value); } }
     
         private string _tenkhachhang;
-        public string TenKhachHang { get { return _tenkhachhang; } set { if(IsValid(value, "TenKhachHang") == false || _tenkhachhang == value) return; _tenkhachhang = value; base.RaisePropertyChanged("TenKhachHang");} }
+        public string TenKhachHang { get { return _tenkhachhang; } set { SetPropertyAndValidate(ref _tenkhachhang, value); } }
     
         private bool _khachrieng;
-        public bool KhachRieng { get { return _khachrieng; } set { if(IsValid(value, "KhachRieng") == false || _khachrieng == value) return; _khachrieng = value; base.RaisePropertyChanged("KhachRieng");} }
+        public bool KhachRieng { get { return _khachrieng; } set { SetPropertyAndValidate(ref _khachrieng, value); } }
     
     
         public virtual rDiaDiem rDiaDiem { get; set; }

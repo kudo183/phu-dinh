@@ -16,13 +16,13 @@ namespace PhuDinhData
     public partial class rMatHangNguyenLieu : BindableObject
     {
         private int _ma;
-        public int Ma { get { return _ma; } set { if(IsValid(value, "Ma") == false || _ma == value) return; _ma = value; base.RaisePropertyChanged("Ma");} }
+        public int Ma { get { return _ma; } set { SetPropertyAndValidate(ref _ma, value); } }
     
         private int _mamathang;
-        public int MaMatHang { get { return _mamathang; } set { if(IsValid(value, "MaMatHang") == false || _mamathang == value) return; _mamathang = value; base.RaisePropertyChanged("MaMatHang");} }
+        public int MaMatHang { get { return _mamathang; } set { SetPropertyAndValidate(ref _mamathang, value); } }
     
         private int _manguyenlieu;
-        public int MaNguyenLieu { get { return _manguyenlieu; } set { if(IsValid(value, "MaNguyenLieu") == false || _manguyenlieu == value) return; _manguyenlieu = value; base.RaisePropertyChanged("MaNguyenLieu");} }
+        public int MaNguyenLieu { get { return _manguyenlieu; } set { SetPropertyAndValidate(ref _manguyenlieu, value); } }
     
     
         public virtual rNguyenLieu rNguyenLieu { get; set; }

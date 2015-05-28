@@ -16,22 +16,22 @@ namespace PhuDinhData
     public partial class tTonKho : BindableObject
     {
         private int _ma;
-        public int Ma { get { return _ma; } set { if(IsValid(value, "Ma") == false || _ma == value) return; _ma = value; base.RaisePropertyChanged("Ma");} }
+        public int Ma { get { return _ma; } set { SetPropertyAndValidate(ref _ma, value); } }
     
         private int _makhohang;
-        public int MaKhoHang { get { return _makhohang; } set { if(IsValid(value, "MaKhoHang") == false || _makhohang == value) return; _makhohang = value; base.RaisePropertyChanged("MaKhoHang");} }
+        public int MaKhoHang { get { return _makhohang; } set { SetPropertyAndValidate(ref _makhohang, value); } }
     
         private int _mamathang;
-        public int MaMatHang { get { return _mamathang; } set { if(IsValid(value, "MaMatHang") == false || _mamathang == value) return; _mamathang = value; base.RaisePropertyChanged("MaMatHang");} }
+        public int MaMatHang { get { return _mamathang; } set { SetPropertyAndValidate(ref _mamathang, value); } }
     
         private System.DateTime _ngay;
-        public System.DateTime Ngay { get { return _ngay; } set { if(IsValid(value, "Ngay") == false || _ngay == value) return; _ngay = value; base.RaisePropertyChanged("Ngay");} }
+        public System.DateTime Ngay { get { return _ngay; } set { SetPropertyAndValidate(ref _ngay, value); } }
     
         private int _soluong;
-        public int SoLuong { get { return _soluong; } set { if(IsValid(value, "SoLuong") == false || _soluong == value) return; _soluong = value; base.RaisePropertyChanged("SoLuong");} }
+        public int SoLuong { get { return _soluong; } set { SetPropertyAndValidate(ref _soluong, value); } }
     
         private int _soluongcu;
-        public int SoLuongCu { get { return _soluongcu; } set { if(IsValid(value, "SoLuongCu") == false || _soluongcu == value) return; _soluongcu = value; base.RaisePropertyChanged("SoLuongCu");} }
+        public int SoLuongCu { get { return _soluongcu; } set { SetPropertyAndValidate(ref _soluongcu, value); } }
     
     
         public virtual rKhoHang rKhoHang { get; set; }
