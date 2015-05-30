@@ -305,11 +305,14 @@ namespace Common
             if (string.IsNullOrEmpty(propertyName)) { throw new ArgumentException("The argument propertyName must not be null or empty."); }
 
             List<ValidationResult> validationResults = new List<ValidationResult>();
-            //Validator.TryValidateProperty(value, new ValidationContext(this) { MemberName = propertyName }, validationResults);
+
+            Validator.TryValidateProperty(value, new ValidationContext(this) { MemberName = propertyName }, validationResults);
+
             if (_validators.ContainsKey(propertyName))
             {
                 validationResults.AddRange(_validators[propertyName]());
             }
+
             if (validationResults.Any())
             {
                 _errors[propertyName] = validationResults;
@@ -334,11 +337,17 @@ namespace Common
         public bool Validate()
         {
             List<ValidationResult> validationResults = new List<ValidationResult>();
-            //Validator.TryValidateObject(this, new ValidationContext(this), validationResults, true);
-            foreach (var validator in _validators)
+
+            Validator.TryValidateObject(this, new ValidationContext(this), validationResults, true);
+
+            if (_validators.Count > 0)
             {
-                validationResults.AddRange(validator.Value());
+                foreach (var validator in _validators)
+                {
+                    validationResults.AddRange(validator.Value());
+                }
             }
+
             if (validationResults.Any())
             {
                 _errors.Clear();
