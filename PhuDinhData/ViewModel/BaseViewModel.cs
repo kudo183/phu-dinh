@@ -43,6 +43,13 @@ namespace PhuDinhData.ViewModel
             }
         }
 
+        private bool _isValid = true;
+        public bool IsValid
+        {
+            get { return _isValid; }
+            set { SetProperty(ref _isValid, value); }
+        }
+
         public event EventHandler HeaderFilterChanged;
 
         private readonly Dictionary<string, object> _defaultValues = new Dictionary<string, object>();

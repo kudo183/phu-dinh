@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace PhuDinhData
 {
@@ -19,6 +20,18 @@ namespace PhuDinhData
             return string.Format("[Ma {0}] [LoaiHang {1}] [TenMatHang {2}] [TenMatHangDayDu {3}] [SoMet {4}] [SoKy {5}]", Ma
                 , rLoaiHang == null ? "" : rLoaiHang.TenLoai
                 , TenMatHang, TenMatHangDayDu, SoMet, SoKy);
+        }
+
+        protected override void Init()
+        {
+            base.Init();
+
+            _validators.Add("TenMatHang", () => Common.MyValidators.Validate_RequiredText(this, "TenMatHang"));
+            _validators.Add("TenMatHangDayDu", () => Common.MyValidators.Validate_RequiredText(this, "TenMatHangDayDu"));
+            _validators.Add("SoKy", () => Common.MyValidators.Validate_NumberRange(this, "SoKy", 0, double.MaxValue));
+            _validators.Add("SoMet", () => Common.MyValidators.Validate_NumberRange(this, "SoMet", 0, double.MaxValue));
+
+            Validate();
         }
     }
 }

@@ -143,6 +143,12 @@ namespace PhuDinhCommonControl
 
         public virtual void Save()
         {
+            if (_viewModel.IsValid == false)
+            {
+                MessageBox.Show("Save khong thanh cong");
+                return;
+            }
+
             if (_viewModel == null)
                 return;
 
@@ -156,6 +162,8 @@ namespace PhuDinhCommonControl
             catch (Exception ex)
             {
                 LogManager.Log(event_type.et_Internal, severity_type.st_error, "Save_Exception", ex);
+                MessageBox.Show("Save khong thanh cong");
+                return;
             }
 
             if (AfterSave != null)

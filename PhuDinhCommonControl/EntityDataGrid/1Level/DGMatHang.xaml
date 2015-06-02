@@ -5,9 +5,10 @@
                            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                            xmlns:CustomControl="clr-namespace:CustomControl;assembly=CustomControl"
                            xmlns:DesignTimeData="clr-namespace:PhuDinhData.DesignTimeData;assembly=PhuDinhData"
-                           mc:Ignorable="d"
+                           xmlns:common="clr-namespace:Common;assembly=Common" mc:Ignorable="d"
                            d:DataContext="{x:Static DesignTimeData:DDtMatHang.ViewModel}"
-                           AutoGenerateColumns="False" EnableRowVirtualization="False" ItemsSource="{Binding Entity}" SelectionMode="Single">
+                           AutoGenerateColumns="False" EnableRowVirtualization="False" ItemsSource="{Binding Entity}" SelectionMode="Single"
+                           common:ValidationHelper.IsEnabled="true" common:ValidationHelper.IsValid="{Binding IsValid, Mode=OneWayToSource}">
     <DataGrid.Columns>
         <!--Ma-->
         <CustomControl:DataGridReadOnlyTextColumn x:Name="maColumn"/>
@@ -17,12 +18,16 @@
                                                  TextBinding="{Binding rLoaiHang.TenLoai, Mode=OneWay}"
                                                  DisplayMemberPath="TenLoai"
                                                  SelectedValuePath="Ma"
-                                                 SelectedValueBinding="{Binding MaLoai, UpdateSourceTrigger=PropertyChanged}"
+                                                 SelectedValueBinding="{Binding MaLoai, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True}"
                                                  SelectedItemBinding="{Binding rLoaiHang, UpdateSourceTrigger=PropertyChanged}"
                                                  ItemsSource="{Binding rLoaiHangList}"/>
-        <CustomControl:DataGridTextColumnExt x:Name="tenMatHangColumn" Header="Tên Mặt Hàng" Binding="{Binding TenMatHang, UpdateSourceTrigger=PropertyChanged}"/>
-        <CustomControl:DataGridTextColumnExt x:Name="tenMatHangDayDuColumn" Header="Tên Mặt Hàng Đầy Đủ" Binding="{Binding TenMatHangDayDu, UpdateSourceTrigger=PropertyChanged}"/>
-        <CustomControl:DataGridTextRightAlignColumn x:Name="soKyColumn" Header="Số ký" Binding="{Binding SoKy, UpdateSourceTrigger=PropertyChanged}"/>
-        <CustomControl:DataGridTextRightAlignColumn x:Name="soMetColumn" Header="Số Mét" Binding="{Binding SoMet, UpdateSourceTrigger=PropertyChanged}"/>
+        <CustomControl:DataGridTextColumnExt x:Name="tenMatHangColumn" Header="Tên Mặt Hàng"
+                                             Binding="{Binding TenMatHang, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True}"/>
+        <CustomControl:DataGridTextColumnExt x:Name="tenMatHangDayDuColumn" Header="Tên Mặt Hàng Đầy Đủ"
+                                             Binding="{Binding TenMatHangDayDu, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True}"/>
+        <CustomControl:DataGridTextRightAlignColumn x:Name="soKyColumn" Header="Số ký"
+                                                    Binding="{Binding SoKy, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True}"/>
+        <CustomControl:DataGridTextRightAlignColumn x:Name="soMetColumn" Header="Số Mét"
+                                                    Binding="{Binding SoMet, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True}"/>
     </DataGrid.Columns>
 </CustomControl:DataGridExt>
