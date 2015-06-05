@@ -11,8 +11,6 @@ namespace PhuDinhCommonControl
     /// </summary>
     public partial class DonHangView : _BaseComplexView
     {
-        private int _prevSelectedMaDonHang = 0;
-
         public DonHangView()
         {
             InitializeComponent();
@@ -55,20 +53,12 @@ namespace PhuDinhCommonControl
 
             if (donHang == null || donHang.Ma == 0)
             {
-                _prevSelectedMaDonHang = -1;
                 _tChiTietDonHangView.SetMainFilter(
                     PhuDinhData.Filter.Filter_tChiTietDonHang.MaDonHang, null, true);
 
                 _tChiTietDonHangView.RefreshView();
                 return;
             }
-
-            if (donHang.Ma == _prevSelectedMaDonHang)
-            {
-                return;
-            }
-
-            _prevSelectedMaDonHang = donHang.Ma;
 
             _tChiTietDonHangView.SetMainFilter(
                 PhuDinhData.Filter.Filter_tChiTietDonHang.MaDonHang, donHang.Ma);

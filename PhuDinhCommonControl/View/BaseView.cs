@@ -137,8 +137,10 @@ namespace PhuDinhCommonControl
             _viewModel.RefreshData();
             dg.CanUserAddRows = false;
             dg.CanUserAddRows = true;
-            dg.SelectedIndex = index;
             dg.SkippedSelectionChangedEvent = false;
+            if (index > _viewModel.Entity.Count)
+                index = _viewModel.Entity.Count;
+            dg.SelectedIndex = index;
         }
 
         public virtual void Save()

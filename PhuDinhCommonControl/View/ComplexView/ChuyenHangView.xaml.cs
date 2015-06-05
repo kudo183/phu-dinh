@@ -47,18 +47,13 @@ namespace PhuDinhCommonControl
 
         protected override void OnAfterSave(IBaseView view)
         {
-            if (view is tChuyenHangView)
-            {
-                RefreshChuyenHangDonHangView(_tChuyenHangView.dg);
-            }
-            else if (view is tChuyenHangDonHangView)
+            if (view is tChuyenHangDonHangView)
             {
                 ProcessChuyenHangDonHangView_AfterSave();
             }
             else if (view is tChiTietChuyenHangDonHangView)
             {
-                _tChuyenHangView.RefreshView();
-
+                (_tChuyenHangDonHangView.dg.DataContext as ChuyenHangDonHangViewModel).UpdateReferenceData(Constant.ColumnName_DonHang);
                 Keyboard.Focus(_tChiTietChuyenHangDonHangView.dg);
             }
         }
@@ -80,8 +75,6 @@ namespace PhuDinhCommonControl
             var chuyenHangDonHang =
                 _tChuyenHangDonHangView.dg.SelectedItem
                 as PhuDinhData.tChuyenHangDonHang;
-
-            RefreshChiTietChuyenHangDonHangView(_tChuyenHangDonHangView.dg);
 
             if (chuyenHangDonHang != null && chuyenHangDonHang.tChiTietChuyenHangDonHangs.Count > 0)
             {
@@ -113,11 +106,6 @@ namespace PhuDinhCommonControl
         private void RefreshChuyenHangDonHangView(DataGrid dataGrid)
         {
             var chuyenHang = dataGrid.SelectedItem as PhuDinhData.tChuyenHang;
-
-            _tChiTietChuyenHangDonHangView.SetMainFilter(
-                PhuDinhData.Filter.Filter_tChiTietChuyenHangDonHang.MaChuyenHangDonHang, null, true);
-
-            _tChiTietChuyenHangDonHangView.RefreshView();
 
             if (chuyenHang == null)
             {
