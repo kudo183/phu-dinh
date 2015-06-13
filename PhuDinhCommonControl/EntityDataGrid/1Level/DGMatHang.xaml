@@ -25,6 +25,8 @@
                                              Binding="{Binding TenMatHang, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True}"/>
         <CustomControl:DataGridTextColumnExt x:Name="tenMatHangDayDuColumn" Header="Tên Mặt Hàng Đầy Đủ"
                                              Binding="{Binding TenMatHangDayDu, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True}"/>
+        <CustomControl:DataGridTextColumnExt x:Name="tenMatHangInColumn" Header="Tên Mặt Hàng In"
+                                             Binding="{Binding TenMatHangIn, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True}"/>
         <CustomControl:DataGridTextRightAlignColumn x:Name="soKyColumn" Header="Số ký"
                                                     Binding="{Binding SoKy, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=True}"/>
         <CustomControl:DataGridTextRightAlignColumn x:Name="soMetColumn" Header="Số Mét"

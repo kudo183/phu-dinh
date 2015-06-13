@@ -36,6 +36,7 @@ namespace PhuDinhData.DesignTimeData
                 MaLoai = i,
                 TenMatHang = "Mặt hàng " + i,
                 TenMatHangDayDu = "Mặt hàng đầy đủ " + i,
+                TenMatHangIn = "Mặt hàng In " + i,
                 SoKy = i,
                 SoMet = i * 10,
                 rLoaiHang = DDrLoaiHang.Create(i),
