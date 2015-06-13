@@ -21,6 +21,12 @@ namespace PhuDinhCommonControl
 
         public DataGridExt dg { get; set; }
 
+        public T SelectedItem
+        {
+            get { return dg.SelectedItem as T; }
+            set { dg.SelectedItem = value; }
+        }
+
         protected BaseView()
         {
             Loaded += OnLoaded;
@@ -85,7 +91,7 @@ namespace PhuDinhCommonControl
         }
 
         #region check shortcut key helper
-        
+
         private bool IsSaveShortcutKey(Key key)
         {
             if (Keyboard.Modifiers == ModifierKeys.Control && key == Key.Q)

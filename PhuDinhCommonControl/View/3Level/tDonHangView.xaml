@@ -17,6 +17,10 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <EntityDataGrid:DGDonHang Grid.Row="0" x:Name="dgDonHang" HeaderAddButtonClick="dgDonHang_HeaderAddButtonClick"/>
-        <Menu:BottomMenu Grid.Row="1" x:Name="bmMenu" Button.Click="bmMenu_Click"/>
+        <Menu:BottomMenu Grid.Row="1" x:Name="bmMenu" Button.Click="bmMenu_Click">
+            <Menu:BottomMenu.ExtButton>
+                <Button Content="In" Margin="5" Padding="20,0"/>
+            </Menu:BottomMenu.ExtButton>
+        </Menu:BottomMenu>
     </Grid>
 </PhuDinhCommonControl:BaseView>

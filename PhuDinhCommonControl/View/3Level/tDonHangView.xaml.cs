@@ -1,7 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
+using Common;
 using PhuDinhCommon;
+using PhuDinhCommon.PrintTemplate;
 using PhuDinhData.ViewModel;
 using CustomControl.DataGridColumnHeaderFilterModel;
 
@@ -14,10 +18,8 @@ namespace PhuDinhCommonControl
     {
         public tDonHangView()
         {
-            LogManager.Log(event_type.et_Internal, severity_type.st_debug, string.Format("{0} {1}", "tDonHangView_Contructor", "Enter"));
-
             InitializeComponent();
-            
+
             dg = dgDonHang;
 
             _viewModel = new DonHangViewModel();
@@ -26,17 +28,12 @@ namespace PhuDinhCommonControl
             dg.Columns[2].Header = (_viewModel as DonHangViewModel).Header_KhachHang;
             dg.Columns[3].Header = (_viewModel as DonHangViewModel).Header_KhoHang;
             dg.Columns[4].Header = (_viewModel as DonHangViewModel).Header_Chanh;
-            
-            LogManager.Log(event_type.et_Internal, severity_type.st_debug, string.Format("{0} {1}", "tDonHangView_Contructor", "Exit"));
         }
 
         private void dgDonHang_HeaderAddButtonClick(object sender, EventArgs e)
         {
-            LogManager.Log(event_type.et_Internal, severity_type.st_debug, string.Format("{0} {1}", "dgDonHang_HeaderAddButtonClick", "Enter"));
-
             CommitEdit();
             var header = (sender as DataGridColumnHeader).Content as IHeaderFilterModel;
-            LogManager.Log(event_type.et_Internal, severity_type.st_info, string.Format("{0} {1}", "Header Add Button Click", header.Name));
 
             UserControl view = null;
 
@@ -61,8 +58,26 @@ namespace PhuDinhCommonControl
                     _viewModel.UpdateReferenceData(header.Name);
                     break;
             }
+        }
 
-            LogManager.Log(event_type.et_Internal, severity_type.st_debug, string.Format("{0} {1}", "dgDonHang_HeaderAddButtonClick", "Exit"));
+        protected override void bmMenu_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            var button = e.OriginalSource as Button;
+            if (button.Content.ToString() == "In")
+            {
+                var document = new PrintTemplateDonHang();
+                document.Title = SelectedItem.rKhachHang.TenKhachHang;
+                var content = new List<string>();
+                foreach (var ctdh in SelectedItem.tChiTietDonHangs)
+                {
+                    content.Add(string.Format("{0,3}  {1}", ctdh.SoLuong, ctdh.tMatHang.TenMatHangDayDu));
+                }
+                document.Content = new ReadOnlyCollection<string>(content);
+                //PrintService.Print(document.Document);
+                return;
+            }
+
+            base.bmMenu_Click(sender, e);
         }
     }
 }
