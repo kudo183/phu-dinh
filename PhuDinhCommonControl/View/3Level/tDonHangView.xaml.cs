@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using Common;
@@ -65,15 +66,16 @@ namespace PhuDinhCommonControl
             var button = e.OriginalSource as Button;
             if (button.Content.ToString() == "In")
             {
-                var document = new PrintTemplateDonHang();
-                document.Title = SelectedItem.rKhachHang.TenKhachHang;
-                var content = new List<string>();
-                foreach (var ctdh in SelectedItem.tChiTietDonHangs)
+                var content = SelectedItem.tChiTietDonHangs.Select(
+                    ctdh => string.Format("{0,3}  {1}", ctdh.SoLuong, ctdh.tMatHang.TenMatHangIn)).ToList();
+
+                var document = new PrintTemplateDonHang
                 {
-                    content.Add(string.Format("{0,3}  {1}", ctdh.SoLuong, ctdh.tMatHang.TenMatHangDayDu));
-                }
-                document.Content = new ReadOnlyCollection<string>(content);
-                //PrintService.Print(document.Document);
+                    Title = SelectedItem.rKhachHang.TenKhachHang,
+                    Content = new ReadOnlyCollection<string>(content)
+                };
+
+                PrintService.Print(document.Document);
                 return;
             }
 

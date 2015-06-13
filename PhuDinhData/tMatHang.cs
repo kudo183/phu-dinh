@@ -44,6 +44,9 @@ namespace PhuDinhData
         private string _tenmathangdaydu;
         public string TenMatHangDayDu { get { return _tenmathangdaydu; } set { SetPropertyAndValidate(ref _tenmathangdaydu, value); } }
     
+        private string _tenmathangin;
+        public string TenMatHangIn { get { return _tenmathangin; } set { SetPropertyAndValidate(ref _tenmathangin, value); } }
+    
     
         public virtual rLoaiHang rLoaiHang { get; set; }
         public virtual ICollection<tChiTietDonHang> tChiTietDonHangs { get; set; }
