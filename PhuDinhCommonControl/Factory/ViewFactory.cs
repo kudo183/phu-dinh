@@ -93,6 +93,9 @@ namespace PhuDinhCommonControl
                 case Constant.ViewName_DonHang:
                     view = new tDonHangView();
                     break;
+                case Constant.ViewName_ToaHang:
+                    view = new tToaHangView();
+                    break;
                 //4Level
                 case Constant.ViewName_ChiTietDonHang:
                     view = new tChiTietDonHangView();
@@ -103,6 +106,9 @@ namespace PhuDinhCommonControl
                 //5Level
                 case Constant.ViewName_ChiTietChuyenHangDonHang:
                     view = new tChiTietChuyenHangDonHangView();
+                    break;
+                case Constant.ViewName_ChiTietToaHang:
+                    view = new tChiTietToaHangView();
                     break;
                 //Complex
                 case Constant.ViewName_AdminView:
@@ -137,6 +143,9 @@ namespace PhuDinhCommonControl
                     break;
                 case Constant.ViewName_NhapHangView:
                     view = new NhapHangView();
+                    break;
+                case Constant.ViewName_ToaHangView:
+                    view = new ToaHangView();
                     break;
                 //Report
                 case Constant.ViewName_ReportByKhachHangView:

@@ -10,6 +10,7 @@
             <Button Height="80" FontSize="20" Margin="10" Content="Tat ca" Tag="{x:Static PhuDinhCommon:Constant.ViewName_AdminView}"/>
             <Button Height="80" FontSize="20" Margin="10" Content="Canh Bao Ton Kho" Tag="{x:Static PhuDinhCommon:Constant.ViewName_CanhBaoTonKho}"/>
             <Button Height="80" FontSize="20" Margin="10" Content="Chi Phi" Tag="{x:Static PhuDinhCommon:Constant.ViewName_ChiPhiView}"/>
+            <Button Height="80" FontSize="20" Margin="10" Content="Toa" Tag="{x:Static PhuDinhCommon:Constant.ViewName_ToaHangView}"/>
         </StackPanel>
         <StackPanel Width="150" Orientation="Vertical">
             <Button Height="80" FontSize="20" Margin="10" Content="Nhan Vien" Tag="{x:Static PhuDinhCommon:Constant.ViewName_NhanVienView}"/>

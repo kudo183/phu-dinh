@@ -46,6 +46,7 @@
         public const string ColumnName_MaKhoHangNhap = "Ma Kho Hang Nhap";
         public const string ColumnName_MaKhoHangXuat = "Ma Kho Hang Xuat";
         public const string ColumnName_MaChuyenKho = "Ma Chuyen Kho";
+        public const string ColumnName_MaToaHang = "Ma Toa Hang";
 
         public const string ColumnName_BaiXe = "Bai Xe";
         public const string ColumnName_Nuoc = "Nuoc";
@@ -71,6 +72,7 @@
         public const string ColumnName_KhoHangNhap = "Kho Hang Nhap";
         public const string ColumnName_KhoHangXuat = "Kho Hang Xuat";
         public const string ColumnName_ChuyenKho = "Chuyen Kho";
+        public const string ColumnName_ToaHang = "Toa Hang";
         //0Level
         public const string ViewName_BaiXe = "Bai Xe";
         public const string ViewName_LoaiChiPhi = "Loai Chi Phi";
@@ -101,11 +103,13 @@
         public const string ViewName_ChiTietChuyenKho = "Chi Tiet Chuyen Kho";
         public const string ViewName_ChiTietNhapHang = "Chi Tiet Nhap Hang";
         public const string ViewName_DonHang = "Don Hang";
+        public const string ViewName_ToaHang = "Toa Hang";
         //4Level
         public const string ViewName_ChiTietDonHang = "Chi Tiet Don Hang";
         public const string ViewName_ChuyenHangDonHang = "Chuyen Hang Don Hang";
         //5Level
         public const string ViewName_ChiTietChuyenHangDonHang = "Chi Tiet Chuyen Hang Don Hang";
+        public const string ViewName_ChiTietToaHang = "Chi Tiet Toa Hang";
         //complex
         public const string ViewName_AdminView = "AdminView";
         public const string ViewName_BaiXeView = "BaiXeView";
@@ -118,6 +122,7 @@
         public const string ViewName_MatHangView = "MatHangView";
         public const string ViewName_NhanVienView = "NhanVienView";
         public const string ViewName_NhapHangView = "NhapHangView";
+        public const string ViewName_ToaHangView = "ToaHangView";
         //report
         public const string ViewName_ReportByKhachHangView = "ReportByKhachHangView";
         public const string ViewName_ReportByLoaiHangView = "ReportByLoaiHangView";
