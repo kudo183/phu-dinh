@@ -39,7 +39,7 @@
             </div>
 
             <p>
-                <input type="submit" value="Dang nhap" />
+                <input id="submit" type="submit" value="Dang nhap" />
             </p>
             <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
         </fieldset>
@@ -61,5 +61,7 @@
 
         document.getElementById("Password").value = id_token;
         document.getElementById("UserName").value = "Google";
+
+        document.getElementById("submit").click();
     };
 </script>
