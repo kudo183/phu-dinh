@@ -3,11 +3,17 @@
     Layout = null;
     ViewBag.Title = "Dang nhap";
 }
-
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width">
+<title>@ViewBag.Title</title>
+<link href="@Url.Content("~/Content/LogOn.css")" rel="stylesheet" type="text/css" />
+<script src="@Url.Content("~/Scripts/jquery-1.7.1.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/modernizr-2.5.3.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+<script src="https://apis.google.com/js/platform.js" type="text/javascript"></script>
 
-@Html.ValidationSummary(true, "Dang nhap that bai.")
+@Html.ValidationSummary(true, "Dang nhap that bai!")
 
 @using (Html.BeginForm())
 {
@@ -15,20 +21,16 @@
         <fieldset>
             <legend>Thong tin dang nhap</legend>
 
-@*            <div class="editor-label">
-                @Html.LabelFor(m => m.UserName)
-            </div>
             <div class="editor-field">
-                @Html.TextBoxFor(m => m.UserName)
-                @Html.ValidationMessageFor(m => m.UserName)
-            </div>*@
+                @Html.HiddenFor(m => m.UserName)
+            </div>
 
             <div class="editor-label">
                 @Html.LabelFor(m => m.Password)
             </div>
             <div class="editor-field">
                 @Html.PasswordFor(m => m.Password)
-                @Html.ValidationMessageFor(m => m.Password)
+                @Html.ValidationMessageFor(m => m.Password, "Vui long nhap mat khau.")
             </div>
 
             <div class="editor-label">
@@ -39,6 +41,25 @@
             <p>
                 <input type="submit" value="Dang nhap" />
             </p>
+            <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
         </fieldset>
     </div>
 }
+
+<script>
+    gapi.load('auth2', function () {
+        gapi.auth2.init({
+            client_id: '735134733733-c5h3gefmuokq7u6hl802q2u8sv8f4r7c.apps.googleusercontent.com'
+        });
+    });
+</script>
+
+<script>
+    function onSignIn(googleUser) {
+        // The ID token you need to pass to your backend:
+        var id_token = googleUser.getAuthResponse().id_token;
+
+        document.getElementById("Password").value = id_token;
+        document.getElementById("UserName").value = "Google";
+    };
+</script>
