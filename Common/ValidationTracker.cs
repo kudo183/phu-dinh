@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 
 namespace Common
 {
@@ -13,7 +14,7 @@ namespace Common
     {
         private readonly List<Tuple<object, ValidationError>> errors;
         private readonly DependencyObject owner;
-        
+
         public ValidationTracker(DependencyObject owner)
         {
             this.owner = owner;
@@ -56,6 +57,13 @@ namespace Common
             {
                 Tuple<object, ValidationError> error = errors.FirstOrDefault(err => err.Item1 == e.OriginalSource && err.Item2 == e.Error);
                 if (error != null) { errors.Remove(error); }
+            }
+
+            foreach (Tuple<object, ValidationError> error in errors.ToList())
+            {
+                var binding = error.Item2.BindingInError as BindingExpression;
+                if (binding != null && string.IsNullOrEmpty(binding.ResolvedSourcePropertyName))
+                    errors.Remove(error);
             }
 
             ValidationHelper.InternalSetIsValid(owner, !errors.Any());
