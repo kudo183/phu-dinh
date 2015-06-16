@@ -10,14 +10,14 @@
     <script>
         $(document).ready(function () {
             $("tr:even").css("background-color", "#e8eef4");
-            
+
             $('.scrollup').click(function () {
                 $("html, body").animate({
                     scrollTop: 0
                 }, 600);
                 return false;
             });
-            
+
         });
     </script>
 </head>
@@ -27,6 +27,10 @@
             <ul id="menu">
                 <li>@Html.ActionLink("Ton Kho", "Index", "TonKho")</li>
                 <li>@Html.ActionLink("Xuat", "Index", "Xuat")</li>
+                @if (Request.IsAuthenticated)
+                {
+                    <li>@Html.ActionLink("Thoat", "LogOff", "Account", null, new { @style = "background-color: orange;color: white" })</li>
+                }
             </ul>
         </nav>
     </header>

@@ -46,5 +46,14 @@ namespace PhuDinhWeb.Controllers
             return View(model);
         }
 
+        //
+        // GET: /Account/LogOff
+
+        public ActionResult LogOff()
+        {
+            FormsAuthentication.SignOut();
+
+            return RedirectToAction("LogOn", "Account");
+        }
     }
 }
