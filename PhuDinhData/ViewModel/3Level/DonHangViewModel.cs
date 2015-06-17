@@ -45,6 +45,8 @@ namespace PhuDinhData.ViewModel
         {
             _isLoading = true;
 
+            Header_KhoHang.SelectedValue = GetDefaultValue(Constant.ColumnName_MaKhoHang);
+
             Entity.CollectionChanged += Entity_CollectionChanged;
 
             Header_Ngay.PropertyChanged += Header_Ngay_PropertyChanged;
