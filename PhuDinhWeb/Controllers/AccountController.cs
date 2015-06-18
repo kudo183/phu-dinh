@@ -71,27 +71,86 @@ namespace PhuDinhWeb.Controllers
 
             if (model.UserName == "Google")
             {
-                try
-                {
-                    var client = new WebClient();
-                    var json = client.DownloadString(
-                        "https://www.googleapis.com/oauth2/v3/tokeninfo?id_token=" + model.Password);
+                return IsValidGoogle(model);
+            }
 
-                    var serializer = new JavaScriptSerializer();
-
-                    var values = serializer.Deserialize<Dictionary<string, string>>(json);
-
-                    if (values["email"] == "kudo183@gmail.com")
-                    {
-                        return true;
-                    }
-                }
-                catch (Exception)
-                {
-                    return false;
-                }
+            if (model.UserName == "FaceBook")
+            {
+                return IsValidFaceBook(model);
             }
             return false;
+        }
+
+        private bool IsValidGoogle(LogOnModel model)
+        {
+            try
+            {
+                var client = new WebClient();
+                var serializer = new JavaScriptSerializer();
+                var json = "";
+                var email = "";
+                var appID = "";
+
+                json = client.DownloadString(
+                    "https://www.googleapis.com/oauth2/v3/tokeninfo?id_token=" + model.Password);
+
+                var values = serializer.Deserialize<Dictionary<string, string>>(json);
+
+                email = values["email"];
+                appID = values["aud"];
+
+                if (email == "kudo183@gmail.com" && appID == "735134733733-c5h3gefmuokq7u6hl802q2u8sv8f4r7c.apps.googleusercontent.com")
+                {
+                    return true;
+                }
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            return false;
+        }
+
+        private bool IsValidFaceBook(LogOnModel model)
+        {
+            try
+            {
+                var client = new WebClient();
+                var serializer = new JavaScriptSerializer();
+                var json = "";
+                var email = "";
+                var appID = "";
+
+                json = client.DownloadString(
+                    string.Format("https://graph.facebook.com/v2.2/me?access_token={0}"
+                    , model.Password));
+                email = serializer.Deserialize<Dictionary<string, string>>(json)["email"];
+
+                json = client.DownloadString(
+                        string.Format("https://graph.facebook.com/debug_token?input_token={0}&access_token=368482453361134|rHWxSUsxAi-OF0UQPrRlDVdTl90"
+                        , model.Password));
+                appID = serializer.Deserialize<Dictionary<string, FBResponse>>(json)["data"].app_id;
+
+                if (email == "quochuy100@gmail.com" && appID == "368482453361134")
+                {
+                    return true;
+                }
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            return false;
+        }
+
+        protected class FBResponse
+        {
+            public string app_id { get; set; }
+            public string application { get; set; }
+            public string expires_at { get; set; }
+            public bool is_valid { get; set; }
+            public List<string> scopes { get; set; }
+            public string user_id { get; set; }
         }
     }
 }
