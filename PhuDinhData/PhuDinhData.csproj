@@ -337,6 +337,7 @@
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\1Level\ChanhViewModel.cs" />
     <Compile Include="ViewModel\3Level\DonHangViewModel.cs" />
+    <Compile Include="ViewModel\IBaseViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="PhuDinh.edmx">

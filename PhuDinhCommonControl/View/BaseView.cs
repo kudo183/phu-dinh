@@ -12,7 +12,7 @@ namespace PhuDinhCommonControl
 {
     public abstract class BaseView<T> : UserControl, IBaseView where T : BindableObject
     {
-        protected BaseViewModel<T> _viewModel;
+        protected IBaseViewModel<T> _viewModel;
 
         public event EventHandler AfterSave;
         public event EventHandler AfterCancel;
@@ -195,7 +195,7 @@ namespace PhuDinhCommonControl
             _viewModel.MainFilter.SetFilter(key, value, setFalse);
         }
 
-        public void SetReferenceFilter<T1>(string columnName, Expression<Func<T1, bool>> filter) where T1 : class
+        public void SetReferenceFilter<T1>(string columnName, Expression<Func<T1, bool>> filter) where T1 : BindableObject
         {
             _viewModel.SetReferenceFilter(columnName, filter);
         }

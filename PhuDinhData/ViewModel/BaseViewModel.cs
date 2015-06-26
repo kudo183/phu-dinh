@@ -12,7 +12,7 @@ using log4net;
 
 namespace PhuDinhData.ViewModel
 {
-    public abstract class BaseViewModel<T> : BindableObject where T : BindableObject
+    public abstract class BaseViewModel<T> : BindableObject, IBaseViewModel<T> where T : BindableObject
     {
         private static readonly ILog Logger = log4net.LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
@@ -162,7 +162,7 @@ namespace PhuDinhData.ViewModel
             return null;
         }
 
-        public void SetReferenceFilter<T1>(string columnName, Expression<Func<T1, bool>> filter) where T1 : class
+        public void SetReferenceFilter<T1>(string columnName, Expression<Func<T1, bool>> filter) where T1 : BindableObject
         {
             if (_referenceFilters.ContainsKey(columnName))
             {
@@ -173,7 +173,7 @@ namespace PhuDinhData.ViewModel
             _referenceFilters.Add(columnName, filter);
         }
 
-        public Expression<Func<T1, bool>> GetReferenceFilter<T1>(string columnName) where T1 : class
+        public Expression<Func<T1, bool>> GetReferenceFilter<T1>(string columnName) where T1 : BindableObject
         {
             if (_referenceFilters.ContainsKey(columnName))
             {
