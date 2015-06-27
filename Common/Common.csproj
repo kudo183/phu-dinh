@@ -43,6 +43,7 @@
     <Compile Include="MyValidators.cs" />
     <Compile Include="PrintService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServiceLocator.cs" />
     <Compile Include="ValidationHelper.cs" />
     <Compile Include="ValidationReloadedTracker.cs" />
     <Compile Include="ValidationTracker.cs" />

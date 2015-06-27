@@ -1,4 +1,5 @@
-﻿using PhuDinhDataEntity;
+﻿using System.Linq;
+using PhuDinhDataEntity;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
@@ -145,8 +146,8 @@ namespace PhuDinhData.ViewModel
         public override void RefreshData()
         {
             base.RefreshData();
-
-            Message = string.Format("Tong cong: {0} cuon", Repository.tTonKhoRepository.SumSoLuong(_context, MainFilter.Filter));
+            
+            Message = string.Format("Tong cong: {0} cuon", _contextManager.GetData(MainFilter.Filter).Sum(p => p.SoLuong));
         }
     }
 }

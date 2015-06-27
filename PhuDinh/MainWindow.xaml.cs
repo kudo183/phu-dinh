@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Configuration;
 using PhuDinhCommon;
 using System.Globalization;
 using System.Threading;
 using System.Windows;
+using PhuDinhData;
 using LogManager = PhuDinhCommon.LogManager;
 
 namespace PhuDinh
@@ -19,6 +21,8 @@ namespace PhuDinh
 
             LogManager.Log(event_type.et_Internal, severity_type.st_info, new string('*', 20));
             LogManager.Log(event_type.et_Internal, severity_type.st_info, "Start main window");
+
+            Common.ServiceLocator.Instance.Initialize(new Dictionary<Type, Type>() { { typeof(IContextManager), typeof(EFContextManager) } });
 
             InitializeComponent();
             Thread.CurrentThread.CurrentCulture = new CultureInfo("vi-VN");

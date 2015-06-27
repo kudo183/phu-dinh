@@ -78,6 +78,7 @@
   <ItemGroup>
     <Compile Include="BusinessLogics\BusinessLogics.cs" />
     <Compile Include="ContextFactory.cs" />
+    <Compile Include="ViewModel\EFContextManager.cs" />
     <Compile Include="DesignTimeData\0Level\DDrKhoHang.cs" />
     <Compile Include="DesignTimeData\0Level\DDrNhaCungCap.cs" />
     <Compile Include="DesignTimeData\0Level\DDrLoaiNguyenLieu.cs" />
@@ -142,6 +143,7 @@
     <Compile Include="Filter\5Level\Filter_tChiTietChuyenHangDonHang.cs" />
     <Compile Include="Filter\FilterBase.cs" />
     <Compile Include="Filter\IFilter.cs" />
+    <Compile Include="ViewModel\IContextManager.cs" />
     <Compile Include="ReportData\ReportByChiPhi.cs" />
     <Compile Include="ReportData\ReportNhapHang.cs" />
     <Compile Include="ReportData\ReportByNhapNguyenLieu.cs" />
@@ -217,6 +219,7 @@
     <Compile Include="ViewModel\1Level\ChanhViewModel.cs" />
     <Compile Include="ViewModel\3Level\DonHangViewModel.cs" />
     <Compile Include="ViewModel\IBaseViewModel.cs" />
+    <Compile Include="ViewModel\ODataContextManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

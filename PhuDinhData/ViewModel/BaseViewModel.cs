@@ -17,7 +17,7 @@ namespace PhuDinhData.ViewModel
     {
         private static readonly ILog Logger = log4net.LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
-        protected PhuDinhEntities _context;
+        protected IContextManager _contextManager = ServiceLocator.Instance.GetInstance<IContextManager>();
 
         protected List<T> _origData;
 
@@ -121,12 +121,8 @@ namespace PhuDinhData.ViewModel
             Expression<Func<T1, bool>> filter, Action<T> action)
             where T1 : BindableObject
         {
-            if (_context == null)
-            {
-                _context = ContextFactory.CreateContext();
-            }
+            data = _contextManager.GetData(filter);
 
-            data = Repository<T1>.GetDataQuery(_context, filter).ToList();
             if (Entity == null)
             {
                 return;
@@ -188,11 +184,11 @@ namespace PhuDinhData.ViewModel
         {
             try
             {
-                return Repository<T>.Save(_context, Entity.ToList(), _origData);
+                return _contextManager.Save(Entity.ToList(), _origData);
             }
             catch (Exception)
             {
-                PhuDinhCommon.EntityFrameworkUtils.UndoContextChange(_context, EntityState.Modified);
+                _contextManager.UndoChange();
                 throw;
             }
         }
@@ -217,19 +213,10 @@ namespace PhuDinhData.ViewModel
                 return;
             }
 
-            if (_context == null)
-            {
-                _context = ContextFactory.CreateContext();
-            }
-            else
-            {
-                _context.Dispose();
-                _context = null;
-                _context = ContextFactory.CreateContext();
-            }
+            _contextManager.CreateContext();
 
-            ItemCount = Repository<T>.GetDataCount(_context, MainFilter.Filter);
-            _origData = Repository<T>.GetData(_context, MainFilter.Filter, PageSize, CurrentPageIndex, ItemCount);
+            ItemCount = _contextManager.GetDataCount(MainFilter.Filter);
+            _origData = _contextManager.GetData(MainFilter.Filter, PageSize, CurrentPageIndex, ItemCount);
 
             Logger.Info("     Unload");
             Unload();
@@ -249,11 +236,7 @@ namespace PhuDinhData.ViewModel
 
         public virtual void Dispose()
         {
-            if (_context == null)
-                return;
-
-            _context.Dispose();
-            _context = null;
+            _contextManager.Dispose();
         }
     }
 }
