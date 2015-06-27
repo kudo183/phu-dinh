@@ -38,6 +38,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfMessageSecurityService", "WcfMessageSecurityService\WcfMessageSecurityService.csproj", "{944811A4-8A13-439F-BCF3-82CAC46120A8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhuDinhOData", "PhuDinhOData\PhuDinhOData.csproj", "{706336F8-930F-4C57-B05B-ABFFDBABD9BE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -104,6 +106,10 @@ Global
 		{944811A4-8A13-439F-BCF3-82CAC46120A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{944811A4-8A13-439F-BCF3-82CAC46120A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{944811A4-8A13-439F-BCF3-82CAC46120A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{706336F8-930F-4C57-B05B-ABFFDBABD9BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{706336F8-930F-4C57-B05B-ABFFDBABD9BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{706336F8-930F-4C57-B05B-ABFFDBABD9BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{706336F8-930F-4C57-B05B-ABFFDBABD9BE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

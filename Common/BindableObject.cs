@@ -245,6 +245,10 @@ namespace Common
             return m == m1;
         }
 
+        public virtual int GetKey()
+        {
+            return ((int)this.GetType().GetProperty("Ma").GetValue(this));
+        }
         #endregion
 
         #region helpers
