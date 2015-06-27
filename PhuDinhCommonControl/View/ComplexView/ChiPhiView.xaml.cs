@@ -36,7 +36,7 @@ namespace PhuDinhCommonControl
                 return;
             }
 
-            var loaiChiPhi = ((DataGrid)sender).SelectedItem as PhuDinhData.rLoaiChiPhi;
+            var loaiChiPhi = ((DataGrid)sender).SelectedItem as PhuDinhDataEntity.rLoaiChiPhi;
             if (loaiChiPhi == null)
             {
                 _rChiPhiNhanVienGiaoHangView.SetMainFilter(

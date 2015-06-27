@@ -219,6 +219,10 @@
       <Project>{2ccbe1b5-a9a8-4355-9ddc-acf8af4c6d41}</Project>
       <Name>Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PhuDinhDataEntity\PhuDinhDataEntity.csproj">
+      <Project>{02b6159f-4020-44f7-840e-8e5b8ed85df9}</Project>
+      <Name>PhuDinhDataEntity</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PhuDinhData\PhuDinhData.csproj">
       <Project>{9e6f47f9-162f-458f-a4c3-42b455f09d43}</Project>
       <Name>PhuDinhData</Name>

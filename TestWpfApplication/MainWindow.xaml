@@ -4,17 +4,6 @@
         xmlns:TestWpfApplication="clr-namespace:TestWpfApplication"
         xmlns:CustomControl="clr-namespace:CustomControl;assembly=CustomControl" Title="MainWindow" Height="350" Width="525">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
-        <DataGrid x:Name="dg" Grid.Row="0" ItemsSource="{Binding ElementName=Pager, Path=Page}" AutoGenerateColumns="True">
-            <!--<DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Text1}" Header="Text1" Width="*"/>
-                <DataGridTextColumn Binding="{Binding Text2}" Header="Text1" Width="*"/>
-            </DataGrid.Columns>-->
-        </DataGrid>
-        <CustomControl:DataPager x:Name="Pager" Grid.Row="1"/>
-        <!--<TestWpfApplication:Pager x:Name="Pager" Grid.Row="1"/>-->
+        
     </Grid>
 </Window>

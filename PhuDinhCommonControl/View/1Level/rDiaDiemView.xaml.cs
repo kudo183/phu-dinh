@@ -9,7 +9,7 @@ namespace PhuDinhCommonControl
     /// <summary>
     /// Interaction logic for rDiaDiemView.xaml
     /// </summary>
-    public partial class rDiaDiemView : BaseView<PhuDinhData.rDiaDiem>
+    public partial class rDiaDiemView : BaseView<PhuDinhDataEntity.rDiaDiem>
     {
         public rDiaDiemView()
         {

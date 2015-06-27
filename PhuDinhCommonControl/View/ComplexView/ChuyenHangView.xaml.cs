@@ -74,7 +74,7 @@ namespace PhuDinhCommonControl
         {
             var chuyenHangDonHang =
                 _tChuyenHangDonHangView.dg.SelectedItem
-                as PhuDinhData.tChuyenHangDonHang;
+                as PhuDinhDataEntity.tChuyenHangDonHang;
 
             if (chuyenHangDonHang != null && chuyenHangDonHang.tChiTietChuyenHangDonHangs.Count > 0)
             {
@@ -91,7 +91,7 @@ namespace PhuDinhCommonControl
             foreach (var tChiTietDonHang in chuyenHangDonHang.tDonHang.tChiTietDonHangs.Where(p => p.Xong == false))
             {
                 var soLuong = tChiTietDonHang.SoLuong - tChiTietDonHang.tChiTietChuyenHangDonHangs.Sum(p => p.SoLuong);
-                var ct = new PhuDinhData.tChiTietChuyenHangDonHang
+                var ct = new PhuDinhDataEntity.tChiTietChuyenHangDonHang
                              {
                                  MaChiTietDonHang = tChiTietDonHang.Ma,
                                  MaChuyenHangDonHang = chuyenHangDonHang.Ma,
@@ -105,7 +105,7 @@ namespace PhuDinhCommonControl
 
         private void RefreshChuyenHangDonHangView(DataGrid dataGrid)
         {
-            var chuyenHang = dataGrid.SelectedItem as PhuDinhData.tChuyenHang;
+            var chuyenHang = dataGrid.SelectedItem as PhuDinhDataEntity.tChuyenHang;
 
             if (chuyenHang == null)
             {
@@ -116,7 +116,7 @@ namespace PhuDinhCommonControl
                 return;
             }
 
-            _tChuyenHangDonHangView.SetReferenceFilter<PhuDinhData.tDonHang>(
+            _tChuyenHangDonHangView.SetReferenceFilter<PhuDinhDataEntity.tDonHang>(
                 Constant.ColumnName_DonHang, (p => p.Xong == false));
 
             _tChuyenHangDonHangView.SetMainFilter(
@@ -128,7 +128,7 @@ namespace PhuDinhCommonControl
 
         private void RefreshChiTietChuyenHangDonHangView(DataGrid dataGrid)
         {
-            var chuyenHangDonHang = dataGrid.SelectedItem as PhuDinhData.tChuyenHangDonHang;
+            var chuyenHangDonHang = dataGrid.SelectedItem as PhuDinhDataEntity.tChuyenHangDonHang;
 
             if (chuyenHangDonHang == null)
             {
@@ -140,7 +140,7 @@ namespace PhuDinhCommonControl
                 return;
             }
 
-            _tChiTietChuyenHangDonHangView.SetReferenceFilter<PhuDinhData.tChiTietDonHang>(
+            _tChiTietChuyenHangDonHangView.SetReferenceFilter<PhuDinhDataEntity.tChiTietDonHang>(
                 Constant.ColumnName_ChiTietDonHang
                 , (p => p.Xong == false && p.MaDonHang == chuyenHangDonHang.MaDonHang));
 

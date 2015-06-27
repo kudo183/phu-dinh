@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 using System.Linq.Expressions;
-using PhuDinhData;
+using PhuDinhDataEntity;
 using PhuDinhData.ReportData;
 using System;
 using System.Windows.Controls;

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Services.Client;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -13,7 +14,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using PhuDinhData;
+using System.Xml.Linq;
+using PhuDinhDataEntity;
 
 namespace TestWpfApplication
 {
@@ -25,11 +27,6 @@ namespace TestWpfApplication
         public MainWindow()
         {
             InitializeComponent();
-         
-            string s = "metadata=res://*/PhuDinh.csdl|res://*/PhuDinh.ssdl|res://*/PhuDinh.msl;provider=System.Data.SqlClient;provider connection string=\"Data Source=sqlhuy.hopto.org;Initial Catalog=PhuDinh;User ID=phudinh;Password=phudinh183\"";
-            var context = new PhuDinhEntities(s);
-            context.Database.Log = Console.WriteLine;
-            Pager.Source = context.tChiTietDonHangs.OrderBy(p => p.Ma);            
         }
     }
 }

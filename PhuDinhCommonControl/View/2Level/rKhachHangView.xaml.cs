@@ -9,7 +9,7 @@ namespace PhuDinhCommonControl
     /// <summary>
     /// Interaction logic for rKhachHangView.xaml
     /// </summary>
-    public partial class rKhachHangView : BaseView<PhuDinhData.rKhachHang>
+    public partial class rKhachHangView : BaseView<PhuDinhDataEntity.rKhachHang>
     {
         public rKhachHangView()
         {

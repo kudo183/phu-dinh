@@ -5,7 +5,7 @@ namespace PhuDinhCommonControl
     /// <summary>
     /// Interaction logic for rLoaiChiPhiView.xaml
     /// </summary>
-    public partial class rLoaiChiPhiView : BaseView<PhuDinhData.rLoaiChiPhi>
+    public partial class rLoaiChiPhiView : BaseView<PhuDinhDataEntity.rLoaiChiPhi>
     {
         public rLoaiChiPhiView()
         {

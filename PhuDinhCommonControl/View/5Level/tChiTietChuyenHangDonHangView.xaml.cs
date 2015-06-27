@@ -10,7 +10,7 @@ namespace PhuDinhCommonControl
     /// <summary>
     /// Interaction logic for tChiTietChuyenHangDonHangView.xaml
     /// </summary>
-    public partial class tChiTietChuyenHangDonHangView : BaseView<PhuDinhData.tChiTietChuyenHangDonHang>
+    public partial class tChiTietChuyenHangDonHangView : BaseView<PhuDinhDataEntity.tChiTietChuyenHangDonHang>
     {
         public tChiTietChuyenHangDonHangView()
         {

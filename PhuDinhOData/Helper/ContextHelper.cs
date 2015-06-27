@@ -1,5 +1,5 @@
 ﻿using System.Reflection;
-using PhuDinhData;
+using PhuDinhDataEntity;
 using log4net;
 
 namespace PhuDinhOData.Helper

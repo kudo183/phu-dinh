@@ -5,7 +5,7 @@ namespace PhuDinhCommonControl
     /// <summary>
     /// Interaction logic for rBaiXeView.xaml
     /// </summary>
-    public partial class rBaiXeView : BaseView<PhuDinhData.rBaiXe>
+    public partial class rBaiXeView : BaseView<PhuDinhDataEntity.rBaiXe>
     {
         public rBaiXeView()
         {

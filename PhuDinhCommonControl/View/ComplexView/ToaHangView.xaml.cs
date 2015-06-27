@@ -49,7 +49,7 @@ namespace PhuDinhCommonControl
 
         private void RefreshChiTietToaHangView(DataGrid dataGrid)
         {
-            var ToaHang = dataGrid.SelectedItem as PhuDinhData.tToaHang;
+            var ToaHang = dataGrid.SelectedItem as PhuDinhDataEntity.tToaHang;
 
             if (ToaHang == null || ToaHang.Ma == 0)
             {
@@ -62,7 +62,7 @@ namespace PhuDinhCommonControl
 
             _tChiTietToaHangView.SetMainFilter(
                 PhuDinhData.Filter.Filter_tChiTietToaHang.MaToaHang, ToaHang.Ma);
-            _tChiTietToaHangView.SetReferenceFilter<PhuDinhData.tChiTietDonHang>(
+            _tChiTietToaHangView.SetReferenceFilter<PhuDinhDataEntity.tChiTietDonHang>(
                 Constant.ColumnName_ChiTietDonHang, p => p.tDonHang.MaKhachHang == ToaHang.MaKhachHang);
             _tChiTietToaHangView.SetDefaultValue(Constant.ColumnName_MaToaHang, ToaHang.Ma);
 

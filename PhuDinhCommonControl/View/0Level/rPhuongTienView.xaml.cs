@@ -5,7 +5,7 @@ namespace PhuDinhCommonControl
     /// <summary>
     /// Interaction logic for rPhuongTienView.xaml
     /// </summary>
-    public partial class rPhuongTienView : BaseView<PhuDinhData.rPhuongTien>
+    public partial class rPhuongTienView : BaseView<PhuDinhDataEntity.rPhuongTien>
     {
         public rPhuongTienView()
         {

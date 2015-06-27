@@ -9,7 +9,7 @@ namespace PhuDinhCommonControl
     /// <summary>
     /// Interaction logic for rChanhView.xaml
     /// </summary>
-    public partial class rChanhView : BaseView<PhuDinhData.rChanh>
+    public partial class rChanhView : BaseView<PhuDinhDataEntity.rChanh>
     {
         public rChanhView()
         {

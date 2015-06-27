@@ -10,7 +10,7 @@ namespace PhuDinhCommonControl
     /// <summary>
     /// Interaction logic for tTonKhoView.xaml
     /// </summary>
-    public partial class tTonKhoView : BaseView<PhuDinhData.tTonKho>
+    public partial class tTonKhoView : BaseView<PhuDinhDataEntity.tTonKho>
     {
         public tTonKhoView()
         {

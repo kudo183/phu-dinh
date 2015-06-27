@@ -15,7 +15,7 @@ namespace PhuDinhCommonControl
     /// <summary>
     /// Interaction logic for tDonHangView.xaml
     /// </summary>
-    public partial class tDonHangView : BaseView<PhuDinhData.tDonHang>
+    public partial class tDonHangView : BaseView<PhuDinhDataEntity.tDonHang>
     {
         public tDonHangView()
         {

@@ -10,7 +10,7 @@ namespace PhuDinhCommonControl
     /// <summary>
     /// Interaction logic for tToaHangView.xaml
     /// </summary>
-    public partial class tToaHangView : BaseView<PhuDinhData.tToaHang>
+    public partial class tToaHangView : BaseView<PhuDinhDataEntity.tToaHang>
     {
         public tToaHangView()
         {

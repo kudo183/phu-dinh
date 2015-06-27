@@ -105,7 +105,7 @@ namespace PhuDinhCommonControl
 
         private void RefreshChiTietNhapHangView(DataGrid dataGrid)
         {
-            var NhapHang = dataGrid.SelectedItem as PhuDinhData.tNhapHang;
+            var NhapHang = dataGrid.SelectedItem as PhuDinhDataEntity.tNhapHang;
 
             if (NhapHang == null)
             {

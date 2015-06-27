@@ -49,7 +49,7 @@ namespace PhuDinhCommonControl
 
         private void RefreshChiTietDonHangView(DataGrid dataGrid)
         {
-            var donHang = dataGrid.SelectedItem as PhuDinhData.tDonHang;
+            var donHang = dataGrid.SelectedItem as PhuDinhDataEntity.tDonHang;
 
             if (donHang == null || donHang.Ma == 0)
             {

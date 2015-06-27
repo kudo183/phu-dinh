@@ -35,7 +35,7 @@ namespace PhuDinhCommonControl
                 return;
             }
 
-            var phuongTien = ((DataGrid)sender).SelectedItem as PhuDinhData.rPhuongTien;
+            var phuongTien = ((DataGrid)sender).SelectedItem as PhuDinhDataEntity.rPhuongTien;
             if (phuongTien == null)
             {
                 _rNhanVienView.SetMainFilter(PhuDinhData.Filter.Filter_rNhanVien.MaPhuongTien, null, true);

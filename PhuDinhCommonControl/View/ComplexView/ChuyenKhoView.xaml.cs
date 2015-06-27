@@ -103,7 +103,7 @@ namespace PhuDinhCommonControl
 
         private void RefreshChiTietChuyenKhoView(DataGrid dataGrid)
         {
-            var ChuyenKho = dataGrid.SelectedItem as PhuDinhData.tChuyenKho;
+            var ChuyenKho = dataGrid.SelectedItem as PhuDinhDataEntity.tChuyenKho;
 
             if (ChuyenKho == null)
             {

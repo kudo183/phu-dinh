@@ -1,11 +1,12 @@
-﻿using System.Web;
+﻿using PhuDinhDataEntity;
+using System.Web;
 using System.Web.Mvc;
 
 namespace PhuDinhWeb
 {
     public static class HtmlHeplerExt
     {
-        public static IHtmlString FormatSoLuongTonKho(this HtmlHelper helper, PhuDinhData.tTonKho t)
+        public static IHtmlString FormatSoLuongTonKho(this HtmlHelper helper, tTonKho t)
         {
             var result = "<font color=\"{0}\">{1}</font> ";
             if (t.CanhBao == 0)
@@ -24,7 +25,7 @@ namespace PhuDinhWeb
             return new HtmlString(result);
         }
 
-        public static IHtmlString FormatTenMatHangTonKho(this HtmlHelper helper, PhuDinhData.tTonKho t)
+        public static IHtmlString FormatTenMatHangTonKho(this HtmlHelper helper, tTonKho t)
         {
             var result = "<font color=\"{0}\">{1}</font> ";
             if (t.CanhBao == 0)

@@ -1,5 +1,5 @@
 ﻿using PhuDinhOData;
-using PhuDinhData;
+using PhuDinhDataEntity;
 
 namespace MvcApplication3.Controllers
 {

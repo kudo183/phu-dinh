@@ -9,7 +9,7 @@ namespace PhuDinhCommonControl
     /// <summary>
     /// Interaction logic for rNguyenLieuView.xaml
     /// </summary>
-    public partial class rNguyenLieuView : BaseView<PhuDinhData.rNguyenLieu>
+    public partial class rNguyenLieuView : BaseView<PhuDinhDataEntity.rNguyenLieu>
     {
         public rNguyenLieuView()
         {

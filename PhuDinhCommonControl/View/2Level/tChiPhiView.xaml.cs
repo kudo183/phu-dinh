@@ -10,7 +10,7 @@ namespace PhuDinhCommonControl
     /// <summary>
     /// Interaction logic for tChiPhiView.xaml
     /// </summary>
-    public partial class tChiPhiView : BaseView<PhuDinhData.tChiPhi>
+    public partial class tChiPhiView : BaseView<PhuDinhDataEntity.tChiPhi>
     {
         public tChiPhiView()
         {

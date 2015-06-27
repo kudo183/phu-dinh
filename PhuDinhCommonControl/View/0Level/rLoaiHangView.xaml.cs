@@ -5,7 +5,7 @@ namespace PhuDinhCommonControl
     /// <summary>
     /// Interaction logic for rLoaiHangView.xaml
     /// </summary>
-    public partial class rLoaiHangView : BaseView<PhuDinhData.rLoaiHang>
+    public partial class rLoaiHangView : BaseView<PhuDinhDataEntity.rLoaiHang>
     {
         public rLoaiHangView()
         {

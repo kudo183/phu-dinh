@@ -5,7 +5,7 @@ namespace PhuDinhCommonControl
     /// <summary>
     /// Interaction logic for rNhaCungCapView.xaml
     /// </summary>
-    public partial class rNhaCungCapView : BaseView<PhuDinhData.rNhaCungCap>
+    public partial class rNhaCungCapView : BaseView<PhuDinhDataEntity.rNhaCungCap>
     {
         public rNhaCungCapView()
         {

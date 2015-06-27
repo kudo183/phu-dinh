@@ -1,6 +1,6 @@
 ﻿using System.Data.Entity;
 using System.Linq;
-using PhuDinhData;
+using PhuDinhDataEntity;
 
 namespace PhuDinhOData
 {

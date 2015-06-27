@@ -35,7 +35,7 @@ namespace PhuDinhCommonControl
                 return;
             }
 
-            var loaihang = ((DataGrid)sender).SelectedItem as PhuDinhData.rLoaiHang;
+            var loaihang = ((DataGrid)sender).SelectedItem as PhuDinhDataEntity.rLoaiHang;
             if (loaihang == null)
             {
                 _tMatHangView.SetMainFilter(PhuDinhData.Filter.Filter_tMatHang.MaLoaiHang, null, true);

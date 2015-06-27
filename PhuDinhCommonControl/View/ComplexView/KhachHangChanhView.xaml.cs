@@ -35,7 +35,7 @@ namespace PhuDinhCommonControl
                 return;
             }
 
-            var rKhachHang = ((DataGrid)sender).SelectedItem as PhuDinhData.rKhachHang;
+            var rKhachHang = ((DataGrid)sender).SelectedItem as PhuDinhDataEntity.rKhachHang;
             if (rKhachHang == null)
             {
                 _rKhachHangChanhView.SetMainFilter(

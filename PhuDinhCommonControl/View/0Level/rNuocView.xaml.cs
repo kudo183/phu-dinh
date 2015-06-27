@@ -5,7 +5,7 @@ namespace PhuDinhCommonControl
     /// <summary>
     /// Interaction logic for rNuocView.xaml
     /// </summary>
-    public partial class rNuocView : BaseView<PhuDinhData.rNuoc>
+    public partial class rNuocView : BaseView<PhuDinhDataEntity.rNuoc>
     {
         public rNuocView()
         {

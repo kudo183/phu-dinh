@@ -10,7 +10,7 @@ namespace PhuDinhCommonControl
     /// <summary>
     /// Interaction logic for tNhapHangView.xaml
     /// </summary>
-    public partial class tNhapHangView : BaseView<PhuDinhData.tNhapHang>
+    public partial class tNhapHangView : BaseView<PhuDinhDataEntity.tNhapHang>
     {
         public tNhapHangView()
         {
