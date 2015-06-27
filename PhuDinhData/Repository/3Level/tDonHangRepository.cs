@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using PhuDinhDataEntity;
+using System.Linq;
 using System.Data.Entity;
 
 namespace PhuDinhData.Repository

@@ -1,4 +1,5 @@
-﻿using PhuDinhData.ViewModel;
+﻿using PhuDinhDataEntity;
+using PhuDinhData.ViewModel;
 
 namespace PhuDinhData.DesignTimeData
 {

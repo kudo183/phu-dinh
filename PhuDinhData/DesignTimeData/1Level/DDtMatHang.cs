@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using PhuDinhDataEntity;
+using System.Linq;
 using PhuDinhData.ViewModel;
 
 namespace PhuDinhData.DesignTimeData

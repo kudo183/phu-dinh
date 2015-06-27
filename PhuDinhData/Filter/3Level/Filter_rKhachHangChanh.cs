@@ -1,4 +1,4 @@
-﻿using System;
+﻿using PhuDinhDataEntity;
 
 namespace PhuDinhData.Filter
 {

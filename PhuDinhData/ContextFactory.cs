@@ -1,4 +1,5 @@
-﻿using System.Configuration;
+﻿using PhuDinhDataEntity;
+using System.Configuration;
 using System.Data.Entity.Core.EntityClient;
 using System.Data.SqlClient;
 using System.Reflection;
@@ -18,6 +19,7 @@ namespace PhuDinhData
             {
 #if DEBUG
                 DataSource = ".",
+                //DataSource = ConfigurationManager.AppSettings["DataSource"],
                 InitialCatalog = "PhuDinh_test",
 #else
                 DataSource = ConfigurationManager.AppSettings["DataSource"],

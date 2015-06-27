@@ -1,4 +1,5 @@
-﻿using PhuDinhData.Repository;
+﻿using PhuDinhDataEntity;
+using PhuDinhData.Repository;
 using System;
 using System.Linq;
 using System.Collections.Generic;

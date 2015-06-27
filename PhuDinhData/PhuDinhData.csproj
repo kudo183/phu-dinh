@@ -109,31 +109,6 @@
     <Compile Include="DesignTimeData\0Level\DDrNuoc.cs" />
     <Compile Include="DesignTimeData\0Level\DDrBaiXe.cs" />
     <Compile Include="DesignTimeData\1Level\DDrChanh.cs" />
-    <Compile Include="EntityExt\0Level\rKhoHangExt.cs" />
-    <Compile Include="EntityExt\0Level\rNhaCungCapExt.cs" />
-    <Compile Include="EntityExt\0Level\rLoaiHangExt.cs" />
-    <Compile Include="EntityExt\0Level\rLoaiChiPhiExt.cs" />
-    <Compile Include="EntityExt\0Level\rPhuongTienExt.cs" />
-    <Compile Include="EntityExt\0Level\rLoaiNguyenLieuExt.cs" />
-    <Compile Include="EntityExt\0Level\rBaiXeExt.cs" />
-    <Compile Include="EntityExt\0Level\rNuocExt.cs" />
-    <Compile Include="EntityExt\2Level\rCanhBaoTonKhoExt.cs" />
-    <Compile Include="EntityExt\2Level\tChuyenKhoExt.cs" />
-    <Compile Include="EntityExt\2Level\tTonKhoExt.cs" />
-    <Compile Include="EntityExt\2Level\tNhapHangExt.cs" />
-    <Compile Include="EntityExt\2Level\tNhapNguyenLieuExt.cs" />
-    <Compile Include="EntityExt\2Level\rMatHangNguyenLieuExt.cs" />
-    <Compile Include="EntityExt\1Level\rNguyenLieuExt.cs" />
-    <Compile Include="EntityExt\3Level\tToaHangExt.cs" />
-    <Compile Include="EntityExt\3Level\tChiTietChuyenKhoExt.cs" />
-    <Compile Include="EntityExt\3Level\rKhachHangChanhExt.cs" />
-    <Compile Include="EntityExt\3Level\tChiTietNhapHangExt.cs" />
-    <Compile Include="EntityExt\4Level\tChuyenHangDonHangExt.cs" />
-    <Compile Include="EntityExt\5Level\tChiTietToaHangExt.cs" />
-    <Compile Include="EntityExt\5Level\tChiTietChuyenHangDonHangExt.cs" />
-    <Compile Include="EntityExt\2Level\rKhachHangExt.cs" />
-    <Compile Include="EntityExt\1Level\rDiaDiemExt.cs" />
-    <Compile Include="EntityExt\1Level\rChanhExt.cs" />
     <Compile Include="Filter\0Level\Filter_rKhoHang.cs" />
     <Compile Include="Filter\0Level\Filter_rPhuongTien.cs" />
     <Compile Include="Filter\0Level\Filter_rNhaCungCap.cs" />
@@ -167,12 +142,6 @@
     <Compile Include="Filter\5Level\Filter_tChiTietChuyenHangDonHang.cs" />
     <Compile Include="Filter\FilterBase.cs" />
     <Compile Include="Filter\IFilter.cs" />
-    <Compile Include="rCanhBaoTonKho.cs">
-      <DependentUpon>PhuDinh.tt</DependentUpon>
-    </Compile>
-    <Compile Include="rDiaDiem.cs">
-      <DependentUpon>PhuDinh.tt</DependentUpon>
-    </Compile>
     <Compile Include="ReportData\ReportByChiPhi.cs" />
     <Compile Include="ReportData\ReportNhapHang.cs" />
     <Compile Include="ReportData\ReportByNhapNguyenLieu.cs" />
@@ -213,119 +182,8 @@
     <Compile Include="Repository\0Level\rLoaiHangRepository.cs" />
     <Compile Include="Repository\0Level\rBaiXeRepository.cs" />
     <Compile Include="Repository\1Level\rChanhRepository.cs" />
-    <Compile Include="rKhachHangChanh.cs">
-      <DependentUpon>PhuDinh.tt</DependentUpon>
-    </Compile>
-    <Compile Include="rKhoHang.cs">
-      <DependentUpon>PhuDinh.tt</DependentUpon>
-    </Compile>
-    <Compile Include="rLoaiNguyenLieu.cs">
-      <DependentUpon>PhuDinh.tt</DependentUpon>
-    </Compile>
-    <Compile Include="rMatHangNguyenLieu.cs">
-      <DependentUpon>PhuDinh.tt</DependentUpon>
-    </Compile>
-    <Compile Include="rNguyenLieu.cs">
-      <DependentUpon>PhuDinh.tt</DependentUpon>
-    </Compile>
-    <Compile Include="rNhaCungCap.cs">
-      <DependentUpon>PhuDinh.tt</DependentUpon>
-    </Compile>
-    <Compile Include="rNhanVien.cs">
-      <DependentUpon>PhuDinh.tt</DependentUpon>
-    </Compile>
-    <Compile Include="rNuoc.cs">
-      <DependentUpon>PhuDinh.tt</DependentUpon>
-    </Compile>
-    <Compile Include="tChiPhi.cs">
-      <DependentUpon>PhuDinh.tt</DependentUpon>
-    </Compile>
-    <Compile Include="tChiTietChuyenHangDonHang.cs">
-      <DependentUpon>PhuDinh.tt</DependentUpon>
-    </Compile>
-    <Compile Include="tChiTietChuyenKho.cs">
-      <DependentUpon>PhuDinh.tt</DependentUpon>
-    </Compile>
-    <Compile Include="tChiTietNhapHang.cs">
-      <DependentUpon>PhuDinh.tt</DependentUpon>
-    </Compile>
-    <Compile Include="tChiTietToaHang.cs">
-      <DependentUpon>PhuDinh.tt</DependentUpon>
-    </Compile>
-    <Compile Include="tChuyenHangDonHang.cs">
-      <DependentUpon>PhuDinh.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EntityExt\1Level\tMatHangExt.cs" />
-    <Compile Include="EntityExt\1Level\rNhanVienExt.cs" />
-    <Compile Include="EntityExt\4Level\tChiTietDonHangExt.cs" />
-    <Compile Include="EntityExt\3Level\tDonHangExt.cs" />
-    <Compile Include="rKhachHang.cs">
-      <DependentUpon>PhuDinh.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EntityExt\2Level\tChuyenHangExt.cs" />
-    <Compile Include="PhuDinh.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>PhuDinh.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="PhuDinh.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>PhuDinh.tt</DependentUpon>
-    </Compile>
-    <Compile Include="PhuDinh.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>PhuDinh.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="rBaiXe.cs">
-      <DependentUpon>PhuDinh.tt</DependentUpon>
-    </Compile>
-    <Compile Include="rChanh.cs">
-      <DependentUpon>PhuDinh.tt</DependentUpon>
-    </Compile>
-    <Compile Include="rLoaiChiPhi.cs">
-      <DependentUpon>PhuDinh.tt</DependentUpon>
-    </Compile>
-    <Compile Include="rLoaiHang.cs">
-      <DependentUpon>PhuDinh.tt</DependentUpon>
-    </Compile>
-    <Compile Include="rPhuongTien.cs">
-      <DependentUpon>PhuDinh.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EntityExt\2Level\tChiPhiExt.cs" />
-    <Compile Include="tChiTietDonHang.cs">
-      <DependentUpon>PhuDinh.tt</DependentUpon>
-    </Compile>
-    <Compile Include="tChuyenHang.cs">
-      <DependentUpon>PhuDinh.tt</DependentUpon>
-    </Compile>
-    <Compile Include="tChuyenKho.cs">
-      <DependentUpon>PhuDinh.tt</DependentUpon>
-    </Compile>
-    <Compile Include="tDonHang.cs">
-      <DependentUpon>PhuDinh.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ThamSoNgay.cs">
-      <DependentUpon>PhuDinh.tt</DependentUpon>
-    </Compile>
-    <Compile Include="tMatHang.cs">
-      <DependentUpon>PhuDinh.tt</DependentUpon>
-    </Compile>
-    <Compile Include="tNhapHang.cs">
-      <DependentUpon>PhuDinh.tt</DependentUpon>
-    </Compile>
-    <Compile Include="tNhapNguyenLieu.cs">
-      <DependentUpon>PhuDinh.tt</DependentUpon>
-    </Compile>
     <Compile Include="TonKhoManager.cs" />
-    <Compile Include="tToaHang.cs">
-      <DependentUpon>PhuDinh.tt</DependentUpon>
-    </Compile>
-    <Compile Include="tTonKho.cs">
-      <DependentUpon>PhuDinh.tt</DependentUpon>
-    </Compile>
     <Compile Include="ViewModel\0Level\BaiXeViewModel.cs" />
     <Compile Include="ViewModel\0Level\KhoHangViewModel.cs" />
     <Compile Include="ViewModel\0Level\PhuongTienViewModel.cs" />
@@ -361,27 +219,8 @@
     <Compile Include="ViewModel\IBaseViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EntityDeploy Include="PhuDinh.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>PhuDinh.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-    <None Include="PhuDinh.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>PhuDinh.edmx</DependentUpon>
-      <LastGenOutput>PhuDinh.Context.cs</LastGenOutput>
-    </None>
-    <None Include="PhuDinh.edmx.diagram">
-      <DependentUpon>PhuDinh.edmx</DependentUpon>
-    </None>
-    <None Include="PhuDinh.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>PhuDinh.edmx</DependentUpon>
-      <LastGenOutput>PhuDinh.cs</LastGenOutput>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -398,6 +237,10 @@
     <ProjectReference Include="..\PhuDinhCommon\PhuDinhCommon.csproj">
       <Project>{e7cdbbdc-0d94-48b8-9934-ebfbb75e533d}</Project>
       <Name>PhuDinhCommon</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PhuDinhDataEntity\PhuDinhDataEntity.csproj">
+      <Project>{02b6159f-4020-44f7-840e-8e5b8ed85df9}</Project>
+      <Name>PhuDinhDataEntity</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

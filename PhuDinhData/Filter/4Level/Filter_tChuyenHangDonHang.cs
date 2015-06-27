@@ -1,4 +1,6 @@
-﻿namespace PhuDinhData.Filter
+﻿using PhuDinhDataEntity;
+
+namespace PhuDinhData.Filter
 {
     public class Filter_tChuyenHangDonHang : FilterBase<tChuyenHangDonHang>
     {
