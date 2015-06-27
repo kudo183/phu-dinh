@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5db0bd620cb248dba08bf7aa226fc9ec" Name="Diagram1">
+        <EntityTypeShape EntityType="PhuDinhModel.rBaiXe" Width="1.5" PointX="8.1360387374349123" PointY="11.012535457970824" />
+        <EntityTypeShape EntityType="PhuDinhModel.rChanh" Width="1.5" PointX="3.9192034918438661" PointY="19.212482759362313" />
+        <EntityTypeShape EntityType="PhuDinhModel.rDiaDiem" Width="1.5" PointX="0.20335364351205232" PointY="18.955144384389346" />
+        <EntityTypeShape EntityType="PhuDinhModel.rKhachHang" Width="1.5" PointX="11.208902891356919" PointY="5.51340677100858" />
+        <EntityTypeShape EntityType="PhuDinhModel.rLoaiChiPhi" Width="1.5" PointX="10.346665452395875" PointY="3.4854765252608231" />
+        <EntityTypeShape EntityType="PhuDinhModel.rLoaiHang" Width="1.5" PointX="5.4137585411843654" PointY="3.6489543484751854" />
+        <EntityTypeShape EntityType="PhuDinhModel.rNuoc" Width="1.5" PointX="6.9719013511072383" PointY="5.926542940515346" />
+        <EntityTypeShape EntityType="PhuDinhModel.rPhuongTien" Width="1.5" PointX="9.2038084441813677" PointY="3.0852572187247023" />
+        <EntityTypeShape EntityType="PhuDinhModel.tChiTietChuyenHangDonHang" Width="1.5" PointX="0.9475436438562086" PointY="12.449085345700889" />
+        <EntityTypeShape EntityType="PhuDinhModel.tChiTietDonHang" Width="1.5" PointX="3.7018118368935826" PointY="12.319865426197586" />
+        <EntityTypeShape EntityType="PhuDinhModel.tChuyenHang" Width="1.5" PointX="5.55109038648712" PointY="24.676126208471192" />
+        <EntityTypeShape EntityType="PhuDinhModel.tChuyenHangDonHang" Width="1.5" PointX="10.695555304501" PointY="14.432997501656878" />
+        <EntityTypeShape EntityType="PhuDinhModel.tDonHang" Width="1.5" PointX="4.3425980193273155" PointY="12.015232389799893" />
+        <EntityTypeShape EntityType="PhuDinhModel.tMatHang" Width="1.5" PointX="9.2720669756047727" PointY="1.5574771620135182" />
+        <AssociationConnector Association="PhuDinhModel.FK_rChanh_rBaiXe" />
+        <AssociationConnector Association="PhuDinhModel.FK_tDonHang_rChanh" />
+        <AssociationConnector Association="PhuDinhModel.FK_rDiaDiem_rNuoc" />
+        <AssociationConnector Association="PhuDinhModel.FK_rKhachHang_rDiaDiem" />
+        <AssociationConnector Association="PhuDinhModel.FK_tDonHang_rKhachHang" />
+        <AssociationConnector Association="PhuDinhModel.FK_tMatHang_rLoaiHang" />
+        <AssociationConnector Association="PhuDinhModel.FK_tChiTietChuyenHangDonHang_tChiTietDonHang" />
+        <AssociationConnector Association="PhuDinhModel.FK_tChiTietChuyenHangDonHang_tChuyenHangDonHang" />
+        <AssociationConnector Association="PhuDinhModel.FK_tChiTietDonHang_tDonHang" />
+        <AssociationConnector Association="PhuDinhModel.FK_tChiTietDonHang_tMatHang" />
+        <AssociationConnector Association="PhuDinhModel.FK_tChuyenHangDonHang_tChuyenHang" />
+        <AssociationConnector Association="PhuDinhModel.FK_tChuyenHangDonHang_tDonHang" />
+        <EntityTypeShape EntityType="PhuDinhModel.rNhanVien" Width="1.5" PointX="2.0219000177559909" PointY="21.55766526868458" />
+        <AssociationConnector Association="PhuDinhModel.FK_rNhanVienGiaoHang_rPhuongTien" />
+        <AssociationConnector Association="PhuDinhModel.FK_tChuyenHang_rNhanVienGiaoHang" />
+        <EntityTypeShape EntityType="PhuDinhModel.tChiPhi" Width="1.5" PointX="7.8038561641256585" PointY="19.69652410768742" />
+        <AssociationConnector Association="PhuDinhModel.FK_tChiPhiNhanVienGiaoHang_rLoaiChiPhi" />
+        <AssociationConnector Association="PhuDinhModel.FK_tChiPhiNhanVienGiaoHang_rNhanVienGiaoHang" />
+        <EntityTypeShape EntityType="PhuDinhModel.rKhachHangChanh" Width="1.5" PointX="11.178631430109325" PointY="16.354379736052071" />
+        <AssociationConnector Association="PhuDinhModel.FK_rKhachHangChanh_rChanh" />
+        <AssociationConnector Association="PhuDinhModel.FK_rKhachHangChanh_rKhachHang" />
+        <EntityTypeShape EntityType="PhuDinhModel.rLoaiNguyenLieu" Width="1.5" PointX="5.9312501744978361" PointY="19.188846641773754" />
+        <EntityTypeShape EntityType="PhuDinhModel.rMatHangNguyenLieu" Width="1.5" PointX="7.1654793597597077" PointY="21.393425847121247" />
+        <EntityTypeShape EntityType="PhuDinhModel.rNguyenLieu" Width="1.5" PointX="11.266921659590174" PointY="12.86653027537583" />
+        <EntityTypeShape EntityType="PhuDinhModel.rNhaCungCap" Width="1.5" PointX="8.581647303226239" PointY="27.830124122942856" />
+        <EntityTypeShape EntityType="PhuDinhModel.tNhapNguyenLieu" Width="1.5" PointX="5.0621607699720936" PointY="22.419783408949051" />
+        <AssociationConnector Association="PhuDinhModel.FK_rNguyenLieu_rLoaiNguyenLieu" />
+        <AssociationConnector Association="PhuDinhModel.FK_rMatHangNguyenLieu_rNguyenLieu" />
+        <AssociationConnector Association="PhuDinhModel.FK_rMatHangNguyenLieu_tMatHang" />
+        <AssociationConnector Association="PhuDinhModel.FK_tNhapNguyenLieu_rNguyenLieu" />
+        <AssociationConnector Association="PhuDinhModel.FK_tNhapNguyenLieu_rNhaCungCap" />
+        <EntityTypeShape EntityType="PhuDinhModel.rKhoHang" Width="1.5" PointX="1.5052020445024605" PointY="3.7383280264857821" />
+        <AssociationConnector Association="PhuDinhModel.FK_tDonHang_rKhoHang" />
+        <EntityTypeShape EntityType="PhuDinhModel.tTonKho" Width="1.5" PointX="4.4496370630569935" PointY="15.955233581343309" />
+        <AssociationConnector Association="PhuDinhModel.FK_tTonKho_rKhoHang" />
+        <AssociationConnector Association="PhuDinhModel.FK_tTonKho_tMatHang" />
+        <EntityTypeShape EntityType="PhuDinhModel.tChiTietNhapHang" Width="1.5" PointX="5.6380178414462216" PointY="30.7615933859542" />
+        <EntityTypeShape EntityType="PhuDinhModel.tNhapHang" Width="1.5" PointX="4.0308257211143266" PointY="24.698854904947268" />
+        <AssociationConnector Association="PhuDinhModel.FK_tNhapHang_rKhoHang" />
+        <AssociationConnector Association="PhuDinhModel.FK_tNhapHang_rNhaCungCap" />
+        <AssociationConnector Association="PhuDinhModel.FK_tNhapHang_rNhanVien" />
+        <AssociationConnector Association="PhuDinhModel.FK_tChiTietNhapHang_tNhapHang" />
+        <AssociationConnector Association="PhuDinhModel.FK_tNhapMatHang_tMatHang1" />
+        <EntityTypeShape EntityType="PhuDinhModel.tChiTietChuyenKho" Width="1.5" PointX="5.5819485139017688" PointY="29.097667633135647" />
+        <EntityTypeShape EntityType="PhuDinhModel.tChuyenKho" Width="1.5" PointX="0.327888982523181" PointY="3.4228609071219624" />
+        <AssociationConnector Association="PhuDinhModel.FK_tChuyenKho_rKhoHangNhap" />
+        <AssociationConnector Association="PhuDinhModel.FK_tChuyenKho_rKhoHangXuat" />
+        <AssociationConnector Association="PhuDinhModel.FK_tChuyenKho_rNhanVien" />
+        <AssociationConnector Association="PhuDinhModel.FK_tChiTietChuyenKho_tChuyenKho" />
+        <AssociationConnector Association="PhuDinhModel.FK_tChiTietChuyenKho_tMatHang" />
+        <EntityTypeShape EntityType="PhuDinhModel.ThamSoNgay" Width="1.5" PointX="0.57975114163931041" PointY="1.7956850090044014" />
+        <EntityTypeShape EntityType="PhuDinhModel.rCanhBaoTonKho" Width="1.5" PointX="7.2264964632813342" PointY="1.5107152171017206" />
+        <AssociationConnector Association="PhuDinhModel.FK_rCanhBaoTonKho_rKhoHang" />
+        <AssociationConnector Association="PhuDinhModel.FK_rCanhBaoTonKho_tMatHang" />
+        <EntityTypeShape EntityType="PhuDinhModel.tChiTietToaHang" Width="1.5" PointX="3.2786741700389763" PointY="7.2230568859833557" />
+        <EntityTypeShape EntityType="PhuDinhModel.tToaHang" Width="1.5" PointX="6.2402035101504083" PointY="19.589701229515345" />
+        <AssociationConnector Association="PhuDinhModel.FK_tToaHang_rKhachHang" />
+        <AssociationConnector Association="PhuDinhModel.FK_tChiTietToaHang_tChiTietDonHang" />
+        <AssociationConnector Association="PhuDinhModel.FK_tChiTietToaHang_tToaHang" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
