@@ -2,6 +2,9 @@
 
 namespace PhuDinhData
 {
+    [global::System.Data.Services.Common.EntitySetAttribute("rNguyenLieus")]
+    [global::System.Data.Services.Common.DataServiceKeyAttribute("Ma")]
+    [global::System.Data.Services.IgnoreProperties("TenNguyenLieu")]
     public partial class rNguyenLieu
     {
         public string TenNguyenLieu

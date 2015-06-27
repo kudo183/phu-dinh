@@ -1,5 +1,7 @@
 ﻿namespace PhuDinhData
 {
+    [global::System.Data.Services.Common.EntitySetAttribute("rBaiXes")]
+    [global::System.Data.Services.Common.DataServiceKeyAttribute("Ma")]
     public partial class rBaiXe
     {
         public override string ToString()

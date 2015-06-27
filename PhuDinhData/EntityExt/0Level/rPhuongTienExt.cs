@@ -1,5 +1,7 @@
 ﻿namespace PhuDinhData
 {
+    [global::System.Data.Services.Common.EntitySetAttribute("rPhuongTiens")]
+    [global::System.Data.Services.Common.DataServiceKeyAttribute("Ma")]
     public partial class rPhuongTien
     {
         public override string ToString()

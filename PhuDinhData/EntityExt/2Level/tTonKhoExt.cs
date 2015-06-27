@@ -2,6 +2,9 @@
 
 namespace PhuDinhData
 {
+    [global::System.Data.Services.Common.EntitySetAttribute("tTonKhos")]
+    [global::System.Data.Services.Common.DataServiceKeyAttribute("Ma")]
+    [global::System.Data.Services.IgnoreProperties("CanhBao")]
     public partial class tTonKho
     {
         public List<tMatHang> tMatHangList { get; set; }

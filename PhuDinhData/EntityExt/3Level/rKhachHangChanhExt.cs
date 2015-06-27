@@ -2,6 +2,9 @@
 
 namespace PhuDinhData
 {
+    [global::System.Data.Services.Common.EntitySetAttribute("rKhachHangChanhs")]
+    [global::System.Data.Services.Common.DataServiceKeyAttribute("Ma")]
+    [global::System.Data.Services.IgnoreProperties("")]
     public partial class rKhachHangChanh
     {
         public List<rKhachHang> rKhachHangList { get; set; }

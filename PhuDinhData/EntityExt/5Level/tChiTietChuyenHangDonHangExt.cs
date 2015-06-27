@@ -3,6 +3,9 @@ using System.Linq;
 
 namespace PhuDinhData
 {
+    [global::System.Data.Services.Common.EntitySetAttribute("tChiTietChuyenHangDonHangs")]
+    [global::System.Data.Services.Common.DataServiceKeyAttribute("Ma")]
+    [global::System.Data.Services.IgnoreProperties("SoLuongTheoDonHang")]
     public partial class tChiTietChuyenHangDonHang
     {
         public int SoLuongTheoDonHang

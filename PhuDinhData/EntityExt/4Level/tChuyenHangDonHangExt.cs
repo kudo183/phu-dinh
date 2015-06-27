@@ -3,13 +3,18 @@ using System.Linq;
 
 namespace PhuDinhData
 {
+    [global::System.Data.Services.Common.EntitySetAttribute("tChuyenHangDonHangs")]
+    [global::System.Data.Services.Common.DataServiceKeyAttribute("Ma")]
+    [global::System.Data.Services.IgnoreProperties("TenChuyenHangDonHang", "TongSoLuongTheoDonHang", "TongSoLuongThucTe")]
     public partial class tChuyenHangDonHang
     {
         public string TenChuyenHangDonHang
         {
-            get { return string.Format("{0}_{1}"
-                , tChuyenHang == null ? "" : tChuyenHang.TenChuyenHang
-                , tDonHang == null ? "" : tDonHang.TenDonHang);
+            get
+            {
+                return string.Format("{0}_{1}"
+                    , tChuyenHang == null ? "" : tChuyenHang.TenChuyenHang
+                    , tDonHang == null ? "" : tDonHang.TenDonHang);
             }
         }
 
