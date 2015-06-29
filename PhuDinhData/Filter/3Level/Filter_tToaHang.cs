@@ -36,7 +36,7 @@ namespace PhuDinhData.Filter
 
         private void SetFilterMaKhachHang(int? maKhachHang, bool setFalse = false)
         {
-            _filters[MaKhachHang] = FilterNullable(maKhachHang, setFalse, p => p.MaKhachHang == maKhachHang);
+            _filters[MaKhachHang] = FilterNullable(maKhachHang, setFalse, "MaKhachHang");
 
             UpdateMainFilter();
         }
@@ -50,7 +50,7 @@ namespace PhuDinhData.Filter
 
         private void SetFilterNgay(DateTime? date, bool setFalse = false)
         {
-            _filters[Ngay] = FilterNullable(date, setFalse, p => p.Ngay == date);
+            _filters[Ngay] = FilterNullable(date, setFalse, "Ngay");
 
             UpdateMainFilter();
         }

@@ -30,7 +30,7 @@ namespace PhuDinhData.Filter
 
         private void SetFilterMaLoaiNguyenLieu(int? maLoaiNguyenLieu, bool setFalse = false)
         {
-            _filters[MaLoaiNguyenLieu] = FilterNullable(maLoaiNguyenLieu, setFalse, p => p.MaLoaiNguyenLieu == maLoaiNguyenLieu);
+            _filters[MaLoaiNguyenLieu] = FilterNullable(maLoaiNguyenLieu, setFalse, "MaLoaiNguyenLieu");
 
             UpdateMainFilter();
         }

@@ -30,7 +30,7 @@ namespace PhuDinhData.Filter
 
         private void SetFilterMaLoaiHang(int? maLoai, bool setFalse = false)
         {
-            _filters[MaLoaiHang] = FilterNullable(maLoai, setFalse, p => p.MaLoai == maLoai);
+            _filters[MaLoaiHang] = FilterNullable(maLoai, setFalse, "MaLoai");
 
             UpdateMainFilter();
         }

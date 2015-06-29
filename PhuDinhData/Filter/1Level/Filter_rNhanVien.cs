@@ -30,7 +30,7 @@ namespace PhuDinhData.Filter
 
         private void SetFilterMaPhuongTien(int? maPhuongTien, bool setFalse = false)
         {
-            _filters[MaPhuongTien] = FilterNullable(maPhuongTien, setFalse, p => p.MaPhuongTien == maPhuongTien);
+            _filters[MaPhuongTien] = FilterNullable(maPhuongTien, setFalse, "MaPhuongTien");
 
             UpdateMainFilter();
         }

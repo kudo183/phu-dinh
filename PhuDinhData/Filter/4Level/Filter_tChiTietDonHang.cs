@@ -39,7 +39,7 @@ namespace PhuDinhData.Filter
 
         private void SetFilterMaMatHang(int? maMatHang, bool setFalse = false)
         {
-            _filters[MaMatHang] = FilterNullable(maMatHang, setFalse, p => p.MaMatHang == maMatHang);
+            _filters[MaMatHang] = FilterNullable(maMatHang, setFalse, "MaMatHang");
 
             UpdateMainFilter();
         }
@@ -53,7 +53,7 @@ namespace PhuDinhData.Filter
 
         private void SetFilterMaDonHang(int? maDonHang, bool setFalse = false)
         {
-            _filters[MaDonHang] = FilterNullable(maDonHang, setFalse, p => p.MaDonHang == maDonHang);
+            _filters[MaDonHang] = FilterNullable(maDonHang, setFalse, "MaDonHang");
 
             UpdateMainFilter();
         }

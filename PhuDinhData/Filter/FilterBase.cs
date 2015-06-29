@@ -25,7 +25,7 @@ namespace PhuDinhData.Filter
 
         protected readonly Dictionary<string, object> _filtersValue = new Dictionary<string, object>();
 
-        protected Expression<Func<T, bool>> FilterNullable(object value, bool setFalse, Expression<Func<T, bool>> filter)
+        protected Expression<Func<T, bool>> FilterNullable(object value, bool setFalse, string propertyPath)
         {
             Expression<Func<T, bool>> result;
 
@@ -41,10 +41,22 @@ namespace PhuDinhData.Filter
                 }
                 else
                 {
-                    result = filter;
+                    result = FilterExpression(value, propertyPath);
                 }
             }
 
+            return result;
+        }
+
+        protected Expression<Func<T, bool>> FilterExpression(object obj, string propertyPath)
+        {
+            var pe = Expression.Parameter(typeof(T), "p");
+
+            var left = propertyPath.Split('.').Aggregate<string, Expression>(pe, Expression.Property);
+            var right = Expression.Constant(obj);
+            var predicateBody = Expression.Equal(left, right);
+
+            var result = Expression.Lambda<Func<T, bool>>(predicateBody, new[] { pe });
             return result;
         }
 

@@ -35,7 +35,7 @@ namespace PhuDinhData.Filter
 
         private void SetFilterMaDiaDiem(int? maDiaDiem, bool setFalse = false)
         {
-            _filters[MaDiaDiem] = FilterNullable(maDiaDiem, setFalse, p => p.MaDiaDiem == maDiaDiem);
+            _filters[MaDiaDiem] = FilterNullable(maDiaDiem, setFalse, "MaDiaDiem");
 
             UpdateMainFilter();
         }

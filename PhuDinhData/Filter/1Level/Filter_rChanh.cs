@@ -35,7 +35,7 @@ namespace PhuDinhData.Filter
 
         private void SetFilterMaBaiXe(int? maBaiXe, bool setFalse = false)
         {
-            _filters[MaBaiXe] = FilterNullable(maBaiXe, setFalse, p => p.MaBaiXe == maBaiXe);
+            _filters[MaBaiXe] = FilterNullable(maBaiXe, setFalse, "MaBaiXe");
 
             UpdateMainFilter();
         }

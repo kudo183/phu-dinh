@@ -35,7 +35,7 @@ namespace PhuDinhData.Filter
 
         private void SetFilterMaNuoc(int? maNuoc, bool setFalse = false)
         {
-            _filters[MaNuoc] = FilterNullable(maNuoc, setFalse, p => p.MaNuoc == maNuoc);
+            _filters[MaNuoc] = FilterNullable(maNuoc, setFalse, "MaNuoc");
 
             UpdateMainFilter();
         }
