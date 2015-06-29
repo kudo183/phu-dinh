@@ -147,7 +147,7 @@ namespace PhuDinhData.ViewModel
         {
             base.RefreshData();
             
-            Message = string.Format("Tong cong: {0} cuon", _contextManager.GetData(MainFilter.Filter).Sum(p => p.SoLuong));
+            Message = string.Format("Tong cong: {0} cuon", Entity.Sum(p => p.SoLuong));
         }
     }
 }
