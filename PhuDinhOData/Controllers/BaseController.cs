@@ -9,7 +9,7 @@ namespace PhuDinhOData
     {
         protected readonly PhuDinhEntities _context = Helper.ContextHelper.CreateContext();
 
-        [System.Web.Http.OData.EnableQuery(PageSize = 30)]
+        [System.Web.Http.OData.EnableQuery(PageSize = 30, MaxExpansionDepth = 50)]
         public override IQueryable<TEntity> Get()
         {
             return _context.Set<TEntity>();

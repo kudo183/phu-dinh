@@ -59,6 +59,38 @@
   <ItemGroup>
     <Compile Include="ODataContextManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\0Level\rBaiXeRepository.cs" />
+    <Compile Include="Repository\0Level\rKhoHangRepository.cs" />
+    <Compile Include="Repository\0Level\rLoaiChiPhiRepository.cs" />
+    <Compile Include="Repository\0Level\rLoaiHangRepository.cs" />
+    <Compile Include="Repository\0Level\rLoaiNguyenLieuRepository.cs" />
+    <Compile Include="Repository\0Level\rNhaCungCapRepository.cs" />
+    <Compile Include="Repository\0Level\rNuocRepository.cs" />
+    <Compile Include="Repository\0Level\rPhuongTienRepository.cs" />
+    <Compile Include="Repository\1Level\rChanhRepository.cs" />
+    <Compile Include="Repository\1Level\rDiaDiemRepository.cs" />
+    <Compile Include="Repository\1Level\rNguyenLieuRepository.cs" />
+    <Compile Include="Repository\1Level\rNhanVienRepository.cs" />
+    <Compile Include="Repository\1Level\tMatHangRepository.cs" />
+    <Compile Include="Repository\2Level\rCanhBaoTonKhoRepository.cs" />
+    <Compile Include="Repository\2Level\rKhachHangRepository.cs" />
+    <Compile Include="Repository\2Level\rMatHangNguyenLieuRepository.cs" />
+    <Compile Include="Repository\2Level\tChiPhiNhanVienGiaoHangRepository.cs" />
+    <Compile Include="Repository\2Level\tChuyenHangRepository.cs" />
+    <Compile Include="Repository\2Level\tChuyenKhoRepository.cs" />
+    <Compile Include="Repository\2Level\tNhapHangRepository.cs" />
+    <Compile Include="Repository\2Level\tNhapNguyenLieuRepository.cs" />
+    <Compile Include="Repository\2Level\tTonKhoRepository.cs" />
+    <Compile Include="Repository\3Level\rKhachHangChanhRepository.cs" />
+    <Compile Include="Repository\3Level\tChiTietChuyenKhoRepository.cs" />
+    <Compile Include="Repository\3Level\tChiTietNhapHangRepository.cs" />
+    <Compile Include="Repository\3Level\tDonHangRepository.cs" />
+    <Compile Include="Repository\3Level\tToaHangRepository.cs" />
+    <Compile Include="Repository\4Level\tChiTietDonHangRepository.cs" />
+    <Compile Include="Repository\4Level\tChuyenHangDonHangRepository.cs" />
+    <Compile Include="Repository\5Level\tChiTietChuyenHangDonHangRepository.cs" />
+    <Compile Include="Repository\5Level\tChiTietToaHangRepository.cs" />
+    <Compile Include="Repository\RepositoryLocator.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">

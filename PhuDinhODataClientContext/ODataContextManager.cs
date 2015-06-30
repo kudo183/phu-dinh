@@ -5,7 +5,6 @@ using System.Linq;
 using System.Linq.Expressions;
 using Common;
 using PhuDinhCommon;
-using PhuDinhDataEntity;
 
 namespace PhuDinhODataClientContext
 {
@@ -21,6 +20,7 @@ namespace PhuDinhODataClientContext
         {
             var result = new List<T>();
             var query = _context.Set<T>().Where(filter) as DataServiceQuery<T>;
+            query = Repository.RepositoryLocator<T>.GetDataQuery(query) as DataServiceQuery<T>;//add order, expand
             var respone = query.Execute() as QueryOperationResponse<T>;
 
             do
@@ -30,11 +30,14 @@ namespace PhuDinhODataClientContext
                     result.Add(entity);
                 }
 
+                if (result.Count >= 1000)
+                    break;
+
                 DataServiceQueryContinuation<T> token = respone.GetContinuation();
                 if (token == null)
                     break;
 
-                respone = _context.Execute(token) as QueryOperationResponse<T>;
+                respone = _context.Execute(token);
 
             } while (true);
 
@@ -43,11 +46,13 @@ namespace PhuDinhODataClientContext
 
         public List<T> GetData<T>(Expression<Func<T, bool>> filter, int pageSize, int currentPageIndex, int itemCount) where T : Common.BindableObject
         {
-            var result = _context.Set<T>().Where(filter).Skip(pageSize * (currentPageIndex - 1));
+            var query = _context.Set<T>().Where(filter);//add filter
+            query = Repository.RepositoryLocator<T>.GetDataQuery(query);//add order, expand
+            query = query.Skip(pageSize * (currentPageIndex - 1));//add paging
 
-            var collection = new DataServiceCollection<T>(result);//this line enable change tracking.
+            var collection = new DataServiceCollection<T>(query);//this line enable change tracking.
 
-            return result.ToList();
+            return query.ToList();
         }
 
         public void UndoChange()
