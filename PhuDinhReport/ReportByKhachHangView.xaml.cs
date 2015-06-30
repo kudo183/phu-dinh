@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using CustomControl.DataGridColumnHeaderFilterModel;
-using PhuDinhData;
-using PhuDinhData.ReportData;
 using System;
 using System.Windows.Controls;
+using PhuDinhData.ReportData;
+using PhuDinhEFClientContext;
 
 namespace PhuDinhReport
 {

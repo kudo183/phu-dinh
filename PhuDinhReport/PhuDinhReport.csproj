@@ -162,6 +162,10 @@
       <Project>{9e6f47f9-162f-458f-a4c3-42b455f09d43}</Project>
       <Name>PhuDinhData</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PhuDinhEFClientContext\PhuDinhEFClientContext.csproj">
+      <Project>{14430418-d823-406b-a494-30e5e7caf940}</Project>
+      <Name>PhuDinhEFClientContext</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

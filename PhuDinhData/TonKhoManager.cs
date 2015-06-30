@@ -1,10 +1,11 @@
 ﻿using PhuDinhDataEntity;
-using PhuDinhData.Repository;
 using System;
 using System.Linq;
 using System.Collections.Generic;
 using PhuDinhCommon;
 using System.Data.Entity;
+using PhuDinhEFClientContext;
+using PhuDinhEFClientContext.Repository;
 
 namespace PhuDinhData
 {

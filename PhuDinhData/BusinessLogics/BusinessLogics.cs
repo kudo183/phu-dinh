@@ -1,7 +1,7 @@
 ﻿using PhuDinhDataEntity;
 using System;
 using System.Collections.Generic;
-using PhuDinhData.Repository;
+using PhuDinhEFClientContext.Repository;
 
 namespace PhuDinhData.BusinessLogics
 {

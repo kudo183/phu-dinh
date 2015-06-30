@@ -1,4 +1,5 @@
-﻿using PhuDinhDataEntity;
+﻿using PhuDinhCommon;
+using PhuDinhDataEntity;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -8,7 +9,6 @@ using System.Linq.Expressions;
 using System.Reflection;
 using Common;
 using PhuDinhData.Filter;
-using PhuDinhData.Repository;
 using log4net;
 
 namespace PhuDinhData.ViewModel
@@ -17,7 +17,7 @@ namespace PhuDinhData.ViewModel
     {
         private static readonly ILog Logger = log4net.LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
-        protected IContextManager _contextManager = ServiceLocator.Instance.GetInstance<IContextManager>();
+        protected IClientContextManager _contextManager = ServiceLocator.Instance.GetInstance<IClientContextManager>();
 
         protected List<T> _origData;
 
@@ -180,11 +180,11 @@ namespace PhuDinhData.ViewModel
             return null;
         }
 
-        public virtual List<Repository<T>.ChangedItemData> Save()
+        public virtual void Save()
         {
             try
             {
-                return _contextManager.Save(Entity.ToList(), _origData);
+                _contextManager.Save(Entity.ToList(), _origData);
             }
             catch (Exception)
             {
