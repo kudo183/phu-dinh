@@ -16,7 +16,7 @@
                                                   Header="{x:Static PhuDinhCommon:Constant.ColumnName_ChuyenHang}"
                                                   Binding="{Binding tChuyenHang.TenChuyenHang}"/>
         <!--Don hang-->
-        <CustomControl:DataGridComboBoxColumnExt x:Name="donHangColumn"
+        <CustomControl:DataGridComboBoxColumnExt x:Name="donHangColumn" Header="{x:Static DesignTimeData:DDtChuyenHangDonHang.Header_DonHang}"
                                                  HeaderAddButtonClick="headerAddButton_Click"
                                                  TextBinding="{Binding tDonHang.TenDonHang, Mode=OneWay}"
                                                  DisplayMemberPath="TenDonHang"

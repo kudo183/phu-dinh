@@ -12,7 +12,7 @@
         <!--Ma-->
         <CustomControl:DataGridReadOnlyTextColumn x:Name="maColumn"/>
         <!--Khach hang-->
-        <CustomControl:DataGridComboBoxColumnExt x:Name="khachHangColumn"
+        <CustomControl:DataGridComboBoxColumnExt x:Name="khachHangColumn" Header="{x:Static DesignTimeData:DDrKhachHangChanh.Header_KhachHang}"
                                                  HeaderAddButtonClick="headerAddButton_Click"
                                                  TextBinding="{Binding rKhachHang.TenKhachHangDiaDiem, Mode=OneWay}"
                                                  DisplayMemberPath="TenKhachHangDiaDiem"
@@ -21,7 +21,7 @@
                                                  SelectedItemBinding="{Binding rKhachHang, UpdateSourceTrigger=PropertyChanged}"
                                                  ItemsSource="{Binding rKhachHangList}"/>
         <!--Chanh-->
-        <CustomControl:DataGridComboBoxColumnExt x:Name="chanhColumn"
+        <CustomControl:DataGridComboBoxColumnExt x:Name="chanhColumn" Header="{x:Static DesignTimeData:DDrKhachHangChanh.Header_Chanh}"
                                                  HeaderAddButtonClick="headerAddButton_Click"
                                                  TextBinding="{Binding rChanh.TenBaiXeChanh, Mode=OneWay}"
                                                  DisplayMemberPath="TenBaiXeChanh"
