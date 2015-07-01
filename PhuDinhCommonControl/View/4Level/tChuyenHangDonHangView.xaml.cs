@@ -22,6 +22,9 @@ namespace PhuDinhCommonControl
             DataContext = _viewModel;
 
             dg.Columns[2].Header = (_viewModel as ChuyenHangDonHangViewModel).Header_DonHang;
+
+            SetReferenceFilter<PhuDinhDataEntity.tDonHang>(
+                Constant.ColumnName_DonHang, (p => p.Xong == false));
         }
 
         private void dgChuyenHangDonHang_HeaderAddButtonClick(object sender, EventArgs e)
