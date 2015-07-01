@@ -4,7 +4,16 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d"
-                    IsReadOnly="True" Binding="{Binding Ma}" Header="Mã" Width="60" FontSize="16"
-                    ElementStyle="{StaticResource textBlockReadOnly}"
-                    CellStyle="{StaticResource dataGridCellReadOnly}">
+                    IsReadOnly="True" Binding="{Binding Ma}" Header="Mã" Width="60" FontSize="16">
+    <DataGridTextColumn.ElementStyle>
+        <Style TargetType="TextBlock">
+            <Setter Property="TextBlock.Background" Value="LightGray"/>
+        </Style>
+    </DataGridTextColumn.ElementStyle>
+    <DataGridTextColumn.CellStyle>
+        <Style TargetType="DataGridCell">
+            <Setter Property="Background" Value="LightGray"/>
+            <Setter Property="KeyboardNavigation.IsTabStop" Value="False"/>
+        </Style>
+    </DataGridTextColumn.CellStyle>
 </DataGridTextColumn>

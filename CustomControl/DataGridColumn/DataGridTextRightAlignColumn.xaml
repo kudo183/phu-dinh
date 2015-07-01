@@ -4,7 +4,16 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d"
-                    Binding="{Binding SoLuong, StringFormat=\{0:N0\}}" Header="Số Lượng" Width="80" FontSize="16"
-                    ElementStyle="{StaticResource textBlockRightAlign}"
-                    EditingElementStyle="{StaticResource textBoxRightAlign}">
+                    Binding="{Binding SoLuong, StringFormat=\{0:N0\}}" Header="Số Lượng" Width="80" FontSize="16">
+    <DataGridTextColumn.ElementStyle>
+        <Style TargetType="TextBlock">
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="Margin" Value="0,0,3,0"/>
+        </Style>
+    </DataGridTextColumn.ElementStyle>
+    <DataGridTextColumn.EditingElementStyle>
+        <Style TargetType="TextBox">
+            <Setter Property="HorizontalContentAlignment" Value="Right"/>
+        </Style>
+    </DataGridTextColumn.EditingElementStyle>
 </DataGridTextColumn>
