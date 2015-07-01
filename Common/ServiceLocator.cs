@@ -38,7 +38,7 @@ namespace Common
         public T GetInstance<T>() where T : class
         {
             Type type = typeof(T);
-            if (_typeMapping.ContainsKey(type) == false)
+            if (_typeMapping == null || _typeMapping.ContainsKey(type) == false)
                 return null;
 
             return Activator.CreateInstance(_typeMapping[type]) as T;
