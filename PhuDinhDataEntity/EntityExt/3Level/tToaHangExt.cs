@@ -13,7 +13,7 @@ namespace PhuDinhDataEntity
             get
             {
                 return string.Format("{0}_{1}",
-                    Ngay.ToShortDateString()
+                    Ngay.ToString("dd/MM/yy")
                     , rKhachHang == null ? "" : rKhachHang.TenKhachHang);
             }
         }

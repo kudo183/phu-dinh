@@ -14,7 +14,7 @@ namespace PhuDinhDataEntity
             get
             {
                 return string.Format("{0}_{1:hh\\:mm}_{2}",
-                    Ngay.ToShortDateString(), Gio ?? new TimeSpan(0, 0, 0, 0), rNhanVien == null ? "" : rNhanVien.TenNhanVien);
+                    Ngay.ToString("dd/MM/yy"), Gio ?? new TimeSpan(0, 0, 0, 0), rNhanVien == null ? "" : rNhanVien.TenNhanVien);
             }
         }
 
