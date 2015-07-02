@@ -1,4 +1,6 @@
-﻿using PhuDinhDataEntity;
+﻿using CustomControl.DataGridColumnHeaderFilterModel;
+using PhuDinhCommon;
+using PhuDinhDataEntity;
 using System.Linq;
 using PhuDinhData.ViewModel;
 
@@ -6,6 +8,36 @@ namespace PhuDinhData.DesignTimeData
 {
     public static class DDtChuyenHang
     {
+        private static HeaderDateFilterModel _header_Ngay;
+        public static HeaderDateFilterModel Header_Ngay
+        {
+            get
+            {
+                if (_header_Ngay != null)
+                {
+                    return _header_Ngay;
+                }
+
+                _header_Ngay = new HeaderDateFilterModel(Constant.ColumnName_Ngay);
+                return _header_Ngay;
+            }
+        }
+
+        private static HeaderTextFilterModel _header_NhanVien;
+        public static HeaderTextFilterModel Header_NhanVien
+        {
+            get
+            {
+                if (_header_NhanVien != null)
+                {
+                    return _header_NhanVien;
+                }
+
+                _header_NhanVien = new HeaderTextFilterModel(Constant.ColumnName_NhanVien);
+                return _header_NhanVien;
+            }
+        }
+
         private static ChuyenHangViewModel _viewModel;
         public static ChuyenHangViewModel ViewModel
         {

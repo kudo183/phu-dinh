@@ -12,7 +12,7 @@
         <!--Ma-->
         <CustomControl:DataGridReadOnlyTextColumn x:Name="maColumn"/>
         <!--Mat hang-->
-        <CustomControl:DataGridComboBoxColumnExt x:Name="matHangColumn"
+        <CustomControl:DataGridComboBoxColumnExt x:Name="matHangColumn" Header="{x:Static DesignTimeData:DDrMatHangNguyenLieu.Header_MatHang}"
                                                  HeaderAddButtonClick="headerAddButton_Click"
                                                  TextBinding="{Binding tMatHang.TenMatHang, Mode=OneWay}"
                                                  DisplayMemberPath="TenMatHang"
@@ -21,7 +21,7 @@
                                                  SelectedItemBinding="{Binding tMatHang, UpdateSourceTrigger=PropertyChanged}"
                                                  ItemsSource="{Binding tMatHangList}"/>
         <!--Nguyen lieu-->
-        <CustomControl:DataGridComboBoxColumnExt x:Name="nguyenLieuColumn"
+        <CustomControl:DataGridComboBoxColumnExt x:Name="nguyenLieuColumn" Header="{x:Static DesignTimeData:DDrMatHangNguyenLieu.Header_NguyenLieu}"
                                                  HeaderAddButtonClick="headerAddButton_Click"
                                                  TextBinding="{Binding rNguyenLieu.TenNguyenLieu, Mode=OneWay}"
                                                  DisplayMemberPath="TenNguyenLieu"

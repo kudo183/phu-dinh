@@ -12,11 +12,11 @@
         <!--Ma-->
         <CustomControl:DataGridReadOnlyTextColumn x:Name="maColumn"/>
         <!--Ngay-->
-        <CustomControl:DataGridDateColumn x:Name="ngayColumn"/>
+        <CustomControl:DataGridDateColumn x:Name="ngayColumn" Header="{x:Static DesignTimeData:DDtChuyenHang.Header_Ngay}"/>
         <!--Gio-->
         <CustomControl:DataGridTimeColumn x:Name="gioColumn"/>
-        <!--Nhan vien giao hang-->
-        <CustomControl:DataGridComboBoxColumnExt x:Name="nhanVienGiaoHangColumn"
+        <!--Nhan vien-->
+        <CustomControl:DataGridComboBoxColumnExt x:Name="nhanVienGiaoHangColumn" Header="{x:Static DesignTimeData:DDtChuyenHang.Header_NhanVien}"
                                                  HeaderAddButtonClick="headerAddButton_Click"
                                                  TextBinding="{Binding rNhanVien.TenNhanVien, Mode=OneWay}"
                                                  DisplayMemberPath="TenNhanVien"

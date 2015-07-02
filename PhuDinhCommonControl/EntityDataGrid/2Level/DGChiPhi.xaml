@@ -12,9 +12,9 @@
         <!--Ma-->
         <CustomControl:DataGridReadOnlyTextColumn x:Name="maColumn"/>
         <!--Ngay-->
-        <CustomControl:DataGridDateColumn x:Name="ngayColumn"/>
+        <CustomControl:DataGridDateColumn x:Name="ngayColumn" Header="{x:Static DesignTimeData:DDtChiPhi.Header_Ngay}"/>
         <!--Loai chi phi-->
-        <CustomControl:DataGridComboBoxColumnExt x:Name="loaiChiPhiColumn"
+        <CustomControl:DataGridComboBoxColumnExt x:Name="loaiChiPhiColumn" Header="{x:Static DesignTimeData:DDtChiPhi.Header_LoaiChiPhi}"
                                                  HeaderAddButtonClick="headerAddButton_Click"
                                                  TextBinding="{Binding rLoaiChiPhi.TenLoaiChiPhi, Mode=OneWay}"
                                                  DisplayMemberPath="TenLoaiChiPhi"
@@ -22,8 +22,8 @@
                                                  SelectedValueBinding="{Binding MaLoaiChiPhi, UpdateSourceTrigger=PropertyChanged}"
                                                  SelectedItemBinding="{Binding rLoaiChiPhi, UpdateSourceTrigger=PropertyChanged}"
                                                  ItemsSource="{Binding rLoaiChiPhiList}"/>
-        <!--Nhan vien giao hang-->
-        <CustomControl:DataGridComboBoxColumnExt x:Name="nhanVienGiaoHangColumn"
+        <!--Nhan vien-->
+        <CustomControl:DataGridComboBoxColumnExt x:Name="nhanVienGiaoHangColumn" Header="{x:Static DesignTimeData:DDtChiPhi.Header_NhanVien}"
                                                  HeaderAddButtonClick="headerAddButton_Click"
                                                  TextBinding="{Binding rNhanVien.TenNhanVien, Mode=OneWay}"
                                                  DisplayMemberPath="TenNhanVien"

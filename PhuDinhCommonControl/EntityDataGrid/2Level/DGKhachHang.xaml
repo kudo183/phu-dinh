@@ -12,7 +12,7 @@
         <!--Ma-->
         <CustomControl:DataGridReadOnlyTextColumn x:Name="maColumn"/>
         <!--Dia diem-->
-        <CustomControl:DataGridComboBoxColumnExt x:Name="diaDiemColumn"
+        <CustomControl:DataGridComboBoxColumnExt x:Name="diaDiemColumn" Header="{x:Static DesignTimeData:DDrKhachHang.Header_DiaDiem}"
                                                  HeaderAddButtonClick="headerAddButton_Click"
                                                  TextBinding="{Binding rDiaDiem.TenDiaDiem, Mode=OneWay}"
                                                  DisplayMemberPath="TenDiaDiem"

@@ -12,9 +12,9 @@
         <!--Ma-->
         <CustomControl:DataGridReadOnlyTextColumn x:Name="maColumn"/>
         <!--Ngay-->
-        <CustomControl:DataGridDateColumn x:Name="ngayColumn"/>
+        <CustomControl:DataGridDateColumn x:Name="ngayColumn" Header="{x:Static DesignTimeData:DDtNhapNguyenLieu.Header_Ngay}"/>
         <!--Nha cung cap-->
-        <CustomControl:DataGridComboBoxColumnExt x:Name="nhaCungCapColumn"
+        <CustomControl:DataGridComboBoxColumnExt x:Name="nhaCungCapColumn" Header="{x:Static DesignTimeData:DDtNhapNguyenLieu.Header_NhanCungCap}"
                                                  HeaderAddButtonClick="headerAddButton_Click"
                                                  TextBinding="{Binding rNhaCungCap.TenNhaCungCap, Mode=OneWay}"
                                                  DisplayMemberPath="TenNhaCungCap"
@@ -23,7 +23,7 @@
                                                  SelectedItemBinding="{Binding rNhaCungCap, UpdateSourceTrigger=PropertyChanged}"
                                                  ItemsSource="{Binding rNhaCungCapList}"/>
         <!--Nguyen lieu-->
-        <CustomControl:DataGridComboBoxColumnExt x:Name="nguyenLieuColumn"
+        <CustomControl:DataGridComboBoxColumnExt x:Name="nguyenLieuColumn" Header="{x:Static DesignTimeData:DDtNhapNguyenLieu.Header_NguyenLieu}"
                                                  HeaderAddButtonClick="headerAddButton_Click"
                                                  TextBinding="{Binding rNguyenLieu.TenNguyenLieu, Mode=OneWay}"
                                                  DisplayMemberPath="TenNguyenLieu"

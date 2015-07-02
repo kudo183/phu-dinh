@@ -1,4 +1,6 @@
-﻿using PhuDinhDataEntity;
+﻿using CustomControl.DataGridColumnHeaderFilterModel;
+using PhuDinhCommon;
+using PhuDinhDataEntity;
 using System.Linq;
 using PhuDinhData.ViewModel;
 
@@ -6,6 +8,21 @@ namespace PhuDinhData.DesignTimeData
 {
     public static class DDrDiaDiem
     {
+        private static HeaderTextFilterModel _header_Nuoc;
+        public static HeaderTextFilterModel Header_Nuoc
+        {
+            get
+            {
+                if (_header_Nuoc != null)
+                {
+                    return _header_Nuoc;
+                }
+
+                _header_Nuoc = new HeaderTextFilterModel(Constant.ColumnName_Nuoc);
+                return _header_Nuoc;
+            }
+        }
+
         private static DiaDiemViewModel _viewModel;
         public static DiaDiemViewModel ViewModel
         {

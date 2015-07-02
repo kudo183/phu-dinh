@@ -12,9 +12,9 @@
         <!--Ma-->
         <CustomControl:DataGridReadOnlyTextColumn x:Name="maColumn"/>
         <!--Ngay-->
-        <CustomControl:DataGridDateColumn x:Name="ngayColumn"/>
+        <CustomControl:DataGridDateColumn x:Name="ngayColumn" Header="{x:Static DesignTimeData:DDtNhapHang.Header_Ngay}"/>
         <!--Nhan vien-->
-        <CustomControl:DataGridComboBoxColumnExt x:Name="nhanVienColumn"
+        <CustomControl:DataGridComboBoxColumnExt x:Name="nhanVienColumn" Header="{x:Static DesignTimeData:DDtNhapHang.Header_NhanVien}"
                                                  HeaderAddButtonClick="headerAddButton_Click"
                                                  TextBinding="{Binding rNhanVien.TenNhanVien, Mode=OneWay}"
                                                  DisplayMemberPath="TenNhanVien"
@@ -23,7 +23,7 @@
                                                  SelectedItemBinding="{Binding rNhanVien, UpdateSourceTrigger=PropertyChanged}"
                                                  ItemsSource="{Binding rNhanVienList}"/>
         <!--Nha cung cap-->
-        <CustomControl:DataGridComboBoxColumnExt x:Name="nhaCungCapColumn" Width="300"
+        <CustomControl:DataGridComboBoxColumnExt x:Name="nhaCungCapColumn" Width="300" Header="{x:Static DesignTimeData:DDtNhapHang.Header_NhaCungCap}"
                                                  HeaderAddButtonClick="headerAddButton_Click"
                                                  TextBinding="{Binding rNhaCungCap.TenNhaCungCap, Mode=OneWay}"
                                                  DisplayMemberPath="TenNhaCungCap"
@@ -32,7 +32,7 @@
                                                  SelectedItemBinding="{Binding rNhaCungCap, UpdateSourceTrigger=PropertyChanged}"
                                                  ItemsSource="{Binding rNhaCungCapList}"/>
         <!--Kho hang-->
-        <CustomControl:DataGridComboBoxColumnExt x:Name="khoHangColumn" Width="250"
+        <CustomControl:DataGridComboBoxColumnExt x:Name="khoHangColumn" Width="250" Header="{x:Static DesignTimeData:DDtNhapHang.Header_KhoHang}"
                                                  HeaderAddButtonClick="headerAddButton_Click"
                                                  TextBinding="{Binding rKhoHang.TenKho, Mode=OneWay}"
                                                  DisplayMemberPath="TenKho"

@@ -12,9 +12,9 @@
         <!--Ma-->
         <CustomControl:DataGridReadOnlyTextColumn x:Name="maColumn"/>
         <!--Ngay-->
-        <CustomControl:DataGridDateColumn x:Name="ngayColumn"/>
+        <CustomControl:DataGridDateColumn x:Name="ngayColumn" Header="{x:Static DesignTimeData:DDtChuyenKho.Header_Ngay}"/>
         <!--Nhan vien-->
-        <CustomControl:DataGridComboBoxColumnExt x:Name="nhanVienColumn"
+        <CustomControl:DataGridComboBoxColumnExt x:Name="nhanVienColumn" Header="{x:Static DesignTimeData:DDtChuyenKho.Header_NhanVien}"
                                                  HeaderAddButtonClick="headerAddButton_Click"
                                                  TextBinding="{Binding rNhanVien.TenNhanVien, Mode=OneWay}"
                                                  DisplayMemberPath="TenNhanVien"
@@ -23,7 +23,7 @@
                                                  SelectedItemBinding="{Binding rNhanVien, UpdateSourceTrigger=PropertyChanged}"
                                                  ItemsSource="{Binding rNhanVienList}"/>
         <!--Kho hang Xuat-->
-        <CustomControl:DataGridComboBoxColumnExt x:Name="khoHangXuatColumn"
+        <CustomControl:DataGridComboBoxColumnExt x:Name="khoHangXuatColumn" Header="{x:Static DesignTimeData:DDtChuyenKho.Header_KhoHangXuat}"
                                                  HeaderAddButtonClick="headerAddButton_Click"
                                                  TextBinding="{Binding rKhoHangXuat.TenKho, Mode=OneWay}"
                                                  DisplayMemberPath="TenKho"
@@ -32,7 +32,7 @@
                                                  SelectedItemBinding="{Binding rKhoHangXuat, UpdateSourceTrigger=PropertyChanged}"
                                                  ItemsSource="{Binding rKhoHangList}"/>
         <!--Kho hang Nhap-->
-        <CustomControl:DataGridComboBoxColumnExt x:Name="khoHangNhapColumn"
+        <CustomControl:DataGridComboBoxColumnExt x:Name="khoHangNhapColumn" Header="{x:Static DesignTimeData:DDtChuyenKho.Header_KhoHangNhap}"
                                                  HeaderAddButtonClick="headerAddButton_Click"
                                                  TextBinding="{Binding rKhoHangNhap.TenKho, Mode=OneWay}"
                                                  DisplayMemberPath="TenKho"
