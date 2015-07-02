@@ -12,7 +12,7 @@
         <!--Ma-->
         <CustomControl:DataGridReadOnlyTextColumn x:Name="maColumn"/>
         <!--Don hang-->
-        <CustomControl:DataGridReadOnlyLeftAlignTextColumn x:Name="chuyenHangDonHangColumn" Width="250"
+        <CustomControl:DataGridReadOnlyLeftAlignTextColumn x:Name="chuyenHangDonHangColumn" Width="300"
                                                   Header="{x:Static PhuDinhCommon:Constant.ColumnName_DonHang}"
                                                   Binding="{Binding tDonHang.TenDonHang}"/>
         <!--Mat hang-->

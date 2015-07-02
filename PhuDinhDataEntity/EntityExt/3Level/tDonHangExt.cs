@@ -12,8 +12,9 @@ namespace PhuDinhDataEntity
         {
             get
             {
-                return string.Format("{0}_{1}",
+                return string.Format("{0}_{1}_{2}",
                     Ngay.ToString("dd/MM/yy")
+                    , rKhoHang == null ? "" : rKhoHang.TenKho
                     , rKhachHang == null ? "" : rKhachHang.TenKhachHang);
             }
         }
