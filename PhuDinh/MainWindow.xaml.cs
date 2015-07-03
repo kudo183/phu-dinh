@@ -27,11 +27,18 @@ namespace PhuDinh
             //Common.ServiceLocator.Instance.Initialize(new Dictionary<Type, Type>() { { typeof(IClientContextManager), typeof(ODataContextManager) } });
             Common.ServiceLocator.Instance.Initialize(new Dictionary<Type, Type>() { { typeof(IClientContextManager), typeof(EFContextManager) } });
 
+#if DEBUG
+            //ConfigurationManager.AppSettings["DataSource"] = ".";
+            ConfigurationManager.AppSettings["InitialCatalog"] = "PhuDinh_test";
+#endif
+
             InitializeComponent();
             Thread.CurrentThread.CurrentCulture = new CultureInfo("vi-VN");
 
 #if DEBUG
-            Title = string.Format("{0}", "Debug**********");
+            Title = string.Format("***Debug*** DB:{0} Server:{1}"
+                , ConfigurationManager.AppSettings["InitialCatalog"]
+                , ConfigurationManager.AppSettings["DataSource"]);
 #else
             Title = string.Format("{0}", "Chuong trinh quan ly");
             PhuDinhData.TonKhoManager.UpdateTonKho();

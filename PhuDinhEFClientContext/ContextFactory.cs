@@ -17,18 +17,11 @@ namespace PhuDinhEFClientContext
         {
             var sqlConnectionStringBuilder = new SqlConnectionStringBuilder
             {
-#if DEBUG
-                DataSource = ".",
-                //DataSource = ConfigurationManager.AppSettings["DataSource"],
-                InitialCatalog = "PhuDinh_test",
-#else
                 DataSource = ConfigurationManager.AppSettings["DataSource"],
                 InitialCatalog = ConfigurationManager.AppSettings["InitialCatalog"],
-#endif
 
                 UserID = Crypto.Decrypt(ConfigurationManager.AppSettings["UserID"], "nobita183#"),
                 Password = Crypto.Decrypt(ConfigurationManager.AppSettings["Password"], "nobita183#"),
-                
 
                 //add this config for fixing asp.net Web exception 
                 //{"There is already an open DataReader associated with this Command which must be closed first."}
