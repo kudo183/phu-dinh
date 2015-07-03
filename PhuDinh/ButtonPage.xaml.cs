@@ -22,11 +22,11 @@ namespace PhuDinh
                 return;
             }
 
-            var w = new Window
+            var w = new WindowEx
             {
                 Title = button.Content.ToString(),
-                Content = ViewFactory.CreateView(button.Tag.ToString()),
-                WindowState = WindowState.Maximized
+                WindowState = WindowState.Maximized,
+                brdContent = { Child = ViewFactory.CreateView(button.Tag.ToString()) }
             };
             w.Show();
         }

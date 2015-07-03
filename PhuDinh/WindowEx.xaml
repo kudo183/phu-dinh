@@ -1,0 +1,14 @@
+﻿<Window x:Class="PhuDinh.WindowEx"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:Common="clr-namespace:Common;assembly=Common"
+        Title="WindowEx" Height="300" Width="300">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="100"/>
+        </Grid.ColumnDefinitions>
+        <Border x:Name="brdContent" Grid.Column="0"/>
+        <Common:LoggerViewer Grid.Column="1"/>
+        <GridSplitter Width="5" VerticalAlignment="Stretch"/>
+    </Grid>
+</Window>

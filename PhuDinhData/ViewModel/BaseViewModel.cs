@@ -182,6 +182,7 @@ namespace PhuDinhData.ViewModel
 
         public virtual void Save()
         {
+            Common.Logger.LogDebug(string.Format("{0} {1}ms Enter", typeof(T).Name, MyStopwatch.ElapsedMilliseconds()));
             try
             {
                 _contextManager.Save(Entity.ToList(), _origData);
@@ -191,6 +192,7 @@ namespace PhuDinhData.ViewModel
                 _contextManager.UndoChange();
                 throw;
             }
+            Common.Logger.LogDebug(string.Format("{0} {1}ms Exit", typeof(T).Name, MyStopwatch.ElapsedMilliseconds()));
         }
 
         public abstract void Load();
@@ -199,6 +201,7 @@ namespace PhuDinhData.ViewModel
 
         public virtual void RefreshData()
         {
+            Common.Logger.LogDebug(string.Format("{0} {1}ms Enter", typeof(T).Name, MyStopwatch.ElapsedMilliseconds()));
             Logger.Info(GetType().Name + ": RefreshData");
 
             if (MainFilter.Filter == null)
@@ -227,11 +230,13 @@ namespace PhuDinhData.ViewModel
                 Entity.Add(item);
             }
 
+            Common.Logger.LogDebug(string.Format("{0} {1}ms ReferenceData", typeof(T).Name, MyStopwatch.ElapsedMilliseconds()));
             Logger.Info("     UpdateAllReferenceData");
             UpdateAllReferenceData();
 
             Logger.Info("     Load");
             Load();
+            Common.Logger.LogDebug(string.Format("{0} {1}ms Exit", typeof(T).Name, MyStopwatch.ElapsedMilliseconds()));
         }
 
         public virtual void Dispose()

@@ -134,6 +134,7 @@ namespace PhuDinhCommonControl
 
         public virtual void RefreshView()
         {
+            Logger.LogDebug(string.Format("{0} {1}ms", typeof(T).Name, MyStopwatch.ElapsedMilliseconds()));
             if (_viewModel == null)
                 return;
 
