@@ -18,5 +18,6 @@
             d:DataContext="{x:Static DesignTimeData:DDrNhanVien.ViewModel}"
             Grid.Row="1"
             x:Name="_rNhanVienView"/>
+        <GridSplitter HorizontalAlignment="Stretch" Height="5" VerticalAlignment="Bottom"/>
     </Grid>
 </UserControl>

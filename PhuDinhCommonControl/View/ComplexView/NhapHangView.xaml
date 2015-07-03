@@ -18,5 +18,6 @@
             d:DataContext="{x:Static DesignTimeData:DDtChiTietNhapHang.ViewModel}"
             Grid.Row="1"
             x:Name="_tChiTietNhapHangView"/>
+        <GridSplitter HorizontalAlignment="Stretch" Height="5" VerticalAlignment="Bottom"/>
     </Grid>
 </UserControl>

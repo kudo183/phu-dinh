@@ -19,5 +19,6 @@
             d:DataContext="{x:Static DesignTimeData:DDtMatHang.ViewModel}"
             Grid.Row="1"
             x:Name="_tMatHangView"/>
+        <GridSplitter HorizontalAlignment="Stretch" Height="5" VerticalAlignment="Bottom"/>
     </Grid>
 </UserControl>

@@ -24,5 +24,7 @@
             d:DataContext="{x:Static DesignTimeData:DDtChiTietChuyenHangDonHang.ViewModel}"
             Grid.Row="2"
             x:Name="_tChiTietChuyenHangDonHangView"/>
+        <GridSplitter HorizontalAlignment="Stretch" Height="5" VerticalAlignment="Bottom"/>
+        <GridSplitter HorizontalAlignment="Stretch" Height="5" VerticalAlignment="Bottom" Grid.Row="1"/>
     </Grid>
 </PhuDinhCommonControl:_BaseComplexView>
