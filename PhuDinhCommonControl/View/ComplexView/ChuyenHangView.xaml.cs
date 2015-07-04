@@ -107,7 +107,7 @@ namespace PhuDinhCommonControl
         {
             var chuyenHang = dataGrid.SelectedItem as PhuDinhDataEntity.tChuyenHang;
 
-            if (chuyenHang == null)
+            if (chuyenHang == null || chuyenHang.Ma == 0)
             {
                 _tChuyenHangDonHangView.SetMainFilter(
                     PhuDinhData.Filter.Filter_tChuyenHangDonHang.MaChuyenHang, null, true);
@@ -130,7 +130,7 @@ namespace PhuDinhCommonControl
         {
             var chuyenHangDonHang = dataGrid.SelectedItem as PhuDinhDataEntity.tChuyenHangDonHang;
 
-            if (chuyenHangDonHang == null)
+            if (chuyenHangDonHang == null || chuyenHangDonHang.Ma == 0)
             {
                 _tChiTietChuyenHangDonHangView.SetMainFilter(
                     PhuDinhData.Filter.Filter_tChiTietChuyenHangDonHang.MaChuyenHangDonHang, null, true);

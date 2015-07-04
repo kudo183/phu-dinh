@@ -36,7 +36,7 @@ namespace PhuDinhCommonControl
             }
 
             var baixe = ((DataGrid)sender).SelectedItem as PhuDinhDataEntity.rBaiXe;
-            if (baixe == null)
+            if (baixe == null || baixe.Ma == 0)
             {
                 _rChanhView.SetMainFilter(PhuDinhData.Filter.Filter_rChanh.MaBaiXe, null, true);
                 _rChanhView.RefreshView();

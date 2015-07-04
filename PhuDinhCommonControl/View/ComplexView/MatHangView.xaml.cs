@@ -36,7 +36,7 @@ namespace PhuDinhCommonControl
             }
 
             var loaihang = ((DataGrid)sender).SelectedItem as PhuDinhDataEntity.rLoaiHang;
-            if (loaihang == null)
+            if (loaihang == null || loaihang.Ma == 0)
             {
                 _tMatHangView.SetMainFilter(PhuDinhData.Filter.Filter_tMatHang.MaLoaiHang, null, true);
                 _tMatHangView.RefreshView();

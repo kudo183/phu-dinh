@@ -47,7 +47,7 @@ namespace PhuDinhCommonControl
 
         void FocustChiTietChuyenKhoView()
         {
-            _tChiTietChuyenKhoView.dg.FocusCell(_tChiTietChuyenKhoView.dg.Items.Count - 1, 2);                        
+            _tChiTietChuyenKhoView.dg.FocusCell(_tChiTietChuyenKhoView.dg.Items.Count - 1, 2);
         }
 
         void ChuyenKhoView_Loaded(object sender, RoutedEventArgs e)
@@ -105,7 +105,7 @@ namespace PhuDinhCommonControl
         {
             var ChuyenKho = dataGrid.SelectedItem as PhuDinhDataEntity.tChuyenKho;
 
-            if (ChuyenKho == null)
+            if (ChuyenKho == null || ChuyenKho.Ma == 0)
             {
                 _tChiTietChuyenKhoView.SetMainFilter(
                     PhuDinhData.Filter.Filter_tChiTietChuyenKho.MaChuyenKho, null, true);

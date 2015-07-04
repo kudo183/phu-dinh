@@ -62,7 +62,7 @@ namespace PhuDinhCommonControl
             }
 
             var khachHang = ((DataGrid)sender).SelectedItem as PhuDinhDataEntity.rKhachHang;
-            if (khachHang == null)
+            if (khachHang == null || khachHang.Ma == 0)
             {
                 _tDonHangView.SetMainFilter(PhuDinhData.Filter.Filter_tDonHang.MaKhachHang, null, true);
                 _tDonHangView.RefreshView();

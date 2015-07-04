@@ -107,7 +107,7 @@ namespace PhuDinhCommonControl
         {
             var NhapHang = dataGrid.SelectedItem as PhuDinhDataEntity.tNhapHang;
 
-            if (NhapHang == null)
+            if (NhapHang == null || NhapHang.Ma == 0)
             {
                 _tChiTietNhapHangView.SetMainFilter(
                     PhuDinhData.Filter.Filter_tChiTietNhapHang.MaNhapHang, null, true);
