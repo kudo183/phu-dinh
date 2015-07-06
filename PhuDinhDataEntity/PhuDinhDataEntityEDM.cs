@@ -5,9 +5,15 @@ namespace PhuDinhDataEntity
 {
     public static class PhuDinhDataEntityEDM
     {
+        private static IEdmModel _edmModel = null;
         public static IEdmModel GetPhuDinhDataEntityEDM()
         {
-            var builder = new ODataConventionModelBuilder {ContainerName = "PhuDinh_testContext"};
+            if (_edmModel != null)
+            {
+                return _edmModel;
+            }
+
+            var builder = new ODataConventionModelBuilder { ContainerName = "PhuDinh_testContext" };
             builder.EntitySet<rBaiXe>("rBaiXes").EntityType.HasKey(p => p.Ma);
             builder.EntitySet<rCanhBaoTonKho>("rCanhBaoTonKhos").EntityType.HasKey(p => p.Ma);
             builder.EntitySet<rChanh>("rChanhs").EntityType.HasKey(p => p.Ma);
@@ -40,7 +46,8 @@ namespace PhuDinhDataEntity
             builder.EntitySet<tToaHang>("tToaHangs").EntityType.HasKey(p => p.Ma);
             builder.EntitySet<tTonKho>("tTonKhos").EntityType.HasKey(p => p.Ma);
 
-            return builder.GetEdmModel();
+            _edmModel = builder.GetEdmModel();
+            return _edmModel;
         }
     }
 }
