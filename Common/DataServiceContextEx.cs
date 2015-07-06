@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Data.Services.Client;
+using System.Data.Services.Common;
 using System.Xml.Linq;
+using Microsoft.Data.Edm;
 
 namespace Common
 {
@@ -8,10 +10,12 @@ namespace Common
     {
         /// <summary>Constructor taking the service root in parameter.</summary>
         /// <param name="serviceRoot"></param>
-        public DataServiceContextEx(Uri serviceRoot)
-            : base(serviceRoot)
+        /// <param name="edmModel"></param>
+        public DataServiceContextEx(Uri serviceRoot, IEdmModel edmModel)
+            : base(serviceRoot, DataServiceProtocolVersion.V3)
         {
-            WritingEntity += DataModelProxy_WritingEntity;
+            Format.UseJson(edmModel);
+            //WritingEntity += DataModelProxy_WritingEntity;
         }
 
         void DataModelProxy_WritingEntity(object sender, ReadingWritingEntityEventArgs e)

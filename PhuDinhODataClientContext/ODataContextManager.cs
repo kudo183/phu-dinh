@@ -10,10 +10,26 @@ namespace PhuDinhODataClientContext
 {
     public sealed class ODataContextManager : IClientContextManager
     {
-        private DataServiceContextEx _context = new DataServiceContextEx(new Uri("http://localhost:17619/odata"));
+        private DataServiceContextEx _context;
+
+        public ODataContextManager()
+        {
+            CreateContext();
+        }
+
         public void CreateContext()
         {
-            _context = new DataServiceContextEx(new Uri("http://localhost:17619/odata"));
+            _context = new DataServiceContextEx(new Uri("http://luoithepvinhphat.com:8888/odata")
+                , PhuDinhDataEntity.PhuDinhDataEntityEDM.GetPhuDinhDataEntityEDM());
+
+            _context.ReceivingResponse += _context_ReceivingResponse;
+        }
+
+        void _context_ReceivingResponse(object sender, ReceivingResponseEventArgs e)
+        {
+            var r = e.ResponseMessage as HttpWebResponseMessage;
+
+            Logger.LogDebug(r.Response.ResponseUri + "   " + r.Response.ContentLength.ToString());
         }
 
         public List<T> GetData<T>(Expression<Func<T, bool>> filter) where T : Common.BindableObject
@@ -48,11 +64,11 @@ namespace PhuDinhODataClientContext
         {
             var query = _context.Set<T>().Where(filter);//add filter
             query = Repository.RepositoryLocator<T>.GetDataQuery(query);//add order, expand
-            query = query.Skip(pageSize * (currentPageIndex - 1));//add paging
+            query = query.Skip(pageSize * (currentPageIndex - 1)).Take(pageSize);//add paging
 
-            var collection = new DataServiceCollection<T>(query);//this line enable change tracking.
+            var collection = new DataServiceCollection<T>(query);//this line enable change tracking and execute the query, not need to call query.ToList()
 
-            return query.ToList();
+            return collection.ToList();
         }
 
         public void UndoChange()
@@ -72,7 +88,7 @@ namespace PhuDinhODataClientContext
 
         public int GetDataCount<T>(Expression<Func<T, bool>> filter) where T : Common.BindableObject
         {
-            var query = _context.Set<T>().IncludeTotalCount().Where(filter) as DataServiceQuery;
+            var query = _context.Set<T>().IncludeTotalCount().Where(filter).Skip(0).Take(1) as DataServiceQuery;//skip(0).Take(1) because just need get TotalCount
             var response = query.Execute() as QueryOperationResponse<T>;
 
             return (int)response.TotalCount;
