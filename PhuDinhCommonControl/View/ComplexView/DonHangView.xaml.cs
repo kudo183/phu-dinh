@@ -1,7 +1,4 @@
-﻿using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Input;
-using PhuDinhCommon;
+﻿using PhuDinhCommon;
 using PhuDinhCommonControl.EntityDataGrid;
 
 namespace PhuDinhCommonControl
@@ -27,15 +24,9 @@ namespace PhuDinhCommonControl
 
         protected override void OnAfterSave(IBaseView view)
         {
-            if (view is tDonHangView)
+            if (view is tChiTietDonHangView)
             {
-                RefreshChiTietDonHangView(_tDonHangView.dg);
-            }
-            else if (view is tChiTietDonHangView)
-            {
-                _tDonHangView.RefreshView();
-
-                Keyboard.Focus(_tChiTietDonHangView.dg);
+                
             }
         }
 
@@ -43,15 +34,13 @@ namespace PhuDinhCommonControl
         {
             if (view is DGDonHang)
             {
-                RefreshChiTietDonHangView(_tDonHangView.dg);
+                RefreshChiTietDonHangView();
             }
         }
 
-        private void RefreshChiTietDonHangView(DataGrid dataGrid)
+        private void RefreshChiTietDonHangView()
         {
-            var donHang = dataGrid.SelectedItem as PhuDinhDataEntity.tDonHang;
-
-            if (donHang == null || donHang.Ma == 0)
+            if (_tDonHangView.SelectedItem == null || _tDonHangView.SelectedItem.Ma == 0)
             {
                 _tChiTietDonHangView.SetMainFilter(
                     PhuDinhData.Filter.Filter_tChiTietDonHang.MaDonHang, null, true);
@@ -61,9 +50,9 @@ namespace PhuDinhCommonControl
             }
 
             _tChiTietDonHangView.SetMainFilter(
-                PhuDinhData.Filter.Filter_tChiTietDonHang.MaDonHang, donHang.Ma);
+                PhuDinhData.Filter.Filter_tChiTietDonHang.MaDonHang, _tDonHangView.SelectedItem.Ma);
 
-            _tChiTietDonHangView.SetDefaultValue(Constant.ColumnName_MaDonHang, donHang.Ma);
+            _tChiTietDonHangView.SetDefaultValue(Constant.ColumnName_MaDonHang, _tDonHangView.SelectedItem.Ma);
 
             _tChiTietDonHangView.RefreshView();
         }

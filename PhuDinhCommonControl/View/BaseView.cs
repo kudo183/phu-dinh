@@ -19,6 +19,11 @@ namespace PhuDinhCommonControl
 
         public event EventHandler MoveFocus;
 
+        public IBaseViewModel<T> ViewModel
+        {
+            get { return _viewModel; }
+        }
+
         public DataGridExt dg { get; set; }
 
         public T SelectedItem

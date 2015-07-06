@@ -1,8 +1,6 @@
-﻿using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Input;
-using PhuDinhCommon;
+﻿using PhuDinhCommon;
 using PhuDinhCommonControl.EntityDataGrid;
+using PhuDinhDataEntity;
 
 namespace PhuDinhCommonControl
 {
@@ -27,15 +25,9 @@ namespace PhuDinhCommonControl
 
         protected override void OnAfterSave(IBaseView view)
         {
-            if (view is tToaHangView)
+            if (view is tChiTietToaHangView)
             {
-                RefreshChiTietToaHangView(_tToaHangView.dg);
-            }
-            else if (view is tChiTietToaHangView)
-            {
-                _tToaHangView.RefreshView();
-
-                Keyboard.Focus(_tChiTietToaHangView.dg);
+                
             }
         }
 
@@ -43,15 +35,13 @@ namespace PhuDinhCommonControl
         {
             if (view is DGToaHang)
             {
-                RefreshChiTietToaHangView(_tToaHangView.dg);
+                RefreshChiTietToaHangView();
             }
         }
 
-        private void RefreshChiTietToaHangView(DataGrid dataGrid)
+        private void RefreshChiTietToaHangView()
         {
-            var ToaHang = dataGrid.SelectedItem as PhuDinhDataEntity.tToaHang;
-
-            if (ToaHang == null || ToaHang.Ma == 0)
+            if (_tToaHangView.SelectedItem == null || _tToaHangView.SelectedItem.Ma == 0)
             {
                 _tChiTietToaHangView.SetMainFilter(
                     PhuDinhData.Filter.Filter_tChiTietToaHang.MaToaHang, null, true);
@@ -61,10 +51,10 @@ namespace PhuDinhCommonControl
             }
 
             _tChiTietToaHangView.SetMainFilter(
-                PhuDinhData.Filter.Filter_tChiTietToaHang.MaToaHang, ToaHang.Ma);
-            _tChiTietToaHangView.SetReferenceFilter<PhuDinhDataEntity.tChiTietDonHang>(
-                Constant.ColumnName_ChiTietDonHang, p => p.tDonHang.MaKhachHang == ToaHang.MaKhachHang);
-            _tChiTietToaHangView.SetDefaultValue(Constant.ColumnName_MaToaHang, ToaHang.Ma);
+                PhuDinhData.Filter.Filter_tChiTietToaHang.MaToaHang, _tToaHangView.SelectedItem.Ma);
+            _tChiTietToaHangView.SetReferenceFilter<tChiTietDonHang>(
+                Constant.ColumnName_ChiTietDonHang, p => p.tDonHang.MaKhachHang == _tToaHangView.SelectedItem.MaKhachHang);
+            _tChiTietToaHangView.SetDefaultValue(Constant.ColumnName_MaToaHang, _tToaHangView.SelectedItem.Ma);
 
             _tChiTietToaHangView.RefreshView();
         }

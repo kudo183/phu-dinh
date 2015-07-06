@@ -1,9 +1,9 @@
 ﻿using System.Windows.Input;
 using PhuDinhCommon;
 using System.Linq;
-using System.Windows.Controls;
 using PhuDinhData.ViewModel;
 using PhuDinhCommonControl.EntityDataGrid;
+using PhuDinhDataEntity;
 
 namespace PhuDinhCommonControl
 {
@@ -53,7 +53,7 @@ namespace PhuDinhCommonControl
             }
             else if (view is tChiTietChuyenHangDonHangView)
             {
-                (_tChuyenHangDonHangView.dg.DataContext as ChuyenHangDonHangViewModel).UpdateReferenceData(Constant.ColumnName_DonHang);
+                _tChuyenHangDonHangView.ViewModel.UpdateReferenceData(Constant.ColumnName_DonHang);
                 Keyboard.Focus(_tChiTietChuyenHangDonHangView.dg);
             }
         }
@@ -62,52 +62,44 @@ namespace PhuDinhCommonControl
         {
             if (view is DGChuyenHang)
             {
-                RefreshChuyenHangDonHangView(_tChuyenHangView.dg);
+                RefreshChuyenHangDonHangView();
             }
             else if (view is DGChuyenHangDonHang)
             {
-                RefreshChiTietChuyenHangDonHangView(_tChuyenHangDonHangView.dg);
+                RefreshChiTietChuyenHangDonHangView();
             }
         }
 
         private void ProcessChuyenHangDonHangView_AfterSave()
         {
-            var chuyenHangDonHang =
-                _tChuyenHangDonHangView.dg.SelectedItem
-                as PhuDinhDataEntity.tChuyenHangDonHang;
-
-            if (chuyenHangDonHang != null && chuyenHangDonHang.tChiTietChuyenHangDonHangs.Count > 0)
+            if (_tChuyenHangDonHangView.SelectedItem != null && _tChuyenHangDonHangView.SelectedItem.tChiTietChuyenHangDonHangs.Count > 0)
             {
                 return;
             }
 
-            var context =
-                _tChiTietChuyenHangDonHangView.dg.DataContext
-                as ChiTietChuyenHangDonHangViewModel;
-
-            if (chuyenHangDonHang == null || chuyenHangDonHang.tDonHang == null)
+            if (_tChuyenHangDonHangView.SelectedItem == null || _tChuyenHangDonHangView.SelectedItem.tDonHang == null)
+            {
                 return;
+            }
 
-            foreach (var tChiTietDonHang in chuyenHangDonHang.tDonHang.tChiTietDonHangs.Where(p => p.Xong == false))
+            foreach (var tChiTietDonHang in _tChuyenHangDonHangView.SelectedItem.tDonHang.tChiTietDonHangs.Where(p => p.Xong == false))
             {
                 var soLuong = tChiTietDonHang.SoLuong - tChiTietDonHang.tChiTietChuyenHangDonHangs.Sum(p => p.SoLuong);
-                var ct = new PhuDinhDataEntity.tChiTietChuyenHangDonHang
+                var ct = new tChiTietChuyenHangDonHang
                              {
                                  MaChiTietDonHang = tChiTietDonHang.Ma,
-                                 MaChuyenHangDonHang = chuyenHangDonHang.Ma,
+                                 MaChuyenHangDonHang = _tChuyenHangDonHangView.SelectedItem.Ma,
                                  tChiTietDonHang = tChiTietDonHang,
                                  SoLuong = soLuong
                              };
 
-                context.Entity.Add(ct);
+                _tChiTietChuyenHangDonHangView.ViewModel.Entity.Add(ct);
             }
         }
 
-        private void RefreshChuyenHangDonHangView(DataGrid dataGrid)
+        private void RefreshChuyenHangDonHangView()
         {
-            var chuyenHang = dataGrid.SelectedItem as PhuDinhDataEntity.tChuyenHang;
-
-            if (chuyenHang == null || chuyenHang.Ma == 0)
+            if (_tChuyenHangView.SelectedItem == null || _tChuyenHangView.SelectedItem.Ma == 0)
             {
                 _tChuyenHangDonHangView.SetMainFilter(
                     PhuDinhData.Filter.Filter_tChuyenHangDonHang.MaChuyenHang, null, true);
@@ -116,21 +108,19 @@ namespace PhuDinhCommonControl
                 return;
             }
 
-            _tChuyenHangDonHangView.SetReferenceFilter<PhuDinhDataEntity.tDonHang>(
+            _tChuyenHangDonHangView.SetReferenceFilter<tDonHang>(
                 Constant.ColumnName_DonHang, (p => p.Xong == false));
 
             _tChuyenHangDonHangView.SetMainFilter(
-                PhuDinhData.Filter.Filter_tChuyenHangDonHang.MaChuyenHang, chuyenHang.Ma);
+                PhuDinhData.Filter.Filter_tChuyenHangDonHang.MaChuyenHang, _tChuyenHangView.SelectedItem.Ma);
 
-            _tChuyenHangDonHangView.SetDefaultValue(Constant.ColumnName_MaChuyenHang, chuyenHang.Ma);
+            _tChuyenHangDonHangView.SetDefaultValue(Constant.ColumnName_MaChuyenHang, _tChuyenHangView.SelectedItem.Ma);
             _tChuyenHangDonHangView.RefreshView();
         }
 
-        private void RefreshChiTietChuyenHangDonHangView(DataGrid dataGrid)
+        private void RefreshChiTietChuyenHangDonHangView()
         {
-            var chuyenHangDonHang = dataGrid.SelectedItem as PhuDinhDataEntity.tChuyenHangDonHang;
-
-            if (chuyenHangDonHang == null || chuyenHangDonHang.Ma == 0)
+            if (_tChuyenHangDonHangView.SelectedItem == null || _tChuyenHangDonHangView.SelectedItem.Ma == 0)
             {
                 _tChiTietChuyenHangDonHangView.SetMainFilter(
                     PhuDinhData.Filter.Filter_tChiTietChuyenHangDonHang.MaChuyenHangDonHang, null, true);
@@ -140,15 +130,15 @@ namespace PhuDinhCommonControl
                 return;
             }
 
-            _tChiTietChuyenHangDonHangView.SetReferenceFilter<PhuDinhDataEntity.tChiTietDonHang>(
+            _tChiTietChuyenHangDonHangView.SetReferenceFilter<tChiTietDonHang>(
                 Constant.ColumnName_ChiTietDonHang
-                , (p => p.Xong == false && p.MaDonHang == chuyenHangDonHang.MaDonHang));
+                , (p => p.Xong == false && p.MaDonHang == _tChuyenHangDonHangView.SelectedItem.MaDonHang));
 
             _tChiTietChuyenHangDonHangView.SetMainFilter(
-                PhuDinhData.Filter.Filter_tChiTietChuyenHangDonHang.MaChuyenHangDonHang, chuyenHangDonHang.Ma);
+                PhuDinhData.Filter.Filter_tChiTietChuyenHangDonHang.MaChuyenHangDonHang, _tChuyenHangDonHangView.SelectedItem.Ma);
 
             _tChiTietChuyenHangDonHangView.SetDefaultValue(
-                Constant.ColumnName_MaChuyenHangDonHang, chuyenHangDonHang.Ma);
+                Constant.ColumnName_MaChuyenHangDonHang, _tChuyenHangDonHangView.SelectedItem.Ma);
 
             _tChiTietChuyenHangDonHangView.RefreshView();
         }

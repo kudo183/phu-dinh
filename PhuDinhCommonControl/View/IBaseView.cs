@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using CustomControl;
-using PhuDinhData;
 
 namespace PhuDinhCommonControl
 {
@@ -16,6 +11,5 @@ namespace PhuDinhCommonControl
         event EventHandler MoveFocus;
 
         DataGridExt dg { get; set; }
-
     }
 }
