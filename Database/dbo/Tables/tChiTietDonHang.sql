@@ -18,6 +18,8 @@
 
 
 
+
+
 GO
 CREATE TRIGGER [dbo].[tChiTietDonHang_trUpdateXong]
 	ON [dbo].[tChiTietDonHang]
@@ -111,4 +113,18 @@ CREATE TRIGGER [dbo].[tChiTietDonHang_trUpdateTonKho]
 		join tTonKho tk on tk.MaMatHang = d.MaMatHang and tk.MaKhoHang = dh.MaKhoHang
 		where tk.Ngay >= dh.Ngay
 
+	END
+GO
+
+CREATE TRIGGER [dbo].[tChiTietDonHang_trUpdateDonHangTongSoLuong]
+	ON [dbo].[tChiTietDonHang]
+	after DELETE, INSERT, UPDATE
+	AS
+	BEGIN
+		SET NOCOUNT ON
+
+		update tDonHang
+		set TongSoLuong = (select ISNULL(sum(SoLuong), 0) from tChiTietDonHang where MaDonHang = tDonHang.Ma)
+		from (select i.MaDonHang from inserted i union select d.MaDonHang from deleted d) as t
+		where tDonHang.Ma = t.MaDonHang
 	END
