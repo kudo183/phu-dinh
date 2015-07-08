@@ -19,18 +19,18 @@ namespace PhuDinhDataEntity
             }
         }
 
-        public int TongSoLuong
-        {
-            get
-            {
-                int result = 0;
-                if (tChiTietDonHangs != null)
-                {
-                    result += tChiTietDonHangs.Sum(tChiTietDonHang => tChiTietDonHang.SoLuong);
-                }
-                return result;
-            }
-        }
+        //public int TongSoLuong
+        //{
+        //    get
+        //    {
+        //        int result = 0;
+        //        if (tChiTietDonHangs != null)
+        //        {
+        //            result += tChiTietDonHangs.Sum(tChiTietDonHang => tChiTietDonHang.SoLuong);
+        //        }
+        //        return result;
+        //    }
+        //}
 
         public List<rKhachHang> rKhachHangList { get; set; }
         public List<rChanh> rChanhList { get; set; }

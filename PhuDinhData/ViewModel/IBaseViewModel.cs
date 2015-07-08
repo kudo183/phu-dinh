@@ -20,5 +20,6 @@ namespace PhuDinhData.ViewModel
         IFilter<T> MainFilter { get; set; }
         bool IsValid { get; set; }
         void UpdateReferenceData(string columnName);
+        void ReloadEntity(T entity);
     }
 }

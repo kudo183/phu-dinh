@@ -26,7 +26,7 @@ namespace PhuDinhCommonControl
         {
             if (view is tChiTietDonHangView)
             {
-                
+                _tDonHangView.ViewModel.ReloadEntity(_tDonHangView.SelectedItem);
             }
         }
 

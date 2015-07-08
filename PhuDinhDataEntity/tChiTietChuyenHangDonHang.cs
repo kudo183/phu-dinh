@@ -27,6 +27,9 @@ namespace PhuDinhDataEntity
         private int _soluong;
         public int SoLuong { get { return _soluong; } set { SetPropertyAndValidate(ref _soluong, value); } }
     
+        private int _soluongtheodonhang;
+        public int SoLuongTheoDonHang { get { return _soluongtheodonhang; } set { SetPropertyAndValidate(ref _soluongtheodonhang, value); } }
+    
     
         public virtual tChiTietDonHang tChiTietDonHang { get; set; }
         public virtual tChuyenHangDonHang tChuyenHangDonHang { get; set; }

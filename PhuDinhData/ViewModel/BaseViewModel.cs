@@ -187,7 +187,7 @@ namespace PhuDinhData.ViewModel
             {
                 _contextManager.Save(Entity.ToList(), _origData);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 _contextManager.UndoChange();
                 throw;
@@ -243,6 +243,11 @@ namespace PhuDinhData.ViewModel
         {
             if (_contextManager != null)
                 _contextManager.Dispose();
+        }
+
+        public void ReloadEntity(T entity)
+        {
+            _contextManager.ReloadEntity(entity);
         }
     }
 }

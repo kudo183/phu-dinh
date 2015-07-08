@@ -40,6 +40,9 @@ namespace PhuDinhDataEntity
         private int _makhohang;
         public int MaKhoHang { get { return _makhohang; } set { SetPropertyAndValidate(ref _makhohang, value); } }
     
+        private int _tongsoluong;
+        public int TongSoLuong { get { return _tongsoluong; } set { SetPropertyAndValidate(ref _tongsoluong, value); } }
+    
     
         public virtual rChanh rChanh { get; set; }
         public virtual rKhachHang rKhachHang { get; set; }

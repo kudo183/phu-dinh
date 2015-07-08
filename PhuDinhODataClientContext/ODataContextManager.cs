@@ -94,6 +94,11 @@ namespace PhuDinhODataClientContext
             return (int)response.TotalCount;
         }
 
+        public void ReloadEntity<T>(T entity) where T : Common.BindableObject
+        {
+            _context.LoadProperty(entity, "");
+        }
+
         private static List<T> AddNewItem<T>(DataServiceContextEx context, List<T> gridDataSource) where T : Common.BindableObject
         {
             var result = new List<T>();

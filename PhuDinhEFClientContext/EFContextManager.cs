@@ -62,5 +62,10 @@ namespace PhuDinhEFClientContext
         {
             return Repository.Repository<T>.GetDataCount(_context, filter);
         }
+
+        public void ReloadEntity<T>(T entity) where T : Common.BindableObject
+        {
+            _context.Entry(entity).Reload();
+        }
     }
 }

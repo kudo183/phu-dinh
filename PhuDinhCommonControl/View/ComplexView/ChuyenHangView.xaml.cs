@@ -49,10 +49,13 @@ namespace PhuDinhCommonControl
         {
             if (view is tChuyenHangDonHangView)
             {
+                _tChuyenHangView.ViewModel.ReloadEntity(_tChuyenHangView.SelectedItem);
                 ProcessChuyenHangDonHangView_AfterSave();
             }
             else if (view is tChiTietChuyenHangDonHangView)
             {
+                _tChuyenHangView.ViewModel.ReloadEntity(_tChuyenHangView.SelectedItem);
+                _tChuyenHangDonHangView.ViewModel.ReloadEntity(_tChuyenHangDonHangView.SelectedItem);
                 _tChuyenHangDonHangView.ViewModel.UpdateReferenceData(Constant.ColumnName_DonHang);
                 Keyboard.Focus(_tChiTietChuyenHangDonHangView.dg);
             }
@@ -90,7 +93,8 @@ namespace PhuDinhCommonControl
                                  MaChiTietDonHang = tChiTietDonHang.Ma,
                                  MaChuyenHangDonHang = _tChuyenHangDonHangView.SelectedItem.Ma,
                                  tChiTietDonHang = tChiTietDonHang,
-                                 SoLuong = soLuong
+                                 SoLuong = soLuong,
+                                 SoLuongTheoDonHang = tChiTietDonHang.SoLuong
                              };
 
                 _tChiTietChuyenHangDonHangView.ViewModel.Entity.Add(ct);

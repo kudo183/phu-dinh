@@ -347,6 +347,7 @@
           <Property Name="MaChuyenHangDonHang" Type="int" Nullable="false" />
           <Property Name="MaChiTietDonHang" Type="int" Nullable="false" />
           <Property Name="SoLuong" Type="int" Nullable="false" />
+          <Property Name="SoLuongTheoDonHang" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="tChiTietChuyenKho">
           <Key>
@@ -393,6 +394,9 @@
           <Property Name="MaNhanVienGiaoHang" Type="int" Nullable="false" />
           <Property Name="Ngay" Type="date" Nullable="false" />
           <Property Name="Gio" Type="time" Precision="0" />
+          <Property Name="TongDonHang" Type="int" Nullable="false" />
+          <Property Name="TongSoLuongTheoDonHang" Type="int" Nullable="false" />
+          <Property Name="TongSoLuongThucTe" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="tChuyenHangDonHang">
           <Key>
@@ -401,6 +405,8 @@
           <Property Name="Ma" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="MaChuyenHang" Type="int" Nullable="false" />
           <Property Name="MaDonHang" Type="int" Nullable="false" />
+          <Property Name="TongSoLuongTheoDonHang" Type="int" Nullable="false" />
+          <Property Name="TongSoLuongThucTe" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="tChuyenKho">
           <Key>
@@ -422,6 +428,7 @@
           <Property Name="Ngay" Type="date" Nullable="false" />
           <Property Name="Xong" Type="bit" Nullable="false" />
           <Property Name="MaKhoHang" Type="int" Nullable="false" />
+          <Property Name="TongSoLuong" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="tMatHang">
           <Key>
@@ -1259,6 +1266,7 @@
           <Property Type="Int32" Name="SoLuong" Nullable="false" />
           <NavigationProperty Name="tChiTietDonHang" Relationship="PhuDinhModel.FK_tChiTietChuyenHangDonHang_tChiTietDonHang" FromRole="tChiTietChuyenHangDonHang" ToRole="tChiTietDonHang" />
           <NavigationProperty Name="tChuyenHangDonHang" Relationship="PhuDinhModel.FK_tChiTietChuyenHangDonHang_tChuyenHangDonHang" FromRole="tChiTietChuyenHangDonHang" ToRole="tChuyenHangDonHang" />
+          <Property Type="Int32" Name="SoLuongTheoDonHang" Nullable="false" />
         </EntityType>
         <EntityType Name="tChiTietDonHang">
           <Key>
@@ -1284,6 +1292,9 @@
           <Property Type="Time" Name="Gio" Precision="0" />
           <NavigationProperty Name="tChuyenHangDonHangs" Relationship="PhuDinhModel.FK_tChuyenHangDonHang_tChuyenHang" FromRole="tChuyenHang" ToRole="tChuyenHangDonHang" />
           <NavigationProperty Name="rNhanVien" Relationship="PhuDinhModel.FK_tChuyenHang_rNhanVienGiaoHang" FromRole="tChuyenHang" ToRole="rNhanVien" />
+          <Property Type="Int32" Name="TongDonHang" Nullable="false" />
+          <Property Type="Int32" Name="TongSoLuongTheoDonHang" Nullable="false" />
+          <Property Type="Int32" Name="TongSoLuongThucTe" Nullable="false" />
         </EntityType>
         <EntityType Name="tChuyenHangDonHang">
           <Key>
@@ -1295,6 +1306,8 @@
           <NavigationProperty Name="tChiTietChuyenHangDonHangs" Relationship="PhuDinhModel.FK_tChiTietChuyenHangDonHang_tChuyenHangDonHang" FromRole="tChuyenHangDonHang" ToRole="tChiTietChuyenHangDonHang" />
           <NavigationProperty Name="tChuyenHang" Relationship="PhuDinhModel.FK_tChuyenHangDonHang_tChuyenHang" FromRole="tChuyenHangDonHang" ToRole="tChuyenHang" />
           <NavigationProperty Name="tDonHang" Relationship="PhuDinhModel.FK_tChuyenHangDonHang_tDonHang" FromRole="tChuyenHangDonHang" ToRole="tDonHang" />
+          <Property Type="Int32" Name="TongSoLuongTheoDonHang" Nullable="false" />
+          <Property Type="Int32" Name="TongSoLuongThucTe" Nullable="false" />
         </EntityType>
         <EntityType Name="tDonHang">
           <Key>
@@ -1311,6 +1324,7 @@
           <Property Type="Boolean" Name="Xong" Nullable="false" />
           <Property Type="Int32" Name="MaKhoHang" Nullable="false" />
           <NavigationProperty Name="rKhoHang" Relationship="PhuDinhModel.FK_tDonHang_rKhoHang" FromRole="tDonHang" ToRole="rKhoHang" />
+          <Property Type="Int32" Name="TongSoLuong" Nullable="false" />
         </EntityType>
         <EntityType Name="tMatHang">
           <Key>
@@ -2104,6 +2118,7 @@
           <EntitySetMapping Name="tChiTietChuyenHangDonHangs">
             <EntityTypeMapping TypeName="PhuDinhModel.tChiTietChuyenHangDonHang">
               <MappingFragment StoreEntitySet="tChiTietChuyenHangDonHang">
+                <ScalarProperty Name="SoLuongTheoDonHang" ColumnName="SoLuongTheoDonHang" />
                 <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
                 <ScalarProperty Name="MaChiTietDonHang" ColumnName="MaChiTietDonHang" />
                 <ScalarProperty Name="MaChuyenHangDonHang" ColumnName="MaChuyenHangDonHang" />
@@ -2125,6 +2140,9 @@
           <EntitySetMapping Name="tChuyenHangs">
             <EntityTypeMapping TypeName="PhuDinhModel.tChuyenHang">
               <MappingFragment StoreEntitySet="tChuyenHang">
+                <ScalarProperty Name="TongSoLuongThucTe" ColumnName="TongSoLuongThucTe" />
+                <ScalarProperty Name="TongSoLuongTheoDonHang" ColumnName="TongSoLuongTheoDonHang" />
+                <ScalarProperty Name="TongDonHang" ColumnName="TongDonHang" />
                 <ScalarProperty Name="Gio" ColumnName="Gio" />
                 <ScalarProperty Name="Ngay" ColumnName="Ngay" />
                 <ScalarProperty Name="MaNhanVienGiaoHang" ColumnName="MaNhanVienGiaoHang" />
@@ -2135,6 +2153,8 @@
           <EntitySetMapping Name="tChuyenHangDonHangs">
             <EntityTypeMapping TypeName="PhuDinhModel.tChuyenHangDonHang">
               <MappingFragment StoreEntitySet="tChuyenHangDonHang">
+                <ScalarProperty Name="TongSoLuongThucTe" ColumnName="TongSoLuongThucTe" />
+                <ScalarProperty Name="TongSoLuongTheoDonHang" ColumnName="TongSoLuongTheoDonHang" />
                 <ScalarProperty Name="MaDonHang" ColumnName="MaDonHang" />
                 <ScalarProperty Name="MaChuyenHang" ColumnName="MaChuyenHang" />
                 <ScalarProperty Name="Ma" ColumnName="Ma" />
@@ -2144,6 +2164,7 @@
           <EntitySetMapping Name="tDonHangs">
             <EntityTypeMapping TypeName="PhuDinhModel.tDonHang">
               <MappingFragment StoreEntitySet="tDonHang">
+                <ScalarProperty Name="TongSoLuong" ColumnName="TongSoLuong" />
                 <ScalarProperty Name="MaKhoHang" ColumnName="MaKhoHang" />
                 <ScalarProperty Name="Xong" ColumnName="Xong" />
                 <ScalarProperty Name="Ngay" ColumnName="Ngay" />

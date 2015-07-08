@@ -13,5 +13,6 @@ namespace PhuDinhCommon
         void Dispose();
         void Save<T>(List<T> data, List<T> originalData) where T : Common.BindableObject;
         int GetDataCount<T>(Expression<Func<T, bool>> filter) where T : Common.BindableObject;
+        void ReloadEntity<T>(T entity) where T : Common.BindableObject;
     }
 }

@@ -33,6 +33,15 @@ namespace PhuDinhDataEntity
         private Nullable<System.TimeSpan> _gio;
         public Nullable<System.TimeSpan> Gio { get { return _gio; } set { SetPropertyAndValidate(ref _gio, value); } }
     
+        private int _tongdonhang;
+        public int TongDonHang { get { return _tongdonhang; } set { SetPropertyAndValidate(ref _tongdonhang, value); } }
+    
+        private int _tongsoluongtheodonhang;
+        public int TongSoLuongTheoDonHang { get { return _tongsoluongtheodonhang; } set { SetPropertyAndValidate(ref _tongsoluongtheodonhang, value); } }
+    
+        private int _tongsoluongthucte;
+        public int TongSoLuongThucTe { get { return _tongsoluongthucte; } set { SetPropertyAndValidate(ref _tongsoluongthucte, value); } }
+    
     
         public virtual ICollection<tChuyenHangDonHang> tChuyenHangDonHangs { get; set; }
         public virtual rNhanVien rNhanVien { get; set; }

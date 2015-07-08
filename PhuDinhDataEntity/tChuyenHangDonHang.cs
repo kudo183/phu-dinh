@@ -30,6 +30,12 @@ namespace PhuDinhDataEntity
         private int _madonhang;
         public int MaDonHang { get { return _madonhang; } set { SetPropertyAndValidate(ref _madonhang, value); } }
     
+        private int _tongsoluongtheodonhang;
+        public int TongSoLuongTheoDonHang { get { return _tongsoluongtheodonhang; } set { SetPropertyAndValidate(ref _tongsoluongtheodonhang, value); } }
+    
+        private int _tongsoluongthucte;
+        public int TongSoLuongThucTe { get { return _tongsoluongthucte; } set { SetPropertyAndValidate(ref _tongsoluongthucte, value); } }
+    
     
         public virtual ICollection<tChiTietChuyenHangDonHang> tChiTietChuyenHangDonHangs { get; set; }
         public virtual tChuyenHang tChuyenHang { get; set; }

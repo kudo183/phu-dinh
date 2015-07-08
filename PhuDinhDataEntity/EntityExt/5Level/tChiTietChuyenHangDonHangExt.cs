@@ -8,18 +8,18 @@ namespace PhuDinhDataEntity
     [global::System.Data.Services.IgnoreProperties("SoLuongTheoDonHang")]
     public partial class tChiTietChuyenHangDonHang
     {
-        public int SoLuongTheoDonHang
-        {
-            get
-            {
-                if (tChiTietDonHang != null)
-                {
-                    return tChiTietDonHang.SoLuong;
-                }
+        //public int SoLuongTheoDonHang
+        //{
+        //    get
+        //    {
+        //        if (tChiTietDonHang != null)
+        //        {
+        //            return tChiTietDonHang.SoLuong;
+        //        }
 
-                return 0;
-            }
-        }
+        //        return 0;
+        //    }
+        //}
 
         public List<tChuyenHangDonHang> tChuyenHangDonHangList { get; set; }
 
