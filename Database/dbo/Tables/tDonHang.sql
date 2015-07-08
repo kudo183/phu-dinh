@@ -25,6 +25,8 @@
 
 
 
+
+
 GO
 create TRIGGER [dbo].[tDonHang_trUpdateTonKho]
 	ON [dbo].[tDonHang]
@@ -47,6 +49,29 @@ create TRIGGER [dbo].[tDonHang_trUpdateTonKho]
 			from deleted d join tChiTietDonHang ct on d.Ma = ct.MaDonHang
 			join tTonKho tk on tk.MaMatHang = ct.MaMatHang and tk.MaKhoHang = d.MaKhoHang
 			where tk.Ngay >= d.Ngay
+		END
+
+	END
+GO
+create TRIGGER [dbo].[tDonHang_trUpdateTongSoLuongTheoDonHang]
+	ON [dbo].[tDonHang]
+	after UPDATE
+	AS
+	BEGIN
+
+		SET NOCOUNT ON
+
+		IF(update(TongSoLuong))
+		BEGIN
+			update tChuyenHangDonHang
+			set TongSoLuongTheoDonHang = i.TongSoLuong
+			from inserted i
+			where tChuyenHangDonHang.MaDonHang = i.Ma
+
+			update tChuyenHang
+			set TongSoLuongTheoDonHang = (select ISNULL(sum(TongSoLuongTheoDonHang), 0) from tChuyenHangDonHang where MaChuyenHang = tChuyenHang.Ma)
+			from (inserted i join tChuyenHangDonHang chdh on i.Ma = chdh.MaDonHang)
+			where tChuyenHang.Ma = chdh.MaChuyenHang
 		END
 
 	END
