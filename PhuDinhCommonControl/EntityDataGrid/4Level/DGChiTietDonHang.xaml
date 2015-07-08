@@ -27,6 +27,6 @@
         <!--So luong-->
         <CustomControl:DataGridTextRightAlignColumn x:Name="soLuongColumn" Width="100" Binding="{Binding SoLuong, StringFormat=\{0:N0\}, UpdateSourceTrigger=PropertyChanged}"/>
         <!--Xong-->
-        <CustomControl:DataGridCheckBoxColumnExt x:Name="xongColumn" Binding="{Binding Xong}" Header="Xong" IsReadOnly="True"/>
+        <CustomControl:DataGridReadOnlyCheckBoxColumn x:Name="xongColumn" Binding="{Binding Xong}" Header="Xong"/>
     </DataGrid.Columns>
 </CustomControl:DataGridExt>

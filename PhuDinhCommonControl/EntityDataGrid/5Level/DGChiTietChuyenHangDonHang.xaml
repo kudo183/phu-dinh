@@ -29,6 +29,6 @@
         <!--So luong theo don hang-->
         <CustomControl:DataGridReadOnlyTextColumn x:Name="soLuongDonHangColumn" Header="SL theo đơn hàng" Width="SizeToHeader" Binding="{Binding SoLuongTheoDonHang}"/>
         <!--Xong-->
-        <CustomControl:DataGridCheckBoxColumnExt x:Name="xongColumn" Binding="{Binding tChiTietDonHang.Xong}" Header="Xong" IsReadOnly="True"/>
+        <CustomControl:DataGridReadOnlyCheckBoxColumn x:Name="xongColumn" Binding="{Binding tChiTietDonHang.Xong}" Header="Xong"/>
     </DataGrid.Columns>
 </CustomControl:DataGridExt>

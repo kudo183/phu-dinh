@@ -44,6 +44,6 @@
         <!--Tong so luong-->
         <CustomControl:DataGridReadOnlyTextColumn x:Name="tongSoLuongColumn" Binding="{Binding TongSoLuong}" Header="Tống số lượng" Width="SizeToHeader"/>
         <!--Xong-->
-        <CustomControl:DataGridCheckBoxColumnExt x:Name="xongColumn" Binding="{Binding Xong}" Header="Xong" IsReadOnly="True"/>
+        <CustomControl:DataGridReadOnlyCheckBoxColumn x:Name="xongColumn" Binding="{Binding Xong}" Header="Xong"/>
     </DataGrid.Columns>
 </CustomControl:DataGridExt>

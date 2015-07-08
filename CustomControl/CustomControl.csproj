@@ -60,11 +60,14 @@
     <Compile Include="DataGridColumnHeaderFilterModel\HeaderFilterBaseModel.cs" />
     <Compile Include="DataGridColumnHeaderFilterModel\HeaderTextFilterModel.cs" />
     <Compile Include="DataGridColumnHeaderFilterModel\IHeaderFilterModel.cs" />
+    <Compile Include="DataGridColumn\CheckBoxColumn\DataGridReadOnlyCheckBoxColumn.xaml.cs">
+      <DependentUpon>DataGridReadOnlyCheckBoxColumn.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DataGridColumn\TextColumn\DataGridReadOnlyLeftAlignTextColumn.xaml.cs">
       <DependentUpon>DataGridReadOnlyLeftAlignTextColumn.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pager.cs" />
-    <Compile Include="DataGridColumn\DataGridCheckBoxColumnExt.xaml.cs">
+    <Compile Include="DataGridColumn\CheckBoxColumn\DataGridCheckBoxColumnExt.xaml.cs">
       <DependentUpon>DataGridCheckBoxColumnExt.xaml</DependentUpon>
     </Compile>
     <Compile Include="DataGridColumn\DataGridComboBoxColumnExt.xaml.cs">
@@ -122,11 +125,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="DataGridColumn\CheckBoxColumn\DataGridReadOnlyCheckBoxColumn.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="DataGridColumn\TextColumn\DataGridReadOnlyLeftAlignTextColumn.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="DataGridColumn\DataGridCheckBoxColumnExt.xaml">
+    <Page Include="DataGridColumn\CheckBoxColumn\DataGridCheckBoxColumnExt.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
