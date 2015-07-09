@@ -1,8 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.Services.Client;
 using System.Data.Services.Common;
-using System.Xml.Linq;
 using Microsoft.Data.Edm;
+using Microsoft.Data.OData;
 
 namespace Common
 {
@@ -15,39 +16,15 @@ namespace Common
             : base(serviceRoot, DataServiceProtocolVersion.V3)
         {
             Format.UseJson(edmModel);
-            //WritingEntity += DataModelProxy_WritingEntity;
-        }
 
-        void DataModelProxy_WritingEntity(object sender, ReadingWritingEntityEventArgs e)
-        {
-            RemoveIgnoredProperties(ref e);
-        }
-
-        private static void RemoveIgnoredProperties(ref ReadingWritingEntityEventArgs e)
-        {
-            var attIgnoredProperties = e.Entity.GetType().GetCustomAttributes(typeof(System.Data.Services.IgnorePropertiesAttribute), true);
-            if (attIgnoredProperties.Length != 1)
-                return;
-
-            var ignoredProperties = (attIgnoredProperties[0] as System.Data.Services.IgnorePropertiesAttribute).PropertyNames;
-
-            foreach (XElement node in e.Data.Elements())
+            Configurations.RequestPipeline.OnEntryEnding((a =>
             {
-                if (node != null && node.Name.LocalName == "content")
-                {
-                    foreach (XElement el in node.Elements())
-                    {
-                        if (el.Name.LocalName == "properties")
-                        {
-                            foreach (XElement prop in el.Elements())
-                            {
-                                if (ignoredProperties.Contains(prop.Name.LocalName) == true)
-                                    prop.Remove();
-                            }
-                        }
-                    }
-                }
-            }
+                var properties = a.Entry.Properties as List<ODataProperty>;
+                var attIgnoredProperties = a.Entity.GetType().GetCustomAttributes(typeof(System.Data.Services.IgnorePropertiesAttribute), true);
+                var ignoredProperties = (attIgnoredProperties[0] as System.Data.Services.IgnorePropertiesAttribute).PropertyNames;
+                properties.RemoveAll(p => ignoredProperties.Contains(p.Name));
+                a.Entry.Properties = properties;
+            }));
         }
 
         public DataServiceQuery<T> Set<T>() where T : Common.BindableObject

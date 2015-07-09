@@ -1,4 +1,5 @@
-﻿using System.Web.Http;
+﻿using System;
+using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Routing;
 
@@ -11,6 +12,7 @@ namespace PhuDinhOData
     {
         protected void Application_Start()
         {
+            log4net.GlobalContext.Properties["name"] = DateTime.Now.ToString("yyyy_MM_dd-hh_mm_ss") + ".log";
             log4net.Config.XmlConfigurator.Configure();
 
             AreaRegistration.RegisterAllAreas();
