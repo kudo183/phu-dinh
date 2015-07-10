@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Data.Services.Client;
 using System.Data.Services.Common;
+using System.Linq;
+using System.Linq.Expressions;
 using Microsoft.Data.Edm;
 using Microsoft.Data.OData;
 
@@ -45,6 +47,20 @@ namespace Common
         public void Update<T>(T entity) where T : Common.BindableObject
         {
             UpdateObject(entity);
+        }
+
+        public void ReloadEntity<T>(T entity, string entityKeyPropertyName) where T : Common.BindableObject
+        {
+            var pe = Expression.Parameter(typeof(T), "p");
+            var left = Expression.Property(pe, entityKeyPropertyName);
+            var right = Expression.Constant(entity.GetKey());
+            var predicateBody = Expression.Equal(left, right);
+
+            var expression = Expression.Lambda<Func<T, bool>>(predicateBody, new[] { pe });
+            var temp = MergeOption;
+            MergeOption = MergeOption.OverwriteChanges;
+            Set<T>().Where(expression).First();
+            MergeOption = temp;
         }
     }
 }
