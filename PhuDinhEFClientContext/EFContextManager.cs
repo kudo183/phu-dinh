@@ -8,7 +8,7 @@ using PhuDinhDataEntity;
 
 namespace PhuDinhEFClientContext
 {
-    public sealed class EFContextManager : IClientContextManager
+    public sealed class EFContextManager<T> : IClientContextManager<T> where T : Common.BindableObject
     {
         private PhuDinhEntities _context;
 
@@ -19,17 +19,17 @@ namespace PhuDinhEFClientContext
             _context = ContextFactory.CreateContext();
         }
 
-        public List<T> GetData<T>(Expression<Func<T, bool>> filter) where T : Common.BindableObject
+        public List<T1> GetData<T1>(Expression<Func<T1, bool>> filter) where T1 : Common.BindableObject
         {
             if (_context == null)
             {
                 _context = ContextFactory.CreateContext();
             }
 
-            return Repository.Repository<T>.GetDataQuery(_context, filter).ToList();
+            return Repository.Repository<T1>.GetDataQuery(_context, filter).ToList();
         }
 
-        public List<T> GetData<T>(Expression<Func<T, bool>> filter, int pageSize, int currentPageIndex, int itemCount) where T : Common.BindableObject
+        public List<T> GetData(Expression<Func<T, bool>> filter, int pageSize, int currentPageIndex, int itemCount)
         {
             if (_context == null)
             {
@@ -53,17 +53,17 @@ namespace PhuDinhEFClientContext
             _context = null;
         }
 
-        public void Save<T>(List<T> data, List<T> originalData) where T : Common.BindableObject
+        public void Save(List<T> data, List<T> originalData)
         {
             Repository.Repository<T>.Save(_context, data, originalData);
         }
 
-        public int GetDataCount<T>(Expression<Func<T, bool>> filter) where T : Common.BindableObject
+        public int GetDataCount(Expression<Func<T, bool>> filter)
         {
             return Repository.Repository<T>.GetDataCount(_context, filter);
         }
 
-        public void ReloadEntity<T>(T entity) where T : Common.BindableObject
+        public void ReloadEntity(T entity)
         {
             _context.Entry(entity).Reload();
         }

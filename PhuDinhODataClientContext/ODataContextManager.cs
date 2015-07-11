@@ -8,7 +8,7 @@ using PhuDinhCommon;
 
 namespace PhuDinhODataClientContext
 {
-    public sealed class ODataContextManager : IClientContextManager
+    public sealed class ODataContextManager<T> : IClientContextManager<T> where T : Common.BindableObject
     {
         private DataServiceContextEx _context;
 
@@ -32,12 +32,12 @@ namespace PhuDinhODataClientContext
             Logger.LogDebug(r.Response.ResponseUri + "   " + r.Response.ContentLength.ToString());
         }
 
-        public List<T> GetData<T>(Expression<Func<T, bool>> filter) where T : Common.BindableObject
+        public List<T1> GetData<T1>(Expression<Func<T1, bool>> filter) where T1 : Common.BindableObject
         {
-            var result = new List<T>();
-            var query = _context.Set<T>().Where(filter) as DataServiceQuery<T>;
-            query = Repository.RepositoryLocator<T>.GetDataQuery(query) as DataServiceQuery<T>;//add order, expand
-            var respone = query.Execute() as QueryOperationResponse<T>;
+            var result = new List<T1>();
+            var query = _context.Set<T1>().Where(filter) as DataServiceQuery<T1>;
+            query = Repository.RepositoryLocator<T1>.GetDataQuery(query) as DataServiceQuery<T1>;//add order, expand
+            var respone = query.Execute() as QueryOperationResponse<T1>;
 
             do
             {
@@ -49,7 +49,7 @@ namespace PhuDinhODataClientContext
                 if (result.Count >= 1000)
                     break;
 
-                DataServiceQueryContinuation<T> token = respone.GetContinuation();
+                DataServiceQueryContinuation<T1> token = respone.GetContinuation();
                 if (token == null)
                     break;
 
@@ -60,7 +60,7 @@ namespace PhuDinhODataClientContext
             return result;
         }
 
-        public List<T> GetData<T>(Expression<Func<T, bool>> filter, int pageSize, int currentPageIndex, int itemCount) where T : Common.BindableObject
+        public List<T> GetData(Expression<Func<T, bool>> filter, int pageSize, int currentPageIndex, int itemCount)
         {
             var query = _context.Set<T>().Where(filter);//add filter
             query = Repository.RepositoryLocator<T>.GetDataQuery(query);//add order, expand
@@ -79,14 +79,14 @@ namespace PhuDinhODataClientContext
         {
         }
 
-        public void Save<T>(List<T> data, List<T> originalData) where T : Common.BindableObject
+        public void Save(List<T> data, List<T> originalData)
         {
             RemoveItem(_context, data, originalData);
             AddNewItem(_context, data);
             _context.SaveChanges();
         }
 
-        public int GetDataCount<T>(Expression<Func<T, bool>> filter) where T : Common.BindableObject
+        public int GetDataCount(Expression<Func<T, bool>> filter)
         {
             var query = _context.Set<T>().IncludeTotalCount().Where(filter).Skip(0).Take(1) as DataServiceQuery;//skip(0).Take(1) because just need get TotalCount
             var response = query.Execute() as QueryOperationResponse<T>;
@@ -94,12 +94,12 @@ namespace PhuDinhODataClientContext
             return (int)response.TotalCount;
         }
 
-        public void ReloadEntity<T>(T entity) where T : Common.BindableObject
+        public void ReloadEntity(T entity)
         {
             _context.ReloadEntity(entity, "Ma");
         }
 
-        private static List<T> AddNewItem<T>(DataServiceContextEx context, List<T> gridDataSource) where T : Common.BindableObject
+        private static List<T> AddNewItem(DataServiceContextEx context, List<T> gridDataSource)
         {
             var result = new List<T>();
 
@@ -115,7 +115,7 @@ namespace PhuDinhODataClientContext
             return result;
         }
 
-        private static List<T> RemoveItem<T>(DataServiceContextEx context, List<T> gridDataSource, List<T> origData) where T : Common.BindableObject
+        private static List<T> RemoveItem(DataServiceContextEx context, List<T> gridDataSource, List<T> origData)
         {
             var result = new List<T>();
 

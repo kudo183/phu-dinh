@@ -17,7 +17,7 @@ namespace PhuDinhData.ViewModel
     {
         private static readonly ILog Logger = log4net.LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
-        protected IClientContextManager _contextManager = ServiceLocator.Instance.GetInstance<IClientContextManager>();
+        protected IClientContextManager<T> _contextManager = ServiceLocator.Instance.GetInstance<IClientContextManager<T>>();
 
         protected List<T> _origData;
 
