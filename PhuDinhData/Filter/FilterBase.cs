@@ -122,6 +122,10 @@ namespace PhuDinhData.Filter
 
             foreach (var filter in _filters)
             {
+                if (filter.Value.Body.NodeType == ExpressionType.Constant && filter.Value.Body.ToString() == "True")
+                {
+                    continue;
+                }
                 Filter = Filter != null ? filter.Value.And(Filter) : filter.Value;
             }
         }

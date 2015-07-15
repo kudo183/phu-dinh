@@ -30,7 +30,8 @@ namespace PhuDinhEFClientContext.Repository
 
         private static IQueryable<T> GetDataQueryWithFilter(PhuDinhEntities context, Expression<Func<T, bool>> filter)
         {
-            return context.Set<T>().Where(filter);
+            var q = filter != null ? context.Set<T>().Where(filter) : context.Set<T>();
+            return q;
         }
 
         private static List<T> PagingData(IQueryable<T> data, int pageSize, int currentPageIndex, int itemCount)

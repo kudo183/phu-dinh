@@ -204,12 +204,7 @@ namespace PhuDinhData.ViewModel
             Common.Logger.LogDebug(string.Format("{0} {1}ms Enter", typeof(T).Name, MyStopwatch.ElapsedMilliseconds()));
             Logger.Info(GetType().Name + ": RefreshData");
 
-            if (MainFilter.Filter == null)
-            {
-                return;
-            }
-
-            if (MainFilter.IsClearAllData == true)
+            if (MainFilter.Filter != null && MainFilter.IsClearAllData == true)
             {
                 Logger.Info("     ClearAllData");
                 Entity.Clear();
