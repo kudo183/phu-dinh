@@ -21,8 +21,6 @@ namespace PhuDinhData.ViewModel
 
             MainFilter = new Filter_tMatHang();
 
-            SetReferenceFilter<rLoaiHang>(Constant.ColumnName_LoaiHang, (p => true));
-
             Header_LoaiHang = new HeaderTextFilterModel(Constant.ColumnName_LoaiHang);
         }
 

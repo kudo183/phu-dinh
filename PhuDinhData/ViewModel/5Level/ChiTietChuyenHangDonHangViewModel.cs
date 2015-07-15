@@ -23,9 +23,6 @@ namespace PhuDinhData.ViewModel
 
             MainFilter = new Filter_tChiTietChuyenHangDonHang();
 
-            SetReferenceFilter<tChuyenHangDonHang>(Constant.ColumnName_ChuyenHangDonHang, (p => true));
-            SetReferenceFilter<tChiTietDonHang>(Constant.ColumnName_ChiTietDonHang, (p => true));
-
             Header_ChuyenHangDonHang = new HeaderTextFilterModel(Constant.ColumnName_ChuyenHangDonHang);
             Header_ChiTietDonHang = new HeaderTextFilterModel(Constant.ColumnName_ChiTietDonHang);
         }

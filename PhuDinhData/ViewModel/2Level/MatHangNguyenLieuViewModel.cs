@@ -23,9 +23,6 @@ namespace PhuDinhData.ViewModel
 
             MainFilter = new Filter_rMatHangNguyenLieu();
 
-            SetReferenceFilter<tMatHang>(Constant.ColumnName_MatHang, (p => true));
-            SetReferenceFilter<rNguyenLieu>(Constant.ColumnName_NguyenLieu, (p => true));
-
             Header_MatHang = new HeaderTextFilterModel(Constant.ColumnName_MatHang);
             Header_NguyenLieu = new HeaderTextFilterModel(Constant.ColumnName_NguyenLieu);
         }

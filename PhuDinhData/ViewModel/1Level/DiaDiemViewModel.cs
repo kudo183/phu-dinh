@@ -21,8 +21,6 @@ namespace PhuDinhData.ViewModel
 
             MainFilter = new Filter_rDiaDiem();
 
-            SetReferenceFilter<rNuoc>(Constant.ColumnName_Nuoc, (p => true));
-
             Header_Nuoc = new HeaderTextFilterModel(Constant.ColumnName_Nuoc);
         }
 

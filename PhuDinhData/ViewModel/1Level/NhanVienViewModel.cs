@@ -21,8 +21,6 @@ namespace PhuDinhData.ViewModel
 
             MainFilter = new Filter_rNhanVien();
 
-            SetReferenceFilter<rPhuongTien>(Constant.ColumnName_PhuongTien, (p => true));
-
             Header_PhuongTien = new HeaderTextFilterModel(Constant.ColumnName_PhuongTien);
         }
 

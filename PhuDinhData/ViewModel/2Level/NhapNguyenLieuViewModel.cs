@@ -25,9 +25,6 @@ namespace PhuDinhData.ViewModel
 
             MainFilter = new Filter_tNhapNguyenLieu();
 
-            SetReferenceFilter<rNguyenLieu>(Constant.ColumnName_NguyenLieu, (p => true));
-            SetReferenceFilter<rNhaCungCap>(Constant.ColumnName_NhanCungCap, (p => true));
-
             Header_NguyenLieu = new HeaderTextFilterModel(Constant.ColumnName_NguyenLieu);
             Header_NhaCungCap = new HeaderTextFilterModel(Constant.ColumnName_NhanCungCap);
 

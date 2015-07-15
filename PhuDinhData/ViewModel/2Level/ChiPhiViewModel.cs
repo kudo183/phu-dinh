@@ -30,9 +30,6 @@ namespace PhuDinhData.ViewModel
 
             MainFilter = new Filter_tChiPhi();
 
-            SetReferenceFilter<rLoaiChiPhi>(Constant.ColumnName_LoaiChiPhi, (p => true));
-            SetReferenceFilter<rNhanVien>(Constant.ColumnName_NhanVien, (p => true));
-
             Header_LoaiChiPhi = new HeaderTextFilterModel(Constant.ColumnName_LoaiChiPhi);
             Header_NhanVien = new HeaderTextFilterModel(Constant.ColumnName_NhanVien);
         }

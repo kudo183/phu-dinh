@@ -26,10 +26,6 @@ namespace PhuDinhData.ViewModel
 
             MainFilter = new Filter_tChuyenKho();
 
-            SetReferenceFilter<rNhanVien>(Constant.ColumnName_NhanVien, (p => true));
-            SetReferenceFilter<rKhoHang>(Constant.ColumnName_KhoHangNhap, (p => true));
-            SetReferenceFilter<rKhoHang>(Constant.ColumnName_KhoHangXuat, (p => true));
-
             Header_NhanVien = new HeaderTextFilterModel(Constant.ColumnName_NhanVien);
             Header_KhoHangNhap = new HeaderTextFilterModel(Constant.ColumnName_KhoHangNhap);
             Header_KhoHangXuat = new HeaderTextFilterModel(Constant.ColumnName_KhoHangXuat);

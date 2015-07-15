@@ -24,9 +24,6 @@ namespace PhuDinhData.ViewModel
 
             MainFilter = new Filter_rKhachHangChanh();
 
-            SetReferenceFilter<rKhachHang>(Constant.ColumnName_KhachHang, (p => true));
-            SetReferenceFilter<rChanh>(Constant.ColumnName_Chanh, (p => true));
-
             Header_KhachHang = new HeaderTextFilterModel(Constant.ColumnName_KhachHang);
             Header_Chanh = new HeaderTextFilterModel(Constant.ColumnName_Chanh);
         }

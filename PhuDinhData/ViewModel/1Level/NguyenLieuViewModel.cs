@@ -21,8 +21,6 @@ namespace PhuDinhData.ViewModel
 
             MainFilter = new Filter_rNguyenLieu();
 
-            SetReferenceFilter<rLoaiNguyenLieu>(Constant.ColumnName_LoaiNguyenLieu, (p => true));
-
             Header_LoaiNguyenLieu = new HeaderTextFilterModel(Constant.ColumnName_LoaiNguyenLieu);
         }
 

@@ -24,9 +24,6 @@ namespace PhuDinhData.ViewModel
 
             MainFilter = new Filter_tChiTietNhapHang();
 
-            SetReferenceFilter<tMatHang>(Constant.ColumnName_MatHang, (p => true));
-            SetReferenceFilter<tNhapHang>(Constant.ColumnName_NhapHang, (p => true));
-
             Header_MatHang = new HeaderTextFilterModel(Constant.ColumnName_MatHang);
             Header_NhapHang = new HeaderTextFilterModel(Constant.ColumnName_NhapHang);
         }

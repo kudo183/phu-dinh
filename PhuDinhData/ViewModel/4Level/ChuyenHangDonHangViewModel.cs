@@ -24,9 +24,6 @@ namespace PhuDinhData.ViewModel
 
             MainFilter = new Filter_tChuyenHangDonHang();
 
-            SetReferenceFilter<tChuyenHang>(Constant.ColumnName_ChuyenHang, (p => true));
-            SetReferenceFilter<tDonHang>(Constant.ColumnName_DonHang, (p => true));
-
             Header_ChuyenHang = new HeaderTextFilterModel(Constant.ColumnName_ChuyenHang);
             Header_DonHang = new HeaderTextFilterModel(Constant.ColumnName_DonHang);
         }

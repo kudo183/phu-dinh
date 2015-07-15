@@ -21,8 +21,6 @@ namespace PhuDinhData.ViewModel
 
             MainFilter = new Filter_rKhachHang();
 
-            SetReferenceFilter<rDiaDiem>(Constant.ColumnName_DiaDiem, (p => true));
-
             Header_DiaDiem = new HeaderTextFilterModel(Constant.ColumnName_DiaDiem);
         }
 

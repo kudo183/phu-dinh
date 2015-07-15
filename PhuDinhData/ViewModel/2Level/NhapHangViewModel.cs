@@ -31,10 +31,6 @@ namespace PhuDinhData.ViewModel
             SetDefaultValue(Constant.ColumnName_MaKhoHang, 1);
             SetDefaultValue(Constant.ColumnName_MaNhaCungCap, 6);
             
-            SetReferenceFilter<rNhanVien>(Constant.ColumnName_NhanVien, (p => true));
-            SetReferenceFilter<rNhaCungCap>(Constant.ColumnName_NhanCungCap, (p => true));
-            SetReferenceFilter<rKhoHang>(Constant.ColumnName_KhoHang, (p => true));
-
             Header_NhanVien = new HeaderTextFilterModel(Constant.ColumnName_NhanVien);
             Header_NhaCungCap = new HeaderComboBoxFilterModel(Constant.ColumnName_NhanCungCap);
             Header_KhoHang = new HeaderComboBoxFilterModel(Constant.ColumnName_KhoHang);
