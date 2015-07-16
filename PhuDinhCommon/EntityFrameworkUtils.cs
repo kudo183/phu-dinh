@@ -1,6 +1,7 @@
-﻿using System.Data;
+﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using System.Linq;
 
 namespace PhuDinhCommon
 {
@@ -54,7 +55,24 @@ namespace PhuDinhCommon
                 return;
             }
 
-            entry.Property(propertyName).CurrentValue = entry.Property(propertyName).OriginalValue; 
+            entry.Property(propertyName).CurrentValue = entry.Property(propertyName).OriginalValue;
+        }
+
+        public static System.DateTime? GetTableLastUpdate(DbContext context, string tableName)
+        {
+            const string sqlLastUpdatePattern = "SELECT last_user_update FROM sys.dm_db_index_usage_stats WHERE database_id=DB_ID('{0}') AND OBJECT_ID=OBJECT_ID('{1}')";
+            string sql = string.Format(sqlLastUpdatePattern, context.Database.Connection.Database, tableName);
+            return context.Database.SqlQuery<System.DateTime?>(sql).ToList()[0];
+        }
+
+        public static System.DateTime? GetTablesLastUpdate(DbContext context, List<string> tablesName)
+        {
+            const string sqlLastUpdatePattern = "SELECT MAX(last_user_update) FROM sys.dm_db_index_usage_stats WHERE database_id=DB_ID('{0}') AND OBJECT_ID in ({1})";
+            string s = "OBJECT_ID('" + tablesName[0] + "')";
+            for (int i = 1; i < tablesName.Count; i++)
+                s += ",OBJECT_ID('" + tablesName[i] + "')";
+            string sql = string.Format(sqlLastUpdatePattern, context.Database.Connection.Database, s);
+            return context.Database.SqlQuery<System.DateTime?>(sql).ToList()[0];
         }
 
         private static void UndoEntityEntryChange(DbEntityEntry entry)

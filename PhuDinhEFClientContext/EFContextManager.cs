@@ -10,6 +10,7 @@ namespace PhuDinhEFClientContext
 {
     public sealed class EFContextManager<T> : IClientContextManager<T> where T : Common.BindableObject
     {
+        private readonly EFCache _cache = new EFCache();
         private PhuDinhEntities _context;
 
         public void CreateContext()
@@ -26,7 +27,16 @@ namespace PhuDinhEFClientContext
                 _context = ContextFactory.CreateContext();
             }
 
-            return Repository.Repository<T1>.GetDataQuery(_context, filter).ToList();
+            if (filter != null)
+                return Repository.Repository<T1>.GetDataQuery(_context, filter).ToList();
+
+            var relatedTable = new List<string>();
+            var dbQuery = Repository.Repository<T1>.GetDataQueryAndRelatedTables(_context, null, ref relatedTable);
+            var lastUpdate = EntityFrameworkUtils.GetTablesLastUpdate(_context, relatedTable);
+
+            var key = relatedTable.OrderBy(p => p).Aggregate((p, p1) => p + "." + p1);
+
+            return _cache.GetData(dbQuery, key, lastUpdate);
         }
 
         public List<T> GetData(Expression<Func<T, bool>> filter, int pageSize, int currentPageIndex, int itemCount)
