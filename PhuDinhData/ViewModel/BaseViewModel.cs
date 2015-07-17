@@ -1,9 +1,7 @@
 ﻿using PhuDinhCommon;
-using PhuDinhDataEntity;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
@@ -17,7 +15,18 @@ namespace PhuDinhData.ViewModel
     {
         private static readonly ILog Logger = log4net.LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
-        protected IClientContextManager<T> _contextManager = ServiceLocator.Instance.GetInstance<IClientContextManager<T>>();
+        protected IClientContextManager<T> _contextManager;
+
+        protected BaseViewModel()
+        {
+            var designTime = System.ComponentModel.DesignerProperties.GetIsInDesignMode(new System.Windows.DependencyObject());
+            if (designTime == true)
+            {
+                return;
+            }
+
+            _contextManager = ServiceLocator.Instance.GetInstance<IClientContextManager<T>>();
+        }
 
         protected List<T> _origData;
 
