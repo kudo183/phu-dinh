@@ -27,13 +27,13 @@ namespace PhuDinhEFClientContext
                 _context = ContextFactory.CreateContext();
             }
 
-            if (filter != null)
-                return Repository.Repository<T1>.GetDataQuery(_context, filter).ToList();
-
             var relatedTable = new List<string>();
-            var dbQuery = Repository.Repository<T1>.GetDataQueryAndRelatedTables(_context, null, ref relatedTable);
-            var lastUpdate = EntityFrameworkUtils.GetTablesLastUpdate(_context, relatedTable);
+            var dbQuery = Repository.Repository<T1>.GetDataQueryAndRelatedTables(_context, filter, ref relatedTable);
 
+            if (filter != null)
+                return dbQuery.ToList();
+
+            var lastUpdate = EntityFrameworkUtils.GetTablesLastUpdate(_context, relatedTable);
             var key = relatedTable.OrderBy(p => p).Aggregate((p, p1) => p + "." + p1);
 
             return _cache.GetData(dbQuery, key, lastUpdate);
