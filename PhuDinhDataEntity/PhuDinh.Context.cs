@@ -18,6 +18,7 @@ namespace PhuDinhDataEntity
         public PhuDinhEntities(string connectionString)
             : base(connectionString)
         {
+            this.Configuration.LazyLoadingEnabled = false;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

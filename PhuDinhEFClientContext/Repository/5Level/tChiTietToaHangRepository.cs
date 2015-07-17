@@ -10,7 +10,9 @@ namespace PhuDinhEFClientContext.Repository
         public static IQueryable<tChiTietToaHang> GetDataQuery(IQueryable<tChiTietToaHang> query)
         {
             return query
-                .Include("tToaHang")
+                .Include("tToaHang.rKhachHang")
+                .Include("tChiTietDonHang.tDonHang")
+                .Include("tChiTietDonHang.tMatHang")
                 .OrderByDescending(p => p.tToaHang.Ngay);
         }
 
@@ -19,8 +21,14 @@ namespace PhuDinhEFClientContext.Repository
             relatedTables.Clear();
             relatedTables.Add("tChiTietToaHang");
             relatedTables.Add("tToaHang");
+            relatedTables.Add("rKhachHang");
+            relatedTables.Add("tChiTietDonHang");
+            relatedTables.Add("tDonHang");
+            relatedTables.Add("tMatHang");
             return query
-                .Include("tToaHang")
+                .Include("tToaHang.rKhachHang")
+                .Include("tChiTietDonHang.tDonHang")
+                .Include("tChiTietDonHang.tMatHang")
                 .OrderByDescending(p => p.tToaHang.Ngay);
         }
     }

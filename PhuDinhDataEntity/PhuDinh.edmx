@@ -984,7 +984,7 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="PhuDinhModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="PhuDinhEntities" p1:LazyLoadingEnabled="true">
+        <EntityContainer Name="PhuDinhEntities" p1:LazyLoadingEnabled="false">
           <EntitySet Name="rBaiXes" EntityType="PhuDinhModel.rBaiXe" />
           <EntitySet Name="rChanhs" EntityType="PhuDinhModel.rChanh" />
           <EntitySet Name="rDiaDiems" EntityType="PhuDinhModel.rDiaDiem" />

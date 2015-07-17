@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Data.Entity;
 using PhuDinhDataEntity;
 using System.Linq;
 
@@ -15,7 +16,8 @@ namespace PhuDinhEFClientContext.Repository
         {
             relatedTables.Clear();
             relatedTables.Add("rDiaDiem");
-            return query.OrderBy(p => p.Tinh);
+            relatedTables.Add("rNuoc");
+            return query.Include("rNuoc").OrderBy(p => p.Tinh);
         }
     }
 }
