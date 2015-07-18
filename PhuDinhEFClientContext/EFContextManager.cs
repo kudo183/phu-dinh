@@ -70,12 +70,23 @@ namespace PhuDinhEFClientContext
 
         public int GetDataCount(Expression<Func<T, bool>> filter)
         {
+            if (_context == null)
+            {
+                _context = ContextFactory.CreateContext();
+            }
+
             return Repository.Repository<T>.GetDataCount(_context, filter);
         }
 
         public void ReloadEntity(T entity)
         {
-            _context.Entry(entity).Reload();
+            var entityEntry = _context.Entry(entity);
+            if (entityEntry.State == EntityState.Detached)
+                entityEntry.State = EntityState.Unchanged;
+
+            entityEntry.Reload();
+
+            PhuDinhCommon.EntityFrameworkUtils.DetachAllUnchangedEntity(_context);
         }
     }
 }

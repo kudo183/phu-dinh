@@ -58,6 +58,14 @@ namespace PhuDinhCommon
             entry.Property(propertyName).CurrentValue = entry.Property(propertyName).OriginalValue;
         }
 
+        public static void DetachAllUnchangedEntity(DbContext context)
+        {
+            foreach (var item1 in context.ChangeTracker.Entries().Where(p => p.State == EntityState.Unchanged).ToList())
+            {
+                item1.State = EntityState.Detached;
+            }
+        }
+
         public static System.DateTime? GetTableLastUpdate(DbContext context, string tableName)
         {
             const string sqlLastUpdatePattern = "SELECT last_user_update FROM sys.dm_db_index_usage_stats WHERE database_id=DB_ID('{0}') AND OBJECT_ID=OBJECT_ID('{1}')";

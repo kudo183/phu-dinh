@@ -15,27 +15,27 @@ namespace PhuDinhEFClientContext.Repository
             Expression<Func<T, bool>> filter,
             int pageSize, int currentPageIndex, int itemCount)
         {
-            return PagingData(RepositoryLocator<T>.GetDataQuery(GetDataQueryWithFilter(context, filter)), pageSize, currentPageIndex, itemCount);
+            return PagingData(RepositoryLocator<T>.GetDataQuery(GetDataQueryWithFilterNoTracking(context, filter)), pageSize, currentPageIndex, itemCount);
         }
 
         public static int GetDataCount(PhuDinhEntities context, Expression<Func<T, bool>> filter)
         {
-            return GetDataQueryWithFilter(context, filter).Count();
+            return GetDataQueryWithFilterNoTracking(context, filter).Count();
         }
 
         public static IQueryable<T> GetDataQuery(PhuDinhEntities context, Expression<Func<T, bool>> filter)
         {
-            return RepositoryLocator<T>.GetDataQuery(GetDataQueryWithFilter(context, filter));
+            return RepositoryLocator<T>.GetDataQuery(GetDataQueryWithFilterNoTracking(context, filter));
         }
 
         public static IQueryable<T> GetDataQueryAndRelatedTables(PhuDinhEntities context, Expression<Func<T, bool>> filter, ref List<string> relatedTables)
         {
-            return RepositoryLocator<T>.GetDataQueryAndRelatedTables(GetDataQueryWithFilter(context, filter), ref relatedTables);
+            return RepositoryLocator<T>.GetDataQueryAndRelatedTables(GetDataQueryWithFilterNoTracking(context, filter), ref relatedTables);
         }
 
-        private static IQueryable<T> GetDataQueryWithFilter(PhuDinhEntities context, Expression<Func<T, bool>> filter)
+        private static IQueryable<T> GetDataQueryWithFilterNoTracking(PhuDinhEntities context, Expression<Func<T, bool>> filter)
         {
-            var q = filter != null ? context.Set<T>().Where(filter) : context.Set<T>();
+            var q = filter != null ? context.Set<T>().AsNoTracking().Where(filter) : context.Set<T>().AsNoTracking();
             return q;
         }
 
@@ -70,32 +70,15 @@ namespace PhuDinhEFClientContext.Repository
         public static List<ChangedItemData> Save(PhuDinhEntities context, List<T> data, List<T> origData)
         {
             var removedItems = RemoveItem(context, data, origData);
-            var addedItems = AddNewItem(context, data);
-            var changed = context.ChangeTracker.Entries<T>().Where(p => p.State == EntityState.Modified).ToList();
-
-            var changedItems = new List<ChangedItemData>();
-            changedItems.AddRange(changed.Select(item => new ChangedItemData
-            {
-                State = EntityState.Modified,
-                OriginalValues = item.OriginalValues.Clone().ToObject() as T,
-                CurrentValues = item.CurrentValues.Clone().ToObject() as T
-            }));
-
-            changedItems.AddRange(removedItems.Select(item => new ChangedItemData
-            {
-                State = EntityState.Deleted,
-                OriginalValues = null,
-                CurrentValues = item
-            }));
+            var addedOrchangedItems = AddNewOrUpdateItem(context, data, origData);
 
             context.SaveChanges();
 
-            changedItems.AddRange(addedItems.Select(item => new ChangedItemData
-            {
-                State = EntityState.Added,
-                OriginalValues = null,
-                CurrentValues = item
-            }));
+            PhuDinhCommon.EntityFrameworkUtils.DetachAllUnchangedEntity(context);
+
+            var changedItems = new List<ChangedItemData>();
+            changedItems.AddRange(addedOrchangedItems);
+            changedItems.AddRange(removedItems);
 
             return changedItems;
         }
@@ -131,33 +114,64 @@ namespace PhuDinhEFClientContext.Repository
             public T CurrentValues { get; set; }
         }
 
-        private static List<T> AddNewItem(PhuDinhEntities context, List<T> gridDataSource)
+        private static List<ChangedItemData> AddNewOrUpdateItem(PhuDinhEntities context, List<T> gridDataSource, List<T> origData)
         {
-            var result = new List<T>();
+            var result = new List<ChangedItemData>();
 
             foreach (var item in gridDataSource)
             {
                 if (item.IsNewItem())
                 {
-                    result.Add(item);
-                    context.Set<T>().Add(item);
+                    context.Set<T>().Attach(item);
+                    context.Entry(item).State = EntityState.Added;
+
+                    PhuDinhCommon.EntityFrameworkUtils.DetachAllUnchangedEntity(context);
+                    result.Add(new ChangedItemData()
+                    {
+                        State = EntityState.Added,
+                        CurrentValues = item
+                    });
+                }
+                else
+                {
+                    context.Set<T>().Attach(item);
+                    var r = context.Entry(item);
+                    r.OriginalValues.SetValues(origData.Find(p => p.GetKey() == item.GetKey()));
+                    
+                    PhuDinhCommon.EntityFrameworkUtils.DetachAllUnchangedEntity(context);
+                    if (r.State == EntityState.Modified)
+                    {
+                        result.Add(new ChangedItemData()
+                        {
+                            State = EntityState.Modified,
+                            CurrentValues = r.CurrentValues.ToObject() as T,
+                            OriginalValues = r.OriginalValues.ToObject() as T
+                        });
+                    }
                 }
             }
 
             return result;
         }
 
-        private static List<T> RemoveItem(PhuDinhEntities context, List<T> gridDataSource, List<T> origData)
+        private static List<ChangedItemData> RemoveItem(PhuDinhEntities context, List<T> gridDataSource, List<T> origData)
         {
-            var result = new List<T>();
+            var result = new List<ChangedItemData>();
 
             foreach (var item in origData)
             {
                 var entity = gridDataSource.FirstOrDefault(p => item.IsEqual(p));
                 if (entity == null)
                 {
-                    result.Add(item);
-                    context.Set<T>().Remove(item);
+                    context.Set<T>().Attach(item);
+                    context.Entry(item).State = EntityState.Deleted;
+
+                    PhuDinhCommon.EntityFrameworkUtils.DetachAllUnchangedEntity(context);
+                    result.Add(new ChangedItemData()
+                    {
+                        State = EntityState.Deleted,
+                        CurrentValues = item
+                    });
                 }
             }
 

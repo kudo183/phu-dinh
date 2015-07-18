@@ -231,7 +231,7 @@ namespace PhuDinhData.ViewModel
 
             foreach (var item in _origData)
             {
-                Entity.Add(item);
+                Entity.Add(item.Copy());
             }
 
             Common.Logger.LogDebug(string.Format("{0} {1}ms ReferenceData", typeof(T).Name, MyStopwatch.ElapsedMilliseconds()));

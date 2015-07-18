@@ -52,7 +52,9 @@ namespace PhuDinhEFClientContext
         public static PhuDinhEntities CreateContext(string s)
         {
             var result = new PhuDinhEntities(s);
-
+            result.Configuration.AutoDetectChangesEnabled = false;
+            result.Configuration.ProxyCreationEnabled = false;
+            
             result.Database.Log = DBLogger;
 
             return result;
