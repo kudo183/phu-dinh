@@ -12,7 +12,10 @@ namespace PhuDinhEFClientContext.Repository
             return query
                 .Include("tChuyenHangDonHang.tChuyenHang.rNhanVien")
                 .Include("tChuyenHangDonHang.tDonHang.rKhachHang")
+                .Include("tChuyenHangDonHang.tDonHang.rKhoHang")
                 .Include("tChiTietDonHang.tMatHang")
+                .Include("tChiTietDonHang.tDonHang.rKhachHang")
+                .Include("tChiTietDonHang.tDonHang.rKhoHang")
                 .OrderByDescending(p => p.tChuyenHangDonHang.tChuyenHang.Ngay)
                 .ThenBy(p => p.tChuyenHangDonHang.tChuyenHang.Gio);
         }
