@@ -14,5 +14,6 @@ namespace PhuDinhCommon
         void Save(List<T> data, List<T> originalData);
         int GetDataCount(Expression<Func<T, bool>> filter);
         void ReloadEntity(T entity);
+        List<T1> LoadEntityWithRelated<T1>(Expression<Func<T1, bool>> filter, List<string> related) where T1 : Common.BindableObject;
     }
 }

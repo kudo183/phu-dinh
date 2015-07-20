@@ -253,5 +253,10 @@ namespace PhuDinhData.ViewModel
         {
             _contextManager.ReloadEntity(entity);
         }
+
+        public List<T1> LoadEntityWithRelated<T1>(Expression<Func<T1, bool>> filter, List<string> related) where T1 : BindableObject
+        {
+            return _contextManager.LoadEntityWithRelated(filter, related);
+        }
     }
 }

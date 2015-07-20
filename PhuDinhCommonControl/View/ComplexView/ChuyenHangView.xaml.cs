@@ -1,4 +1,7 @@
-﻿using System.Windows.Input;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq.Expressions;
+using System.Windows.Input;
 using PhuDinhCommon;
 using System.Linq;
 using PhuDinhData.ViewModel;
@@ -85,7 +88,11 @@ namespace PhuDinhCommonControl
                 return;
             }
 
-            foreach (var tChiTietDonHang in _tChuyenHangDonHangView.SelectedItem.tDonHang.tChiTietDonHangs.Where(p => p.Xong == false))
+            Expression<Func<tChiTietDonHang, bool>> filter = (p => p.MaDonHang == _tChuyenHangDonHangView.SelectedItem.MaDonHang && p.Xong == false);
+            var tChiTietDonHangs = _tChuyenHangDonHangView.ViewModel.LoadEntityWithRelated(filter,
+                 new List<string> { "tChiTietChuyenHangDonHangs" });
+
+            foreach (var tChiTietDonHang in tChiTietDonHangs)
             {
                 var soLuong = tChiTietDonHang.SoLuong - tChiTietDonHang.tChiTietChuyenHangDonHangs.Sum(p => p.SoLuong);
                 var ct = new tChiTietChuyenHangDonHang
