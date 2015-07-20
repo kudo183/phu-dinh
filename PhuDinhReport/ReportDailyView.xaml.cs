@@ -9,18 +9,27 @@ namespace PhuDinhReport
     /// </summary>
     public partial class ReportDailyView : UserControl
     {
+        private int _flag = 0;//used to skip SelectedDateChanged second fire because SelectedDateChanged fired twice
         public ReportDailyView()
         {
             InitializeComponent();
 
-            dpNgay.dp.SelectedDateChanged += dp_SelectedDateChanged;
-
             dpNgay.dp.SelectedDate = DateTime.Now;
+            Report();
+
+            dpNgay.dp.SelectedDateChanged += dp_SelectedDateChanged;
         }
 
         void dp_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
-            Report();
+            if (_flag == 0)
+            {
+                Report();
+                _flag = 1;
+                return;
+            }
+
+            _flag = 0;
         }
 
         private void Report()
