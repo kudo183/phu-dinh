@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Data.Entity;
 using System.Text;
 using PhuDinhEFClientContext;
 
@@ -34,7 +35,11 @@ namespace PhuDinhData.ReportData
             var context = ContextFactory.CreateContext();
 
             var donHangs = context.tDonHangs
-                .Where(filter).GroupBy(p => p.MaKhoHang);
+                .Where(filter)
+                .Include(p => p.rKhoHang)
+                .Include(p => p.rKhachHang)
+                .ToList()
+                .GroupBy(p => p.MaKhoHang);
 
             var result = new List<ReportDailyRowData>();
 
@@ -46,14 +51,20 @@ namespace PhuDinhData.ReportData
                 });
                 foreach (var tDonHang in donHang)
                 {
+                    var maDonHang = tDonHang.Ma;
+
                     var ten = tDonHang.rKhachHang.TenKhachHang;
                     if (ten == "Chợ")
                     {
                         var sb = new StringBuilder();
 
-                        if (tDonHang.tChuyenHangDonHangs.Count > 0)
+                        var tChuyenHangDonHangs = context.tChuyenHangDonHangs
+                            .Where(p => p.MaDonHang == maDonHang)
+                            .Include(p => p.tChuyenHang.rNhanVien);
+
+                        if (tChuyenHangDonHangs.Any())
                         {
-                            foreach (var tChuyenHangDonHang in tDonHang.tChuyenHangDonHangs)
+                            foreach (var tChuyenHangDonHang in tChuyenHangDonHangs)
                             {
                                 sb.AppendFormat("{0}, ", tChuyenHangDonHang.tChuyenHang.rNhanVien.TenNhanVien);
                             }
@@ -66,7 +77,12 @@ namespace PhuDinhData.ReportData
                     {
                         TenKhachHang = ten
                     });
-                    foreach (var tChiTietDonHang in tDonHang.tChiTietDonHangs)
+
+                    var tChiTietDonHangs = context.tChiTietDonHangs
+                        .Where(p => p.MaDonHang == maDonHang)
+                        .Include(p => p.tMatHang);
+
+                    foreach (var tChiTietDonHang in tChiTietDonHangs)
                     {
                         result.Add(new ReportDailyRowData()
                         {
