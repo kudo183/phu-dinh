@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using PhuDinhCommon;
+using PhuDinhEFClientContext;
 
 namespace PhuDinhWeb
 {
@@ -28,11 +26,16 @@ namespace PhuDinhWeb
                 "{controller}/{action}/{id}", // URL with parameters
                 new { controller = "Error", action = "Index", id = UrlParameter.Optional } // Parameter defaults
             );
-
         }
 
         protected void Application_Start()
         {
+            Common.ServiceLocator.Instance.Initialize(new Dictionary<Type, Type>()
+            {
+                { typeof(IClientContextManager<>), typeof(EFContextManager<>) },
+                { typeof(IClientContext), typeof(EFContext) }
+            });
+
             AreaRegistration.RegisterAllAreas();
 
             RegisterGlobalFilters(GlobalFilters.Filters);
