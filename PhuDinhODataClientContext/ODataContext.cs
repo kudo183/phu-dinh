@@ -16,7 +16,7 @@ namespace PhuDinhODataClientContext
         {
             var context = ContextFactory.CreateContext();
 
-            var query = context.Set<T>().Where(filter);
+            var query = (filter == null) ? context.Set<T>() : context.Set<T>().Where(filter);
 
             return query;
         }

@@ -16,7 +16,7 @@ namespace PhuDinhEFClientContext
         {
             var context = ContextFactory.CreateContext();
 
-            var query = context.Set<T>().AsNoTracking().Where(filter);
+            var query = (filter == null) ? context.Set<T>().AsNoTracking() : context.Set<T>().AsNoTracking().Where(filter);
 
             return query;
         }
