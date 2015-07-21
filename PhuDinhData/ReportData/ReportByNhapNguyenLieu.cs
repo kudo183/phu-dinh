@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using PhuDinhEFClientContext;
 
 namespace PhuDinhData.ReportData
 {
@@ -27,12 +26,11 @@ namespace PhuDinhData.ReportData
 
         private static List<ReportByNhapNguyenLieuData> Filter(System.Linq.Expressions.Expression<Func<tNhapNguyenLieu, bool>> filter)
         {
-            var context = ContextFactory.CreateContext();
+            var nguyenLieu = ClientContext.Instance.GetData<rNguyenLieu>(null).ToDictionary(p => p.Ma, p => p.TenNguyenLieu);
 
-            var nguyenLieu = context.rNguyenLieux.ToDictionary(p => p.Ma, p => p.TenNguyenLieu);
-
-            var nhapNguyenLieus = context.tNhapNguyenLieux
-                .Where(filter)
+            var nhapNguyenLieus = ClientContext.Instance
+                .GetData(filter)
+                .ToList()
                 .GroupBy(p => p.MaNguyenLieu);
 
             var result = (from nhapNguyenLieu in nhapNguyenLieus

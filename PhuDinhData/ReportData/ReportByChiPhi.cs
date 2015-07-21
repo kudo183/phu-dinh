@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using PhuDinhEFClientContext;
 
 namespace PhuDinhData.ReportData
 {
@@ -27,13 +26,11 @@ namespace PhuDinhData.ReportData
 
         private static List<ReportByChiPhiData> Filter(System.Linq.Expressions.Expression<Func<tChiPhi, bool>> filter)
         {
-            var context = ContextFactory.CreateContext();
-
-            var chiPhis = context.tChiPhis
-                .Where(filter)
+            var chiPhis = ClientContext.Instance.GetData(filter)
+                .ToList()
                 .GroupBy(p => p.MaLoaiChiPhi);
 
-            var loaiChiPhis = context.rLoaiChiPhis.ToDictionary(p => p.Ma);
+            var loaiChiPhis = ClientContext.Instance.GetData<rLoaiChiPhi>(null).ToDictionary(p => p.Ma);
 
             var result = (from chiPhi in chiPhis
                           let soTien = chiPhi.Sum(p => p.SoTien)

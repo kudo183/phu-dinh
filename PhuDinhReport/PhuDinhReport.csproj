@@ -154,6 +154,10 @@
       <Project>{64f9d717-b4f2-4508-afe6-4cbf5b811bef}</Project>
       <Name>CustomControl</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PhuDinhCommon\PhuDinhCommon.csproj">
+      <Project>{e7cdbbdc-0d94-48b8-9934-ebfbb75e533d}</Project>
+      <Name>PhuDinhCommon</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PhuDinhDataEntity\PhuDinhDataEntity.csproj">
       <Project>{02b6159f-4020-44f7-840e-8e5b8ed85df9}</Project>
       <Name>PhuDinhDataEntity</Name>

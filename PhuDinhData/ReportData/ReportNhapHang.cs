@@ -1,8 +1,6 @@
 ﻿using PhuDinhDataEntity;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using PhuDinhEFClientContext;
 
 namespace PhuDinhData.ReportData
 {
@@ -58,10 +56,7 @@ namespace PhuDinhData.ReportData
 
         private static List<ReportNhapHangData> FilterTuLam(System.Linq.Expressions.Expression<Func<tNhapHang, bool>> filter)
         {
-            var context = ContextFactory.CreateContext();
-
-            var nhapHangs = context.tNhapHangs
-                .Where(filter);
+            var nhapHangs = ClientContext.Instance.GetDataWithRelated(filter, new List<string> { "rKhoHang", "rNhanVien" });
 
             var khoHangs = new Dictionary<int, string>();
             var NhanViens = new Dictionary<int, string>();
@@ -89,7 +84,11 @@ namespace PhuDinhData.ReportData
                     gNhanViens.Add(nhapHang.MaNhanVien, new Dictionary<int, int>());
                 }
                 var gMatHangs = gNhanViens[nhapHang.MaNhanVien];
-                foreach (var chiTietDonHang in nhapHang.tChiTietNhapHangs)
+
+                var maNhapHang = nhapHang.Ma;
+                var tChiTietNhapHangs = PhuDinhData.ClientContext.Instance
+                    .GetDataWithRelated<tChiTietNhapHang>(p => p.MaNhapHang == maNhapHang, new List<string> { "tMatHang" });
+                foreach (var chiTietDonHang in tChiTietNhapHangs)
                 {
                     if (matHangs.ContainsKey(chiTietDonHang.MaMatHang) == false)
                     {
@@ -113,13 +112,13 @@ namespace PhuDinhData.ReportData
                 {
                     TenKho = khoHangs[gKhoHang.Key]
                 });
-                foreach (var gKhachHang in gKhoHang.Value)
+                foreach (var gNhanVien in gKhoHang.Value)
                 {
                     result.Add(new ReportNhapHangData()
                     {
-                        TenNhanVien = NhanViens[gKhachHang.Key]
+                        TenNhanVien = NhanViens[gNhanVien.Key]
                     });
-                    foreach (var gMatHang in gKhachHang.Value)
+                    foreach (var gMatHang in gNhanVien.Value)
                     {
                         result.Add(new ReportNhapHangData()
                         {
@@ -135,10 +134,7 @@ namespace PhuDinhData.ReportData
 
         private static List<ReportNhapHangData> FilterLayNgoai(System.Linq.Expressions.Expression<Func<tNhapHang, bool>> filter)
         {
-            var context = ContextFactory.CreateContext();
-
-            var nhapHangs = context.tNhapHangs
-                .Where(filter);
+            var nhapHangs = ClientContext.Instance.GetDataWithRelated(filter, new List<string> { "rKhoHang", "rNhaCungCap" });
 
             var khoHangs = new Dictionary<int, string>();
             var nhaCungCaps = new Dictionary<int, string>();
@@ -166,7 +162,11 @@ namespace PhuDinhData.ReportData
                     gNhaCungCaps.Add(nhapHang.MaNhaCungCap, new Dictionary<int, int>());
                 }
                 var gMatHangs = gNhaCungCaps[nhapHang.MaNhaCungCap];
-                foreach (var chiTietDonHang in nhapHang.tChiTietNhapHangs)
+
+                var maNhapHang = nhapHang.Ma;
+                var tChiTietNhapHangs = ClientContext.Instance
+                    .GetDataWithRelated<tChiTietNhapHang>(p => p.MaNhapHang == maNhapHang, new List<string> { "tMatHang" });
+                foreach (var chiTietDonHang in tChiTietNhapHangs)
                 {
                     if (matHangs.ContainsKey(chiTietDonHang.MaMatHang) == false)
                     {

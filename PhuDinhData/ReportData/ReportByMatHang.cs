@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using PhuDinhEFClientContext;
 
 namespace PhuDinhData.ReportData
 {
@@ -26,10 +25,9 @@ namespace PhuDinhData.ReportData
 
         public static List<ReportByMatHangData> Filter(System.Linq.Expressions.Expression<Func<tChiTietDonHang, bool>> filter)
         {
-            var context = ContextFactory.CreateContext();
-
-            var chiTietDonHangs = context.tChiTietDonHangs
-                .Where(filter)
+            var chiTietDonHangs = ClientContext.Instance
+                .GetDataWithRelated(filter, new List<string> { "tMatHang" })
+                .ToList()
                 .GroupBy(p => p.tMatHang.TenMatHangDayDu);
 
             var result = (from chiTietDonHang in chiTietDonHangs

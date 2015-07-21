@@ -2,8 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Data.Entity;
-using PhuDinhEFClientContext;
 
 namespace PhuDinhData.ReportData
 {
@@ -50,11 +48,8 @@ namespace PhuDinhData.ReportData
 
         private static List<ReportByKhachHangData> Filter(System.Linq.Expressions.Expression<Func<tDonHang, bool>> filter, bool isGroupByDate)
         {
-            var context = ContextFactory.CreateContext();
-
-            var gbKhachHang = context.tDonHangs
-                .Where(filter)
-                .Include(p => p.tChiTietDonHangs.Select(ct => ct.tMatHang))
+            var gbKhachHang = ClientContext.Instance.GetDataWithRelated(filter, new List<string> { "rKhachHang" })
+                .ToList()
                 .GroupBy(p => p.rKhachHang.TenKhachHang);
 
             var result = new List<ReportByKhachHangData>();
@@ -109,7 +104,10 @@ namespace PhuDinhData.ReportData
 
             foreach (var dh in gbNgay)
             {
-                foreach (var ct in dh.tChiTietDonHangs)
+                var maDonHang = dh.Ma;
+                var tChiTietDonHangs = ClientContext.Instance
+                    .GetDataWithRelated<tChiTietDonHang>(p => p.MaDonHang == maDonHang, new List<string> {"tMatHang"});
+                foreach (var ct in tChiTietDonHangs)
                 {
                     if (dMatHangSoLuong.ContainsKey(ct.tMatHang.TenMatHangDayDu) == false)
                     {

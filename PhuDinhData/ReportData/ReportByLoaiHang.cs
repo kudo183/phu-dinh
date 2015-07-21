@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using PhuDinhEFClientContext;
 
 namespace PhuDinhData.ReportData
 {
@@ -27,13 +26,11 @@ namespace PhuDinhData.ReportData
 
         private static List<ReportByLoaiHangData> Filter(System.Linq.Expressions.Expression<Func<tChiTietDonHang, bool>> filter)
         {
-            var context = ContextFactory.CreateContext();
-
-            var chiTietDonHangs = context.tChiTietDonHangs
-                .Where(filter)
+            var chiTietDonHangs = ClientContext.Instance.GetDataWithRelated(filter, new List<string> { "tMatHang" })
+                .ToList()
                 .GroupBy(p => p.tMatHang.MaLoai);
 
-            var loaiHangs = context.rLoaiHangs.ToDictionary(p => p.Ma);
+            var loaiHangs = ClientContext.Instance.GetData<rLoaiHang>(null).ToDictionary(p => p.Ma);
 
             var result = (from chiTietDonHang in chiTietDonHangs
                           let soLuong = chiTietDonHang.Sum(p => p.SoLuong)

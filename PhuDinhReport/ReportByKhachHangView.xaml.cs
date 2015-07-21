@@ -4,7 +4,7 @@ using CustomControl.DataGridColumnHeaderFilterModel;
 using System;
 using System.Windows.Controls;
 using PhuDinhData.ReportData;
-using PhuDinhEFClientContext;
+using PhuDinhDataEntity;
 
 namespace PhuDinhReport
 {
@@ -26,8 +26,8 @@ namespace PhuDinhReport
             reportDatePicker.TuNgayDenNgaySelected += reportDatePicker_TuNgayDenNgaySelected;
 
             Header_KhachHang = new HeaderComboBoxFilterModel("Khach Hang");
-            var context = ContextFactory.CreateContext();
-            Header_KhachHang.ItemSource = context.rKhachHangs.OrderBy(p => p.TenKhachHang)
+
+            Header_KhachHang.ItemSource = PhuDinhData.ClientContext.Instance.GetData<rKhachHang>(null).OrderBy(p => p.TenKhachHang)
                 .ToDictionary(p => p.Ma, p => p.TenKhachHang);
             Header_KhachHang.PropertyChanged += Header_KhachHang_PropertyChanged;
             Header_KhachHang.SelectedValue = 162;
