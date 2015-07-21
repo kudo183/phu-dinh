@@ -32,12 +32,8 @@ namespace PhuDinhData.ReportData
 
         private static List<ReportDailyRowData> Filter(System.Linq.Expressions.Expression<Func<tDonHang, bool>> filter)
         {
-            var context = ContextFactory.CreateContext();
-
-            var donHangs = context.tDonHangs
-                .Where(filter)
-                .Include(p => p.rKhoHang)
-                .Include(p => p.rKhachHang)
+            var donHangs = ClientContext.Instance
+                .GetDataWithRelated(filter, new List<string> { "rKhoHang", "rKhachHang" })
                 .ToList()
                 .GroupBy(p => p.MaKhoHang);
 
@@ -58,11 +54,10 @@ namespace PhuDinhData.ReportData
                     {
                         var sb = new StringBuilder();
 
-                        var tChuyenHangDonHangs = context.tChuyenHangDonHangs
-                            .Where(p => p.MaDonHang == maDonHang)
-                            .Include(p => p.tChuyenHang.rNhanVien);
+                        var tChuyenHangDonHangs = ClientContext.Instance
+                            .GetDataWithRelated<tChuyenHangDonHang>(p => p.MaDonHang == maDonHang, new List<string> { "tChuyenHang.rNhanVien" });
 
-                        if (tChuyenHangDonHangs.Any())
+                        if (ClientContext.Instance.Count(tChuyenHangDonHangs) > 0)
                         {
                             foreach (var tChuyenHangDonHang in tChuyenHangDonHangs)
                             {
@@ -78,9 +73,8 @@ namespace PhuDinhData.ReportData
                         TenKhachHang = ten
                     });
 
-                    var tChiTietDonHangs = context.tChiTietDonHangs
-                        .Where(p => p.MaDonHang == maDonHang)
-                        .Include(p => p.tMatHang);
+                    var tChiTietDonHangs = ClientContext.Instance
+                            .GetDataWithRelated<tChiTietDonHang>(p => p.MaDonHang == maDonHang, new List<string> { "tMatHang" });
 
                     foreach (var tChiTietDonHang in tChiTietDonHangs)
                     {

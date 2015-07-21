@@ -80,6 +80,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BusinessLogics\BusinessLogics.cs" />
+    <Compile Include="ClientContext.cs" />
     <Compile Include="DesignTimeData\0Level\DDrKhoHang.cs" />
     <Compile Include="DesignTimeData\0Level\DDrNhaCungCap.cs" />
     <Compile Include="DesignTimeData\0Level\DDrLoaiNguyenLieu.cs" />

@@ -63,6 +63,7 @@
     <Compile Include="EntityFrameworkUtils.cs" />
     <Compile Include="Expression\ExpressionExtension.cs" />
     <Compile Include="Expression\ExpressionVisitor.cs" />
+    <Compile Include="IClientContext.cs" />
     <Compile Include="IClientContextManager.cs" />
     <Compile Include="LogManager.cs" />
     <Compile Include="PagingCollection.cs" />

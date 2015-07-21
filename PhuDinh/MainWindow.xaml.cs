@@ -24,8 +24,17 @@ namespace PhuDinh
             LogManager.Log(event_type.et_Internal, severity_type.st_info, new string('*', 20));
             LogManager.Log(event_type.et_Internal, severity_type.st_info, "Start main window");
 
-            //Common.ServiceLocator.Instance.Initialize(new Dictionary<Type, Type>() { { typeof(IClientContextManager<>), typeof(ODataContextManager<>) } });
-            Common.ServiceLocator.Instance.Initialize(new Dictionary<Type, Type>() { { typeof(IClientContextManager<>), typeof(EFContextManager<>) } });
+            //Common.ServiceLocator.Instance.Initialize(new Dictionary<Type, Type>()
+            //{
+            //    { typeof(IClientContextManager<>), typeof(ODataContextManager<>) },
+            //    { typeof(IClientContext), typeof(ODataContext) }
+            //});
+
+            Common.ServiceLocator.Instance.Initialize(new Dictionary<Type, Type>()
+            {
+                { typeof(IClientContextManager<>), typeof(EFContextManager<>) },
+                { typeof(IClientContext), typeof(EFContext) }
+            });
 
 #if DEBUG
             //ConfigurationManager.AppSettings["DataSource"] = ".";
