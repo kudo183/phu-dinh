@@ -8,7 +8,7 @@ using log4net;
 
 namespace PhuDinhEFClientContext
 {
-    public static class ContextFactory
+    internal static class ContextFactory
     {
         private static readonly ILog Logger = log4net.LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 

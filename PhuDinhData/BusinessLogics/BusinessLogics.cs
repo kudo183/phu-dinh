@@ -1,26 +1,25 @@
 ﻿using PhuDinhDataEntity;
 using System;
 using System.Collections.Generic;
-using PhuDinhEFClientContext.Repository;
 
 namespace PhuDinhData.BusinessLogics
 {
     public static class BusinessLogics
     {
-        public static void UpdateTonKhosTuNgayDDenNgayN(PhuDinhEntities context,
+        public static void UpdateTonKhosTuNgayDDenNgayN(
             DateTime ngayD,
             DateTime ngayN)
         {
             var ngayTruocNgayD = ngayD.Subtract(new TimeSpan(1, 0, 0, 0));
 
-            var tons = TinhChiTietTonTuNgayD(context, ngayTruocNgayD, ngayN);
+            var tons = TinhChiTietTonTuNgayD(ngayTruocNgayD, ngayN);
 
-            var xuats = TinhChiTietXuatTuNgayD(context, ngayD, ngayN);
+            var xuats = TinhChiTietXuatTuNgayD(ngayD, ngayN);
 
-            var nhaps = TinhChiTietNhapTuNgayD(context, ngayD, ngayN);
+            var nhaps = TinhChiTietNhapTuNgayD(ngayD, ngayN);
 
-            var khos = Repository<rKhoHang>.GetDataQuery(context, p => true);
-            var matHangs = Repository<tMatHang>.GetDataQuery(context, p => true);
+            var khos = ClientContext.Instance.GetData<rKhoHang>(null);
+            var matHangs = ClientContext.Instance.GetData<tMatHang>(null);
 
             var soNgay = (ngayN - ngayD).Days + 1;
 
@@ -29,6 +28,9 @@ namespace PhuDinhData.BusinessLogics
 
             Dictionary<DateTime, tTonKho> tonMatHang;
             Dictionary<DateTime, int> xuatMatHang, nhapMatHang;
+
+            List<tTonKho> lstTonKhoAdded = new List<tTonKho>();
+            List<tTonKho> lstTonKhoUpdated = new List<tTonKho>();
 
             bool bXuat, bNhap;
 
@@ -111,34 +113,42 @@ namespace PhuDinhData.BusinessLogics
                                 SoLuong = tonMatHang[ngayTruoc].SoLuong + nhapNgay - xuatNgay
                             };
 
-                            context.tTonKhoes.Add(t);
+                            lstTonKhoAdded.Add(t);
                             tonMatHang.Add(ngay, t);
                         }
                         else
                         {
                             var tonNgay = tonMatHang[ngay];
-                            tonNgay.SoLuong = tonMatHang[ngayTruoc].SoLuong + nhapNgay - xuatNgay;
+                            var soLuong = tonMatHang[ngayTruoc].SoLuong + nhapNgay - xuatNgay;
+                            if (tonNgay.SoLuong != soLuong)
+                            {
+                                tonNgay.SoLuong = soLuong;
+                                lstTonKhoUpdated.Add(tonNgay);
+                            }
                         }
-                        
+
                         ngayTruoc = ngay;
                         ngay = ngay.AddDays(1);
                     }
                 }
             }
 
-            context.SaveChanges();
+            var addedOrUpdated = new List<tTonKho>();
+            addedOrUpdated.AddRange(lstTonKhoAdded);
+            addedOrUpdated.AddRange(lstTonKhoUpdated);
+
+            ClientContext.Instance.AddOrUpdateEntities(addedOrUpdated);
         }
 
         //<kho, maMatHang, ngay, soLuong>
         private static Dictionary<int, Dictionary<int, Dictionary<DateTime, tTonKho>>> TinhChiTietTonTuNgayD(
-            PhuDinhEntities context,
             DateTime ngayD,
             DateTime ngayN)
         {
             var ton = new Dictionary<int, Dictionary<int, Dictionary<DateTime, tTonKho>>>();
 
-            var tonKhos = Repository<tTonKho>.GetDataQuery(
-                   context, p => p.Ngay >= ngayD && p.Ngay <= ngayN);
+            var tonKhos = ClientContext.Instance
+                .GetData<tTonKho>(p => p.Ngay >= ngayD && p.Ngay <= ngayN);
 
             foreach (var tonKho in tonKhos)
             {
@@ -168,14 +178,13 @@ namespace PhuDinhData.BusinessLogics
 
         //<kho, maMatHang, ngay, soLuong>
         private static Dictionary<int, Dictionary<int, Dictionary<DateTime, int>>> TinhChiTietXuatTuNgayD(
-            PhuDinhEntities context,
             DateTime ngayD,
             DateTime ngayN)
         {
             var xuat = new Dictionary<int, Dictionary<int, Dictionary<DateTime, int>>>();
 
-            var donHangs = Repository<tDonHang>.GetDataQuery(
-                context, p => p.Ngay >= ngayD && p.Ngay<=ngayN);
+            var donHangs = ClientContext.Instance
+                .GetDataWithRelated<tDonHang>(p => p.Ngay >= ngayD && p.Ngay <= ngayN, new List<string> { "tChiTietDonHangs" });
 
             foreach (var donHang in donHangs)
             {
@@ -205,8 +214,8 @@ namespace PhuDinhData.BusinessLogics
                 }
             }
 
-            var chuyenKhos = Repository<tChuyenKho>.GetDataQuery(
-                context, p => p.Ngay >= ngayD && p.Ngay <= ngayN);
+            var chuyenKhos = ClientContext.Instance
+                .GetDataWithRelated<tChuyenKho>(p => p.Ngay >= ngayD && p.Ngay <= ngayN, new List<string> { "tChiTietChuyenKhoes" });
 
             foreach (var chuyenKho in chuyenKhos)
             {
@@ -241,14 +250,13 @@ namespace PhuDinhData.BusinessLogics
 
         //<ngay, kho, maMatHang, soLuong>
         private static Dictionary<int, Dictionary<int, Dictionary<DateTime, int>>> TinhChiTietNhapTuNgayD(
-            PhuDinhEntities context,
             DateTime ngayD,
             DateTime ngayN)
         {
             var nhap = new Dictionary<int, Dictionary<int, Dictionary<DateTime, int>>>();
 
-            var nhapHangs = Repository<tNhapHang>.GetDataQuery(
-                context, p => p.Ngay >= ngayD && p.Ngay <= ngayN);
+            var nhapHangs = ClientContext.Instance
+                .GetDataWithRelated<tNhapHang>(p => p.Ngay >= ngayD && p.Ngay <= ngayN, new List<string> { "tChiTietNhapHangs" });
 
             foreach (var nhapHang in nhapHangs)
             {
@@ -278,8 +286,8 @@ namespace PhuDinhData.BusinessLogics
                 }
             }
 
-            var chuyenKhos = Repository<tChuyenKho>.GetDataQuery(
-                context, p => p.Ngay >= ngayD && p.Ngay <= ngayN);
+            var chuyenKhos = ClientContext.Instance
+                .GetDataWithRelated<tChuyenKho>(p => p.Ngay >= ngayD && p.Ngay <= ngayN, new List<string> { "tChiTietChuyenKhoes" });
 
             foreach (var chuyenKho in chuyenKhos)
             {

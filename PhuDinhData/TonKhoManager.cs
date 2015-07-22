@@ -3,9 +3,6 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 using PhuDinhCommon;
-using System.Data.Entity;
-using PhuDinhEFClientContext;
-using PhuDinhEFClientContext.Repository;
 
 namespace PhuDinhData
 {
@@ -13,7 +10,7 @@ namespace PhuDinhData
     {
         public static void UpdateTonKho(DateTime begin, DateTime end)
         {
-            BusinessLogics.BusinessLogics.UpdateTonKhosTuNgayDDenNgayN(ContextFactory.CreateContext(), begin, end);
+            BusinessLogics.BusinessLogics.UpdateTonKhosTuNgayDDenNgayN(begin, end);
         }
 
         private static readonly object _lock = new object();
@@ -22,16 +19,21 @@ namespace PhuDinhData
         {
             lock (_lock)
             {
-                var context = ContextFactory.CreateContext();
-
                 var now = DateTime.Now.Date;
 
-                var thamSoNgayCapNhatTonKhoCuoiCung = context.ThamSoNgays.FirstOrDefault(p => p.Ten == Constant.ThamSo_NgayCapNhatTonKhoCuoiCung);
-
-                if (thamSoNgayCapNhatTonKhoCuoiCung == null)
+                var thamSoNgays = ClientContext.Instance.GetData<ThamSoNgay>(p => p.Ten == Constant.ThamSo_NgayCapNhatTonKhoCuoiCung).ToList();
+                ThamSoNgay thamSoNgayCapNhatTonKhoCuoiCung;
+                if (thamSoNgays.Count == 1)
                 {
-                    thamSoNgayCapNhatTonKhoCuoiCung = context.ThamSoNgays.Add(
-                        new ThamSoNgay() { Ten = Constant.ThamSo_NgayCapNhatTonKhoCuoiCung, GiaTri = now.Subtract(new TimeSpan(1, 0, 0, 0)) });
+                    thamSoNgayCapNhatTonKhoCuoiCung = thamSoNgays[0];
+                }
+                else
+                {
+                    thamSoNgayCapNhatTonKhoCuoiCung = new ThamSoNgay()
+                    {
+                        Ten = Constant.ThamSo_NgayCapNhatTonKhoCuoiCung,
+                        GiaTri = now.Subtract(new TimeSpan(1, 0, 0, 0))
+                    };
                 }
 
                 var minDate = thamSoNgayCapNhatTonKhoCuoiCung.GiaTri;
@@ -45,24 +47,26 @@ namespace PhuDinhData
 
                 thamSoNgayCapNhatTonKhoCuoiCung.GiaTri = now;
 
-                context.SaveChanges();
-
-                context.Dispose();
+                ClientContext.Instance.AddOrUpdateEntity(thamSoNgayCapNhatTonKhoCuoiCung);
             }
         }
 
         public static IEnumerable<tTonKho> GetTonKho(Filter.Filter_tTonKho filter)
         {
-            var context = ContextFactory.CreateContext();
-
             var kho = filter.GetFilterValue(Filter.Filter_tTonKho.MaKhoHang);
 
             var filterCanhBaoTonKho = new Filter.Filter_rCanhBaoTonKho();
             filterCanhBaoTonKho.SetFilter(Filter.Filter_rCanhBaoTonKho.MaKhoHang, kho);
 
-            var canhBaoTonKhos = Repository<rCanhBaoTonKho>.GetDataQuery(context, filterCanhBaoTonKho.Filter).ToDictionary(p => p.MaMatHang);
+            var canhBaoTonKhos = ClientContext.Instance
+                .GetData(filterCanhBaoTonKho.Filter)
+                .ToDictionary(p => p.MaMatHang);
 
-            var result = Repository<tTonKho>.GetDataQuery(context, filter.Filter).Include(p => p.tMatHang).OrderBy(p => p.tMatHang.TenMatHangDayDu).ToList();
+            var result = ClientContext.Instance
+                .GetDataWithRelated(filter.Filter, new List<string> { "tMatHang" })
+                .ToList()
+                .OrderBy(p => p.tMatHang.TenMatHangDayDu)
+                .ToList();
 
             foreach (var tTonKho in result.ToList())
             {
@@ -87,9 +91,7 @@ namespace PhuDinhData
                     tTonKho.CanhBao = 1;
                 }
             }
-
-            context.Dispose();
-
+            
             return result;
         }
     }
