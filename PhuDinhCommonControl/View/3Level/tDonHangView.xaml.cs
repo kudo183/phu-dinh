@@ -66,12 +66,18 @@ namespace PhuDinhCommonControl
             var button = e.OriginalSource as Button;
             if (button.Content.ToString() == "In")
             {
-                var content = SelectedItem.tChiTietDonHangs.Select(
+                var tChiTietDonHangs = PhuDinhData.ClientContext.Instance
+                    .GetDataWithRelated<PhuDinhDataEntity.tChiTietDonHang>(p => p.MaDonHang == SelectedItem.Ma, new List<string> { "tMatHang" }).ToList();
+
+                var content = tChiTietDonHangs.Select(
                     ctdh => string.Format("{0,3}  {1}", ctdh.SoLuong, ctdh.tMatHang.TenMatHangIn)).ToList();
+
+                var rKhachHang = PhuDinhData.ClientContext.Instance
+                    .GetData<PhuDinhDataEntity.rKhachHang>(p => p.Ma == SelectedItem.MaKhachHang).ToList()[0];
 
                 var document = new PrintTemplateDonHang
                 {
-                    Title = SelectedItem.rKhachHang.TenKhachHang,
+                    Title = rKhachHang.TenKhachHang,
                     Content = new ReadOnlyCollection<string>(content)
                 };
 
