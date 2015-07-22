@@ -35,6 +35,32 @@ namespace PhuDinhEFClientContext
             return query.Count();
         }
 
+        public void AddOrUpdateEntity<T>(T entity) where T : BindableObject
+        {
+            var context = ContextFactory.CreateContext();
+            context.Set<T>().Attach(entity);
+            context.Entry(entity).State = entity.GetKey() == 0 ? EntityState.Added : EntityState.Modified;
+
+            EntityFrameworkUtils.DetachAllUnchangedEntity(context);
+
+            context.SaveChanges();
+        }
+
+        public void AddOrUpdateEntities<T>(List<T> entities) where T : BindableObject
+        {
+            var context = ContextFactory.CreateContext();
+            foreach (var entity in entities)
+            {
+
+                context.Set<T>().Attach(entity);
+                context.Entry(entity).State = entity.GetKey() == 0 ? EntityState.Added : EntityState.Modified;
+
+                EntityFrameworkUtils.DetachAllUnchangedEntity(context);
+            }
+
+            context.SaveChanges();
+        }
+
         #endregion
     }
 }
