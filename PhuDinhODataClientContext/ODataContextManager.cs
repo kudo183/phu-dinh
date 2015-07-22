@@ -35,7 +35,7 @@ namespace PhuDinhODataClientContext
         public List<T1> GetData<T1>(Expression<Func<T1, bool>> filter) where T1 : Common.BindableObject
         {
             var result = new List<T1>();
-            var query = _context.Set<T1>().Where(filter) as DataServiceQuery<T1>;
+            var query = (filter == null ? _context.Set<T1>() : _context.Set<T1>().Where(filter)) as DataServiceQuery<T1>;
             query = Repository.RepositoryLocator<T1>.GetDataQuery(query) as DataServiceQuery<T1>;//add order, expand
             var respone = query.Execute() as QueryOperationResponse<T1>;
 
@@ -62,7 +62,7 @@ namespace PhuDinhODataClientContext
 
         public List<T> GetData(Expression<Func<T, bool>> filter, int pageSize, int currentPageIndex, int itemCount)
         {
-            var query = _context.Set<T>().Where(filter);//add filter
+            var query = filter == null ? _context.Set<T>() : _context.Set<T>().Where(filter);//add filter
             query = Repository.RepositoryLocator<T>.GetDataQuery(query);//add order, expand
             query = query.Skip(pageSize * (currentPageIndex - 1)).Take(pageSize);//add paging
 
