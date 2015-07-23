@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Reflection;
 using Common;
 using PhuDinhCommon;
 
@@ -37,30 +38,64 @@ namespace PhuDinhEFClientContext
 
         public void AddOrUpdateEntity<T>(T entity) where T : BindableObject
         {
-            var context = ContextFactory.CreateContext();
-            context.Set<T>().Attach(entity);
-            context.Entry(entity).State = entity.IsNewItem() ? EntityState.Added : EntityState.Modified;
-
-            EntityFrameworkUtils.DetachAllUnchangedEntity(context);
-
-            context.SaveChanges();
+            AddOrUpdateEntities(new List<T> { entity });
         }
 
         public void AddOrUpdateEntities<T>(List<T> entities) where T : BindableObject
         {
-            var context = ContextFactory.CreateContext();
-            foreach (var entity in entities)
+            var cache = ClearNavigationProperties(entities);
+
+            try
             {
+                var context = ContextFactory.CreateContext();
 
-                context.Set<T>().Attach(entity);
-                context.Entry(entity).State = entity.IsNewItem() ? EntityState.Added : EntityState.Modified;
+                foreach (var entity in entities)
+                {
+                    context.Set<T>().Attach(entity);
+                    context.Entry(entity).State = entity.IsNewItem() ? EntityState.Added : EntityState.Modified;
+                }
 
-                EntityFrameworkUtils.DetachAllUnchangedEntity(context);
+                context.SaveChanges();
             }
-
-            context.SaveChanges();
+            finally
+            {
+                SetNavigationProperties(cache);
+            }
         }
 
         #endregion
+
+        private Dictionary<PropertyInfo, Dictionary<T, object>> ClearNavigationProperties<T>(List<T> entities) where T : BindableObject
+        {
+            var virtualProperties = typeof(T).GetProperties().Where(p => p.IsVirtual()).ToList();
+
+            var cache = new Dictionary<PropertyInfo, Dictionary<T, object>>();
+            foreach (var property in virtualProperties)
+            {
+                if (property.CanRead == false || property.CanWrite == false)
+                    continue;
+
+                cache.Add(property, new Dictionary<T, object>());
+                var cacheProperty = cache[property];
+                foreach (var item in entities)
+                {
+                    cacheProperty.Add(item, property.GetValue(item));
+                    property.SetValue(item, null);
+                }
+            }
+
+            return cache;
+        }
+
+        private void SetNavigationProperties<T>(Dictionary<PropertyInfo, Dictionary<T, object>> cache) where T : BindableObject
+        {
+            foreach (var entry in cache)
+            {
+                foreach (var v in entry.Value)
+                {
+                    entry.Key.SetValue(v.Key, v.Value);
+                }
+            }
+        }
     }
 }
