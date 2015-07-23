@@ -67,8 +67,31 @@ namespace PhuDinhEFClientContext.Repository
             return data.Skip(skippedItem).Take(takeItem).ToList();
         }
 
+        /// <summary>
+        /// ***This method will null all virtual properties of data and origData. Need to reload data from db after call this method.
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="data"></param>
+        /// <param name="origData"></param>
+        /// <returns></returns>
         public static List<ChangedItemData> Save(PhuDinhEntities context, List<T> data, List<T> origData)
         {
+            var virtualProperties = typeof(T).GetProperties().Where(p => p.IsVirtual()).ToList();
+            foreach (var property in virtualProperties)
+            {
+                if (property.CanRead == false || property.CanWrite == false)
+                    continue;
+
+                foreach (var item in data)
+                {
+                    property.SetValue(item, null);
+                }
+                foreach (var item in origData)
+                {
+                    property.SetValue(item, null);
+                }
+            }
+
             var removedItems = RemoveItem(context, data, origData);
             var addedOrchangedItems = AddNewOrUpdateItem(context, data, origData);
 
@@ -125,7 +148,6 @@ namespace PhuDinhEFClientContext.Repository
                     context.Set<T>().Attach(item);
                     context.Entry(item).State = EntityState.Added;
 
-                    PhuDinhCommon.EntityFrameworkUtils.DetachAllUnchangedEntity(context);
                     result.Add(new ChangedItemData()
                     {
                         State = EntityState.Added,
@@ -137,8 +159,7 @@ namespace PhuDinhEFClientContext.Repository
                     context.Set<T>().Attach(item);
                     var r = context.Entry(item);
                     r.OriginalValues.SetValues(origData.Find(p => p.GetKey() == item.GetKey()));
-                    
-                    PhuDinhCommon.EntityFrameworkUtils.DetachAllUnchangedEntity(context);
+
                     if (r.State == EntityState.Modified)
                     {
                         result.Add(new ChangedItemData()
@@ -166,7 +187,6 @@ namespace PhuDinhEFClientContext.Repository
                     context.Set<T>().Attach(item);
                     context.Entry(item).State = EntityState.Deleted;
 
-                    PhuDinhCommon.EntityFrameworkUtils.DetachAllUnchangedEntity(context);
                     result.Add(new ChangedItemData()
                     {
                         State = EntityState.Deleted,
