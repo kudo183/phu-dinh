@@ -63,6 +63,33 @@ namespace PhuDinhEFClientContext
             }
         }
 
+        public void DeleteEntity<T>(T entity) where T : BindableObject
+        {
+            DeleteEntities(new List<T> { entity });
+        }
+
+        public void DeleteEntities<T>(List<T> entities) where T : BindableObject
+        {
+            var cache = ClearNavigationProperties(entities);
+
+            try
+            {
+                var context = ContextFactory.CreateContext();
+
+                foreach (var entity in entities)
+                {
+                    context.Set<T>().Attach(entity);
+                    context.Entry(entity).State = EntityState.Deleted;
+                }
+
+                context.SaveChanges();
+            }
+            finally
+            {
+                SetNavigationProperties(cache);
+            }
+        }
+
         #endregion
 
         private Dictionary<PropertyInfo, Dictionary<T, object>> ClearNavigationProperties<T>(List<T> entities) where T : BindableObject

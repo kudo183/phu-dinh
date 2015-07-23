@@ -73,6 +73,16 @@ namespace PhuDinhODataClientContext
             context.SaveChanges();
         }
 
+        public void DeleteEntity<T>(T entity) where T : BindableObject
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteEntities<T>(List<T> entities) where T : BindableObject
+        {
+            throw new NotImplementedException();
+        }
+
         #endregion
     }
 }

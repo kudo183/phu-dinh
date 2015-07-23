@@ -12,5 +12,8 @@ namespace PhuDinhCommon
         int Count<T>(IQueryable<T> query) where T : Common.BindableObject;
         void AddOrUpdateEntity<T>(T entity) where T : Common.BindableObject;
         void AddOrUpdateEntities<T>(List<T> entities) where T : Common.BindableObject;
+        void DeleteEntity<T>(T entity) where T : Common.BindableObject;
+        void DeleteEntities<T>(List<T> entities) where T : Common.BindableObject;
+        //void AddUpdateDeleteEntities<T>(List<T> addOrUpdateEntities, List<T> deleteEntities) where T : Common.BindableObject;
     }
 }
