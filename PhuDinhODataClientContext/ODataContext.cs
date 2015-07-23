@@ -42,7 +42,7 @@ namespace PhuDinhODataClientContext
         public void AddOrUpdateEntity<T>(T entity) where T : BindableObject
         {
             var context = ContextFactory.CreateContext();
-            if (entity.GetKey() == 0)
+            if (entity.IsNewItem())
             {
                 context.Add(entity);
             }
@@ -60,7 +60,7 @@ namespace PhuDinhODataClientContext
             foreach (var entity in entities)
             {
 
-                if (entity.GetKey() == 0)
+                if (entity.IsNewItem())
                 {
                     context.Add(entity);
                 }

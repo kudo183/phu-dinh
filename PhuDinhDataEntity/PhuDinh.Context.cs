@@ -54,9 +54,9 @@ namespace PhuDinhDataEntity
         public DbSet<tNhapHang> tNhapHangs { get; set; }
         public DbSet<tChiTietChuyenKho> tChiTietChuyenKhoes { get; set; }
         public DbSet<tChuyenKho> tChuyenKhoes { get; set; }
-        public DbSet<ThamSoNgay> ThamSoNgays { get; set; }
         public DbSet<rCanhBaoTonKho> rCanhBaoTonKhoes { get; set; }
         public DbSet<tChiTietToaHang> tChiTietToaHangs { get; set; }
         public DbSet<tToaHang> tToaHangs { get; set; }
+        public DbSet<ThamSoNgay> ThamSoNgays { get; set; }
     }
 }

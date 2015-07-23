@@ -69,7 +69,6 @@
         <AssociationConnector Association="PhuDinhModel.FK_tChuyenKho_rNhanVien" />
         <AssociationConnector Association="PhuDinhModel.FK_tChiTietChuyenKho_tChuyenKho" />
         <AssociationConnector Association="PhuDinhModel.FK_tChiTietChuyenKho_tMatHang" />
-        <EntityTypeShape EntityType="PhuDinhModel.ThamSoNgay" Width="1.5" PointX="0.57975114163931041" PointY="1.7956850090044014" />
         <EntityTypeShape EntityType="PhuDinhModel.rCanhBaoTonKho" Width="1.5" PointX="7.2264964632813342" PointY="1.5107152171017206" />
         <AssociationConnector Association="PhuDinhModel.FK_rCanhBaoTonKho_rKhoHang" />
         <AssociationConnector Association="PhuDinhModel.FK_rCanhBaoTonKho_tMatHang" />
@@ -78,6 +77,7 @@
         <AssociationConnector Association="PhuDinhModel.FK_tToaHang_rKhachHang" />
         <AssociationConnector Association="PhuDinhModel.FK_tChiTietToaHang_tChiTietDonHang" />
         <AssociationConnector Association="PhuDinhModel.FK_tChiTietToaHang_tToaHang" />
+        <EntityTypeShape EntityType="PhuDinhModel.ThamSoNgay" Width="1.5" PointX="1.0296021965470175" PointY="29.286949618387478" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

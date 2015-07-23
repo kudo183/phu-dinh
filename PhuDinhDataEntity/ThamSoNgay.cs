@@ -15,6 +15,9 @@ namespace PhuDinhDataEntity
     
     public partial class ThamSoNgay : BindableObject
     {
+        private int _ma;
+        public int Ma { get { return _ma; } set { SetPropertyAndValidate(ref _ma, value); } }
+    
         private string _ten;
         public string Ten { get { return _ten; } set { SetPropertyAndValidate(ref _ten, value); } }
     

@@ -483,8 +483,9 @@
         </EntityType>
         <EntityType Name="ThamSoNgay">
           <Key>
-            <PropertyRef Name="Ten" />
+            <PropertyRef Name="Ma" />
           </Key>
+          <Property Name="Ma" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Ten" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="GiaTri" Type="date" Nullable="false" />
         </EntityType>
@@ -1157,7 +1158,6 @@
             <End Role="tMatHang" EntitySet="tMatHangs" />
             <End Role="tChiTietChuyenKho" EntitySet="tChiTietChuyenKhoes" />
           </AssociationSet>
-          <EntitySet Name="ThamSoNgays" EntityType="PhuDinhModel.ThamSoNgay" />
           <EntitySet Name="rCanhBaoTonKhoes" EntityType="PhuDinhModel.rCanhBaoTonKho" />
           <AssociationSet Name="FK_rCanhBaoTonKho_rKhoHang" Association="PhuDinhModel.FK_rCanhBaoTonKho_rKhoHang">
             <End Role="rKhoHang" EntitySet="rKhoHangs" />
@@ -1181,6 +1181,7 @@
             <End Role="tToaHang" EntitySet="tToaHangs" />
             <End Role="tChiTietToaHang" EntitySet="tChiTietToaHangs" />
           </AssociationSet>
+          <EntitySet Name="ThamSoNgays" EntityType="PhuDinhModel.ThamSoNgay" />
         </EntityContainer>
         <EntityType Name="rBaiXe">
           <Key>
@@ -1941,13 +1942,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="ThamSoNgay">
-          <Key>
-            <PropertyRef Name="Ten" />
-          </Key>
-          <Property Type="String" Name="Ten" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="DateTime" Name="GiaTri" Nullable="false" Precision="0" />
-        </EntityType>
         <EntityType Name="rCanhBaoTonKho">
           <Key>
             <PropertyRef Name="Ma" />
@@ -2041,6 +2035,14 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="ThamSoNgay">
+          <Key>
+            <PropertyRef Name="Ma" />
+          </Key>
+          <Property Type="Int32" Name="Ma" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Ten" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="GiaTri" Nullable="false" Precision="0" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2326,14 +2328,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ThamSoNgays">
-            <EntityTypeMapping TypeName="PhuDinhModel.ThamSoNgay">
-              <MappingFragment StoreEntitySet="ThamSoNgay">
-                <ScalarProperty Name="GiaTri" ColumnName="GiaTri" />
-                <ScalarProperty Name="Ten" ColumnName="Ten" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="rCanhBaoTonKhoes">
             <EntityTypeMapping TypeName="PhuDinhModel.rCanhBaoTonKho">
               <MappingFragment StoreEntitySet="rCanhBaoTonKho">
@@ -2360,6 +2354,15 @@
               <MappingFragment StoreEntitySet="tToaHang">
                 <ScalarProperty Name="MaKhachHang" ColumnName="MaKhachHang" />
                 <ScalarProperty Name="Ngay" ColumnName="Ngay" />
+                <ScalarProperty Name="Ma" ColumnName="Ma" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ThamSoNgays">
+            <EntityTypeMapping TypeName="PhuDinhModel.ThamSoNgay">
+              <MappingFragment StoreEntitySet="ThamSoNgay">
+                <ScalarProperty Name="GiaTri" ColumnName="GiaTri" />
+                <ScalarProperty Name="Ten" ColumnName="Ten" />
                 <ScalarProperty Name="Ma" ColumnName="Ma" />
               </MappingFragment>
             </EntityTypeMapping>

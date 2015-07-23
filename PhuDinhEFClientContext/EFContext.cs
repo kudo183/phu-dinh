@@ -39,7 +39,7 @@ namespace PhuDinhEFClientContext
         {
             var context = ContextFactory.CreateContext();
             context.Set<T>().Attach(entity);
-            context.Entry(entity).State = entity.GetKey() == 0 ? EntityState.Added : EntityState.Modified;
+            context.Entry(entity).State = entity.IsNewItem() ? EntityState.Added : EntityState.Modified;
 
             EntityFrameworkUtils.DetachAllUnchangedEntity(context);
 
@@ -53,7 +53,7 @@ namespace PhuDinhEFClientContext
             {
 
                 context.Set<T>().Attach(entity);
-                context.Entry(entity).State = entity.GetKey() == 0 ? EntityState.Added : EntityState.Modified;
+                context.Entry(entity).State = entity.IsNewItem() ? EntityState.Added : EntityState.Modified;
 
                 EntityFrameworkUtils.DetachAllUnchangedEntity(context);
             }
