@@ -100,8 +100,7 @@ namespace PhuDinhCommonControl
                                  MaChiTietDonHang = tChiTietDonHang.Ma,
                                  MaChuyenHangDonHang = _tChuyenHangDonHangView.SelectedItem.Ma,
                                  tChiTietDonHang = tChiTietDonHang,
-                                 SoLuong = soLuong,
-                                 SoLuongTheoDonHang = tChiTietDonHang.SoLuong
+                                 SoLuong = soLuong
                              };
 
                 _tChiTietChuyenHangDonHangView.ViewModel.Entity.Add(ct);

@@ -20,6 +20,8 @@
 
 
 
+
+
 GO
 CREATE TRIGGER [dbo].[tChiTietDonHang_trUpdateXong]
 	ON [dbo].[tChiTietDonHang]
@@ -127,4 +129,18 @@ CREATE TRIGGER [dbo].[tChiTietDonHang_trUpdateDonHangTongSoLuong]
 		set TongSoLuong = (select ISNULL(sum(SoLuong), 0) from tChiTietDonHang where MaDonHang = tDonHang.Ma)
 		from (select i.MaDonHang from inserted i union select d.MaDonHang from deleted d) as t
 		where tDonHang.Ma = t.MaDonHang
+	END
+GO
+
+create TRIGGER [dbo].[tChiTietDonHang_trUpdateChiTietChuyenHangDonHangSoLuongTheoDonHang]
+	ON [dbo].[tChiTietDonHang]
+	after  UPDATE
+	AS
+	BEGIN
+		SET NOCOUNT ON
+
+		update tChiTietChuyenHangDonHang
+		set SoLuongTheoDonHang = i.SoLuong
+		from inserted i
+		where tChiTietChuyenHangDonHang.MaChiTietDonHang = i.Ma
 	END
