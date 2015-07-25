@@ -89,7 +89,7 @@ namespace PhuDinhCommonControl
             }
 
             Expression<Func<tChiTietDonHang, bool>> filter = (p => p.MaDonHang == _tChuyenHangDonHangView.SelectedItem.MaDonHang && p.Xong == false);
-            var tChiTietDonHangs = _tChuyenHangDonHangView.ViewModel.LoadEntityWithRelated(filter,
+            var tChiTietDonHangs = PhuDinhData.ClientContext.Instance.GetDataWithRelated(filter,
                  new List<string> { "tChiTietChuyenHangDonHangs" });
 
             foreach (var tChiTietDonHang in tChiTietDonHangs)

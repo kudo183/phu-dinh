@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq.Expressions;
 using Common;
@@ -22,6 +21,5 @@ namespace PhuDinhData.ViewModel
         bool IsValid { get; set; }
         void UpdateReferenceData(string columnName);
         void ReloadEntity(T entity);
-        List<T1> LoadEntityWithRelated<T1>(Expression<Func<T1, bool>> filter, List<string> related) where T1 : BindableObject;
     }
 }

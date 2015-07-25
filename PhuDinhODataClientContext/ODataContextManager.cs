@@ -99,11 +99,6 @@ namespace PhuDinhODataClientContext
             _context.ReloadEntity(entity, "Ma");
         }
 
-        public List<T1> LoadEntityWithRelated<T1>(Expression<Func<T1, bool>> filter, List<string> related) where T1 : BindableObject
-        {
-            throw new NotImplementedException();
-        }
-
         private static List<T> AddNewItem(DataServiceContextEx context, List<T> gridDataSource)
         {
             var result = new List<T>();
