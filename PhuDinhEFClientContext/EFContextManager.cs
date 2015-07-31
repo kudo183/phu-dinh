@@ -89,14 +89,5 @@ namespace PhuDinhEFClientContext
 
             PhuDinhCommon.EntityFrameworkUtils.DetachAllUnchangedEntity(_context);
         }
-
-        public List<T1> LoadEntityWithRelated<T1>(Expression<Func<T1, bool>> filter, List<string> related) where T1 : BindableObject
-        {
-            var query = Repository.Repository<T1>.GetDataQuery(_context, filter);
-
-            query = related.Aggregate(query, (current, path) => current.Include(path));
-
-            return query.ToList();
-        }
     }
 }
