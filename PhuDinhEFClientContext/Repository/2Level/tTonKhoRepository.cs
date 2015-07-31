@@ -8,7 +8,7 @@ namespace PhuDinhEFClientContext.Repository
     {
         public static IQueryable<tTonKho> GetDataQuery(IQueryable<tTonKho> query)
         {
-            return query.OrderByDescending(p => p.Ngay);
+            return query.OrderByDescending(p => p.Ngay).OrderBy(p => p.tMatHang.TenMatHang);
         }
 
         public static IQueryable<tTonKho> GetDataQueryAndRelatedTables(IQueryable<tTonKho> query, ref List<string> relatedTables)
