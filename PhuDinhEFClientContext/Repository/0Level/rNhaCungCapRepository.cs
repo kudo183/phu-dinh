@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using PhuDinhDataEntity;
+﻿using PhuDinhDataEntity;
 using System.Linq;
 
 namespace PhuDinhEFClientContext.Repository
@@ -8,13 +7,11 @@ namespace PhuDinhEFClientContext.Repository
     {
         public static IQueryable<rNhaCungCap> GetDataQuery(IQueryable<rNhaCungCap> query)
         {
-            return query.OrderBy(p => p.TenNhaCungCap);
+            return OrderBy(query);
         }
 
-        public static IQueryable<rNhaCungCap> GetDataQueryAndRelatedTables(IQueryable<rNhaCungCap> query, ref List<string> relatedTables)
+        public static IQueryable<rNhaCungCap> OrderBy(IQueryable<rNhaCungCap> query)
         {
-            relatedTables.Clear();
-            relatedTables.Add("rNhaCungCap");
             return query.OrderBy(p => p.TenNhaCungCap);
         }
     }

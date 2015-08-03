@@ -7,7 +7,7 @@ namespace PhuDinhCommon
     public interface IClientContextManager<T> where T : Common.BindableObject
     {
         void CreateContext();
-        List<T1> GetData<T1>(Expression<Func<T1, bool>> filter) where T1 : Common.BindableObject;
+        List<T1> GetData<T1>(Expression<Func<T1, bool>> filter, List<string> relatedTables ) where T1 : Common.BindableObject;
         List<T> GetData(Expression<Func<T, bool>> filter, int pageSize, int currentPageIndex, int itemCount);
         void UndoChange();
         void Dispose();

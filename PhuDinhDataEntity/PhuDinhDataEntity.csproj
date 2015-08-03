@@ -120,6 +120,7 @@
     <Compile Include="EntityExt\4Level\tChuyenHangDonHangExt.cs" />
     <Compile Include="EntityExt\5Level\tChiTietChuyenHangDonHangExt.cs" />
     <Compile Include="EntityExt\5Level\tChiTietToaHangExt.cs" />
+    <Compile Include="EntityHelper.cs" />
     <Compile Include="PhuDinh.Context.cs">
       <DependentUpon>PhuDinh.Context.tt</DependentUpon>
       <AutoGen>True</AutoGen>

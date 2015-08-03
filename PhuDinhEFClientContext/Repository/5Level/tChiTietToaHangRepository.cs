@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using PhuDinhDataEntity;
+﻿using PhuDinhDataEntity;
 using System.Data.Entity;
 using System.Linq;
 
@@ -9,27 +8,16 @@ namespace PhuDinhEFClientContext.Repository
     {
         public static IQueryable<tChiTietToaHang> GetDataQuery(IQueryable<tChiTietToaHang> query)
         {
-            return query
+            return OrderBy(query
                 .Include("tToaHang.rKhachHang")
-                .Include("tChiTietDonHang.tDonHang")
                 .Include("tChiTietDonHang.tMatHang")
-                .OrderByDescending(p => p.tToaHang.Ngay);
+                .Include("tChiTietDonHang.tDonHang.rKhachHang")
+                .Include("tChiTietDonHang.tDonHang.rKhoHang"));
         }
 
-        public static IQueryable<tChiTietToaHang> GetDataQueryAndRelatedTables(IQueryable<tChiTietToaHang> query, ref List<string> relatedTables)
+        public static IQueryable<tChiTietToaHang> OrderBy(IQueryable<tChiTietToaHang> query)
         {
-            relatedTables.Clear();
-            relatedTables.Add("tChiTietToaHang");
-            relatedTables.Add("tToaHang");
-            relatedTables.Add("rKhachHang");
-            relatedTables.Add("tChiTietDonHang");
-            relatedTables.Add("tDonHang");
-            relatedTables.Add("tMatHang");
-            return query
-                .Include("tToaHang.rKhachHang")
-                .Include("tChiTietDonHang.tDonHang")
-                .Include("tChiTietDonHang.tMatHang")
-                .OrderByDescending(p => p.tToaHang.Ngay);
+            return query.OrderByDescending(p => p.tToaHang.Ngay);
         }
     }
 }

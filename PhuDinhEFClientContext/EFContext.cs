@@ -92,6 +92,23 @@ namespace PhuDinhEFClientContext
 
         #endregion
 
+        public DateTime? GetTablesLastUpdate(List<string> relatedTables)
+        {
+            var context = ContextFactory.CreateContext();
+            var temp = new List<string>();
+            foreach (string path in relatedTables)
+            {
+                var tables = path.Split('.');
+                foreach (var table in tables)
+                {
+                    if (temp.Contains(table) == false)
+                        temp.Add(table);
+                }
+            }
+
+            return EntityFrameworkUtils.GetTablesLastUpdate(context, temp);
+        }
+
         private Dictionary<PropertyInfo, Dictionary<T, object>> ClearNavigationProperties<T>(List<T> entities) where T : BindableObject
         {
             var virtualProperties = typeof(T).GetProperties().Where(p => p.IsVirtual()).ToList();

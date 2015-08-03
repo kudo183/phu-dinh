@@ -28,11 +28,6 @@ namespace PhuDinhEFClientContext.Repository
             return RepositoryLocator<T>.GetDataQuery(GetDataQueryWithFilterNoTracking(context, filter));
         }
 
-        public static IQueryable<T> GetDataQueryAndRelatedTables(PhuDinhEntities context, Expression<Func<T, bool>> filter, ref List<string> relatedTables)
-        {
-            return RepositoryLocator<T>.GetDataQueryAndRelatedTables(GetDataQueryWithFilterNoTracking(context, filter), ref relatedTables);
-        }
-
         private static IQueryable<T> GetDataQueryWithFilterNoTracking(PhuDinhEntities context, Expression<Func<T, bool>> filter)
         {
             var q = filter != null ? context.Set<T>().AsNoTracking().Where(filter) : context.Set<T>().AsNoTracking();

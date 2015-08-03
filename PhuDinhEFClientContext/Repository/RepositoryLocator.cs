@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
@@ -16,11 +15,11 @@ namespace PhuDinhEFClientContext.Repository
             return method.Invoke(null, new object[] { query }) as IQueryable<T>;
         }
 
-        public static IQueryable<T> GetDataQueryAndRelatedTables(IQueryable<T> query, ref List<string> relatedTables)
+        public static IQueryable<T> OrderBy(IQueryable<T> query)
         {
-            var types = new Type[] { typeof(IQueryable<T>), typeof(List<string>).MakeByRefType() };
+            var types = new Type[] { typeof(IQueryable<T>) };
             var method = GetMethod(MethodBase.GetCurrentMethod().Name, types);
-            return method.Invoke(null, new object[] { query, relatedTables }) as IQueryable<T>;
+            return method.Invoke(null, new object[] { query }) as IQueryable<T>;
         }
 
         private static MethodInfo GetMethod(string methodName, Type[] types)

@@ -25,6 +25,11 @@ namespace PhuDinhODataClientContext
             _context.ReceivingResponse += _context_ReceivingResponse;
         }
 
+        public List<T1> GetData<T1>(Expression<Func<T1, bool>> filter, List<string> relatedTables) where T1 : BindableObject
+        {
+            throw new NotImplementedException();
+        }
+
         void _context_ReceivingResponse(object sender, ReceivingResponseEventArgs e)
         {
             var r = e.ResponseMessage as HttpWebResponseMessage;

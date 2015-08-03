@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using PhuDinhDataEntity;
 using System.Linq;
 
@@ -9,23 +8,14 @@ namespace PhuDinhEFClientContext.Repository
     {
         public static IQueryable<tChiTietChuyenKho> GetDataQuery(IQueryable<tChiTietChuyenKho> query)
         {
-            return query
+            return OrderBy(query
                 .Include("tChuyenKho.rKhoHangNhap")
-                .Include("tChuyenKho.rKhoHangXuat")
-                .OrderByDescending(p => p.tChuyenKho.Ngay);
+                .Include("tChuyenKho.rKhoHangXuat"));
         }
 
-        public static IQueryable<tChiTietChuyenKho> GetDataQueryAndRelatedTables(IQueryable<tChiTietChuyenKho> query, ref List<string> relatedTables)
+        public static IQueryable<tChiTietChuyenKho> OrderBy(IQueryable<tChiTietChuyenKho> query)
         {
-            relatedTables.Clear();
-            relatedTables.Add("tChiTietChuyenKho");
-            relatedTables.Add("tChuyenKho");
-            relatedTables.Add("rKhoHangNhap");
-            relatedTables.Add("rKhoHangXuat");
-            return query
-                .Include("tChuyenKho.rKhoHangNhap")
-                .Include("tChuyenKho.rKhoHangXuat")
-                .OrderByDescending(p => p.tChuyenKho.Ngay);
+            return query.OrderByDescending(p => p.tChuyenKho.Ngay);
         }
     }
 }

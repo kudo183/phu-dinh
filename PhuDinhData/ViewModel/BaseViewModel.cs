@@ -7,6 +7,7 @@ using System.Linq.Expressions;
 using System.Reflection;
 using Common;
 using PhuDinhData.Filter;
+using PhuDinhDataEntity;
 using log4net;
 
 namespace PhuDinhData.ViewModel
@@ -130,7 +131,7 @@ namespace PhuDinhData.ViewModel
             Expression<Func<T1, bool>> filter, Action<T> action)
             where T1 : BindableObject
         {
-            data = _contextManager.GetData(filter);
+            data = _contextManager.GetData(filter, EntityHelper.GetReferenceDataRelatedTables(typeof(T1).Name));
 
             if (Entity == null)
             {
