@@ -224,7 +224,7 @@ namespace PhuDinhData.ViewModel
             _contextManager.CreateContext();
 
             ItemCount = _contextManager.GetDataCount(MainFilter.Filter);
-            _origData = _contextManager.GetData(MainFilter.Filter, PageSize, CurrentPageIndex, ItemCount);
+            _origData = _contextManager.GetData(MainFilter.Filter,EntityHelper.GetMainDataRelatedTables(typeof(T).Name), PageSize, CurrentPageIndex, ItemCount);
 
             Logger.Info("     Unload");
             Unload();

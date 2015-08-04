@@ -8,13 +8,6 @@ namespace PhuDinhEFClientContext.Repository
     {
         private const string Pattern = "PhuDinhEFClientContext.Repository.{0}Repository";
 
-        public static IQueryable<T> GetDataQuery(IQueryable<T> query)
-        {
-            var types = new Type[] { typeof(IQueryable<T>) };
-            var method = GetMethod(MethodBase.GetCurrentMethod().Name, types);
-            return method.Invoke(null, new object[] { query }) as IQueryable<T>;
-        }
-
         public static IQueryable<T> OrderBy(IQueryable<T> query)
         {
             var types = new Type[] { typeof(IQueryable<T>) };

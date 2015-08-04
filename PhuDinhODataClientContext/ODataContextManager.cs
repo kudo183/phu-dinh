@@ -30,6 +30,11 @@ namespace PhuDinhODataClientContext
             throw new NotImplementedException();
         }
 
+        public List<T> GetData(Expression<Func<T, bool>> filter, List<string> relatedTables, int pageSize, int currentPageIndex, int itemCount)
+        {
+            throw new NotImplementedException();
+        }
+
         void _context_ReceivingResponse(object sender, ReceivingResponseEventArgs e)
         {
             var r = e.ResponseMessage as HttpWebResponseMessage;

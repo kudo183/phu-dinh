@@ -32,10 +32,34 @@ namespace PhuDinhEFClientContext
             return _cache.GetData(dbQuery, key, lastUpdate);
         }
 
-        public List<T> GetData(Expression<Func<T, bool>> filter, int pageSize, int currentPageIndex, int itemCount)
+        public List<T> GetData(Expression<Func<T, bool>> filter, List<string> relatedTables, int pageSize, int currentPageIndex, int itemCount)
         {
-            var context = ContextFactory.CreateContext();
-            return Repository.Repository<T>.GetData(context, filter, pageSize, currentPageIndex, itemCount);
+            var dbQuery = Repository.RepositoryLocator<T>.OrderBy(_context.GetDataWithRelated(filter, relatedTables));
+
+            if (itemCount == 0)
+            {
+                return new List<T>();
+            }
+
+            if (pageSize > itemCount || pageSize == 0)
+            {
+                return dbQuery.ToList();
+            }
+
+            var skippedItem = pageSize * (currentPageIndex - 1);
+
+            var takeItem = itemCount - skippedItem;
+            if (takeItem > pageSize)
+            {
+                takeItem = pageSize;
+            }
+
+            if (takeItem <= 0)
+            {
+                return new List<T>();
+            }
+
+            return dbQuery.Skip(skippedItem).Take(takeItem).ToList();
         }
 
         public void UndoChange()

@@ -11,57 +11,6 @@ namespace PhuDinhEFClientContext.Repository
 {
     public static class Repository<T> where T : BindableObject
     {
-        public static List<T> GetData(PhuDinhEntities context,
-            Expression<Func<T, bool>> filter,
-            int pageSize, int currentPageIndex, int itemCount)
-        {
-            return PagingData(RepositoryLocator<T>.GetDataQuery(GetDataQueryWithFilterNoTracking(context, filter)), pageSize, currentPageIndex, itemCount);
-        }
-
-        public static int GetDataCount(PhuDinhEntities context, Expression<Func<T, bool>> filter)
-        {
-            return GetDataQueryWithFilterNoTracking(context, filter).Count();
-        }
-
-        public static IQueryable<T> GetDataQuery(PhuDinhEntities context, Expression<Func<T, bool>> filter)
-        {
-            return RepositoryLocator<T>.GetDataQuery(GetDataQueryWithFilterNoTracking(context, filter));
-        }
-
-        private static IQueryable<T> GetDataQueryWithFilterNoTracking(PhuDinhEntities context, Expression<Func<T, bool>> filter)
-        {
-            var q = filter != null ? context.Set<T>().AsNoTracking().Where(filter) : context.Set<T>().AsNoTracking();
-            return q;
-        }
-
-        private static List<T> PagingData(IQueryable<T> data, int pageSize, int currentPageIndex, int itemCount)
-        {
-            if (itemCount == 0)
-            {
-                return new List<T>();
-            }
-
-            if (pageSize > itemCount || pageSize == 0)
-            {
-                return data.ToList();
-            }
-
-            var skippedItem = pageSize * (currentPageIndex - 1);
-
-            var takeItem = itemCount - skippedItem;
-            if (takeItem > pageSize)
-            {
-                takeItem = pageSize;
-            }
-
-            if (takeItem <= 0)
-            {
-                return new List<T>();
-            }
-
-            return data.Skip(skippedItem).Take(takeItem).ToList();
-        }
-
         /// <summary>
         /// ***This method will null all virtual properties of data and origData. Need to reload data from db after call this method.
         /// </summary>
