@@ -27,23 +27,6 @@ namespace PhuDinhODataClientContext
 
         public List<T1> GetData<T1>(Expression<Func<T1, bool>> filter, List<string> relatedTables) where T1 : BindableObject
         {
-            throw new NotImplementedException();
-        }
-
-        public List<T> GetData(Expression<Func<T, bool>> filter, List<string> relatedTables, int pageSize, int currentPageIndex, int itemCount)
-        {
-            throw new NotImplementedException();
-        }
-
-        void _context_ReceivingResponse(object sender, ReceivingResponseEventArgs e)
-        {
-            var r = e.ResponseMessage as HttpWebResponseMessage;
-
-            Logger.LogDebug(r.Response.ResponseUri + "   " + r.Response.ContentLength.ToString());
-        }
-
-        public List<T1> GetData<T1>(Expression<Func<T1, bool>> filter) where T1 : Common.BindableObject
-        {
             var result = new List<T1>();
             var query = (filter == null ? _context.Set<T1>() : _context.Set<T1>().Where(filter)) as DataServiceQuery<T1>;
             query = Repository.RepositoryLocator<T1>.GetDataQuery(query) as DataServiceQuery<T1>;//add order, expand
@@ -70,7 +53,7 @@ namespace PhuDinhODataClientContext
             return result;
         }
 
-        public List<T> GetData(Expression<Func<T, bool>> filter, int pageSize, int currentPageIndex, int itemCount)
+        public List<T> GetData(Expression<Func<T, bool>> filter, List<string> relatedTables, int pageSize, int currentPageIndex, int itemCount)
         {
             var query = filter == null ? _context.Set<T>() : _context.Set<T>().Where(filter);//add filter
             query = Repository.RepositoryLocator<T>.GetDataQuery(query);//add order, expand
@@ -79,6 +62,13 @@ namespace PhuDinhODataClientContext
             var collection = new DataServiceCollection<T>(query);//this line enable change tracking and execute the query, not need to call query.ToList()
 
             return collection.ToList();
+        }
+
+        void _context_ReceivingResponse(object sender, ReceivingResponseEventArgs e)
+        {
+            var r = e.ResponseMessage as HttpWebResponseMessage;
+
+            Logger.LogDebug(r.Response.ResponseUri + "   " + r.Response.ContentLength.ToString());
         }
 
         public void UndoChange()
@@ -102,11 +92,6 @@ namespace PhuDinhODataClientContext
             var response = query.Execute() as QueryOperationResponse<T>;
 
             return (int)response.TotalCount;
-        }
-
-        public void ReloadEntity(T entity)
-        {
-            _context.ReloadEntity(entity, "Ma");
         }
 
         private static List<T> AddNewItem(DataServiceContextEx context, List<T> gridDataSource)

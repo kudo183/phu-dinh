@@ -81,15 +81,5 @@ namespace PhuDinhEFClientContext
         {
             return _context.Count(_context.GetData(filter));
         }
-
-        public void ReloadEntity(T entity)
-        {
-            var context = ContextFactory.CreateContext();
-            var entityEntry = context.Entry(entity);
-            if (entityEntry.State == EntityState.Detached)
-                entityEntry.State = EntityState.Unchanged;
-
-            entityEntry.Reload();
-        }
     }
 }

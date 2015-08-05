@@ -13,6 +13,5 @@ namespace PhuDinhCommon
         void Dispose();
         void Save(List<T> data, List<T> originalData);
         int GetDataCount(Expression<Func<T, bool>> filter);
-        void ReloadEntity(T entity);
     }
 }

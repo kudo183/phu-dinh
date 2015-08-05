@@ -229,7 +229,7 @@ namespace Common
         /// <returns>true if new, otherwise is false</returns>
         public virtual bool IsNewItem()
         {
-            return ((int)this.GetType().GetProperty("Ma").GetValue(this)) == 0;
+            return ((int)this.GetType().GetProperty(GetKeyName()).GetValue(this)) == 0;
         }
 
         /// <summary>
@@ -240,14 +240,32 @@ namespace Common
         public virtual bool IsEqual(BindableObject b)
         {
             var type = this.GetType();
-            var m = (int)type.GetProperty("Ma").GetValue(this);
-            var m1 = (int)type.GetProperty("Ma").GetValue(b);
+            var m = (int)type.GetProperty(GetKeyName()).GetValue(this);
+            var m1 = (int)type.GetProperty(GetKeyName()).GetValue(b);
             return m == m1;
         }
 
         public virtual int GetKey()
         {
-            return ((int)this.GetType().GetProperty("Ma").GetValue(this));
+            return ((int)this.GetType().GetProperty(GetKeyName()).GetValue(this));
+        }
+
+        public virtual string GetKeyName()
+        {
+            return "Ma";
+        }
+
+        public virtual void UpdateEntityProperties(BindableObject b)
+        {
+            var type = GetType();
+            if (b.GetType() != type)
+                return;
+
+            var properties = type.GetProperties().Where(p => p.IsEntityProperty());
+            foreach (var property in properties)
+            {
+                property.SetValue(this, property.GetValue(b));
+            }
         }
         #endregion
 

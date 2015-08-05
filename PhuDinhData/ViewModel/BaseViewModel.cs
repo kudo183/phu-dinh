@@ -224,7 +224,7 @@ namespace PhuDinhData.ViewModel
             _contextManager.CreateContext();
 
             ItemCount = _contextManager.GetDataCount(MainFilter.Filter);
-            _origData = _contextManager.GetData(MainFilter.Filter,EntityHelper.GetMainDataRelatedTables(typeof(T).Name), PageSize, CurrentPageIndex, ItemCount);
+            _origData = _contextManager.GetData(MainFilter.Filter, EntityHelper.GetMainDataRelatedTables(typeof(T).Name), PageSize, CurrentPageIndex, ItemCount);
 
             Logger.Info("     Unload");
             Unload();
@@ -252,9 +252,32 @@ namespace PhuDinhData.ViewModel
 
         public void ReloadEntity(T entity)
         {
-            _contextManager.ReloadEntity(entity);
-            var index = _origData.FindIndex(0, p => p.IsEqual(entity));
-            _origData[index] = entity.Copy();
+            var pe = Expression.Parameter(typeof(T), "p");
+            var left = Expression.Property(pe, entity.GetKeyName());
+            var right = Expression.Constant(entity.GetKey());
+            var predicateBody = Expression.Equal(left, right);
+
+            var filter = Expression.Lambda<Func<T, bool>>(predicateBody, new[] { pe });
+
+            var item = _contextManager.GetData(filter, EntityHelper.GetMainDataRelatedTables(typeof(T).Name))[0];
+
+            for (int i = 0; i < _origData.Count; i++)
+            {
+                if (_origData[i].IsEqual(item))
+                {
+                    _origData[i] = item;
+                    break;
+                }
+            }
+
+            for (int i = 0; i < Entity.Count; i++)
+            {
+                if (Entity[i].IsEqual(item))
+                {
+                    Entity[i].UpdateEntityProperties(item.Copy());
+                    break;
+                }
+            }
         }
     }
 }
