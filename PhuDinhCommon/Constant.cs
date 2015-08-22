@@ -25,6 +25,7 @@
         #endregion
 
         public const string ThamSo_NgayCapNhatTonKhoCuoiCung = "NgayCapNhatTonKhoCuoiCung";
+        public const string ThamSo_NgayCapNhatCongNoCuoiCung = "NgayCapNhatCongNoCuoiCung";
 
         public const string ColumnName_MaKhachHang = "Ma Khach Hang";
         public const string ColumnName_MaBaiXe = "Ma Bai Xe";
@@ -104,6 +105,10 @@
         public const string ViewName_ChiTietNhapHang = "Chi Tiet Nhap Hang";
         public const string ViewName_DonHang = "Don Hang";
         public const string ViewName_ToaHang = "Toa Hang";
+        public const string ViewName_CongNoKhachHang = "Cong No Khach Hang";
+        public const string ViewName_NhanTienKhachHang = "Nhan Tien Khach Hang";
+        public const string ViewName_GiamTruKhachHang = "Giam Tru Khach Hang";
+        public const string ViewName_PhuThuKhachHang = "Phu Thu Khach Hang";
         //4Level
         public const string ViewName_ChiTietDonHang = "Chi Tiet Don Hang";
         public const string ViewName_ChuyenHangDonHang = "Chuyen Hang Don Hang";

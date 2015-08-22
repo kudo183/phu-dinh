@@ -80,7 +80,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BusinessLogics\BusinessLogics.cs" />
+    <Compile Include="BusinessLogics\CapNhatCongNoKhachHang.cs" />
     <Compile Include="ClientContext.cs" />
+    <Compile Include="CongNoManager.cs" />
     <Compile Include="DesignTimeData\0Level\DDrKhoHang.cs" />
     <Compile Include="DesignTimeData\0Level\DDrNhaCungCap.cs" />
     <Compile Include="DesignTimeData\0Level\DDrLoaiNguyenLieu.cs" />
@@ -92,6 +94,10 @@
     <Compile Include="DesignTimeData\2Level\DDtNhapNguyenLieu.cs" />
     <Compile Include="DesignTimeData\2Level\DDrMatHangNguyenLieu.cs" />
     <Compile Include="DesignTimeData\2Level\DDtChiPhi.cs" />
+    <Compile Include="DesignTimeData\3Level\DDtPhuThuKhachHang.cs" />
+    <Compile Include="DesignTimeData\3Level\DDtGiamTruKhachHang.cs" />
+    <Compile Include="DesignTimeData\3Level\DDtCongNoKhachHang.cs" />
+    <Compile Include="DesignTimeData\3Level\DDtNhanTienKhachHang.cs" />
     <Compile Include="DesignTimeData\3Level\DDtToaHang.cs" />
     <Compile Include="DesignTimeData\3Level\DDtChiTietChuyenKho.cs" />
     <Compile Include="DesignTimeData\3Level\DDtChiTietNhapHang.cs" />
@@ -133,12 +139,16 @@
     <Compile Include="Filter\2Level\Filter_rKhachHang.cs" />
     <Compile Include="Filter\2Level\Filter_rMatHangNguyenLieu.cs" />
     <Compile Include="Filter\2Level\Filter_tChiPhi.cs" />
+    <Compile Include="Filter\3Level\Filter_tPhuThuKhachHang.cs" />
+    <Compile Include="Filter\3Level\Filter_tGiamTruKhachHang.cs" />
+    <Compile Include="Filter\3Level\Filter_tNhanTienKhachHang.cs" />
     <Compile Include="Filter\3Level\Filter_tToaHang.cs" />
     <Compile Include="Filter\3Level\Filter_tChiTietChuyenKho.cs" />
     <Compile Include="Filter\3Level\Filter_rKhachHangChanh.cs" />
     <Compile Include="Filter\3Level\Filter_tChiTietNhapHang.cs" />
     <Compile Include="Filter\3Level\Filter_tDonHang.cs" />
     <Compile Include="Filter\1Level\Filter_rChanh.cs" />
+    <Compile Include="Filter\3Level\Filter_tCongNoKhachHang.cs" />
     <Compile Include="Filter\4Level\Filter_tChiTietDonHang.cs" />
     <Compile Include="Filter\4Level\Filter_tChuyenHangDonHang.cs" />
     <Compile Include="Filter\5Level\Filter_tChiTietToaHang.cs" />
@@ -177,6 +187,10 @@
     <Compile Include="ViewModel\2Level\MatHangNguyenLieuViewModel.cs" />
     <Compile Include="ViewModel\3Level\ChiTieNhapHangViewModel.cs" />
     <Compile Include="ViewModel\3Level\ChiTietChuyenKhoViewModel.cs" />
+    <Compile Include="ViewModel\3Level\CongNoKhachHangViewModel.cs" />
+    <Compile Include="ViewModel\3Level\PhuThuKhachHangViewModel.cs" />
+    <Compile Include="ViewModel\3Level\GiamTruKhachHangViewModel.cs" />
+    <Compile Include="ViewModel\3Level\NhanTienKhachHangViewModel.cs" />
     <Compile Include="ViewModel\3Level\ToaHangViewModel.cs" />
     <Compile Include="ViewModel\3Level\KhachHangChanhViewModel.cs" />
     <Compile Include="ViewModel\4Level\ChuyenHangDonHangViewModel.cs" />

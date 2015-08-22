@@ -85,6 +85,18 @@
     <Compile Include="EntityDataGrid\2Level\DGNhapHang.xaml.cs">
       <DependentUpon>DGNhapHang.xaml</DependentUpon>
     </Compile>
+    <Compile Include="EntityDataGrid\3Level\DGPhuThuKhachHang.xaml.cs">
+      <DependentUpon>DGPhuThuKhachHang.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataGrid\3Level\DGGiamTruKhachHang.xaml.cs">
+      <DependentUpon>DGGiamTruKhachHang.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataGrid\3Level\DGCongNoKhachHang.xaml.cs">
+      <DependentUpon>DGCongNoKhachHang.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDataGrid\3Level\DGNhanTienKhachHang.xaml.cs">
+      <DependentUpon>DGNhanTienKhachHang.xaml</DependentUpon>
+    </Compile>
     <Compile Include="EntityDataGrid\3Level\DGToaHang.xaml.cs">
       <DependentUpon>DGToaHang.xaml</DependentUpon>
     </Compile>
@@ -204,6 +216,18 @@
     <Compile Include="View\2Level\rMatHangNguyenLieuView.xaml.cs">
       <DependentUpon>rMatHangNguyenLieuView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\3Level\tPhuThuKhachHangView.xaml.cs">
+      <DependentUpon>tPhuThuKhachHangView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\3Level\tGiamTruKhachHangView.xaml.cs">
+      <DependentUpon>tGiamTruKhachHangView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\3Level\tCongNoKhachHangView.xaml.cs">
+      <DependentUpon>tCongNoKhachHangView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\3Level\tNhanTienKhachHangView.xaml.cs">
+      <DependentUpon>tNhanTienKhachHangView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\3Level\tToaHangView.xaml.cs">
       <DependentUpon>tToaHangView.xaml</DependentUpon>
     </Compile>
@@ -315,6 +339,9 @@
       <DependentUpon>NhanVienView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ComplexView\_BaseComplexView.cs" />
+    <Compile Include="View\CapNhatCongNoView.xaml.cs">
+      <DependentUpon>CapNhatCongNoView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\IBaseView.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -400,6 +427,22 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="EntityDataGrid\2Level\DGMatHangNguyenLieu.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="EntityDataGrid\3Level\DGPhuThuKhachHang.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="EntityDataGrid\3Level\DGGiamTruKhachHang.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="EntityDataGrid\3Level\DGCongNoKhachHang.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="EntityDataGrid\3Level\DGNhanTienKhachHang.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -531,6 +574,22 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="View\3Level\tPhuThuKhachHangView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\3Level\tGiamTruKhachHangView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\3Level\tCongNoKhachHangView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\3Level\tNhanTienKhachHangView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="View\3Level\tToaHangView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -656,6 +715,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="View\ComplexView\NhanVienView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\CapNhatCongNoView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

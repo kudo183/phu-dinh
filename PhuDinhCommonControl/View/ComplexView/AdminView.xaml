@@ -147,6 +147,34 @@
                         </TreeViewItem>
                     </TreeViewItem>
                 </TreeViewItem>
+                <TreeViewItem Header="{x:Static PhuDinhCommon:Constant.ViewName_CongNoKhachHang}">
+                    <TreeViewItem Header="{x:Static PhuDinhCommon:Constant.ViewName_KhachHang}">
+                        <TreeViewItem Header="{x:Static PhuDinhCommon:Constant.ViewName_DiaDiem}">
+                            <TreeViewItem Header="{x:Static PhuDinhCommon:Constant.ViewName_Nuoc}"/>
+                        </TreeViewItem>
+                    </TreeViewItem>
+                </TreeViewItem>
+                <TreeViewItem Header="{x:Static PhuDinhCommon:Constant.ViewName_NhanTienKhachHang}">
+                    <TreeViewItem Header="{x:Static PhuDinhCommon:Constant.ViewName_KhachHang}">
+                        <TreeViewItem Header="{x:Static PhuDinhCommon:Constant.ViewName_DiaDiem}">
+                            <TreeViewItem Header="{x:Static PhuDinhCommon:Constant.ViewName_Nuoc}"/>
+                        </TreeViewItem>
+                    </TreeViewItem>
+                </TreeViewItem>
+                <TreeViewItem Header="{x:Static PhuDinhCommon:Constant.ViewName_GiamTruKhachHang}">
+                    <TreeViewItem Header="{x:Static PhuDinhCommon:Constant.ViewName_KhachHang}">
+                        <TreeViewItem Header="{x:Static PhuDinhCommon:Constant.ViewName_DiaDiem}">
+                            <TreeViewItem Header="{x:Static PhuDinhCommon:Constant.ViewName_Nuoc}"/>
+                        </TreeViewItem>
+                    </TreeViewItem>
+                </TreeViewItem>
+                <TreeViewItem Header="{x:Static PhuDinhCommon:Constant.ViewName_PhuThuKhachHang}">
+                    <TreeViewItem Header="{x:Static PhuDinhCommon:Constant.ViewName_KhachHang}">
+                        <TreeViewItem Header="{x:Static PhuDinhCommon:Constant.ViewName_DiaDiem}">
+                            <TreeViewItem Header="{x:Static PhuDinhCommon:Constant.ViewName_Nuoc}"/>
+                        </TreeViewItem>
+                    </TreeViewItem>
+                </TreeViewItem>
             </TreeViewItem>
             <TreeViewItem Header="4Level">
                 <TreeViewItem Header="{x:Static PhuDinhCommon:Constant.ViewName_ChiTietDonHang}">

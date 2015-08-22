@@ -10,7 +10,6 @@
             <Button Height="80" FontSize="20" Margin="10" Content="Tat ca" Tag="{x:Static PhuDinhCommon:Constant.ViewName_AdminView}"/>
             <Button Height="80" FontSize="20" Margin="10" Content="Canh Bao Ton Kho" Tag="{x:Static PhuDinhCommon:Constant.ViewName_CanhBaoTonKho}"/>
             <Button Height="80" FontSize="20" Margin="10" Content="Chi Phi" Tag="{x:Static PhuDinhCommon:Constant.ViewName_ChiPhi}"/>
-            <Button Height="80" FontSize="20" Margin="10" Content="Toa" Tag="{x:Static PhuDinhCommon:Constant.ViewName_ToaHangView}"/>
         </StackPanel>
         <StackPanel Width="150" Orientation="Vertical">
             <Button Height="80" FontSize="20" Margin="10" Content="Nhan Vien" Tag="{x:Static PhuDinhCommon:Constant.ViewName_NhanVienView}"/>
@@ -23,6 +22,13 @@
             <Button Height="80" FontSize="20" Margin="10" Content="Khach Hang" Tag="{x:Static PhuDinhCommon:Constant.ViewName_KhachHangView}"/>
             <Button Height="80" FontSize="20" Margin="10" Content="Ton Kho" Tag="{x:Static PhuDinhCommon:Constant.ViewName_TonKho}"/>
             <Button Height="80" FontSize="20" Margin="10" Content="Chuyen Kho" Tag="{x:Static PhuDinhCommon:Constant.ViewName_ChuyenKhoView}"/>
+        </StackPanel>
+        <StackPanel Width="150" Orientation="Vertical" Background="BlanchedAlmond">
+            <Button Height="80" FontSize="20" Margin="10" Content="Toa Hang" Tag="{x:Static PhuDinhCommon:Constant.ViewName_ToaHangView}"/>
+            <Button Height="80" FontSize="20" Margin="10" Content="Nhan Tien" Tag="{x:Static PhuDinhCommon:Constant.ViewName_NhanTienKhachHang}"/>
+            <Button Height="80" FontSize="20" Margin="10" Content="Cong No" Tag="{x:Static PhuDinhCommon:Constant.ViewName_CongNoKhachHang}"/>
+            <Button Height="80" FontSize="20" Margin="10" Content="Phu Thu" Tag="{x:Static PhuDinhCommon:Constant.ViewName_PhuThuKhachHang}"/>
+            <Button Height="80" FontSize="20" Margin="10" Content="Giam Tru" Tag="{x:Static PhuDinhCommon:Constant.ViewName_GiamTruKhachHang}"/>
         </StackPanel>
         <StackPanel Width="280" Orientation="Vertical" Background="Red">
             <Button Height="80" FontSize="20" Margin="10" Content="Thong Ke Theo Mat Hang" Tag="{x:Static PhuDinhCommon:Constant.ViewName_ReportByMatHangView}"/>

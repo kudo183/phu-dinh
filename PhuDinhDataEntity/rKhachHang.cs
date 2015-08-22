@@ -20,6 +20,10 @@ namespace PhuDinhDataEntity
             this.tDonHangs = new HashSet<tDonHang>();
             this.rKhachHangChanhs = new HashSet<rKhachHangChanh>();
             this.tToaHangs = new HashSet<tToaHang>();
+            this.tCongNoKhachHangs = new HashSet<tCongNoKhachHang>();
+            this.tNhanTienKhachHangs = new HashSet<tNhanTienKhachHang>();
+            this.tGiamTruKhachHangs = new HashSet<tGiamTruKhachHang>();
+            this.tPhuThuKhachHangs = new HashSet<tPhuThuKhachHang>();
             Init();
         }
     
@@ -40,5 +44,9 @@ namespace PhuDinhDataEntity
         public virtual ICollection<tDonHang> tDonHangs { get; set; }
         public virtual ICollection<rKhachHangChanh> rKhachHangChanhs { get; set; }
         public virtual ICollection<tToaHang> tToaHangs { get; set; }
+        public virtual ICollection<tCongNoKhachHang> tCongNoKhachHangs { get; set; }
+        public virtual ICollection<tNhanTienKhachHang> tNhanTienKhachHangs { get; set; }
+        public virtual ICollection<tGiamTruKhachHang> tGiamTruKhachHangs { get; set; }
+        public virtual ICollection<tPhuThuKhachHang> tPhuThuKhachHangs { get; set; }
     }
 }

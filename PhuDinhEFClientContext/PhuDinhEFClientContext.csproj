@@ -82,10 +82,14 @@
     <Compile Include="Repository\2Level\tNhapHangRepository.cs" />
     <Compile Include="Repository\2Level\tNhapNguyenLieuRepository.cs" />
     <Compile Include="Repository\2Level\tTonKhoRepository.cs" />
+    <Compile Include="Repository\3Level\tPhuThuKhachHangRepository.cs" />
+    <Compile Include="Repository\3Level\tGiamTruKhachHangRepository.cs" />
     <Compile Include="Repository\3Level\rKhachHangChanhRepository.cs" />
     <Compile Include="Repository\3Level\tChiTietChuyenKhoRepository.cs" />
     <Compile Include="Repository\3Level\tChiTietNhapHangRepository.cs" />
+    <Compile Include="Repository\3Level\tCongNoKhachHangRepository.cs" />
     <Compile Include="Repository\3Level\tDonHangRepository.cs" />
+    <Compile Include="Repository\3Level\tNhanTienKhachHangRepository.cs" />
     <Compile Include="Repository\3Level\tToaHangRepository.cs" />
     <Compile Include="Repository\4Level\tChiTietDonHangRepository.cs" />
     <Compile Include="Repository\4Level\tChuyenHangDonHangRepository.cs" />

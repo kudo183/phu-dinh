@@ -1,0 +1,22 @@
+﻿<PhuDinhCommonControl:BaseView x:TypeArguments="PhuDinhDataEntity:tNhanTienKhachHang"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:PhuDinhCommonControl="clr-namespace:PhuDinhCommonControl"
+             xmlns:EntityDataGrid="clr-namespace:PhuDinhCommonControl.EntityDataGrid"
+             xmlns:Menu="clr-namespace:PhuDinhCommonControl.Menu"
+             xmlns:DesignTimeData="clr-namespace:PhuDinhData.DesignTimeData;assembly=PhuDinhData"
+             xmlns:PhuDinhDataEntity="clr-namespace:PhuDinhDataEntity;assembly=PhuDinhDataEntity"
+             x:Class="PhuDinhCommonControl.tNhanTienKhachHangView" 
+             mc:Ignorable="d"
+             d:DataContext="{x:Static DesignTimeData:DDtNhanTienKhachHang.ViewModel}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <EntityDataGrid:DGNhanTienKhachHang Grid.Row="0" x:Name="dgNhanTienKhachHang" HeaderAddButtonClick="dgNhanTienKhachHang_HeaderAddButtonClick"/>
+        <Menu:BottomMenu Grid.Row="1" x:Name="bmMenu" Button.Click="bmMenu_Click"/>
+    </Grid>
+</PhuDinhCommonControl:BaseView>

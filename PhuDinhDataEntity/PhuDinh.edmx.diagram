@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="5db0bd620cb248dba08bf7aa226fc9ec" Name="Diagram1">
+      <Diagram DiagramId="5db0bd620cb248dba08bf7aa226fc9ec" Name="Diagram1" ZoomLevel="88">
         <EntityTypeShape EntityType="PhuDinhModel.rBaiXe" Width="1.5" PointX="8.1360387374349123" PointY="11.012535457970824" />
         <EntityTypeShape EntityType="PhuDinhModel.rChanh" Width="1.5" PointX="3.9192034918438661" PointY="19.212482759362313" />
         <EntityTypeShape EntityType="PhuDinhModel.rDiaDiem" Width="1.5" PointX="0.20335364351205232" PointY="18.955144384389346" />
@@ -78,6 +78,14 @@
         <AssociationConnector Association="PhuDinhModel.FK_tChiTietToaHang_tChiTietDonHang" />
         <AssociationConnector Association="PhuDinhModel.FK_tChiTietToaHang_tToaHang" />
         <EntityTypeShape EntityType="PhuDinhModel.ThamSoNgay" Width="1.5" PointX="1.0296021965470175" PointY="29.286949618387478" />
+        <EntityTypeShape EntityType="PhuDinhModel.tCongNoKhachHang" Width="1.5" PointX="4.919293588455437" PointY="10.551939343359294" />
+        <AssociationConnector Association="PhuDinhModel.FK_tCongNoKhachHang_rKhachHang" />
+        <EntityTypeShape EntityType="PhuDinhModel.tNhanTienKhachHang" Width="1.5" PointX="5.5384361881476067" PointY="4.4241976162531405" />
+        <AssociationConnector Association="PhuDinhModel.FK_tNhanTienKhachHang_rKhachHang" />
+        <EntityTypeShape EntityType="PhuDinhModel.tGiamTruKhachHang" Width="1.5" PointX="0.46412007159745328" PointY="4.2082220931575733" />
+        <EntityTypeShape EntityType="PhuDinhModel.tPhuThuKhachHang" Width="1.5" PointX="2.8458147471983986" PointY="27.316064385378763" />
+        <AssociationConnector Association="PhuDinhModel.FK_tGiamTruKhachHang_rKhachHang" />
+        <AssociationConnector Association="PhuDinhModel.FK_tPhuThuKhachHang_rKhachHang" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

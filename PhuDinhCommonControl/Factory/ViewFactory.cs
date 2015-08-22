@@ -96,6 +96,18 @@ namespace PhuDinhCommonControl
                 case Constant.ViewName_ToaHang:
                     view = new tToaHangView();
                     break;
+                case Constant.ViewName_CongNoKhachHang:
+                    view = new tCongNoKhachHangView();
+                    break;
+                case Constant.ViewName_NhanTienKhachHang:
+                    view = new tNhanTienKhachHangView();
+                    break;
+                case Constant.ViewName_GiamTruKhachHang:
+                    view = new tGiamTruKhachHangView();
+                    break;
+                case Constant.ViewName_PhuThuKhachHang:
+                    view = new tPhuThuKhachHangView();
+                    break;
                 //4Level
                 case Constant.ViewName_ChiTietDonHang:
                     view = new tChiTietDonHangView();

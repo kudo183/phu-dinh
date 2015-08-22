@@ -22,6 +22,8 @@
 
 
 
+
+
 GO
 CREATE TRIGGER [dbo].[tChiTietDonHang_trUpdateXong]
 	ON [dbo].[tChiTietDonHang]
@@ -143,4 +145,29 @@ create TRIGGER [dbo].[tChiTietDonHang_trUpdateChiTietChuyenHangDonHangSoLuongThe
 		set SoLuongTheoDonHang = i.SoLuong
 		from inserted i
 		where tChiTietChuyenHangDonHang.MaChiTietDonHang = i.Ma
+	END
+GO
+
+create TRIGGER [dbo].[tChiTietDonHang_trUpdateCongNo]
+	ON [dbo].[tChiTietDonHang]
+	after DELETE, INSERT, UPDATE
+	AS
+	BEGIN
+		SET NOCOUNT ON
+
+		update cn
+		set cn.SoTien = cn.SoTien + (ctth.GiaTien*i.SoLuong)
+		from inserted i
+		join tChiTietToaHang ctth on i.Ma = ctth.MaChiTietDonHang
+		join tToaHang th on th.Ma = ctth.MaToaHang
+		join tCongNoKhachHang cn on cn.MaKhachHang = th.MaKhachHang
+		where cn.Ngay >= th.Ngay
+
+		update cn
+		set cn.SoTien = cn.SoTien - (ctth.GiaTien*d.SoLuong)
+		from deleted d
+		join tChiTietToaHang ctth on d.Ma = ctth.MaChiTietDonHang
+		join tToaHang th on th.Ma = ctth.MaToaHang
+		join tCongNoKhachHang cn on cn.MaKhachHang = th.MaKhachHang
+		where cn.Ngay >= th.Ngay
 	END

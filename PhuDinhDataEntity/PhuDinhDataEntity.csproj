@@ -111,10 +111,14 @@
     <Compile Include="EntityExt\2Level\tNhapHangExt.cs" />
     <Compile Include="EntityExt\2Level\tNhapNguyenLieuExt.cs" />
     <Compile Include="EntityExt\2Level\tTonKhoExt.cs" />
+    <Compile Include="EntityExt\3Level\tPhuThuKhachHangExt.cs" />
+    <Compile Include="EntityExt\3Level\tGiamTruKhachHangExt.cs" />
     <Compile Include="EntityExt\3Level\rKhachHangChanhExt.cs" />
     <Compile Include="EntityExt\3Level\tChiTietChuyenKhoExt.cs" />
     <Compile Include="EntityExt\3Level\tChiTietNhapHangExt.cs" />
+    <Compile Include="EntityExt\3Level\tCongNoKhachHangExt.cs" />
     <Compile Include="EntityExt\3Level\tDonHangExt.cs" />
+    <Compile Include="EntityExt\3Level\tNhanTienKhachHangExt.cs" />
     <Compile Include="EntityExt\3Level\tToaHangExt.cs" />
     <Compile Include="EntityExt\4Level\tChiTietDonHangExt.cs" />
     <Compile Include="EntityExt\4Level\tChuyenHangDonHangExt.cs" />
@@ -213,7 +217,13 @@
     <Compile Include="tChuyenKho.cs">
       <DependentUpon>PhuDinh.tt</DependentUpon>
     </Compile>
+    <Compile Include="tCongNoKhachHang.cs">
+      <DependentUpon>PhuDinh.tt</DependentUpon>
+    </Compile>
     <Compile Include="tDonHang.cs">
+      <DependentUpon>PhuDinh.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tGiamTruKhachHang.cs">
       <DependentUpon>PhuDinh.tt</DependentUpon>
     </Compile>
     <Compile Include="ThamSoNgay.cs">
@@ -222,10 +232,16 @@
     <Compile Include="tMatHang.cs">
       <DependentUpon>PhuDinh.tt</DependentUpon>
     </Compile>
+    <Compile Include="tNhanTienKhachHang.cs">
+      <DependentUpon>PhuDinh.tt</DependentUpon>
+    </Compile>
     <Compile Include="tNhapHang.cs">
       <DependentUpon>PhuDinh.tt</DependentUpon>
     </Compile>
     <Compile Include="tNhapNguyenLieu.cs">
+      <DependentUpon>PhuDinh.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tPhuThuKhachHang.cs">
       <DependentUpon>PhuDinh.tt</DependentUpon>
     </Compile>
     <Compile Include="tToaHang.cs">

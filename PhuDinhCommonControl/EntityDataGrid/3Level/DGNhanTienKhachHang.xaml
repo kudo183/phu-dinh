@@ -1,0 +1,29 @@
+﻿<CustomControl:DataGridExt x:Class="PhuDinhCommonControl.EntityDataGrid.DGNhanTienKhachHang"
+                           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                           xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                           xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                           xmlns:CustomControl="clr-namespace:CustomControl;assembly=CustomControl"
+                           xmlns:DesignTimeData="clr-namespace:PhuDinhData.DesignTimeData;assembly=PhuDinhData"
+                           mc:Ignorable="d"
+                           d:DataContext="{x:Static DesignTimeData:DDtNhanTienKhachHang.ViewModel}"
+                           AutoGenerateColumns="False" EnableRowVirtualization="False" ItemsSource="{Binding Entity}" SelectionMode="Single">
+    <DataGrid.Columns>
+        <!--Ma-->
+        <CustomControl:DataGridReadOnlyTextColumn x:Name="maColumn"/>
+        <!--Ngay-->
+        <CustomControl:DataGridDateColumn x:Name="ngayColumn" Header="{x:Static DesignTimeData:DDtNhanTienKhachHang.Header_Ngay}"/>
+        <!--Khach hang-->
+        <CustomControl:DataGridComboBoxColumnExt x:Name="khachHangColumn" Header="{x:Static DesignTimeData:DDtNhanTienKhachHang.Header_KhachHang}"
+                                                 HeaderAddButtonClick="headerAddButton_Click"
+                                                 TextBinding="{Binding rKhachHang.TenKhachHangDiaDiem, Mode=OneWay}"
+                                                 DisplayMemberPath="TenKhachHangDiaDiem"
+                                                 SelectedValuePath="Ma"
+                                                 SelectedValueBinding="{Binding MaKhachHang, UpdateSourceTrigger=PropertyChanged}"
+                                                 SelectedItemBinding="{Binding rKhachHang, UpdateSourceTrigger=PropertyChanged}"
+                                                 ItemsSource="{Binding rKhachHangList}"/>
+        <!--So tien-->
+        <CustomControl:DataGridTextColumnExt x:Name="soTienColumn" Header="Số Tiền" Width="SizeToHeader"
+                                                  Binding="{Binding SoTien, StringFormat=\{0:N0\}}"/>
+    </DataGrid.Columns>
+</CustomControl:DataGridExt>
