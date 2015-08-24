@@ -30,6 +30,7 @@ namespace PhuDinhDataEntity
             builder.EntitySet<rNhaCungCap>("rNhaCungCaps").EntityType.HasKey(p => p.Ma);
             builder.EntitySet<rNhanVien>("rNhanViens").EntityType.HasKey(p => p.Ma);
             builder.EntitySet<rPhuongTien>("rPhuongTiens").EntityType.HasKey(p => p.Ma);
+            builder.EntitySet<tCongNoKhachHang>("tCongNoKhachHangs").EntityType.HasKey(p => p.Ma);
             builder.EntitySet<tChiPhi>("tChiPhis").EntityType.HasKey(p => p.Ma);
             builder.EntitySet<tChiTietChuyenHangDonHang>("tChiTietChuyenHangDonHangs").EntityType.HasKey(p => p.Ma);
             builder.EntitySet<tChiTietChuyenKho>("tChiTietChuyenKhos").EntityType.HasKey(p => p.Ma);
@@ -40,12 +41,15 @@ namespace PhuDinhDataEntity
             builder.EntitySet<tChuyenHangDonHang>("tChuyenHangDonHangs").EntityType.HasKey(p => p.Ma);
             builder.EntitySet<tChuyenKho>("tChuyenKhos").EntityType.HasKey(p => p.Ma);
             builder.EntitySet<tDonHang>("tDonHangs").EntityType.HasKey(p => p.Ma);
+            builder.EntitySet<tGiamTruKhachHang>("tGiamTruKhachHangs").EntityType.HasKey(p => p.Ma);
             builder.EntitySet<tMatHang>("tMatHangs").EntityType.HasKey(p => p.Ma);
+            builder.EntitySet<tNhanTienKhachHang>("tNhanTienKhachHangs").EntityType.HasKey(p => p.Ma);
             builder.EntitySet<tNhapHang>("tNhapHangs").EntityType.HasKey(p => p.Ma);
             builder.EntitySet<tNhapNguyenLieu>("tNhapNguyenLieus").EntityType.HasKey(p => p.Ma);
+            builder.EntitySet<tPhuThuKhachHang>("tPhuThuKhachHangs").EntityType.HasKey(p => p.Ma);
             builder.EntitySet<tToaHang>("tToaHangs").EntityType.HasKey(p => p.Ma);
             builder.EntitySet<tTonKho>("tTonKhos").EntityType.HasKey(p => p.Ma);
-
+            
             _edmModel = builder.GetEdmModel();
             return _edmModel;
         }

@@ -234,7 +234,11 @@
     <Compile Include="Controllers\3Level\rKhachHangChanhsController.cs" />
     <Compile Include="Controllers\3Level\tChiTietChuyenKhosController.cs" />
     <Compile Include="Controllers\3Level\tChiTietNhapHangsController.cs" />
+    <Compile Include="Controllers\3Level\tCongNoKhachHangsController.cs" />
     <Compile Include="Controllers\3Level\tDonHangsController.cs" />
+    <Compile Include="Controllers\3Level\tGiamTruKhachHangsController.cs" />
+    <Compile Include="Controllers\3Level\tNhanTienKhachHangsController.cs" />
+    <Compile Include="Controllers\3Level\tPhuThuKhachHangsController.cs" />
     <Compile Include="Controllers\3Level\tToaHangsController.cs" />
     <Compile Include="Controllers\4Level\tChiTietDonHangsController.cs" />
     <Compile Include="Controllers\4Level\tChuyenHangDonHangsController.cs" />
