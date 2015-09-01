@@ -59,28 +59,21 @@ namespace PhuDinhData.ViewModel
 
         void Header_NguyenLieu_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            MainFilter.SetFilter(Filter_tNhapNguyenLieu.TenNguyenLieu, Header_NguyenLieu.Text);
+            MainFilter.SetFilter(Filter_tNhapNguyenLieu.TenNguyenLieu, Header_NguyenLieu.GetFilterValue());
 
             OnHeaderFilterChanged();
         }
 
         void Header_NhaCungCap_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            MainFilter.SetFilter(Filter_tNhapNguyenLieu.TenNhaCungCap, Header_NhaCungCap.Text);
+            MainFilter.SetFilter(Filter_tNhapNguyenLieu.TenNhaCungCap, Header_NhaCungCap.GetFilterValue());
 
             OnHeaderFilterChanged();
         }
 
         void Header_Ngay_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            if (Header_Ngay.IsUsed)
-            {
-                MainFilter.SetFilter(Filter_tNhapNguyenLieu.Ngay, Header_Ngay.Date);
-            }
-            else
-            {
-                MainFilter.SetFilter(Filter_tNhapNguyenLieu.Ngay, null);
-            }
+            MainFilter.SetFilter(Filter_tNhapNguyenLieu.Ngay, Header_Ngay.GetFilterValue());
 
             OnHeaderFilterChanged();
         }

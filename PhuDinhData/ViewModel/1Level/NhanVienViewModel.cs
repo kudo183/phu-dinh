@@ -46,7 +46,7 @@ namespace PhuDinhData.ViewModel
 
         void Header_PhuongTien_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            MainFilter.SetFilter(Filter_rNhanVien.TenPhuongTien, Header_PhuongTien.Text);
+            MainFilter.SetFilter(Filter_rNhanVien.TenPhuongTien, Header_PhuongTien.GetFilterValue());
 
             OnHeaderFilterChanged();
         }

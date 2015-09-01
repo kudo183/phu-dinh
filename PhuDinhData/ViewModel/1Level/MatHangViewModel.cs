@@ -46,7 +46,7 @@ namespace PhuDinhData.ViewModel
 
         void Header_LoaiHang_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            MainFilter.SetFilter(Filter_tMatHang.TenLoaiHang, Header_LoaiHang.Text);
+            MainFilter.SetFilter(Filter_tMatHang.TenLoaiHang, Header_LoaiHang.GetFilterValue());
 
             OnHeaderFilterChanged();
         }

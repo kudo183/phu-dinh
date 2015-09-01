@@ -57,21 +57,14 @@ namespace PhuDinhData.ViewModel
 
         void Header_Ngay_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (Header_Ngay.IsUsed)
-            {
-                MainFilter.SetFilter(Filter_tPhuThuKhachHang.Ngay, Header_Ngay.Date);
-            }
-            else
-            {
-                MainFilter.SetFilter(Filter_tPhuThuKhachHang.Ngay, null);
-            }
+            MainFilter.SetFilter(Filter_tPhuThuKhachHang.Ngay, Header_Ngay.GetFilterValue());
 
             OnHeaderFilterChanged();
         }
 
         void Header_KhachHang_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            MainFilter.SetFilter(Filter_tPhuThuKhachHang.TenKhachHang, Header_KhachHang.Text);
+            MainFilter.SetFilter(Filter_tPhuThuKhachHang.TenKhachHang, Header_KhachHang.GetFilterValue());
 
             OnHeaderFilterChanged();
         }

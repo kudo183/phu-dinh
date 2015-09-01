@@ -27,5 +27,23 @@ namespace CustomControl.DataGridColumnHeaderFilterModel
                 RaisePropertyChanged("Name");
             }
         }
+        
+        protected bool _isUsed = false;
+        public bool IsUsed
+        {
+            get { return _isUsed; }
+            set
+            {
+                if (_isUsed == value)
+                {
+                    return;
+                }
+
+                _isUsed = value;
+                RaisePropertyChanged("IsUsed");
+            }
+        }
+
+        public abstract object GetFilterValue();
     }
 }

@@ -59,39 +59,33 @@ namespace PhuDinhData.ViewModel
             Header_Ngay.PropertyChanged -= Header_Ngay_PropertyChanged;
             Header_NhanVien.PropertyChanged -= Header_NhanVien_PropertyChanged;
             Header_KhoHangNhap.PropertyChanged -= Header_KhoHangNhap_PropertyChanged;
+            Header_KhoHangXuat.PropertyChanged -= Header_KhoHangXuat_PropertyChanged;
         }
 
         void Header_NhanVien_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            MainFilter.SetFilter(Filter_tChuyenKho.TenNhanVien, Header_NhanVien.Text);
+            MainFilter.SetFilter(Filter_tChuyenKho.TenNhanVien, Header_NhanVien.GetFilterValue());
 
             OnHeaderFilterChanged();
         }
 
         void Header_KhoHangNhap_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            MainFilter.SetFilter(Filter_tChuyenKho.TenKhoHangNhap, Header_KhoHangNhap.Text);
+            MainFilter.SetFilter(Filter_tChuyenKho.TenKhoHangNhap, Header_KhoHangNhap.GetFilterValue());
 
             OnHeaderFilterChanged();
         }
 
         void Header_KhoHangXuat_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            MainFilter.SetFilter(Filter_tChuyenKho.TenKhoHangXuat, Header_KhoHangXuat.Text);
+            MainFilter.SetFilter(Filter_tChuyenKho.TenKhoHangXuat, Header_KhoHangXuat.GetFilterValue());
 
             OnHeaderFilterChanged();
         }
 
         void Header_Ngay_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            if (Header_Ngay.IsUsed)
-            {
-                MainFilter.SetFilter(Filter_tChuyenKho.Ngay, Header_Ngay.Date);
-            }
-            else
-            {
-                MainFilter.SetFilter(Filter_tChuyenKho.Ngay, null);
-            }
+            MainFilter.SetFilter(Filter_tChuyenKho.Ngay, Header_Ngay.GetFilterValue());
 
             OnHeaderFilterChanged();
         }

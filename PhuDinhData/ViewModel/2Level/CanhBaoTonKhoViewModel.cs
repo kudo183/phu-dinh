@@ -52,14 +52,14 @@ namespace PhuDinhData.ViewModel
 
         void Header_MatHang_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            MainFilter.SetFilter(Filter_rCanhBaoTonKho.TenMatHang, Header_MatHang.Text);
+            MainFilter.SetFilter(Filter_rCanhBaoTonKho.TenMatHang, Header_MatHang.GetFilterValue());
 
             OnHeaderFilterChanged();
         }
 
         void Header_KhoHang_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            MainFilter.SetFilter(Filter_rCanhBaoTonKho.TenKhoHang, Header_KhoHang.Text);
+            MainFilter.SetFilter(Filter_rCanhBaoTonKho.TenKhoHang, Header_KhoHang.GetFilterValue());
 
             OnHeaderFilterChanged();
         }

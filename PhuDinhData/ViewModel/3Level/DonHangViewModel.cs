@@ -72,42 +72,28 @@ namespace PhuDinhData.ViewModel
 
         void Header_Ngay_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (Header_Ngay.IsUsed)
-            {
-                MainFilter.SetFilter(Filter_tDonHang.Ngay, Header_Ngay.Date);
-            }
-            else
-            {
-                MainFilter.SetFilter(Filter_tDonHang.Ngay, null);
-            }
+            MainFilter.SetFilter(Filter_tDonHang.Ngay, Header_Ngay.GetFilterValue());
 
             OnHeaderFilterChanged();
         }
 
         void Header_KhachHang_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            MainFilter.SetFilter(Filter_tDonHang.TenKhachHang, Header_KhachHang.Text);
+            MainFilter.SetFilter(Filter_tDonHang.TenKhachHang, Header_KhachHang.GetFilterValue());
 
             OnHeaderFilterChanged();
         }
 
         void Header_Chanh_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            MainFilter.SetFilter(Filter_tDonHang.TenChanh, Header_Chanh.Text);
+            MainFilter.SetFilter(Filter_tDonHang.TenChanh, Header_Chanh.GetFilterValue());
 
             OnHeaderFilterChanged();
         }
 
         void Header_KhoHang_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (Header_KhoHang.IsUsed)
-            {
-                MainFilter.SetFilter(Filter_tDonHang.MaKhoHang, Header_KhoHang.SelectedValue);
-            }
-            else
-            {
-                MainFilter.SetFilter(Filter_tDonHang.MaKhoHang, null);
-            }
+            MainFilter.SetFilter(Filter_tDonHang.MaKhoHang, Header_KhoHang.GetFilterValue());
 
             if (_isLoading == false)
             {

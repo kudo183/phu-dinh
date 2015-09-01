@@ -19,5 +19,13 @@
                 RaisePropertyChanged("Text");
             }
         }
+
+        public override object GetFilterValue()
+        {
+            if (IsUsed == false)
+                return null;
+
+            return Text;
+        }
     }
 }

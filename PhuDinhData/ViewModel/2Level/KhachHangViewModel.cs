@@ -45,7 +45,7 @@ namespace PhuDinhData.ViewModel
 
         void Header_DiaDiem_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            MainFilter.SetFilter(Filter_rKhachHang.Tinh, Header_DiaDiem.Text);
+            MainFilter.SetFilter(Filter_rKhachHang.Tinh, Header_DiaDiem.GetFilterValue());
 
             OnHeaderFilterChanged();
         }

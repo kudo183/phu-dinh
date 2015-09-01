@@ -16,12 +16,14 @@
                                 <Grid HorizontalAlignment="Stretch">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
                                     <TextBlock Grid.Column="0" Text="{Binding Name}"/>
-                                    <CustomControl:TextBoxExt Grid.Column="1" Text="{Binding Text, Mode=TwoWay, UpdateSourceTrigger=Explicit}" IsUseEnterKeyPressBinding="True" Margin="3,0,3,0"/>
-                                    <Button x:Name="btnAdd" Grid.Column="2" Width="25" HorizontalContentAlignment="Center">
+                                    <CheckBox Grid.Column="1" VerticalAlignment="Center" Margin="5" IsChecked="{Binding Path=IsUsed}"/>
+                                    <CustomControl:TextBoxExt Grid.Column="2" Text="{Binding Text, Mode=TwoWay, UpdateSourceTrigger=Explicit}" IsUseEnterKeyPressBinding="True" Margin="3,0,3,0"/>
+                                    <Button x:Name="btnAdd" Grid.Column="3" Width="15" HorizontalContentAlignment="Center">
                                         <Button.Content>
                                             <TextBlock Text="+" FontSize="12" FontWeight="Bold" Padding="0" Margin="0"/>
                                         </Button.Content>
@@ -50,7 +52,7 @@
                                               DisplayMemberPath="Value"
                                               SelectedValuePath="Key"
                                               IsEnabled="{Binding Path=IsUsed}"/>
-                                    <Button x:Name="btnAdd" Grid.Column="3" Width="25" HorizontalContentAlignment="Center">
+                                    <Button x:Name="btnAdd" Grid.Column="3" Width="15" HorizontalContentAlignment="Center">
                                         <Button.Content>
                                             <TextBlock Text="+" FontSize="12" FontWeight="Bold" Padding="0" Margin="0"/>
                                         </Button.Content>

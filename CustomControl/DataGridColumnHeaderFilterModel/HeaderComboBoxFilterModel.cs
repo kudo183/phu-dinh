@@ -1,10 +1,12 @@
-﻿using System;
-
-namespace CustomControl.DataGridColumnHeaderFilterModel
+﻿namespace CustomControl.DataGridColumnHeaderFilterModel
 {
     public class HeaderComboBoxFilterModel : HeaderFilterBaseModel
     {
-        public HeaderComboBoxFilterModel(string name) : base(name, "ComboBoxFilter") { }
+        public HeaderComboBoxFilterModel(string name)
+            : base(name, "ComboBoxFilter")
+        {
+            _isUsed = true;
+        }
 
         private object _itemSource;
         public object ItemSource
@@ -38,20 +40,12 @@ namespace CustomControl.DataGridColumnHeaderFilterModel
             }
         }
 
-        private bool _isUsed = true;
-        public bool IsUsed
+        public override object GetFilterValue()
         {
-            get { return _isUsed; }
-            set
-            {
-                if (_isUsed == value)
-                {
-                    return;
-                }
+            if (IsUsed == false)
+                return null;
 
-                _isUsed = value;
-                RaisePropertyChanged("IsUsed");
-            }
+            return SelectedValue;
         }
     }
 }

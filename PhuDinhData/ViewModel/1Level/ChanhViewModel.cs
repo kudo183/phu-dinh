@@ -46,7 +46,7 @@ namespace PhuDinhData.ViewModel
 
         void Header_BaiXe_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            MainFilter.SetFilter(Filter_rChanh.DiaDiemBaiXe, Header_BaiXe.Text);
+            MainFilter.SetFilter(Filter_rChanh.DiaDiemBaiXe, Header_BaiXe.GetFilterValue());
 
             OnHeaderFilterChanged();
         }

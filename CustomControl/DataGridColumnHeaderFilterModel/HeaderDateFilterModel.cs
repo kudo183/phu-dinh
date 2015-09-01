@@ -4,7 +4,11 @@ namespace CustomControl.DataGridColumnHeaderFilterModel
 {
     public class HeaderDateFilterModel : HeaderFilterBaseModel
     {
-        public HeaderDateFilterModel(string name) : base(name, "DateFilter") { }
+        public HeaderDateFilterModel(string name)
+            : base(name, "DateFilter")
+        {
+            _isUsed = true;
+        }
 
         private DateTime _date = DateTime.Now.Date;
         public DateTime Date
@@ -22,20 +26,12 @@ namespace CustomControl.DataGridColumnHeaderFilterModel
             }
         }
 
-        private bool _isUsed = true;
-        public bool IsUsed
+        public override object GetFilterValue()
         {
-            get { return _isUsed; }
-            set
-            {
-                if (_isUsed == value)
-                {
-                    return;
-                }
+            if (IsUsed == false)
+                return null;
 
-                _isUsed = value;
-                RaisePropertyChanged("IsUsed");
-            }
+            return Date;
         }
     }
 }

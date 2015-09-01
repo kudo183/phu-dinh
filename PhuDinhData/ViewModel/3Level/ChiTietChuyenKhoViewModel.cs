@@ -53,14 +53,14 @@ namespace PhuDinhData.ViewModel
 
         void Header_MatHang_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            MainFilter.SetFilter(Filter_tChiTietChuyenKho.TenMatHang, Header_MatHang.Text);
+            MainFilter.SetFilter(Filter_tChiTietChuyenKho.TenMatHang, Header_MatHang.GetFilterValue());
 
             OnHeaderFilterChanged();
         }
 
         void Header_ChuyenKho_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            MainFilter.SetFilter(Filter_tChiTietChuyenKho.TenChuyenKho, Header_ChuyenKho.Text);
+            MainFilter.SetFilter(Filter_tChiTietChuyenKho.TenChuyenKho, Header_ChuyenKho.GetFilterValue());
 
             OnHeaderFilterChanged();
         }

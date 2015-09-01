@@ -46,7 +46,7 @@ namespace PhuDinhData.ViewModel
 
         void Header_LoaiNguyenLieu_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            MainFilter.SetFilter(Filter_rNguyenLieu.TenLoaiNguyenLieu, Header_LoaiNguyenLieu.Text);
+            MainFilter.SetFilter(Filter_rNguyenLieu.TenLoaiNguyenLieu, Header_LoaiNguyenLieu.GetFilterValue());
 
             OnHeaderFilterChanged();
         }

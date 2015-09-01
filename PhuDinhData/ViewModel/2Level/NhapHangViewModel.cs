@@ -72,21 +72,14 @@ namespace PhuDinhData.ViewModel
 
         void Header_NhanVien_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            MainFilter.SetFilter(Filter_tNhapHang.TenNhanVien, Header_NhanVien.Text);
+            MainFilter.SetFilter(Filter_tNhapHang.TenNhanVien, Header_NhanVien.GetFilterValue());
 
             OnHeaderFilterChanged();
         }
 
         void Header_NhaCungCap_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            if (Header_NhaCungCap.IsUsed)
-            {
-                MainFilter.SetFilter(Filter_tNhapHang.MaNhaCungCap, Header_NhaCungCap.SelectedValue);
-            }
-            else
-            {
-                MainFilter.SetFilter(Filter_tNhapHang.MaNhaCungCap, null);
-            }
+            MainFilter.SetFilter(Filter_tNhapHang.MaNhaCungCap, Header_NhaCungCap.GetFilterValue());
 
             if (_isLoading == false)
             {
@@ -98,14 +91,7 @@ namespace PhuDinhData.ViewModel
 
         void Header_KhoHang_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            if (Header_KhoHang.IsUsed)
-            {
-                MainFilter.SetFilter(Filter_tNhapHang.MaKhoHang, Header_KhoHang.SelectedValue);
-            }
-            else
-            {
-                MainFilter.SetFilter(Filter_tNhapHang.MaKhoHang, null);
-            }
+            MainFilter.SetFilter(Filter_tNhapHang.MaKhoHang, Header_KhoHang.GetFilterValue());
 
             if (_isLoading == false)
             {
@@ -117,14 +103,7 @@ namespace PhuDinhData.ViewModel
 
         void Header_Ngay_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            if (Header_Ngay.IsUsed)
-            {
-                MainFilter.SetFilter(Filter_tNhapHang.Ngay, Header_Ngay.Date);
-            }
-            else
-            {
-                MainFilter.SetFilter(Filter_tNhapHang.Ngay, null);
-            }
+            MainFilter.SetFilter(Filter_tNhapHang.Ngay, Header_Ngay.GetFilterValue());
 
             OnHeaderFilterChanged();
         }

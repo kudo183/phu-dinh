@@ -51,21 +51,14 @@ namespace PhuDinhData.ViewModel
 
         void Header_NhanVien_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            MainFilter.SetFilter(Filter_tChuyenHang.TenNhanVien, Header_NhanVien.Text);
+            MainFilter.SetFilter(Filter_tChuyenHang.TenNhanVien, Header_NhanVien.GetFilterValue());
 
             OnHeaderFilterChanged();
         }
 
         void Header_Ngay_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            if (Header_Ngay.IsUsed)
-            {
-                MainFilter.SetFilter(Filter_tChuyenHang.Ngay, Header_Ngay.Date);
-            }
-            else
-            {
-                MainFilter.SetFilter(Filter_tChuyenHang.Ngay, null);
-            }
+            MainFilter.SetFilter(Filter_tChuyenHang.Ngay, Header_Ngay.GetFilterValue());
 
             OnHeaderFilterChanged();
         }

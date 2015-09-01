@@ -46,7 +46,7 @@ namespace PhuDinhData.ViewModel
 
         void Header_Nuoc_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            MainFilter.SetFilter(Filter_rDiaDiem.TenNuoc, Header_Nuoc.Text);
+            MainFilter.SetFilter(Filter_rDiaDiem.TenNuoc, Header_Nuoc.GetFilterValue());
 
             OnHeaderFilterChanged();
         }

@@ -52,14 +52,14 @@ namespace PhuDinhData.ViewModel
 
         void Header_ChuyenHangDonHang_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            MainFilter.SetFilter(Filter_tChiTietChuyenHangDonHang.TenChuyenHangDonHang, Header_ChuyenHangDonHang.Text);
+            MainFilter.SetFilter(Filter_tChiTietChuyenHangDonHang.TenChuyenHangDonHang, Header_ChuyenHangDonHang.GetFilterValue());
 
             OnHeaderFilterChanged();
         }
 
         void Header_ChiTietDonHang_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            MainFilter.SetFilter(Filter_tChiTietChuyenHangDonHang.TenChiTietDonHang, Header_ChiTietDonHang.Text);
+            MainFilter.SetFilter(Filter_tChiTietChuyenHangDonHang.TenChiTietDonHang, Header_ChiTietDonHang.GetFilterValue());
 
             OnHeaderFilterChanged();
         }
