@@ -17,7 +17,7 @@
                                 <ColumnDefinition Width="Auto"/>
                                 <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Column="0" Text="{Binding Name}"/>
+                            <TextBlock Grid.Column="0" Text="{Binding Name}" VerticalAlignment="Center"/>
                             <CheckBox Grid.Column="1" VerticalAlignment="Center" Margin="5" IsChecked="{Binding Path=IsUsed}"/>
                             <CustomControl:CustomDatePicker Grid.Column="2" Height="25" Width="130"
                                         SelectedDateBinding="{Binding Path=Date}"

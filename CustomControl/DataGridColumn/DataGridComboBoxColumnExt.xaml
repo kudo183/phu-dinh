@@ -20,7 +20,7 @@
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
-                                    <TextBlock Grid.Column="0" Text="{Binding Name}"/>
+                                    <TextBlock Grid.Column="0" Text="{Binding Name}" VerticalAlignment="Center"/>
                                     <CheckBox Grid.Column="1" VerticalAlignment="Center" Margin="5" IsChecked="{Binding Path=IsUsed}"/>
                                     <CustomControl:TextBoxExt Grid.Column="2" Text="{Binding Text, Mode=TwoWay, UpdateSourceTrigger=Explicit}" IsUseEnterKeyPressBinding="True" Margin="3,0,3,0"/>
                                     <Button x:Name="btnAdd" Grid.Column="3" Width="15" HorizontalContentAlignment="Center">
@@ -44,7 +44,7 @@
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
-                                    <TextBlock Grid.Column="0" Text="{Binding Name}"/>
+                                    <TextBlock Grid.Column="0" Text="{Binding Name}" VerticalAlignment="Center"/>
                                     <CheckBox Grid.Column="1" VerticalAlignment="Center" Margin="5" IsChecked="{Binding Path=IsUsed}"/>
                                     <ComboBox Grid.Column="2" Margin="3,0,3,0"
                                               ItemsSource="{Binding ItemSource}"
