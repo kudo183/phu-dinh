@@ -213,6 +213,9 @@ namespace PhuDinhCommonControl
 
         protected virtual void bmMenu_Click(object sender, RoutedEventArgs e)
         {
+            if (sender != e.OriginalSource)
+                return;
+
             var button = e.OriginalSource as Button;
             if (button.Name == "btnSave")
             {

@@ -81,6 +81,9 @@ namespace CustomControl
         private const string ItemCountElementName = "ItemCountTextBlock";
         public TextBlock ItemCountElement { get; set; }
 
+        private const string IsEnableElementName = "IsEnableCheckBox";
+        public CheckBox IsEnableElement { get; set; }
+
         #region PageSize
         public int PageSize
         {
@@ -100,6 +103,19 @@ namespace CustomControl
             pager.Reset();
         }
 
+        #endregion
+
+        #region IsEnablePaging
+        public bool IsEnablePaging
+        {
+            get { return (bool)GetValue(IsEnablePagingProperty); }
+            set { SetValue(IsEnablePagingProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for IsEnablePaging.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty IsEnablePagingProperty =
+            DependencyProperty.Register("IsEnablePaging", typeof(bool), typeof(Pager),
+            new PropertyMetadata(true));
         #endregion
 
         #region PageCount
@@ -181,6 +197,10 @@ namespace CustomControl
             this.ItemCountElement = this.GetTemplateChild(Pager.ItemCountElementName) as TextBlock;
             this.ThrowIfMissing(this.ItemCountElement, Pager.ItemCountElementName);
             this.ItemCountElement.SetBinding(TextBlock.TextProperty, new Binding("ItemCount") { Source = this, Mode = BindingMode.OneWay });
+
+            this.IsEnableElement = this.GetTemplateChild(Pager.IsEnableElementName) as CheckBox;
+            this.ThrowIfMissing(this.IsEnableElement, Pager.IsEnableElementName);
+            this.IsEnableElement.SetBinding(CheckBox.IsCheckedProperty, new Binding("IsEnablePaging") { Source = this, Mode = BindingMode.TwoWay });
 
             base.OnApplyTemplate();
         }

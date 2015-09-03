@@ -66,6 +66,24 @@ namespace PhuDinhData.ViewModel
         private readonly Dictionary<string, object> _defaultValues = new Dictionary<string, object>();
         private readonly Dictionary<string, LambdaExpression> _referenceFilters = new Dictionary<string, LambdaExpression>();
 
+        private bool _isEnablePaging = true;
+        public bool IsEnablePaging
+        {
+            get { return _isEnablePaging; }
+            set
+            {
+                if (_isEnablePaging == value)
+                {
+                    return;
+                }
+
+                _isEnablePaging = value;
+
+                RefreshData();
+                RaisePropertyChanged("IsEnablePaging");
+            }
+        }
+
         private int _currentPageIndex = 1;
         public int CurrentPageIndex
         {
@@ -224,7 +242,14 @@ namespace PhuDinhData.ViewModel
             _contextManager.CreateContext();
 
             ItemCount = _contextManager.GetDataCount(MainFilter.Filter);
-            _origData = _contextManager.GetData(MainFilter.Filter, EntityHelper.GetMainDataRelatedTables(typeof(T).Name), PageSize, CurrentPageIndex, ItemCount);
+            if (_isEnablePaging == true)
+            {
+                _origData = _contextManager.GetData(MainFilter.Filter, EntityHelper.GetMainDataRelatedTables(typeof(T).Name), PageSize, CurrentPageIndex, ItemCount);
+            }
+            else
+            {
+                _origData = _contextManager.GetData(MainFilter.Filter, EntityHelper.GetMainDataRelatedTables(typeof(T).Name));
+            }
 
             Logger.Info("     Unload");
             Unload();

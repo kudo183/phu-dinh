@@ -10,6 +10,7 @@
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
         <CustomControl:Pager Grid.Column="0"
+                                 IsEnablePaging = "{Binding IsEnablePaging, Mode=TwoWay}"
                                  CurrentPageIndex="{Binding CurrentPageIndex, Mode=TwoWay}"
                                  PageSize="{Binding PageSize, Mode=OneWay}"
                                  ItemCount="{Binding ItemCount, Mode=OneWay}"/>

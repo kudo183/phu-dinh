@@ -27,17 +27,55 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:Pager}">
-                    <StackPanel Orientation="Horizontal">
-                        <Button Content="&lt;&lt;" x:Name="FirstPageButton" Margin="2,5" Width="35"/>
-                        <Button Content="&gt;&gt;" x:Name="LastPageButton" Margin="2,5" Width="35"/>
-                        <TextBlock Text="Trang" VerticalAlignment="Center" Margin="5"/>
-                        <TextBox x:Name="CurrentPageIndexTextBox" Width="30" Margin="5" VerticalContentAlignment="Center"/>
-                        <TextBlock Text=" tren " VerticalAlignment="Center" Margin="0,5"/>
-                        <TextBlock x:Name="PageCountTextBlock" VerticalAlignment="Center" Margin="5"/>
-                        <Button Content="&lt;" x:Name="PrevPageButton" Margin="2,5" Width="35"/>
-                        <Button Content="&gt;" x:Name="NextPageButton" Margin="2,5" Width="35"/>
-                        <TextBlock x:Name="ItemCountTextBlock" VerticalAlignment="Center" Margin="5"/>
-                        <TextBlock Text="Dong" VerticalAlignment="Center" Margin="5"/>
+                    <StackPanel Orientation="Horizontal" Margin="2,5" Background="AliceBlue" Height="20">
+                        <CheckBox x:Name="IsEnableCheckBox" IsChecked="True" Width="20" VerticalAlignment="Center"/>
+                        <Button Content="&lt;&lt;"
+                                x:Name="FirstPageButton"
+                                Width="35"
+                                VerticalAlignment="Center"
+                                FontSize="12"
+                                IsEnabled="{Binding ElementName=IsEnableCheckBox, Path=IsChecked}"/>
+                        <Button Content="&gt;&gt;"
+                                x:Name="LastPageButton"
+                                Width="35"
+                                VerticalAlignment="Center"
+                                FontSize="12"
+                                IsEnabled="{Binding ElementName=IsEnableCheckBox, Path=IsChecked}"/>
+                        <TextBlock Text="Trang"
+                                 VerticalAlignment="Center"
+                                   FontSize="12"
+                                 Margin="5,0,5,0"/>
+                        <TextBox x:Name="CurrentPageIndexTextBox"
+                                 Width="30"
+                                 VerticalContentAlignment="Center"
+                                 FontSize="12"
+                                 IsEnabled="{Binding ElementName=IsEnableCheckBox, Path=IsChecked}"/>
+                        <TextBlock Text=" tren "
+                                 VerticalAlignment="Center"
+                                 FontSize="12"/>
+                        <TextBlock x:Name="PageCountTextBlock"
+                                 VerticalAlignment="Center"
+                                 FontSize="12"
+                                 Margin="0,0,5,0"/>
+                        <Button Content="&lt;"
+                                x:Name="PrevPageButton"
+                                Width="35"
+                                VerticalAlignment="Center"
+                                FontSize="12"
+                                IsEnabled="{Binding ElementName=IsEnableCheckBox, Path=IsChecked}"/>
+                        <Button Content="&gt;"
+                                x:Name="NextPageButton"
+                                Width="35"
+                                VerticalAlignment="Center"
+                                FontSize="12"
+                                IsEnabled="{Binding ElementName=IsEnableCheckBox, Path=IsChecked}"/>
+                        <TextBlock x:Name="ItemCountTextBlock"
+                                VerticalAlignment="Center"
+                                Margin="5,0,5,0"
+                                FontSize="12"/>
+                        <TextBlock Text="Dong"
+                                VerticalAlignment="Center"
+                                FontSize="12"/>
                     </StackPanel>
                 </ControlTemplate>
             </Setter.Value>
