@@ -1,4 +1,5 @@
-﻿using PhuDinhDataEntity;
+﻿using System.Linq;
+using PhuDinhDataEntity;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
@@ -134,6 +135,13 @@ namespace PhuDinhData.ViewModel
                     UpdateNhanVienReferenceData();
                     break;
             }
+        }
+
+        public override void RefreshData()
+        {
+            base.RefreshData();
+
+            Message = string.Format("Tong so tien: {0:N0}", Entity.Sum(p => p.SoTien));
         }
     }
 }

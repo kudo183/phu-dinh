@@ -15,7 +15,7 @@ namespace PhuDinhCommonControl
         public tCongNoKhachHangView()
         {
             InitializeComponent();
-            
+
             dg = dgCongNoKhachHang;
 
             _viewModel = new CongNoKhachHangViewModel();
@@ -44,10 +44,11 @@ namespace PhuDinhCommonControl
 
         protected override void bmMenu_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            if (sender != e.OriginalSource)
+            var button = e.OriginalSource as Button;
+
+            if (button == null)
                 return;
 
-            var button = e.OriginalSource as Button;
             if (button.Content.ToString() == "Cap Nhat Cong No")
             {
                 ChildWindowUtils.ShowChildWindow("Cap Nhat Cong No", new CapNhatCongNoView());

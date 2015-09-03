@@ -17,6 +17,11 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <EntityDataGrid:DGChiPhi Grid.Row="0" x:Name="dgChiPhi" HeaderAddButtonClick="dgChiPhi_HeaderAddButtonClick"/>
-        <Menu:BottomMenu Grid.Row="1" x:Name="bmMenu" Button.Click="bmMenu_Click"/>
+        <Menu:BottomMenu Grid.Row="1" x:Name="bmMenu" Button.Click="bmMenu_Click">
+            <Menu:BottomMenu.ExtButton>
+                <Button Content="Thong Ke Chi Phi" Margin="5" Padding="20,0"/>
+                <TextBlock Text="{Binding Message}" VerticalAlignment="Center" FontSize="14" Foreground="Blue"/>
+            </Menu:BottomMenu.ExtButton>
+        </Menu:BottomMenu>
     </Grid>
 </PhuDinhCommonControl:BaseView>

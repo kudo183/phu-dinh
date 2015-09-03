@@ -53,10 +53,11 @@ namespace PhuDinhCommonControl
 
         protected override void bmMenu_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            if (sender != e.OriginalSource)
+            var button = e.OriginalSource as Button;
+
+            if (button == null)
                 return;
 
-            var button = e.OriginalSource as Button;
             if (button.Content.ToString() == "Cap Nhat Ton Kho")
             {
                 ChildWindowUtils.ShowChildWindow("Cap Nhat Ton Kho", new CapNhatTonKhoView());

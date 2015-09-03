@@ -4,6 +4,7 @@ using System.Windows.Controls.Primitives;
 using PhuDinhData.ViewModel;
 using PhuDinhCommon;
 using CustomControl.DataGridColumnHeaderFilterModel;
+using PhuDinhReport;
 
 namespace PhuDinhCommonControl
 {
@@ -49,6 +50,22 @@ namespace PhuDinhCommonControl
                     _viewModel.UpdateReferenceData(header.Name);
                     break;
             }
+        }
+
+        protected override void bmMenu_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            var button = e.OriginalSource as Button;
+
+            if (button == null)
+                return;
+
+            if (button.Content.ToString() == "Thong Ke Chi Phi")
+            {
+                ChildWindowUtils.ShowChildWindow("Thong Ke Chi Phi", new ReportByChiPhiView());
+                return;
+            }
+
+            base.bmMenu_Click(sender, e);
         }
     }
 }
