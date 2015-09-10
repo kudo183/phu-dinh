@@ -4,18 +4,21 @@
     var grid = new WebGrid(Model.RowData, canPage: false, canSort: false);
 }
 
-@using (Html.BeginForm("Index", "Xuat", FormMethod.Get))
-{
-    <p style="font-size: 14px; padding-left: 100px; padding-top: 15px">
-        Chọn ngày: @Html.TextBox("ngay", @Model.DateFilter.ToString("yyyy-MM-dd"), new { type = "date" })
-        <input type="submit" value="OK" />
-    </p>
-}
-
-@grid.GetHtml(columns: new[]
-{
-    grid.Column("TenKho", "Ten Kho", style:"TenKho"),
-    grid.Column("TenKhachHang", "Ten Khach Hang", style:"TenKhachHang"),
-    grid.Column("SoLuong", "So Luong", style:"SoLuong"),
-    grid.Column("TenMatHang", "Ten Mat Hang")
-})
+<div id="filter" class="no-print">
+    @using (Html.BeginForm("Index", "Xuat", FormMethod.Get))
+    {
+        <div>
+            Ngày: @Html.TextBox("ngay", @Model.DateFilter.ToString("yyyy-MM-dd"), new { type = "date" })
+            <input type="submit" value="OK" />
+        </div>
+    }
+</div>
+<div id="content">
+    @grid.GetHtml(columns: new[]
+    {
+        grid.Column("TenKho", "Ten Kho", style:"TenKho"),
+        grid.Column("TenKhachHang", "Ten Khach Hang", style:"TenKhachHang"),
+        grid.Column("SoLuong", "So Luong", style:"SoLuong"),
+        grid.Column("TenMatHang", "Ten Mat Hang")
+    })
+</div>

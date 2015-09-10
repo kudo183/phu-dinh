@@ -22,7 +22,7 @@
     </script>
 </head>
 <body>
-    <header class="no-print">
+    <div id="top-fixed-menu" class="no-print">
         <nav>
             <ul id="menu">
                 <li>@Html.ActionLink("Ton Kho", "Index", "TonKho")</li>
@@ -33,7 +33,7 @@
                 }
             </ul>
         </nav>
-    </header>
+    </div>
     <div class="page">
         <section id="main">
             @RenderBody()

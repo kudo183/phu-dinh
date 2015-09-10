@@ -17,18 +17,21 @@
     };
 }
 
+<div id="filter" class="no-print">
+    @using (Html.BeginForm("Index", "TonKho", FormMethod.Get))
+    {
+        <div>
+            Kho hàng: @Html.DropDownList("tenKho", new SelectList(listKhos, "Value", "Text"))
+            Loại: @Html.DropDownList("tenLoai", new SelectList(listLoais, "Value", "Text"))
+            <input type="submit" value="OK" />
+        </div>
+    }
+</div>
 
-@using (Html.BeginForm("Index", "TonKho", FormMethod.Get))
-{
-    <p style="font-size: 14px; padding-left: 10px; padding-top: 15px">
-        Chọn kho hàng: @Html.DropDownList("tenKho", new SelectList(listKhos, "Value", "Text"))
-        Chọn loại: @Html.DropDownList("tenLoai", new SelectList(listLoais, "Value", "Text"))
-        <input type="submit" value="OK" />
-    </p>
-}
-
-@grid.GetHtml(columns: new[]
-{
-    grid.Column(header: "Mat Hang", style:"TenMatHangDayDu", format: item => Html.FormatTenMatHangTonKho(item.Value as PhuDinhDataEntity.tTonKho)),
-    grid.Column(header: "So Luong", style:"SoLuong", format: item => Html.FormatSoLuongTonKho(item.Value as PhuDinhDataEntity.tTonKho))
-})
+<div id="content">
+    @grid.GetHtml(columns: new[]
+    {
+        grid.Column(header: "Mat Hang", style:"TenMatHangDayDu", format: item => Html.FormatTenMatHangTonKho(item.Value as PhuDinhDataEntity.tTonKho)),
+        grid.Column(header: "So Luong", style:"SoLuong", format: item => Html.FormatSoLuongTonKho(item.Value as PhuDinhDataEntity.tTonKho))
+    })
+</div>
