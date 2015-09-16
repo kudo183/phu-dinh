@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace PhuDinhData.BusinessLogics
 {
-    public static class BusinessLogics
+    public static class CapNhatTonKho
     {
         public static void UpdateTonKhosTuNgayDDenNgayN(
             DateTime ngayD,

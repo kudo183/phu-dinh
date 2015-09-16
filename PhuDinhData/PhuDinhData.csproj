@@ -79,7 +79,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BusinessLogics\BusinessLogics.cs" />
+    <Compile Include="BusinessLogics\CapNhatTonKho.cs" />
     <Compile Include="BusinessLogics\CapNhatCongNoKhachHang.cs" />
     <Compile Include="ClientContext.cs" />
     <Compile Include="CongNoManager.cs" />

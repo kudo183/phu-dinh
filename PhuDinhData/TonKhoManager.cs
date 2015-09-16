@@ -10,7 +10,7 @@ namespace PhuDinhData
     {
         public static void UpdateTonKho(DateTime begin, DateTime end)
         {
-            BusinessLogics.BusinessLogics.UpdateTonKhosTuNgayDDenNgayN(begin, end);
+            BusinessLogics.CapNhatTonKho.UpdateTonKhosTuNgayDDenNgayN(begin, end);
         }
 
         private static readonly object _lock = new object();
