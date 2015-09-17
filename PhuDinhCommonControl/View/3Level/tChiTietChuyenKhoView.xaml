@@ -17,6 +17,10 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <EntityDataGrid:DGChiTietChuyenKho Grid.Row="0" x:Name="dgChiTietChuyenKho" HeaderAddButtonClick="dgChiTietChuyenKho_HeaderAddButtonClick"/>
-        <Menu:BottomMenu Grid.Row="1" x:Name="bmMenu" Button.Click="bmMenu_Click"/>
+        <Menu:BottomMenu Grid.Row="1" x:Name="bmMenu" Button.Click="bmMenu_Click">
+            <Menu:BottomMenu.ExtButton>
+                <TextBlock Text="{Binding Message}" VerticalAlignment="Center" FontSize="14" Foreground="Blue"/>
+            </Menu:BottomMenu.ExtButton>
+        </Menu:BottomMenu>
     </Grid>
 </PhuDinhCommonControl:BaseView>

@@ -81,6 +81,7 @@
   <ItemGroup>
     <Compile Include="BusinessLogics\CapNhatTonKho.cs" />
     <Compile Include="BusinessLogics\CapNhatCongNoKhachHang.cs" />
+    <Compile Include="BusinessLogics\TinhTrongLuongHang.cs" />
     <Compile Include="ClientContext.cs" />
     <Compile Include="CongNoManager.cs" />
     <Compile Include="DesignTimeData\0Level\DDrKhoHang.cs" />

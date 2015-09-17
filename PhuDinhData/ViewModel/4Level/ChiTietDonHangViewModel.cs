@@ -101,5 +101,14 @@ namespace PhuDinhData.ViewModel
                     break;
             }
         }
+
+        public override void RefreshData()
+        {
+            base.RefreshData();
+
+            string msg;
+            var trongLuong = BusinessLogics.TinhTrongLuongHang.TinhTrongLuongTheoChiTietDonHang(Entity, out msg);
+            Message = string.Format("Tong trong luong: {0:N0} kg{1}", trongLuong, msg);
+        }
     }
 }
