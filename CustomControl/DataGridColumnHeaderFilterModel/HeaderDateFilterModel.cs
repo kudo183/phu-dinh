@@ -7,7 +7,6 @@ namespace CustomControl.DataGridColumnHeaderFilterModel
         public HeaderDateFilterModel(string name)
             : base(name, "DateFilter")
         {
-            _isUsed = true;
         }
 
         private DateTime _date = DateTime.Now.Date;

@@ -5,7 +5,6 @@
         public HeaderComboBoxFilterModel(string name)
             : base(name, "ComboBoxFilter")
         {
-            _isUsed = true;
         }
 
         private object _itemSource;

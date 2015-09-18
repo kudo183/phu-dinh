@@ -28,7 +28,7 @@ namespace CustomControl.DataGridColumnHeaderFilterModel
             }
         }
         
-        protected bool _isUsed = false;
+        protected bool _isUsed = true;
         public bool IsUsed
         {
             get { return _isUsed; }
