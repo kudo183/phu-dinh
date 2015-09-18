@@ -30,6 +30,7 @@ namespace PhuDinhData.ViewModel
             MainFilter = new Filter_tDonHang();
 
             SetDefaultValue(Constant.ColumnName_MaKhoHang, 1);
+            SetDefaultValue(Constant.ColumnName_MaKhachHang, 4);
 
             Header_KhachHang = new HeaderTextFilterModel(Constant.ColumnName_KhachHang);
             Header_Chanh = new HeaderTextFilterModel(Constant.ColumnName_Chanh);

@@ -24,8 +24,6 @@ namespace PhuDinhData.ViewModel
 
             MainFilter = new Filter_tToaHang();
 
-            SetDefaultValue(Constant.ColumnName_MaKhoHang, 1);
-
             Header_KhachHang = new HeaderTextFilterModel(Constant.ColumnName_KhachHang);
 
             Header_Ngay = new HeaderDateFilterModel(Constant.ColumnName_Ngay);
