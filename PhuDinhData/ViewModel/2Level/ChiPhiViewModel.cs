@@ -15,8 +15,8 @@ namespace PhuDinhData.ViewModel
         private List<rLoaiChiPhi> _rLoaiChiPhis;
         private List<rNhanVien> _rNhanViens;
 
-        public HeaderTextFilterModel Header_LoaiChiPhi { get; set; }
-        public HeaderTextFilterModel Header_NhanVien { get; set; }
+        public HeaderComboBoxFilterModel Header_LoaiChiPhi { get; set; }
+        public HeaderComboBoxFilterModel Header_NhanVien { get; set; }
 
         private HeaderDateFilterModel _header_Ngay = new HeaderDateFilterModel(Constant.ColumnName_Ngay);
         public HeaderDateFilterModel Header_Ngay
@@ -31,13 +31,19 @@ namespace PhuDinhData.ViewModel
 
             MainFilter = new Filter_tChiPhi();
 
-            Header_LoaiChiPhi = new HeaderTextFilterModel(Constant.ColumnName_LoaiChiPhi);
-            Header_NhanVien = new HeaderTextFilterModel(Constant.ColumnName_NhanVien);
+            SetDefaultValue(Constant.ColumnName_MaLoaiChiPhi, 2);
+            SetDefaultValue(Constant.ColumnName_MaNhanVien, 1);
+
+            Header_LoaiChiPhi = new HeaderComboBoxFilterModel(Constant.ColumnName_LoaiChiPhi);
+            Header_NhanVien = new HeaderComboBoxFilterModel(Constant.ColumnName_NhanVien);
         }
 
         public override void Load()
         {
             _isLoading = true;
+
+            Header_LoaiChiPhi.SelectedValue = GetDefaultValue(Constant.ColumnName_MaLoaiChiPhi);
+            Header_NhanVien.SelectedValue = GetDefaultValue(Constant.ColumnName_MaNhanVien);
 
             Entity.CollectionChanged += Entity_CollectionChanged;
 
@@ -64,14 +70,24 @@ namespace PhuDinhData.ViewModel
 
         void Header_LoaiChiPhi_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            MainFilter.SetFilter(Filter_tChiPhi.TenLoaiChiPhi, Header_LoaiChiPhi.GetFilterValue());
+            MainFilter.SetFilter(Filter_tChiPhi.MaLoaiChiPhi, Header_LoaiChiPhi.GetFilterValue());
+            
+            if (_isLoading == false)
+            {
+                SetDefaultValue(Constant.ColumnName_MaLoaiChiPhi, Header_LoaiChiPhi.SelectedValue);
+            }
 
             OnHeaderFilterChanged();
         }
 
         void Header_NhanVien_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            MainFilter.SetFilter(Filter_tChiPhi.TenNhanVien, Header_NhanVien.GetFilterValue());
+            MainFilter.SetFilter(Filter_tChiPhi.MaNhanVien, Header_NhanVien.GetFilterValue());
+
+            if (_isLoading == false)
+            {
+                SetDefaultValue(Constant.ColumnName_MaNhanVien, Header_NhanVien.SelectedValue);
+            }
 
             OnHeaderFilterChanged();
         }
@@ -109,6 +125,9 @@ namespace PhuDinhData.ViewModel
             UpdateReferenceData(out _rLoaiChiPhis
                 , GetReferenceFilter<rLoaiChiPhi>(Constant.ColumnName_LoaiChiPhi)
                 , (p => p.rLoaiChiPhiList = _rLoaiChiPhis));
+
+            Header_LoaiChiPhi.ItemSource = _rLoaiChiPhis.ToDictionary(p => p.Ma, p => p.TenLoaiChiPhi);
+            Header_LoaiChiPhi.SelectedValue = GetDefaultValue(Constant.ColumnName_MaLoaiChiPhi);
         }
 
         private void UpdateNhanVienReferenceData()
@@ -116,6 +135,9 @@ namespace PhuDinhData.ViewModel
             UpdateReferenceData(out _rNhanViens
                 , GetReferenceFilter<rNhanVien>(Constant.ColumnName_NhanVien)
                 , (p => p.rNhanVienList = _rNhanViens));
+
+            Header_NhanVien.ItemSource = _rNhanViens.ToDictionary(p => p.Ma, p => p.TenNhanVien);
+            Header_NhanVien.SelectedValue = GetDefaultValue(Constant.ColumnName_MaNhanVien);
         }
 
         protected override void UpdateAllReferenceData()
