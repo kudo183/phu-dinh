@@ -8,24 +8,28 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="300"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
         <Control:ReportDatePicker Grid.Row="0" x:Name="reportDatePicker"/>
 
-        <StackPanel Grid.Row="1">
-            <CustomControl:DataGridExt x:Name="dg" AutoGenerateColumns="False" EnableRowVirtualization="False" SelectionMode="Single">
-                <DataGrid.Columns>
-                    <CustomControl:DataGridTextColumnExt Binding="{Binding TenLoaiHang}" Header="Ten Loai Hang" Width="350"/>
-                    <CustomControl:DataGridTextRightAlignColumn Binding="{Binding SoLuong}" Header="So Luong" Width="100"/>
-                </DataGrid.Columns>
-            </CustomControl:DataGridExt>
-            <CustomControl:DataGridExt Grid.Row="1" x:Name="dgDetail" AutoGenerateColumns="False" EnableRowVirtualization="False" SelectionMode="Single">
-                <DataGrid.Columns>
-                    <CustomControl:DataGridTextColumnExt Binding="{Binding TenMatHang}" Header="Ten Mat Hang" Width="350"/>
-                    <CustomControl:DataGridTextRightAlignColumn Binding="{Binding SoLuong}" Header="So Luong" Width="100"/>
-                </DataGrid.Columns>
-            </CustomControl:DataGridExt>
-        </StackPanel>
+        <CustomControl:DataGridExt Grid.Row="1" x:Name="dg" AutoGenerateColumns="False" EnableRowVirtualization="False" SelectionMode="Single">
+            <DataGrid.Columns>
+                <CustomControl:DataGridTextColumnExt Binding="{Binding TenLoaiHang}" Header="Ten Loai Hang" Width="350"/>
+                <CustomControl:DataGridTextRightAlignColumn Binding="{Binding SoLuong}" Header="So Luong" Width="100"/>
+                <CustomControl:DataGridTextRightAlignColumn Binding="{Binding SoKy}" Header="So Ky" Width="100"/>
+            </DataGrid.Columns>
+        </CustomControl:DataGridExt>
+
+        <CustomControl:DataGridExt Grid.Row="2" x:Name="dgDetail" AutoGenerateColumns="False" EnableRowVirtualization="False" SelectionMode="Single">
+            <DataGrid.Columns>
+                <CustomControl:DataGridTextColumnExt Binding="{Binding TenMatHang}" Header="Ten Mat Hang" Width="350"/>
+                <CustomControl:DataGridTextRightAlignColumn Binding="{Binding SoLuong}" Header="So Luong" Width="100"/>
+                <CustomControl:DataGridTextRightAlignColumn Binding="{Binding SoKy}" Header="So Ky" Width="100"/>
+            </DataGrid.Columns>
+        </CustomControl:DataGridExt>
+        
+        <GridSplitter HorizontalAlignment="Stretch" Height="5" VerticalAlignment="Bottom" Grid.Row="1"/>
     </Grid>
 </UserControl>

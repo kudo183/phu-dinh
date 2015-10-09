@@ -68,7 +68,9 @@ namespace PhuDinhReport
 
             var result = ReportByLoaiHang.FilterByDate(ngay);
 
-            reportDatePicker.NgayMsg = string.Format("Tong so cuon: {0}", result.Sum(p => p.SoLuong).ToString("N0"));
+            reportDatePicker.NgayMsg = string.Format("Tong so cuon: {0} Tong so ky: {1} kg"
+                , result.Sum(p => p.SoLuong).ToString("N0")
+                , result.Sum(p => p.SoKy).ToString("N0"));
 
             dg.ItemsSource = result;
         }
@@ -83,7 +85,9 @@ namespace PhuDinhReport
 
             var result = ReportByLoaiHang.FilterByDate(tuNgay, denNgay);
 
-            reportDatePicker.TuNgayDenNgayMsg = string.Format("Tong so cuon: {0}", result.Sum(p => p.SoLuong).ToString("N0"));
+            reportDatePicker.TuNgayDenNgayMsg = string.Format("Tong so cuon: {0} Tong so ky: {1} kg"
+                , result.Sum(p => p.SoLuong).ToString("N0")
+                , result.Sum(p => p.SoKy).ToString("N0"));
 
             dg.ItemsSource = result;
         }

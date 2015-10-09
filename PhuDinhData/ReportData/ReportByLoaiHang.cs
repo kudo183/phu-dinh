@@ -12,6 +12,7 @@ namespace PhuDinhData.ReportData
             public int MaLoaiHang { get; set; }
             public string TenLoaiHang { get; set; }
             public int SoLuong { get; set; }
+            public int SoKy { get; set; }
         }
 
         public static List<ReportByLoaiHangData> FilterByDate(DateTime ngay)
@@ -26,24 +27,31 @@ namespace PhuDinhData.ReportData
 
         private static List<ReportByLoaiHangData> Filter(System.Linq.Expressions.Expression<Func<tChiTietDonHang, bool>> filter)
         {
-            var chiTietDonHangs = ClientContext.Instance.GetDataWithRelated(filter, new List<string> { "tMatHang" })
-                .ToList()
-                .GroupBy(p => p.tMatHang.MaLoai);
+            var chiTietDonHangs = ClientContext.Instance
+                .GetDataWithRelated(filter, new List<string> {"tMatHang"})
+                .ToList();
 
             var loaiHangs = ClientContext.Instance.GetData<rLoaiHang>(null).ToDictionary(p => p.Ma);
 
-            var result = (from chiTietDonHang in chiTietDonHangs
-                          let soLuong = chiTietDonHang.Sum(p => p.SoLuong)
-                          select new ReportByLoaiHangData
-                          {
-                              MaLoaiHang = chiTietDonHang.Key,
-                              SoLuong = soLuong
-                          }).ToList();
-
-            foreach (var loaiHangData in result)
+            var dic = new Dictionary<int, ReportByLoaiHangData>();
+            foreach (var tChiTietDonHang in chiTietDonHangs)
             {
-                loaiHangData.TenLoaiHang = loaiHangs[loaiHangData.MaLoaiHang].TenLoai;
+                var maLoai = tChiTietDonHang.tMatHang.MaLoai;
+                if (dic.ContainsKey(maLoai) == false)
+                {
+                    dic.Add(maLoai, new ReportByLoaiHangData
+                    {
+                        MaLoaiHang = maLoai,
+                        TenLoaiHang = loaiHangs[maLoai].TenLoai
+                    }
+                    );
+                }
+
+                dic[maLoai].SoLuong += tChiTietDonHang.SoLuong;
+                dic[maLoai].SoKy += (tChiTietDonHang.SoLuong * tChiTietDonHang.tMatHang.SoKy) / 10;
             }
+
+            var result = dic.Select(reportByMatHangData => reportByMatHangData.Value);
 
             return result.OrderBy(p => p.TenLoaiHang).ToList();
         }
