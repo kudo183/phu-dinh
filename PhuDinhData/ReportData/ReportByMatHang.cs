@@ -9,8 +9,10 @@ namespace PhuDinhData.ReportData
     {
         public class ReportByMatHangData
         {
+            public int MaMatHang { get; set; }
             public string TenMatHang { get; set; }
             public int SoLuong { get; set; }
+            public int SoKy { get; set; }
         }
 
         public static List<ReportByMatHangData> FilterByDate(DateTime ngay)
@@ -27,16 +29,27 @@ namespace PhuDinhData.ReportData
         {
             var chiTietDonHangs = ClientContext.Instance
                 .GetDataWithRelated(filter, new List<string> { "tMatHang" })
-                .ToList()
-                .GroupBy(p => p.tMatHang.TenMatHangDayDu);
+                .ToList();
 
-            var result = (from chiTietDonHang in chiTietDonHangs
-                          let soLuong = chiTietDonHang.Sum(p => p.SoLuong)
-                          select new ReportByMatHangData
-                          {
-                              TenMatHang = chiTietDonHang.Key,
-                              SoLuong = soLuong
-                          }).ToList();
+            var dic = new Dictionary<int, ReportByMatHangData>();
+            foreach (var tChiTietDonHang in chiTietDonHangs)
+            {
+                var maMatHang = tChiTietDonHang.MaMatHang;
+                if (dic.ContainsKey(maMatHang) == false)
+                {
+                    dic.Add(maMatHang, new ReportByMatHangData
+                        {
+                            MaMatHang = maMatHang,
+                            TenMatHang = tChiTietDonHang.tMatHang.TenMatHangDayDu
+                        }
+                    );
+                }
+
+                dic[maMatHang].SoLuong += tChiTietDonHang.SoLuong;
+                dic[maMatHang].SoKy += (tChiTietDonHang.SoLuong * tChiTietDonHang.tMatHang.SoKy) / 10;
+            }
+
+            var result = dic.Select(reportByMatHangData => reportByMatHangData.Value);
 
             return result.OrderBy(p => p.TenMatHang).ToList();
         }

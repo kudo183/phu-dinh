@@ -17,6 +17,7 @@
             <DataGrid.Columns>
                 <CustomControl:DataGridTextColumnExt Binding="{Binding TenMatHang}" Header="Ten Mat Hang" Width="350"/>
                 <CustomControl:DataGridTextRightAlignColumn Binding="{Binding SoLuong}" Header="So Luong" Width="100"/>
+                <CustomControl:DataGridTextRightAlignColumn Binding="{Binding SoKy}" Header="So Ky" Width="100"/>
             </DataGrid.Columns>
         </CustomControl:DataGridExt>
     </Grid>
