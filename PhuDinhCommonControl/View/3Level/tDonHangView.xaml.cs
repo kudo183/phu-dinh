@@ -5,6 +5,7 @@ using System.Linq;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using Common;
+using CustomControl;
 using PhuDinhCommon;
 using PhuDinhCommon.PrintTemplate;
 using PhuDinhData.ViewModel;
@@ -67,11 +68,13 @@ namespace PhuDinhCommonControl
 
             if (button == null)
                 return;
-            
+
             if (button.Content.ToString() == "In")
             {
                 var tChiTietDonHangs = PhuDinhData.ClientContext.Instance
-                    .GetDataWithRelated<PhuDinhDataEntity.tChiTietDonHang>(p => p.MaDonHang == SelectedItem.Ma, new List<string> { "tMatHang" }).ToList();
+                    .GetDataWithRelated<PhuDinhDataEntity.tChiTietDonHang>(
+                    p => p.MaDonHang == SelectedItem.Ma,
+                    new List<string> { "tMatHang" }).ToList();
 
                 var content = tChiTietDonHangs.Select(
                     ctdh => string.Format("{0,3}  {1}", ctdh.SoLuong, ctdh.tMatHang.TenMatHangIn)).ToList();
@@ -87,6 +90,34 @@ namespace PhuDinhCommonControl
 
                 PrintService.Print(document.Document);
                 return;
+            }
+            else if (button.Content.ToString() == "Ton Kho")
+            {
+                var tChiTietDonHangs = PhuDinhData.ClientContext.Instance
+                    .GetDataWithRelated<PhuDinhDataEntity.tChiTietDonHang>(
+                    p => p.MaDonHang == SelectedItem.Ma,
+                    new List<string>()).ToList();
+
+                var maMatHangs = tChiTietDonHangs.Select(p => p.MaMatHang).ToList();
+
+                var tTonKhoes = PhuDinhData.ClientContext.Instance
+                    .GetDataWithRelated<PhuDinhDataEntity.tTonKho>(p => p.Ngay == SelectedItem.Ngay
+                    && p.MaKhoHang == SelectedItem.MaKhoHang
+                    && maMatHangs.Contains(p.MaMatHang),
+                    new List<string> { "tMatHang" });
+
+                var data = new List<CustomControl.MessageBox2.MessageBox2Data>();
+
+                foreach (var tTonKho in tTonKhoes)
+                {
+                    data.Add(new MessageBox2.MessageBox2Data
+                    {
+                        Title = tTonKho.tMatHang.TenMatHangDayDu,
+                        Content = tTonKho.SoLuong.ToString("N0")
+                    });
+                }
+
+                CustomControl.MessageBox2.Show("Ton Kho", data);
             }
 
             base.bmMenu_Click(sender, e);

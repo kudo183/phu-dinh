@@ -20,6 +20,7 @@
         <Menu:BottomMenu Grid.Row="1" x:Name="bmMenu" Button.Click="bmMenu_Click">
             <Menu:BottomMenu.ExtButton>
                 <Button Content="In" Width="50" Margin="2,5"/>
+                <Button Content="Ton Kho" Width="60" Margin="2,5"/>
             </Menu:BottomMenu.ExtButton>
         </Menu:BottomMenu>
     </Grid>

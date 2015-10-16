@@ -66,6 +66,9 @@
     <Compile Include="DataGridColumn\TextColumn\DataGridReadOnlyLeftAlignTextColumn.xaml.cs">
       <DependentUpon>DataGridReadOnlyLeftAlignTextColumn.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MessageBox2.xaml.cs">
+      <DependentUpon>MessageBox2.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pager.cs" />
     <Compile Include="DataGridColumn\CheckBoxColumn\DataGridCheckBoxColumnExt.xaml.cs">
       <DependentUpon>DataGridCheckBoxColumnExt.xaml</DependentUpon>
@@ -160,6 +163,10 @@
     <Page Include="DataGridColumn\DataGridTimeColumn.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MessageBox2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Themes\Generic.xaml">
       <Generator>MSBuild:Compile</Generator>
