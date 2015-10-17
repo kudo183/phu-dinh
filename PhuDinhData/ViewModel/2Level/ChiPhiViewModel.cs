@@ -36,6 +36,9 @@ namespace PhuDinhData.ViewModel
 
             Header_LoaiChiPhi = new HeaderComboBoxFilterModel(Constant.ColumnName_LoaiChiPhi);
             Header_NhanVien = new HeaderComboBoxFilterModel(Constant.ColumnName_NhanVien);
+
+            Header_LoaiChiPhi.IsUsed = false;
+            Header_NhanVien.IsUsed = false;
         }
 
         public override void Load()
@@ -71,7 +74,7 @@ namespace PhuDinhData.ViewModel
         void Header_LoaiChiPhi_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
             MainFilter.SetFilter(Filter_tChiPhi.MaLoaiChiPhi, Header_LoaiChiPhi.GetFilterValue());
-            
+
             if (_isLoading == false)
             {
                 SetDefaultValue(Constant.ColumnName_MaLoaiChiPhi, Header_LoaiChiPhi.SelectedValue);
