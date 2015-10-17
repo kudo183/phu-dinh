@@ -14,6 +14,14 @@ namespace PhuDinhData.ReportData
             public int SoTien { get; set; }
         }
 
+        public class ReportByChiPhiDetailData
+        {
+            public DateTime Ngay { get; set; }
+            public string NhanVien { get; set; }
+            public int SoTien { get; set; }
+            public string GhiChu { get; set; }
+        }
+
         public static List<ReportByChiPhiData> FilterByDate(DateTime ngay)
         {
             return Filter(p => p.Ngay == ngay);
@@ -24,7 +32,8 @@ namespace PhuDinhData.ReportData
             return Filter(p => p.Ngay >= tuNgay && p.Ngay <= denNgay);
         }
 
-        private static List<ReportByChiPhiData> Filter(System.Linq.Expressions.Expression<Func<tChiPhi, bool>> filter)
+        private static List<ReportByChiPhiData> Filter(
+            System.Linq.Expressions.Expression<Func<tChiPhi, bool>> filter)
         {
             var chiPhis = ClientContext.Instance.GetData(filter)
                 .ToList()
@@ -46,6 +55,30 @@ namespace PhuDinhData.ReportData
             }
 
             return result.OrderBy(p => p.LoaiChiPhi).ToList();
+        }
+
+        public static List<ReportByChiPhiDetailData> FilterDetail(
+            System.Linq.Expressions.Expression<Func<tChiPhi, bool>> filter)
+        {
+            var chiPhis = ClientContext.Instance.GetDataWithRelated(
+                filter, new List<string> { "rNhanVien" })
+                .OrderBy(p => p.Ngay)
+                .ToList();
+
+            var result = new List<ReportByChiPhiDetailData>();
+
+            foreach (var tChiPhi in chiPhis)
+            {
+                result.Add(new ReportByChiPhiDetailData
+                {
+                    Ngay = tChiPhi.Ngay,
+                    NhanVien = tChiPhi.rNhanVien.TenNhanVien,
+                    SoTien = tChiPhi.SoTien,
+                    GhiChu = tChiPhi.GhiChu
+                });
+            }
+
+            return result;
         }
     }
 }

@@ -8,6 +8,7 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="300"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
@@ -19,5 +20,16 @@
                 <CustomControl:DataGridTextRightAlignColumn Binding="{Binding SoTien, StringFormat=\{0:N0\}}" Header="So Tien" Width="100"/>
             </DataGrid.Columns>
         </CustomControl:DataGridExt>
+
+        <CustomControl:DataGridExt Grid.Row="2" x:Name="dgDetail" AutoGenerateColumns="False" EnableRowVirtualization="False" SelectionMode="Single">
+            <DataGrid.Columns>
+                <CustomControl:DataGridTextColumnExt Binding="{Binding Ngay,StringFormat=\{0:dd/MM/yyyy\}}" Header="Ngay" Width="100"/>
+                <CustomControl:DataGridTextColumnExt Binding="{Binding NhanVien}" Header="Nhan Vien" Width="150"/>
+                <CustomControl:DataGridTextRightAlignColumn Binding="{Binding SoTien, StringFormat=\{0:N0\}}" Header="So Tien" Width="100"/>
+                <CustomControl:DataGridTextColumnExt Binding="{Binding GhiChu}" Header="Ghi Chu" Width="250"/>
+            </DataGrid.Columns>
+        </CustomControl:DataGridExt>
+
+        <GridSplitter HorizontalAlignment="Stretch" Height="5" VerticalAlignment="Bottom" Grid.Row="1"/>
     </Grid>
 </UserControl>
