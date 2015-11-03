@@ -42,6 +42,11 @@ namespace PhuDinhReport
             dg.ItemsSource = ReportDaily.FilterByDate(ngay);
         }
 
+        private void Button_OkClick(object sender, System.Windows.RoutedEventArgs e)
+        {
+            Report();
+        }
+        
         private void Button_CopyClick(object sender, System.Windows.RoutedEventArgs e)
         {
             var data = dg.ItemsSource as List<ReportDaily.ReportDailyRowData>;

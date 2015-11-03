@@ -24,6 +24,7 @@
             <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="0">
                 <TextBlock Text="Ngay: " VerticalAlignment="Center" Margin="5"/>
                 <CustomControl:CustomDatePicker x:Name="dpNgay" Margin="5" Width="200"/>
+                <Button Content="Ok" Margin="5" Width="50" Click="Button_OkClick"/>
                 <Button Content="Copy (Excel)" Margin="5" Click="Button_CopyClick"/>
             </StackPanel>
         </Grid>
