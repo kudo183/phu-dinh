@@ -50,24 +50,22 @@ namespace PhuDinhData.ReportData
                     var maDonHang = tDonHang.Ma;
 
                     var ten = tDonHang.rKhachHang.TenKhachHang;
-                    if (ten == "Chợ")
+
+                    var sb = new StringBuilder();
+
+                    var tChuyenHangDonHangs = ClientContext.Instance
+                        .GetDataWithRelated<tChuyenHangDonHang>(p => p.MaDonHang == maDonHang, new List<string> { "tChuyenHang.rNhanVien" });
+
+                    if (ClientContext.Instance.Count(tChuyenHangDonHangs) > 0)
                     {
-                        var sb = new StringBuilder();
-
-                        var tChuyenHangDonHangs = ClientContext.Instance
-                            .GetDataWithRelated<tChuyenHangDonHang>(p => p.MaDonHang == maDonHang, new List<string> { "tChuyenHang.rNhanVien" });
-
-                        if (ClientContext.Instance.Count(tChuyenHangDonHangs) > 0)
+                        foreach (var tChuyenHangDonHang in tChuyenHangDonHangs)
                         {
-                            foreach (var tChuyenHangDonHang in tChuyenHangDonHangs)
-                            {
-                                sb.AppendFormat("{0}, ", tChuyenHangDonHang.tChuyenHang.rNhanVien.TenNhanVien);
-                            }
-
-                            ten = string.Format("{0} ({1})", ten, sb.ToString(0, sb.Length - 2));
+                            sb.AppendFormat("{0}, ", tChuyenHangDonHang.tChuyenHang.rNhanVien.TenNhanVien);
                         }
-                    }
 
+                        ten = string.Format("{0} ({1})", ten, sb.ToString(0, sb.Length - 2));
+                    }
+                    
                     result.Add(new ReportDailyRowData()
                     {
                         TenKhachHang = ten
