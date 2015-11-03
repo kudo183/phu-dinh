@@ -1,4 +1,7 @@
-﻿using PhuDinhData.ReportData;
+﻿using System.Collections.Generic;
+using System.Text;
+using System.Windows;
+using PhuDinhData.ReportData;
 using System;
 using System.Windows.Controls;
 
@@ -37,6 +40,29 @@ namespace PhuDinhReport
             var ngay = dpNgay.dp.SelectedDate.Value.Date;
 
             dg.ItemsSource = ReportDaily.FilterByDate(ngay);
+        }
+
+        private void Button_CopyClick(object sender, System.Windows.RoutedEventArgs e)
+        {
+            var data = dg.ItemsSource as List<ReportDaily.ReportDailyRowData>;
+
+            var builder = new StringBuilder();
+
+            builder.AppendLine(string.Format("\t{0:dd/MM/yyyy}", dpNgay.dp.SelectedDate.Value.Date));
+            foreach (var row in data)
+            {
+                builder.Append("\t");
+                builder.Append(row.TenKhachHang);
+                builder.Append("\t");
+                builder.Append(row.SoLuong);
+                builder.Append("\t");
+                builder.Append("\t");
+                builder.Append(row.TenMatHang);
+
+                builder.AppendLine("");
+            }
+
+            Clipboard.SetText(builder.ToString());
         }
     }
 }
