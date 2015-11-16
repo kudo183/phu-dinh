@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Web.Mvc;
 using System.Web.Routing;
 using PhuDinhCommon;
@@ -36,6 +37,10 @@ namespace PhuDinhWeb
                 { typeof(IClientContext), typeof(EFContext) }
             });
 
+#if DEBUG
+            //ConfigurationManager.AppSettings["DataSource"] = ".";
+            ConfigurationManager.AppSettings["InitialCatalog"] = "PhuDinh_test";
+#endif
             AreaRegistration.RegisterAllAreas();
 
             RegisterGlobalFilters(GlobalFilters.Filters);
