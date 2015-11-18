@@ -107,16 +107,16 @@ ul#menu {
         }
 
 .scrollup {
-    width: 40px;
-    height: 40px;
+    width: 26px;
+    height: 26px;
     position: fixed;
-    bottom: 100px;
+    top: 10px;
     right: 0px;
     text-indent: -9999px;
     background: url('./themes/scrollTopIcon.png') no-repeat;
     background-color: #000;
     z-index: 1999999999;
-    border-radius: 5px;
+    border-radius: 4px;
 }
 
 @media print {
