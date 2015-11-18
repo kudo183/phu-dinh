@@ -43,5 +43,15 @@ namespace PhuDinhWeb
 
             return new HtmlString(result);
         }
+
+        public static IHtmlString FormatTenMatHang(this HtmlHelper helper, tTonKho t)
+        {
+            if (t.tMatHang.TenMatHang.Contains("TQ"))
+            {
+                return new HtmlString("tq");
+            }
+
+            return new HtmlString("n");
+        }
     }
 }

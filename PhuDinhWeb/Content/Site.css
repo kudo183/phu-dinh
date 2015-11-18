@@ -32,6 +32,7 @@ body {
     padding-left: 10px;
     background-color: #5c87b2;
     color: white;
+    height: 25px;
 }
 
 #content {
@@ -77,6 +78,10 @@ table {
 
 .TenKho {
     font-weight: bold;
+}
+
+.HiddenColumn {
+    display: none
 }
 
 ul#menu {
