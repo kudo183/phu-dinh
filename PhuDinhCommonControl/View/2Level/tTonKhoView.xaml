@@ -21,6 +21,7 @@
             <Menu:BottomMenu.ExtButton>
                 <Button Content="Cap Nhat Ton Kho" Margin="5" Padding="20,0"/>
                 <TextBlock Text="{Binding Message}" VerticalAlignment="Center"/>
+                <Button Content="Copy Ton Kho Hang Nhap" Margin="5" Padding="20,0"/>
             </Menu:BottomMenu.ExtButton>
         </Menu:BottomMenu>
     </Grid>
