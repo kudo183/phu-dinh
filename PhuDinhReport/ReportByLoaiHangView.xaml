@@ -17,19 +17,19 @@
         <CustomControl:DataGridExt Grid.Row="1" x:Name="dg" AutoGenerateColumns="False" EnableRowVirtualization="False" SelectionMode="Single">
             <DataGrid.Columns>
                 <CustomControl:DataGridTextColumnExt Binding="{Binding TenLoaiHang}" Header="Ten Loai Hang" Width="350"/>
-                <CustomControl:DataGridTextRightAlignColumn Binding="{Binding SoLuong}" Header="So Luong" Width="100"/>
-                <CustomControl:DataGridTextRightAlignColumn Binding="{Binding SoKy}" Header="So Ky" Width="100"/>
+                <CustomControl:DataGridTextRightAlignColumn Binding="{Binding SoLuong, StringFormat=\{0:N0\}}" Header="So Luong" Width="100"/>
+                <CustomControl:DataGridTextRightAlignColumn Binding="{Binding SoKy, StringFormat=\{0:N0\}}" Header="So Ky" Width="100"/>
             </DataGrid.Columns>
         </CustomControl:DataGridExt>
 
         <CustomControl:DataGridExt Grid.Row="2" x:Name="dgDetail" AutoGenerateColumns="False" EnableRowVirtualization="False" SelectionMode="Single">
             <DataGrid.Columns>
                 <CustomControl:DataGridTextColumnExt Binding="{Binding TenMatHang}" Header="Ten Mat Hang" Width="350"/>
-                <CustomControl:DataGridTextRightAlignColumn Binding="{Binding SoLuong}" Header="So Luong" Width="100"/>
-                <CustomControl:DataGridTextRightAlignColumn Binding="{Binding SoKy}" Header="So Ky" Width="100"/>
+                <CustomControl:DataGridTextRightAlignColumn Binding="{Binding SoLuong, StringFormat=\{0:N0\}}" Header="So Luong" Width="100"/>
+                <CustomControl:DataGridTextRightAlignColumn Binding="{Binding SoKy, StringFormat=\{0:N0\}}" Header="So Ky" Width="100"/>
             </DataGrid.Columns>
         </CustomControl:DataGridExt>
-        
+
         <GridSplitter HorizontalAlignment="Stretch" Height="5" VerticalAlignment="Bottom" Grid.Row="1"/>
     </Grid>
 </UserControl>
