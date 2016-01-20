@@ -22,5 +22,7 @@
                                                  ItemsSource="{Binding rDiaDiemList}"/>
         <!--Ten khach hang-->
         <CustomControl:DataGridTextColumnExt x:Name="tenKhachHangColumn" Header="Tên Khách Hàng" Binding="{Binding TenKhachHang, UpdateSourceTrigger=PropertyChanged}"/>
+        <!--Khach rieng-->
+        <CustomControl:DataGridCheckBoxColumnExt x:Name="khachRiengColumn" Binding="{Binding KhachRieng}" Header="Khách Riêng"/>
     </DataGrid.Columns>
 </CustomControl:DataGridExt>
