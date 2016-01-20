@@ -8,13 +8,18 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="300"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Control:ReportDatePicker Grid.Row="0" x:Name="reportDatePicker"/>
-
-        <CustomControl:DataGridExt Grid.Row="1" x:Name="dg" AutoGenerateColumns="False" EnableRowVirtualization="False" SelectionMode="Single">
+        <ComboBox x:Name="comboLoaiKhachHang" Grid.Row="0" Width="100" HorizontalAlignment="Left" Background="LightCyan">
+            <ComboBoxItem IsSelected="True">Khach Thuong</ComboBoxItem>
+            <ComboBoxItem>Khach Rieng</ComboBoxItem>
+            <ComboBoxItem>Tat Ca</ComboBoxItem>
+        </ComboBox>
+        <Control:ReportDatePicker Grid.Row="1" x:Name="reportDatePicker"/>
+        <CustomControl:DataGridExt Grid.Row="2" x:Name="dg" AutoGenerateColumns="False" EnableRowVirtualization="False" SelectionMode="Single">
             <DataGrid.Columns>
                 <CustomControl:DataGridTextColumnExt Binding="{Binding TenLoaiHang}" Header="Ten Loai Hang" Width="350"/>
                 <CustomControl:DataGridTextRightAlignColumn Binding="{Binding SoLuong, StringFormat=\{0:N0\}}" Header="So Luong" Width="100"/>
@@ -22,7 +27,7 @@
             </DataGrid.Columns>
         </CustomControl:DataGridExt>
 
-        <CustomControl:DataGridExt Grid.Row="2" x:Name="dgDetail" AutoGenerateColumns="False" EnableRowVirtualization="False" SelectionMode="Single">
+        <CustomControl:DataGridExt Grid.Row="3" x:Name="dgDetail" AutoGenerateColumns="False" EnableRowVirtualization="False" SelectionMode="Single">
             <DataGrid.Columns>
                 <CustomControl:DataGridTextColumnExt Binding="{Binding TenMatHang}" Header="Ten Mat Hang" Width="350"/>
                 <CustomControl:DataGridTextRightAlignColumn Binding="{Binding SoLuong, StringFormat=\{0:N0\}}" Header="So Luong" Width="100"/>
@@ -30,6 +35,6 @@
             </DataGrid.Columns>
         </CustomControl:DataGridExt>
 
-        <GridSplitter HorizontalAlignment="Stretch" Height="5" VerticalAlignment="Bottom" Grid.Row="1"/>
+        <GridSplitter HorizontalAlignment="Stretch" Height="5" VerticalAlignment="Bottom" Grid.Row="2"/>
     </Grid>
 </UserControl>

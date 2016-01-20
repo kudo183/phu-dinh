@@ -46,14 +46,36 @@ namespace PhuDinhReport
             {
                 case 0:
                     var ngay = reportDatePicker.Ngay.Value.Date;
-
-                    filter = p => p.tDonHang.Ngay == ngay && p.tMatHang.MaLoai == maLoai;
+                    switch (comboLoaiKhachHang.SelectionBoxItem.ToString())
+                    {
+                        case "Khach Thuong":
+                            filter = p => p.tDonHang.Ngay == ngay && p.tMatHang.MaLoai == maLoai && p.tDonHang.rKhachHang.KhachRieng == false;
+                            break;
+                        case "Khach Rieng":
+                            filter = p => p.tDonHang.Ngay == ngay && p.tMatHang.MaLoai == maLoai && p.tDonHang.rKhachHang.KhachRieng == true;
+                            break;
+                        case "Tat Ca":
+                            filter = p => p.tDonHang.Ngay == ngay && p.tMatHang.MaLoai == maLoai;
+                            break;
+                    }
                     break;
                 case 1:
                     var tuNgay = reportDatePicker.TuNgay.Value.Date;
                     var denNgay = reportDatePicker.DenNgay.Value.Date;
 
-                    filter = p => p.tDonHang.Ngay >= tuNgay && p.tDonHang.Ngay <= denNgay && p.tMatHang.MaLoai == maLoai;
+                    switch (comboLoaiKhachHang.SelectionBoxItem.ToString())
+                    {
+                        case "Khach Thuong":
+                            filter = p => p.tDonHang.Ngay >= tuNgay && p.tDonHang.Ngay <= denNgay && p.tMatHang.MaLoai == maLoai && p.tDonHang.rKhachHang.KhachRieng == false;
+                            break;
+                        case "Khach Rieng":
+                            filter = p => p.tDonHang.Ngay >= tuNgay && p.tDonHang.Ngay <= denNgay && p.tMatHang.MaLoai == maLoai && p.tDonHang.rKhachHang.KhachRieng == true;
+                            break;
+                        case "Tat Ca":
+                            filter = p => p.tDonHang.Ngay >= tuNgay && p.tDonHang.Ngay <= denNgay && p.tMatHang.MaLoai == maLoai;
+                            break;
+                    }
+
                     break;
             }
 
@@ -63,10 +85,21 @@ namespace PhuDinhReport
         private void ReportByDate()
         {
             _type = 0;
-
+            Expression<Func<tChiTietDonHang, bool>> filter = null;
             var ngay = reportDatePicker.Ngay.Value.Date;
-
-            var result = ReportByLoaiHang.FilterByDate(ngay);
+            switch (comboLoaiKhachHang.SelectionBoxItem.ToString())
+            {
+                case "Khach Thuong":
+                    filter = p => p.tDonHang.Ngay == ngay && p.tDonHang.rKhachHang.KhachRieng == false;
+                    break;
+                case "Khach Rieng":
+                    filter = p => p.tDonHang.Ngay == ngay && p.tDonHang.rKhachHang.KhachRieng == true;
+                    break;
+                case "Tat Ca":
+                    filter = p => p.tDonHang.Ngay == ngay;
+                    break;
+            }
+            var result = ReportByLoaiHang.Filter(filter);
 
             reportDatePicker.NgayMsg = string.Format("Tong so cuon: {0} Tong so ky: {1} kg"
                 , result.Sum(p => p.SoLuong).ToString("N0")
@@ -78,12 +111,24 @@ namespace PhuDinhReport
         private void ReportFromDateToDate()
         {
             _type = 1;
-
+            Expression<Func<tChiTietDonHang, bool>> filter = null;
             var tuNgay = reportDatePicker.TuNgay.Value.Date;
 
             var denNgay = reportDatePicker.DenNgay.Value.Date;
 
-            var result = ReportByLoaiHang.FilterByDate(tuNgay, denNgay);
+            switch (comboLoaiKhachHang.SelectionBoxItem.ToString())
+            {
+                case "Khach Thuong":
+                    filter = p => p.tDonHang.Ngay >= tuNgay && p.tDonHang.Ngay <= denNgay && p.tDonHang.rKhachHang.KhachRieng == false;
+                    break;
+                case "Khach Rieng":
+                    filter = p => p.tDonHang.Ngay >= tuNgay && p.tDonHang.Ngay <= denNgay && p.tDonHang.rKhachHang.KhachRieng == true;
+                    break;
+                case "Tat Ca":
+                    filter = p => p.tDonHang.Ngay >= tuNgay && p.tDonHang.Ngay <= denNgay;
+                    break;
+            }
+            var result = ReportByLoaiHang.Filter(filter);
 
             reportDatePicker.TuNgayDenNgayMsg = string.Format("Tong so cuon: {0} Tong so ky: {1} kg"
                 , result.Sum(p => p.SoLuong).ToString("N0")

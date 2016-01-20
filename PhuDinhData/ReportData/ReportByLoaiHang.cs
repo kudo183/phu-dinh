@@ -25,7 +25,7 @@ namespace PhuDinhData.ReportData
             return Filter(p => p.tDonHang.Ngay >= tuNgay && p.tDonHang.Ngay <= denNgay);
         }
 
-        private static List<ReportByLoaiHangData> Filter(System.Linq.Expressions.Expression<Func<tChiTietDonHang, bool>> filter)
+        public static List<ReportByLoaiHangData> Filter(System.Linq.Expressions.Expression<Func<tChiTietDonHang, bool>> filter)
         {
             var chiTietDonHangs = ClientContext.Instance
                 .GetDataWithRelated(filter, new List<string> {"tMatHang"})
