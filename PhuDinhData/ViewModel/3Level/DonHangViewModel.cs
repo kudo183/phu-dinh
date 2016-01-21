@@ -16,6 +16,8 @@ namespace PhuDinhData.ViewModel
         private List<rKhachHang> _rKhachHangs;
         private List<rChanh> _rChanhs;
         private List<rKhoHang> _rKhoHangs;
+        private List<rKhachHangChanh> _khachHangChanhs;
+        private Dictionary<int, List<rChanh>> _dicKhachHangChanhs = new Dictionary<int, List<rChanh>>();
 
         public HeaderTextFilterModel Header_KhachHang { get; set; }
         public HeaderTextFilterModel Header_Chanh { get; set; }
@@ -46,6 +48,10 @@ namespace PhuDinhData.ViewModel
             Header_KhoHang.SelectedValue = GetDefaultValue(Constant.ColumnName_MaKhoHang);
 
             Entity.CollectionChanged += Entity_CollectionChanged;
+            foreach (var donHang in Entity)
+            {
+                donHang.PropertyChanged += donHang_PropertyChanged;
+            }
 
             Header_Ngay.PropertyChanged += Header_Ngay_PropertyChanged;
 
@@ -61,9 +67,32 @@ namespace PhuDinhData.ViewModel
             _isLoading = false;
         }
 
+        void donHang_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == "MaKhachHang")
+            {
+                var donHang = sender as tDonHang;
+                if (donHang.rKhachHang != null && _dicKhachHangChanhs.ContainsKey(donHang.rKhachHang.Ma) == true)
+                {
+                    donHang.rChanhList = _dicKhachHangChanhs[donHang.rKhachHang.Ma];
+
+                    donHang.MaChanh = donHang.rChanhList[0].Ma;
+                }
+                else
+                {
+                    donHang.MaChanh = null;
+                    donHang.rChanhList = _rChanhs;
+                }
+            }
+        }
+
         public override void Unload()
         {
             Entity.CollectionChanged -= Entity_CollectionChanged;
+            foreach (var donHang in Entity)
+            {
+                donHang.PropertyChanged -= donHang_PropertyChanged;
+            }
 
             Header_Ngay.PropertyChanged -= Header_Ngay_PropertyChanged;
             Header_KhachHang.PropertyChanged -= Header_KhachHang_PropertyChanged;
@@ -109,6 +138,7 @@ namespace PhuDinhData.ViewModel
             if (e.Action == NotifyCollectionChangedAction.Add)
             {
                 var tDonHang = e.NewItems[0] as tDonHang;
+                tDonHang.PropertyChanged += donHang_PropertyChanged;
 
                 tDonHang.Ngay = (Header_Ngay.IsUsed)
                     ? Header_Ngay.Date : DateTime.Now;
@@ -127,6 +157,11 @@ namespace PhuDinhData.ViewModel
                     tDonHang.MaKhoHang = Convert.ToInt32(GetDefaultValue(Constant.ColumnName_MaKhoHang));
                 }
             }
+            else if (e.Action == NotifyCollectionChangedAction.Remove)
+            {
+                var tDonHang = e.OldItems[0] as tDonHang;
+                tDonHang.PropertyChanged -= donHang_PropertyChanged;
+            }
         }
 
         private void UpdateKhachHangReferenceData()
@@ -138,9 +173,45 @@ namespace PhuDinhData.ViewModel
 
         private void UpdateChanhReferenceData()
         {
-            UpdateReferenceData(out _rChanhs,
-                GetReferenceFilter<rChanh>(Constant.ColumnName_Chanh),
-                (p => p.rChanhList = _rChanhs));
+            //UpdateReferenceData(out _rChanhs,
+            //    GetReferenceFilter<rChanh>(Constant.ColumnName_Chanh),
+            //    (p => p.rChanhList = _rChanhs));
+
+            _rChanhs = _contextManager.GetData<rChanh>(
+                null, EntityHelper.GetReferenceDataRelatedTables("rChanh"));
+
+            _khachHangChanhs = _contextManager.GetData<rKhachHangChanh>(
+                null, EntityHelper.GetReferenceDataRelatedTables("rKhachHangChanh"));
+
+            _dicKhachHangChanhs.Clear();
+            foreach (var khachHangChanh in _khachHangChanhs)
+            {
+                if (_dicKhachHangChanhs.ContainsKey(khachHangChanh.MaKhachHang) == false)
+                {
+                    _dicKhachHangChanhs.Add(khachHangChanh.MaKhachHang, new List<rChanh>());
+                }
+
+                if (khachHangChanh.LaMacDinh)
+                {
+                    _dicKhachHangChanhs[khachHangChanh.MaKhachHang].Insert(0, khachHangChanh.rChanh);
+                }
+                else
+                {
+                    _dicKhachHangChanhs[khachHangChanh.MaKhachHang].Add(khachHangChanh.rChanh);
+                }
+            }
+
+            foreach (var donHang in Entity)
+            {
+                if (_dicKhachHangChanhs.ContainsKey(donHang.rKhachHang.Ma) == true)
+                {
+                    donHang.rChanhList = _dicKhachHangChanhs[donHang.rKhachHang.Ma];
+                }
+                else
+                {
+                    donHang.rChanhList = _rChanhs;
+                }
+            }
         }
 
         private void UpdateKhoHangReferenceData()
