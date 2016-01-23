@@ -169,10 +169,6 @@
       <Project>{14430418-d823-406b-a494-30e5e7caf940}</Project>
       <Name>PhuDinhEFClientContext</Name>
     </ProjectReference>
-    <ProjectReference Include="..\PhuDinhODataClientContext\PhuDinhODataClientContext.csproj">
-      <Project>{8520e3e2-63c4-4d03-9361-4ed0ead8c67a}</Project>
-      <Name>PhuDinhODataClientContext</Name>
-    </ProjectReference>
     <ProjectReference Include="..\PhuDinhReport\PhuDinhReport.csproj">
       <Project>{a0687be7-ac65-408d-8a17-785f7070f646}</Project>
       <Name>PhuDinhReport</Name>
