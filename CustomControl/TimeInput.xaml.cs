@@ -30,15 +30,23 @@ namespace CustomControl
             var timeInput = obj as TimeInput;
             var time = (TimeSpan)e.NewValue;
             timeInput.txtHour.Text = time.Hours.ToString();
-            timeInput.txtMinute.Text = time.Minutes.ToString();            
+            timeInput.txtMinute.Text = time.Minutes.ToString();
         }
 
         private void txtHour_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
+            if (e.Text == "*")
+            {
+                txtMinute.Focus();
+                txtMinute.SelectAll();
+                e.Handled = true;
+                return;
+            }
+            
             int value;
             var text = txtHour.Text.Remove(txtHour.SelectionStart, txtHour.SelectionLength);
-            text = txtHour.SelectionStart == 0 ? e.Text + text : text + e.Text;
-
+            text = text.Insert(txtHour.SelectionStart, e.Text);
+            
             if (int.TryParse(text, out value) == false)
             {
                 e.Handled = true;
@@ -54,9 +62,17 @@ namespace CustomControl
 
         private void txtMinute_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
+            if (e.Text == "*")
+            {
+                txtHour.Focus();
+                txtHour.SelectAll();
+                e.Handled = true;
+                return;
+            }
+
             int value;
             var text = txtMinute.Text.Remove(txtMinute.SelectionStart, txtMinute.SelectionLength);
-            text = txtMinute.SelectionStart == 0 ? e.Text + text : text + e.Text;
+            text = text.Insert(txtMinute.SelectionStart, e.Text);
 
             if (int.TryParse(text, out value) == false)
             {
