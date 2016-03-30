@@ -69,7 +69,35 @@ namespace PhuDinhCommonControl
             if (button == null)
                 return;
 
-            if (button.Content.ToString() == "In")
+            if (button.Content.ToString() == "In còn lại")
+            {
+                var tChiTietDonHangs = PhuDinhData.ClientContext.Instance
+                    .GetDataWithRelated<PhuDinhDataEntity.tChiTietDonHang>(
+                    p => p.MaDonHang == SelectedItem.Ma,
+                    new List<string> { "tMatHang", "tChiTietChuyenHangDonHangs" }).ToList();
+
+                var content = new List<string>();
+                foreach (var ctdh in tChiTietDonHangs)
+                {
+                    if (ctdh.Xong == false)
+                    {
+                        content.Add(string.Format("{0,3}  {1}", ctdh.SoLuong - ctdh.tChiTietChuyenHangDonHangs.Sum(p => p.SoLuong), ctdh.tMatHang.TenMatHangIn));
+                    }
+                }
+
+                var rKhachHang = PhuDinhData.ClientContext.Instance
+                    .GetData<PhuDinhDataEntity.rKhachHang>(p => p.Ma == SelectedItem.MaKhachHang).ToList()[0];
+
+                var document = new PrintTemplateDonHang
+                {
+                    Title = rKhachHang.TenKhachHang,
+                    Content = new ReadOnlyCollection<string>(content)
+                };
+
+                PrintService.Print(document.Document);
+                return;
+            }
+            else if (button.Content.ToString() == "In tất cả")
             {
                 var tChiTietDonHangs = PhuDinhData.ClientContext.Instance
                     .GetDataWithRelated<PhuDinhDataEntity.tChiTietDonHang>(
