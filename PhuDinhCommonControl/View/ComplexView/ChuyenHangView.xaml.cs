@@ -36,7 +36,7 @@ namespace PhuDinhCommonControl
         {
             if (view is tChuyenHangView)
             {
-                _tChuyenHangView.dg.FocusCell(_tChuyenHangView.dg.Items.Count - 1, 3);
+                _tChuyenHangView.dg.FocusCell(_tChuyenHangView.dg.Items.Count - 1, 2);
             }
             else if (view is tChuyenHangDonHangView)
             {

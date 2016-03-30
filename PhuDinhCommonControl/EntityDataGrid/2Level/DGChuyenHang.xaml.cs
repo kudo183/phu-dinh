@@ -12,7 +12,6 @@ namespace PhuDinhCommonControl.EntityDataGrid
             InitializeComponent();
 
             SkippedColumnIndex.Add(1);
-            SkippedColumnIndex.Add(2);
         }
     }
 }
