@@ -5,11 +5,7 @@ set t=%time::=_%
 set t=%t:,=_%
 set Rar="C:\Program Files\WinRAR\rar.exe"
 
-set SubWCRev=C:\Program Files\TortoiseSVN\bin\SubWCRev.exe
-set WorkingCopyPath=%~dp0
-for /f "tokens=5" %%i in ('""%SubWCRev%" "%WorkingCopyPath%.""') do set v=%%i
-
-set OutputName="%d% %t% r%v%"
+set OutputName="%d% %t%"
 
 rd /s /q %~dp0\PhuDinhConsole\bin\release\log
 rd /s /q %~dp0\PhuDinh\bin\release\log
